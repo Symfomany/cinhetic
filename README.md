@@ -2,18 +2,20 @@ Cinhetic Standard Edition
 ========================
 
 Welcome to the Cinhetic Standard Edition - a fully-functional Symfony2
-application that you can use to handle all cinemas, actorsn directors...
+application that you can use to handle **all cinematographic world**!
 
 Roadmap: handle movies, categories, tags, actors, directors, cinemas, sessions, users, comments...
+
+Philosophy: **Minimalist** features, **Collaborative** in real time, **Maintainable**, **Pragmatic** and **Responsive** Solution.
 
 Screenshots
 ------------------
 
 ![ScreenShot](https://raw.github.com/Symfomany/cinhetic/master/screenshots/MainScreen.png)
-![ScreenShot](https://raw.github.com/Symfomany/cinhetic/master/screenshots/Screen2.png)
 ![ScreenShot](https://raw.github.com/Symfomany/cinhetic/master/screenshots/Screen3.png)
 ![ScreenShot](https://raw.github.com/Symfomany/cinhetic/master/screenshots/Screen4.png)
 ![ScreenShot](https://raw.github.com/Symfomany/cinhetic/master/screenshots/Screen5.png)
+![ScreenShot](https://raw.github.com/Symfomany/cinhetic/master/screenshots/Screen6.png)
 
 
 1) Installing the Cinhetic Standard Edition

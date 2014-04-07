@@ -26,18 +26,12 @@
       <file leaf-file-name="README.md" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="115" column="36" selection-start="2737" selection-end="2737" vertical-scroll-proportion="0.61165047" vertical-offset="1859" max-vertical-offset="3800">
+            <state line="17" column="82" selection-start="894" selection-end="894" vertical-scroll-proportion="0.48920864" vertical-offset="0" max-vertical-offset="3840">
               <folding />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html.twig" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Ezap/PublicBundle/Resources/views/Main/index.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="65" selection-start="316" selection-end="316" vertical-scroll-proportion="-6.923077" vertical-offset="0" max-vertical-offset="680">
-              <folding />
-            </state>
+          <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+            <state />
           </provider>
         </entry>
       </file>
@@ -45,9 +39,7 @@
         <entry file="file://$PROJECT_DIR$/src/Ezap/PublicBundle/Resources/views/Movies/stars.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state line="2" column="0" selection-start="97" selection-end="97" vertical-scroll-proportion="-1.5384616" vertical-offset="0" max-vertical-offset="380">
-              <folding>
-                <marker date="1396892105390" expanded="true" signature="332:445" placeholder="..." />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -130,7 +122,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/Ezap/PublicBundle/Controller/CategoriesController.php" />
         <option value="$PROJECT_DIR$/src/Ezap/PublicBundle/Controller/CinemaController.php" />
         <option value="$PROJECT_DIR$/src/Ezap/PublicBundle/Controller/CommentsController.php" />
         <option value="$PROJECT_DIR$/src/Ezap/PublicBundle/Resources/views/Slots/topmenu.html.twig" />
@@ -176,10 +167,11 @@
         <option value="$PROJECT_DIR$/src/Ezap/PublicBundle/Resources/views/Movies/current.html.twig" />
         <option value="$PROJECT_DIR$/src/Ezap/PublicBundle/Resources/views/Movies/stars.html.twig" />
         <option value="$PROJECT_DIR$/src/Ezap/PublicBundle/Controller/MoviesController.php" />
-        <option value="$PROJECT_DIR$/src/Ezap/PublicBundle/Resources/views/Main/index.html.twig" />
         <option value="$PROJECT_DIR$/src/Ezap/PublicBundle/Repository/MoviesRepository.php" />
         <option value="$PROJECT_DIR$/src/Ezap/PublicBundle/Entity/Movies.php" />
         <option value="$PROJECT_DIR$/src/Ezap/PublicBundle/Resources/views/Movies/caroussel.html.twig" />
+        <option value="$PROJECT_DIR$/LICENSE" />
+        <option value="$PROJECT_DIR$/src/Ezap/PublicBundle/Resources/views/Main/index.html.twig" />
         <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
@@ -531,13 +523,6 @@
         <state line="29" column="11" selection-start="690" selection-end="690" vertical-scroll-proportion="-22.307692" vertical-offset="0" max-vertical-offset="4580" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UPGRADE.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="8" selection-start="8" selection-end="8" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="756">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Ezap/PublicBundle/Form/SessionsType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="19" column="66" selection-start="601" selection-end="601" vertical-scroll-proportion="0.4638472" vertical-offset="0" max-vertical-offset="900" />
@@ -716,22 +701,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Ezap/PublicBundle/Resources/views/Movies/stars.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="97" selection-end="97" vertical-scroll-proportion="-1.5384616" vertical-offset="0" max-vertical-offset="380">
-          <folding>
-            <marker date="1396892105390" expanded="true" signature="332:445" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Ezap/PublicBundle/Resources/views/Main/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="65" selection-start="316" selection-end="316" vertical-scroll-proportion="-6.923077" vertical-offset="0" max-vertical-offset="680">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Ezap/PublicBundle/Entity/Medias.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="165" column="0" selection-start="2675" selection-end="2675" vertical-scroll-proportion="-96.92308" vertical-offset="780" max-vertical-offset="4080">
@@ -779,11 +748,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
+    <entry file="file://$PROJECT_DIR$/LICENSE">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="115" column="36" selection-start="2737" selection-end="2737" vertical-scroll-proportion="0.61165047" vertical-offset="1859" max-vertical-offset="3800">
+        <state line="5" column="38" selection-start="308" selection-end="308" vertical-scroll-proportion="0.13642564" vertical-offset="0" max-vertical-offset="733">
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Ezap/PublicBundle/Resources/views/Main/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="0" selection-start="322" selection-end="322" vertical-scroll-proportion="0.24556616" vertical-offset="0" max-vertical-offset="733">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Ezap/PublicBundle/Resources/views/Movies/stars.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="0" selection-start="97" selection-end="97" vertical-scroll-proportion="-1.5384616" vertical-offset="0" max-vertical-offset="380">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="82" selection-start="894" selection-end="894" vertical-scroll-proportion="0.48920864" vertical-offset="0" max-vertical-offset="3840">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
       </provider>
     </entry>
   </component>
