@@ -29,9 +29,13 @@ Then, use the `create-project` command to generate a new Symfony application:
 ----------------------------------
 * Search by Cities in sessions of cinemas
 * Best Movies by rating
+* Add pagination for results
+*
 * Add press comments in Movies
 * Homepage with custom template
 * Movies in weeks
+* Add Authentification for User Connect with FOS
+* Print my Billet with QRCode & TCPDF
 * Page Category listing all movies related
 * Page Keywords listing all movies related
 * Page Films Favorites by User connected
@@ -55,6 +59,8 @@ Then, use the `create-project` command to generate a new Symfony application:
 * Number Movies, Categories, Tags...
 
 
-2) Evolution
+3) Evolution
 ----------------------------------
 * Mongo for Notifications
+* Add Datas Fixtures with Doctrine
+* Add APIS for Mobiles
