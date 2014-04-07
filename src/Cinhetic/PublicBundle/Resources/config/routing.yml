@@ -1,0 +1,45 @@
+# Homepage
+Cinhetic_public_homepage:
+    pattern:  /
+    defaults: { _controller: CinheticPublicBundle:Main:index }
+
+Cinhetic_public_search:
+    pattern:  /search
+    defaults: { _controller: CinheticPublicBundle:Movies:search }
+
+
+# Actors
+CinheticPublicBundle_actors:
+    resource: "@CinheticPublicBundle/Resources/config/routing/actors.yml"
+    prefix:   /actors
+
+# Movies
+CinheticPublicBundle_movies:
+    resource: "@CinheticPublicBundle/Resources/config/routing/movies.yml"
+    prefix:   /movies
+
+# Categories
+CinheticPublicBundle_categories:
+  resource: "@CinheticPublicBundle/Resources/config/routing/categories.yml"
+  prefix:   /categories
+
+# Cinema
+CinheticPublicBundle_cinema:
+  resource: "@CinheticPublicBundle/Resources/config/routing/cinema.yml"
+  prefix:   /cinema
+
+# Session
+CinheticPublicBundle_sessions:
+    resource: "@CinheticPublicBundle/Resources/config/routing/sessions.yml"
+    prefix:   /sessions
+
+# Tags
+CinheticPublicBundle_tags:
+    resource: "@CinheticPublicBundle/Resources/config/routing/tags.yml"
+    prefix:   /tags
+
+# Comments
+CinheticPublicBundle_comments:
+    resource: "@CinheticPublicBundle/Resources/config/routing/comments.yml"
+    prefix:   /comments
+

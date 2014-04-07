@@ -1,0 +1,56 @@
+{% extends 'CinheticPublicBundle::layout.html.twig' %}
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block content %}
+    <h1>Voir la catégorie {{ entity.title|title}}</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ entity.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ entity.description|raw }}</td>
+            </tr>
+            <tr>
+                <td class="text-success">{{ entity.movies|length|default("0") }}</td>
+            </tr>
+            <tr>
+                <th>Création</th>
+                <td>{{ entity.dateCreated|date('Y-m-d H:i:s') }}</td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    {% if entity.movies is not empty %}
+    <h3>Les films de cette catégorie</h3>
+    {% for entity in entity.movies %}
+        <div class="alert alert-warning">
+            <a href="{{ path('movies_show', { 'id': entity.id }) }}">{{ entity.title|title }}</a>
+        </div>
+    {% endfor %}
+    {% endif %}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('categories') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('categories_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

@@ -1,0 +1,30 @@
+movies:
+    pattern:  /
+    defaults: { _controller: "CinheticPublicBundle:Movies:index" }
+
+movies_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CinheticPublicBundle:Movies:show" }
+
+movies_new:
+    pattern:  /new
+    defaults: { _controller: "CinheticPublicBundle:Movies:new" }
+
+movies_create:
+    pattern:  /create
+    defaults: { _controller: "CinheticPublicBundle:Movies:create" }
+    requirements: { _method: post }
+
+movies_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CinheticPublicBundle:Movies:edit" }
+
+movies_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CinheticPublicBundle:Movies:update" }
+    requirements: { _method: post|put }
+
+movies_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CinheticPublicBundle:Movies:delete" }
+    requirements: { _method: post|delete }

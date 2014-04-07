@@ -1,0 +1,14 @@
+<?php
+
+namespace Cinhetic\PublicBundle;
+
+use Symfony\Component\HttpKernel\Bundle\Bundle;
+
+class CinheticPublicBundle extends Bundle
+{
+    public function getParent()
+    {
+        return 'FOSUserBundle';
+    }
+
+}

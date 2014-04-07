@@ -1,0 +1,30 @@
+comments:
+    pattern:  /
+    defaults: { _controller: "CinheticPublicBundle:Comments:index" }
+
+comments_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CinheticPublicBundle:Comments:show" }
+
+comments_new:
+    pattern:  /new
+    defaults: { _controller: "CinheticPublicBundle:Comments:new" }
+
+comments_create:
+    pattern:  /create
+    defaults: { _controller: "CinheticPublicBundle:Comments:create" }
+    requirements: { _method: post }
+
+comments_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CinheticPublicBundle:Comments:edit" }
+
+comments_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CinheticPublicBundle:Comments:update" }
+    requirements: { _method: post|put }
+
+comments_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CinheticPublicBundle:Comments:delete" }
+    requirements: { _method: post|delete }

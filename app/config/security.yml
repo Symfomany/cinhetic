@@ -1,6 +1,6 @@
 security:
     encoders:
-         Ezap\PublicBundle\Entity\User: sha512
+         Cinhetic\PublicBundle\Entity\User: sha512
 
 
     role_hierarchy:

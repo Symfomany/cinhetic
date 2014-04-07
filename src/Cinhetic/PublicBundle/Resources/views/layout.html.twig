@@ -1,0 +1,103 @@
+
+{% extends "::base.html.twig" %}
+
+{% block title %}Cinhetic Solution{% endblock %}
+
+{#
+    StylSheets
+#}
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link rel="stylesheet" type="text/css" href="http://bootswatch.com/darkly/bootstrap.min.css"/>
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/flick/jquery-ui.css" />
+    {% stylesheets '@CinheticPublicBundle/Resources/public/css/main.css' filter='yui_css' %}
+        <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>
+    {% endstylesheets %}
+    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.css" />
+    <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/jquery.colorbox/1.4.33/example1/colorbox.min.css"/>
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+
+   {# {% if app.user.id is defined %}
+        <script type="text/javascript" src="http://{{ app.request.host }}:1665/socket.io/socket.io.js"></script>
+        {% javascripts '@IsapPublicBundle/Resources/public/js/io.js'  %}
+        <script src="{{ asset_url }}" type="text/javascript"></script>
+        {% endjavascripts %}
+    {% endif %} #}
+
+{% endblock %}
+
+
+{#
+    BODY
+#}
+{% block body %}
+<div class="container-fluid">
+    <div class="row-fluid">
+    {% include 'CinheticPublicBundle:Slots:topmenu.html.twig' %}
+                        <div class="col-sm-9 main">
+                            <ul class="nav nav-pills">
+                                <li {% if  app.request.attributes.get('_route') == "actors" %} class="active" {% endif %}><a href="{{ path('actors') }}">Voir les acteurs</a></li>
+                                <li {% if  app.request.attributes.get('_route') == "movies" %} class="active" {% endif %}><a href="{{ path('movies') }}">Voir les films</a></li>
+                                <li {% if  app.request.attributes.get('_route') == "categories" %} class="active" {% endif %}><a href="{{ path('categories') }}">Voir les catégories</a></li>
+                                <li {% if  app.request.attributes.get('_route') == "cinema" %} class="active" {% endif %}><a href="{{ path('cinema') }}">Voir les cinémas</a></li>
+                                <li {% if  app.request.attributes.get('_route') == "sessions" %} class="active" {% endif %}><a href="{{ path('sessions') }}">Voir les séances</a></li>
+                                <li {% if  app.request.attributes.get('_route') == "tags" %} class="active" {% endif %}><a href="{{ path('tags') }}">Voir les tags</a></li>
+                                <li {% if  app.request.attributes.get('_route') == "comments" %} class="active" {% endif %}><a href="{{ path('comments') }}">Voir les commentaires</a></li>
+                            </ul>
+                            <br /><br />
+                            {% include 'CinheticPublicBundle:Slots:flashdatas.html.twig' %}
+                            {% include 'CinheticPublicBundle:Slots:search.html.twig' %}
+
+
+                            {% block content %}
+                                {% for key, message in app.session.flashbag.all() %}
+                                    <div class="alert-block alert alert-{{ key }}">
+                                        {{ message|trans({}, 'FOSUserBundle') }}
+                                    </div>
+                                {% endfor %}
+
+                                {# On définit ce block, dans lequel vont venir s'insérer les autres vues du bundle #}
+                                <div>
+                                    {% block fos_user_content %}
+                                    {% endblock fos_user_content %}
+                                </div>
+                            {% endblock %}
+                        </div>
+                    <div id="overlay" class="overlay hide">
+                        <img src="{{ base_url }}images/loading.gif" />
+                    </div>
+                </div>
+            </div>
+
+{% endblock %}
+
+
+{#
+    Javascripts
+#}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/hinclude/0.9.5/hinclude.min.js"></script>
+    <script type="text/javascript" src="http://cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.colorbox/1.4.33/jquery.colorbox-min.js"></script>
+    {#<script src="http://modernizr.com/downloads/modernizr-latest.js"></script>#}
+    {#<script src="{{ asset('bundles/horussite/js/jRating.jquery.min.js') }}"></script>#}
+    {#<script src="{{ asset('js/jquery-fileupload.min.js') }}"></script>#}
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.0.1/ckeditor.js"></script>
+
+    <script type="text/javascript">
+        $( document ).ready(function() {
+            $('a.gallery').colorbox({rel:'gal'});
+        });
+    </script>
+    {% javascripts '@CinheticPublicBundle/Resources/public/js/main.js'  filter='closure' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}

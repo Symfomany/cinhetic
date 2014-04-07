@@ -1,0 +1,54 @@
+
+{% extends "::base.html.twig" %}
+
+{% block title %}Cinhetic Solution{% endblock %}
+
+{#
+    StylSheets
+#}
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link rel="stylesheet" type="text/css" href="http://bootswatch.com/flatly/bootstrap.min.css"/>
+    {% stylesheets '@CinheticPublicBundle/Resources/public/css/main.css' filter='yui_css' %}
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>
+    {% endstylesheets %}
+
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+
+
+{% endblock %}
+
+
+{#
+    BODY
+#}
+{% block body %}
+     {% include 'CinheticPublicBundle:Slots:topmenu_disconnect.html.twig' %}
+    <div class="col-sm-12 main">
+        {% block content %}
+            {% block fos_user_content %}
+            {% endblock fos_user_content %}
+        {% endblock %}
+    </div>
+
+{% endblock %}
+
+
+{#
+    Javascripts
+#}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/hinclude/0.9.5/hinclude.min.js"></script>
+    {#<script src="{{ asset('bundles/horussite/js/jRating.jquery.min.js') }}"></script>#}
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    {% javascripts '@CinheticPublicBundle/Resources/public/js/main.js'  filter='closure' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}

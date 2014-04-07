@@ -1,0 +1,30 @@
+sessions:
+    pattern:  /
+    defaults: { _controller: "CinheticPublicBundle:Sessions:index" }
+
+sessions_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CinheticPublicBundle:Sessions:show" }
+
+sessions_new:
+    pattern:  /new
+    defaults: { _controller: "CinheticPublicBundle:Sessions:new" }
+
+sessions_create:
+    pattern:  /create
+    defaults: { _controller: "CinheticPublicBundle:Sessions:create" }
+    requirements: { _method: post }
+
+sessions_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CinheticPublicBundle:Sessions:edit" }
+
+sessions_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CinheticPublicBundle:Sessions:update" }
+    requirements: { _method: post|put }
+
+sessions_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CinheticPublicBundle:Sessions:delete" }
+    requirements: { _method: post|delete }

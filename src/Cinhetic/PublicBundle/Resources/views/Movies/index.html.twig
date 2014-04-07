@@ -1,0 +1,47 @@
+{% extends 'CinheticPublicBundle::layout.html.twig' %}
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block content %}
+    <h1><i class="glyphicon glyphicon-facetime-video"></i> Liste des Films [{{ entities|length }}]</h1>
+    <hr />
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Synopsis</th>
+                <th>Réalisateurs</th>
+                <th>Nb d'acteurs</th>
+                <th>Création</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('movies_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td class="text-success">{{ entity.title }}</td>
+                <td>{{ entity.synopsis|raw|truncate(250,true, "...") }}</td>
+                <td>
+                    {% for entity in entity.directors %}
+                        {{ entity.firstname|title }} {{ entity.lastname|title }}
+                    {% endfor %}
+                </td>
+                <td>{{ entity.actors|length|default('0') }} acteurs</td>
+                <td>{% if entity.dateCreated %}{{ entity.dateCreated|date('Y-m-d') }}{% endif %}</td>
+                <td>
+                    <a  href="{{ path('movies_show', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-search"></i> Voir</a>
+                    <a  href="{{ path('movies_edit', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-pencil"></i> Editer</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <hr />
+    <a class="btn btn-danger"  href="{{ path('movies_new') }}">
+        <i class="glyphicon glyphicon-plus"></i>  Création de film
+    </a>
+
+    {% endblock %}

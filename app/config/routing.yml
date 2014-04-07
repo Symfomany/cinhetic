@@ -1,5 +1,5 @@
-ezap_public:
-    resource: "@EzapPublicBundle/Resources/config/routing.yml"
+Cinhetic_public:
+    resource: "@CinheticPublicBundle/Resources/config/routing.yml"
     prefix:   /administration
 
 

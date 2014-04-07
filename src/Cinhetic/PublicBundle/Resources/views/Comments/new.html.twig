@@ -1,0 +1,18 @@
+{% extends 'CinheticPublicBundle::layout.html.twig' %}
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block content %}
+    <h1> <i class="glyphicon glyphicon-plus"></i> Création de Commentaires </h1>
+
+    {{ form(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('comments') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% block topmenu %}
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a href="{{ path('Cinhetic_public_homepage') }}" class="navbar-brand">Cinhetic</a>
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse" id="navbar-main">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a  href="{{ path('Cinhetic_public_homepage') }}"><i class="glyphicon glyphicon-home"></i> Home</a></li>
+                    {#<li {% if  app.request.attributes.get('_route') == "" %} class="active" {% endif %}><a  href=""><i class="glyphicon glyphicon-th-list"></i> Crédit</a></li>#}
+                    <li {% if  app.request.attributes.get('_route') == "" %} class="active" {% endif %}><a  href=""><i class="glyphicon glyphicon-tasks"></i> Presse</a></li>
+                    {#<li {% if  app.request.attributes.get('_route') == "" %} class="active" {% endif %}><a  href=""><i class="glyphicon glyphicon-file"></i> CGU</a></li>#}
+                    <li {% if  app.request.attributes.get('_route') == "" %} class="active" {% endif %}><a  href=""><i class="glyphicon glyphicon-question-sign"></i> Faq</a></li>
+                    <li {% if  app.request.attributes.get('_route') == "" %} class="active" {% endif %}><a  href=""><i class="glyphicon glyphicon-user"></i> Contact</a></li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        {# {% render controller('HorusAdminBundle:Layout:notifications') %} #}
+                    </li>
+
+                    <li>
+                        <a href="{{ path('fos_user_security_logout') }}" id="configuration"><i class="glyphicon glyphicon-off"></i> Deconnexion</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <br /> <br /><br /><br />
+{% endblock %}
+

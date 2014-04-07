@@ -1,0 +1,30 @@
+tags:
+    pattern:  /
+    defaults: { _controller: "CinheticPublicBundle:Tags:index" }
+
+tags_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CinheticPublicBundle:Tags:show" }
+
+tags_new:
+    pattern:  /new
+    defaults: { _controller: "CinheticPublicBundle:Tags:new" }
+
+tags_create:
+    pattern:  /create
+    defaults: { _controller: "CinheticPublicBundle:Tags:create" }
+    requirements: { _method: post }
+
+tags_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CinheticPublicBundle:Tags:edit" }
+
+tags_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CinheticPublicBundle:Tags:update" }
+    requirements: { _method: post|put }
+
+tags_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CinheticPublicBundle:Tags:delete" }
+    requirements: { _method: post|delete }

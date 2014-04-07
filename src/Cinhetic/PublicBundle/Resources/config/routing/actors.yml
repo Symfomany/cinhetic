@@ -1,0 +1,30 @@
+actors:
+    pattern:  /
+    defaults: { _controller: "CinheticPublicBundle:Actors:index" }
+
+actors_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CinheticPublicBundle:Actors:show" }
+
+actors_new:
+    pattern:  /new
+    defaults: { _controller: "CinheticPublicBundle:Actors:new" }
+
+actors_create:
+    pattern:  /create
+    defaults: { _controller: "CinheticPublicBundle:Actors:create" }
+    requirements: { _method: post }
+
+actors_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CinheticPublicBundle:Actors:edit" }
+
+actors_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CinheticPublicBundle:Actors:update" }
+    requirements: { _method: post|put }
+
+actors_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CinheticPublicBundle:Actors:delete" }
+    requirements: { _method: post|delete }

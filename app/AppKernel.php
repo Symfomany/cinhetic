@@ -27,7 +27,7 @@ class AppKernel extends Kernel
             new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
 
 //            Our Bundle
-            new Ezap\PublicBundle\EzapPublicBundle()
+            new Cinhetic\PublicBundle\CinheticPublicBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

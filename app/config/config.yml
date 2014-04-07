@@ -1,7 +1,7 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
-    - { resource: '@EzapPublicBundle/Resources/config/config.yml' }
+    - { resource: '@CinheticPublicBundle/Resources/config/config.yml' }
 
 framework:
     default_locale: fr
@@ -16,7 +16,7 @@ framework:
     validation:      { enable_annotations: true }
     templating:
         engines: ['twig']
-        hinclude_default_template: EzapPublicBundle::hinclude.html.twig
+        hinclude_default_template: CinheticPublicBundle::hinclude.html.twig
     default_locale:  fr
     trusted_hosts:   ~
     trusted_proxies: ~
@@ -46,13 +46,13 @@ twig:
     strict_variables: %kernel.debug%
     form:
       resources:
-          - 'EzapPublicBundle:Slots:forms.html.twig'
+          - 'CinheticPublicBundle:Slots:forms.html.twig'
 
 # Assetic Configuration
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        ["EzapPublicBundle", "FOSUserBundle"]
+    bundles:        ["CinheticPublicBundle", "FOSUserBundle"]
     #java: /usr/bin/java
     filters:
      cssrewrite: ~
@@ -106,7 +106,7 @@ swiftmailer:
 fos_user:
    db_driver:     orm                        # Le type de BDD à utiliser, nous utilisons l'ORM Doctrine depuis le début
    firewall_name: main
-   user_class:    Ezap\PublicBundle\Entity\User # La classe de l'entité User que nous utilisons
+   user_class:    Cinhetic\PublicBundle\Entity\User # La classe de l'entité User que nous utilisons
 
 
 services:
@@ -141,8 +141,8 @@ services:
 #                    tel: { type: string }
 #                persistence:
 #                    driver: orm
-#                    model: Ezap\PublicBundle\Entity\User
-#                    repository: Ezap\PublicBundle\Repository\UserRepository
+#                    model: Cinhetic\PublicBundle\Entity\User
+#                    repository: Cinhetic\PublicBundle\Repository\UserRepository
 #                    provider:
 #                        query_builder_method: getActiveUserQueryBuilder
 #                    finder: ~
@@ -156,7 +156,7 @@ knp_paginator:
         sort_direction_name: direction # sort direction query parameter name
         distinct: true                 # ensure distinct results, useful when ORM queries are using GROUP BY statements
     template:
-        pagination: EzapPublicBundle:Slots:pagination.html.twig     # sliding pagination controls template
+        pagination: CinheticPublicBundle:Slots:pagination.html.twig     # sliding pagination controls template
 
 #Nelmio Bundle
 nelmio_api_doc: ~

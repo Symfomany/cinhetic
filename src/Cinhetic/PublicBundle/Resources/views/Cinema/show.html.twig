@@ -1,0 +1,114 @@
+{% extends 'CinheticPublicBundle::layout.html.twig' %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+    <script type="text/javascript">
+
+        /* Déclaration des variables  */
+        var geocoder;
+        var map;
+        var markers = new Array();
+        var i = 0;
+
+        /* Initialisation de la carte  */
+        function initialize() {
+            /* Instanciation du geocoder  */
+            geocoder = new google.maps.Geocoder();
+            var paris = new google.maps.LatLng(48.8566667, 2.3509871);
+            var myOptions = {
+                zoom: 4,
+                center: paris,
+                mapTypeId: google.maps.MapTypeId.HYBRID
+            }
+            /* Chargement de la carte  */
+            map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+        }
+
+        /* Fonction de géocodage déclenchée en cliquant surle bouton "Geocoder"  */
+        function codeAddress() {
+            /* Récupération de la valeur de l'adresse saisie */
+            var address = "{{ entity.ville }}";
+            /* Appel au service de geocodage avec l'adresse en paramètre */
+            geocoder.geocode( { 'address': address}, function(results, status) {
+                /* Si l'adresse a pu être géolocalisée */
+                if (status == google.maps.GeocoderStatus.OK) {
+
+                    map.setCenter(results[0].geometry.location);
+                    /* Affichage du marker */
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        position: results[0].geometry.location
+                    });
+                    /* Permet de supprimer le marker précédemment affiché */
+                    markers.push(marker);
+                    if(markers.length > 1)
+                        markers[(i-1)].setMap(null);
+                    i++;
+                } else {
+                    alert("Le geocodage n\'a pu etre effectue pour la raison suivante: " + status);
+                }
+            });
+        }
+        initialize();
+        codeAddress();
+    </script>
+{% endblock %}
+
+{% block content %}
+    <h1>Cinema</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ entity.title }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ entity.ville }}</td>
+            </tr>
+            <tr>
+                <th>Datecreated</th>
+                <td>{{ entity.dateCreated|date('Y-m-d H:i:s') }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <div id="map_canvas"></div>
+
+    <h3>Les films à ce cinéma</h3>
+    {% for entity in entity.movies %}
+        <div class="alert alert-warning">
+            <a href="{{ path('movies_show', { 'id': entity.id }) }}">{{ entity.title|title }}</a>
+        </div>
+    {% endfor %}
+
+    <h3>Les séances de ce cinéma</h3>
+    {% for entity in entity.sessions %}
+        <div class="alert alert-warning">
+           <a href="{{ path('sessions_show', { 'id': entity.id }) }}">
+               {% if entity.dateSession %}Le {{ entity.dateSession|date('Y-m-d') }} à {{ entity.dateSession|date('H:i') }}{% endif %}
+                {{ entity.movies.title|title }}
+           </a>
+        </div>
+    {% endfor %}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('cinema') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('cinema_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}
