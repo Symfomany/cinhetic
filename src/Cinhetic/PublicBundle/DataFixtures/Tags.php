@@ -1,17 +1,18 @@
 <?php
 namespace Cinhetic\PublicBundle\DataFixtures;
 
-use Cinhetic\PublicBundle\Entity\Categories as Cat;
+use Cinhetic\PublicBundle\Entity\Categories;
 use Cinhetic\PublicBundle\Entity\Movies;
+use Cinhetic\PublicBundle\Entity\Tags;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 /**
- * Class LoadCategoriesData
+ * Class LoadTagsData
  * @package Cinhetic\PublicBundle\Repository
  */
-class LoadCategoriesData extends AbstractFixture implements OrderedFixtureInterface
+class LoadTagsData extends AbstractFixture implements OrderedFixtureInterface
 {
 
     /**
@@ -19,11 +20,10 @@ class LoadCategoriesData extends AbstractFixture implements OrderedFixtureInterf
      */
     public function load(ObjectManager $manager)
     {
-        $category = new Cat();
-        $category->setTitle("Autobiographie");
-        $category->setDescription("Film autobiographique français");
+        $word = new Tags();
+        $word->setWord("hobbit");
 
-        $manager->persist($category);
+        $manager->persist($word);
         $manager->flush();
 
     }

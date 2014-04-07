@@ -55,7 +55,7 @@ Installation
 ### Add the deps for the needed bundles
 
 ``` php
-[HorusSiteBundle]
+[CinheticPublicBundle]
     git=https://github.com/Symfomany/Cinhetic.git
     target=/bundles/cinhetic/
 
@@ -86,7 +86,7 @@ $ php bin/vendors install
 
 ``` php
 $loader->registerNamespaces(array(
-    'Horus'             => __DIR__.'/../vendor/bundles',
+    'Cinhetic'             => __DIR__.'/../vendor/bundles',
     // ...
 ```
 ### Register CinheticPublicBundle to Kernel
@@ -114,7 +114,7 @@ $ php app/console doctrine:schema:create
 
 ``` yaml
 # app/config/routing.yml
-horus:
+CinheticPublicBundle:
     resource: "@CinheticPublicBundle/Resources/config/routing.yml"
 ```
 ### Refresh asset folder
