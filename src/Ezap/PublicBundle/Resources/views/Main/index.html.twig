@@ -1,0 +1,53 @@
+{% extends 'EzapPublicBundle::layout.html.twig' %}
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="page-header">
+        <h1><i class="glyphicon glyphicon-home"></i> Mes films</h1>
+    </div>
+
+    <ul class="nav nav-tabs">
+        <li class="{% if app.request.query.get('pagetwo') is empty %}active{% endif %}"><a class="active" href="#home" data-toggle="tab"><i class="glyphicon glyphicon-tasks"></i> Mes films</a></li>
+        <li class="{% if app.request.query.get('pagetwo') is not empty %}active{% endif %}"><a class="" href="#allreceipts" data-toggle="tab"><i class="glyphicon glyphicon-list"></i> Tous les films</a></li>
+        <li><a href="#myanalyze" data-toggle="tab"><i class="glyphicon glyphicon-stats"></i> Mon analyse</a></li>
+        <li><a href="#myfavorites" data-toggle="tab"><i class="glyphicon glyphicon-heart"></i> Mes favoris</a></li>
+        <li><a href="#myadvices" data-toggle="tab"><i class="glyphicon glyphicon-thumbs-up"></i> Mes conseils</a></li>
+        <li><a href="#myarchives" data-toggle="tab"><i class="glyphicon glyphicon-compressed"></i>  Les archives</a></li>
+    </ul>
+
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div class="tab-pane {% if app.request.query.get('pagetwo') is empty %}active{% endif %}" id="home">
+            {% include 'EzapPublicBundle:Slots:search.html.twig' %}
+            {% include 'EzapPublicBundle:Movies:_list.html.twig' %}
+            <div class="row-fluid">
+                <div id="chart_div" class="span4" style="width: 900px; height: 500px;"></div>
+                <div id="piechart" class="span4 " style="width: 900px; height: 500px;"></div>
+            </div>
+        </div>
+
+        <div class="tab-pane {% if app.request.query.get('pagetwo') is not empty %}active{% endif %}" id="allreceipts">
+            {#{% include 'EzapPublicBundle:Slots:search.html.twig' %}#}
+            {#{{ render(controller('EzapReceiptBundle:Receipt:searchmain')) }}#}
+        </div>
+        <div class="tab-pane" id="allreceipts">
+            {#<div id="chart_div2" style="width: 900px; height: 500px;"></div>#}
+        </div>
+        <div class="tab-pane" id="myanalyze">
+            {#<div id="chart_div2" style="width: 900px; height: 500px;"></div>#}
+        </div>
+        <div class="tab-pane" id="myfavorites">
+            {#<div id="chart_div2" style="width: 900px; height: 500px;"></div>#}
+        </div>
+        <div class="tab-pane" id="myadvices">
+            {#<div id="chart_div2" style="width: 900px; height: 500px;"></div>#}
+        </div>
+        <div class="tab-pane" id="myarchives">
+            {#<div id="chart_div2" style="width: 900px; height: 500px;"></div>#}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,96 @@
+
+<div id="listmovies">
+    <div class="row">
+        {% for entity in movies %}
+            <div class="col-md-10 col-lg-10">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h3>
+                            <i class="glyphicon glyphicon-facetime-video"></i>
+                            <a href="" data-toggle="modal" data-target="#modalReceipt-{{entity.id}}">
+                                {{ entity.title|title }} - {{ entity.category.title|title }}
+                            </a>
+                        </h3>
+                        <hr /><br />
+                        <i><i class="glyphicon glyphicon-bookmark"></i> Durée: {{ entity.duree }}h.</i>
+                        <i><i class="glyphicon glyphicon-bookmark"></i> Type de film: {{ entity.typeFilm|title }}</i>
+                        <div class="thumbnail">{{ entity.trailer|raw }}</div>
+                        <p><i class="glyphicon glyphicon-flag"></i> Langue: <i>{{ entity.bo }}</i></p>
+                        <p class="text-danger"><i class="glyphicon glyphicon-thumbs-up"></i> Note: {{ entity.notePresse }}/5</p>
+                        <p class="text-warning"><i class="glyphicon glyphicon-usd"></i> Budget: {{ entity.budget }} <b>€</b></p>
+                        <small><i class="glyphicon glyphicon-time"></i> Date de sortie {{entity.dateRelease|date('d/m/Y')}} - {{ entity.annee|title }} </small>
+                        <small> Année{{entity.annee }}</small>
+                        <p class="well"><i class="glyphicon glyphicon-comment"></i> <b>Synopsis:</b> {{ entity.synopsis }}</p>
+                        <p><i class="glyphicon glyphicon-list-alt"></i> <b>Film:</b> {{ entity.description|truncate(300, true, '...') }} </p>
+                        <hr />
+                        <p>
+                            <a href="" class="btn btn-danger pull-right"><i class="glyphicon glyphicon-plus"></i> Voir plus</a>
+                        </p>
+                        <div class="clear"></div>
+                        <h4>Les acteurs</h4>
+                        {% for entity in entity.actors %}
+                                <div class="alert alert-warning">
+                                    {{ entity.firstname|title }}
+                                    {{ entity.lastname|title }}
+                                </div>
+                        {% endfor %}
+                        <h4>Les réalisateurs</h4>
+                        {% for entity in entity.directors %}
+                                <div class="alert alert-warning">
+                                    {{ entity.firstname|title }}
+                                    {{ entity.lastname|title }}
+                                </div>
+                        {% endfor %}
+                        <h4>Les cinémas qui le diffuse:</h4>
+                        {% for entity in entity.cinemas %}
+                            <div class="alert alert-warning">
+                                {{ entity.title|title }} à
+                                {{ entity.ville|title }}
+                            </div>
+                        {% endfor %}
+                        <h4>Media:</h4>
+                        {% for entity in entity.medias %}
+                            <div class="thumbnail">
+                                {% if entity.nature == "1" %}
+                                    <img class="thumbnail" src="{{ entity.picture|raw }}" />
+                                {% else %}
+                                    {{ entity.video|raw }}
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                        <h4>Tags asssociés:</h4>
+                        {% for entity in entity.tags %}
+                                <span class="label label-default">{{ entity.word }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade bs-example-modal-lg" id="modalReceipt-{{entity.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">Reçu</h4>
+                        </div>
+                        <div class="modal-body">
+                            Chargement du reçu en cours...
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script>
+                document.ready(function() {
+                    $('#modalReceipt').modal();
+                });
+            </script>
+        {% else %}
+            <div class="alert alert-warning">
+                <i class="glyphicon glyphicon-exclamation-sign"></i> Il n'y a pas de film
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{{ knp_pagination_render(movies) }}
+

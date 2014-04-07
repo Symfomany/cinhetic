@@ -1,0 +1,75 @@
+{% extends 'EzapPublicBundle::layout.html.twig' %}
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block content %}
+    <h1>Acteur {{ entity.firstname|title}} {{ entity.lastname|title }}</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Prénom</th>
+                <td>{{ entity.firstname }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ entity.lastname }}</td>
+            </tr>
+            <tr>
+                <th>Dob</th>
+                <td>{{ entity.dob|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ entity.city }}</td>
+            </tr>
+            <tr>
+                <th>Nationalité</th>
+                <td>{{ entity.nationality|raw }}</td>
+            </tr>
+            <tr>
+                <th>Biographie</th>
+                <td>{{ entity.biography|raw }}</td>
+            </tr>
+            <tr>
+                <th>Roles</th>
+                <td>{{ entity.roles|raw }}</td>
+            </tr>
+            <tr>
+                <th>Recompenses</th>
+                <td>{{ entity.recompenses|raw }}</td>
+            </tr>
+            <tr>
+                <th>Création</th>
+                <td>{{ entity.dateCreated|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Nb de films</th>
+                <td>{{ entity.movies|length|default('0') }} <i class="glyphicon glyphicon-download-alt"></i></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h1>Films joués</h1>
+        {% include 'EzapPublicBundle:Movies:_list.html.twig' %}
+    <hr />
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('actors') }}">
+            Revenir à la liste
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('actors_edit', { 'id': entity.id }) }}">
+            Editer
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

@@ -1,0 +1,21 @@
+html, body{
+min-height: 100%;
+}
+.alert .table a{
+color: #222 !important;
+}
+.media-body{
+color: #202d3b !important;
+}
+.close{
+color: #000000 !important;
+}
+.well p{
+color: #202d3b !important;
+}
+h4, h3{
+color: #202d3b !important;
+}
+.dz-success-mark, .dz-error-mark{
+    display: none !important;
+}

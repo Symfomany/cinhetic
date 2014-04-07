@@ -1,0 +1,140 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+
+framework:
+    #esi:             ~
+    translator:      { fallback: "%locale%" }
+    secret:          "%secret%"
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: ~
+    form:            ~
+    csrf_protection: ~
+    validation:      { enable_annotations: true }
+    templating:
+        engines: ['twig']
+        #assets_version: SomeVersionScheme
+    default_locale:  "%locale%"
+    trusted_hosts:   ~
+    trusted_proxies: ~
+    session:
+        # handler_id set to null will use default session handler from php.ini
+        handler_id:  ~
+    fragments:       ~
+    http_method_override: true
+
+
+# Twig Configuration
+twig:
+    debug:            %kernel.debug%
+    strict_variables: %kernel.debug%
+    form:
+      resources:
+          - 'EzapPublicBundle:Slots:forms.html.twig'
+
+# Assetic Configuration
+assetic:
+    debug:          "%kernel.debug%"
+    use_controller: false
+    bundles:        ["EzapPublicBundle", "EzapReceiptBundle"]
+    #java: /usr/bin/java
+    filters:
+     cssrewrite: ~
+     uglifyjs:
+      bin: '/usr/bin/uglifyjs'
+#         less:
+#            node: /usr/local/bin/node
+#            node_paths: [/usr/local/lib/node, /usr/local/lib/node_modules]
+     coffee:
+        bin: /usr/bin/coffee
+        node: /usr/bin/node
+        apply_to: "\.coffee$"
+     sass:
+        bin: /usr/local/bin/sass
+     compass:
+        bin: /usr/local/bin/compass
+        apply_to: "\.s[ac]ss$"
+     yui_css:
+        jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar"
+     closure:
+        jar: "%kernel.root_dir%/Resources/java/googleclosure.jar"
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver:   "%database_driver%"
+        host:     "%database_host%"
+        port:     "%database_port%"
+        dbname:   "%database_name%"
+        user:     "%database_user%"
+        password: "%database_password%"
+        charset:  UTF8
+        # if using pdo_sqlite as your database driver, add the path in parameters.yml
+        # e.g. database_path: "%kernel.root_dir%/data/data.db3"
+        # path:     "%database_path%"
+
+    orm:
+        auto_generate_proxy_classes: "%kernel.debug%"
+        auto_mapping: true
+
+# Swiftmailer Configuration
+swiftmailer:
+    transport: "%mailer_transport%"
+    host:      "%mailer_host%"
+    username:  "%mailer_user%"
+    password:  "%mailer_password%"
+    spool:     { type: memory }
+
+
+#Fos User Bundle
+fos_user:
+   db_driver:     orm                        # Le type de BDD à utiliser, nous utilisons l'ORM Doctrine depuis le début
+   firewall_name: main
+   user_class:    Ezap\PublicBundle\Entity\User # La classe de l'entité User que nous utilisons
+
+
+
+fos_elastica:
+    default_manager: orm
+    clients:
+        default: { host: localhost, port: 9200 }
+    indexes:
+        website:
+            client: default
+            index_name: website_qa
+            types:
+              receipt:
+                mappings:
+                    message: { type: string }
+                    paiement: { type: string }
+                    datePurchase: { type: date }
+                    amountShow: { type: string }
+                    amountMade: { type: string }
+                    store: { type: string }
+                    zipcode: { type: string }
+                    city: { type: string }
+                    tel: { type: string }
+                    tva: { type: string }
+                persistence:
+                    driver: orm
+                    model: Ezap\ReceiptBundle\Entity\Receipt
+                    repository: Ezap\ReceiptBundle\Entity\ReceiptRepository
+                    provider:
+                        query_builder_method: getActiveReceiptQueryBuilder
+                    finder: ~
+                    listener: ~ # by default, listens to "insert", "update" and "delete"
+
+
+
+knp_paginator:
+    page_range: 5                      # default page range used in pagination control
+    default_options:
+        page_name: page                # page query parameter name
+        sort_field_name: sort          # sort field query parameter name
+        sort_direction_name: direction # sort direction query parameter name
+        distinct: true                 # ensure distinct results, useful when ORM queries are using GROUP BY statements
+    template:
+        pagination: EzapPublicBundle:Slots:pagination.html.twig     # sliding pagination controls template
+
+

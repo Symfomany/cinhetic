@@ -1,0 +1,41 @@
+{% extends 'EzapPublicBundle::layout.html.twig' %}
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block content %}
+    <h1> <i class="glyphicon glyphicon-comment"></i> Liste des commentaires</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Note</th>
+                <th>Content</th>
+                <th>Datecreated</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('comments_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.note }}</td>
+                <td><i>{{ entity.content }}</i></td>
+                <td>{% if entity.dateCreated %}{{ entity.dateCreated|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                        <a href="{{ path('comments_show', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-search"></i> Voir</a>
+
+                        <a href="{{ path('comments_edit', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-pencil"></i> Editer</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+    <a href="{{ path('comments_new') }}" class="btn btn-danger">
+        Crée un nouveau commentaire
+    </a>
+
+    {% endblock %}

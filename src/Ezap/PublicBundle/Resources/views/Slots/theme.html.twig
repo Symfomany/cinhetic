@@ -1,0 +1,20 @@
+{% block theme %}
+    <style type="text/css">
+        {% if configuration.background is not empty %}
+            body{
+                background: {{ configuration.background }} !important;
+            }
+        {% endif %}
+        {% if configuration.color is not empty %}
+            label, p{
+                color: {{ configuration.color }} !important;
+            }
+        {% endif %}
+        {% if configuration.title is not empty %}
+            h2,h1{
+                color: {{ configuration.title }} !important;
+            }
+        {% endif %}
+    </style>
+{% endblock %}
+

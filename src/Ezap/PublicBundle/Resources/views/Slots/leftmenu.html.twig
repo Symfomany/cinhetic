@@ -1,0 +1,57 @@
+{% block leftmenu %}
+    <div class="col-md-2 sidebar">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4><a href="#"><i class="glyphicon glyphicon-bell"></i> Mes Alertes <span class="badge">2</span></a></h4>
+            </div>
+            <div class="panel-body">
+                {% if warn > 0 %}
+                    <div class="">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <strong><i class="glyphicon glyphicon-exclamation-sign"></i> Attention!</strong> Vous avez <strong>{{ warn }}</strong> factures désactivées
+                    </div>
+                {% else %}
+                {% endif %}
+            </div>
+        </div>
+
+
+        <hr />
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4><a href="#"><i class="glyphicon glyphicon-comment"></i> Mes messages <span class="badge">4</span></a></h4>
+            </div>
+            <div class="panel-body">
+                <div class="">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <h6 class=""><i class="glyphicon glyphicon-time"></i> Il y a 2 heures</h6>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi gravida est nisl, ac pharetra purus blandit vel...</p>
+                    <div class="clear clearfix"></div>
+                </div>
+                <div class="">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <h6 class=""><i class="glyphicon glyphicon-time"></i> Il y a 3 heures</h6>
+                    <p> Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos...</p>
+                    <div class="clear clearfix"></div>
+                </div>
+                <div class="">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <h6 class=""><i class="glyphicon glyphicon-time"></i> Il y a 5 heures</h6>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi gravida est nisl, ac pharetra purus blandit vel... </p>
+                    <div class="clear clearfix"></div>
+                </div>
+                <div class="">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <h6 class=""><i class="glyphicon glyphicon-time"></i> Il y a 1 jour</h6>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi gravida est nisl, ac pharetra purus blandit vel...</p>
+                    <div class="clear clearfix"></div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <a class="btn btn-danger" href="#"><i class="glyphicon glyphicon-share-alt"></i> Tous les messages</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

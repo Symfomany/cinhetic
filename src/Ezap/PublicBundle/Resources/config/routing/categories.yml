@@ -1,0 +1,30 @@
+categories:
+    pattern:  /
+    defaults: { _controller: "EzapPublicBundle:Categories:index" }
+
+categories_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "EzapPublicBundle:Categories:show" }
+
+categories_new:
+    pattern:  /new
+    defaults: { _controller: "EzapPublicBundle:Categories:new" }
+
+categories_create:
+    pattern:  /create
+    defaults: { _controller: "EzapPublicBundle:Categories:create" }
+    requirements: { _method: post }
+
+categories_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "EzapPublicBundle:Categories:edit" }
+
+categories_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "EzapPublicBundle:Categories:update" }
+    requirements: { _method: post|put }
+
+categories_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "EzapPublicBundle:Categories:delete" }
+    requirements: { _method: post|delete }

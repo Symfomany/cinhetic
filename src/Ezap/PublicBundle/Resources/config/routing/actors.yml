@@ -1,0 +1,30 @@
+actors:
+    pattern:  /
+    defaults: { _controller: "EzapPublicBundle:Actors:index" }
+
+actors_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "EzapPublicBundle:Actors:show" }
+
+actors_new:
+    pattern:  /new
+    defaults: { _controller: "EzapPublicBundle:Actors:new" }
+
+actors_create:
+    pattern:  /create
+    defaults: { _controller: "EzapPublicBundle:Actors:create" }
+    requirements: { _method: post }
+
+actors_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "EzapPublicBundle:Actors:edit" }
+
+actors_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "EzapPublicBundle:Actors:update" }
+    requirements: { _method: post|put }
+
+actors_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "EzapPublicBundle:Actors:delete" }
+    requirements: { _method: post|delete }

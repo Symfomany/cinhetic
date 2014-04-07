@@ -1,0 +1,5 @@
+app/cache
+app/logs
+vendor/
+bin/
+docs/

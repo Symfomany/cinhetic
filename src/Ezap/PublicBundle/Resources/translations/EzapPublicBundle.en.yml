@@ -1,0 +1,42 @@
+auth:
+  title: Authentification
+  badcredentials:  Mauvais login / mot de passe
+  email: Email / Login
+  passord: Mot de passe
+  login: Connexion
+  rememberme: Se souvenir de moi
+
+
+layout:
+  title: Cinhetic Solution
+  search:
+    title: Rechercher
+    placeholder: Rechercher une facture, un montant, un magasin...
+  list:
+    datepurchase: Date d'achat
+    paiement: Moyen de paiement
+    apercu: Aperçu
+    actions: Actions
+  btn:
+    add_receipt: Ajouter une facture
+  topmenu:
+    home: Accueil
+    press: Presse
+    faq: FAQ
+    contact: Contact
+    myaccount: Mon Compte
+    logout: Deconnexion
+  leftmenu:
+    alertitle: Mes Alertes
+    messagetitle: Mes Messages
+    seemoremessage: Voir tous les messages
+    seemorealerts: Voir toutes les alertes
+  main:
+    title: Mon espace
+    subtitles:
+      myreceipts: Mes factures
+      allreceipts: Toutes les factures
+      myanalyze: Mes analyses
+      myarchives: Mes archives
+      myadvices: Mes conseils
+      myfavorites: Mes favoris

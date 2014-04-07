@@ -1,0 +1,113 @@
+<span class="hide" id="session_id" data-content="{{ app.user.id }}"></span>
+<span class="hide" id="session_firstname" data-content="{{ app.user.firstname|title }}"></span>
+<span class="hide" id="session_lastname" data-content="{{ app.user.lastname|title }}"></span>
+
+{% if app.session.flashbag.get('firstconnect') is defined and  app.session.flashbag.get('firstconnect') is not empty %}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var socket = io.connect('{{ app.request.host }}:1665');
+            // on the client
+            socket.emit('logged', {
+                id: $('#session_id').attr('data-content'),
+                firstname: $('#session_firstname').attr('data-content'),
+                lastname: $('#session_lastname').attr('data-content')
+            });
+        });
+    </script>
+{% endif %}
+
+
+{% for flashMessage in app.session.flashbag.get('messagerealtime') %}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var socket = io.connect('{{ app.request.host }}:1665');
+            socket.emit('alerting', {
+                id: $('#session_id').attr('data-content'),
+                firstname: $('#session_firstname').attr('data-content'),
+                lastname: $('#session_lastname').attr('data-content'),
+                message: "{{ flashMessage }}"
+            });
+        });
+    </script>
+
+{% endfor %}
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        var socket = io.connect('{{ app.request.host }}:1665');
+
+        $('#messagerie #message').keydown(function (event) {
+            if (event.keyCode == 13) {
+                if ($('#messagerie #message').val().length > 3) {
+                    socket.emit('messagerie', {
+                        id: $('#session_id').attr('data-content'),
+                        firstname: $('#session_firstname').attr('data-content'),
+                        lastname: $('#session_lastname').attr('data-content'),
+                        message: $('#messagerie #message').val()
+                    });
+
+                    $elt = $('<p class="clear"><span class="text-info">Vous avez répondu:</span> ' + $('#messagerie #message').val() + '</p>').hide();
+                    $('#messagerie #messages').append($elt);
+                    $elt.show('slow');
+                    $('#messagerie #messages').animate({scrollTop: $('#messagerie #messages').prop('scrollHeight')}, 500);
+                    $('#messagerie #message').val('');
+                    $('#messagerie #message').focus();
+
+                    $('h3#btn-tchat').css('backgroundColor','chocolate');
+                }
+            }
+        });
+
+        $('#messagerie #message').on('focus', function () {
+            socket.emit('write', {});
+        });
+
+
+        $('#messagerie #message').on('blur', function () {
+            socket.emit('notwrite', {});
+        });
+
+
+        socket.on('writing', function (user) {
+            $('#writin').html('<small><i><i class="glyphicon glyphicon-pencil"></i> Un administrateur est en train d\'écrire un message... </i></small>');
+        });
+
+        socket.on('notwriting', function (user) {
+            $('#writin').html('');
+        });
+
+        $("#messagerie #sended").click(function () {
+            if ($('#messagerie #message').val().length > 3) {
+                socket.emit('messagerie', {
+                    id: $('#session_id').attr('data-content'),
+                    firstname: $('#session_firstname').attr('data-content'),
+                    lastname: $('#session_lastname').attr('data-content'),
+                    message: $('#messagerie #message').val()
+                });
+
+                $elt = $('<p class="clear"><span class="text-info">Vous avez répondu:</span> ' + $('#messagerie #message').val() + '</p>').hide();
+                $('#messagerie #messages').append($elt);
+                $elt.show('slow');
+                $('#messagerie #messages').animate({scrollTop: $('#messagerie #messages').prop('scrollHeight')}, 500);
+                $('#messagerie #message').val('');
+                $('#messagerie #message').focus();
+
+                $('h3#btn-tchat').css('backgroundColor','chocolate');
+            }
+        });
+
+    });
+</script>
+
+{% for flashMessage in app.session.flashbag.get('notify') %}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var socket = io.connect('{{ app.request.host }}:1665');
+            socket.emit('notify', {
+                id: $('#session_id').attr('data-content')
+            });
+        });
+    </script>
+{% endfor %}
+
+

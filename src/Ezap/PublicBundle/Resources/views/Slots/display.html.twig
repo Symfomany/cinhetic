@@ -1,0 +1,19 @@
+{% block display %}
+    <div class="clear clearfix"></div>
+    <div class="pull-right">
+        <div class="btn-group">
+            <button type="button" class="btn btn-sm  btn btn-danger btn-default dropdown-toggle" data-toggle="dropdown">
+                <i class="glyphicon glyphicon-th"></i> Affichage
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-danger">
+                <li><a href="?display=5"><i class="glyphicon glyphicon-play"></i> 5 items</a></li>
+                <li><a href="?display=20"><i class="glyphicon glyphicon-play"></i> 20 items</a></li>
+                <li><a href="?display=50"><i class="glyphicon glyphicon-play"></i> 50 items</a></li>
+                <li><a href="?display=100"><i class="glyphicon glyphicon-play"></i> 100 items</a></li>
+                <li><a href="?display=200"><i class="glyphicon glyphicon-play"></i> 200 items</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="clear clearfix"></div>
+{% endblock %}

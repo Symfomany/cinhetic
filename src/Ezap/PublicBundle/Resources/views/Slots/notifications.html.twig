@@ -1,0 +1,26 @@
+{% block notifications %}
+    <a class="btn btn-primary" rel="popover" data-html="true" id="notifications" data-toggle="popover"
+       title="Notifications" data-placement="bottom" role="button" data-original-title="Notifications">
+        <i class="glyphicon glyphicon-bell"></i> Notifications
+    </a>
+    <div id="notifications-content" class="hide">
+        {% for notification in notifications %}
+            <div>
+                <h6>{{ notification.titre|raw }}</h6>
+
+                <p>{{ notification.content|raw }}</p>
+            </div>
+        {% else %}
+            <div class="alert">
+                <p>Aucune notification pour le moment</p>
+            </div>
+        {% endfor %}
+        {% if notifications is not empty %}
+            <a href="{{ path('horus_admin_last_notifications') }}" class="pull-right btn btn-xs btn-primary"><i
+                        class="glyphicon glyphicon-share-alt"></i> Voir les notifications</a>
+        {% endif %}
+
+        <div class="clear"></div>
+    </div>
+
+{% endblock %}

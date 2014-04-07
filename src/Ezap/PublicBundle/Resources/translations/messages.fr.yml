@@ -1,0 +1,35 @@
+# Global strings
+layout:
+    logout: Déconnexion
+    login: Connexion
+    register: Enregistrer
+    logged_in_as: Connecté en tant que %username%
+security:
+    login:
+        username: "Nom d'utilisateur :"
+        password: "Mot de passe :"
+        remember_me: Se souvenir de moi
+        submit: Connexion    
+        The presented password is invalid. : Mot de passe invalide
+        Bad credentials: "Pseudo ou mot de passe incorect"
+        User account is locked. : "Votre compte n'est pas encore activé"
+        User account is disabled. : "Votre compte n'est pas encore activé"
+        User account has expired. : "Votre compte est exipré"
+        User credentials have expired. : "Vos droits ont expiré"
+
+Statistiques: Stats
+Dernières commandes: Dernières commandes
+Derniers clients: Derniers clients
+Derniers commentaires: Derniers commentaires
+
+Bad credentials: "Mauvais login ou mot de passe."
+The presented password is invalid: "Votre email n'est pas valide"
+The presented password cannot be empty: "Votre mot de passe ne doit pas etre nul"
+Your session has timed out, or you have disabled cookies.: "Votre session a expiré. Veillez rafraîchir votre page."
+User account is disabled.: "Votre compte n'est pas activé."
+User credentials have expired.: "Votre session a expiré. Veillez rafraîchir votre page."
+User account is locked. : "Votre compte n'est pas activé."
+User account is disabled. : "Votre compte n'est pas activé."
+User account has expired. : "Votre compte est expiré"
+User credentials have expired. : "Votre compte n'est pas encore activé. Vérifiez votre boîte e-mail afin de valider votre compte."
+This form should not contain extra fields.: "Une erreur dans le formulaire s'est produite"

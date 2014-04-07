@@ -1,0 +1,6 @@
+
+twig:
+    globals:
+      base_url: 'http://www.cinhetic.ju/'
+      imgsite: '/bundles/receipt/images/'
+      imgmovies: '/uploads/movies/'

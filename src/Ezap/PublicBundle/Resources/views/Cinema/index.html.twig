@@ -1,0 +1,45 @@
+{% extends 'EzapPublicBundle::layout.html.twig' %}
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block content %}
+    <h1><i class="glyphicon glyphicon-home"></i> Liste des Cinemas [{{ entities|length }}]</h1>
+    <hr />
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Ville</th>
+                <th>Nb de séances</th>
+                <th>Création</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('cinema_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td class="text-success">{{ entity.title }}</td>
+                <td><i class="glyphicon glyphicon-map-marker"></i> {{ entity.ville }}</td>
+                <td>{{ entity.sessions|length|default('0') }} séances</td>
+                <td>{% if entity.dateCreated %}<i class="glyphicon glyphicon-calendar"></i> {{ entity.dateCreated|date('Y-m-d') }}{% endif %}</td>
+                <td>
+                        <a href="{{ path('cinema_show', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-search"></i> Voir</a>
+
+                        <a href="{{ path('cinema_edit', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-pencil"></i> Editer</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+    <hr />
+
+    <a class="btn btn-danger" href="{{ path('cinema_new') }}">
+        <i class="glyphicon glyphicon-plus"></i> Créer un nouveau cinéma
+    </a>
+
+    {% endblock %}
