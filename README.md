@@ -33,6 +33,9 @@ Then, use the `create-project` command to generate a new Symfony application:
 * Movies more scored
 * Categories in cloud tags
 * Tags in clud tags
+* Trailers in slideshow
+* Handle Distributions from Movies
+* Handle Medias for Movies
 * Search Engin in Elastic Search
 * Page Film Unit
 * Comments by Movies
