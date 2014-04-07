@@ -32,6 +32,9 @@ Then, use the `create-project` command to generate a new Symfony application:
 * Add press comments in Movies
 * Homepage with custom template
 * Movies in weeks
+* Page Category listing all movies related
+* Page Keywords listing all movies related
+* Page Films Favorites by User connected
 * Movies more scored
 * Categories in cloud tags
 * Tags in clud tags

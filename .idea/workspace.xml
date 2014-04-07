@@ -26,7 +26,16 @@
       <file leaf-file-name="README.md" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="30" selection-start="1017" selection-end="1017" vertical-scroll-proportion="0.65608466" vertical-offset="124" max-vertical-offset="980">
+            <state line="36" column="40" selection-start="1194" selection-end="1194" vertical-scroll-proportion="0.65608466" vertical-offset="224" max-vertical-offset="1040">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UPGRADE.md" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/UPGRADE.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="8" selection-start="8" selection-end="8" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="220">
               <folding />
             </state>
           </provider>
@@ -42,7 +51,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/Ezap/PublicBundle/Resources/views/Actors/new.html.twig" />
         <option value="$PROJECT_DIR$/src/Ezap/PublicBundle/Resources/views/Categories/new.html.twig" />
         <option value="$PROJECT_DIR$/src/Ezap/PublicBundle/Resources/views/Movies/new.html.twig" />
         <option value="$PROJECT_DIR$/src/Ezap/PublicBundle/Resources/views/Sessions/new.html.twig" />
@@ -92,6 +100,7 @@
         <option value="$PROJECT_DIR$/src/Ezap/PublicBundle/Entity/Categories.php" />
         <option value="$PROJECT_DIR$/src/Ezap/PublicBundle/Entity/Movies.php" />
         <option value="$PROJECT_DIR$/src/Ezap/PublicBundle/Entity/Medias.php" />
+        <option value="$PROJECT_DIR$/UPGRADE.md" />
         <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
@@ -468,11 +477,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Ezap/PublicBundle/Resources/config/routing.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="10" selection-start="991" selection-end="991" vertical-scroll-proportion="0.83074754" vertical-offset="211" max-vertical-offset="1020" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Ezap/PublicBundle/Resources/views/Comments/show.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="20" selection-start="150" selection-end="150" vertical-scroll-proportion="4.6153846" vertical-offset="240" max-vertical-offset="980" />
@@ -742,9 +746,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/UPGRADE.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="8" selection-start="8" selection-end="8" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="756">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="30" selection-start="1017" selection-end="1017" vertical-scroll-proportion="0.65608466" vertical-offset="124" max-vertical-offset="980">
+        <state line="36" column="40" selection-start="1194" selection-end="1194" vertical-scroll-proportion="0.65608466" vertical-offset="224" max-vertical-offset="1040">
           <folding />
         </state>
       </provider>
