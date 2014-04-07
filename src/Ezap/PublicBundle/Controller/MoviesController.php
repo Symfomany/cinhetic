@@ -100,6 +100,23 @@ class MoviesController extends Controller
 
 
     /**
+     * get Star Movies entities.
+     *
+     */
+    public function carousselMoviesAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entities = $em->getRepository('EzapPublicBundle:Movies')->getCoverMovies();
+
+        return $this->render('EzapPublicBundle:Movies:caroussel.html.twig', array(
+            'entities' => $entities,
+        ));
+    }
+
+
+
+    /**
      * Creates a new Movies entity.
      *
      */

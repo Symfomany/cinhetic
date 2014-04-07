@@ -26,14 +26,15 @@ class MoviesRepository extends EntityRepository
                 JOIN p.directors di
                 JOIN p.actors ac
 
-                WHERE p.title LIKE :article
+                WHERE (p.title LIKE :article
                 OR ca.title LIKE :category
                 OR ta.word LIKE :tag
                 OR ci.title LIKE :cinema
                 OR di.firstname LIKE :difirstname
                 OR di.lastname LIKE :dilastname
                 OR ac.firstname LIKE :acfirstname
-                OR ac.lastname LIKE :aclastname
+                OR ac.lastname LIKE :aclastname)
+                AND p.visible = 1
                 ORDER BY p.title ASC'
             )
             ->setParameters(
@@ -62,7 +63,32 @@ class MoviesRepository extends EntityRepository
                 'SELECT p
                     FROM EzapPublicBundle:Movies p
                     WHERE p.dateRelease >= :current
+                    AND p.visible = 1
                     ORDER BY p.title ASC'
+            )
+            ->setParameters(
+            array(
+                'current' => new \Datetime('midnight'),
+            ));
+
+            return $query->setMaxResults($limit)->getResult();
+    }
+
+    /**
+     * Get Current movies by criteria
+     * @param null $word
+     * @return array
+     */
+    public function getCoverMovies($limit = 5){
+        $query = $this->getEntityManager()
+            ->createQuery(
+                'SELECT m
+                    FROM EzapPublicBundle:Medias m
+                    JOIN m.movies mo
+                    WHERE mo.dateRelease >= :current
+                    AND mo.visible = 1
+                    AND mo.cover = 1
+                    ORDER BY mo.id DESC'
             )
             ->setParameters(
             array(
@@ -83,6 +109,7 @@ class MoviesRepository extends EntityRepository
             ->createQuery(
                 'SELECT p
                     FROM EzapPublicBundle:Movies p
+                    WHERE p.visible = 1
                     ORDER BY p.notePresse DESC'
             );
 

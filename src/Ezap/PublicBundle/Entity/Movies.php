@@ -162,7 +162,7 @@ class Movies
     /**
      * @var \Doctrine\Common\Collections\Collection
      * @ORM\ManyToMany(targetEntity="Medias", inversedBy="movies")
-     * @ORM\JoinTable(name="movies_medias",
+     * @ORM\JoinTable(name="medias_movies",
      *   joinColumns={
      *     @ORM\JoinColumn(name="movies_id", referencedColumnName="id")
      *   },
