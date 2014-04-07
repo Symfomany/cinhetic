@@ -35,6 +35,14 @@ Then, use the `create-project` command to generate a new Symfony application:
 * Page Category listing all movies related
 * Page Keywords listing all movies related
 * Page Films Favorites by User connected
+* View all comments by Movies
+* Search in ajax & instant search
+* Add slideshow to presentation in homepage
+* Add in session favorites and billeterie
+* Add Player for video in medias
+* Add upload in Medias in ajax with uploadify
+* Add Node Layers for comments
+* Add scoring with JRate
 * Movies more scored
 * Categories in cloud tags
 * Tags in clud tags

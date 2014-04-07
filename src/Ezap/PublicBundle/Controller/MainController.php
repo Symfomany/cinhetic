@@ -29,6 +29,37 @@ class MainController extends Controller
         );
 
         return $this->render('EzapPublicBundle:Main:index.html.twig',  array('movies' => $pagination));
+
+    }
+
+   /**
+     * Search Action in AJAX or HTTP
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function searchAction($ajax = false)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $paginator = $this->get('knp_paginator');
+        $request = $this->get('request');
+        $movies = array();
+
+        if($ajax === FALSE){
+            $word = $request->query->get('word');
+            $movies = $em->getRepository('EzapPublicBundle:Movies')->search($word);
+
+            $pagination = $paginator->paginate(
+                $movies,
+                $this->get('request')->query->get('pageone', 1) /*page number*/,
+                5,
+                array('pageParameterName' => 'pageone')
+            );
+
+            return $this->render('EzapPublicBundle:Main:search.html.twig',  array('movies' => $pagination));
+        } else{
+
+            return new JsonResponse($movies);
+        }
+
     }
 
 

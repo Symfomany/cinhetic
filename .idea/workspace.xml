@@ -23,28 +23,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Movies.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Ezap/PublicBundle/Entity/Movies.php">
+      <file leaf-file-name="README.md" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="169" column="42" selection-start="3642" selection-end="3642" vertical-scroll-proportion="-10.0" vertical-offset="3120" max-vertical-offset="18420">
+            <state line="44" column="24" selection-start="1479" selection-end="1479" vertical-scroll-proportion="0.7446808" vertical-offset="355" max-vertical-offset="1200">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Sessions.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Ezap/PublicBundle/Entity/Sessions.php">
+      <file leaf-file-name="layout.html.twig" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Ezap/PublicBundle/Resources/views/layout.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="0" selection-start="839" selection-end="1077" vertical-scroll-proportion="-7.6923075" vertical-offset="600" max-vertical-offset="2920">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Cinema.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Ezap/PublicBundle/Entity/Cinema.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="67" selection-start="191" selection-end="191" vertical-scroll-proportion="-0.8476821" vertical-offset="840" max-vertical-offset="4740">
+            <state line="82" column="37" selection-start="4367" selection-end="4481" vertical-scroll-proportion="-7.3461537" vertical-offset="1449" max-vertical-offset="2140">
               <folding />
             </state>
           </provider>
@@ -60,7 +51,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/Ezap/PublicBundle/Resources/config/routing.yml" />
         <option value="$PROJECT_DIR$/src/Ezap/PublicBundle/Resources/views/Comments/show.html.twig" />
         <option value="$PROJECT_DIR$/src/Ezap/PublicBundle/Resources/views/Comments/new.html.twig" />
         <option value="$PROJECT_DIR$/src/Ezap/PublicBundle/Resources/views/Comments/edit.html.twig" />
@@ -76,7 +66,6 @@
         <option value="$PROJECT_DIR$/src/Ezap/PublicBundle/Controller/CommentsController.php" />
         <option value="$PROJECT_DIR$/src/Ezap/PublicBundle/Resources/views/Slots/topmenu.html.twig" />
         <option value="$PROJECT_DIR$/src/Ezap/PublicBundle/Resources/views/Movies/_list.html.twig" />
-        <option value="$PROJECT_DIR$/src/Ezap/PublicBundle/Controller/MainController.php" />
         <option value="$PROJECT_DIR$/src/Ezap/PublicBundle/Controller/ActorsController.php" />
         <option value="$PROJECT_DIR$/src/Ezap/PublicBundle/Resources/views/Movies/show.html.twig" />
         <option value="$PROJECT_DIR$/src/Ezap/PublicBundle/Form/SessionsType.php" />
@@ -96,8 +85,6 @@
         <option value="$PROJECT_DIR$/app/config/parameters.yml" />
         <option value="$PROJECT_DIR$/src/Ezap/PublicBundle/Entity/Medias.php" />
         <option value="$PROJECT_DIR$/UPGRADE.md" />
-        <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/src/Ezap/PublicBundle/Repository/MoviesRepository.php" />
         <option value="$PROJECT_DIR$/src/Ezap/PublicBundle/Repository/CategoriesRepository.php" />
         <option value="$PROJECT_DIR$/src/Ezap/PublicBundle/Repository/CinemaRepository.php" />
         <option value="$PROJECT_DIR$/src/Ezap/PublicBundle/Entity/Categories.php" />
@@ -111,15 +98,19 @@
         <option value="$PROJECT_DIR$/src/Ezap/PublicBundle/Entity/Actors.php" />
         <option value="$PROJECT_DIR$/src/Ezap/PublicBundle/Entity/Directors.php" />
         <option value="$PROJECT_DIR$/src/Ezap/PublicBundle/Entity/Movies.php" />
+        <option value="$PROJECT_DIR$/src/Ezap/PublicBundle/Resources/views/Movies/search.html.twig" />
+        <option value="$PROJECT_DIR$/src/Ezap/PublicBundle/Controller/MainController.php" />
+        <option value="$PROJECT_DIR$/src/Ezap/PublicBundle/Repository/MoviesRepository.php" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="48" />
-    <option name="y" value="-4" />
-    <option name="width" value="1393" />
-    <option name="height" value="905" />
+    <option name="x" value="36" />
+    <option name="y" value="85" />
+    <option name="width" value="1353" />
+    <option name="height" value="854" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -355,6 +346,32 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="Form" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="isap" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cinhetic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Ezap" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PublicBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="Entity" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -433,11 +450,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/Ezap/PublicBundle/Resources/views/Movies" />
       <recent name="$PROJECT_DIR$/src/Ezap/PublicBundle/Repository" />
       <recent name="$PROJECT_DIR$/src/Ezap/PublicBundle/Controller" />
       <recent name="$PROJECT_DIR$/src/Ezap/PublicBundle/Resources/translations" />
       <recent name="$PROJECT_DIR$/src/Ezap/PublicBundle/Resources/config" />
-      <recent name="$PROJECT_DIR$/src/Ezap/PublicBundle/Resources/views/Slots" />
     </key>
   </component>
   <component name="RunManager">
@@ -483,11 +500,11 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="48" y="-4" width="1393" height="905" extended-state="6" />
+    <frame x="36" y="85" width="1353" height="854" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24442847" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25166544" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -524,11 +541,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Ezap/PublicBundle/Resources/views/Actors/new.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="8" selection-start="138" selection-end="180" vertical-scroll-proportion="-4.6153846" vertical-offset="0" max-vertical-offset="460" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Ezap/PublicBundle/Controller/LayoutController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="781" />
@@ -567,11 +579,6 @@
     <entry file="file://$PROJECT_DIR$/src/Ezap/PublicBundle/Resources/views/Movies/show.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state line="81" column="2" selection-start="2280" selection-end="2495" vertical-scroll-proportion="-12.884615" vertical-offset="1285" max-vertical-offset="2740" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Ezap/PublicBundle/Controller/ActorsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="116" column="40" selection-start="3122" selection-end="3122" vertical-scroll-proportion="-10.9811325" vertical-offset="1738" max-vertical-offset="4780" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Ezap/PublicBundle/Resources/views/Sessions/index.html.twig">
@@ -641,27 +648,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Ezap/PublicBundle/Controller/MainController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="0" selection-start="865" selection-end="865" vertical-scroll-proportion="-19.23077" vertical-offset="0" max-vertical-offset="1200">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Ezap/PublicBundle/Form/MoviesType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="14" selection-start="775" selection-end="944" vertical-scroll-proportion="-6.1538463" vertical-offset="240" max-vertical-offset="1680">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Ezap/PublicBundle/Resources/views/layout.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="79" column="18" selection-start="4171" selection-end="4171" vertical-scroll-proportion="0.16292974" vertical-offset="1471" max-vertical-offset="2140">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/config/config.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="144" column="31" selection-start="4146" selection-end="4146" vertical-scroll-proportion="1.2935252" vertical-offset="1981" max-vertical-offset="3400">
@@ -681,20 +667,6 @@
     <entry file="file://$PROJECT_DIR$/UPGRADE.md">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="8" selection-start="8" selection-end="8" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="756">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="40" selection-start="1194" selection-end="1194" vertical-scroll-proportion="-19.84" vertical-offset="224" max-vertical-offset="1040">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Ezap/PublicBundle/Entity/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="51" selection-start="246" selection-end="324" vertical-scroll-proportion="-8.461538" vertical-offset="0" max-vertical-offset="7240">
           <folding />
         </state>
       </provider>
@@ -737,13 +709,6 @@
     <entry file="file://$PROJECT_DIR$/src/Ezap/PublicBundle/Repository/SessionRepository.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="26" selection-start="113" selection-end="113" vertical-scroll-proportion="-4.6153846" vertical-offset="0" max-vertical-offset="400">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Ezap/PublicBundle/Repository/MoviesRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="0" selection-start="208" selection-end="208" vertical-scroll-proportion="-8.461538" vertical-offset="0" max-vertical-offset="400">
           <folding />
         </state>
       </provider>
@@ -797,13 +762,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Ezap/PublicBundle/Resources/views/Movies/_list.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="18" selection-start="3115" selection-end="3115" vertical-scroll-proportion="-11.538462" vertical-offset="660" max-vertical-offset="2040">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Ezap/PublicBundle/Entity/Medias.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="165" column="0" selection-start="2675" selection-end="2675" vertical-scroll-proportion="-106.15385" vertical-offset="540" max-vertical-offset="4080">
@@ -818,9 +776,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Ezap/PublicBundle/Entity/Movies.php">
+    <entry file="file://$PROJECT_DIR$/src/Ezap/PublicBundle/Entity/Cinema.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="169" column="42" selection-start="3642" selection-end="3642" vertical-scroll-proportion="-10.0" vertical-offset="3120" max-vertical-offset="18420">
+        <state line="71" column="5" selection-start="1502" selection-end="1502" vertical-scroll-proportion="-17.692308" vertical-offset="960" max-vertical-offset="4740">
           <folding />
         </state>
       </provider>
@@ -832,9 +790,74 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Ezap/PublicBundle/Entity/Cinema.php">
+    <entry file="file://$PROJECT_DIR$/src/Ezap/PublicBundle/Resources/views/Movies/_list.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="67" selection-start="191" selection-end="191" vertical-scroll-proportion="-0.8476821" vertical-offset="840" max-vertical-offset="4740">
+        <state line="48" column="18" selection-start="3115" selection-end="3115" vertical-scroll-proportion="-36.923077" vertical-offset="0" max-vertical-offset="2040">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Ezap/PublicBundle/Resources/views/Movies/search.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="0" selection-start="311" selection-end="311" vertical-scroll-proportion="-8.461538" vertical-offset="0" max-vertical-offset="360">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Ezap/PublicBundle/Controller/MainController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="45" column="28" selection-start="1340" selection-end="1340" vertical-scroll-proportion="-10.769231" vertical-offset="540" max-vertical-offset="1820">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Ezap/PublicBundle/Repository/MoviesRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="41" selection-start="670" selection-end="688" vertical-scroll-proportion="-14.346154" vertical-offset="167" max-vertical-offset="900">
+          <folding>
+            <marker date="1396880739032" expanded="true" signature="-1:-1" placeholder="SELECT p FRO..EzapPublicBundle..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Ezap/PublicBundle/Entity/Movies.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="169" column="42" selection-start="3642" selection-end="3642" vertical-scroll-proportion="-53.846153" vertical-offset="1980" max-vertical-offset="18420">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Ezap/PublicBundle/Controller/ActorsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="64" column="48" selection-start="1609" selection-end="1619" vertical-scroll-proportion="-11.538462" vertical-offset="900" max-vertical-offset="4700">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Ezap/PublicBundle/Form/MoviesType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="42" selection-start="818" selection-end="818" vertical-scroll-proportion="-11.538462" vertical-offset="120" max-vertical-offset="1680">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Ezap/PublicBundle/Entity/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="7" selection-start="467" selection-end="467" vertical-scroll-proportion="-14.615385" vertical-offset="0" max-vertical-offset="7240">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Ezap/PublicBundle/Resources/views/layout.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="82" column="37" selection-start="4367" selection-end="4481" vertical-scroll-proportion="-7.3461537" vertical-offset="1449" max-vertical-offset="2140">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="24" selection-start="1479" selection-end="1479" vertical-scroll-proportion="0.7446808" vertical-offset="355" max-vertical-offset="1200">
           <folding />
         </state>
       </provider>
