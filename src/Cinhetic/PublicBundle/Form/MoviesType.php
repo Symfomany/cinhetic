@@ -75,6 +75,6 @@ class MoviesType extends AbstractType
      */
     public function getName()
     {
-        return 'Cinhetic_publicbundle_movies';
+        return '';
     }
 }

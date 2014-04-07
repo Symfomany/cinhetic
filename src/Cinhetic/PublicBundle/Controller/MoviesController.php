@@ -151,6 +151,7 @@ class MoviesController extends Controller
     {
         $form = $this->createForm(new MoviesType(), $entity, array(
             'action' => $this->generateUrl('movies_create'),
+            'attr' => array('id' => 'handlemovie'),
             'method' => 'POST',
         ));
 
