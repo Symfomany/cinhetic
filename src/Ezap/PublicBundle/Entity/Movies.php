@@ -212,7 +212,7 @@ class Movies
      * )
      */
     private $tags;
-    
+
     /**
      * Constructor
      */
@@ -225,6 +225,7 @@ class Movies
         $this->movies = new \Doctrine\Common\Collections\ArrayCollection();
         $this->user = new \Doctrine\Common\Collections\ArrayCollection();
         $this->dateCreated = new \Datetime('now');
+        $this->dateRelease = new \Datetime('now');
 
     }
 
@@ -232,7 +233,7 @@ class Movies
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -255,7 +256,7 @@ class Movies
     /**
      * Get typeFilm
      *
-     * @return string 
+     * @return string
      */
     public function getTypeFilm()
     {
@@ -278,7 +279,7 @@ class Movies
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -301,7 +302,7 @@ class Movies
     /**
      * Get synopsis
      *
-     * @return string 
+     * @return string
      */
     public function getSynopsis()
     {
@@ -324,7 +325,7 @@ class Movies
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -347,7 +348,7 @@ class Movies
     /**
      * Get trailer
      *
-     * @return string 
+     * @return string
      */
     public function getTrailer()
     {
@@ -370,7 +371,7 @@ class Movies
     /**
      * Get languages
      *
-     * @return integer 
+     * @return integer
      */
     public function getLanguages()
     {
@@ -393,7 +394,7 @@ class Movies
     /**
      * Get distributeur
      *
-     * @return string 
+     * @return string
      */
     public function getDistributeur()
     {
@@ -416,7 +417,7 @@ class Movies
     /**
      * Get bo
      *
-     * @return string 
+     * @return string
      */
     public function getBo()
     {
@@ -439,7 +440,7 @@ class Movies
     /**
      * Get annee
      *
-     * @return integer 
+     * @return integer
      */
     public function getAnnee()
     {
@@ -462,7 +463,7 @@ class Movies
     /**
      * Get budget
      *
-     * @return float 
+     * @return float
      */
     public function getBudget()
     {
@@ -485,7 +486,7 @@ class Movies
     /**
      * Get duree
      *
-     * @return integer 
+     * @return integer
      */
     public function getDuree()
     {
@@ -508,7 +509,7 @@ class Movies
     /**
      * Get dateRelease
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDateRelease()
     {
@@ -531,7 +532,7 @@ class Movies
     /**
      * Get notePresse
      *
-     * @return float 
+     * @return float
      */
     public function getNotePresse()
     {
@@ -554,7 +555,7 @@ class Movies
     /**
      * Get visible
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getVisible()
     {
@@ -577,7 +578,7 @@ class Movies
     /**
      * Get cover
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getCover()
     {
@@ -600,7 +601,7 @@ class Movies
     /**
      * Get dateCreated
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDateCreated()
     {
@@ -633,7 +634,7 @@ class Movies
     /**
      * Get actors
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getActors()
     {
@@ -666,7 +667,7 @@ class Movies
     /**
      * Get cinemas
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getCinemas()
     {
@@ -699,7 +700,7 @@ class Movies
     /**
      * Get directors
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getDirectors()
     {
@@ -732,7 +733,7 @@ class Movies
     /**
      * Get movies
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getMovies()
     {
@@ -743,7 +744,7 @@ class Movies
     /**
      * Get medias
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getMedias()
     {
@@ -790,7 +791,7 @@ class Movies
     /**
      * Get category
      *
-     * @return \Ezap\PublicBundle\Entity\Categories 
+     * @return \Ezap\PublicBundle\Entity\Categories
      */
     public function getCategory()
     {
@@ -823,7 +824,7 @@ class Movies
     /**
      * Get tags
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getTags()
     {
@@ -856,7 +857,7 @@ class Movies
     /**
      * Get moviesRelated
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getMoviesRelated()
     {
@@ -897,7 +898,7 @@ class Movies
     /**
      * Get comments
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getComments()
     {

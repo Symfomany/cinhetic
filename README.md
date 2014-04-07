@@ -23,3 +23,17 @@ http://getcomposer.org/ or just run the following command:
 Then, use the `create-project` command to generate a new Symfony application:
 
     php composer.phar create-project symfony/framework-standard-edition path/to/install
+
+
+2) Features
+----------------------------------
+
+* Homepage with custom template
+* Movies in weeks
+* Movies more scored
+* Categories in cloud tags
+* Tags in clud tags
+* Search Engin in Elastic Search
+* Page Film Unit
+* Comments by Movies
+* Number Movies, Categories, Tags...
