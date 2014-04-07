@@ -46,19 +46,9 @@ class Medias
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToOne(targetEntity="Movies", inversedBy="medias")
+     * @ORM\ManyToMany(targetEntity="Movies", inversedBy="medias")
      */
     private $movies;
-
-
-    /**
-     * @var \User
-     * @ORM\ManyToOne(targetEntity="Movies")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="movies_id", referencedColumnName="id")
-     * })
-     */
-    private $movie;
 
 
     /**
@@ -79,29 +69,6 @@ class Medias
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set moviesId
-     *
-     * @param integer $moviesId
-     * @return Medias
-     */
-    public function setMoviesId($moviesId)
-    {
-        $this->moviesId = $moviesId;
-
-        return $this;
-    }
-
-    /**
-     * Get moviesId
-     *
-     * @return integer 
-     */
-    public function getMoviesId()
-    {
-        return $this->moviesId;
     }
 
     /**
@@ -175,29 +142,6 @@ class Medias
 
 
     /**
-     * Add movies
-     *
-     * @param \Ezap\PublicBundle\Entity\Movies $movies
-     * @return Medias
-     */
-    public function addMovie(\Ezap\PublicBundle\Entity\Movies $movies)
-    {
-        $this->movies[] = $movies;
-
-        return $this;
-    }
-
-    /**
-     * Remove movies
-     *
-     * @param \Ezap\PublicBundle\Entity\Movies $movies
-     */
-    public function removeMovie(\Ezap\PublicBundle\Entity\Movies $movies)
-    {
-        $this->movies->removeElement($movies);
-    }
-
-    /**
      * Get movies
      *
      * @return \Doctrine\Common\Collections\Collection 
@@ -220,28 +164,6 @@ class Medias
         return $this;
     }
 
-    /**
-     * Set movie
-     *
-     * @param \Ezap\PublicBundle\Entity\Movies $movie
-     * @return Medias
-     */
-    public function setMovie(\Ezap\PublicBundle\Entity\Movies $movie = null)
-    {
-        $this->movie = $movie;
-
-        return $this;
-    }
-
-    /**
-     * Get movie
-     *
-     * @return \Ezap\PublicBundle\Entity\Movies
-     */
-    public function getMovie()
-    {
-        return $this->movie;
-    }
 
 
     /**
@@ -249,5 +171,28 @@ class Medias
      */
     public function __toString(){
         return $this->picture;
+    }
+
+    /**
+     * Add movies
+     *
+     * @param \Ezap\PublicBundle\Entity\Movies $movies
+     * @return Medias
+     */
+    public function addMovie(\Ezap\PublicBundle\Entity\Movies $movies)
+    {
+        $this->movies[] = $movies;
+
+        return $this;
+    }
+
+    /**
+     * Remove movies
+     *
+     * @param \Ezap\PublicBundle\Entity\Movies $movies
+     */
+    public function removeMovie(\Ezap\PublicBundle\Entity\Movies $movies)
+    {
+        $this->movies->removeElement($movies);
     }
 }

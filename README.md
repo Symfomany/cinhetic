@@ -27,7 +27,9 @@ Then, use the `create-project` command to generate a new Symfony application:
 
 2) Features
 ----------------------------------
-
+* Search by Cities in sessions of cinemas
+* Best Movies by rating
+* Add press comments in Movies
 * Homepage with custom template
 * Movies in weeks
 * Movies more scored

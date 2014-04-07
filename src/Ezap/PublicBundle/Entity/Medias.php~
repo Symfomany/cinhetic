@@ -46,35 +46,9 @@ class Medias
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToOne(targetEntity="Movies", inversedBy="medias")
+     * @ORM\ManyToMany(targetEntity="Movies", inversedBy="medias")
      */
     private $movies;
-
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Tags", inversedBy="movies")
-     * @ORM\JoinTable(name="movies_tags",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="movies_id", referencedColumnName="movies_id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="tags_id", referencedColumnName="id")
-     *   }
-     * )
-     */
-    private $tags;
-
-    /**
-     * @var \User
-     *
-     * @ORM\ManyToOne(targetEntity="Movies")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="categories_id", referencedColumnName="id")
-     * })
-     */
-    private $movie;
 
 
     /**
@@ -82,7 +56,8 @@ class Medias
      */
     public function __construct()
     {
-        $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->dateCreated = new \Datetime('now');
+
     }
 
 
@@ -94,29 +69,6 @@ class Medias
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set moviesId
-     *
-     * @param integer $moviesId
-     * @return Medias
-     */
-    public function setMoviesId($moviesId)
-    {
-        $this->moviesId = $moviesId;
-
-        return $this;
-    }
-
-    /**
-     * Get moviesId
-     *
-     * @return integer 
-     */
-    public function getMoviesId()
-    {
-        return $this->moviesId;
     }
 
     /**
@@ -190,62 +142,6 @@ class Medias
 
 
     /**
-     * Add tags
-     *
-     * @param \Ezap\PublicBundle\Entity\Tags $tags
-     * @return Medias
-     */
-    public function addTag(\Ezap\PublicBundle\Entity\Tags $tags)
-    {
-        $this->tags[] = $tags;
-
-        return $this;
-    }
-
-    /**
-     * Remove tags
-     *
-     * @param \Ezap\PublicBundle\Entity\Tags $tags
-     */
-    public function removeTag(\Ezap\PublicBundle\Entity\Tags $tags)
-    {
-        $this->tags->removeElement($tags);
-    }
-
-    /**
-     * Get tags
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getTags()
-    {
-        return $this->tags;
-    }
-
-    /**
-     * Add movies
-     *
-     * @param \Ezap\PublicBundle\Entity\Movies $movies
-     * @return Medias
-     */
-    public function addMovie(\Ezap\PublicBundle\Entity\Movies $movies)
-    {
-        $this->movies[] = $movies;
-
-        return $this;
-    }
-
-    /**
-     * Remove movies
-     *
-     * @param \Ezap\PublicBundle\Entity\Movies $movies
-     */
-    public function removeMovie(\Ezap\PublicBundle\Entity\Movies $movies)
-    {
-        $this->movies->removeElement($movies);
-    }
-
-    /**
      * Get movies
      *
      * @return \Doctrine\Common\Collections\Collection 
@@ -266,5 +162,14 @@ class Medias
         $this->movies = $movies;
 
         return $this;
+    }
+
+
+
+    /**
+     * @return string
+     */
+    public function __toString(){
+        return $this->picture;
     }
 }
