@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Directors
  *
  * @ORM\Table(name="directors")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Ezap\PublicBundle\Repository\DirectorsRepository")
  */
 class Directors
 {
