@@ -1,0 +1,48 @@
+Cinema:
+    type: entity
+    table: cinema
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        title:
+            type: string
+            nullable: true
+            length: 250
+            fixed: false
+            comment: ''
+        ville:
+            type: string
+            nullable: true
+            length: 250
+            fixed: false
+            comment: ''
+        dateCreated:
+            type: datetime
+            nullable: true
+            comment: ''
+            column: date_created
+    manyToMany:
+        movies:
+            targetEntity: Movies
+            cascade: {  }
+            mappedBy: null
+            inversedBy: cinemas
+            joinTable:
+                name: cinema_movies
+                joinColumns:
+                    -
+                        name: cinemas_id
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    -
+                        name: movies_id
+                        referencedColumnName: id
+            orderBy: null
+    lifecycleCallbacks: {  }

@@ -1,0 +1,28 @@
+Tags:
+    type: entity
+    table: tags
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        word:
+            type: string
+            nullable: true
+            length: 400
+            fixed: false
+            comment: ''
+    manyToMany:
+        movies:
+            targetEntity: Movies
+            cascade: {  }
+            mappedBy: tags
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+    lifecycleCallbacks: {  }

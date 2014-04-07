@@ -1,0 +1,45 @@
+Sessions:
+    type: entity
+    table: sessions
+    indexes:
+        movies_id:
+            columns:
+                - movies_id
+        cinema_id:
+            columns:
+                - cinema_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        dateSession:
+            type: datetime
+            nullable: true
+            comment: ''
+            column: date_session
+    manyToOne:
+        movies:
+            targetEntity: Movies
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                movies_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        cinema:
+            targetEntity: Cinema
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cinema_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

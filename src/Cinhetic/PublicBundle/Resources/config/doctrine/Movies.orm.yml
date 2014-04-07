@@ -1,0 +1,195 @@
+Movies:
+    type: entity
+    table: movies
+    indexes:
+        categories_id:
+            columns:
+                - categories_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        typeFilm:
+            type: string
+            nullable: true
+            length: 250
+            fixed: false
+            comment: ''
+            column: type_film
+        title:
+            type: string
+            nullable: true
+            length: 250
+            fixed: false
+            comment: ''
+        synopsis:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+        description:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+        trailer:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+        languages:
+            type: string
+            nullable: true
+            length: 11
+            fixed: false
+            comment: ''
+        distributeur:
+            type: string
+            nullable: true
+            length: 250
+            fixed: false
+            comment: ''
+        bo:
+            type: string
+            nullable: true
+            length: 250
+            fixed: false
+            comment: ''
+        annee:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+        budget:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            comment: ''
+        duree:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+        dateRelease:
+            type: date
+            nullable: true
+            comment: ''
+            column: date_release
+        notePresse:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            comment: ''
+            column: note_presse
+        visible:
+            type: boolean
+            nullable: true
+            comment: ''
+        cover:
+            type: boolean
+            nullable: true
+            comment: ''
+        dateCreated:
+            type: datetime
+            nullable: true
+            comment: ''
+            column: date_created
+    manyToOne:
+        categories:
+            targetEntity: Categories
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                categories_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    manyToMany:
+        actors:
+            targetEntity: Actors
+            cascade: {  }
+            mappedBy: movies
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+        cinemas:
+            targetEntity: Cinema
+            cascade: {  }
+            mappedBy: movies
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+        directors:
+            targetEntity: Directors
+            cascade: {  }
+            mappedBy: movies
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+        medias:
+            targetEntity: Medias
+            cascade: {  }
+            mappedBy: null
+            inversedBy: movies
+            joinTable:
+                name: medias_movies
+                joinColumns:
+                    -
+                        name: movies_id
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    -
+                        name: medias_id
+                        referencedColumnName: id
+            orderBy: null
+        moviesRelated:
+            targetEntity: Movies
+            cascade: {  }
+            mappedBy: null
+            inversedBy: movies
+            joinTable:
+                name: related_movies
+                joinColumns:
+                    -
+                        name: movies_id
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    -
+                        name: movies_id_related
+                        referencedColumnName: id
+            orderBy: null
+        tags:
+            targetEntity: Tags
+            cascade: {  }
+            mappedBy: null
+            inversedBy: movies
+            joinTable:
+                name: tags_movies
+                joinColumns:
+                    -
+                        name: movies_id
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    -
+                        name: tags_id
+                        referencedColumnName: id
+            orderBy: null
+        user:
+            targetEntity: User
+            cascade: {  }
+            mappedBy: movies
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+    lifecycleCallbacks: {  }
