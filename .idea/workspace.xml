@@ -23,15 +23,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="README.md" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="README.md" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="113" column="0" selection-start="2795" selection-end="2795" vertical-scroll-proportion="0.23943663" vertical-offset="2107" max-vertical-offset="3840">
+            <state line="113" column="0" selection-start="2795" selection-end="2795" vertical-scroll-proportion="-1.9615384" vertical-offset="2107" max-vertical-offset="3840">
               <folding />
             </state>
           </provider>
           <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
             <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="5" selection-start="5" selection-end="5" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="730">
+              <folding />
+            </state>
           </provider>
         </entry>
       </file>
@@ -45,7 +54,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/Ezap/PublicBundle/Entity/Medias.php" />
         <option value="$PROJECT_DIR$/UPGRADE.md" />
         <option value="$PROJECT_DIR$/src/Ezap/PublicBundle/Repository/CategoriesRepository.php" />
         <option value="$PROJECT_DIR$/src/Ezap/PublicBundle/Repository/CinemaRepository.php" />
@@ -96,6 +104,7 @@
         <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/DataFixtures/Categories.php" />
         <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/DataFixtures/Tags.php" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -383,13 +392,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Repository/TagsRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="23" selection-start="110" selection-end="110" vertical-scroll-proportion="0.16371077" vertical-offset="0" max-vertical-offset="733">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Repository/DirectorsRepository.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="28" selection-start="115" selection-end="115" vertical-scroll-proportion="-4.6153846" vertical-offset="0" max-vertical-offset="400">
@@ -747,12 +749,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="113" column="0" selection-start="2795" selection-end="2795" vertical-scroll-proportion="0.23943663" vertical-offset="2107" max-vertical-offset="3840">
+        <state line="113" column="0" selection-start="2795" selection-end="2795" vertical-scroll-proportion="-1.9615384" vertical-offset="2107" max-vertical-offset="3840">
           <folding />
         </state>
       </provider>
       <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="5" selection-start="5" selection-end="5" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="730">
+          <folding />
+        </state>
       </provider>
     </entry>
   </component>
