@@ -1,0 +1,13 @@
+{% block starsmovies %}
+    <h1><i class="glyphicon glyphicon-heart"></i> Films à l'affiche</h1>
+    {% for entity in entities %}
+        <div>{{ entity.trailer|raw }}</div>
+        <h3>{{ entity.title }}</h3>
+        <p>{{ entity.synopsis|raw|truncate(250,true, "...") }}</p>
+    {% else %}
+        <div class="alert alert-warning">
+            <i class="glyphicon glyphicon-exclamation-sign"></i> Il n'y a pas de film à l'affiche
+        </div>
+    {% endfor %}
+
+{% endblock %}

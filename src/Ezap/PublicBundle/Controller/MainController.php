@@ -3,6 +3,7 @@
 namespace Ezap\PublicBundle\Controller;
 
 use Doctrine\Common\Util\Debug;
+use Ezap\PublicBundle\Form\SearchType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -36,30 +37,19 @@ class MainController extends Controller
      * Search Action in AJAX or HTTP
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function searchAction($ajax = false)
+    public function searchAction()
     {
-        $em = $this->getDoctrine()->getManager();
-        $paginator = $this->get('knp_paginator');
-        $request = $this->get('request');
-        $movies = array();
+        $form = $this->createForm(new SearchType(), null, array(
+            'action' => $this->generateUrl('ezap_public_search'),
+            'method' => 'GET',
+        ));
 
-        if($ajax === FALSE){
-            $word = $request->query->get('word');
-            $movies = $em->getRepository('EzapPublicBundle:Movies')->search($word);
+        $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning"), 'label' => 'Rechercher'));
 
-            $pagination = $paginator->paginate(
-                $movies,
-                $this->get('request')->query->get('pageone', 1) /*page number*/,
-                5,
-                array('pageParameterName' => 'pageone')
-            );
 
-            return $this->render('EzapPublicBundle:Main:search.html.twig',  array('movies' => $pagination));
-        } else{
-
-            return new JsonResponse($movies);
-        }
-
+        return $this->render('EzapPublicBundle:Main:search.html.twig',
+            array('form' => $form->createView())
+        );
     }
 
 

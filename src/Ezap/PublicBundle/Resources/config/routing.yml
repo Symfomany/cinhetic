@@ -5,7 +5,7 @@ ezap_public_homepage:
 
 ezap_public_search:
     pattern:  /search
-    defaults: { _controller: EzapPublicBundle:Main:index }
+    defaults: { _controller: EzapPublicBundle:Movies:search }
 
 
 # Actors

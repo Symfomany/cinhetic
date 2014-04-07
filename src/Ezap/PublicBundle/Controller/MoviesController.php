@@ -15,6 +15,40 @@ use Ezap\PublicBundle\Form\MoviesType;
 class MoviesController extends Controller
 {
 
+
+    /**
+     * Search Action in AJAX or HTTP
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function searchAction($ajax = false)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $paginator = $this->get('knp_paginator');
+        $request = $this->get('request');
+        $movies = $em->getRepository('EzapPublicBundle:Movies')->findAll();
+
+            if($ajax === FALSE){
+                $word = $request->query->get('search');
+                $movies = $em->getRepository('EzapPublicBundle:Movies')->search($word);
+
+                $pagination = $paginator->paginate(
+                    $movies,
+                    $this->get('request')->query->get('pageone', 1) /*page number*/,
+                    5,
+                    array('pageParameterName' => 'pageone')
+                );
+
+                return $this->render('EzapPublicBundle:Movies:search.html.twig',  array('movies' => $pagination));
+            } else{
+
+                return new JsonResponse($movies);
+            }
+
+
+        return $this->render('EzapPublicBundle:Movies:search.html.twig',  array('movies' => $movies));
+    }
+
+
     /**
      * Lists all Movies entities.
      *
@@ -29,6 +63,42 @@ class MoviesController extends Controller
             'entities' => $entities,
         ));
     }
+
+
+    /**
+     * get Current Movies entities.
+     *
+     */
+    public function currentMoviesAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entities = $em->getRepository('EzapPublicBundle:Movies')->getCurrentMovies();
+
+        return $this->render('EzapPublicBundle:Movies:current.html.twig', array(
+            'entities' => $entities,
+        ));
+    }
+
+
+
+    /**
+     * get Star Movies entities.
+     *
+     */
+    public function starsMoviesAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entities = $em->getRepository('EzapPublicBundle:Movies')->getStarMovies();
+
+        return $this->render('EzapPublicBundle:Movies:stars.html.twig', array(
+            'entities' => $entities,
+        ));
+    }
+
+
+
     /**
      * Creates a new Movies entity.
      *

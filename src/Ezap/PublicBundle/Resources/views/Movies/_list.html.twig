@@ -21,7 +21,7 @@
                         <small><i class="glyphicon glyphicon-time"></i> Date de sortie {{entity.dateRelease|date('d/m/Y')}} - {{ entity.annee|title }} </small>
                         <small> Année{{entity.annee }}</small>
                         <p class="well"><i class="glyphicon glyphicon-comment"></i> <b>Synopsis:</b> {{ entity.synopsis }}</p>
-                        <p><i class="glyphicon glyphicon-list-alt"></i> <b>Film:</b> {{ entity.description|truncate(300, true, '...') }} </p>
+                        <p><i class="glyphicon glyphicon-list-alt"></i> <b>Film:</b> {{ entity.description|truncate(600, true, '...') }} </p>
                         <hr />
                         <p>
                             <a href="" class="btn btn-danger pull-right"><i class="glyphicon glyphicon-plus"></i> Voir plus</a>

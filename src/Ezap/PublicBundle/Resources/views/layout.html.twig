@@ -9,7 +9,7 @@
 {% block stylesheets %}
     {{ parent() }}
 
-    <link rel="stylesheet" type="text/css" href="http://bootswatch.com/flatly/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="http://bootswatch.com/darkly/bootstrap.min.css"/>
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/flick/jquery-ui.css" />
     {% stylesheets '@EzapPublicBundle/Resources/public/css/main.css' filter='yui_css' %}
         <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>
@@ -36,7 +36,6 @@
 <div class="container-fluid">
     <div class="row-fluid">
     {% include 'EzapPublicBundle:Slots:topmenu.html.twig' %}
-        {{ render(controller('EzapPublicBundle:Layout:mywarns')) }}
                         <div class="col-sm-9 main">
                             <ul class="nav nav-pills">
                                 <li {% if  app.request.attributes.get('_route') == "actors" %} class="active" {% endif %}><a href="{{ path('actors') }}">Voir les acteurs</a></li>
@@ -49,6 +48,8 @@
                             </ul>
                             <br /><br />
                             {% include 'EzapPublicBundle:Slots:flashdatas.html.twig' %}
+                            {% include 'EzapPublicBundle:Slots:search.html.twig' %}
+
 
                             {% block content %}
                                 {% for key, message in app.session.flashbag.all() %}
