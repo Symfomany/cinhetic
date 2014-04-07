@@ -87,7 +87,7 @@ $loader->registerNamespaces(array(
     'Horus'             => __DIR__.'/../vendor/bundles',
     // ...
 ```
-### Register HorusSiteBundle to Kernel
+### Register CinheticPublicBundle to Kernel
 
 ``` php
 <?php
@@ -96,7 +96,7 @@ $loader->registerNamespaces(array(
     //...
     $bundles = array(
         //...
-        new Horus\SiteBundle\HorusSiteBundle(),
+        new Cinhetic\Public\CinheticPublicBundle(),
     );
     //...
 ```
@@ -113,12 +113,25 @@ $ php app/console doctrine:schema:create
 ``` yaml
 # app/config/routing.yml
 horus:
-    resource: "@HorusSiteBundle/Resources/config/routing.yml"
+    resource: "@CinheticPublicBundle/Resources/config/routing.yml"
 ```
 ### Refresh asset folder
 
 ``` bash
 $ php app/console assets:install web/
+```
+
+
+### Data fixtures (optional)
+
+First, make sure that your db parameters are correctly set in `app/config/parameters.ini`.
+You'll need to install ``Doctrine Data Fixtures`` (don't forget to add the
+path to `AppKernel.php`) and then run:
+
+``` bash
+$ php app/console doctrine:fixtures:load
+
+You can read about install instructions in the Symfony2 Cookbook(http://symfony.com/doc/2.0/cookbook/doctrine/doctrine_fixtures.html#setup-and-configuration)
 ```
 
 
