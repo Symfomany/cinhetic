@@ -5,7 +5,7 @@ use Doctrine\ORM\EntityRepository;
 
 /**
  * Class CinemaRepository
- * @package Horus\AdminBundle\Repository
+ * @package Cinhetic\PublicBundle\Repository
  */
 class CinemaRepository extends EntityRepository
 {

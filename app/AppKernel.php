@@ -25,6 +25,7 @@ class AppKernel extends Kernel
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
+            new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
 
 //            Our Bundle
             new Cinhetic\PublicBundle\CinheticPublicBundle()

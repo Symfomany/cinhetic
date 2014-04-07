@@ -65,7 +65,7 @@ Or add CinheticPublicBundle in your composer.json
 ```js
 {
     "require": {
-        "Symfomany/Cinhetic": "*"
+        "Symfomany/cinhetic": "*"
     }
 }
 ```

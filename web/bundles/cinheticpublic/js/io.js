@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    var socket = io.connect('http://www.cinhetic.ju:1665');
+    var socket = io.connect('http://www.horus.ju:1665');
     var me = null;
 
 

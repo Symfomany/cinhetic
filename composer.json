@@ -28,7 +28,8 @@
         "stof/doctrine-extensions-bundle": "dev-master",
         "whiteoctober/tcpdf-bundle": "dev-master",
         "jms/serializer-bundle": "dev-master",
-        "nelmio/api-doc-bundle": "@dev"
+        "nelmio/api-doc-bundle": "@dev",
+        "doctrine/doctrine-fixtures-bundle": "2.2.*"
     },
     "scripts": {
         "post-install-cmd": [

@@ -5,7 +5,7 @@ use Doctrine\ORM\EntityRepository;
 
 /**
  * Class CategoriesRepository
- * @package Horus\AdminBundle\Repository
+ * @package Cinhetic\PublicBundle\Repository
  */
 class CategoriesRepository extends EntityRepository
 {

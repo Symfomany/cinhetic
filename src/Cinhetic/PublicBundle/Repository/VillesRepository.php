@@ -5,7 +5,7 @@ use Doctrine\ORM\EntityRepository;
 
 /**
  * Class VillesRepository
- * @package Horus\AdminBundle\Repository
+ * @package Cinhetic\PublicBundle\Repository
  */
 class VillesRepository extends EntityRepository
 {
