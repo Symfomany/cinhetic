@@ -23,10 +23,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MoviesCest.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="MoviesCest.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/acceptance/Movies/MoviesCest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="64" column="44" selection-start="1568" selection-end="1568" vertical-scroll-proportion="0.45586106" vertical-offset="965" max-vertical-offset="1860">
+            <state line="39" column="0" selection-start="696" selection-end="718" vertical-scroll-proportion="-9.230769" vertical-offset="540" max-vertical-offset="1860">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="147" column="0" selection-start="3650" selection-end="3650" vertical-scroll-proportion="0.45045045" vertical-offset="2640" max-vertical-offset="4020">
               <folding />
             </state>
           </provider>
@@ -109,7 +121,6 @@
         <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/config/doctrine/User.orm.yml" />
         <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/DataFixtures/Categories.php" />
         <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/DataFixtures/Tags.php" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/tests/acceptance/MoviesCept.php" />
         <option value="$PROJECT_DIR$/tests/acceptance.suite.yml" />
@@ -120,13 +131,14 @@
         <option value="$PROJECT_DIR$/tests/_log/acceptance-2014-04-07" />
         <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Form/MoviesType.php" />
         <option value="$PROJECT_DIR$/tests/acceptance/Movies/MoviesCest.php" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="297" />
-    <option name="y" value="147" />
+    <option name="x" value="181" />
+    <option name="y" value="36" />
     <option name="width" value="1353" />
     <option name="height" value="854" />
   </component>
@@ -419,11 +431,11 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="297" y="147" width="1353" height="854" extended-state="0" />
+    <frame x="181" y="36" width="1353" height="854" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25166544" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.36861584" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -655,14 +667,6 @@
         <state line="6" column="0" selection-start="45" selection-end="45" vertical-scroll-proportion="0.16438356" vertical-offset="0" max-vertical-offset="730" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="113" column="0" selection-start="2795" selection-end="2795" vertical-scroll-proportion="0.23943663" vertical-offset="2107" max-vertical-offset="3840" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/acceptance/WebGuy.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="41300">
@@ -742,7 +746,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/acceptance/Movies/MoviesCest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="44" selection-start="1568" selection-end="1568" vertical-scroll-proportion="0.45586106" vertical-offset="965" max-vertical-offset="1860">
+        <state line="39" column="0" selection-start="696" selection-end="718" vertical-scroll-proportion="-9.230769" vertical-offset="540" max-vertical-offset="1860">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="147" column="0" selection-start="3650" selection-end="3650" vertical-scroll-proportion="0.45045045" vertical-offset="2640" max-vertical-offset="4020">
           <folding />
         </state>
       </provider>

@@ -16,6 +16,7 @@ Screenshots
 ![ScreenShot](https://raw.github.com/Symfomany/cinhetic/master/screenshots/Screen4.png)
 ![ScreenShot](https://raw.github.com/Symfomany/cinhetic/master/screenshots/Screen5.png)
 ![ScreenShot](https://raw.github.com/Symfomany/cinhetic/master/screenshots/Screen6.png)
+![ScreenShot](https://raw.github.com/Symfomany/cinhetic/master/screenshots/Screen7.png)
 
 
 1) Installing the Cinhetic Standard Edition
@@ -38,6 +39,7 @@ Then, use the install from Composer:
 
     php composer.phar install
 
+```
 
 Quick Installation
 ------------------
@@ -136,6 +138,13 @@ $ php app/console doctrine:fixtures:load
 You can read about install instructions in the Symfony2 Cookbook(http://symfony.com/doc/2.0/cookbook/doctrine/doctrine_fixtures.html#setup-and-configuration)
 ```
 
+
+
+Run Tests Codeception
+------------------
+``` bash
+bin/codecept run --html --colors --report --steps
+```
 
 Optional Requirements
 ---------------
