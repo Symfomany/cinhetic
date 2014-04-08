@@ -110,7 +110,7 @@
 
  <body>
  <div class="layout">
- <h1>Codeception Results <small><span style="color: green">OK</span> (3.5s)</small></h1>
+ <h1>Codeception Results <small><span style="color: green">OK</span> (2.7s)</small></h1>
 
 
 	 <table border="0" style="width: 100%;">
@@ -120,7 +120,7 @@
  </td>
 </tr>   <tr>
     <td>
-     <p class="scenarioSuccess" onclick="showHide('1', this)">[+] success to authentificate (TagsCest.onHome) (2.18s)</p>
+     <p class="scenarioSuccess" onclick="showHide('1', this)">[+] success to authentificate (TagsCest.onHome) (0.68s)</p>
     </td>
    </tr>
    <tr>
@@ -186,7 +186,7 @@
 
    <tr>
     <td>
-     <p class="scenarioSuccess" onclick="showHide('3', this)">[+] tags creation (TagsCest.onTagsCreate) (0.82s)</p>
+     <p class="scenarioSuccess" onclick="showHide('3', this)">[+] tags creation (TagsCest.onTagsCreate) (0.59s)</p>
     </td>
    </tr>
    <tr>
@@ -200,8 +200,41 @@
        <td class="stepName">I can see current url equals <span style="color: #732E81;">"/administration/tags/new"</span></td>
       </tr>
 
+
+     </table>
+    </td>
+   </tr>
+
+   <tr>
+    <td>
+     <p class="scenarioSuccess" onclick="showHide('4', this)">[+] tags remove (TagsCest.onTagsRemove) (0.92s)</p>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <table border="0" width="100%" class="scenarioSuccess scenarioStepsTable" id="stepContainer4">
       <tr>
-       <td class="stepName">I submit form <span style="color: #732E81;">"form#handletags",{"word":"test alpha","movies":[1,2]}</span></td>
+       <td class="stepName">I am on page <span style="color: #732E81;">"/administration/tags/"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I see <span style="color: #732E81;">" test alpha"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I click <span style="color: #732E81;">"table > tbody > tr:nth-child(13) > td:nth-child(3) > a:nth-child(2)"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I can see current url equals <span style="color: #732E81;">"/administration/tags/15/edit"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I click <span style="color: #732E81;">"Delete"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I see <span style="color: #732E81;">"Liste des tags"</span></td>
       </tr>
 
 
@@ -217,7 +250,7 @@
       <table border="0">
        <tr>
         <td width="250" class="scenarioSuccess">Successful scenarios:</td>
-        <td class="scenarioSuccessValue"><strong>3</strong></td>
+        <td class="scenarioSuccessValue"><strong>4</strong></td>
        </tr>
        <tr>
         <td class="scenarioFailed">Failed scenarios:</td>

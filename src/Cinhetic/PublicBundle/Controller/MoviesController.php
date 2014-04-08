@@ -2,6 +2,7 @@
 
 namespace Cinhetic\PublicBundle\Controller;
 
+use Cinhetic\PublicBundle\Form\SearchType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -20,32 +21,52 @@ class MoviesController extends Controller
      * Search Action in AJAX or HTTP
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function searchAction($ajax = false)
+    public function searchAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $paginator = $this->get('knp_paginator');
         $request = $this->get('request');
+        $paginator = $this->get('knp_paginator');
         $movies = $em->getRepository('CinheticPublicBundle:Movies')->findAll();
-
-            if($ajax === FALSE){
-                $word = $request->query->get('search');
-                $movies = $em->getRepository('CinheticPublicBundle:Movies')->search($word);
-
-                $pagination = $paginator->paginate(
-                    $movies,
-                    $this->get('request')->query->get('pageone', 1) /*page number*/,
-                    5,
-                    array('pageParameterName' => 'pageone')
-                );
-
-                return $this->render('CinheticPublicBundle:Movies:search.html.twig',  array('movies' => $pagination));
-            } else{
-
-                return new JsonResponse($movies);
-            }
+        $word = null;
 
 
-        return $this->render('CinheticPublicBundle:Movies:search.html.twig',  array('movies' => $movies));
+        $form = $this->createForm(new SearchType(), null, array(
+            'action' => $this->generateUrl('Cinhetic_public_search'),
+            'method' => 'GET',
+        ));
+
+        $form->handleRequest($request);
+
+        if($form->isValid()){
+                    $word = $form->get('search')->getData();
+                    $movies = $em->getRepository('CinheticPublicBundle:Movies')->search($word);
+
+                    $pagination = $paginator->paginate(
+                        $movies,
+                        $this->get('request')->query->get('pageone', 1) /*page number*/,
+                        5,
+                        array('pageParameterName' => 'pageone')
+                    );
+
+                    return $this->render('CinheticPublicBundle:Movies:searchpage.html.twig',  array(
+                        'form' => $form->createView(),
+                        'movies' => $pagination,
+                    ));
+        }
+
+        $pagination = $paginator->paginate(
+            $movies,
+            $this->get('request')->query->get('pageone', 1) /*page number*/,
+            5,
+            array('pageParameterName' => 'pageone')
+        );
+
+
+        return $this->render('CinheticPublicBundle:Movies:searchpage.html.twig',  array(
+            'form' => $form->createView(),
+            'movies' => $pagination,
+        ));
+
     }
 
 

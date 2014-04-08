@@ -48,7 +48,8 @@
                             </ul>
                             <br /><br />
                             {% include 'CinheticPublicBundle:Slots:flashdatas.html.twig' %}
-                            {% include 'CinheticPublicBundle:Slots:search.html.twig' %}
+                            {{ render(controller('CinheticPublicBundle:Main:search' , {'word': app.request.query.get('search')})) }}
+                            {#{% include 'CinheticPublicBundle:Slots:_search.html.twig' %}#}
 
 
                             {% block content %}

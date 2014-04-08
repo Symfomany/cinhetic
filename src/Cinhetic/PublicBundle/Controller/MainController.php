@@ -34,21 +34,18 @@ class MainController extends Controller
     }
 
    /**
-     * Search Action in AJAX or HTTP
+     * Search Action
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function searchAction()
+    public function searchAction($word = null)
     {
         $form = $this->createForm(new SearchType(), null, array(
             'action' => $this->generateUrl('Cinhetic_public_search'),
             'method' => 'GET',
         ));
 
-        $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning"), 'label' => 'Rechercher'));
-
-
-        return $this->render('CinheticPublicBundle:Main:search.html.twig',
-            array('form' => $form->createView())
+        return $this->render('CinheticPublicBundle:Slots:search.html.twig',
+            array('form' => $form->createView(), 'word' => $word)
         );
     }
 

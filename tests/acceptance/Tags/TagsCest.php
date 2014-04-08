@@ -57,29 +57,32 @@ class TagsCest
         $I->amOnPage('/administration/tags/new');
 //        $I->see("");
         $I->canSeeCurrentUrlEquals('/administration/tags/new');
-        $I->submitForm('form#handletags',
+        /*$I->submitForm('form#handletags',
             array(
                 'word' => 'test alpha',
                 'movies' => array(1,2)
-            ));
+            )); */
 
     }
 
     /**
      * On Tags Remove
-     * @before onTagsList
+     * @before onTagsCreate
     */
     public function onTagsRemove(WebGuy $I) {
         $I->wantTo('Tags Remove');
         $I->amOnPage('/administration/tags/');
-//        $I->see("");
-//        $I->canSeeCurrentUrlEquals('/administration/tags/new');
-        $I->submitForm('form#handletags',
+        $I->see(" test alpha");
+        $I->click("table > tbody > tr:nth-child(13) > td:nth-child(3) > a:nth-child(2)");
+        $I->canSeeCurrentUrlEquals('/administration/tags/15/edit');
+        $I->click("Delete");
+        $I->see('Liste des tags');
+        /*$I->submitForm('form#handletags',
             array(
                 'word' => 'test alpha',
                 'movies' => array(1,2)
             ));
-
+*/
     }
 
 

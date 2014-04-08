@@ -2,6 +2,7 @@
 
 namespace Cinhetic\PublicBundle\Controller;
 
+use Cinhetic\PublicBundle\Form\SearchType;
 use Doctrine\Common\Util\Debug;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -23,5 +24,25 @@ class LayoutController extends Controller
         $warns = 0;
         return $this->render('CinheticPublicBundle:Slots:leftmenu.html.twig',  array('warn' => (int)$warns));
     }
+
+
+    /**
+     * Search Action in AJAX or HTTP
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function searchAction()
+    {
+
+        $form = $this->createForm(new SearchType(), null, array(
+            'action' => $this->generateUrl('Cinhetic_public_search'),
+            'method' => 'GET',
+        ));
+
+
+        return $this->render('CinheticPublicBundle:Movies:search.html.twig',  array(
+            'form' => $form->createView(),
+        ));
+    }
+
 
 }
