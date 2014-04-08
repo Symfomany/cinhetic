@@ -65,6 +65,7 @@ class TagsController extends Controller
         $form = $this->createForm(new TagsType(), $entity, array(
             'action' => $this->generateUrl('tags_create'),
             'method' => 'POST',
+            'attr' => array('id' => "handletags")
         ));
 
         $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning"), 'label' => 'Créer ce tag'));
@@ -144,6 +145,7 @@ class TagsController extends Controller
         $form = $this->createForm(new TagsType(), $entity, array(
             'action' => $this->generateUrl('tags_update', array('id' => $entity->getId())),
             'method' => 'PUT',
+            'attr' => array('id' => "handletags")
         ));
 
         $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning"), 'label' => 'Modifier ce tag'));

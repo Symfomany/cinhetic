@@ -110,7 +110,7 @@
 
  <body>
  <div class="layout">
- <h1>Codeception Results <small><span style="color: green">OK</span> (5.1s)</small></h1>
+ <h1>Codeception Results <small><span style="color: green">OK</span> (3.5s)</small></h1>
 
 
 	 <table border="0" style="width: 100%;">
@@ -120,7 +120,7 @@
  </td>
 </tr>   <tr>
     <td>
-     <p class="scenarioSuccess" onclick="showHide('1', this)">[+] success to authentificate (CategoriesCest.onHome) (2.01s)</p>
+     <p class="scenarioSuccess" onclick="showHide('1', this)">[+] success to authentificate (TagsCest.onHome) (2.18s)</p>
     </td>
    </tr>
    <tr>
@@ -161,26 +161,22 @@
 
    <tr>
     <td>
-     <p class="scenarioSuccess" onclick="showHide('2', this)">[+] categories list (CategoriesCest.onCategoriesList) (0.52s)</p>
+     <p class="scenarioSuccess" onclick="showHide('2', this)">[+] tags list (TagsCest.onTagsList) (0.5s)</p>
     </td>
    </tr>
    <tr>
     <td>
      <table border="0" width="100%" class="scenarioSuccess scenarioStepsTable" id="stepContainer2">
       <tr>
-       <td class="stepName">I am on page <span style="color: #732E81;">"/administration/categories/"</span></td>
+       <td class="stepName">I am on page <span style="color: #732E81;">"/administration/tags/"</span></td>
       </tr>
 
       <tr>
-       <td class="stepName">I see <span style="color: #732E81;">"Liste des categories"</span></td>
+       <td class="stepName">I see <span style="color: #732E81;">"Liste des tags"</span></td>
       </tr>
 
       <tr>
-       <td class="stepName">I click <span style="color: #732E81;">"Creation de la catégorie"</span></td>
-      </tr>
-
-      <tr>
-       <td class="stepName">I see <span style="color: #732E81;">"Création de la Categories"</span></td>
+       <td class="stepName">I click <span style="color: #732E81;">"Créer un tag"</span></td>
       </tr>
 
 
@@ -190,80 +186,22 @@
 
    <tr>
     <td>
-     <p class="scenarioSuccess" onclick="showHide('3', this)">[+] on categories create (CategoriesCest.onCategoriesCreate) (0.79s)</p>
+     <p class="scenarioSuccess" onclick="showHide('3', this)">[+] tags creation (TagsCest.onTagsCreate) (0.82s)</p>
     </td>
    </tr>
    <tr>
     <td>
      <table border="0" width="100%" class="scenarioSuccess scenarioStepsTable" id="stepContainer3">
       <tr>
-       <td class="stepName">I submit form <span style="color: #732E81;">"form#handlecategorie",{"title":"Ici","description":"Blabla..."}</span></td>
+       <td class="stepName">I am on page <span style="color: #732E81;">"/administration/tags/new"</span></td>
       </tr>
 
       <tr>
-       <td class="stepName">I see <span style="color: #732E81;">"Voir la catégorie"</span></td>
-      </tr>
-
-
-     </table>
-    </td>
-   </tr>
-
-   <tr>
-    <td>
-     <p class="scenarioSuccess" onclick="showHide('4', this)">[+] on categories edit (CategoriesCest.onCategoriesEdit) (0.79s)</p>
-    </td>
-   </tr>
-   <tr>
-    <td>
-     <table border="0" width="100%" class="scenarioSuccess scenarioStepsTable" id="stepContainer4">
-      <tr>
-       <td class="stepName">I am on page <span style="color: #732E81;">"/administration/categories/"</span></td>
+       <td class="stepName">I can see current url equals <span style="color: #732E81;">"/administration/tags/new"</span></td>
       </tr>
 
       <tr>
-       <td class="stepName">I see <span style="color: #732E81;">"Aventure"</span></td>
-      </tr>
-
-      <tr>
-       <td class="stepName">I click <span style="color: #732E81;">"table > tbody > tr:nth-child(9) > td:nth-child(5) > a:nth-child(2)"</span></td>
-      </tr>
-
-      <tr>
-       <td class="stepName">I see current url equals <span style="color: #732E81;">"/administration/categories/9/edit"</span></td>
-      </tr>
-
-      <tr>
-       <td class="stepName">I submit form <span style="color: #732E81;">"form#handlecategorie",{"title":"Aventures et Actions","description":"Film d'aventures et d'actions"}</span></td>
-      </tr>
-
-
-     </table>
-    </td>
-   </tr>
-
-   <tr>
-    <td>
-     <p class="scenarioSuccess" onclick="showHide('5', this)">[+] on categories delete (CategoriesCest.onCategoriesDelete) (0.97s)</p>
-    </td>
-   </tr>
-   <tr>
-    <td>
-     <table border="0" width="100%" class="scenarioSuccess scenarioStepsTable" id="stepContainer5">
-      <tr>
-       <td class="stepName">I am on page <span style="color: #732E81;">"/administration/categories/"</span></td>
-      </tr>
-
-      <tr>
-       <td class="stepName">I see <span style="color: #732E81;">"Aventure"</span></td>
-      </tr>
-
-      <tr>
-       <td class="stepName">I click <span style="color: #732E81;">"table > tbody > tr:nth-child(11) > td:nth-child(5) > a:nth-child(2)"</span></td>
-      </tr>
-
-      <tr>
-       <td class="stepName">I click <span style="color: #732E81;">"Delete"</span></td>
+       <td class="stepName">I submit form <span style="color: #732E81;">"form#handletags",{"word":"test alpha","movies":[1,2]}</span></td>
       </tr>
 
 
@@ -279,7 +217,7 @@
       <table border="0">
        <tr>
         <td width="250" class="scenarioSuccess">Successful scenarios:</td>
-        <td class="scenarioSuccessValue"><strong>5</strong></td>
+        <td class="scenarioSuccessValue"><strong>3</strong></td>
        </tr>
        <tr>
         <td class="scenarioFailed">Failed scenarios:</td>

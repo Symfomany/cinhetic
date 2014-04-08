@@ -11,6 +11,10 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="ComposerSettings">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+    <pharPath>$PROJECT_DIR$/composer.phar</pharPath>
+  </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
@@ -23,49 +27,55 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="README.md" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
+      <file leaf-file-name="TagsCest.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/acceptance/Tags/TagsCest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="26" selection-start="1222" selection-end="1222" vertical-scroll-proportion="0.0" vertical-offset="334" max-vertical-offset="4020">
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CategoriesCest.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/acceptance/Categories/CategoriesCest.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="94" column="89" selection-start="2297" selection-end="2297" vertical-scroll-proportion="-36.307693" vertical-offset="936" max-vertical-offset="2120">
+            <state line="76" column="39" selection-start="1700" selection-end="1710" vertical-scroll-proportion="-17.076923" vertical-offset="1076" max-vertical-offset="1840">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="stars.html.twig" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Movies/stars.html.twig">
+      <file leaf-file-name="Categories.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Entity/Categories.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="55" selection-start="79" selection-end="79" vertical-scroll-proportion="0.02894356" vertical-offset="0" max-vertical-offset="691">
+            <state line="44" column="0" selection-start="851" selection-end="958" vertical-scroll-proportion="0.5681818" vertical-offset="480" max-vertical-offset="3700">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CategoriesType.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Form/CategoriesType.php">
+      <file leaf-file-name="Tags.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Entity/Tags.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="0" selection-start="859" selection-end="859" vertical-scroll-proportion="0.0" vertical-offset="580" max-vertical-offset="920">
+            <state line="30" column="7" selection-start="552" selection-end="699" vertical-scroll-proportion="-9.230769" vertical-offset="360" max-vertical-offset="2540">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CategoriesController.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Controller/CategoriesController.php">
+      <file leaf-file-name="Movies.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Entity/Movies.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="146" column="29" selection-start="4235" selection-end="4235" vertical-scroll-proportion="0.0" vertical-offset="2920" max-vertical-offset="4620">
+            <state line="57" column="0" selection-start="1093" selection-end="1274" vertical-scroll-proportion="-6.923077" vertical-offset="960" max-vertical-offset="18420">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html.twig" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Tags/index.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="32" selection-start="271" selection-end="271" vertical-scroll-proportion="-6.1538463" vertical-offset="0" max-vertical-offset="900">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TagsController.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Controller/TagsController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="147" column="49" selection-start="4080" selection-end="4080" vertical-scroll-proportion="-6.4339623" vertical-offset="2519" max-vertical-offset="4540">
               <folding />
             </state>
           </provider>
@@ -81,10 +91,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/Ezap/PublicBundle/Resources/config/routing.yml" />
-        <option value="$PROJECT_DIR$/src/Ezap/PublicBundle/Resources/views/Main/search.html.twig" />
-        <option value="$PROJECT_DIR$/src/Ezap/PublicBundle/Form/SearchType.php" />
-        <option value="$PROJECT_DIR$/src/Ezap/PublicBundle/Controller/MainController.php" />
         <option value="$PROJECT_DIR$/src/Ezap/PublicBundle/Resources/views/Movies/search.html.twig" />
         <option value="$PROJECT_DIR$/src/Ezap/PublicBundle/Resources/views/Movies/_list.html.twig" />
         <option value="$PROJECT_DIR$/src/Ezap/PublicBundle/Resources/views/layout.html.twig" />
@@ -130,15 +136,87 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Form/CategoriesType.php" />
         <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Controller/CategoriesController.php" />
-        <option value="$PROJECT_DIR$/tests/acceptance/Categories/CategoriesCest.php" />
         <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Movies/stars.html.twig" />
+        <option value="$PROJECT_DIR$/tests/acceptance/Categories/CategoriesCest.php" />
+        <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Controller/TagsController.php" />
+        <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Form/TagsType.php" />
+        <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Tags/index.html.twig" />
+        <option value="$PROJECT_DIR$/tests/acceptance/Tags/TagsCest.php" />
       </list>
     </option>
   </component>
-  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true">
+    <include_path>
+      <path value="$PROJECT_DIR$/vendor/behat/mink-browserkit-driver" />
+      <path value="$PROJECT_DIR$/vendor/behat/mink" />
+      <path value="$PROJECT_DIR$/vendor/facebook/webdriver" />
+      <path value="$PROJECT_DIR$/vendor/behat/mink-selenium2-driver" />
+      <path value="$PROJECT_DIR$/vendor/behat/mink-goutte-driver" />
+      <path value="$PROJECT_DIR$/vendor/jdorn/sql-formatter" />
+      <path value="$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle" />
+      <path value="$PROJECT_DIR$/vendor/tecnick.com/tcpdf" />
+      <path value="$PROJECT_DIR$/vendor/friendsofsymfony/elastica-bundle" />
+      <path value="$PROJECT_DIR$/vendor/nelmio/api-doc-bundle" />
+      <path value="$PROJECT_DIR$/vendor/friendsofsymfony/rest-bundle" />
+      <path value="$PROJECT_DIR$/vendor/fabpot/goutte" />
+      <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/sensio/generator-bundle" />
+      <path value="$PROJECT_DIR$/vendor/sensio/distribution-bundle" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/data-fixtures" />
+      <path value="$PROJECT_DIR$/vendor/knplabs/knp-paginator-bundle" />
+      <path value="$PROJECT_DIR$/vendor/sensio/framework-extra-bundle" />
+      <path value="$PROJECT_DIR$/vendor/knplabs/knp-components" />
+      <path value="$PROJECT_DIR$/vendor/stof/doctrine-extensions-bundle" />
+      <path value="$PROJECT_DIR$/vendor/guzzle/guzzle" />
+      <path value="$PROJECT_DIR$/vendor/jms/serializer" />
+      <path value="$PROJECT_DIR$/vendor/gedmo/doctrine-extensions" />
+      <path value="$PROJECT_DIR$/vendor/jms/serializer-bundle" />
+      <path value="$PROJECT_DIR$/vendor/jms/parser-lib" />
+      <path value="$PROJECT_DIR$/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/vendor/jms/metadata" />
+      <path value="$PROJECT_DIR$/vendor/willdurand/jsonp-callback-validator" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle" />
+      <path value="$PROJECT_DIR$/vendor/willdurand/negotiation" />
+      <path value="$PROJECT_DIR$/vendor/whiteoctober/tcpdf-bundle" />
+      <path value="$PROJECT_DIR$/vendor/ruflin/elastica" />
+      <path value="$PROJECT_DIR$/vendor/misd/guzzle-bundle" />
+      <path value="$PROJECT_DIR$/vendor/twig/extensions" />
+      <path value="$PROJECT_DIR$/vendor/twig/twig" />
+      <path value="$PROJECT_DIR$/vendor/phpoption/phpoption" />
+      <path value="$PROJECT_DIR$/vendor/codeception/codeception" />
+      <path value="$PROJECT_DIR$/vendor/michelf/php-markdown" />
+      <path value="$PROJECT_DIR$/vendor/symfony/symfony" />
+      <path value="$PROJECT_DIR$/vendor/symfony/monolog-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/swiftmailer-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/assetic-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/icu" />
+      <path value="$PROJECT_DIR$/vendor/instaclick/php-webdriver" />
+      <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/vendor/incenteev/composer-parameter-handler" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/cache" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/common" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-timer" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/collections" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-text-template" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/dbal" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/phpunit" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-bundle" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-code-coverage" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/annotations" />
+      <path value="$PROJECT_DIR$/vendor/phpcollection/phpcollection" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/phpunit-mock-objects" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-file-iterator" />
+      <path value="$PROJECT_DIR$/vendor/kriswallsmith/assetic" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-token-stream" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/inflector" />
+      <path value="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/orm" />
+    </include_path>
+  </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="87" />
-    <option name="y" value="46" />
+    <option name="x" value="49" />
+    <option name="y" value="52" />
     <option name="width" value="1353" />
     <option name="height" value="854" />
   </component>
@@ -213,7 +291,47 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
+              <option name="myItemId" value="tests" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="isap" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cinhetic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tests" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="acceptance" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="isap" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cinhetic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tests" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="acceptance" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Tags" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -313,41 +431,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Slots" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="isap" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cinhetic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Cinhetic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PublicBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Movies" />
+              <option name="myItemId" value="Tags" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -400,6 +484,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Form" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="isap" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cinhetic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Cinhetic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PublicBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Entity" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -545,11 +655,11 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="87" y="46" width="1353" height="854" extended-state="0" />
+    <frame x="49" y="52" width="1353" height="854" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.36861584" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28645447" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -586,51 +696,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Movies/search.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="89" selection-start="219" selection-end="219" vertical-scroll-proportion="-4.6153846" vertical-offset="0" max-vertical-offset="360" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Slots/search.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="157" selection-start="394" selection-end="394" vertical-scroll-proportion="-3.8461537" vertical-offset="0" max-vertical-offset="360" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Movies/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="38" selection-start="849" selection-end="857" vertical-scroll-proportion="0.57615894" vertical-offset="65" max-vertical-offset="1060" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Movies/_list.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="89" column="18" selection-start="4939" selection-end="5081" vertical-scroll-proportion="0.6495957" vertical-offset="1298" max-vertical-offset="2040" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Movies/current.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="42" selection-start="173" selection-end="173" vertical-scroll-proportion="-2.3076923" vertical-offset="0" max-vertical-offset="380" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Entity/Medias.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="165" column="0" selection-start="2675" selection-end="2675" vertical-scroll-proportion="-96.92308" vertical-offset="780" max-vertical-offset="4080" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Entity/Movies.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="164" column="41" selection-start="3460" selection-end="3460" vertical-scroll-proportion="-10.769231" vertical-offset="3000" max-vertical-offset="18420" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Movies/caroussel.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="775" selection-end="775" vertical-scroll-proportion="-13.076923" vertical-offset="0" max-vertical-offset="780" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Repository/MoviesRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="86" column="33" selection-start="2542" selection-end="2548" vertical-scroll-proportion="-26.23077" vertical-offset="1038" max-vertical-offset="2500" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Controller/MainController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="52" column="5" selection-start="1600" selection-end="1600" vertical-scroll-proportion="-16.923077" vertical-offset="500" max-vertical-offset="1600" />
@@ -729,11 +794,6 @@
         <state line="45" column="0" selection-start="1191" selection-end="1191" vertical-scroll-proportion="0.6180082" vertical-offset="447" max-vertical-offset="1180" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/layout.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="86" column="0" selection-start="4709" selection-end="4709" vertical-scroll-proportion="0.41666666" vertical-offset="1420" max-vertical-offset="2140" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/composer.json">
       <provider selected="true" editor-type-id="text-editor">
         <state line="35" column="54" selection-start="1403" selection-end="1403" vertical-scroll-proportion="0.68874174" vertical-offset="180" max-vertical-offset="1380" />
@@ -821,6 +881,18 @@
         <state line="39" column="0" selection-start="696" selection-end="718" vertical-scroll-proportion="0.0" vertical-offset="540" max-vertical-offset="1860" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Movies/stars.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="55" selection-start="79" selection-end="79" vertical-scroll-proportion="0.02894356" vertical-offset="0" max-vertical-offset="691" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/acceptance/Categories/CategoriesCest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="17" selection-start="179" selection-end="179" vertical-scroll-proportion="0.48295453" vertical-offset="0" max-vertical-offset="2300">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
         <state line="29" column="26" selection-start="1222" selection-end="1222" vertical-scroll-proportion="0.0" vertical-offset="334" max-vertical-offset="4020">
@@ -831,13 +903,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Controller/CategoriesController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="146" column="29" selection-start="4235" selection-end="4235" vertical-scroll-proportion="0.0" vertical-offset="2920" max-vertical-offset="4620">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Form/CategoriesType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="29" column="0" selection-start="859" selection-end="859" vertical-scroll-proportion="0.0" vertical-offset="580" max-vertical-offset="920">
@@ -845,16 +910,79 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/acceptance/Categories/CategoriesCest.php">
+    <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Controller/CategoriesController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="94" column="89" selection-start="2297" selection-end="2297" vertical-scroll-proportion="-36.307693" vertical-offset="936" max-vertical-offset="2120">
+        <state line="146" column="29" selection-start="4235" selection-end="4235" vertical-scroll-proportion="0.0" vertical-offset="2920" max-vertical-offset="4620">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Movies/stars.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Movies/caroussel.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="55" selection-start="79" selection-end="79" vertical-scroll-proportion="0.02894356" vertical-offset="0" max-vertical-offset="691">
+        <state line="17" column="0" selection-start="775" selection-end="775" vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="780">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Movies/current.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="0" selection-start="465" selection-end="465" vertical-scroll-proportion="0.0" vertical-offset="220" max-vertical-offset="380">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/layout.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="86" column="0" selection-start="4709" selection-end="4709" vertical-scroll-proportion="-45.692307" vertical-offset="532" max-vertical-offset="2140">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Controller/TagsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="147" column="49" selection-start="4080" selection-end="4080" vertical-scroll-proportion="-6.4339623" vertical-offset="2519" max-vertical-offset="4540">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Form/TagsType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="16" selection-start="940" selection-end="940" vertical-scroll-proportion="0.7443182" vertical-offset="176" max-vertical-offset="880">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Tags/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="32" selection-start="271" selection-end="271" vertical-scroll-proportion="-6.1538463" vertical-offset="0" max-vertical-offset="900">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/acceptance/Tags/TagsCest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="76" column="39" selection-start="1700" selection-end="1710" vertical-scroll-proportion="-17.076923" vertical-offset="1076" max-vertical-offset="1840">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Entity/Tags.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="7" selection-start="552" selection-end="699" vertical-scroll-proportion="-9.230769" vertical-offset="360" max-vertical-offset="2540">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Entity/Movies.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="57" column="0" selection-start="1093" selection-end="1274" vertical-scroll-proportion="-6.923077" vertical-offset="960" max-vertical-offset="18420">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Entity/Categories.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="0" selection-start="851" selection-end="958" vertical-scroll-proportion="0.5681818" vertical-offset="480" max-vertical-offset="3700">
           <folding />
         </state>
       </provider>

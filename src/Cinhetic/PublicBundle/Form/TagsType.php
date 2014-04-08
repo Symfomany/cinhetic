@@ -35,6 +35,6 @@ class TagsType extends AbstractType
      */
     public function getName()
     {
-        return 'Cinhetic_publicbundle_tags';
+        return '';
     }
 }

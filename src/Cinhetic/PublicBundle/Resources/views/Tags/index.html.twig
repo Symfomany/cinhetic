@@ -18,7 +18,7 @@
         {% for entity in entities %}
             <tr>
                 <td><a href="{{ path('tags_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>><i class="glyphicon glyphicon-search"></i> {{ entity.word }}</td>
+                <td><i class="glyphicon glyphicon-tag"></i> {{ entity.word }}</td>
                 <td>
 
                         <a href="{{ path('tags_show', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-search"></i> Voir</a>

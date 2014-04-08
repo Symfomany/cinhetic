@@ -1,13 +1,22 @@
 <?php
 use \WebGuy;
 
+/**
+ * Class CategoriesCest
+ */
 class CategoriesCest
 {
 
+    /**
+     * Before Hook
+     */
     public function _before()
     {
     }
 
+    /**
+     * After Hook
+     */
     public function _after()
     {
     }
