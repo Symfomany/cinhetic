@@ -65,6 +65,7 @@ class CategoriesController extends Controller
         $form = $this->createForm(new CategoriesType(), $entity, array(
             'action' => $this->generateUrl('categories_create'),
             'method' => 'POST',
+            'attr' => array('id' => "handlecategorie")
         ));
 
         $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning"), 'label' => 'Créer cette catégorie'));
@@ -143,7 +144,8 @@ class CategoriesController extends Controller
     {
         $form = $this->createForm(new CategoriesType(), $entity, array(
             'action' => $this->generateUrl('categories_update', array('id' => $entity->getId())),
-            'method' => 'PUT',
+            'method' => 'POST',
+            'attr' => array('id' => "handlecategorie")
         ));
 
         $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning"), 'label' => 'Modifier cette catégorie'));

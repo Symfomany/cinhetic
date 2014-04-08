@@ -110,21 +110,17 @@
 
  <body>
  <div class="layout">
- <h1>Codeception Results <small><span style="color: green">OK</span> (6.4s)</small></h1>
+ <h1>Codeception Results <small><span style="color: green">OK</span> (5.1s)</small></h1>
 
 
 	 <table border="0" style="width: 100%;">
 		<tr>
  <td>
-     <h3>Functional Tests</h3>
- </td>
-</tr><tr>
- <td>
      <h3>Acceptance Tests</h3>
  </td>
 </tr>   <tr>
     <td>
-     <p class="scenarioSuccess" onclick="showHide('1', this)">[+] movies crud (AuthentificateCest.onHome) (0.18s)</p>
+     <p class="scenarioSuccess" onclick="showHide('1', this)">[+] success to authentificate (CategoriesCest.onHome) (2.01s)</p>
     </td>
    </tr>
    <tr>
@@ -142,6 +138,22 @@
        <td class="stepName">I see <span style="color: #732E81;">"Se souvenir de moi"</span></td>
       </tr>
 
+      <tr>
+       <td class="stepName">I am on page <span style="color: #732E81;">"/login"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I see <span style="color: #732E81;">"Authentification"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I submit form <span style="color: #732E81;">"form",{"_username":"julien","_password":"djscrave"}</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I see <span style="color: #732E81;">"Films à l'affiche"</span></td>
+      </tr>
+
 
      </table>
     </td>
@@ -149,30 +161,26 @@
 
    <tr>
     <td>
-     <p class="scenarioSuccess" onclick="showHide('2', this)">[+] fail to authentificate (AuthentificateCest.onFailureAuthentificate) (0.12s)</p>
+     <p class="scenarioSuccess" onclick="showHide('2', this)">[+] categories list (CategoriesCest.onCategoriesList) (0.52s)</p>
     </td>
    </tr>
    <tr>
     <td>
      <table border="0" width="100%" class="scenarioSuccess scenarioStepsTable" id="stepContainer2">
       <tr>
-       <td class="stepName">I am on page <span style="color: #732E81;">"/login"</span></td>
+       <td class="stepName">I am on page <span style="color: #732E81;">"/administration/categories/"</span></td>
       </tr>
 
       <tr>
-       <td class="stepName">I see <span style="color: #732E81;">"Authentification"</span></td>
+       <td class="stepName">I see <span style="color: #732E81;">"Liste des categories"</span></td>
       </tr>
 
       <tr>
-       <td class="stepName">I submit form <span style="color: #732E81;">"form",{"_username":"test@yahoo.fr","_password":"ok"}</span></td>
+       <td class="stepName">I click <span style="color: #732E81;">"Creation de la catégorie"</span></td>
       </tr>
 
       <tr>
-       <td class="stepName">I grab text from <span style="color: #732E81;">".alert"</span></td>
-      </tr>
-
-      <tr>
-       <td class="stepName">I <strong>I expect ?</strong></td>
+       <td class="stepName">I see <span style="color: #732E81;">"Création de la Categories"</span></td>
       </tr>
 
 
@@ -182,26 +190,18 @@
 
    <tr>
     <td>
-     <p class="scenarioSuccess" onclick="showHide('3', this)">[+] success to authentificate (AuthentificateCest.onSuccessAuthentificate) (0.33s)</p>
+     <p class="scenarioSuccess" onclick="showHide('3', this)">[+] on categories create (CategoriesCest.onCategoriesCreate) (0.79s)</p>
     </td>
    </tr>
    <tr>
     <td>
      <table border="0" width="100%" class="scenarioSuccess scenarioStepsTable" id="stepContainer3">
       <tr>
-       <td class="stepName">I am on page <span style="color: #732E81;">"/login"</span></td>
+       <td class="stepName">I submit form <span style="color: #732E81;">"form#handlecategorie",{"title":"Ici","description":"Blabla..."}</span></td>
       </tr>
 
       <tr>
-       <td class="stepName">I see <span style="color: #732E81;">"Authentification"</span></td>
-      </tr>
-
-      <tr>
-       <td class="stepName">I submit form <span style="color: #732E81;">"form",{"_username":"julien","_password":"djscrave"}</span></td>
-      </tr>
-
-      <tr>
-       <td class="stepName">I see <span style="color: #732E81;">"Films à l'affiche"</span></td>
+       <td class="stepName">I see <span style="color: #732E81;">"Voir la catégorie"</span></td>
       </tr>
 
 
@@ -211,38 +211,30 @@
 
    <tr>
     <td>
-     <p class="scenarioSuccess" onclick="showHide('4', this)">[+] success to authentificate (MoviesCest.onHome) (0.35s)</p>
+     <p class="scenarioSuccess" onclick="showHide('4', this)">[+] on categories edit (CategoriesCest.onCategoriesEdit) (0.79s)</p>
     </td>
    </tr>
    <tr>
     <td>
      <table border="0" width="100%" class="scenarioSuccess scenarioStepsTable" id="stepContainer4">
       <tr>
-       <td class="stepName">I am on page <span style="color: #732E81;">"/administration"</span></td>
+       <td class="stepName">I am on page <span style="color: #732E81;">"/administration/categories/"</span></td>
       </tr>
 
       <tr>
-       <td class="stepName">I see <span style="color: #732E81;">"Authentification"</span></td>
+       <td class="stepName">I see <span style="color: #732E81;">"Aventure"</span></td>
       </tr>
 
       <tr>
-       <td class="stepName">I see <span style="color: #732E81;">"Se souvenir de moi"</span></td>
+       <td class="stepName">I click <span style="color: #732E81;">"table > tbody > tr:nth-child(9) > td:nth-child(5) > a:nth-child(2)"</span></td>
       </tr>
 
       <tr>
-       <td class="stepName">I am on page <span style="color: #732E81;">"/login"</span></td>
+       <td class="stepName">I see current url equals <span style="color: #732E81;">"/administration/categories/9/edit"</span></td>
       </tr>
 
       <tr>
-       <td class="stepName">I see <span style="color: #732E81;">"Authentification"</span></td>
-      </tr>
-
-      <tr>
-       <td class="stepName">I submit form <span style="color: #732E81;">"form",{"_username":"julien","_password":"djscrave"}</span></td>
-      </tr>
-
-      <tr>
-       <td class="stepName">I see <span style="color: #732E81;">"Films à l'affiche"</span></td>
+       <td class="stepName">I submit form <span style="color: #732E81;">"form#handlecategorie",{"title":"Aventures et Actions","description":"Film d'aventures et d'actions"}</span></td>
       </tr>
 
 
@@ -252,26 +244,26 @@
 
    <tr>
     <td>
-     <p class="scenarioSuccess" onclick="showHide('5', this)">[+] movies list (MoviesCest.onMoviesList) (0.68s)</p>
+     <p class="scenarioSuccess" onclick="showHide('5', this)">[+] on categories delete (CategoriesCest.onCategoriesDelete) (0.97s)</p>
     </td>
    </tr>
    <tr>
     <td>
      <table border="0" width="100%" class="scenarioSuccess scenarioStepsTable" id="stepContainer5">
       <tr>
-       <td class="stepName">I am on page <span style="color: #732E81;">"/administration/movies/"</span></td>
+       <td class="stepName">I am on page <span style="color: #732E81;">"/administration/categories/"</span></td>
       </tr>
 
       <tr>
-       <td class="stepName">I see <span style="color: #732E81;">"Liste des Films"</span></td>
+       <td class="stepName">I see <span style="color: #732E81;">"Aventure"</span></td>
       </tr>
 
       <tr>
-       <td class="stepName">I click <span style="color: #732E81;">"Création de film"</span></td>
+       <td class="stepName">I click <span style="color: #732E81;">"table > tbody > tr:nth-child(11) > td:nth-child(5) > a:nth-child(2)"</span></td>
       </tr>
 
       <tr>
-       <td class="stepName">I see <span style="color: #732E81;">"Création de film"</span></td>
+       <td class="stepName">I click <span style="color: #732E81;">"Delete"</span></td>
       </tr>
 
 
@@ -279,36 +271,7 @@
     </td>
    </tr>
 
-   <tr>
-    <td>
-     <p class="scenarioSuccess" onclick="showHide('6', this)">[+] movies creation (MoviesCest.onMoviesCreate) (4.69s)</p>
-    </td>
-   </tr>
-   <tr>
-    <td>
-     <table border="0" width="100%" class="scenarioSuccess scenarioStepsTable" id="stepContainer6">
-      <tr>
-       <td class="stepName">I see <span style="color: #732E81;">"Création de film"</span></td>
-      </tr>
 
-      <tr>
-       <td class="stepName">I submit form <span style="color: #732E81;">"form#handlemovie",{"title":"okayyyy","typeFilm":"Moyen-Metrage","synopsis":"laaaa","trailer":"<iframe width="560" height="315" src="//www.youtube.com/embed/w8GG_Mp27gk" frameborder="0" allowfullscreen></iframe>","description":"looooooool","languages":"fr","bo":"VOST","category":1,"actors":[1,2],"cinemas":[3,4,5],"directors":[1],"moviesRelated":[2],"tags":[2,4,6],"distributeur":"Paramont","annee":2014,"budget":152365477,"duree":1.52,"notePresse":3.5,"visible":true,"cover":true}</span></td>
-      </tr>
-
-      <tr>
-       <td class="stepName">I see <span style="color: #732E81;">"Le film"</span></td>
-      </tr>
-
-
-     </table>
-    </td>
-   </tr>
-
-<tr>
- <td>
-     <h3>Unit Tests</h3>
- </td>
-</tr>
    <tr>
     <td>
 	    <h2>Summary</h2>
@@ -316,7 +279,7 @@
       <table border="0">
        <tr>
         <td width="250" class="scenarioSuccess">Successful scenarios:</td>
-        <td class="scenarioSuccessValue"><strong>6</strong></td>
+        <td class="scenarioSuccessValue"><strong>5</strong></td>
        </tr>
        <tr>
         <td class="scenarioFailed">Failed scenarios:</td>

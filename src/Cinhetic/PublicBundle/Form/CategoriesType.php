@@ -26,7 +26,7 @@ class CategoriesType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Cinhetic\PublicBundle\Entity\Categories'
+            'data_class' => 'Cinhetic\PublicBundle\Entity\Categories',
         ));
     }
 
@@ -35,6 +35,6 @@ class CategoriesType extends AbstractType
      */
     public function getName()
     {
-        return 'Cinhetic_publicbundle_categories';
+        return '';
     }
 }

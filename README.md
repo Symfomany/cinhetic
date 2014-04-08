@@ -27,7 +27,7 @@ following options.
 
 ### Use Composer (*recommended*)
 
-As Symfony uses [Composer][2] to manage its dependencies, the recommended way
+As Symfony uses [Composer] to manage its dependencies, the recommended way
 to create a new project is to use it.
 
 If you don't have Composer yet, download it following the instructions on

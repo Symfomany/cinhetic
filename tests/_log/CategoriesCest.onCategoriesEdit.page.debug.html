@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Cinhetic Solution"/>
+    <meta name="keywords" content="Cinhetic Solution"/>
+    <meta name="author" content="Cinhetic Solution">
+    <title>Cinhetic Solution</title>
+        
+
+    <link rel="stylesheet" type="text/css" href="http://bootswatch.com/darkly/bootstrap.min.css"/>
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/flick/jquery-ui.css" />
+            <link rel="stylesheet" type="text/css" media="screen" href="/css/e4bdb77_main_1.css"/>
+        <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.css" />
+    <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/jquery.colorbox/1.4.33/example1/colorbox.min.css"/>
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+
+   
+    <link rel="icon" type="image/x-icon" href="http://www.github.com/favicon.ico" />
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a href="/administration/" class="navbar-brand">Cinhetic</a>
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse" id="navbar-main">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a  href="/administration/"><i class="glyphicon glyphicon-home"></i> Home</a></li>
+                                        <li ><a  href=""><i class="glyphicon glyphicon-tasks"></i> Presse</a></li>
+                                        <li ><a  href=""><i class="glyphicon glyphicon-question-sign"></i> Faq</a></li>
+                    <li ><a  href=""><i class="glyphicon glyphicon-user"></i> Contact</a></li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                                            </li>
+
+                    <li>
+                        <a href="/administration/logout" id="configuration"><i class="glyphicon glyphicon-off"></i> Deconnexion</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <br /> <br /><br /><br />
+
+                        <div class="col-sm-9 main">
+                            <ul class="nav nav-pills">
+                                <li ><a href="/administration/actors/">Voir les acteurs</a></li>
+                                <li ><a href="/administration/movies/">Voir les films</a></li>
+                                <li ><a href="/administration/categories/">Voir les catégories</a></li>
+                                <li ><a href="/administration/cinema/">Voir les cinémas</a></li>
+                                <li ><a href="/administration/sessions/">Voir les séances</a></li>
+                                <li ><a href="/administration/tags/">Voir les tags</a></li>
+                                <li ><a href="/administration/comments/">Voir les commentaires</a></li>
+                            </ul>
+                            <br /><br />
+                            
+    <div id="flashdatas">
+                    </div>
+
+                                <nav class="navbar navbar-inverse" role="navigation">
+        <p></p>
+        <form action="/administration/search"  role="search">
+            <div class="form-group has-success has-feedback col-sm-10">
+                <input id="search_input" data-url="/administration/search?ajax=true" name="search" value="" type="search" class="form-control"  placeholder="Rechercher un film, une catégorie, un cinéma...">
+            </div>
+            <button id="sendsearch" type="submit" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-search"></i></button>
+        </form>
+    </nav>
+
+
+
+                                <h1> <i class="glyphicon glyphicon-pencil"></i> Editer la catégorie Aventures Et Actions</h1>
+
+    <form name="" method="post" action="/administration/categories/9/update" id="handlecategorie"><input type="hidden" name="_method" value="PUT" /><div     id="handlecategorie"><div class="alert alert-dismissable alert-danger"><button type="button" class="close" data-dismiss="alert">×</button><strong><i class="glyphicon glyphicon-warning-sign"></i> Attention! </strong>
+                                    Ce formulaire ne doit pas contenir des champs supplémentaires.
+                            </div><div><label for="title">Titre</label><input  type="text"     id="title" name="title" maxlength="250" value="Aventures et Actions"  class="form-control" name="field"  /></div><div><label for="description">Description</label><textarea      id="description" name="description"        class="ckeditor" >Film d&#039;aventures et d&#039;actions</textarea></div><div><button type="submit" id="submit" name="submit" class="btn btn-warning">Modifier cette catégorie</button></div><input  type="hidden"     id="_token" name="_token" value="9YhxYUuROEv8YHamau1L7TVF1e4rhnHy0IjFJD0sFIU"  class="form-control" name="field"  /></div></form>
+
+        <ul class="record_actions">
+    <li>
+        <a href="/administration/categories/">
+            Back to the list
+        </a>
+    </li>
+    <li><form name="form" method="post" action="/administration/categories/9/delete"><input type="hidden" name="_method" value="DELETE" /><div     id="form"><div><button type="submit" id="form_submit" name="form[submit]">Delete</button></div><input  type="hidden"     id="form__token" name="form[_token]" value="Qu_tpnAlAvUDy1DZS1di3OcjrrMJf37Uvb75-_uc6yE"  class="form-control" name="field"  /></div></form></li>
+</ul>
+                        </div>
+                    <div id="overlay" class="overlay hide">
+                        <img src="http://www.cinhetic.ju/images/loading.gif" />
+                    </div>
+                </div>
+            </div>
+
+        
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/hinclude/0.9.5/hinclude.min.js"></script>
+    <script type="text/javascript" src="http://cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.colorbox/1.4.33/jquery.colorbox-min.js"></script>
+        
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.0.1/ckeditor.js"></script>
+
+    <script type="text/javascript">
+        $( document ).ready(function() {
+            $('a.gallery').colorbox({rel:'gal'});
+        });
+    </script>
+        <script type="text/javascript" src="/js/a7bf017_main_1.js"></script>
+    
+</body>
+</html>
