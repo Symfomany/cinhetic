@@ -1,5 +1,5 @@
 {% block starsmovies %}
-    <h1><i class="glyphicon glyphicon-heart"></i> Films à l'affiche</h1>
+    <h1><i class="glyphicon glyphicon-heart"></i> Films les plus attendus</h1>
     {% for entity in entities %}
         <div>{{ entity.trailer|raw }}</div>
         <h3>{{ entity.title }}</h3>
