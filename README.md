@@ -157,35 +157,35 @@ Optional Requirements
 
 2) Features
 ----------------------------------
-* Search by Cities in sessions of cinemas
+* Search by Cities Cloud
 * Best Movies by rating
 * Add pagination for results
-*
 * Add press comments in Movies
 * Homepage with custom template
-* Movies in weeks
-* Add Authentification for User Connect with FOS
-* Print my Billet with QRCode & TCPDF
-* Page Category listing all movies related
-* Page Keywords listing all movies related
-* Page Films Favorites by User connected
-* View all comments by Movies
+* Movies in week
+* Add Authentification for user connect with FOS
+* Print my ticket with QRCode & TCPDF
+* Page Category Gallery for listing all movies related
+* Page Keywords List for listing all movies related
+* Page films favorites by user connected
+* Page my Account with modify my informations
+* View all comments by movies
 * Search in ajax & instant search
 * Add slideshow to presentation in homepage
 * Add in session favorites and billeterie
-* Add Player for video in medias
+* Add player for video in medias
 * Add upload in Medias in ajax with uploadify
 * Add Node Layers for comments
-* Add scoring with JRate
+* Add scoring with jrate
 * Movies more scored
 * Categories in cloud tags
-* Tags in clud tags
+* Tags in cloud tags
 * Trailers in slideshow
-* Handle Distributions from Movies
-* Handle Medias for Movies
-* Search Engin in Elastic Search
-* Page Film Unit
-* Comments by Movies
+* Handle distributions from movies
+* Handle Medias for movies
+* Search engine in Elastic Search
+* Page film with details
+* Comments by movies with forms
 * Number Movies, Categories, Tags...
 
 
