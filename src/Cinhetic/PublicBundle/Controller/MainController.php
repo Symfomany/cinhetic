@@ -40,6 +40,10 @@ class MainController extends Controller
         $cities = $em->getRepository('CinheticPublicBundle:Cinema')->getCitiesOfMovies();
         //je récupere les prochaines séances
         $seances = $em->getRepository('CinheticPublicBundle:Sessions')->getNextSessions();
+        //je récupere les catégories
+        $categories = $em->getRepository('CinheticPublicBundle:Categories')->findAll();
+        //je récupere les Tags
+        $tags = $em->getRepository('CinheticPublicBundle:Tags')->findAll();
 
         $pagination = $paginator->paginate(
             $movies,
@@ -52,6 +56,8 @@ class MainController extends Controller
             'movies' => $pagination,
             'cities' => $cities,
             'seances' => $seances,
+            'categories' => $categories,
+            'tags' => $tags,
         ));
 
     }

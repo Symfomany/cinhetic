@@ -168,11 +168,7 @@ Optional Requirements
 * Page movies favorites by user connected
 * Page my Account with modify my informations
 * View all comments by movies
-* Search in ajax & instant search
-* Add slideshow to presentation in homepage
-* Add in session favorites and billeterie
-* Add player for video in medias
-* Add upload in Medias in ajax with uploadify
+* Add in session favorites
 * Add Node Layers for comments
 * Add scoring with jrate
 * Movies more scored
