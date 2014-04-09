@@ -30,7 +30,7 @@
       <file leaf-file-name="CommentsController.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Controller/CommentsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="100" column="114" selection-start="2841" selection-end="2841" vertical-scroll-proportion="-6.5" vertical-offset="1831" max-vertical-offset="5900">
+            <state line="130" column="52" selection-start="3936" selection-end="3971" vertical-scroll-proportion="-18.038462" vertical-offset="2131" max-vertical-offset="5900">
               <folding>
                 <element signature="e#52#101#0" expanded="true" />
               </folding>
@@ -41,43 +41,25 @@
       <file leaf-file-name="layout.html.twig" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/layout.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="48" selection-start="2951" selection-end="3043" vertical-scroll-proportion="-5.3846154" vertical-offset="840" max-vertical-offset="2160">
+            <state line="58" column="21" selection-start="3590" selection-end="3590" vertical-scroll-proportion="-12.307693" vertical-offset="840" max-vertical-offset="2160">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainController.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Controller/MainController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="82" selection-start="937" selection-end="937" vertical-scroll-proportion="-11.538462" vertical-offset="280" max-vertical-offset="1840">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_list.html.twig" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="_list.html.twig" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Movies/_list.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="67" selection-start="1106" selection-end="1106" vertical-scroll-proportion="-10.0" vertical-offset="100" max-vertical-offset="2200">
+            <state line="21" column="59" selection-start="1306" selection-end="1306" vertical-scroll-proportion="0.46309695" vertical-offset="100" max-vertical-offset="2200">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="commentMovie.html.twig" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Comments/commentMovie.html.twig">
+      <file leaf-file-name="CommentsCest.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/acceptance/Comments/CommentsCest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="46" selection-start="72" selection-end="72" vertical-scroll-proportion="0.058651026" vertical-offset="0" max-vertical-offset="682">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Comments.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Entity/Comments.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="172" column="66" selection-start="2998" selection-end="3035" vertical-scroll-proportion="-4.245283" vertical-offset="3215" max-vertical-offset="4260">
+            <state line="40" column="6" selection-start="756" selection-end="756" vertical-scroll-proportion="-10.153846" vertical-offset="536" max-vertical-offset="1260">
               <folding />
             </state>
           </provider>
@@ -86,7 +68,7 @@
       <file leaf-file-name="CommentsMovieType.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Form/CommentsMovieType.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="0" selection-start="1020" selection-end="1020" vertical-scroll-proportion="-22.73077" vertical-offset="9" max-vertical-offset="940">
+            <state line="21" column="38" selection-start="705" selection-end="705" vertical-scroll-proportion="-14.269231" vertical-offset="9" max-vertical-offset="940">
               <folding />
             </state>
           </provider>
@@ -102,8 +84,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/DependencyInjection/Configuration.php" />
-        <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/DependencyInjection/IsapPublicExtension.php" />
         <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/DataFixtures/DirectorsRepository.php" />
         <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Repository/ActorsRepository.php" />
         <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/public/js/io.js" />
@@ -147,12 +127,14 @@
         <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/layout_disconnect.html.twig" />
         <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Controller/MoviesController.php" />
         <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Entity/Comments.php" />
-        <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Form/CommentsMovieType.php" />
         <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Controller/MainController.php" />
         <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Controller/CommentsController.php" />
         <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Comments/commentsMovie.html.twig" />
-        <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Movies/_list.html.twig" />
         <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Comments/commentMovie.html.twig" />
+        <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Form/CommentsMovieType.php" />
+        <option value="$PROJECT_DIR$/tests/acceptance/Comments/TagsCest.php" />
+        <option value="$PROJECT_DIR$/tests/acceptance/Comments/CommentsCest.php" />
+        <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Movies/_list.html.twig" />
       </list>
     </option>
   </component>
@@ -356,157 +338,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="isap" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cinhetic" />
+              <option name="myItemId" value="tests" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Cinhetic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PublicBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="isap" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cinhetic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Cinhetic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PublicBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="isap" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cinhetic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Cinhetic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PublicBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Movies" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="isap" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cinhetic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Cinhetic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PublicBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="isap" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cinhetic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Cinhetic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PublicBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
+              <option name="myItemId" value="acceptance" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -527,16 +363,26 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="isap" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cinhetic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Cinhetic" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="PublicBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -562,89 +408,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="isap" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cinhetic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Cinhetic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PublicBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Entity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="isap" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cinhetic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Cinhetic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PublicBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DataFixtures" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="isap" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cinhetic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Cinhetic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PublicBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Controller" />
+              <option name="myItemId" value="Form" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -749,11 +513,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tests/acceptance" />
       <recent name="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Comments" />
       <recent name="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Main" />
       <recent name="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Form" />
       <recent name="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Slots" />
-      <recent name="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Movies" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Slots" />
@@ -1094,23 +858,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Form/CommentsMovieType.php">
+    <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Comments/commentMovie.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="0" selection-start="1020" selection-end="1020" vertical-scroll-proportion="-22.73077" vertical-offset="9" max-vertical-offset="940">
+        <state line="2" column="46" selection-start="72" selection-end="72" vertical-scroll-proportion="0.058651026" vertical-offset="0" max-vertical-offset="300">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Controller/MainController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="82" selection-start="937" selection-end="937" vertical-scroll-proportion="-11.538462" vertical-offset="280" max-vertical-offset="1840">
+        <state line="34" column="82" selection-start="937" selection-end="937" vertical-scroll-proportion="0.42613637" vertical-offset="280" max-vertical-offset="1840">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Form/CommentsMovieType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="38" selection-start="705" selection-end="705" vertical-scroll-proportion="-14.269231" vertical-offset="9" max-vertical-offset="940">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Controller/CommentsController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="100" column="114" selection-start="2841" selection-end="2841" vertical-scroll-proportion="-6.5" vertical-offset="1831" max-vertical-offset="5900">
+        <state line="130" column="52" selection-start="3936" selection-end="3971" vertical-scroll-proportion="-18.038462" vertical-offset="2131" max-vertical-offset="5900">
           <folding>
             <element signature="e#52#101#0" expanded="true" />
           </folding>
@@ -1119,21 +890,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/layout.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="48" selection-start="2951" selection-end="3043" vertical-scroll-proportion="-5.3846154" vertical-offset="840" max-vertical-offset="2160">
+        <state line="58" column="21" selection-start="3590" selection-end="3590" vertical-scroll-proportion="-12.307693" vertical-offset="840" max-vertical-offset="2160">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/acceptance/Comments/CommentsCest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="6" selection-start="756" selection-end="756" vertical-scroll-proportion="-10.153846" vertical-offset="536" max-vertical-offset="1260">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Movies/_list.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="67" selection-start="1106" selection-end="1106" vertical-scroll-proportion="-10.0" vertical-offset="100" max-vertical-offset="2200">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Comments/commentMovie.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="46" selection-start="72" selection-end="72" vertical-scroll-proportion="0.058651026" vertical-offset="0" max-vertical-offset="300">
+        <state line="21" column="59" selection-start="1306" selection-end="1306" vertical-scroll-proportion="0.46309695" vertical-offset="100" max-vertical-offset="2200">
           <folding />
         </state>
       </provider>

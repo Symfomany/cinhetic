@@ -19,7 +19,7 @@
                         <h2><i class="glyphicon glyphicon-comment"></i> Liste des commentaires</h2>
                         {% for entity in entity.comments %}
                             <div class="alert">
-                                    <p>Note: {{ entity.content }} /5 <span class="pull-right"> {{ entity.dateCreated|date('d/m/Y') }} à {{ entity.dateCreated|date('H:i') }}</span> </p>
+                                    <p>Note: {{ entity.note }} /5 <span class="pull-right"> {{ entity.dateCreated|date('d/m/Y') }} à {{ entity.dateCreated|date('H:i') }}</span> </p>
                                     <p><i>{{ entity.content }}</i></p>
                             </div>
                         {% endfor %}
