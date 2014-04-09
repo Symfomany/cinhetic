@@ -11,7 +11,7 @@
 
         <ul class="nav nav-pills">
         {% for entity in seances %}
-            <li>{{ entity.movies.title }} le  à {{ entity.cinema.title }} le {{ entity.dateSession|date('d/m/Y H:i') }}</li>
+            <li><a href="{{ path('movies_show', {'id' : entity.id}) }}"> {{ entity.movies.title }} le  à {{ entity.cinema.title }} le {{ entity.dateSession|date('d/m/Y H:i') }}</a></li>
         {% endfor %}
         </ul>
     </div>
@@ -20,7 +20,7 @@
 
         <ul class="nav nav-pills">
         {% for entity in cities %}
-            <li><a href="">{{ entity.ville }}</a></li>
+            <li><a href="{{ path('movies_show', {'id' : entity.id}) }}">{{ entity.ville }}</a></li>
         {% endfor %}
         </ul>
     </div>

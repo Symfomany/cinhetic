@@ -2,7 +2,7 @@
     <h1><i class="glyphicon glyphicon-heart"></i> Films les plus attendus</h1>
     {% for entity in entities %}
         <div>{{ entity.trailer|raw }}</div>
-        <h3>{{ entity.title }}</h3>
+        <h3><a href="{{ path('movies_show', {'id' : entity.id}) }}">{{ entity.title }}</a></h3>
         <p>{{ entity.synopsis|raw|truncate(250,true, "...") }}</p>
     {% else %}
         <div class="alert alert-warning">

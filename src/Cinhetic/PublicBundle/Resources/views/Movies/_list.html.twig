@@ -7,7 +7,7 @@
                     <div class="panel-body">
                         <h3>
                             <i class="glyphicon glyphicon-facetime-video"></i>
-                            <a href="{{ path('cinema_show', {'id' : entity.id}) }}">
+                            <a href="{{ path('movies_show', {'id' : entity.id}) }}">
                                 {{ entity.title|title }}
                             </a>
                             <span class="star" data-number="{{ entity.notePresse }}" data-score="{{ entity.notePresse }}"></span>
@@ -56,8 +56,8 @@
                         <h3>Les cinémas qui le diffuse:</h3>
                         {% for entity in entity.cinemas %}
                             <div class="alert alert-warning">
-                                {{ entity.title|title }} à
-                                {{ entity.ville|title }}
+                                <a href="{{ path('cinema_show', {'id' : entity.id}) }}">{{ entity.title|title }} à
+                                {{ entity.ville|title }}</a>
                             </div>
                         {% endfor %}
                         <h3>Media:</h3>
