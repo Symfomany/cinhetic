@@ -43,3 +43,6 @@ CinheticPublicBundle_comments:
     resource: "@CinheticPublicBundle/Resources/config/routing/comments.yml"
     prefix:   /comments
 
+CinheticPublicBundle_directors:
+        resource: "@CinheticPublicBundle/Resources/config/routing/directors.yml"
+        prefix:   /directors

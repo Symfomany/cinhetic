@@ -41,15 +41,15 @@
                         <h3>Les acteurs</h3>
                         {% for entity in entity.actors %}
                                 <div class="alert alert-warning">
-                                    {{ entity.firstname|title }}
-                                    {{ entity.lastname|title }}
+                                    <a href="{{ path('actors_show', {'id' : entity.id}) }}">{{ entity.firstname|title }}
+                                    {{ entity.lastname|title }}</a>
                                 </div>
                         {% endfor %}
                         <h3>Les réalisateurs</h3>
                         {% for entity in entity.directors %}
                                 <div class="alert alert-warning">
-                                    {{ entity.firstname|title }}
-                                    {{ entity.lastname|title }}
+                                    <a href="{{ path('directors_show', {'id' : entity.id}) }}">{{ entity.firstname|title }}
+                                    {{ entity.lastname|title }}</a>
                                 </div>
                         {% endfor %}
                         <h3>Les cinémas qui le diffuse:</h3>

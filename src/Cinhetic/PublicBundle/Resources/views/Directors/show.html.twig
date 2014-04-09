@@ -1,0 +1,56 @@
+{% extends 'CinheticPublicBundle::layout.html.twig' %}
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block content %}
+    <h1>Réalisateur {{ entity.firstname }} {{ entity.lastname }}</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Firstname</th>
+                <td>{{ entity.firstname }}</td>
+            </tr>
+            <tr>
+                <th>Lastname</th>
+                <td>{{ entity.lastname }}</td>
+            </tr>
+            <tr>
+                <th>Biography</th>
+                <td>{{ entity.biography|raw }}</td>
+            </tr>
+            <tr>
+                <th>Note</th>
+                <td>{{ entity.note }}</td>
+            </tr>
+            <tr>
+                <th>Datecreated</th>
+                <td>{{ entity.dateCreated|date('Y-m-d H:i:s') }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <hr />
+
+    <h1>Films réalisés</h1>
+    {% include 'CinheticPublicBundle:Movies:_list.html.twig' %}
+    <hr />
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('directors') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('directors_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

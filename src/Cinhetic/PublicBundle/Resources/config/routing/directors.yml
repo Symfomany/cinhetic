@@ -1,0 +1,30 @@
+directors:
+    pattern:  /
+    defaults: { _controller: "CinheticPublicBundle:Directors:index" }
+
+directors_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CinheticPublicBundle:Directors:show" }
+
+directors_new:
+    pattern:  /new
+    defaults: { _controller: "CinheticPublicBundle:Directors:new" }
+
+directors_create:
+    pattern:  /create
+    defaults: { _controller: "CinheticPublicBundle:Directors:create" }
+    requirements: { _method: post }
+
+directors_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CinheticPublicBundle:Directors:edit" }
+
+directors_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CinheticPublicBundle:Directors:update" }
+    requirements: { _method: post|put }
+
+directors_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CinheticPublicBundle:Directors:delete" }
+    requirements: { _method: post|delete }

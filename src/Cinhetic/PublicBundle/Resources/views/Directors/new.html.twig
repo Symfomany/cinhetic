@@ -1,0 +1,18 @@
+{% extends 'CinheticPublicBundle::layout.html.twig' %}
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block content %}
+    <h1>Création de réalisateur</h1>
+
+    {{ form(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('directors') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

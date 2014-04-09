@@ -1,0 +1,19 @@
+{% extends 'CinheticPublicBundle::layout.html.twig' %}
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block content %}
+    <h1>Editer le réalisateur  {{ entity.firstname }} {{ entity.lastname }}</h1>
+
+    {{ form(edit_form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('directors') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}
