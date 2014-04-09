@@ -10,6 +10,7 @@
                             <a href="{{ path('cinema_show', {'id' : entity.id}) }}">
                                 {{ entity.title|title }}
                             </a>
+                            <span class="star" data-number="{{ entity.notePresse }}" data-score="{{ entity.notePresse }}"></span>
                             <a href="{{ path('categories_show', {'id' : entity.category.id}) }}">
                                 - {{ entity.category.title|title }}
                             </a>

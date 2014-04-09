@@ -27,56 +27,52 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="README.md" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider editor-type-id="MarkdownPreviewEditor">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="173" column="16" selection-start="4317" selection-end="4317" vertical-scroll-proportion="-15.384615" vertical-offset="3060" max-vertical-offset="3900">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="layout.html.twig" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/layout.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="99" column="0" selection-start="5288" selection-end="5288" vertical-scroll-proportion="-19.653847" vertical-offset="1469" max-vertical-offset="2280">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="_list.html.twig" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Movies/_list.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="50" column="63" selection-start="3511" selection-end="3511" vertical-scroll-proportion="-18.461538" vertical-offset="520" max-vertical-offset="2260">
+            <state line="12" column="95" selection-start="599" selection-end="599" vertical-scroll-proportion="-7.6923075" vertical-offset="40" max-vertical-offset="2280">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="routing.yml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/config/routing.yml">
+      <file leaf-file-name="main.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/public/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="0" selection-start="1333" selection-end="1333" vertical-scroll-proportion="0.0" vertical-offset="290" max-vertical-offset="1080">
+            <state line="11" column="9" selection-start="284" selection-end="284" vertical-scroll-proportion="0.30683404" vertical-offset="0" max-vertical-offset="3140">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="show.html.twig" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Directors/show.html.twig">
+      <file leaf-file-name="jquery.raty.min.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/public/js/jquery.raty.min.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="22" selection-start="1033" selection-end="1033" vertical-scroll-proportion="0.44281524" vertical-offset="458" max-vertical-offset="1240">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DirectorsController.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Controller/DirectorsController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="108" column="17" selection-start="2834" selection-end="2834" vertical-scroll-proportion="-13.076923" vertical-offset="1740" max-vertical-offset="4700">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ActorsController.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Controller/ActorsController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="118" column="8" selection-start="3224" selection-end="3224" vertical-scroll-proportion="-20.76923" vertical-offset="1740" max-vertical-offset="4720">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="actors.yml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/config/routing/actors.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="11" selection-start="92" selection-end="103" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="720">
-              <folding />
+            <state line="454" column="33" selection-start="16331" selection-end="16331" vertical-scroll-proportion="0.0" vertical-offset="8523" max-vertical-offset="9380">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -91,9 +87,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/tests/acceptance/Movies/MoviesCest.php" />
-        <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Form/CategoriesType.php" />
-        <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Controller/CategoriesController.php" />
         <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Movies/stars.html.twig" />
         <option value="$PROJECT_DIR$/tests/acceptance/Categories/CategoriesCest.php" />
         <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Controller/TagsController.php" />
@@ -106,7 +99,6 @@
         <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Controller/LayoutController.php" />
         <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Slots/search.html.twig" />
         <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Slots/_search.html.twig" />
-        <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/layout.html.twig" />
         <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Form/SearchType.php" />
         <option value="$PROJECT_DIR$/composer.lock" />
         <option value="$PROJECT_DIR$/composer.json" />
@@ -134,7 +126,6 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Controller/MainController.php" />
         <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Main/index.html.twig" />
-        <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Movies/_list.html.twig" />
         <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/config/routing.yml" />
         <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Directors/index.html.twig" />
         <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Directors/new.html.twig" />
@@ -142,6 +133,11 @@
         <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Controller/ActorsController.php" />
         <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Controller/DirectorsController.php" />
         <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Directors/show.html.twig" />
+        <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/public/js/jquery.rating.pack.js" />
+        <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/layout.html.twig" />
+        <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/public/js/jquery.raty.min.js" />
+        <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Movies/_list.html.twig" />
+        <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/public/js/main.js" />
       </list>
     </option>
   </component>
@@ -278,6 +274,38 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="cinhetic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="isap" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cinhetic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="isap" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cinhetic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -501,6 +529,104 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="isap" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cinhetic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Cinhetic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PublicBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="isap" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cinhetic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Cinhetic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PublicBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="isap" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cinhetic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Cinhetic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PublicBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="config" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -580,11 +706,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/web/images" />
+      <recent name="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/public/images" />
+      <recent name="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/public/js" />
       <recent name="$PROJECT_DIR$/tests/acceptance" />
       <recent name="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Comments" />
-      <recent name="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Main" />
-      <recent name="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Form" />
-      <recent name="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Slots" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Slots" />
@@ -677,16 +803,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Form/SearchType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="48" selection-start="721" selection-end="721" vertical-scroll-proportion="-16.923077" vertical-offset="0" max-vertical-offset="880" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Entity/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="27" selection-start="113" selection-end="113" vertical-scroll-proportion="-3.8461537" vertical-offset="0" max-vertical-offset="7260" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/config/routing_dev.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="730" />
@@ -762,7 +878,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/layout_disconnect.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="0" selection-start="1559" selection-end="1559" vertical-scroll-proportion="-7.0" vertical-offset="598" max-vertical-offset="1920" />
+        <state line="39" column="0" selection-start="1559" selection-end="1559" vertical-scroll-proportion="-7.0" vertical-offset="598" max-vertical-offset="1920">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Controller/MoviesController.php">
@@ -783,13 +901,6 @@
     <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Controller/CommentsController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="130" column="52" selection-start="3936" selection-end="3971" vertical-scroll-proportion="0.0" vertical-offset="2131" max-vertical-offset="5900">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/layout.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="21" selection-start="3590" selection-end="3590" vertical-scroll-proportion="0.0" vertical-offset="840" max-vertical-offset="2160">
           <folding />
         </state>
       </provider>
@@ -888,19 +999,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="172" column="18" selection-start="4290" selection-end="4294" vertical-scroll-proportion="-14.615385" vertical-offset="3060" max-vertical-offset="3900">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Actors/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1080">
@@ -939,13 +1037,6 @@
     <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/config/routing/actors.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="4" column="11" selection-start="92" selection-end="103" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="720">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Movies/_list.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="63" selection-start="3511" selection-end="3511" vertical-scroll-proportion="-18.461538" vertical-offset="520" max-vertical-offset="2260">
           <folding />
         </state>
       </provider>
@@ -1008,7 +1099,50 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Directors/show.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="22" selection-start="1033" selection-end="1033" vertical-scroll-proportion="0.44281524" vertical-offset="458" max-vertical-offset="1240">
+        <state line="38" column="22" selection-start="1033" selection-end="1033" vertical-scroll-proportion="-11.615385" vertical-offset="458" max-vertical-offset="1240">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="173" column="16" selection-start="4317" selection-end="4317" vertical-scroll-proportion="-15.384615" vertical-offset="3060" max-vertical-offset="3900">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/public/js/jquery.raty.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="454" column="33" selection-start="16331" selection-end="16331" vertical-scroll-proportion="0.0" vertical-offset="8523" max-vertical-offset="9380">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/layout.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="99" column="0" selection-start="5288" selection-end="5288" vertical-scroll-proportion="-19.653847" vertical-offset="1469" max-vertical-offset="2280">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Movies/_list.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="95" selection-start="599" selection-end="599" vertical-scroll-proportion="-7.6923075" vertical-offset="40" max-vertical-offset="2280">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/public/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="9" selection-start="284" selection-end="284" vertical-scroll-proportion="0.30683404" vertical-offset="0" max-vertical-offset="3140">
           <folding />
         </state>
       </provider>

@@ -97,7 +97,13 @@
             $('a.gallery').colorbox({rel:'gal'});
         });
     </script>
+
     {% javascripts '@CinheticPublicBundle/Resources/public/js/main.js'  filter='closure' %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
+
+    {% javascripts '@CinheticPublicBundle/Resources/public/js/jquery.raty.min.js'  filter='closure' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
 {% endblock %}
