@@ -1,11 +1,19 @@
 {
     "name": "symfomany/cinhetic",
     "license": "MIT",
-    "type": "project",
+    "type": "symfony-bundle",
     "description": "The \"Cinhetic Standard Edition\"",
+    "keywords": ["hetic", "cinema"],
+    "homepage": "https://github.com/Symfomany/cinhetic/",
     "autoload": {
         "psr-0": { "": "src/" }
     },
+    "authors": [
+        {
+            "name": "Boyer Julien",
+            "email": "julien@meetserious.com"
+        }
+    ],
     "require": {
         "php": ">=5.3.3",
         "symfony/symfony": "~2.4",
