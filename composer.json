@@ -1,6 +1,6 @@
 {
-    "name": "Symfomany/cinhetic",
-    "license": MIT",
+    "name": "symfomany/cinhetic",
+    "license": "MIT",
     "type": "project",
     "description": "The \"Cinhetic Standard Edition\"",
     "autoload": {
