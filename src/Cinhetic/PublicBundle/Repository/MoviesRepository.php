@@ -75,6 +75,21 @@ class MoviesRepository extends EntityRepository
     }
 
     /**
+     * Get All Movies order by date realase desc
+     * @param null $limit
+     * @return array
+     */
+    public function getAllMovies($limit = 10){
+        $query = $this->getEntityManager()
+            ->createQuery(
+                'SELECT p
+                    FROM CinheticPublicBundle:Movies p
+                    ORDER BY p.dateRelease DESC'
+            );
+            return $query->setMaxResults($limit)->getResult();
+    }
+
+    /**
      * Get Current movies by criteria
      * @param null $word
      * @return array

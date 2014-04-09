@@ -34,8 +34,12 @@ class MainController extends Controller
 
         $paginator = $this->get('knp_paginator'); //je mets en place la pagination
 
-        //je récupere tous les films avec findAll()
-        $movies = $em->getRepository('CinheticPublicBundle:Movies')->findAll();
+        //je récupere tous les films
+        $movies = $em->getRepository('CinheticPublicBundle:Movies')->getAllMovies();
+        //je récupere toutes les villes
+        $cities = $em->getRepository('CinheticPublicBundle:Cinema')->getCitiesOfMovies();
+        //je récupere les prochaines séances
+        $seances = $em->getRepository('CinheticPublicBundle:Sessions')->getNextSessions();
 
         $pagination = $paginator->paginate(
             $movies,
@@ -44,7 +48,11 @@ class MainController extends Controller
             array('pageParameterName' => 'pageone')
         );
 
-        return $this->render('CinheticPublicBundle:Main:index.html.twig',  array('movies' => $pagination));
+        return $this->render('CinheticPublicBundle:Main:index.html.twig',  array(
+            'movies' => $pagination,
+            'cities' => $cities,
+            'seances' => $seances,
+        ));
 
     }
 

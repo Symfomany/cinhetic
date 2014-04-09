@@ -6,6 +6,24 @@
 
 {% block content %}
 
+    <div class="alert alert-block alert-warning">
+        <h3><i class="glyphicon glyphicon-bookmark"></i> Les 3 Prochaines séances</h3>
+
+        <ul class="nav nav-pills">
+        {% for entity in seances %}
+            <li>{{ entity.movies.title }} le  à {{ entity.cinema.title }} le {{ entity.dateSession|date('d/m/Y H:i') }}</li>
+        {% endfor %}
+        </ul>
+    </div>
+    <div class="alert alert-block alert-danger">
+        <h3><i class="glyphicon glyphicon-map-marker"></i> Villes des films</h3>
+
+        <ul class="nav nav-pills">
+        {% for entity in cities %}
+            <li><a href="">{{ entity.ville }}</a></li>
+        {% endfor %}
+        </ul>
+    </div>
     {{ render(controller('CinheticPublicBundle:Movies:carousselMovies')) }}
 
     <div class="row marketing">
