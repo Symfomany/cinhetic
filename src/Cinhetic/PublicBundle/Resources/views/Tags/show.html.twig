@@ -19,6 +19,23 @@
         </tbody>
     </table>
 
+    <h3>Les films associés à ce tags</h3>
+        {% for entity in entity.movies %}
+         <div class="well">
+                    <h3>
+                        <i class="glyphicon glyphicon-facetime-video"></i>
+                        <a href="{{ path('cinema_show', {'id' : entity.id}) }}">
+                            {{ entity.title|title }}
+                        </a>
+                        <a href="{{ path('categories_show', {'id' : entity.category.id}) }}">
+                            - {{ entity.category.title|title }}
+                        </a>
+                    </h3>
+            </div>
+        {% endfor %}
+    <div class="clear"></div>
+    <hr />
+
         <ul class="record_actions">
     <li>
         <a href="{{ path('tags') }}">

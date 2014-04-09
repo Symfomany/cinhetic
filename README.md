@@ -160,14 +160,12 @@ Optional Requirements
 * Search by Cities Cloud
 * Best Movies by rating
 * Add pagination for results
-* Add press comments in Movies
 * Homepage with custom template
-* Movies in week
 * Add Authentification for user connect with FOS
 * Print my ticket with QRCode & TCPDF
 * Page Category Gallery for listing all movies related
 * Page Keywords List for listing all movies related
-* Page films favorites by user connected
+* Page movies favorites by user connected
 * Page my Account with modify my informations
 * View all comments by movies
 * Search in ajax & instant search

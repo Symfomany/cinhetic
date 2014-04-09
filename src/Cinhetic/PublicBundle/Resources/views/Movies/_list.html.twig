@@ -38,28 +38,28 @@
                             <a href="" class="btn btn-danger pull-right"><i class="glyphicon glyphicon-plus"></i> Voir plus</a>
                         </p>
                         <div class="clear"></div>
-                        <h4>Les acteurs</h4>
+                        <h3>Les acteurs</h3>
                         {% for entity in entity.actors %}
                                 <div class="alert alert-warning">
                                     {{ entity.firstname|title }}
                                     {{ entity.lastname|title }}
                                 </div>
                         {% endfor %}
-                        <h4>Les réalisateurs</h4>
+                        <h3>Les réalisateurs</h3>
                         {% for entity in entity.directors %}
                                 <div class="alert alert-warning">
                                     {{ entity.firstname|title }}
                                     {{ entity.lastname|title }}
                                 </div>
                         {% endfor %}
-                        <h4>Les cinémas qui le diffuse:</h4>
+                        <h3>Les cinémas qui le diffuse:</h3>
                         {% for entity in entity.cinemas %}
                             <div class="alert alert-warning">
                                 {{ entity.title|title }} à
                                 {{ entity.ville|title }}
                             </div>
                         {% endfor %}
-                        <h4>Media:</h4>
+                        <h3>Media:</h3>
                         {% for entity in entity.medias %}
                             <div class="thumbnail">
                                 {% if entity.nature == "1" %}
@@ -69,9 +69,9 @@
                                 {% endif %}
                             </div>
                         {% endfor %}
-                        <h4>Tags asssociés:</h4>
+                        <h3>Tags asssociés:</h3>
                         {% for entity in entity.tags %}
-                                <span class="label label-default">{{ entity.word }}</span>
+                                <span class="label label-default"><a href="{{ path('tags_show', {'id' : entity.id}) }}">{{ entity.word }}</a> </span>
                         {% endfor %}
                     </div>
                 </div>
