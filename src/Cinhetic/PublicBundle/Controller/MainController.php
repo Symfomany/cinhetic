@@ -29,8 +29,12 @@ class MainController extends Controller
      */
     public function indexAction()
     {
+        //je récupere l'Entity Manager pour jouer avec les entités
         $em = $this->getDoctrine()->getManager();
-        $paginator = $this->get('knp_paginator');
+
+        $paginator = $this->get('knp_paginator'); //je mets en place la pagination
+
+        //je récupere tous les films avec findAll()
         $movies = $em->getRepository('CinheticPublicBundle:Movies')->findAll();
 
         $pagination = $paginator->paginate(

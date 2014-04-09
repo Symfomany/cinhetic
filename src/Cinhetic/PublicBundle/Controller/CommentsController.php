@@ -94,20 +94,44 @@ class CommentsController extends Controller
      */
     public function commentMovieAction(Request $request, $id = null)
     {
-        $entity = new Comments();
-        $form = $this->createForm(new CommentsMovieType(), $entity, array(
+        $form = $this->createForm(new CommentsMovieType(), null, array(
             'action' => $this->generateUrl('comments_movies'),
             'method' => 'POST',
         ));
-        $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning"), 'label' => 'Créer ce commentaire'));
+        $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning"), 'label' => 'Ajouter le commentaire'));
 
         $em = $this->getDoctrine()->getManager();
 
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+            $entity = new Comments();
+
+            $movie = $form['movie']->getData();
+            $movie = $em->getRepository('CinheticPublicBundle:Movies')->find($movie);
+
+            if (!$movie) {
+                throw $this->createNotFoundException('Unable to find Movies entity.');
+            }
+            //facultatif pour ceux qui utilise FOSUserBundle et la sécurité
+            $user = $this->getUser();
+
+            $content = $form['content']->getData();
+            $note = $form['note']->getData();
+            $entity->setMovie($movie);
+            $entity->setContent($content);
+            $entity->setUser($user); //facultatif pour ceux qui utilise FOSUserBundle et la sécurité
+            $entity->setNote($note);
+            $em->persist($entity);
             $em->flush();
 
+            //messages flash se jouant qu'une seule fois
+            $this->get('session')->getFlashBag()->add(
+                'success',
+                'Votre commentaire a bien été ajouté'
+            );
+
+            //redirections
             return $this->redirect($this->generateUrl('Cinhetic_public_homepage'));
         }
         $errors = $this->get('validator')->validate($form);
@@ -115,15 +139,15 @@ class CommentsController extends Controller
 
         foreach( $errors as $error )
         {
-            echo   $error->getPropertyPath();
-            echo   $error->getMessage();
+//            echo   $error->getPropertyPath();
+//            echo   $error->getMessage();
         }
 
-        exit(var_dump($form));
+//        exit('stop')
+//        exit(var_dump($errors));
 
 
         return $this->render('CinheticPublicBundle:Comments:commentMovie.html.twig', array(
-            'entity' => $entity,
             'id' => $id,
             'form'   => $form->createView(),
         ));

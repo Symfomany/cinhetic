@@ -16,7 +16,13 @@
                         <i><i class="glyphicon glyphicon-bookmark"></i> Type de film: {{ entity.typeFilm|title }}</i>
                         <div class="thumbnail">{{ entity.trailer|raw }}</div>
                         {{ render(controller('CinheticPublicBundle:Comments:commentMovie', {'id' : entity.id})) }}
-
+                        <h2><i class="glyphicon glyphicon-comment"></i> Liste des commentaires</h2>
+                        {% for entity in entity.comments %}
+                            <div class="alert">
+                                    <p>Note: {{ entity.content }} /5 <span class="pull-right"> {{ entity.dateCreated|date('d/m/Y') }} à {{ entity.dateCreated|date('H:i') }}</span> </p>
+                                    <p><i>{{ entity.content }}</i></p>
+                            </div>
+                        {% endfor %}
                         <p><i class="glyphicon glyphicon-flag"></i> Langue: <i>{{ entity.bo }}</i></p>
                         <p class="text-danger"><i class="glyphicon glyphicon-thumbs-up"></i> Note: {{ entity.notePresse }}/5</p>
                         <p class="text-warning"><i class="glyphicon glyphicon-usd"></i> Budget: {{ entity.budget }} <b>€</b></p>
