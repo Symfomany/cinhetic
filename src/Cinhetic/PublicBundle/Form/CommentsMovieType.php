@@ -19,7 +19,7 @@ class CommentsMovieType extends AbstractType
                 'choices'   => array('1' => 'Naz', '2' => 'Moyen', '3' => 'Agréable', "4" => "Bon film", '5' => "Excellent film"),
                 'required'  => false,
             ))
-            ->add('content', "textarea", array('label' => "Commentaire",'attr' => array('cols' => 150, 'rows' => 5)))
+            ->add('content', "textarea", array('label' => "Commentaire",'attr' => array("class" => "form-control",'cols' => 100, 'rows' => 5)))
             ->add('movie', "hidden")
         ;
     }

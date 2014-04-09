@@ -47,10 +47,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_list.html.twig" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="_list.html.twig" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Movies/_list.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="59" selection-start="1306" selection-end="1306" vertical-scroll-proportion="0.46309695" vertical-offset="100" max-vertical-offset="2200">
+            <state line="21" column="59" selection-start="1306" selection-end="1306" vertical-scroll-proportion="-12.307693" vertical-offset="100" max-vertical-offset="2200">
               <folding />
             </state>
           </provider>
@@ -65,10 +65,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CommentsMovieType.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="CommentsMovieType.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Form/CommentsMovieType.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="38" selection-start="705" selection-end="705" vertical-scroll-proportion="-14.269231" vertical-offset="9" max-vertical-offset="940">
+            <state line="21" column="112" selection-start="779" selection-end="779" vertical-scroll-proportion="0.536903" vertical-offset="9" max-vertical-offset="940">
               <folding />
             </state>
           </provider>
@@ -131,10 +131,10 @@
         <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Controller/CommentsController.php" />
         <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Comments/commentsMovie.html.twig" />
         <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Comments/commentMovie.html.twig" />
-        <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Form/CommentsMovieType.php" />
         <option value="$PROJECT_DIR$/tests/acceptance/Comments/TagsCest.php" />
         <option value="$PROJECT_DIR$/tests/acceptance/Comments/CommentsCest.php" />
         <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Movies/_list.html.twig" />
+        <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Form/CommentsMovieType.php" />
       </list>
     </option>
   </component>
@@ -872,13 +872,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Form/CommentsMovieType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="38" selection-start="705" selection-end="705" vertical-scroll-proportion="-14.269231" vertical-offset="9" max-vertical-offset="940">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Controller/CommentsController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="130" column="52" selection-start="3936" selection-end="3971" vertical-scroll-proportion="-18.038462" vertical-offset="2131" max-vertical-offset="5900">
@@ -904,7 +897,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Movies/_list.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="59" selection-start="1306" selection-end="1306" vertical-scroll-proportion="0.46309695" vertical-offset="100" max-vertical-offset="2200">
+        <state line="21" column="59" selection-start="1306" selection-end="1306" vertical-scroll-proportion="-12.307693" vertical-offset="100" max-vertical-offset="2200">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Form/CommentsMovieType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="112" selection-start="779" selection-end="779" vertical-scroll-proportion="0.536903" vertical-offset="9" max-vertical-offset="940">
           <folding />
         </state>
       </provider>
