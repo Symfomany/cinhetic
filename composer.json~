@@ -1,8 +1,8 @@
 {
     "name": "Symfomany/cinhetic",
-    "license": "
+    "license": MIT"
     "type": "project",
-    "description": "The \"Symfony Standard Edition\" distribution",
+    "description": "The \"Cinhetic Standard Edition\"",
     "autoload": {
         "psr-0": { "": "src/" }
     },
