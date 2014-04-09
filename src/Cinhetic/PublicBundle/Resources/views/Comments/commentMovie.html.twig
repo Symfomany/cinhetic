@@ -1,0 +1,8 @@
+
+{% block commentMovie %}
+    <form action="{{ path('comments_movies') }}">
+    {{ form_widget(form.movie,{'attr': {'value' : id }}) }}
+    {{ form_rest(form) }}
+    </form>
+
+{% endblock %}

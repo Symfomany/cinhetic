@@ -10,6 +10,10 @@ comments_new:
     pattern:  /new
     defaults: { _controller: "CinheticPublicBundle:Comments:new" }
 
+comments_movies:
+    pattern:  /newmovies
+    defaults: { _controller: "CinheticPublicBundle:Comments:commentMovie" }
+
 comments_create:
     pattern:  /create
     defaults: { _controller: "CinheticPublicBundle:Comments:create" }

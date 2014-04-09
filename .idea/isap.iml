@@ -99,8 +99,8 @@
           <root url="file://$MODULE_DIR$/vendor/jdorn/sql-formatter" />
           <root url="file://$MODULE_DIR$/vendor/stof/doctrine-extensions-bundle" />
           <root url="file://$MODULE_DIR$/vendor/symfony/symfony" />
-          <root url="file://$MODULE_DIR$/vendor/doctrine/data-fixtures" />
           <root url="file://$MODULE_DIR$/vendor/phpunit/php-file-iterator" />
+          <root url="file://$MODULE_DIR$/vendor/doctrine/data-fixtures" />
           <root url="file://$MODULE_DIR$/vendor/sensio/generator-bundle" />
           <root url="file://$MODULE_DIR$/vendor/symfony/icu" />
           <root url="file://$MODULE_DIR$/vendor/doctrine/orm" />
@@ -166,8 +166,8 @@
           <root url="file://$MODULE_DIR$/vendor/jdorn/sql-formatter" />
           <root url="file://$MODULE_DIR$/vendor/stof/doctrine-extensions-bundle" />
           <root url="file://$MODULE_DIR$/vendor/symfony/symfony" />
-          <root url="file://$MODULE_DIR$/vendor/doctrine/data-fixtures" />
           <root url="file://$MODULE_DIR$/vendor/phpunit/php-file-iterator" />
+          <root url="file://$MODULE_DIR$/vendor/doctrine/data-fixtures" />
           <root url="file://$MODULE_DIR$/vendor/sensio/generator-bundle" />
           <root url="file://$MODULE_DIR$/vendor/symfony/icu" />
           <root url="file://$MODULE_DIR$/vendor/doctrine/orm" />

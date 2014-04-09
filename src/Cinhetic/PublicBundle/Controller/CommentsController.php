@@ -2,6 +2,7 @@
 
 namespace Cinhetic\PublicBundle\Controller;
 
+use Cinhetic\PublicBundle\Form\CommentsMovieType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -83,6 +84,47 @@ class CommentsController extends Controller
 
         return $this->render('CinheticPublicBundle:Comments:new.html.twig', array(
             'entity' => $entity,
+            'form'   => $form->createView(),
+        ));
+    }
+
+    /**
+     * Displays a form to create a new Comments entity.
+     *
+     */
+    public function commentMovieAction(Request $request, $id = null)
+    {
+        $entity = new Comments();
+        $form = $this->createForm(new CommentsMovieType(), $entity, array(
+            'action' => $this->generateUrl('comments_movies'),
+            'method' => 'POST',
+        ));
+        $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning"), 'label' => 'Créer ce commentaire'));
+
+        $em = $this->getDoctrine()->getManager();
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('Cinhetic_public_homepage'));
+        }
+        $errors = $this->get('validator')->validate($form);
+
+
+        foreach( $errors as $error )
+        {
+            echo   $error->getPropertyPath();
+            echo   $error->getMessage();
+        }
+
+        exit(var_dump($form));
+
+
+        return $this->render('CinheticPublicBundle:Comments:commentMovie.html.twig', array(
+            'entity' => $entity,
+            'id' => $id,
             'form'   => $form->createView(),
         ));
     }
