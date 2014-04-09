@@ -12,6 +12,17 @@ use Symfony\Component\Security\Core\SecurityContext;
 
 class MainController extends Controller
 {
+
+    /**
+     * Homepage Dashboard
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function homeAction()
+    {
+
+        return $this->render('CinheticPublicBundle:Main:home.html.twig');
+    }
+
     /**
      * Main Dashboard
      * @return \Symfony\Component\HttpFoundation\Response
