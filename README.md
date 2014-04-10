@@ -145,10 +145,18 @@ Optional Requirements
 * Composer
 * Symfony 2
 
+Chapters
+---------------
+
+* View: Twig Engine with inheritance, including, rendering, filters...
+* Controllers: CRUD, Bind with Form/Entity, Entity Manager, HTTP Methods, Request object, Flash Message, services, redirection/forward
+* Models: Annotations, Relationship (1,1;,1,n;n,m), Repositories, DQL
+* Form: Types of fields, Dependancies with Model, Validations
+
 
 2) Features
 ----------------------------------
-* Search Engin Movies
+* Search Engine Movies
 * Top Rated Movies
 * Page Movie with complete description
 * Pagination for results with "KNPPaginatorBundles"
