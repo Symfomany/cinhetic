@@ -1,0 +1,29 @@
+<?php
+namespace Ezap\ReceiptBundle\Repository;
+
+use Doctrine\ORM\EntityRepository;
+
+/**
+ * Class ReceiptRepository
+ * @package Horus\AdminBundle\Repository
+ */
+class ReceiptRepository extends EntityRepository
+{
+
+    /**
+     * Get Active Receipt
+     * @return \Doctrine\ORM\QueryBuilder
+     */
+    public function getActiveReceiptQueryBuilder()
+    {
+        $queryBuilder = $this->getEntityManager()
+            ->createQueryBuilder()
+            ->select('m')
+            ->from('Ezap\ReceiptBundle\Entity\Receipt', 'm')
+            ->orderBy('m.id', 'DESC');
+        return $queryBuilder;
+    }
+
+
+
+}

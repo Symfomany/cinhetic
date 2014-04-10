@@ -1,0 +1,10 @@
+<?php
+
+namespace Ezap\MessageBundle;
+
+use Symfony\Component\HttpKernel\Bundle\Bundle;
+
+class EzapMessageBundle extends Bundle
+{
+}
+

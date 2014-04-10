@@ -1,0 +1,10 @@
+<?php
+
+namespace Ezap\ReceiptBundle;
+
+use Symfony\Component\HttpKernel\Bundle\Bundle;
+
+class EzapReceiptBundle extends Bundle
+{
+}
+

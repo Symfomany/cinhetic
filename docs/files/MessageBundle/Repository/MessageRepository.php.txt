@@ -1,0 +1,29 @@
+<?php
+namespace Ezap\MessageBundle\Repository;
+
+use Doctrine\ORM\EntityRepository;
+
+/**
+ * Class MessageRepository
+ * @package Horus\AdminBundle\Repository
+ */
+class MessageRepository extends EntityRepository
+{
+
+    /**
+     * Get Active Receipt
+     * @return \Doctrine\ORM\QueryBuilder
+     */
+    public function getActiveMessageQueryBuilder()
+    {
+        $queryBuilder = $this->getEntityManager()
+            ->createQueryBuilder()
+            ->select('m')
+            ->from('Ezap\MessageBundle\Entity\Message', 'm')
+            ->orderBy('m.id', 'DESC');
+        return $queryBuilder;
+    }
+
+
+
+}

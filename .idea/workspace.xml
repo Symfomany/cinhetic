@@ -45,10 +45,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="layout_disconnect.html.twig" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="layout_disconnect.html.twig" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/layout_disconnect.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="46" selection-start="1180" selection-end="1180" vertical-scroll-proportion="0.31837916" vertical-offset="240" max-vertical-offset="1920">
+            <state line="32" column="8" selection-start="1363" selection-end="1363" vertical-scroll-proportion="-15.384615" vertical-offset="240" max-vertical-offset="1920">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="7" selection-start="33" selection-end="33" vertical-scroll-proportion="0.084745765" vertical-offset="0" max-vertical-offset="708">
               <folding />
             </state>
           </provider>
@@ -82,7 +91,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Slots/_search.html.twig" />
         <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Form/SearchType.php" />
         <option value="$PROJECT_DIR$/composer.lock" />
         <option value="$PROJECT_DIR$/composer.json" />
@@ -133,6 +141,7 @@
         <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Slots/topmenu_logout.html.twig" />
         <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/config/services.yml" />
         <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/layout_disconnect.html.twig" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -766,11 +775,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Tags/show.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="25" selection-start="585" selection-end="585" vertical-scroll-proportion="-14.0" vertical-offset="96" max-vertical-offset="1160" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/config/security.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="23" column="59" selection-start="624" selection-end="647" vertical-scroll-proportion="0.63013697" vertical-offset="0" max-vertical-offset="940" />
@@ -1098,7 +1102,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/layout_disconnect.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="46" selection-start="1180" selection-end="1180" vertical-scroll-proportion="0.31837916" vertical-offset="240" max-vertical-offset="1920">
+        <state line="32" column="8" selection-start="1363" selection-end="1363" vertical-scroll-proportion="-15.384615" vertical-offset="240" max-vertical-offset="1920">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="7" selection-start="33" selection-end="33" vertical-scroll-proportion="0.084745765" vertical-offset="0" max-vertical-offset="708">
           <folding />
         </state>
       </provider>
