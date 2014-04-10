@@ -1,12 +1,13 @@
-Cinhetic Standard Edition
+Cinhetic Project
 ========================
 
-Welcome to the Cinhetic Standard Edition - a fully-functional Symfony2
-application that you can use to handle **all cinematographic world**!
+Welcome to the Cinhetic Project - a fully-functional application built in Symfony2
+framework for learning this framework in 360° that you can use to handle **cinematographic world**!
 
-Roadmap: handle movies, categories, tags, actors, directors, cinemas, sessions, users, comments...
+Roadmap: Handle movies, categories of movies, tags of movies, actors, directors, cinemas, sessions, users, comments...
 
-Philosophy: **Minimalist** features, **Collaborative** in real time, **Maintainable**, **Pragmatic** and **Responsive** Solution.
+In some words: **Minimalist** features, **Collaborative** solution, **Pragmatic** and **Responsive** project
+
 
 Screenshots
 ------------------
@@ -22,12 +23,12 @@ Screenshots
 1) Installing the Cinhetic Standard Edition
 ----------------------------------
 
-When it comes to installing the Cinhetic Standard Edition, you have the
+When it comes to installing the Cinhetic Project, you have the
 following options.
 
 ### Use Composer (*recommended*)
 
-As Symfony uses [Composer] to manage its dependencies, the recommended way
+As Symfony uses **Composer** to manage its dependencies, the recommended way
 to create a new project is to use it.
 
 If you don't have Composer yet, download it following the instructions on
@@ -39,16 +40,6 @@ Then, use the install from Composer:
 
     php composer.phar install
 
-```
-
-Quick Installation
-------------------
-
-``` bash
-$ wget http://getcomposer.org/composer.phar
-$ php composer.phar create-project Symfomany/Cinhetic -s dev
-$ cd Cinhetic
-$ php app/console Cinhetic:install
 
 
 Installation
@@ -67,7 +58,7 @@ Or add CinheticPublicBundle in your composer.json
 ```js
 {
     "require": {
-        "Symfomany/cinhetic": "*"
+        "symfomany/cinhetic": "*"
     }
 }
 ```
@@ -112,14 +103,15 @@ $ php app/console doctrine:database:create
 $ php app/console doctrine:schema:create
 ```
 
-### Enable routing configuration
+### Enable routing
 
 ``` yaml
 # app/config/routing.yml
 CinheticPublicBundle:
     resource: "@CinheticPublicBundle/Resources/config/routing.yml"
 ```
-### Refresh asset folder
+
+### Refresh assets
 
 ``` bash
 $ php app/console assets:install web/
@@ -155,36 +147,32 @@ Optional Requirements
 * Composer
 * Symfony 2
 
+
 2) Features
 ----------------------------------
-* Search by Cities Cloud
-* Best Movies by rating
-* Add pagination for results
-* Homepage with custom template
-* Add Authentification for user connect with FOS
-* Print my ticket with QRCode & TCPDF
-* Page Category Gallery for listing all movies related
-* Page Keywords List for listing all movies related
-* Page movies favorites by user connected
-* Page my Account with modify my informations
+* Search Engin Movies
+* Top Rated Movies
+* Page Movie with complete description
+* Pagination for results with "KNPPaginatorBundles"
+* Datas Fixtures with "Doctrine Fixtures"
+* Homepage with custom template by Bootsrap Twitter
+* Add authentification & firewall administration for user connected with "FOSUserBundle"
+* Rest API with FOSRestBundle
+* Page Category to list all movies related
+* Page Tag to list movies related by keywords
+* Page "Favorites Movies" by user connected
+* Page My Account related my informations
 * View all comments by movies
-* Add in session favorites
-* Add Node Layers for comments
-* Add scoring with jrate
-* Movies more scored
-* Categories in cloud tags
-* Tags in cloud tags
-* Trailers in slideshow
-* Handle distributions from movies
-* Handle Medias for movies
-* Search engine in Elastic Search
-* Page film with details
+* Add in session favorites movies
+* Add optional node layers (socket.io) for comment
+* Categories & Tags in cloud keywords
+* Trailers of movies in slideshow
+* Search engine in elastic search engine
 * Comments by movies with forms
-* Number Movies, Categories, Tags...
 
 
 3) Evolution
 ----------------------------------
-* Mongo for Notifications
-* Add Datas Fixtures with Doctrine
-* Add APIS for Mobiles
+* Mongo for notifications & private message
+* Advanced APIs for Mobiles Apps
+* Acceptance tests with Codeception
