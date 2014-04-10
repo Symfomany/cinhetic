@@ -259,6 +259,8 @@ class MoviesController extends Controller
 
         return $form;
     }
+
+
     /**
      * Edits an existing Movies entity.
      *
@@ -289,6 +291,8 @@ class MoviesController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
+
+
     /**
      * Deletes a Movies entity.
      *

@@ -30,6 +30,8 @@ class TagsController extends Controller
             'entities' => $entities,
         ));
     }
+
+
     /**
      * Creates a new Tags entity.
      *

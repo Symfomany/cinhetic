@@ -12,6 +12,7 @@ use Symfony\Component\Security\Core\SecurityContext;
 
 class LayoutController extends Controller
 {
+
     /**
      * My Warning
      * @return \Symfony\Component\HttpFoundation\Response

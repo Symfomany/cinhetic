@@ -160,6 +160,8 @@ class DirectorsController extends Controller
 
         return $form;
     }
+
+
     /**
      * Edits an existing Directors entity.
      *
@@ -190,6 +192,8 @@ class DirectorsController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
+
+
     /**
      * Deletes a Directors entity.
      *
