@@ -15,7 +15,6 @@
         <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>
     {% endstylesheets %}
     <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.css" />
-    <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/jquery.colorbox/1.4.33/example1/colorbox.min.css"/>
     <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
 
@@ -83,20 +82,13 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/hinclude/0.9.5/hinclude.min.js"></script>
     <script type="text/javascript" src="http://cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.colorbox/1.4.33/jquery.colorbox-min.js"></script>
-    {#<script src="http://modernizr.com/downloads/modernizr-latest.js"></script>#}
+    <script src="http://modernizr.com/downloads/modernizr-latest.js"></script>
     {#<script src="{{ asset('js/jquery-fileupload.min.js') }}"></script>#}
 
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.0.1/ckeditor.js"></script>
-
-    <script type="text/javascript">
-        $( document ).ready(function() {
-            $('a.gallery').colorbox({rel:'gal'});
-        });
-    </script>
 
     {% javascripts '@CinheticPublicBundle/Resources/public/js/main.js'  filter='closure' %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
