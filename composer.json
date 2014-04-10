@@ -2,8 +2,8 @@
     "name": "symfomany/cinhetic",
     "license": "MIT",
     "type": "symfony-bundle",
-    "description": "The \"Cinhetic Standard Edition\"",
-    "keywords": ["hetic", "cinema"],
+    "description": "The \"Cinhetic Solution\"",
+    "keywords": ["films","acteurs", "cinema"],
     "homepage": "https://github.com/Symfomany/cinhetic/",
     "autoload": {
         "psr-0": { "": "src/" }
