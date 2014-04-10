@@ -11,12 +11,12 @@
 
         <ul class="nav nav-pills">
         {% for entity in seances %}
-            <li><a href="{{ path('movies_show', {'id' : entity.id}) }}"> {{ entity.movies.title }} le  à {{ entity.cinema.title }} le {{ entity.dateSession|date('d/m/Y H:i') }}</a></li>
+            <li><a href="{{ path('movies_show', {'id' : entity.movies.id}) }}"> {{ entity.movies.title }} le  à {{ entity.cinema.title }} le {{ entity.dateSession|date('d/m/Y H:i') }}</a></li>
         {% endfor %}
         </ul>
     </div>
     <div class="alert alert-block alert-danger">
-        <h3><i class="glyphicon glyphicon-map-marker"></i> Villes des films</h3>
+        <h3><i class="glyphicon glyphicon-map-marker"></i> Villes</h3>
 
         <ul class="nav nav-pills">
         {% for entity in cities %}
@@ -39,11 +39,10 @@
     <div class="page-header">
         <h1><i class="glyphicon glyphicon-home"></i> Tous les films de Cinhetic</h1>
     </div>
-            {% include 'CinheticPublicBundle:Movies:_list.html.twig' %}
-
+    {% include 'CinheticPublicBundle:Movies:_list.html.twig' %}
     <hr />
     <br />
-    <br />
+
     <div class="page-footer">
         <div class="alert alert-block alert-sucess">
             <h3><i class="glyphicon glyphicon-bookmark"></i> Les catégories de films</h3>

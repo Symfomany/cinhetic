@@ -153,6 +153,8 @@ class TagsController extends Controller
 
         return $form;
     }
+
+
     /**
      * Edits an existing Tags entity.
      *
@@ -183,6 +185,8 @@ class TagsController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
+
+
     /**
      * Deletes a Tags entity.
      *

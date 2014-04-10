@@ -29,6 +29,8 @@ class CategoriesController extends Controller
             'entities' => $entities,
         ));
     }
+
+
     /**
      * Creates a new Categories entity.
      *
@@ -182,6 +184,8 @@ class CategoriesController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
+
+
     /**
      * Deletes a Categories entity.
      *

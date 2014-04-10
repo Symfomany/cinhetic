@@ -9,17 +9,13 @@
     <table class="record_properties">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>Word</th>
+                <th>Mot-clefs</th>
                 <td>{{ entity.word }}</td>
             </tr>
         </tbody>
     </table>
 
-    <h3>Les films associés à ce tags</h3>
+    <h3>Films associés à ce tags</h3>
         {% for entity in entity.movies %}
          <div class="well">
                     <h3>
@@ -35,18 +31,8 @@
         {% endfor %}
     <div class="clear"></div>
     <hr />
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('tags') }}">
-            Back to the list
+        <a class="btn" href="{{ path('tags_edit', { 'id': entity.id }) }}">
+            Editer
         </a>
-    </li>
-    <li>
-        <a href="{{ path('tags_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    {{ form(delete_form) }}
 {% endblock %}

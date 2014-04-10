@@ -6,6 +6,7 @@
 {% block content %}
     <h1> <i class="glyphicon glyphicon-user"></i> Liste des acteurs [{{ entities|length }}]</h1>
     <hr />
+
     <table class="records_list">
         <thead>
             <tr>
@@ -22,7 +23,7 @@
         {% for entity in entities %}
             <tr>
                 <td><a href="{{ path('actors_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.firstname }} {{ entity.lastname }}</td>
+                <td><a href="{{ path('actors_show', { 'id': entity.id }) }}">{{ entity.firstname }} {{ entity.lastname }}</a></td>
                 <td><span class="text-danger">{{ entity.city }}</span></td>
                 <td>{{ entity.biography|raw|truncate(200,true,'...') }}</td>
                 <td><small>{% if entity.dateCreated %}{{ entity.dateCreated|date('Y-m-d') }}{% endif %}</small></td>

@@ -60,20 +60,12 @@
     <table class="record_properties">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
+                <th>Nom du cinéma</th>
                 <td>{{ entity.title }}</td>
             </tr>
             <tr>
                 <th>Ville</th>
                 <td>{{ entity.ville }}</td>
-            </tr>
-            <tr>
-                <th>Datecreated</th>
-                <td>{{ entity.dateCreated|date('Y-m-d H:i:s') }}</td>
             </tr>
         </tbody>
     </table>
@@ -98,17 +90,8 @@
         </div>
     {% endfor %}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('cinema') }}">
-            Back to the list
+        <a class="btn" href="{{ path('cinema_edit', { 'id': entity.id }) }}">
+            Editer
         </a>
-    </li>
-    <li>
-        <a href="{{ path('cinema_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    {{ form(delete_form) }}
 {% endblock %}

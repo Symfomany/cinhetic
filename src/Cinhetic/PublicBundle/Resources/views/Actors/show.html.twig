@@ -4,14 +4,10 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Acteur {{ entity.firstname|title}} {{ entity.lastname|title }}</h1>
+    <h1>Fiche Acteur {{ entity.firstname|title}} {{ entity.lastname|title }}</h1>
 
     <table class="record_properties">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
             <tr>
                 <th>Prénom</th>
                 <td>{{ entity.firstname }}</td>
@@ -21,7 +17,7 @@
                 <td>{{ entity.lastname }}</td>
             </tr>
             <tr>
-                <th>Dob</th>
+                <th>Date de naissance</th>
                 <td>{{ entity.dob|date('Y-m-d H:i:s') }}</td>
             </tr>
             <tr>
@@ -41,7 +37,7 @@
                 <td>{{ entity.roles|raw }}</td>
             </tr>
             <tr>
-                <th>Recompenses</th>
+                <th>Récompenses et Awards</th>
                 <td>{{ entity.recompenses|raw }}</td>
             </tr>
             <tr>
@@ -59,17 +55,8 @@
         {% include 'CinheticPublicBundle:Movies:_list.html.twig' %}
     <hr />
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('actors') }}">
-            Revenir à la liste
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('actors_edit', { 'id': entity.id }) }}">
-            Editer
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    <a class="btn" href="{{ path('actors_edit', { 'id': entity.id }) }}">
+        Editer
+    </a>
+    {{ form(delete_form) }}
 {% endblock %}

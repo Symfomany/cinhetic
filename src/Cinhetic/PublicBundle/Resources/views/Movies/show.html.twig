@@ -115,17 +115,9 @@
         <span class="label label-default">{{ entity.word }}</span>
     {% endfor %}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('movies') }}">
-            Revenir à la liste
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('movies_edit', { 'id': entity.id }) }}">
+
+        <a class="btn" href="{{ path('movies_edit', { 'id': entity.id }) }}">
             Editer
         </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+        {{ form(delete_form) }}
 {% endblock %}

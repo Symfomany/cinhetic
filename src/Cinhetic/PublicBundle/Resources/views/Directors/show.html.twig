@@ -40,17 +40,8 @@
     {% include 'CinheticPublicBundle:Movies:_list.html.twig' %}
     <hr />
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('directors') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('directors_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    <a href="{{ path('directors_edit', { 'id': entity.id }) }}">
+        Edit
+    </a>
+    {{ form(delete_form) }}
 {% endblock %}

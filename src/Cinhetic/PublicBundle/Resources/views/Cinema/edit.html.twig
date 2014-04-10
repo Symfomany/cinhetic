@@ -4,16 +4,8 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Cinema edit</h1>
+    <h1>Editer le cinéma {{ entity.title }}</h1>
 
     {{ form(edit_form) }}
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('cinema') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    {{ form(delete_form) }}
 {% endblock %}
