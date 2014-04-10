@@ -45,10 +45,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="login.html.twig" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="login.html.twig" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Security/login.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="0" selection-start="2329" selection-end="2329" vertical-scroll-proportion="0.73134327" vertical-offset="470" max-vertical-offset="1140">
+            <state line="48" column="0" selection-start="2329" selection-end="2329" vertical-scroll-proportion="-36.923077" vertical-offset="0" max-vertical-offset="1140">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="layout.html.twig" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/layout.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="86" column="0" selection-start="4671" selection-end="4671" vertical-scroll-proportion="-11.384615" vertical-offset="1424" max-vertical-offset="2120">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="composer.json" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/composer.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="49" column="0" selection-start="1956" selection-end="1956" vertical-scroll-proportion="0.6442167" vertical-offset="540" max-vertical-offset="1340">
               <folding />
             </state>
           </provider>
@@ -90,24 +108,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html.twig" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Cinema/index.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="23" selection-start="420" selection-end="420" vertical-scroll-proportion="-10.769231" vertical-offset="0" max-vertical-offset="1020">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html.twig" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Comments/index.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="31" selection-start="371" selection-end="371" vertical-scroll-proportion="-7.6923075" vertical-offset="60" max-vertical-offset="940">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="new.html.twig" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Directors/new.html.twig">
           <provider selected="true" editor-type-id="text-editor">
@@ -127,7 +127,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Controller/SessionsController.php" />
         <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/config/routing.yml" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Slots/menu.html.twig" />
@@ -178,6 +177,7 @@
         <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Movies/edit.html.twig" />
         <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Movies/new.html.twig" />
         <option value="$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Security/login.html.twig" />
+        <option value="$PROJECT_DIR$/composer.json" />
       </list>
     </option>
   </component>
@@ -1141,10 +1141,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="49" y="45" width="1353" height="855" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2546262" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2546262" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1181,13 +1181,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Controller/CinemaController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="19" selection-start="265" selection-end="265" vertical-scroll-proportion="-5.3846154" vertical-offset="0" max-vertical-offset="4480">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Controller/TagsController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="90" column="0" selection-start="2310" selection-end="2310" vertical-scroll-proportion="-33.5" vertical-offset="849" max-vertical-offset="4640">
@@ -1370,13 +1363,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/layout.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="683" selection-end="683" vertical-scroll-proportion="42.73077" vertical-offset="1451" max-vertical-offset="2120">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Directors/edit.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state line="10" column="27" selection-start="270" selection-end="270" vertical-scroll-proportion="0.29325512" vertical-offset="0" max-vertical-offset="682">
@@ -1533,7 +1519,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/Security/login.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="0" selection-start="2329" selection-end="2329" vertical-scroll-proportion="0.73134327" vertical-offset="470" max-vertical-offset="1140">
+        <state line="48" column="0" selection-start="2329" selection-end="2329" vertical-scroll-proportion="-36.923077" vertical-offset="0" max-vertical-offset="1140">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Cinhetic/PublicBundle/Resources/views/layout.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="86" column="0" selection-start="4671" selection-end="4671" vertical-scroll-proportion="-11.384615" vertical-offset="1424" max-vertical-offset="2120">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="0" selection-start="1956" selection-end="1956" vertical-scroll-proportion="0.6442167" vertical-offset="540" max-vertical-offset="1340">
           <folding />
         </state>
       </provider>
