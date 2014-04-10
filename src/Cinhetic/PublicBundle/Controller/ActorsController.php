@@ -104,10 +104,9 @@ class ActorsController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         $paginator = $this->get('knp_paginator');
-
         $pagination = $paginator->paginate(
             $entity->getMovies(),
-            $this->get('request')->query->get('pageone', 1) /*page number*/,
+            $this->get('request')->query->get('pageone', 1),
             5,
             array('pageParameterName' => 'pageone')
         );

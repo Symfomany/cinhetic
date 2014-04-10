@@ -126,8 +126,6 @@ path to `AppKernel.php`) and then run:
 
 ``` bash
 $ php app/console doctrine:fixtures:load
-
-You can read about install instructions in the Symfony2 Cookbook(http://symfony.com/doc/2.0/cookbook/doctrine/doctrine_fixtures.html#setup-and-configuration)
 ```
 
 
@@ -174,5 +172,7 @@ Optional Requirements
 3) Evolution
 ----------------------------------
 * Mongo for notifications & private message
+* Form & Controllers & Repositories in services
+* Documentation by PHPDoc
 * Advanced APIs for Mobiles Apps
 * Acceptance tests with Codeception

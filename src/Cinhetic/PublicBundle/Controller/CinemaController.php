@@ -29,6 +29,8 @@ class CinemaController extends Controller
             'entities' => $entities,
         ));
     }
+
+
     /**
      * Creates a new Cinema entity.
      *
@@ -55,9 +57,7 @@ class CinemaController extends Controller
 
     /**
     * Creates a form to create a Cinema entity.
-    *
     * @param Cinema $entity The entity
-    *
     * @return \Symfony\Component\Form\Form The form
     */
     private function createCreateForm(Cinema $entity)
@@ -68,7 +68,6 @@ class CinemaController extends Controller
         ));
 
         $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning"), 'label' => 'Créer ce cinéma'));
-
         return $form;
     }
 

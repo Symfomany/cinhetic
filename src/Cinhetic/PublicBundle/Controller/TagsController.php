@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Cinhetic\PublicBundle\Entity\Tags;
 use Cinhetic\PublicBundle\Form\TagsType;
 
+
 /**
  * Tags controller.
  *

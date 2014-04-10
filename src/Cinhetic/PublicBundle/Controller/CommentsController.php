@@ -30,6 +30,8 @@ class CommentsController extends Controller
             'entities' => $entities,
         ));
     }
+
+
     /**
      * Creates a new Comments entity.
      *
@@ -142,9 +144,6 @@ class CommentsController extends Controller
 //            echo   $error->getPropertyPath();
 //            echo   $error->getMessage();
         }
-
-//        exit('stop')
-//        exit(var_dump($errors));
 
 
         return $this->render('CinheticPublicBundle:Comments:commentMovie.html.twig', array(
@@ -279,6 +278,7 @@ class CommentsController extends Controller
      */
     private function createDeleteForm($id)
     {
+
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('comments_delete', array('id' => $id)))
             ->setMethod('DELETE')

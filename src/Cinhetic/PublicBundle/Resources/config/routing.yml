@@ -3,10 +3,10 @@ Cinhetic_public_homepage:
     pattern:  /
     defaults: { _controller: CinheticPublicBundle:Main:index }
 
+# Search
 Cinhetic_public_search:
     pattern:  /search
     defaults: { _controller: CinheticPublicBundle:Movies:search }
-
 
 # Actors
 CinheticPublicBundle_actors:
@@ -43,6 +43,7 @@ CinheticPublicBundle_comments:
     resource: "@CinheticPublicBundle/Resources/config/routing/comments.yml"
     prefix:   /comments
 
+# Directors
 CinheticPublicBundle_directors:
         resource: "@CinheticPublicBundle/Resources/config/routing/directors.yml"
         prefix:   /directors
