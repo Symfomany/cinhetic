@@ -12,9 +12,10 @@
 
     <link rel="stylesheet" type="text/css" href="http://bootswatch.com/darkly/bootstrap.min.css"/>
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/flick/jquery-ui.css" />
-            <link rel="stylesheet" type="text/css" media="screen" href="/css/e4bdb77_main_1.css"/>
-        <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.css" />
-    <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/jquery.colorbox/1.4.33/example1/colorbox.min.css"/>
+                
+        <link rel="stylesheet" type="text/css" media="screen" href="/css/bb9c912_main_1.css"/>
+    
+    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.css" />
     <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
 
@@ -74,25 +75,19 @@
         <p></p>
         <form action="/administration/search"  role="search">
             <div class="form-group has-success has-feedback col-sm-10">
-                <input id="search_input" data-url="/administration/search?ajax=true" name="search" value="" type="search" class="form-control"  placeholder="Rechercher un film, une catégorie, un cinéma...">
-            </div>
+                    <input  type="search"     id="search" name="search" required="required"        id="search_input" placeholder="Rechercher un film, une catégorie, un tag..." class="form-control" value=""  class="form-control" name="field"  />
+                            </div>
             <button id="sendsearch" type="submit" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-search"></i></button>
         </form>
     </nav>
 
+                            
 
+                                <h1> <i class="glyphicon glyphicon-pencil"></i> Editer le Tags test alpha</h1>
 
-                                <h1> <i class="glyphicon glyphicon-plus"></i> Création le Tags</h1>
+    <form name="" method="post" action="/administration/tags/16/update" id="handletags"><input type="hidden" name="_method" value="PUT" /><div     id="handletags"><div><label for="word">Mot-clef</label><input  type="text"     id="word" name="word" maxlength="400" value="test alpha"  class="form-control" name="field"  /></div><div><label for="movies" class="required">Film associés</label><select  class="form-control multiselect"     id="movies" name="movies[]" required="required"   multiple="multiple"><option value="1" selected="selected">Le Hobbit : Un voyage inattendu(VOST) - 2012</option><option value="2" selected="selected">Le Seigneur des anneaux : La Communauté de l&#039;anneau(VOST) - 2001</option><option value="3">okayyyy(VOST) - 2014</option></select></div><div><button type="submit" id="submit" name="submit" class="btn btn-warning">Modifier ce tag</button></div><input  type="hidden"     id="_token" name="_token" value="-BA5xHGm9QYv2hZM8wVp1J6l2RaObBSvK90UFCYZp3A"  class="form-control" name="field"  /></div></form>
 
-    <form name="" method="post" action="/administration/tags/create" id="handletags"><div     id="handletags"><div><label for="word">Mot-clef</label><input  type="text"     id="word" name="word" maxlength="400"  class="form-control" name="field"  /></div><div><label for="movies" class="required">Film associés</label><select  class="form-control multiselect"     id="movies" name="movies[]" required="required"   multiple="multiple"><option value="1">Le Hobbit : Un voyage inattendu(VOST) - 2012</option><option value="2">Le Seigneur des anneaux : La Communauté de l&#039;anneau(VOST) - 2001</option><option value="11">okayyyy(VOST) - 2014</option><option value="12">okayyyy(VOST) - 2014</option><option value="13">okayyyy(VOST) - 2014</option></select></div><div><button type="submit" id="submit" name="submit" class="btn btn-warning">Créer ce tag</button></div><input  type="hidden"     id="_token" name="_token" value="V-HHkPD3ccTMN5HCuMQRm1BZvOTRIaPLuxNNjp3LUno"  class="form-control" name="field"  /></div></form>
-
-        <ul class="record_actions">
-    <li>
-        <a href="/administration/tags/">
-            Back to the list
-        </a>
-    </li>
-</ul>
+    <form name="form" method="post" action="/administration/tags/16/delete"><input type="hidden" name="_method" value="DELETE" /><div     id="form"><div><button type="submit" id="form_submit" name="form[submit]">Delete</button></div><input  type="hidden"     id="form__token" name="form[_token]" value="z0RT6UL8Ua6JvNaN-RZeNWCPIrq1SYtHPsihZQinTJU"  class="form-control" name="field"  /></div></form>
                         </div>
                     <div id="overlay" class="overlay hide">
                         <img src="http://www.cinhetic.ju/images/loading.gif" />
@@ -104,19 +99,18 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/hinclude/0.9.5/hinclude.min.js"></script>
     <script type="text/javascript" src="http://cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.colorbox/1.4.33/jquery.colorbox-min.js"></script>
-        
+    <script src="http://modernizr.com/downloads/modernizr-latest.js"></script>
+    <script src="/js/jquery-fileupload.min.js"></script>
+
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.0.1/ckeditor.js"></script>
 
-    <script type="text/javascript">
-        $( document ).ready(function() {
-            $('a.gallery').colorbox({rel:'gal'});
-        });
-    </script>
         <script type="text/javascript" src="/js/a7bf017_main_1.js"></script>
     
+        <script type="text/javascript" src="/js/5d2634d_jquery.raty.min_1.js"></script>
+    
+
 </body>
 </html>
