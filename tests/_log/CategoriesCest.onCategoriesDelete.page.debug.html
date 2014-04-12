@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Cinhetic Solution"/>
+    <meta name="keywords" content="Cinhetic Solution"/>
+    <meta name="author" content="Cinhetic Solution">
+    <title>Cinhetic Solution</title>
+        
+
+    <link rel="stylesheet" type="text/css" href="http://bootswatch.com/darkly/bootstrap.min.css"/>
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/flick/jquery-ui.css" />
+                
+        <link rel="stylesheet" type="text/css" media="screen" href="/css/bb9c912_main_1.css"/>
+    
+    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.css" />
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+
+   
+    <link rel="icon" type="image/x-icon" href="http://www.github.com/favicon.ico" />
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a href="/administration/" class="navbar-brand">Cinhetic</a>
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse" id="navbar-main">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a  href="/administration/"><i class="glyphicon glyphicon-home"></i> Home</a></li>
+                                        <li ><a  href=""><i class="glyphicon glyphicon-tasks"></i> Presse</a></li>
+                                        <li ><a  href=""><i class="glyphicon glyphicon-question-sign"></i> Faq</a></li>
+                    <li ><a  href=""><i class="glyphicon glyphicon-user"></i> Contact</a></li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                                            </li>
+
+                    <li>
+                        <a href="/administration/logout" id="configuration"><i class="glyphicon glyphicon-off"></i> Deconnexion</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <br /> <br /><br /><br />
+
+                        <div class="col-sm-12 main">
+                            <ul class="nav nav-pills">
+                                <li ><a href="/administration/actors/">Voir les acteurs</a></li>
+                                <li ><a href="/administration/directors/">Voir les réalisateurs</a></li>
+                                <li ><a href="/administration/movies/">Voir les films</a></li>
+                                <li  class="active" ><a href="/administration/categories/">Voir les catégories</a></li>
+                                <li ><a href="/administration/cinema/">Voir les cinémas</a></li>
+                                <li ><a href="/administration/sessions/">Voir les séances</a></li>
+                                <li ><a href="/administration/tags/">Voir les tags</a></li>
+                                <li ><a href="/administration/comments/">Voir les commentaires</a></li>
+                            </ul>
+                            <br /><br />
+                            
+    <div id="flashdatas">
+                    </div>
+
+                                <nav class="navbar navbar-inverse" role="navigation">
+        <p></p>
+        <form action="/administration/search" method="post"  role="search">
+            <div class="form-group has-success has-feedback col-sm-10">
+                    <input  type="search"     id="search" name="search" required="required"        id="search_input" placeholder="Rechercher un film, une catégorie, un tag..." class="form-control" value=""  class="form-control" name="field"  />
+                            </div>
+            <button id="sendsearch" type="submit" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-search"></i></button>
+                <input  type="hidden"     id="_token" name="_token" value="qTInT4DJlxSNJDXHF-AtHD4Mfwf1FQsOgWexCNZHL7I"  class="form-control" name="field"  />
+        </form>
+    </nav>
+
+                            
+
+                                <h1> <i class="glyphicon glyphicon-th-list"></i> Liste des categories [10]</h1>
+    <hr />
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Nb de films</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+                    <tr>
+                <td><a href="/administration/categories/1/show">1</a></td>
+                <td class="text-success">Fantastique</td>
+                <td class="text-danger">Fantastiques et Magiques</td>
+                <td class="text-success">2</td>
+                <td>
+
+                        <a href="/administration/categories/1/show"><i class="glyphicon glyphicon-search"></i> Voir</a>
+
+                        <a href="/administration/categories/1/edit"><i class="glyphicon glyphicon-pencil"></i> Editer</a>
+
+                </td>
+            </tr>
+                    <tr>
+                <td><a href="/administration/categories/2/show">2</a></td>
+                <td class="text-success">Action</td>
+                <td class="text-danger"><p>Film d&#39;action</p></td>
+                <td class="text-success">0</td>
+                <td>
+
+                        <a href="/administration/categories/2/show"><i class="glyphicon glyphicon-search"></i> Voir</a>
+
+                        <a href="/administration/categories/2/edit"><i class="glyphicon glyphicon-pencil"></i> Editer</a>
+
+                </td>
+            </tr>
+                    <tr>
+                <td><a href="/administration/categories/3/show">3</a></td>
+                <td class="text-success">Arts Martiaux</td>
+                <td class="text-danger"><p>Film d&#39;Arts Martiaux</p></td>
+                <td class="text-success">0</td>
+                <td>
+
+                        <a href="/administration/categories/3/show"><i class="glyphicon glyphicon-search"></i> Voir</a>
+
+                        <a href="/administration/categories/3/edit"><i class="glyphicon glyphicon-pencil"></i> Editer</a>
+
+                </td>
+            </tr>
+                    <tr>
+                <td><a href="/administration/categories/4/show">4</a></td>
+                <td class="text-success">Dramatique</td>
+                <td class="text-danger"><p>Film dramatique</p></td>
+                <td class="text-success">0</td>
+                <td>
+
+                        <a href="/administration/categories/4/show"><i class="glyphicon glyphicon-search"></i> Voir</a>
+
+                        <a href="/administration/categories/4/edit"><i class="glyphicon glyphicon-pencil"></i> Editer</a>
+
+                </td>
+            </tr>
+                    <tr>
+                <td><a href="/administration/categories/5/show">5</a></td>
+                <td class="text-success">Guerre</td>
+                <td class="text-danger"><p>Film de guerre</p></td>
+                <td class="text-success">0</td>
+                <td>
+
+                        <a href="/administration/categories/5/show"><i class="glyphicon glyphicon-search"></i> Voir</a>
+
+                        <a href="/administration/categories/5/edit"><i class="glyphicon glyphicon-pencil"></i> Editer</a>
+
+                </td>
+            </tr>
+                    <tr>
+                <td><a href="/administration/categories/6/show">6</a></td>
+                <td class="text-success">Horreur</td>
+                <td class="text-danger"><p>Film d&#39;horreur</p></td>
+                <td class="text-success">0</td>
+                <td>
+
+                        <a href="/administration/categories/6/show"><i class="glyphicon glyphicon-search"></i> Voir</a>
+
+                        <a href="/administration/categories/6/edit"><i class="glyphicon glyphicon-pencil"></i> Editer</a>
+
+                </td>
+            </tr>
+                    <tr>
+                <td><a href="/administration/categories/7/show">7</a></td>
+                <td class="text-success">Sciences-fictions</td>
+                <td class="text-danger"><p>Film de sciences-fictions</p></td>
+                <td class="text-success">0</td>
+                <td>
+
+                        <a href="/administration/categories/7/show"><i class="glyphicon glyphicon-search"></i> Voir</a>
+
+                        <a href="/administration/categories/7/edit"><i class="glyphicon glyphicon-pencil"></i> Editer</a>
+
+                </td>
+            </tr>
+                    <tr>
+                <td><a href="/administration/categories/8/show">8</a></td>
+                <td class="text-success">Thriller</td>
+                <td class="text-danger"><p>Film&nbsp;Thriller</p></td>
+                <td class="text-success">0</td>
+                <td>
+
+                        <a href="/administration/categories/8/show"><i class="glyphicon glyphicon-search"></i> Voir</a>
+
+                        <a href="/administration/categories/8/edit"><i class="glyphicon glyphicon-pencil"></i> Editer</a>
+
+                </td>
+            </tr>
+                    <tr>
+                <td><a href="/administration/categories/9/show">9</a></td>
+                <td class="text-success">Aventure</td>
+                <td class="text-danger"><p>Film d&#39;aventure</p></td>
+                <td class="text-success">0</td>
+                <td>
+
+                        <a href="/administration/categories/9/show"><i class="glyphicon glyphicon-search"></i> Voir</a>
+
+                        <a href="/administration/categories/9/edit"><i class="glyphicon glyphicon-pencil"></i> Editer</a>
+
+                </td>
+            </tr>
+                    <tr>
+                <td><a href="/administration/categories/12/show">12</a></td>
+                <td class="text-success">Autobiographie</td>
+                <td class="text-danger">Film autobiographique français</td>
+                <td class="text-success">0</td>
+                <td>
+
+                        <a href="/administration/categories/12/show"><i class="glyphicon glyphicon-search"></i> Voir</a>
+
+                        <a href="/administration/categories/12/edit"><i class="glyphicon glyphicon-pencil"></i> Editer</a>
+
+                </td>
+            </tr>
+                </tbody>
+    </table>
+    <hr />
+
+    <a class="btn btn-danger" href="/administration/categories/new">
+        <i class="glyphicon glyphicon-plus"></i>  Creation de la catégorie
+    </a>
+
+                            </div>
+                    <div id="overlay" class="overlay hide">
+                        <img src="http://www.cinhetic.ju/images/loading.gif" />
+                    </div>
+                </div>
+            </div>
+
+        
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/hinclude/0.9.5/hinclude.min.js"></script>
+    <script type="text/javascript" src="http://cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+    <script src="http://modernizr.com/downloads/modernizr-latest.js"></script>
+    <script src="/js/jquery-fileupload.min.js"></script>
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.0.1/ckeditor.js"></script>
+
+        <script type="text/javascript" src="/js/a7bf017_main_1.js"></script>
+    
+        <script type="text/javascript" src="/js/5d2634d_jquery.raty.min_1.js"></script>
+    
+
+</body>
+</html>

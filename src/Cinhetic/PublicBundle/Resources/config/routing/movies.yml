@@ -28,3 +28,15 @@ movies_delete:
     pattern:  /{id}/delete
     defaults: { _controller: "CinheticPublicBundle:Movies:delete" }
     requirements: { _method: post|delete }
+
+
+# API Receipt
+movies_api_all:
+  type: rest
+  resource: Cinhetic\PublicBundle\Controller\MoviesController
+
+one_api:
+  pattern: /{id}/one.{_format}
+  defaults: { _controller: CinheticPublicBundle:Movies:one }
+  requirements:
+      _method: GET
