@@ -3,8 +3,8 @@ $(function () {
 
     $(".fancybox").fancybox();
 
-    $('select[multiple="multiple"]').selectpicker({
-    });
+    $('select[multiple="multiple"]').selectpicker({});
+
 
     $('.star').raty({
         numberMax : 5,

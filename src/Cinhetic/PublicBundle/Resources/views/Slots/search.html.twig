@@ -3,7 +3,7 @@
         <p></p>
         <form action="{{ path('Cinhetic_public_search') }}" method="post"  role="search">
             <div class="form-group has-success has-feedback col-sm-10">
-                {{ form_widget(form.search,{'attr': {"value" :  word}}) }}
+                {{ form_widget(form.search,{"id" : "search_input",'attr': {"id" : "search_input", "value" :  word, "data-url" : path('Cinhetic_public_search', {'ajax': "true"}) }}) }}
                 {#<input id="search_input" data-url="{{ path('Cinhetic_public_search', {'ajax' : 'true'}) }}" name="search" value="{{ app.request.query.get('search') }}" type="search" class="form-control"  placeholder="Rechercher un film, une catégorie, un cinéma...">#}
             </div>
             <button id="sendsearch" type="submit" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-search"></i></button>
