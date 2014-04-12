@@ -149,12 +149,19 @@ Optional Requirements
 * Composer
 * Symfony 2
 
-Chapters
+Chapters covered in project
 ---------------
 
+* Installation & Configuration of Symfony2 Framework
+* Multi-syntax in Yaml, Xml, PHP
+* ClassLoader & PSR-0 & Composer Component
+* Installation third bundles like FOSUserBundle, KNPPaginator...
+* Routing layer
+* Doctrine ORM & DQL
+* Console CLI Generators & configuration
 * View: Twig Engine with inheritance, including, rendering, filters...
 * Controllers: CRUD, Bind with Form/Entity, Entity Manager, HTTP Methods, Request object, Flash Message, services, redirection/forward
-* Models: Annotations, Relationship (1,1;,1,n;n,m), Repositories, DQL
+* Models: Annotations, Relationship (1:1;,1:n;n:m), Repositories, DQL
 * Form: Types of fields, Dependancies with Model, Validations
 
 
