@@ -136,15 +136,6 @@ class CommentsController extends Controller
             //redirections
             return $this->redirect($this->generateUrl('Cinhetic_public_homepage'));
         }
-        $errors = $this->get('validator')->validate($form);
-
-
-        foreach( $errors as $error )
-        {
-//            echo   $error->getPropertyPath();
-//            echo   $error->getMessage();
-        }
-
 
         return $this->render('CinheticPublicBundle:Comments:commentMovie.html.twig', array(
             'id' => $id,

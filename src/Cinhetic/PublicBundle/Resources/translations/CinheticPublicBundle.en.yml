@@ -1,42 +1,41 @@
-auth:
-  title: Authentification
-  badcredentials:  Mauvais login / mot de passe
-  email: Email / Login
-  passord: Mot de passe
-  login: Connexion
-  rememberme: Se souvenir de moi
+auth: 
+   title: Authentication 
+   badcredentials: Bad login / password 
+   email: Email / Login 
+   Passord: Password 
+   login: Login 
+   rememberme: Remember me 
 
-
-layout:
-  title: Cinhetic Solution
-  search:
-    title: Rechercher
-    placeholder: Rechercher une facture, un montant, un magasin...
-  list:
-    datepurchase: Date d'achat
-    paiement: Moyen de paiement
-    apercu: Aperçu
-    actions: Actions
-  btn:
-    add_receipt: Ajouter une facture
-  topmenu:
-    home: Accueil
-    press: Presse
-    faq: FAQ
-    contact: Contact
-    myaccount: Mon Compte
-    logout: Deconnexion
-  leftmenu:
-    alertitle: Mes Alertes
-    messagetitle: Mes Messages
-    seemoremessage: Voir tous les messages
-    seemorealerts: Voir toutes les alertes
-  main:
-    title: Mon espace
-    subtitles:
-      myreceipts: Mes factures
-      allreceipts: Toutes les factures
-      myanalyze: Mes analyses
-      myarchives: Mes archives
-      myadvices: Mes conseils
-      myfavorites: Mes favoris
+layout: 
+   title: Cinhetic Solution 
+   search: 
+     title: Search 
+     placeholder: Search for a film, a class, an actor, a key word ... 
+   list: 
+     datepurchase: Purchase Date 
+     Payment: Payment Method 
+     overview: Overview 
+     Shares: 
+   btn: 
+     add_receipt: Add a movie 
+   topmenu: 
+     home: Home 
+     press: Press 
+     FAQ: FAQ 
+     Contact: Contact 
+     myaccount: My Account 
+     logout: Logout 
+   LeftMenu: 
+     alertitle: My Alerts 
+     MessageTitle: My Messages 
+     seemoremessage: See all posts
+     seemorealerts: See all alerts 
+   hand: 
+     title: My Space 
+     subtitles: 
+       MyFilms: My movies 
+       allfilms: All films 
+       myanalyze: My analysis 
+       myarchives: My archives 
+       myadvices: My Advice 
+       myfavorites: My Favorites

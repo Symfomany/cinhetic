@@ -14,14 +14,14 @@ class MainController extends Controller
 {
 
     /**
-     * Homepage Dashboard
+     * Homepage Get Started
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function homeAction()
     {
-
         return $this->render('CinheticPublicBundle:Main:home.html.twig');
     }
+
 
     /**
      * Main Dashboard Homepage

@@ -1,5 +1,4 @@
 $ ->
-  alert 'ok'
   if $("#search_input").length > 0
     $("#search_input").autocomplete(
       minLength: 2

@@ -72,6 +72,7 @@ $minorProblems = $symfonyRequirements->getFailedRecommendations();
                         <p>
                             Install Elastic Search & run the service for Cinhetic
                         </p>
+                        <a><a href="https://gist.github.com/wingdspur/2026107">Installation & documentation here</a> </a>
 
 
                         <?php if (count($majorProblems)): ?>

@@ -131,7 +131,6 @@ class MoviesController extends Controller
     public function starsMoviesAction()
     {
         $em = $this->getDoctrine()->getManager();
-
         $entities = $em->getRepository('CinheticPublicBundle:Movies')->getStarMovies();
 
         return $this->render('CinheticPublicBundle:Movies:stars.html.twig', array(
@@ -148,7 +147,6 @@ class MoviesController extends Controller
     public function carousselMoviesAction()
     {
         $em = $this->getDoctrine()->getManager();
-
         $entities = $em->getRepository('CinheticPublicBundle:Movies')->getCoverMovies();
 
         return $this->render('CinheticPublicBundle:Movies:caroussel.html.twig', array(
@@ -371,7 +369,7 @@ class MoviesController extends Controller
 
 
     /************************************************************************************************************
-     *****************************************************************API Call********************************************
+     ***************************************************************** API Override Call ********************************************
      *************************************************************************************************************/
 
     /**
