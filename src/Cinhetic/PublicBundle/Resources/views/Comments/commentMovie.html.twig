@@ -1,9 +1,13 @@
 
 {% block commentMovie %}
-    <h2><i class="glyphicon glyphicon-pencil"></i> Ecrire un commentaire</h2>
-    <form action="{{ path('comments_movies') }}" method="post">
-        {{ form_widget(form.movie,{'attr': {'value' : id }}) }}
-        {{ form_rest(form) }}
-    </form>
+<div class="row">
+    <div class="col-md-5">
+        <h2><i class="glyphicon glyphicon-pencil"></i> Ecrire un commentaire</h2>
+        <form action="{{ path('comments_movies') }}" method="post">
+            {{ form_widget(form.movie,{'attr': {'value' : id }}) }}
+            {{ form_rest(form) }}
+        </form>
+    </div>
+</div>
     <hr />
 {% endblock %}

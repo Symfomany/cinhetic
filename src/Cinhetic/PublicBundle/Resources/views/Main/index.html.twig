@@ -6,6 +6,8 @@
 
 {% block content %}
 
+    {{ render(controller('CinheticPublicBundle:Movies:carousselMovies')) }}
+
     <div class="alert alert-block alert-warning">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         <h3><i class="glyphicon glyphicon-bookmark"></i> Les 5 Prochaines séances</h3>
@@ -26,7 +28,6 @@
         {% endfor %}
         </ul>
     </div>
-    {{ render(controller('CinheticPublicBundle:Movies:carousselMovies')) }}
 
     <div class="row marketing">
         <div class="col-lg-6">
