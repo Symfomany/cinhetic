@@ -57,7 +57,15 @@ class MoviesType extends AbstractType
             ->add('budget')
             ->add('duree')
             ->add('dateRelease', null, array('label' => "Date de sortie"))
-            ->add('notePresse')
+            ->add('notePresse','choice', array(
+                'choices'   => array(
+                    '1' => 'Naz',
+                    '2' => 'Moyen',
+                    "3" => "Passable",
+                    "4" => "Bon film",
+                    '5' => "Excellent réalisateur"),
+                'required'  => false,
+            ))
             ->add('visible')
             ->add('cover')
             ->add('category', null, array('label' => "Catégorie associée"))

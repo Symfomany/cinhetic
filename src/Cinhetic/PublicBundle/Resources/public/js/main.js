@@ -3,6 +3,9 @@ $(function () {
 
     $(".fancybox").fancybox();
 
+    $('select[multiple="multiple"]').selectpicker({
+    });
+
     $('.star').raty({
         numberMax : 5,
         readOnly: true,

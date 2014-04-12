@@ -270,7 +270,8 @@ class Movies
         $this->user = new \Doctrine\Common\Collections\ArrayCollection();
         $this->dateCreated = new \Datetime('now');
         $this->dateRelease = new \Datetime('now');
-
+        $this->annee = new \Datetime('now');
+        $this->annee = $this->annee->format('Y');
     }
 
 

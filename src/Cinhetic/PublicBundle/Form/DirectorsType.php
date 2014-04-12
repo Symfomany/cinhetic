@@ -22,7 +22,14 @@ class DirectorsType extends AbstractType
             ->add('firstname', null, array("label" => "Nom"))
             ->add('lastname', null, array("label" => "Prénom"))
             ->add('biography', null, array("label" => "Biographie", 'attr' => array("cols" => 80, "rows" => 7)))
-            ->add('note')
+            ->add('note','choice', array(
+                'choices'   => array(
+                    '1' => 'Naz',
+                    '2' => 'Moyen',
+                    "3" => "Bon réalisateur",
+                    '4' => "Excellent réalisateur"),
+                'required'  => false,
+            ))
             ->add('movies', null, array("label" => "Films réalisés"))
         ;
     }
