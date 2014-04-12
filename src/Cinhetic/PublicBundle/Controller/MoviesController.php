@@ -77,7 +77,7 @@ class MoviesController extends Controller
             ));
 
         }else{
-            $word = $request->query->get('search');
+            $word = $request->query->get('word');
             $finderMovies = $this->container->get('fos_elastica.finder.website.movies');
             $movies = $finderMovies->find($word);
 
