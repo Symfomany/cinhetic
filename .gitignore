@@ -1,6 +1,7 @@
 .idea/
 app/cache
 app/logs
+app/parameters.yml
 vendor/
 composer.lock
 rcelasticsearch

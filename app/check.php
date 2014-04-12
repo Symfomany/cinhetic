@@ -8,7 +8,7 @@ $iniPath = $symfonyRequirements->getPhpIniConfigPath();
 
 echo "********************************\n";
 echo "*                              *\n";
-echo "*  Symfony requirements check  *\n";
+echo "*  Cinhetic & Symfony2 requirements check  *\n";
 echo "*                              *\n";
 echo "********************************\n\n";
 

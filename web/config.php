@@ -68,6 +68,11 @@ $minorProblems = $symfonyRequirements->getFailedRecommendations();
                             This script will guide you through the basic configuration of your project.
                             You can also do the same by editing the ‘<strong>app/config/parameters.yml</strong>’ file directly.
                         </p>
+                        <h2>Recommendations</h2>
+                        <p>
+                            Install Elastic Search & run the service for Cinhetic
+                        </p>
+
 
                         <?php if (count($majorProblems)): ?>
                             <h2 class="ko">Major problems</h2>

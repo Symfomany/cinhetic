@@ -3,7 +3,7 @@ $(function () {
 
     $(".fancybox").fancybox();
 
-    $('select').selectpicker({});
+    $('select[multiple="multiple"]').selectpicker({});
 
 
     $('.star').raty({
@@ -50,26 +50,6 @@ $(function () {
         };
     }
 
-    $(".message_form").submit(function(){
-        $obj = $(this);
-        $.ajax({
-            url: $(".message_form").attr('action'),
-            type: "POST",
-            dataType    : "json",
-            data: $obj.serialize(),
-            success: function(data) {
-                $("#overlay").fadeOut('fast');
-                $obj.find("button").text('Merci de votre réponse');
-                $obj.parents(".media-list").find(".alert-warning").fadeOut('fast');
-                $obj.find("button").removeClass("btn-danger");
-                $obj.find("button").addClass("btn-success");
-                $commentaire = $("<p>" + $obj.find('textarea').val() + "</p>");
-                $obj.prev('.media-body').append($commentaire);
-            }
-
-        });
-        return false;
-    });
 
 
     $('#myTab a').click(function (e) {
