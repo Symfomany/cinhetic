@@ -26,7 +26,6 @@ class Sessions
 
     /**
      * @var \DateTime
-     * @Assert\DateTime()
      * @ORM\Column(name="date_session", type="datetime", nullable=true)
      */
     private $dateSession;
