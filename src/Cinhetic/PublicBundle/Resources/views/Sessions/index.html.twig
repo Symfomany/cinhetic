@@ -20,8 +20,13 @@
         {% for entity in entities %}
             <tr>
                 <td><a href="{{ path('sessions_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td class="text-danger"><i class="glyphicon glyphicon-time"></i> {% if entity.dateSession %}Le {{ entity.dateSession|date('Y-m-d') }} à {{ entity.dateSession|date('H:i') }}{% endif %}</td>
-                <td class="text-success">{{ entity.movies.title|title }}</td>
+                <td class="text-danger">
+                    <i class="glyphicon glyphicon-time"></i> {% if entity.dateSession %}Le {{ entity.dateSession|date('Y-m-d') }} à {{ entity.dateSession|date('H:i') }}{% endif %}</td>
+                <td class="text-success">
+                    <a href="{{ path('movies_show', {'id' : entity.movies.id}) }}">
+                        {{ entity.movies.title|title }}
+                    </a>
+                </td>
                 <td class="text-success"><i class="glyphicon glyphicon-map-marker"></i> {{ entity.cinema.title|title }}</td>
                 <td>
 

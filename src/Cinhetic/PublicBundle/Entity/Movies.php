@@ -3,12 +3,16 @@
 namespace Cinhetic\PublicBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
 
 /**
  * Movies
  *
  * @ORM\Table(name="movies")
  * @ORM\Entity(repositoryClass="Cinhetic\PublicBundle\Repository\MoviesRepository")
+ * @UniqueEntity(fields="title", message="Le titre est deja pris!")
  */
 class Movies
 {
@@ -23,35 +27,52 @@ class Movies
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="type_film", type="string", length=250, nullable=true)
      */
     private $typeFilm;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="title", type="string", length=250, nullable=true)
      */
     private $title;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = "10",
+     *      max = "150",
+     *      minMessage = "Votre synopsis doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre synopsis ne peut pas être plus long que {{ limit }} caractères"
+     * )
      * @ORM\Column(name="synopsis", type="text", nullable=true)
      */
     private $synopsis;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = "20",
+     *      max = "1050",
+     *      minMessage = "Votre description doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre description ne peut pas être plus long que {{ limit }} caractères"
+     * )
      * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
 
     /**
      * @var string
-     *
+     * @Assert\Length(
+     *      min = "10",
+     *      max = "5050",
+     *      minMessage = "Votre trailer doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre trailer ne peut pas être plus long que {{ limit }} caractères"
+     * )
      * @ORM\Column(name="trailer", type="text", nullable=true)
      */
     private $trailer;
@@ -70,49 +91,68 @@ class Movies
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="distributeur", type="string", length=250, nullable=true)
      */
     private $distributeur;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="bo", type="string", length=250, nullable=true)
      */
     private $bo;
 
     /**
      * @var integer
-     *
+     * @Assert\Range(
+     *      min = 1930,
+     *      max = 2016,
+     *      minMessage = "Le minimum d'année est de 1930",
+     *      maxMessage = "Le maximum d'année est de 2016"
+     * )
      * @ORM\Column(name="annee", type="integer", nullable=true)
      */
     private $annee;
 
     /**
      * @var float
-     *
+     * @Assert\Range(
+     *      min = 1000,
+     *      max = 10000000,
+     *      minMessage = "Le minimum de budget est de 1000",
+     *      maxMessage = "Le maximum de budget est de 10000000"
+     * )
      * @ORM\Column(name="budget", type="float", precision=10, scale=0, nullable=true)
      */
     private $budget;
 
     /**
      * @var integer
-     *
+     * @Assert\Range(
+     *      min = 0.5,
+     *      max = 5,
+     *      minMessage = "Le minimum d'heure est est de 30min.",
+     *      maxMessage = "Le maximum d'heure est de 5h"
+     * )
      * @ORM\Column(name="duree", type="integer", nullable=true)
      */
     private $duree;
 
     /**
      * @var \DateTime
-     *
      * @ORM\Column(name="date_release", type="date", nullable=true)
      */
     private $dateRelease;
 
     /**
      * @var float
-     *
+     * @Assert\Range(
+     *      min = 1,
+     *      max = 5,
+     *      minMessage = "Le minimum de note de presse est est de 1 étoile",
+     *      maxMessage = "Le maximum de note de presse est est de 5 étoiles"
+     * )
      * @ORM\Column(name="note_presse", type="float", precision=10, scale=0, nullable=true)
      */
     private $notePresse;
@@ -178,8 +218,6 @@ class Movies
      * @ORM\OneToMany(targetEntity="Comments", mappedBy="movie")
      */
     private $comments;
-
-
 
 
     /**

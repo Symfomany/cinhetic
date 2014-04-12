@@ -3,11 +3,6 @@ Cinhetic_public:
     prefix:   /administration
 
 
-#Nelmio API Routing
-NelmioApiDocBundle:
-    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
-    prefix:   /api/doc
-
 #FOS Routing
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"

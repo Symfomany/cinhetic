@@ -57,7 +57,7 @@ class MoviesRepository extends EntityRepository
      * @param null $word
      * @return array
      */
-    public function getCurrentMovies($limit = 3){
+    public function getCurrentMovies(){
         $query = $this->getEntityManager()
             ->createQuery(
                 'SELECT p
@@ -71,8 +71,50 @@ class MoviesRepository extends EntityRepository
                 'current' => new \Datetime('midnight'),
             ));
 
-            return $query->setMaxResults($limit)->getResult();
+            return $query->getResult();
     }
+
+
+    /**
+     * Get Active Receipt
+     * @return \Doctrine\ORM\QueryBuilder
+     */
+    public function getActiveMoviesBuilder()
+    {
+        $queryBuilder = $this->getEntityManager()
+            ->createQueryBuilder()
+            ->select('m')
+            ->from('Cinhetic\PublicBundle\Entity\Movies', 'm')
+            ->where('m.visible = 1')
+            ->andWhere('m.dateRelease >= :current')
+            ->orderBy('m.id', 'DESC')
+            ->setParameter('current' , new \Datetime('midnight'));
+
+        return $queryBuilder;
+    }
+
+    /**
+     * Get Active movies by criteria
+     * @param null $word
+     * @return array
+     */
+    public function getActiveMovies(){
+        $query = $this->getEntityManager()
+            ->createQuery(
+                'SELECT p
+                    FROM CinheticPublicBundle:Movies p
+                    WHERE p.dateRelease >= :current
+                    AND p.visible = 1
+                    ORDER BY p.title ASC'
+            )
+            ->setParameters(
+            array(
+                'current' => new \Datetime('midnight'),
+            ));
+
+            return $query;
+    }
+
 
     /**
      * Get All Movies order by date realase desc

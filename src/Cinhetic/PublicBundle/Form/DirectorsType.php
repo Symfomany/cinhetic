@@ -19,12 +19,11 @@ class DirectorsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('firstname')
-            ->add('lastname')
-            ->add('biography')
+            ->add('firstname', null, array("label" => "Nom"))
+            ->add('lastname', null, array("label" => "Prénom"))
+            ->add('biography', null, array("label" => "Biographie", 'attr' => array("cols" => 80, "rows" => 7)))
             ->add('note')
-            ->add('dateCreated')
-            ->add('movies')
+            ->add('movies', null, array("label" => "Films réalisés"))
         ;
     }
     

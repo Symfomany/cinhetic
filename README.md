@@ -161,7 +161,7 @@ Chapters
 * Page Movie with complete description
 * Pagination for results with "KNPPaginatorBundles"
 * Datas Fixtures with "Doctrine Fixtures"
-* Homepage with custom template by Bootsrap Twitter
+* Homepage with custom template by Bootsrapp Twitter
 * Add authentification & firewall administration for user connected with "FOSUserBundle"
 * Rest API with FOSRestBundle
 * Page Category to list all movies related

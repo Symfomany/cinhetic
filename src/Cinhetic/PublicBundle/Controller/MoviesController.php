@@ -18,7 +18,7 @@ class MoviesController extends Controller
 
 
     /**
-     * Search Action in AJAX or HTTP
+     * Search Movies in Engine Search
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function searchAction()
@@ -29,17 +29,22 @@ class MoviesController extends Controller
         $movies = $em->getRepository('CinheticPublicBundle:Movies')->findAll();
         $word = null;
 
-
         $form = $this->createForm(new SearchType(), null, array(
             'action' => $this->generateUrl('Cinhetic_public_search'),
-            'method' => 'GET',
+            'method' => 'POST',
         ));
 
         $form->handleRequest($request);
 
         if($form->isValid()){
                     $word = $form->get('search')->getData();
-                    $movies = $em->getRepository('CinheticPublicBundle:Movies')->search($word);
+
+                    //with DQL Repository
+                    //$movies = $em->getRepository('CinheticPublicBundle:Movies')->search($word);
+
+                    //Wildcard : With Elastica
+                    $finderMovies = $this->container->get('fos_elastica.finder.website.movies');
+                    $movies = $finderMovies->find($word);
 
                     $pagination = $paginator->paginate(
                         $movies,
@@ -61,7 +66,6 @@ class MoviesController extends Controller
             array('pageParameterName' => 'pageone')
         );
 
-
         return $this->render('CinheticPublicBundle:Movies:searchpage.html.twig',  array(
             'form' => $form->createView(),
             'movies' => $pagination,
@@ -71,13 +75,11 @@ class MoviesController extends Controller
 
 
     /**
-     * Lists all Movies entities.
-     *
+     * Lists all Movies
      */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
         $entities = $em->getRepository('CinheticPublicBundle:Movies')->findAll();
 
         return $this->render('CinheticPublicBundle:Movies:index.html.twig', array(
@@ -87,13 +89,11 @@ class MoviesController extends Controller
 
 
     /**
-     * get Current Movies entities.
-     *
+     * Get Current Movies
      */
     public function currentMoviesAction()
     {
         $em = $this->getDoctrine()->getManager();
-
         $entities = $em->getRepository('CinheticPublicBundle:Movies')->getCurrentMovies();
 
         return $this->render('CinheticPublicBundle:Movies:current.html.twig', array(
@@ -172,8 +172,8 @@ class MoviesController extends Controller
     {
         $form = $this->createForm(new MoviesType(), $entity, array(
             'action' => $this->generateUrl('movies_create'),
-            'attr' => array('id' => 'handlemovie'),
-            'method' => 'POST',
+            'attr' => array('id' => 'handlemovie',  'novalidate' => "novalidate"),
+            'method' => 'POST'
         ));
 
         $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning"), 'label' => 'Créer ce film'));

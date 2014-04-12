@@ -123,30 +123,64 @@ services:
        tags:
            - { name: twig.extension }
 #
-#fos_elastica:
-#    default_manager: orm
-#    clients:
-#        default: { host: localhost, port: 9200 }
-#    indexes:
-#        website:
-#            client: default
-#            index_name: website_qa
-#            types:
-#              user:
-#                mappings:
-#                    email: { type: string }
-#                    username: { type: string }
-#                    ville: { type: string }
-#                    zipcode: { type: string }
-#                    tel: { type: string }
-#                persistence:
-#                    driver: orm
-#                    model: Cinhetic\PublicBundle\Entity\User
-#                    repository: Cinhetic\PublicBundle\Repository\UserRepository
-#                    provider:
-#                        query_builder_method: getActiveUserQueryBuilder
-#                    finder: ~
-#                    listener: ~ # by default, listens to "insert", "update" and "delete"
+fos_elastica:
+    default_manager: orm
+    clients:
+        default: { host: localhost, port: 9200 }
+    indexes:
+        website:
+            client: default
+            index_name: website_qa
+            types:
+              movies:
+                mappings:
+                    typeFilm: { type: string }
+                    title: { type: string }
+                    synopsis: { type: string }
+                    description: { type: string }
+                    bo: { type: string }
+                    annee: { type: string }
+                    budget: { type: string }
+                    duree: { type: string }
+                    dateRelease: { type: string }
+                    actors:
+                      type: "nested"
+                      properties:
+                        lastname: { type: string }
+                        firstname: { type: string }
+                        city: { type: string }
+                        biography: { type: string }
+                        recompenses: { type: string }
+                    cinemas:
+                      type: "nested"
+                      properties:
+                        title: { type: string }
+                        ville: { type: string }
+                    directors:
+                      type: "nested"
+                      properties:
+                        lastname: { type: string }
+                        firstname: { type: string }
+                        biography: { type: string }
+                    movies:
+                        type: "nested"
+                        properties:
+                          title: { type: string }
+                          synopsis: { type: string }
+                          description: { type: string }
+                    tags:
+                        type: "nested"
+                        properties:
+                          word: { type: string }
+                persistence:
+                    driver: orm
+                    model: Cinhetic\PublicBundle\Entity\Movies
+                    repository: Cinhetic\PublicBundle\Repository\MoviesRepository
+                    provider:
+                        query_builder_method: getActiveMoviesBuilder
+                    finder: ~
+                    listener: ~ # by default, listens to "insert", "update" and "delete"
+
 #KNP Paginator
 knp_paginator:
     page_range: 5                      # default page range used in pagination control
@@ -157,8 +191,5 @@ knp_paginator:
         distinct: true                 # ensure distinct results, useful when ORM queries are using GROUP BY statements
     template:
         pagination: CinheticPublicBundle:Slots:pagination.html.twig     # sliding pagination controls template
-
-#Nelmio Bundle
-nelmio_api_doc: ~
 
 

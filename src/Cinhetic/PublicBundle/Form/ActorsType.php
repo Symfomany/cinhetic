@@ -24,7 +24,7 @@ class ActorsType extends AbstractType
             ->add('dob', null, array("label" => "Date de naissance"))
             ->add('city', null, array("label" => "Ville d'origine"))
             ->add('nationality', null, array("label" => "Nationalité"))
-            ->add('biography', null, array("label" => "Biographie", 'attr' => array("class" => "ckeditor")))
+            ->add('biography', null, array("label" => "Biographie", 'attr' => array("cols" => 80, "rows" => 7,"class" => "ckeditor")))
             ->add('roles', null, array('attr' => array("class" => "ckeditor")))
             ->add('recompenses', null, array('attr' => array("class" => "ckeditor")))
             ->add('movies', null, array("label" => "Films associés"))

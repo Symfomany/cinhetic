@@ -40,9 +40,10 @@
 <div class="container-fluid">
     <div class="row-fluid">
     {% include 'CinheticPublicBundle:Slots:topmenu.html.twig' %}
-                        <div class="col-sm-9 main">
+                        <div class="col-sm-12 main">
                             <ul class="nav nav-pills">
                                 <li {% if  app.request.attributes.get('_route') == "actors" %} class="active" {% endif %}><a href="{{ path('actors') }}">Voir les acteurs</a></li>
+                                <li {% if  app.request.attributes.get('_route') == "directors" %} class="active" {% endif %}><a href="{{ path('directors') }}">Voir les réalisateurs</a></li>
                                 <li {% if  app.request.attributes.get('_route') == "movies" %} class="active" {% endif %}><a href="{{ path('movies') }}">Voir les films</a></li>
                                 <li {% if  app.request.attributes.get('_route') == "categories" %} class="active" {% endif %}><a href="{{ path('categories') }}">Voir les catégories</a></li>
                                 <li {% if  app.request.attributes.get('_route') == "cinema" %} class="active" {% endif %}><a href="{{ path('cinema') }}">Voir les cinémas</a></li>

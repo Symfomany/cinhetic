@@ -22,16 +22,21 @@ class MoviesType extends AbstractType
             ->add('title', null, array('label' => "Titre"))
             ->add('typeFilm',  'choice', array(
                 'label' => "Type de film",
-                'choices'   => array('Long-Metrage' => 'Long Metrage', 'Moyen-Metrage' => 'Moyen Metrage','Court-Metrage' => 'Court Metrage'),
+                'choices'   => array(
+                    'Long-Metrage' => 'Long Metrage',
+                    'Moyen-Metrage' => 'Moyen Metrage',
+                    'Court-Metrage' => 'Court Metrage'
+                ),
                 'required'  => true,
             ))
             ->add('synopsis', null, array('attr' => array("class" => "ckeditor")))
             ->add('description', null, array('attr' => array("class" => "ckeditor")))
-            ->add('trailer')
+            ->add('trailer', null, array('attr' => array("cols" => 80, "rows" => 7)))
             ->add('languages', "language")
             ->add('distributeur', 'choice', array(
                 'label' => "Maison de production",
-                'choices'   => array('Warner Bros' => 'Warner Bros',
+                'choices'   => array(
+                    'Warner Bros' => 'Warner Bros',
                     'Paramont' => 'Paramont',
                     'HBO' => 'HBO',
                     'TwentiethCenturyFox' => 'TwentiethCenturyFox',

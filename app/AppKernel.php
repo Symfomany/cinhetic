@@ -19,12 +19,11 @@ class AppKernel extends Kernel
 
 //            Tiers Bundle
             new FOS\UserBundle\FOSUserBundle(),
-//            new FOS\ElasticaBundle\FOSElasticaBundle(),
+            new FOS\ElasticaBundle\FOSElasticaBundle(),
             new WhiteOctober\TCPDFBundle\WhiteOctoberTCPDFBundle(),
             new FOS\RestBundle\FOSRestBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
-            new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
 
 //            Our Bundle

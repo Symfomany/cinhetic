@@ -3,12 +3,15 @@
 namespace Cinhetic\PublicBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Categories
  *
  * @ORM\Table(name="categories")
  * @ORM\Entity(repositoryClass="Cinhetic\PublicBundle\Repository\CategoriesRepository")
+ * @UniqueEntity(fields="title", message="Le titre est deja pris!")
  */
 class Categories
 {
@@ -23,14 +26,25 @@ class Categories
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = "10",
+     *      max = "200",
+     *      minMessage = "Votre titre doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre titre ne peut pas être plus long que {{ limit }} caractères"
+     * )
      * @ORM\Column(name="title", type="string", length=250, nullable=true)
      */
     private $title;
 
     /**
      * @var string
-     *
+     * @Assert\Length(
+     *      min = "50",
+     *      max = "1500",
+     *      minMessage = "Votre description doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre description ne peut pas être plus long que {{ limit }} caractères"
+     * )
      * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;

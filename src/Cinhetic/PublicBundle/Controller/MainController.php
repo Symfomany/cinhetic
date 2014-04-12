@@ -62,7 +62,7 @@ class MainController extends Controller
     {
         $form = $this->createForm(new SearchType(), null, array(
             'action' => $this->generateUrl('Cinhetic_public_search'),
-            'method' => 'GET',
+            'method' => 'POST',
         ));
 
         return $this->render('CinheticPublicBundle:Slots:search.html.twig',

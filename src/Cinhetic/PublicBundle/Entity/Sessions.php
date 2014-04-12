@@ -3,6 +3,9 @@
 namespace Cinhetic\PublicBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
 
 /**
  * Sessions
@@ -23,7 +26,7 @@ class Sessions
 
     /**
      * @var \DateTime
-     *
+     * @Assert\DateTime()
      * @ORM\Column(name="date_session", type="datetime", nullable=true)
      */
     private $dateSession;

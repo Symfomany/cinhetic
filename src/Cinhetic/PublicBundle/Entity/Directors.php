@@ -3,12 +3,15 @@
 namespace Cinhetic\PublicBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Directors
  *
  * @ORM\Table(name="directors")
  * @ORM\Entity(repositoryClass="Cinhetic\PublicBundle\Repository\DirectorsRepository")
+ * @UniqueEntity(fields={"firstname","lastname"}, message="Le titre est deja pris!")
  */
 class Directors
 {
@@ -23,28 +26,48 @@ class Directors
 
     /**
      * @var string
-     *
+     * @Assert\Length(
+     *      min = "3",
+     *      max = "500",
+     *      minMessage = "Votre prénom doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre prénom ne peut pas être plus long que {{ limit }} caractères"
+     * )
      * @ORM\Column(name="firstname", type="string", length=250, nullable=true)
      */
     private $firstname;
 
     /**
      * @var string
-     *
+     * @Assert\Length(
+     *      min = "3",
+     *      max = "500",
+     *      minMessage = "Votre nom doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre nom ne peut pas être plus long que {{ limit }} caractères"
+     * )
      * @ORM\Column(name="lastname", type="string", length=250, nullable=true)
      */
     private $lastname;
 
     /**
      * @var string
-     *
+     * @Assert\Length(
+     *      min = "15",
+     *      max = "500",
+     *      minMessage = "Votre biographie doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre biographie ne peut pas être plus long que {{ limit }} caractères"
+     * )
      * @ORM\Column(name="biography", type="text", nullable=true)
      */
     private $biography;
 
     /**
      * @var float
-     *
+     * @Assert\Range(
+     *      min = 1,
+     *      max = 5,
+     *      minMessage = "Votre note doit etre entre 1 et 5",
+     *      maxMessage = "Votre note doit etre entre 1 et 5"
+     * )
      * @ORM\Column(name="note", type="float", precision=10, scale=0, nullable=true)
      */
     private $note;
