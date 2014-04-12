@@ -3,7 +3,7 @@ $(function () {
 
     $(".fancybox").fancybox();
 
-    $('select[multiple="multiple"]').selectpicker({});
+    $('select').selectpicker({});
 
 
     $('.star').raty({
