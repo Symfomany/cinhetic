@@ -17,6 +17,8 @@ Screenshots
 ![ScreenShot](https://raw.github.com/Symfomany/cinhetic/master/screenshots/Screen4.png)
 ![ScreenShot](https://raw.github.com/Symfomany/cinhetic/master/screenshots/Screen5.png)
 ![ScreenShot](https://raw.github.com/Symfomany/cinhetic/master/screenshots/Screen6.png)
+![ScreenShot](https://raw.github.com/Symfomany/cinhetic/master/screenshots/Screen8.png)
+![ScreenShot](https://raw.github.com/Symfomany/cinhetic/master/screenshots/Screen9.png)
 ![ScreenShot](https://raw.github.com/Symfomany/cinhetic/master/screenshots/Screen7.png)
 
 
