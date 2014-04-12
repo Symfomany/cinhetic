@@ -20,7 +20,7 @@
         {% for entity in entities %}
             <tr>
                 <td><a href="{{ path('categories_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td class="text-success">{{ entity.title }}</td>
+                <td class="text-success"><a href="{{ path('categories_show', {'id' : entity.id}) }}">{{ entity.title }}</a></td>
                 <td class="text-danger">{{ entity.description|raw }}</td>
                 <td class="text-success">{{ entity.movies|length|default("0") }}</td>
                 <td>

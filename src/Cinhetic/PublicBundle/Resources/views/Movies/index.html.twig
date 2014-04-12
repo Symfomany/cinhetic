@@ -36,6 +36,7 @@
                 <td>
                     <a  href="{{ path('movies_show', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-search"></i> Voir</a>
                     <a  href="{{ path('movies_edit', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-pencil"></i> Editer</a>
+                    <a  href="{{ path('movies_delete_link', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-remove"></i> Remove</a>
                 </td>
             </tr>
         {% endfor %}

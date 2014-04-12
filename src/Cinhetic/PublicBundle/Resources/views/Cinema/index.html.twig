@@ -20,7 +20,7 @@
         {% for entity in entities %}
             <tr>
                 <td><a href="{{ path('cinema_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td class="text-success">{{ entity.title }}</td>
+                <td class="text-success"><a href="{{ path('cinema_show', {'id' : entity.id}) }}">{{ entity.title }}</a></td>
                 <td><i class="glyphicon glyphicon-map-marker"></i> {{ entity.ville }}</td>
                 <td>{{ entity.sessions|length|default('0') }} séances</td>
                 <td>

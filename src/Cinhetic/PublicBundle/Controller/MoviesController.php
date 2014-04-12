@@ -318,6 +318,19 @@ class MoviesController extends Controller
         return $this->redirect($this->generateUrl('movies'));
     }
 
+
+    /**
+     * Deletes a Movies by link
+     *
+     */
+    public function deletelinkAction(Movies $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($id);
+        $em->flush();
+        return $this->redirect($this->generateUrl('movies'));
+    }
+
     /**
      * Creates a form to delete a Movies entity by id.
      *

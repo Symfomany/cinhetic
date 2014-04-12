@@ -242,8 +242,6 @@ class Movies
      */
     private $movies;
 
-
-
     /**
      * @var \Doctrine\Common\Collections\Collection
      *

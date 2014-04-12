@@ -29,6 +29,10 @@ movies_delete:
     defaults: { _controller: "CinheticPublicBundle:Movies:delete" }
     requirements: { _method: post|delete }
 
+movies_delete_link:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CinheticPublicBundle:Movies:deletelink" }
+
 
 # API Receipt
 movies_api_all:
