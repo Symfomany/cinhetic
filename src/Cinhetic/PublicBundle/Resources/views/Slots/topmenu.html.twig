@@ -11,12 +11,14 @@
             </div>
             <div class="navbar-collapse collapse" id="navbar-main">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a  href="{{ path('Cinhetic_public_homepage') }}"><i class="glyphicon glyphicon-home"></i> Home</a></li>
-                    {#<li {% if  app.request.attributes.get('_route') == "" %} class="active" {% endif %}><a  href=""><i class="glyphicon glyphicon-th-list"></i> Crédit</a></li>#}
-                    <li {% if  app.request.attributes.get('_route') == "" %} class="active" {% endif %}><a  href=""><i class="glyphicon glyphicon-tasks"></i> Presse</a></li>
-                    {#<li {% if  app.request.attributes.get('_route') == "" %} class="active" {% endif %}><a  href=""><i class="glyphicon glyphicon-file"></i> CGU</a></li>#}
-                    <li {% if  app.request.attributes.get('_route') == "" %} class="active" {% endif %}><a  href=""><i class="glyphicon glyphicon-question-sign"></i> Faq</a></li>
-                    <li {% if  app.request.attributes.get('_route') == "" %} class="active" {% endif %}><a  href=""><i class="glyphicon glyphicon-user"></i> Contact</a></li>
+                    <li {% if  app.request.attributes.get('_route') == "actors" %} class="active" {% endif %}><a href="{{ path('actors') }}"><i class="glyphicon glyphicon-user"></i> Acteurs</a></li>
+                    <li {% if  app.request.attributes.get('_route') == "directors" %} class="active" {% endif %}><a href="{{ path('directors') }}"><i class="glyphicon glyphicon-facetime-video"></i> Réalisateurs</a></li>
+                    <li {% if  app.request.attributes.get('_route') == "movies" %} class="active" {% endif %}><a href="{{ path('movies') }}"><i class="glyphicon glyphicon-film"></i> Films</a></li>
+                    <li {% if  app.request.attributes.get('_route') == "categories" %} class="active" {% endif %}><a href="{{ path('categories') }}"><i class="glyphicon glyphicon-th-list"></i> Catégories</a></li>
+                    <li {% if  app.request.attributes.get('_route') == "cinema" %} class="active" {% endif %}><a href="{{ path('cinema') }}"><i class="glyphicon glyphicon-home"></i> Cinémas</a></li>
+                    <li {% if  app.request.attributes.get('_route') == "sessions" %} class="active" {% endif %}><a href="{{ path('sessions') }}"><i class="glyphicon glyphicon-calendar"></i> Séances</a></li>
+                    <li {% if  app.request.attributes.get('_route') == "tags" %} class="active" {% endif %}><a href="{{ path('tags') }}"><i class="glyphicon glyphicon-tags"></i> Tags</a></li>
+                    <li {% if  app.request.attributes.get('_route') == "comments" %} class="active" {% endif %}><a href="{{ path('comments') }}"><i class="glyphicon glyphicon-comment"></i> Commentaires</a></li>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">

@@ -22,6 +22,7 @@ Screenshots
 ![ScreenShot](https://raw.github.com/Symfomany/cinhetic/master/screenshots/Screen10.png)
 ![ScreenShot](https://raw.github.com/Symfomany/cinhetic/master/screenshots/Screen11.png)
 ![ScreenShot](https://raw.github.com/Symfomany/cinhetic/master/screenshots/Screen7.png)
+![ScreenShot](https://raw.github.com/Symfomany/cinhetic/master/screenshots/Screen12.png)
 
 
 1) Installing the Cinhetic Standard Edition

@@ -20,7 +20,7 @@ class SearchType extends AbstractType
     {
         $builder
             ->add('search', "search", array('attr' => array('id' => 'search_input',
-                'placeholder' => "Rechercher un film, une catégorie, un tag...",
+                'placeholder' => "Rechercher un film, une catégorie, un tag, un réalisateur, un acteur...",
                 'class' => 'form-control')))
         ;
     }
