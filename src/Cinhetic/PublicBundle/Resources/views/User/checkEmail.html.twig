@@ -1,0 +1,10 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+<div class="well">
+    <h1><i class="glyphicon glyphicon-question-sign"></i> Mot de passe perdu</h1>
+    <p>{{ 'registration.check_email'|trans({'%email%': user.email}) }}</p>
+    </div>
+{% endblock fos_user_content %}

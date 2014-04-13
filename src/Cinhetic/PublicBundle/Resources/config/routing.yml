@@ -49,8 +49,4 @@ CinheticPublicBundle_directors:
         prefix:   /directors
 
 
-# Override FOSUser
-CinheticPublicBundle_user:
-    pattern:  /search
-    defaults: { _controller: CinheticPublicBundle:Registration:register }
 

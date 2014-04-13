@@ -1,0 +1,8 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+    <div class="well">
+        <h1><i class="glyphicon glyphicon-ok-circle"></i> Création de compte</h1>
+        {% include "FOSUserBundle:Registration:register_content.html.twig" %}
+    </div>
+{% endblock fos_user_content %}
