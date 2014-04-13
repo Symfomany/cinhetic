@@ -1,7 +1,7 @@
 parameters:
-#    cinhetic_public.example.class: Isap\PublicBundle\Example
+#    cinhetic_public.example.class: Cinhetic\PublicBundle\Example
 
 services:
 #    cinhetic_public.example:
-#        class: %isap_public.example.class%
+#        class: %cinhetic_public.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]

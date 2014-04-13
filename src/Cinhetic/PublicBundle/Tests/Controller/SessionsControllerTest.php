@@ -1,6 +1,6 @@
 <?php
 
-namespace Ezap\PublicBundle\Tests\Controller;
+namespace Cinhetic\PublicBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
