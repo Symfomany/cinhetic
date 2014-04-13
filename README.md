@@ -195,6 +195,7 @@ Chapters covered in project
 * Form: Types of fields, Dependancies with Model, Validations
 
 
+
 2) Features
 ----------------------------------
 * Search Engine Movies
