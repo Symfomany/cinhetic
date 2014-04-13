@@ -4,7 +4,7 @@
 {% block content %}
     <h1><i class="glyphicon glyphicon-home"></i> Liste des Cinemas [{{ entities|length }}]</h1>
     <hr />
-    <table class="records_list">
+    <table class="records_list  table table-striped">
         <thead>
             <tr>
                 <th>Id</th>
@@ -19,7 +19,7 @@
             <tr>
                 <td><a href="{{ path('cinema_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td class="text-success"><a href="{{ path('cinema_show', {'id' : entity.id}) }}">{{ entity.title }}</a></td>
-                <td><i class="glyphicon glyphicon-map-marker"></i> {{ entity.ville }}</td>
+                <td><a href="{{ path('movies_cities', {'ville': entity.ville }) }}"><span class="badge"> <i class="glyphicon glyphicon-map-marker"></i> {{ entity.ville }}</span></a></td>
                 <td>{{ entity.sessions|length|default('0') }} séances</td>
                 <td>
                         <a href="{{ path('cinema_show', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-search"></i> Voir</a>
