@@ -47,3 +47,10 @@ CinheticPublicBundle_comments:
 CinheticPublicBundle_directors:
         resource: "@CinheticPublicBundle/Resources/config/routing/directors.yml"
         prefix:   /directors
+
+
+# Override FOSUser
+CinheticPublicBundle_user:
+    pattern:  /search
+    defaults: { _controller: CinheticPublicBundle:Registration:register }
+
