@@ -88,4 +88,10 @@ class RegistrationController extends BaseController
         ));
     }
 
+
+    protected function getEngine()
+    {
+        return $this->container->getParameter('fos_user.template.engine');
+    }
+
 }
