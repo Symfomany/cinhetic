@@ -32,3 +32,4 @@ comments_delete:
     pattern:  /{id}/delete
     defaults: { _controller: "CinheticPublicBundle:Comments:delete" }
     requirements: { _method: post|delete }
+

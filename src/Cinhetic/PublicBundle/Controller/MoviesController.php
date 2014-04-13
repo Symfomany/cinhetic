@@ -9,7 +9,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Cinhetic\PublicBundle\Entity\Movies;
 use Cinhetic\PublicBundle\Form\MoviesType;
-use FOS\RestBundle\Controller\Annotations as Rest;
 
 /**
  * Movies controller.
@@ -437,34 +436,5 @@ class MoviesController extends Controller
         ;
     }
 
-
-
-    /************************************************************************************************************
-     ***************************************************************** API Override Call ********************************************
-     *************************************************************************************************************/
-
-    /**
-     * @Rest\View
-     * Return All Movies
-     */
-    public function allAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-        $movies = $em->getRepository('CinheticPublicBundle:Movies')->findAll();
-
-        return array('movies' => $movies);
-    }
-
-    /**
-     * @Rest\View
-     * Return one Movie
-     */
-    public function oneAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $movie = $em->getRepository('CinheticPublicBundle:Movie')->find($id);
-
-        return array('movie' => $movie);
-    }
 
 }

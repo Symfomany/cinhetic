@@ -28,3 +28,9 @@ sessions_delete:
     pattern:  /{id}/delete
     defaults: { _controller: "CinheticPublicBundle:Sessions:delete" }
     requirements: { _method: post|delete }
+
+
+# API sessions
+sessions_api_all:
+  type: rest
+  resource: Cinhetic\PublicBundle\Controller\SessionsController

@@ -28,3 +28,8 @@ actors_delete:
     pattern:  /{id}/delete
     defaults: { _controller: "CinheticPublicBundle:Actors:delete" }
     requirements: { _method: post|delete }
+
+# API Actors
+actors_api_all:
+  type: rest
+  resource: Cinhetic\PublicBundle\Controller\ActorsController

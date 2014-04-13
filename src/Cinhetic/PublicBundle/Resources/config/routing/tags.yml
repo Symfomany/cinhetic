@@ -28,3 +28,9 @@ tags_delete:
     pattern:  /{id}/delete
     defaults: { _controller: "CinheticPublicBundle:Tags:delete" }
     requirements: { _method: post|delete }
+
+
+# API tags
+tags_api_all:
+  type: rest
+  resource: Cinhetic\PublicBundle\Controller\TagsController

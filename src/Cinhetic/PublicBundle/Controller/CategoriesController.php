@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Cinhetic\PublicBundle\Entity\Categories;
 use Cinhetic\PublicBundle\Form\CategoriesType;
 
+
 /**
  * Categories controller.
  *

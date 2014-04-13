@@ -7,6 +7,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Cinhetic\PublicBundle\Entity\Cinema;
 use Cinhetic\PublicBundle\Form\CinemaType;
+use FOS\RestBundle\Controller\Annotations as Rest;
+
 
 /**
  * Cinema controller.

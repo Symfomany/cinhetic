@@ -28,3 +28,8 @@ cinema_delete:
     pattern:  /{id}/delete
     defaults: { _controller: "CinheticPublicBundle:Cinema:delete" }
     requirements: { _method: post|delete }
+
+# API Cinemas
+cinema_api_all:
+  type: rest
+  resource: Cinhetic\PublicBundle\Controller\CinemaController
