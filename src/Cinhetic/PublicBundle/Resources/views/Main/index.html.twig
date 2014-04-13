@@ -22,6 +22,8 @@
         {% endfor %}
     </div>
 
+    <br />
+    <hr />
     <div class="row marketing">
         <div class="col-lg-6">
             {{ render(controller('CinheticPublicBundle:Movies:currentMovies')) }}
@@ -32,8 +34,10 @@
         </div>
     </div>
 
+    <br />
+    <hr />
     <div class="page-header">
-        <h1><i class="glyphicon glyphicon-home"></i> Tous les films de Cinhetic</h1>
+        <h1><i class="glyphicon glyphicon-th-large"></i> Tous les films de Cinhetic</h1>
     </div>
     {% include 'CinheticPublicBundle:Movies:_list.html.twig' %}
     <hr />
