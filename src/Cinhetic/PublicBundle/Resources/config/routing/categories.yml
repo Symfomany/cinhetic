@@ -28,3 +28,8 @@ categories_delete:
     pattern:  /{id}/delete
     defaults: { _controller: "CinheticPublicBundle:Categories:delete" }
     requirements: { _method: post|delete }
+
+# API Categories
+categories_api_all:
+  type: rest
+  resource: Cinhetic\PublicBundle\Controller\CategoriesController

@@ -101,7 +101,7 @@ class MoviesRepository extends EntityRepository
 
 
     /**
-     * Get Active Receipt
+     * Get Active Movies
      * @return \Doctrine\ORM\QueryBuilder
      */
     public function getActiveMoviesBuilder()

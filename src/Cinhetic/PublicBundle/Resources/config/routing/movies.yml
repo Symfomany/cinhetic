@@ -46,7 +46,7 @@ movies_delete_link:
     defaults: { _controller: "CinheticPublicBundle:Movies:deletelink" }
 
 
-# API Receipt
+# API Movies
 movies_api_all:
   type: rest
   resource: Cinhetic\PublicBundle\Controller\MoviesController

@@ -200,6 +200,7 @@ Chapters covered in project
 * Search Engine Movies
 * Top Rated Movies
 * Page Movie with complete description
+* Visibility on Movies and cover action in homepage
 * Pagination for results with "KNPPaginatorBundles"
 * Datas Fixtures with "Doctrine Fixtures"
 * Homepage with custom template by Bootsrapp Twitter

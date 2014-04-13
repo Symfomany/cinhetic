@@ -7,6 +7,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Cinhetic\PublicBundle\Entity\Actors;
 use Cinhetic\PublicBundle\Form\ActorsType;
+use FOS\RestBundle\Controller\Annotations as Rest;
+
 
 /**
  * Actors controller.

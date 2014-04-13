@@ -1,6 +1,6 @@
-
+receipt
 twig:
     globals:
       base_url: 'http://www.cinhetic.ju/'
-      imgsite: '/bundles/receipt/images/'
+      imgsite: '/bundles/movies/images/'
       imgmovies: '/uploads/movies/'

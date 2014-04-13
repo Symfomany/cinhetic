@@ -29,6 +29,7 @@ homepage:
     pattern:  /
     defaults: { _controller: CinheticPublicBundle:Main:home }
 
+
 # Authentification
 fos_user_security_check:
     pattern:  /administration/login_check
