@@ -10,6 +10,18 @@ movies_new:
     pattern:  /new
     defaults: { _controller: "CinheticPublicBundle:Movies:new" }
 
+movies_cities:
+    pattern:  /city/{ville}
+    defaults: { _controller: "CinheticPublicBundle:Movies:city" }
+
+movies_activation:
+    pattern:  /activation/{id}/{activation}
+    defaults: { _controller: "CinheticPublicBundle:Movies:activation" }
+
+movies_cover:
+    pattern:  /cover/{id}/{cover}
+    defaults: { _controller: "CinheticPublicBundle:Movies:cover" }
+
 movies_create:
     pattern:  /create
     defaults: { _controller: "CinheticPublicBundle:Movies:create" }

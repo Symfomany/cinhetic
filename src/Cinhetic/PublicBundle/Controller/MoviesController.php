@@ -338,6 +338,71 @@ class MoviesController extends Controller
 
 
     /**
+     * Get Movies entity in City.
+     *
+     */
+    public function cityAction($ville= "Paris")
+    {
+        $em = $this->getDoctrine()->getManager();
+        $movies = $em->getRepository('CinheticPublicBundle:Movies')->getMoviesByCity($ville);
+
+
+        return $this->render('CinheticPublicBundle:Movies:city.html.twig', array(
+            'city' => $ville,
+            'movies' => $movies
+        ));
+    }
+
+
+
+    /**
+     * Enable Movies entity.
+     *
+     */
+    public function activationAction(Movies $id, $activation)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $id->setVisible($activation);
+        $em->persist($id);
+        $em->flush();
+
+        //messages flash se jouant qu'une seule fois
+        $this->get('session')->getFlashBag()->add(
+            'success',
+            'Votre modification sur l\'activation a bien été prise en compte'
+        );
+
+        //redirections
+        return $this->redirect($this->generateUrl('Cinhetic_public_homepage'));
+    }
+
+
+
+    /**
+     * Cover Movies entity.
+     *
+     */
+    public function coverAction(Movies $id, $cover)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $id->setCover($cover);
+        $em->persist($id);
+        $em->flush();
+
+        //messages flash se jouant qu'une seule fois
+        $this->get('session')->getFlashBag()->add(
+            'success',
+            'Votre mise en avant a bien été prise en compte'
+        );
+
+        //redirections
+        return $this->redirect($this->generateUrl('Cinhetic_public_homepage'));
+    }
+
+
+    /**
      * Deletes a Movies by link
      *
      */

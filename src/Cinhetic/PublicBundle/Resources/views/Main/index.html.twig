@@ -8,25 +8,18 @@
 
     {{ render(controller('CinheticPublicBundle:Movies:carousselMovies')) }}
 
-    <div class="alert alert-block alert-warning">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <div class="btn-group">
         <h3><i class="glyphicon glyphicon-bookmark"></i> Les 5 Prochaines séances</h3>
-
-        <ul class="nav nav-pills">
         {% for entity in seances %}
-            <li><a href="{{ path('movies_show', {'id' : entity.movies.id}) }}"> {{ entity.movies.title }} le  à {{ entity.cinema.title }} le {{ entity.dateSession|date('d/m/Y H:i') }}</a></li>
+          <a class="btn btn-default" href="{{ path('movies_show', {'id' : entity.movies.id}) }}"> {{ entity.movies.title }} le  à {{ entity.cinema.title }} le {{ entity.dateSession|date('d/m/Y H:i') }}</a>
         {% endfor %}
-        </ul>
     </div>
-    <div class="alert alert-block alert-danger">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <h3><i class="glyphicon glyphicon-map-marker"></i> Villes</h3>
 
-        <ul class="nav nav-pills">
+    <div class="btn-group">
+        <h3><i class="glyphicon glyphicon-map-marker"></i> Villes</h3>
         {% for entity in cities %}
-            <li><a href="{{ path('movies_show', {'id' : entity.id}) }}">{{ entity.ville }}</a></li>
+            <a class="btn btn-default" href="{{ path('movies_cities', {'ville' : entity.ville}) }}">{{ entity.ville }}</a>
         {% endfor %}
-        </ul>
     </div>
 
     <div class="row marketing">
@@ -49,22 +42,16 @@
     <div class="page-footer">
         <div class="alert alert-block alert-sucess">
             <h3><i class="glyphicon glyphicon-bookmark"></i> Les catégories de films</h3>
-
-            <ul class="nav nav-pills">
                 {% for entity in categories %}
-                    <li><a href="{{ path('categories_show', {'id': entity.id}) }}">{{ entity.title }}</a></li>
+                   <span class="label label-default"><a href="{{ path('categories_show', {'id': entity.id}) }}">{{ entity.title }}</a></span>
                 {% endfor %}
-            </ul>
         </div>
 
         <div class="alert alert-block alert-sucess">
             <h3><i class="glyphicon glyphicon-bookmark"></i> Les tags de films</h3>
-
-            <ul class="nav nav-pills">
                 {% for entity in tags %}
-                    <li><a href="{{ path('tags_show', {'id' : entity.id}) }}">{{ entity.word }}</a> </li>
+                    <span class="label label-default"><a href="{{ path('tags_show', {'id' : entity.id}) }}">{{ entity.word }}</a></span>
                 {% endfor %}
-            </ul>
         </div>
     </div>
 {% endblock %}

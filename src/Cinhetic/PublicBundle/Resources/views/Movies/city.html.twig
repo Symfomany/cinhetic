@@ -1,9 +1,7 @@
 {% extends 'CinheticPublicBundle::layout.html.twig' %}
 
-
 {% block content %}
-    <h1><i class="glyphicon glyphicon-facetime-video"></i> Recherche des Films [{{ movies|length }}]</h1>
-    <hr />
+    <h1> <i class="glyphicon glyphicon-map-marker"></i> Tous les films de {{ city|title }}</h1>
 
     {% include 'CinheticPublicBundle:Movies:_list.html.twig' %}
 

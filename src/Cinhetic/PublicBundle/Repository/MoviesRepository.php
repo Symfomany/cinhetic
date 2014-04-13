@@ -74,6 +74,31 @@ class MoviesRepository extends EntityRepository
             return $query->getResult();
     }
 
+    /**
+     * Get Current movies by criteria
+     * @param null $word
+     * @return array
+     */
+    public function getMoviesByCity($ville = ""){
+        $query = $this->getEntityManager()
+            ->createQuery(
+                'SELECT p
+                    FROM CinheticPublicBundle:Movies p
+                    JOIN p.cinemas c
+                    WHERE p.dateRelease >= :current
+                    AND p.visible = 1
+                    AND c.ville LIKE :ville
+                    ORDER BY p.title ASC'
+            )
+            ->setParameters(
+            array(
+                'current' => new \Datetime('midnight'),
+                'ville' => $ville,
+            ));
+
+            return $query->getResult();
+    }
+
 
     /**
      * Get Active Receipt

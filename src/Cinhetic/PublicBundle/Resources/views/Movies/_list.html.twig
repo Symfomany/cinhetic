@@ -16,6 +16,17 @@
                             </a>
                         </h3>
                         <hr /><br />
+                        {% if entity.visible == "true" %}
+                            <div class="pull-right"><a class="btn btn-danger" href="{{ path('movies_activation', {'id' : entity.id,'activation' : "false"}) }}"><i class="glyphicon glyphicon-remove"></i> Desactiver</a></div>
+                        {% else %}
+                            <div class="pull-right"><a class="btn btn-danger" href="{{ path('movies_activation', {'id' : entity.id,'activation' : "true"}) }}"><i class="glyphicon glyphicon-ok"></i> Activer</a></div>
+                        {% endif %}
+                        {% if entity.cover == "true" %}
+                            <div class="pull-right"><a class="btn btn-warning" href="{{ path('movies_cover', {'id' : entity.id,'cover' : "false"}) }}"><i class="glyphicon glyphicon-star-empty"></i> Retirer en arrière</a></div>
+                        {% else %}
+                            <div class="pull-right"><a class="btn btn-warning" href="{{ path('movies_cover', {'id' : entity.id,'cover' : "true"}) }}"><i class="glyphicon glyphicon-star"></i> Mettre en avant</a></div>
+                        {% endif %}
+
                         <i><i class="glyphicon glyphicon-bookmark"></i> Durée: {{ entity.duree }}h.</i>
                         <i><i class="glyphicon glyphicon-bookmark"></i> Type de film: {{ entity.typeFilm|title }}</i>
                         <div class="row">
@@ -68,16 +79,6 @@
                             <div class="well">
                                 <a href="{{ path('cinema_show', {'id' : entity.id}) }}">{{ entity.title|title }} à
                                 {{ entity.ville|title }}</a>
-                            </div>
-                        {% endfor %}
-                        <h3>Media:</h3>
-                        {% for entity in entity.medias %}
-                            <div class="thumbnail">
-                                {% if entity.nature == "1" %}
-                                    <img class="thumbnail" src="{{ entity.picture|raw }}" />
-                                {% else %}
-                                    {{ entity.video|raw }}
-                                {% endif %}
                             </div>
                         {% endfor %}
                         <h3>Tags asssociés:</h3>

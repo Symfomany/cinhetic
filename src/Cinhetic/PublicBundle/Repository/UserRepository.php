@@ -11,7 +11,7 @@ class UserRepository extends EntityRepository
 {
 
     /**
-     * Get Active Receipt
+     * Get Active User
      * @return \Doctrine\ORM\QueryBuilder
      */
     public function getActiveUserQueryBuilder()

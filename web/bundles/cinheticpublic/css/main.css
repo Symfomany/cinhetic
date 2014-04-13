@@ -2,6 +2,7 @@ html, body{
 min-height: 100%;
 }
 a{
+
     text-decoration: none;
     -webkit-transition: all 0.2s ease-in-out;
     -moz-transition: all 0.2s ease-in-out;
@@ -18,10 +19,10 @@ color: #202d3b !important;
 color: #000000 !important;
 }
 .well p{
-color: #202d3b !important;
+color: white !important;
 }
 h4, h3{
-color: #202d3b !important;
+color: white !important;
 }
 .dz-success-mark, .dz-error-mark{
     display: none !important;
