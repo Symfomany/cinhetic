@@ -11,7 +11,7 @@ class CinemaRepository extends EntityRepository
 {
 
     /**
-     * Get Cinemas of Movies
+     * Get Cities of Movies Cinemas
      * @return \Doctrine\ORM\QueryBuilder
      */
     public function getCitiesOfMovies()

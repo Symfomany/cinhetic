@@ -142,7 +142,7 @@ class MoviesRepository extends EntityRepository
 
 
     /**
-     * Get All Movies order by date realase desc
+     * Get all Movies order by date release
      * @param null $limit
      * @return array
      */
@@ -157,7 +157,7 @@ class MoviesRepository extends EntityRepository
     }
 
     /**
-     * Get Current movies by criteria
+     * Get current movies with limit
      * @param null $word
      * @return array
      */
@@ -182,7 +182,7 @@ class MoviesRepository extends EntityRepository
 
 
     /**
-     * Get  movies more scored
+     * Get movies stars
      * @param null $word
      * @return array
      */

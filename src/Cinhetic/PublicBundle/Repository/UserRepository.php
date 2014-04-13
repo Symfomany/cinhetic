@@ -20,6 +20,7 @@ class UserRepository extends EntityRepository
             ->createQueryBuilder()
             ->select('m')
             ->from('Cinhetic\PublicBundle\Entity\User', 'm')
+            ->where('m.enabled', '1')
             ->orderBy('m.id', 'DESC');
         return $queryBuilder;
     }
