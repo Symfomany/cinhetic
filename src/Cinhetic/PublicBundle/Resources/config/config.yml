@@ -1,4 +1,3 @@
-receipt
 twig:
     globals:
       base_url: 'http://www.cinhetic.ju/'

@@ -51,7 +51,7 @@
                             </ul>
                             <br /><br />
                             {% include 'CinheticPublicBundle:Slots:flashdatas.html.twig' %}
-                            {{ render(controller('CinheticPublicBundle:Main:search' , {'word': app.request.query.get('search')})) }}
+                            {{ render(controller('CinheticPublicBundle:Main:search' , {'word': app.request.request.get('search')})) }}
                             {#{% include 'CinheticPublicBundle:Slots:_search.html.twig' %}#}
 
 
