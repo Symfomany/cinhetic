@@ -35,15 +35,15 @@
                            <a class="btn btn-warning btn-sm"  href="{{ path('movies_edit', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-pencil"></i> Editer</a>
                            <a class="btn btn-danger btn-sm"  href="{{ path('movies_delete_link', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-remove"></i> Remove</a>
                            {% if entity.visible == "true" %}
-                               <a class="btn btn-info btn-sm"  href="{{ path('movies_activation', { 'id': entity.id, 'activation': 'false' }) }}"><i class="glyphicon glyphicon-remove"></i> Désactiver</a>
+                               <a class="btn btn-info btn-sm"  href="{{ path('movies_activation', { 'id': entity.id, 'activation': 0 }) }}"><i class="glyphicon glyphicon-remove"></i> Désactiver</a>
                            {% else %}
-                               <a class="btn btn-info btn-sm"  href="{{ path('movies_activation', { 'id': entity.id, 'activation': 'true' }) }}"><i class="glyphicon glyphicon-ok"></i> Activer</a>
+                               <a class="btn btn-info btn-sm"  href="{{ path('movies_activation', { 'id': entity.id, 'activation': 1 }) }}"><i class="glyphicon glyphicon-ok"></i> Activer</a>
                            {% endif %}
 
                             {% if entity.cover == "true" %}
-                                <a class="btn btn-info btn-sm"  href="{{ path('movies_cover', { 'id': entity.id, 'cover': 'false' }) }}"><i class="glyphicon glyphicon-star-empty"></i> Retirer de l'avant</a>
+                                <a class="btn btn-info btn-sm"  href="{{ path('movies_cover', { 'id': entity.id, 'cover': 0 }) }}"><i class="glyphicon glyphicon-star-empty"></i> Retirer de l'avant</a>
                             {% else %}
-                                <a class="btn btn-info btn-sm"  href="{{ path('movies_cover', { 'id': entity.id, 'cover': 'true' }) }}"><i class="glyphicon glyphicon-star"></i> Mettre en avant</a>
+                                <a class="btn btn-info btn-sm"  href="{{ path('movies_cover', { 'id': entity.id, 'cover': 1 }) }}"><i class="glyphicon glyphicon-star"></i> Mettre en avant</a>
                             {% endif %}
 
                 </td>

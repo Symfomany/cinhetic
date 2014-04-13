@@ -21,11 +21,11 @@ Screenshots
 ![ScreenShot](https://raw.github.com/Symfomany/cinhetic/master/screenshots/Screen8.png)
 ![ScreenShot](https://raw.github.com/Symfomany/cinhetic/master/screenshots/Screen9.png)
 ![ScreenShot](https://raw.github.com/Symfomany/cinhetic/master/screenshots/Screen10.png)
-![ScreenShot](https://raw.github.com/Symfomany/cinhetic/master/screenshots/Screen13.png)
 ![ScreenShot](https://raw.github.com/Symfomany/cinhetic/master/screenshots/Screen11.png)
 ![ScreenShot](https://raw.github.com/Symfomany/cinhetic/master/screenshots/Screen14.png)
 ![ScreenShot](https://raw.github.com/Symfomany/cinhetic/master/screenshots/Screen7.png)
 ![ScreenShot](https://raw.github.com/Symfomany/cinhetic/master/screenshots/Screen12.png)
+![ScreenShot](https://raw.github.com/Symfomany/cinhetic/master/screenshots/Screen15.png)
 
 
 1) Installing the Cinhetic Standard Edition

@@ -345,11 +345,17 @@ class MoviesController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $movies = $em->getRepository('CinheticPublicBundle:Movies')->getMoviesByCity($ville);
+        $paginator = $this->get('knp_paginator');
 
-
+        $pagination = $paginator->paginate(
+            $movies,
+            $this->get('request')->query->get('pageone', 1) /*page number*/,
+            5,
+            array('pageParameterName' => 'pageone')
+        );
         return $this->render('CinheticPublicBundle:Movies:city.html.twig', array(
             'city' => $ville,
-            'movies' => $movies
+            'movies' => $pagination
         ));
     }
 
@@ -359,11 +365,11 @@ class MoviesController extends Controller
      * Enable Movies entity.
      *
      */
-    public function activationAction(Movies $id, $activation)
+    public function activationAction(Movies $id, $activation = 1)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $id->setVisible($activation);
+        $id->setVisible((bool)$activation);
         $em->persist($id);
         $em->flush();
 
