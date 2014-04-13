@@ -3,6 +3,9 @@
 namespace Cinhetic\PublicBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
 
 /**
  * Tags
@@ -23,7 +26,12 @@ class Tags
 
     /**
      * @var string
-     *
+     * @Assert\Length(
+     *      min = "3",
+     *      max = "50",
+     *      minMessage = "Votre mots-clefs doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre mots-clefs ne peut pas être plus long que {{ limit }} caractères"
+     * )
      * @ORM\Column(name="word", type="string", length=400, nullable=true)
      */
     private $word;

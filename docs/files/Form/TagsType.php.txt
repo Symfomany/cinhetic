@@ -6,9 +6,13 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+/**
+ * Class TagsType
+ * @package Cinhetic\PublicBundle\Form
+ */
 class TagsType extends AbstractType
 {
-        /**
+    /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
@@ -35,7 +39,7 @@ class TagsType extends AbstractType
      */
     public function getName()
     {
-        return 'Cinhetic_publicbundle_tags';
+        return '';
     }
 }
 

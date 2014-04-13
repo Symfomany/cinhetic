@@ -29,6 +29,8 @@ class SessionsController extends Controller
             'entities' => $entities,
         ));
     }
+
+
     /**
      * Creates a new Sessions entity.
      *
@@ -150,6 +152,8 @@ class SessionsController extends Controller
 
         return $form;
     }
+
+
     /**
      * Edits an existing Sessions entity.
      *
@@ -180,6 +184,8 @@ class SessionsController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
+
+
     /**
      * Deletes a Sessions entity.
      *

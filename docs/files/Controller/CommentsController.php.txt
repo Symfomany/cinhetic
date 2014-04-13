@@ -2,6 +2,7 @@
 
 namespace Cinhetic\PublicBundle\Controller;
 
+use Cinhetic\PublicBundle\Form\CommentsMovieType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -29,6 +30,8 @@ class CommentsController extends Controller
             'entities' => $entities,
         ));
     }
+
+
     /**
      * Creates a new Comments entity.
      *
@@ -83,6 +86,59 @@ class CommentsController extends Controller
 
         return $this->render('CinheticPublicBundle:Comments:new.html.twig', array(
             'entity' => $entity,
+            'form'   => $form->createView(),
+        ));
+    }
+
+    /**
+     * Displays a form to create a new Comments entity.
+     *
+     */
+    public function commentMovieAction(Request $request, $id = null)
+    {
+        $form = $this->createForm(new CommentsMovieType(), null, array(
+            'action' => $this->generateUrl('comments_movies'),
+            'method' => 'POST',
+        ));
+        $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning"), 'label' => 'Ajouter le commentaire'));
+
+        $em = $this->getDoctrine()->getManager();
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $entity = new Comments();
+
+            $movie = $form['movie']->getData();
+            $movie = $em->getRepository('CinheticPublicBundle:Movies')->find($movie);
+
+            if (!$movie) {
+                throw $this->createNotFoundException('Unable to find Movies entity.');
+            }
+            //facultatif pour ceux qui utilise FOSUserBundle et la sécurité
+            $user = $this->getUser();
+
+            $content = $form['content']->getData();
+            $note = $form['note']->getData();
+            $entity->setMovie($movie);
+            $entity->setContent($content);
+            $entity->setUser($user); //facultatif pour ceux qui utilise FOSUserBundle et la sécurité
+            $entity->setNote($note);
+            $em->persist($entity);
+            $em->flush();
+
+            //messages flash se jouant qu'une seule fois
+            $this->get('session')->getFlashBag()->add(
+                'success',
+                'Votre commentaire a bien été ajouté'
+            );
+
+            //redirections
+            return $this->redirect($this->generateUrl('Cinhetic_public_homepage'));
+        }
+
+        return $this->render('CinheticPublicBundle:Comments:commentMovie.html.twig', array(
+            'id' => $id,
             'form'   => $form->createView(),
         ));
     }
@@ -213,6 +269,7 @@ class CommentsController extends Controller
      */
     private function createDeleteForm($id)
     {
+
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('comments_delete', array('id' => $id)))
             ->setMethod('DELETE')

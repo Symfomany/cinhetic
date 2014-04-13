@@ -3,6 +3,9 @@
 namespace Cinhetic\PublicBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
 
 /**
  * Comments
@@ -23,14 +26,24 @@ class Comments
 
     /**
      * @var integer
-     *
+     * @Assert\Range(
+     *      min = 1,
+     *      max = 5,
+     *      minMessage = "Votre note doit etre entre 1 et 5",
+     *      maxMessage = "Votre note doit etre entre 1 et 5"
+     * )
      * @ORM\Column(name="note", type="integer", nullable=true)
      */
     private $note;
 
     /**
      * @var string
-     *
+     * @Assert\Length(
+     *      min = "15",
+     *      max = "500",
+     *      minMessage = "Votre contenu doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre contenu ne peut pas être plus long que {{ limit }} caractères"
+     * )
      * @ORM\Column(name="content", type="text", nullable=true)
      */
     private $content;

@@ -11,7 +11,7 @@ class UserRepository extends EntityRepository
 {
 
     /**
-     * Get Active Receipt
+     * Get Active User
      * @return \Doctrine\ORM\QueryBuilder
      */
     public function getActiveUserQueryBuilder()
@@ -20,6 +20,7 @@ class UserRepository extends EntityRepository
             ->createQueryBuilder()
             ->select('m')
             ->from('Cinhetic\PublicBundle\Entity\User', 'm')
+            ->where('m.enabled', '1')
             ->orderBy('m.id', 'DESC');
         return $queryBuilder;
     }

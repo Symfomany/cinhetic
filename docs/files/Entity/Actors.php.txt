@@ -3,12 +3,16 @@
 namespace Cinhetic\PublicBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
 
 /**
  * Actors
  *
  * @ORM\Table(name="actors")
  * @ORM\Entity(repositoryClass="Cinhetic\PublicBundle\Repository\ActorsRepository")
+ * @UniqueEntity(fields={"firstname","lastname"}, message="Le titre est deja pris!")
  */
 class Actors
 {
@@ -23,42 +27,66 @@ class Actors
 
     /**
      * @var string
-     *
+     * @Assert\Length(
+     *      min = "3",
+     *      max = "500",
+     *      minMessage = "Votre prénom doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre prénom ne peut pas être plus long que {{ limit }} caractères"
+     * )
      * @ORM\Column(name="firstname", type="string", length=250, nullable=true)
      */
     private $firstname;
 
     /**
      * @var string
-     *
+     * @Assert\Length(
+     *      min = "3",
+     *      max = "500",
+     *      minMessage = "Votre nom doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre nom ne peut pas être plus long que {{ limit }} caractères"
+     * )
      * @ORM\Column(name="lastname", type="string", length=250, nullable=true)
      */
     private $lastname;
 
     /**
      * @var \DateTime
-     *
      * @ORM\Column(name="dob", type="date", nullable=true)
      */
     private $dob;
 
     /**
      * @var string
-     *
+     * @Assert\Length(
+     *      min = "3",
+     *      max = "50",
+     *      minMessage = "Votre ville doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre ville ne peut pas être plus long que {{ limit }} caractères"
+     * )
      * @ORM\Column(name="city", type="string", length=250, nullable=true)
      */
     private $city;
 
     /**
      * @var string
-     *
+     * @Assert\Length(
+     *      min = "3",
+     *      max = "50",
+     *      minMessage = "Votre nationalité doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre nationalité ne peut pas être plus long que {{ limit }} caractères"
+     * )
      * @ORM\Column(name="nationality", type="string", length=250, nullable=true)
      */
     private $nationality;
 
     /**
      * @var string
-     *
+     * @Assert\Length(
+     *      min = "15",
+     *      max = "50",
+     *      minMessage = "Votre biographie doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre biographie ne peut pas être plus long que {{ limit }} caractères"
+     * )
      * @ORM\Column(name="biography", type="text", nullable=true)
      */
     private $biography;

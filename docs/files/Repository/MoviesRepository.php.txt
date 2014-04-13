@@ -57,7 +57,7 @@ class MoviesRepository extends EntityRepository
      * @param null $word
      * @return array
      */
-    public function getCurrentMovies($limit = 3){
+    public function getCurrentMovies(){
         $query = $this->getEntityManager()
             ->createQuery(
                 'SELECT p
@@ -71,11 +71,93 @@ class MoviesRepository extends EntityRepository
                 'current' => new \Datetime('midnight'),
             ));
 
-            return $query->setMaxResults($limit)->getResult();
+            return $query->getResult();
     }
 
     /**
      * Get Current movies by criteria
+     * @param null $word
+     * @return array
+     */
+    public function getMoviesByCity($ville = ""){
+        $query = $this->getEntityManager()
+            ->createQuery(
+                'SELECT p
+                    FROM CinheticPublicBundle:Movies p
+                    JOIN p.cinemas c
+                    WHERE p.dateRelease >= :current
+                    AND p.visible = 1
+                    AND c.ville LIKE :ville
+                    ORDER BY p.title ASC'
+            )
+            ->setParameters(
+            array(
+                'current' => new \Datetime('midnight'),
+                'ville' => $ville,
+            ));
+
+            return $query->getResult();
+    }
+
+
+    /**
+     * Get Active Movies
+     * @return \Doctrine\ORM\QueryBuilder
+     */
+    public function getActiveMoviesBuilder()
+    {
+        $queryBuilder = $this->getEntityManager()
+            ->createQueryBuilder()
+            ->select('m')
+            ->from('Cinhetic\PublicBundle\Entity\Movies', 'm')
+            ->where('m.visible = 1')
+            ->andWhere('m.dateRelease >= :current')
+            ->orderBy('m.id', 'DESC')
+            ->setParameter('current' , new \Datetime('midnight'));
+
+        return $queryBuilder;
+    }
+
+    /**
+     * Get Active movies by criteria
+     * @param null $word
+     * @return array
+     */
+    public function getActiveMovies(){
+        $query = $this->getEntityManager()
+            ->createQuery(
+                'SELECT p
+                    FROM CinheticPublicBundle:Movies p
+                    WHERE p.dateRelease >= :current
+                    AND p.visible = 1
+                    ORDER BY p.title ASC'
+            )
+            ->setParameters(
+            array(
+                'current' => new \Datetime('midnight'),
+            ));
+
+            return $query;
+    }
+
+
+    /**
+     * Get all Movies order by date release
+     * @param null $limit
+     * @return array
+     */
+    public function getAllMovies($limit = 10){
+        $query = $this->getEntityManager()
+            ->createQuery(
+                'SELECT p
+                    FROM CinheticPublicBundle:Movies p
+                    ORDER BY p.dateRelease DESC'
+            );
+            return $query->setMaxResults($limit)->getResult();
+    }
+
+    /**
+     * Get current movies with limit
      * @param null $word
      * @return array
      */
@@ -100,7 +182,7 @@ class MoviesRepository extends EntityRepository
 
 
     /**
-     * Get  movies more scored
+     * Get movies stars
      * @param null $word
      * @return array
      */
