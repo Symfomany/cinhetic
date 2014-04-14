@@ -208,6 +208,7 @@ Features
 * Pagination for results with "KNPPaginatorBundles"
 * Datas Fixtures with "Doctrine Fixtures"
 * Homepage with custom template by Bootsrapp Twitter
+* Form & Repositories in services
 * Add authentification & firewall administration for user connected with "FOSUserBundle"
 * Rest API for Movies(CRUD) & Categories & Author & Directors with FOSRestBundle
 * Page Category to list all movies related
