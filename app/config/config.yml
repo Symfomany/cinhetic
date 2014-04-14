@@ -2,6 +2,7 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: '@CinheticPublicBundle/Resources/config/config.yml' }
+    - { resource: '@CinheticPublicBundle/Resources/config/services.yml' }
 
 framework:
     default_locale: fr

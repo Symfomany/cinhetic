@@ -1,7 +1,60 @@
 parameters:
-#    cinhetic_public.example.class: Cinhetic\PublicBundle\Example
+    cinhetic_public.form_actors.class: Cinhetic\PublicBundle\Form\ActorsType
+    cinhetic_public.form_directors.class: Cinhetic\PublicBundle\Form\DirectorsType
+    cinhetic_public.form_categories.class: Cinhetic\PublicBundle\Form\CategoriesType
+    cinhetic_public.form_cinemas.class: Cinhetic\PublicBundle\Form\CinemaType
+    cinhetic_public.form_comments.class: Cinhetic\PublicBundle\Form\CommentsType
+    cinhetic_public.form_directors.class: Cinhetic\PublicBundle\Form\DirectorsType
+    cinhetic_public.form_movies.class: Cinhetic\PublicBundle\Form\MoviesType
+    cinhetic_public.form_search.class: Cinhetic\PublicBundle\Form\SearchType
 
 services:
-#    cinhetic_public.example:
-#        class: %cinhetic_public.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+#    Form as Services
+    cinhetic_public.form_actors:
+        class: %cinhetic_public.form_actors.class%
+        tags:
+          - { name: form.type, alias: actors }
+
+    cinhetic_public.form_directors:
+        class: %cinhetic_public.form_directors.class%
+        tags:
+          - { name: form.type, alias: directors }
+
+    cinhetic_public.form_categories:
+        class: %cinhetic_public.form_categories.class%
+        tags:
+          - { name: form.type, alias: categories }
+
+    cinhetic_public.form_cinemas:
+        class: %cinhetic_public.form_cinemas.class%
+        tags:
+          - { name: form.type, alias: cinemas }
+
+    cinhetic_public.form_movies:
+        class: %cinhetic_public.form_movies.class%
+        tags:
+          - { name: form.type, alias: movies }
+
+    cinhetic_public.form_search:
+        class: %cinhetic_public.form_search.class%
+        tags:
+          - { name: form.type, alias: search }
+
+
+    # Repositories as service
+
+    cinhetic_public.repository.movies:
+      class: Cinhetic\PublicBundle\Repository\MoviesRepository
+      factory_service: doctrine.orm.default_entity_manager
+      factory_method: ['CinheticPublicBundle:Movies']
+
+    cinhetic_public.repository.cinema:
+      class: Cinhetic\PublicBundle\Repository\CinemaRepository
+      factory_service: doctrine.orm.default_entity_manager
+      factory_method: ['CinheticPublicBundle:Cinema']
+
+    cinhetic_public.repository.sessions:
+      class: Cinhetic\PublicBundle\Repository\SessionsRepository
+      factory_service: doctrine.orm.default_entity_manager
+      factory_method: getRepository
+      factory_method: ['CinheticPublicBundle:Sessions']

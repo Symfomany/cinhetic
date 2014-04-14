@@ -2,7 +2,7 @@ Cinhetic Project
 ========================
 
 Welcome to the Cinhetic Project - a fully-functional application built in Symfony2
-framework for learning this framework in 360° that you can use to handle **cinematographic world**!
+framework to learn this framework in 360° that you can use to handle **cinematographic world**!
 
 Roadmap: Handle movies, categories of movies, tags of movies, actors, directors, cinemas, sessions, users, comments...
 
@@ -199,7 +199,7 @@ Chapters covered in project
 
 
 
-2) Features
+Features
 ----------------------------------
 * Search Engine Movies
 * Top Rated Movies
@@ -209,13 +209,12 @@ Chapters covered in project
 * Datas Fixtures with "Doctrine Fixtures"
 * Homepage with custom template by Bootsrapp Twitter
 * Add authentification & firewall administration for user connected with "FOSUserBundle"
-* Rest API for Movies(CRUD) with FOSRestBundle
+* Rest API for Movies(CRUD) & Categories & Author & Directors with FOSRestBundle
 * Page Category to list all movies related
 * Page Tag to list movies related by keywords
-* Page "Favorites Movies" by user connected
 * Page My Account related my informations
 * View all comments by movies
-* Add in session favorites movies
+* Add favorites movies in session
 * Add optional node layers (socket.io) for comment
 * Categories & Tags in cloud keywords
 * Trailers of movies in slideshow
@@ -223,9 +222,10 @@ Chapters covered in project
 * Comments by movies with forms
 
 
-3) Evolution
+Evolution
 ----------------------------------
 * Mongo for notifications & private message
+* Node layer for notifications in real time
 * Form & Controllers & Repositories in services
 * Documentation by PHPDoc
 * Advanced APIs for Mobiles Apps
