@@ -93,6 +93,9 @@ doctrine:
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
+        # query_cache_driver:    apc
+        # metadata_cache_driver: apc
+        # result_cache_driver: apc
 
 # Swiftmailer Configuration
 swiftmailer:

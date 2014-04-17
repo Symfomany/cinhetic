@@ -44,6 +44,18 @@ homepage:
     defaults: { _controller: CinheticPublicBundle:Main:home }
 
 
+
+# Tutoriaux API
+apprentissage:
+    pattern:  /apprentissage
+    defaults: { _controller: CinheticPublicBundle:Main:apprentissage }
+
+apprentissage_01:
+    pattern:  /apprentissage/http-fondations-symfony2
+    defaults: { _controller: CinheticPublicBundle:Main:one }
+
+
+
 # Authentification
 fos_user_security_check:
     pattern:  /administration/login_check

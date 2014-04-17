@@ -25,6 +25,11 @@ Documentation
 http://94.23.5.209/docs/
 
 
+Documentation for training
+------------
+http://94.23.5.209/web/apprentissage
+
+
 Screenshots
 ------------------
 
@@ -62,8 +67,6 @@ http://getcomposer.org/ or just run the following command:
 Then, use the install from Composer:
 
     php composer.phar install
-
-
 
 
 Installation

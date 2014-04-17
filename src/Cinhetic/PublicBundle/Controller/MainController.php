@@ -24,6 +24,26 @@ class MainController extends Controller
 
 
     /**
+     * Homepage Get Started
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function oneAction()
+    {
+        return $this->render('CinheticPublicBundle:Apprentissage:01.html.twig');
+    }
+
+
+    /**
+     * Apprentissage Get Started
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function apprentissageAction()
+    {
+        return $this->render('CinheticPublicBundle:Apprentissage:apprentissage.html.twig');
+    }
+
+
+    /**
      * Main Dashboard Homepage
      * @return \Symfony\Component\HttpFoundation\Response
      */

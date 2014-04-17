@@ -1,0 +1,33 @@
+{% extends 'CinheticPublicBundle::layout_apprentissage.html.twig' %}
+
+
+{% block content %}
+
+    <div class="jumbotron">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Library</a></li>
+                <li class="active">Data</li>
+            </ol>
+
+            <div class="page-header">
+                <h2>Les fondamentaux du HTTPS et Symfony2</h2>
+            </div>
+            <hr />
+            <div class="description">
+                <p>Dans ce premier chapitre, nous allons installer l'environnement de développement, installer Symfony2 et afficher une page de l'application dans un navigateur web. Tout d'abord, vous devez vérifier que votre ordinateur dispose d'un environnement de travail pour le développement web. Au minimum, vous avez besoin d'un serveur web (Apache, par exemple), un moteur de base de données (MySQL), et PHP 5.3.2 ou plus récent.</p>
+
+                <h3>Télécharger et installer Symfony2</h3>
+                <p>Préparez un répertoire sur votre serveur web où vous souhaitez installer le nouveau projet. Nous nommerons ce répertoire jobeet comme le nom de notre futur site web. Ensuite, allez à http://symfony.com/download, choisissez "Symfony Standard" (la version avec les dépendances) et téléchargez-le (au moment de la rédaction de ce tutoriel, la dernière version de Symfony était 2.0.11). Après le téléchargement, décompressez l'archive et copiez le contenu du répertoire "Symfony" dans celui de votre projet. Vous devriez avoir quelque chose comme ceci:</p>
+            </div>
+
+            <ul class="pager">
+                <li class="previous"><a href="#">&larr; Chapitre précédent</a></li>
+                <li class="next"><a href="#">Chapitre suivant &rarr;</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+{% endblock %}

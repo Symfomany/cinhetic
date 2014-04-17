@@ -1,0 +1,128 @@
+
+{% extends "::base.html.twig" %}
+
+{% block title %}Cinhetic Apprentissage{% endblock %}
+
+{#
+    StylSheets
+#}
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link rel="stylesheet" type="text/css" href="http://bootswatch.com/darkly/bootstrap.min.css"/>
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/flick/jquery-ui.css" />
+    {#{% stylesheets '@CinheticPublicBundle/Resources/public/css/main.css' filter='yui_css' %}#}
+        {#<link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>#}
+    {#{% endstylesheets %}#}
+
+    {% stylesheets '@CinheticPublicBundle/Resources/public/css/main.sass' filter='yui_css' %}
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>
+    {% endstylesheets %}
+
+    {% stylesheets '@CinheticPublicBundle/Resources/public/css/bootstrap-select.min.css' %}
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>
+    {% endstylesheets %}
+
+    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.css" />
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+
+
+     <style>
+        .description p{
+            font-size: 16px;
+        }
+     </style>
+{% endblock %}
+
+
+{#
+    BODY
+#}
+{% block body %}
+<div class="container-fluid">
+    <div class="row-fluid">
+    {% include 'CinheticPublicBundle:Slots:topmenu_apprentissage.html.twig' %}
+                        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+                            <div class="list-group">
+                                <a {% if  app.request.attributes.get('_route') == "apprentissage" %} class="active list-group-item"{% else %}class="list-group-item" {% endif %} href="{{ path('apprentissage') }}" class="list-group-item">Sommaire</a>
+                                <a {% if  app.request.attributes.get('_route') == "apprentissage_01" %} class="active list-group-item"{% else %}class="list-group-item" {% endif %} href="{{ path('apprentissage_01') }}" >Les fondamentaux de Symfony2 et HTTP</a>
+                                <a href="#" class="list-group-item">Démarrage du projet</a>
+                                <a href="#" class="list-group-item">Le projet</a>
+                                <a href="#" class="list-group-item">Installer et Configurer Symfony</a>
+                                <a href="#" class="list-group-item">Le Modèle de Données Doctrine ORM</a>
+                                <a href="#" class="list-group-item">Le Contrôleur et la Vue</a>
+                                <a href="#" class="list-group-item">Vue: Twig Engine(inheritance, including, rendering, filters...)</a>
+                                <a href="#" class="list-group-item">Le Routage</a>
+                                <a href="#" class="list-group-item">Les Formulaires</a>
+                                <a href="#" class="list-group-item">Les Validators</a>
+                                <a href="#" class="list-group-item">Aller plus loin avec le Modèle</a>
+                                <a href="#" class="list-group-item">Console CLI Generators & configuration</a>
+                                <a href="#" class="list-group-item">Les tests unitaires/fonctionnels</a>
+                                <a href="#" class="list-group-item">Codeception</a>
+                                <a href="#" class="list-group-item">Le paquet Admin</a>
+                                <a href="#" class="list-group-item">Sécurité</a>
+                                <a href="#" class="list-group-item">Le Cache HTTP</a>
+                                <a href="#" class="list-group-item">Traductions</a>
+                                <a href="#" class="list-group-item">Flux de données</a>
+                            </div>
+                        </div>
+                        <div class="col-sm-8 main">
+
+                            {% include 'CinheticPublicBundle:Slots:flashdatas.html.twig' %}
+                            {#{% include 'CinheticPublicBundle:Slots:_search.html.twig' %}#}
+
+
+                            {% block content %}
+                                {% for key, message in app.session.flashbag.all() %}
+                                    <div class="alert-block alert alert-{{ key }}">
+                                        {{ message|trans({}, 'FOSUserBundle') }}
+                                    </div>
+                                {% endfor %}
+
+                                {# On définit ce block, dans lequel vont venir s'insérer les autres vues du bundle #}
+                                <div>
+                                    {% block fos_user_content %}
+                                    {% endblock fos_user_content %}
+                                </div>
+                            {% endblock %}
+                        </div>
+                    <div id="overlay" class="overlay hide">
+                        <img src="{{ base_url }}images/loading.gif" />
+                    </div>
+                </div>
+            </div>
+
+{% endblock %}
+
+
+{#
+    Javascripts
+#}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/hinclude/0.9.5/hinclude.min.js"></script>
+    <script type="text/javascript" src="http://cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+    <script src="http://modernizr.com/downloads/modernizr-latest.js"></script>
+    <script src="{{ asset('js/jquery-fileupload.min.js') }}"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap-tab.min.js"></script>
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.0.1/ckeditor.js"></script>
+
+    {% javascripts '@CinheticPublicBundle/Resources/public/js/main.js'  filter='closure' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    {% javascripts '@CinheticPublicBundle/Resources/public/js/jquery.raty.min.js'  filter='closure' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    {% javascripts '@CinheticPublicBundle/Resources/public/js/bootstrap-select.min.js' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+{% endblock %}
