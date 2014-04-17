@@ -9,15 +9,16 @@ Roadmap: Handle movies, categories of movies, tags of movies, actors, directors,
 In some words: **Minimalist** features, **Collaborative** solution, **Pragmatic** and **Responsive** project
 
 
+
 Demo
 ------------------
-http://94.23.5.209/demo/web/
+http://94.23.5.209/web/
+
 
 
 Documentation
 ------------------
-http://94.23.5.209/demo/docs/
-
+http://94.23.5.209/docs/
 
 
 Screenshots
