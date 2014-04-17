@@ -75,7 +75,7 @@ class User extends BaseUser
      * @ORM\ManyToMany(targetEntity="Movies")
      * @ORM\JoinTable(name="user_favoris",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="user_id", referencedColumnName="movies_id")
+     *     @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      *   },
      *   inverseJoinColumns={
      *     @ORM\JoinColumn(name="movies_id", referencedColumnName="id")
