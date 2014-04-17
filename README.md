@@ -9,6 +9,17 @@ Roadmap: Handle movies, categories of movies, tags of movies, actors, directors,
 In some words: **Minimalist** features, **Collaborative** solution, **Pragmatic** and **Responsive** project
 
 
+Demo
+------------------
+http://94.23.5.209/demo/web/
+
+
+Documentation
+------------------
+http://94.23.5.209/demo/docs/
+
+
+
 Screenshots
 ------------------
 
@@ -46,6 +57,7 @@ http://getcomposer.org/ or just run the following command:
 Then, use the install from Composer:
 
     php composer.phar install
+
 
 
 
