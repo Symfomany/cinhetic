@@ -50,7 +50,7 @@ jQuery(document).ready(function () {
     };
 
     var search = $('#search_input').text();
-    $("#listreceipts *").highlight(search, "highlight");
+    $("#listmovies *").highlight(search, "highlight");
 });
 
 

@@ -444,7 +444,7 @@ class MoviesController extends Controller
 
     /**
      * @Rest\View
-     * Return All Receipts
+     * Return All Movies
      */
     public function allAction()
     {
@@ -456,12 +456,12 @@ class MoviesController extends Controller
 
     /**
      * @Rest\View
-     * Return one Receipt
+     * Return one Movie
      */
     public function oneAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-        $movie = $em->getRepository('CinheticPublicBundle:Movie')->find($id);
+        $movie = $em->getRepository('CinheticPublicBundle:Movies')->find($id);
 
         return array('movie' => $movie);
     }

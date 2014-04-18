@@ -1,0 +1,3 @@
+apis:
+    pattern:  /
+    defaults: { _controller: "CinheticPublicBundle:Api:index" }

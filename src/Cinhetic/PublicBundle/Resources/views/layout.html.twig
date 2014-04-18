@@ -42,6 +42,10 @@
 
                             {% include 'CinheticPublicBundle:Slots:flashdatas.html.twig' %}
                             {{ render(controller('CinheticPublicBundle:Main:search' , {'word': app.request.request.get('search')})) }}
+
+                            <div class="row">
+                                <a href="{{ path('apis') }}" class="pull-right btn btn-danger"><i class="glyphicon glyphicon-road"></i><span class="label label-default">New</span> API Allociné here</a></li>
+                            </div>
                             {#{% include 'CinheticPublicBundle:Slots:_search.html.twig' %}#}
 
 

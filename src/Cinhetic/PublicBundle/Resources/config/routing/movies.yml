@@ -54,5 +54,3 @@ movies_api_all:
 one_api:
   pattern: /{id}/one.{_format}
   defaults: { _controller: CinheticPublicBundle:Movies:one }
-  requirements:
-      _method: GET

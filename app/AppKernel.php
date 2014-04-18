@@ -20,11 +20,11 @@ class AppKernel extends Kernel
 //            Third Bundle
             new FOS\UserBundle\FOSUserBundle(),
             new FOS\ElasticaBundle\FOSElasticaBundle(),
-            new WhiteOctober\TCPDFBundle\WhiteOctoberTCPDFBundle(),
             new FOS\RestBundle\FOSRestBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
+            new Misd\GuzzleBundle\MisdGuzzleBundle(),
 
 //            Our Bundle
             new Cinhetic\PublicBundle\CinheticPublicBundle()

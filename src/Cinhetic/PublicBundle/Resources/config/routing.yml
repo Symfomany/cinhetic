@@ -48,5 +48,10 @@ CinheticPublicBundle_directors:
         resource: "@CinheticPublicBundle/Resources/config/routing/directors.yml"
         prefix:   /directors
 
+# Api
+CinheticPublicBundle_apis:
+        resource: "@CinheticPublicBundle/Resources/config/routing/api.yml"
+        prefix:   /apis
+
 
 
