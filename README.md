@@ -216,6 +216,7 @@ Chapters covered in project
 * Controllers: CRUD, Bind with Form/Entity, Entity Manager, HTTP Methods, Request object, Flash Message, services, redirection/forward
 * Models: Annotations, Relationship (1:1;,1:n;n:m), Repositories, DQL
 * Form: Types of fields, Dependancies with Model, Validations
+* API Rest using Allocine V3 with Guzzle HTTP Framework
 
 
 
@@ -241,6 +242,7 @@ Features
 * Trailers of movies in slideshow
 * Search engine in elastic search engine
 * Comments by movies with forms
+* API Rest using Allocine V3 with Guzzle HTTP Framework
 
 
 Evolution
