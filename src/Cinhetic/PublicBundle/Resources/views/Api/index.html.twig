@@ -2,17 +2,19 @@
 
 {% block content %}
 
-<h1>Api Allociné with Guzzle</h1>
+<h1>All Movies within Api Allociné V3 by Guzzle HTTP</h1>
 <hr />
 <br />
     {% for entity in movies %}
-        <h3>{% if entity.originalTitle is defined %}{{ entity.originalTitle }}{% endif %}</h3>
-        <p>{% if entity.keywords is defined %} Mots-clefs: {{ entity.keywords }}{% endif %}</p>
-        <p>{% if entity.productionYear is defined %} Année: {{ entity.productionYear }}{% endif %}</p>
-        <p>{% if entity.releaseDate is defined %} Date de sortie: {{ entity.releaseDate }}{% endif %}</p>
-        <p>{% if entity.directors is defined %} Réalisateur: {{ entity.directors }}{% endif %}</p>
-        <p>{% if entity.actors is defined %} Acteurs: {{ entity.actors }}{% endif %}</p>
-        <p>{% if entity.synopsisShort is defined %} Synopsis: {{ entity.synopsisShort }}{% endif %}</p>
-        <p>{% if entity.trailerEmbed is defined %} Trailer: {{ entity.trailerEmbed|raw }}{% endif %}</p>
+        <div class="well">
+            <h3><a href="{{ path('apis_show', {'code' : entity.code }) }}">{% if entity.originalTitle is defined %}{{ entity.originalTitle }}{% endif %}</a></h3>
+            <p><small><i class="glyphicon glyphicon-tags"></i>{% if entity.keywords is defined %} Mots-clefs: {{ entity.keywords }}{% endif %}</small></p>
+            <p>{% if entity.productionYear is defined %} Année: {{ entity.productionYear }}{% endif %}</p>
+            <p>{% if entity.releaseDate is defined %}<i class="glyphicon glyphicon-calendar"></i>  Date de sortie: {{ entity.releaseDate }}{% endif %}</p>
+            <p>{% if entity.directors is defined %} Réalisateur: {{ entity.directors }}{% endif %}</p>
+            <p>{% if entity.actors is defined %} Acteurs: {{ entity.actors }}{% endif %}</p>
+            <p>{% if entity.synopsisShort is defined %}<i class="glyphicon glyphicon-list-alt"></i>  Synopsis: {{ entity.synopsisShort|raw }}{% endif %}</p>
+            <p>{% if entity.trailerEmbed is defined %} <div class="alert alert-block col-md-offset-3">{{ entity.trailerEmbed|raw }}</div>{% endif %}</p>
+        </div>
     {% endfor %}
 {% endblock %}

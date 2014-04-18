@@ -23,47 +23,59 @@ class ApiController extends Controller
 {
 
     /**
-     * Lists all Movies using API Curl
+     * Lists all Movies using API Allocine
      */
     public function indexAction()
     {
         $client = $this->get('guzzle.client');
 
         $req = $client->get('http://api.allocine.fr/rest/v3/movielist?partner=yW5kcm9pZC12M3M&count=25&filter=comingsoon&page=1&order=toprank&format=json');
-        // You must send a request in order for the transfer to occur
-        $response = $req->send();
-//        echo $response->getBody();
 
+        $response = $req->send();
         $movies = json_decode($response->getBody(), true);
 
-//        var_dump($movies["feed"]['movie']);             // Outputs the JSON decoded data
-
-//        exit();
-
-        /*
-         * Using Third Library AlloHelper for Api Allocine
-        // Créer l'objet
-        $helper = new \AlloHelper;
-        $code = 27061;
-        $profile = 'small';
-
-
-            // Envoi de la requête
-//            $movie = $helper->movie( $code, $profile );
-            $movies = $helper->movielist();
-
-            // Afficher le titre
-           // echo "Titre du film: ", $movie->title, PHP_EOL;
-
-            // Afficher toutes les données
-            print_r($movies);
-            exit();
-
-        */
         return $this->render('CinheticPublicBundle:Api:index.html.twig', array(
             'movies' => $movies["feed"]['movie'],
         ));
     }
+
+
+    /**
+     * Show a movie using API Allocine
+     */
+    public function showAction($code = null)
+        {
+           // Créer l'objet
+           $helper = new \AlloHelper;
+           $profile = 'long';
+
+           // Envoi de la requête
+            $movie = $helper->movie($code, $profile );
+
+            return $this->render('CinheticPublicBundle:Api:show.html.twig', array(
+                'entity' => $movie,
+            ));
+        }
+
+
+
+    /**
+     * All cinemas using API Allocine
+     */
+    public function cinemasAction()
+        {
+            $client = $this->get('guzzle.client');
+
+            $req = $client->get('http://api.allocine.fr/rest/v3/showtimelist?code=61282&partner=yW5kcm9pZC12M3M');
+            $response = $req->send();
+            $status = $response->getStatusCode();
+            $cinemas = json_decode($response->getBody(), true);
+            exit(var_dump($response->getBody()));
+
+            return $this->render('CinheticPublicBundle:Api:cinemas.html.twig', array(
+                'movies' => $cinemas["feed"]['movie'],
+            ));
+        }
 
 
 }

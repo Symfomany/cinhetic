@@ -1,3 +1,11 @@
 apis:
     pattern:  /
     defaults: { _controller: "CinheticPublicBundle:Api:index" }
+
+apis_show:
+    pattern:  /show/{code}
+    defaults: { _controller: "CinheticPublicBundle:Api:show" }
+
+apis_cinemas:
+    pattern:  /cinemas
+    defaults: { _controller: "CinheticPublicBundle:Api:cinemas" }
