@@ -7,90 +7,101 @@
 <br />
 
         <div class="well">
-            <h3><a href="{{ path('apis_show', {'code' : entity.code }) }}">{% if entity.originalTitle is defined %}{{ entity.originalTitle }}{% endif %}</a></h3>
-            <img src="{{ entity.poster.url }}" class="img-thumbnail" />
+            <div class="row">
+                <div class="col-md-3">
+                    <a class="fancybox" href="{{ entity.poster.url }}">
+                        <img src="{{ entity.poster.url }}" class="img-thumbnail" />
+                    </a>
+                </div>
+                <div class="col-md-8">
+                    <h3><a href="{{ path('apis_show', {'code' : entity.code }) }}">{% if entity.originalTitle is defined %}{{ entity.originalTitle }}{% endif %}</a></h3>
+                    <p><small><i class="glyphicon glyphicon-tags"></i>{% if entity.keywords is defined %} Mots-clefs: {{ entity.keywords }}{% endif %}</small></p>
+                    <p>{% if entity.productionYear is defined %} Année: <i>{{ entity.productionYear }}</i>{% endif %}</p>
+                    <p>{% if entity.releaseDate is defined %}<i class="glyphicon glyphicon-calendar"></i>  Date de sortie: {{ entity.releaseDate }}{% endif %}</p>
+                    <p>{% if entity.nationality is defined %}Nationalités:
 
-            <p><small><i class="glyphicon glyphicon-tags"></i>{% if entity.keywords is defined %} Mots-clefs: {{ entity.keywords }}{% endif %}</small></p>
-            <p>{% if entity.productionYear is defined %} Année: {{ entity.productionYear }}{% endif %}</p>
-            <p>{% if entity.releaseDate is defined %}<i class="glyphicon glyphicon-calendar"></i>  Date de sortie: {{ entity.releaseDate }}{% endif %}</p>
-            <p>{% if entity.nationality is defined %}Nationalités:
+                            {% for nationalite in entity.nationality  %}
+                                <span class="label label-primary">{{ nationalite[0] }}</span>
+                            {% endfor %}
+
+                        {% endif %}</p>
+                    <p>
+                        {% if entity.genre is defined %}Genre:
+                            {% for genre in entity.genre  %}
+                                <span class="label label-default"><i class="glyphicon glyphicon-list-alt"></i> {{ genre[0] }}</span>
+                            {% endfor %}
+                        {% endif %}
+                    </p>
+
+                    <p>{% if entity.release is defined %}
                     <ul>
-                        {% for nationalite in entity.nationality  %}
-                            <li>{{ nationalite[0] }}</li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}</p>
-            <p>{% if entity.genre is defined %}Genre:
-                        <ul>
-                        {% for genre in entity.genre  %}
-                            <li>{{ genre[0] }}</li>
-                        {% endfor %}
-                        </ul>
-            {% endif %}</p>
-
-            <p>{% if entity.release is defined %}
-                        <ul>
                         {% for release in entity.release  %}
                             <li>Date de sortie: {{ release.releaseDate }}</li>
                             <ul>
-                            {% for country in release.country  %}
-                                <li>Pays: {{ country[0] }}</li>
-                            {% endfor  %}
-                            {% for releaseState in release.releaseState  %}
-                                <li>Sortie: {{ releaseState[0] }}</li>
-                            {% endfor  %}
-                            {% for distributor in release.distributor  %}
-                                <li>Distributeur: {{ distributor.name }}</li>
-                            {% endfor  %}
+                                {% for country in release.country  %}
+                                    <li>Pays: {{ country[0] }}</li>
+                                {% endfor  %}
+                                {% for releaseState in release.releaseState  %}
+                                    <li>Sortie: {{ releaseState[0] }}</li>
+                                {% endfor  %}
+                                {% for distributor in release.distributor  %}
+                                    <li>Distributeur: {{ distributor.name }}</li>
+                                {% endfor  %}
                             </ul>
                         {% endfor %}
-                        </ul>
-                {% endif %}</p>
-            <p>{% if entity.directors is defined %} Réalisateur: {{ entity.directors }}{% endif %}</p>
-            <p>{% if entity.actors is defined %} Acteurs: {{ entity.actors }}{% endif %}</p>
-            <h4>Liens</h4>
-            {% for link in entity.link  %}
-                <p><a href="{{ link.href }}" >{{ link.name }}</a></p>
-            {% endfor  %}
-            <h4>Statistiques</h4>
-            <ul>
-                {% for statistic in entity.statistics  %}
-                    <li>Nombre de commentaire: {{ statistic.commentCount }}</li>
-                    <li>Nombre de vues sur photos: {{ statistic.photoCount }}</li>
-                    <li>Nombre de vues sur videos: {{ statistic.videoCount }}</li>
-                    <li>Nombre de vues sur videos: {{ statistic.videoCount }}</li>
-                {% endfor  %}
-            </ul>
-            <h4>Actualités</h4>
-            <ul>
-                {% for news in entity.statistics  %}
-                    <li>{{ news.title }} - {{ news.category[0] }}<br />
-                        <img src="{{ news.picture.href }}" class="img-thumbnail" />
-                    </li>
-                {% endfor  %}
-            </ul>
-            <h4>Casting</h4>
-            <ul>
-                {% for casting in entity.castingShort  %}
-                    <li>Résalisateurs: {{ casting.directors }}</li>
-                    <li>Acteurs: {{ casting.actors }}</li>
-                    {% if casting.actors is defined %}<img src="{{ casting.picture.href }}" class="img-thumbnail" />{% endif %}
-                {% endfor  %}
-            </ul>
-            <ul>
-                {% for casting in entity.castMember  %}
-                    <li>
-                        Acteurs casté: {{ casting.person.name }} <br />
-                        Activité de l'acteur casté: {{ casting.activity[0] }} <br />
-                        {% if casting.picture.href is defined %}
+                    </ul>
+                    {% endif %}
+                    </p>
+                    <p>{% if entity.directors is defined %} Réalisateur: {{ entity.directors }}{% endif %}</p>
+                    <p>{% if entity.actors is defined %} Acteurs: {{ entity.actors }}{% endif %}</p>
+                    <h4>Liens</h4>
+                    <div class="row">
+                        {% for link in entity.link  %}
+                            <div class="col-md-2 label"><a href="{{ link.href }}" ><i class="glyphicon glyphicon-link"></i> {{ link.name }}</a></div>
+                        {% endfor  %}
+                    </div>
+                    <h4>Statistiques</h4>
+                    <p>Nombre de commentaire: {{ entity.statistics.commentCount }} commentaires</p>
+                    <p>Nombre de vues sur photos: {{ entity.statistics.photoCount }} nb de vues de photos</p>
+                    <p>Nombre de vues sur videos: {{ entity.statistics.videoCount }}nb de vues de vidéos</p>
+                    <hr />
+                    <h4>Actualités</h4>
+                    {% for news in entity.news  %}
+                        <div class="alert alert-block alert-error">{{ news.title }}<br />
+                            <img src="{{ news.picture.href }}" class="img-thumbnail" />
+                        </div>
+                    {% endfor  %}
+                    <hr />
+                    <h4>Casting</h4>
+                    <ul>
+                        {% for casting in entity.castingShort  %}
+                            <li>Résalisateurs: {{ casting.directors }}</li>
+                            <li>Acteurs: {{ casting.actors }}</li>
+                            {% if casting.actors is defined %}
+                        <a class="fancybox" href="{{ casting.picture.href }}">
                             <img src="{{ casting.picture.href }}" class="img-thumbnail" />
-                        {% endif %}
-                    </li>
-                {% endfor  %}
-            </ul>
-            <hr />
-            <p>{% if entity.synopsis is defined %}<i class="glyphicon glyphicon-list-alt"></i>  Synopsis: {{ entity.synopsis|raw }}{% endif %}</p>
-            <p>{% if entity.trailerEmbed is defined %} <div class="alert alert-block col-md-offset-3">{{ entity.trailerEmbed|raw }}</div>{% endif %}</p>
+                        </a>
+                            {% endif %}
+                        {% endfor  %}
+                    </ul>
+                    <div class="row">
+                        {% for casting in entity.castMember  %}
+                            <div class="col-md-3">
+                                Acteur: <a href="{{ path('apis_actor', {'code' : casting.person.code}) }}">{{ casting.person.name }}</a>
+                                - <i>{{ casting.activity[0] }}</i> <br />
+                                {% if casting.picture.href is defined %}
+                                    <a href="{{ path('apis_actor', {'code' : casting.person.code}) }}">
+                                        <img src="{{ casting.picture.href }}" class="img-thumbnail" />
+                                    </a>
+                                {% endif %}
+                            </div>
+                        {% endfor  %}
+                    </div>
+                    <hr />
+                    <p>{% if entity.synopsis is defined %}<i class="glyphicon glyphicon-list-alt"></i>  Synopsis: {{ entity.synopsis|raw }}{% endif %}</p>
+                    <p>{% if entity.trailerEmbed is defined %} <div class="alert alert-block col-md-offset-3">{{ entity.trailerEmbed|raw }}</div>{% endif %}</p>
+                </div>
+            </div>
         </div>
 
 {% endblock %}

@@ -27,15 +27,12 @@ class ApiController extends Controller
      */
     public function indexAction()
     {
-        $client = $this->get('guzzle.client');
+        $helper = new \AlloHelper;
+        $movies = $helper->movielist();
 
-        $req = $client->get('http://api.allocine.fr/rest/v3/movielist?partner=yW5kcm9pZC12M3M&count=25&filter=comingsoon&page=1&order=toprank&format=json');
-
-        $response = $req->send();
-        $movies = json_decode($response->getBody(), true);
-
+//        exit(var_dump($movies['movie']));
         return $this->render('CinheticPublicBundle:Api:index.html.twig', array(
-            'movies' => $movies["feed"]['movie'],
+            'movies' => $movies['movie'],
         ));
     }
 
@@ -51,6 +48,7 @@ class ApiController extends Controller
 
            // Envoi de la requête
             $movie = $helper->movie($code, $profile );
+//            exit(var_dump($movie));
 
             return $this->render('CinheticPublicBundle:Api:show.html.twig', array(
                 'entity' => $movie,
@@ -60,18 +58,151 @@ class ApiController extends Controller
 
 
     /**
+     * Show a movie using API Allocine
+     */
+    public function actorAction($code = null)
+        {
+           // Créer l'objet
+           $helper = new \AlloHelper;
+           $profile = 'long';
+
+           // Envoi de la requête
+            $actor = $helper->person($code, $profile);
+//            exit(var_dump($actor));
+
+            return $this->render('CinheticPublicBundle:Api:actor.html.twig', array(
+                'entity' => $actor,
+                'movies' => $actor['participation']->getArray()
+            ));
+        }
+
+
+
+    /**
+     * Show a movie using API Allocine
+     */
+    public function filmographyAction($code = null)
+        {
+           // Créer l'objet
+           $helper = new \AlloHelper;
+           $profile = 'long';
+
+           // Envoi de la requête
+            $filmography = $helper->filmography($code, $profile);
+
+//            exit(var_dump($filmography['participation'][2]['movie']['originalTitle']));
+
+            return $this->render('CinheticPublicBundle:Api:filmography.html.twig', array(
+                'entity' => $filmography,
+                'movies' => $filmography['participation']->getArray()
+            ));
+        }
+
+
+
+    /**
      * All cinemas using API Allocine
      */
-    public function cinemasAction()
+    public function cinemasAction($zipcode = "75000")
         {
-            $client = $this->get('guzzle.client');
+
+            $helper = new \AlloHelper;
+            $cinemas = $helper->showtimesByZip($zipcode);
+//            exit(var_dump($cinemas));
+
+            return $this->render('CinheticPublicBundle:Api:cinemas.html.twig', array(
+                'cinemas' => $cinemas['theaterShowtimes']->getArray(),
+            ));
+        }
+
+
+
+    /**
+     * All cinemas using API Allocine
+     */
+    public function cinemasyPositionAction($long = null, $lat = null)
+        {
+
+            $helper = new \AlloHelper;
+            $profile = 'long';
+            $codes = array();
+            // Envoi de la requête
+            $actor = $helper->showtimesByPosition(12.5655,12.3532, $profile);
+
+            return $this->render('CinheticPublicBundle:Api:actor.html.twig', array(
+                'entity' => $actor,
+            ));
+
+           /* $client = $this->get('guzzle.client');
 
             $req = $client->get('http://api.allocine.fr/rest/v3/showtimelist?code=61282&partner=yW5kcm9pZC12M3M');
             $response = $req->send();
             $status = $response->getStatusCode();
             $cinemas = json_decode($response->getBody(), true);
             exit(var_dump($response->getBody()));
+            */
+            return $this->render('CinheticPublicBundle:Api:cinemas.html.twig', array(
+                'movies' => $cinemas["feed"]['movie'],
+            ));
+        }
 
+
+
+    /**
+     * All cinemas using API Allocine
+     */
+    public function cinemasyZipAction($zipcode=  null)
+        {
+
+            $helper = new \AlloHelper;
+            $profile = 'long';
+            $codes = array();
+            // Envoi de la requête
+            $actor = $helper->showtimesByZip(75002, $profile);
+
+            return $this->render('CinheticPublicBundle:Api:actor.html.twig', array(
+                'entity' => $actor,
+            ));
+
+           /* $client = $this->get('guzzle.client');
+
+            $req = $client->get('http://api.allocine.fr/rest/v3/showtimelist?code=61282&partner=yW5kcm9pZC12M3M');
+            $response = $req->send();
+            $status = $response->getStatusCode();
+            $cinemas = json_decode($response->getBody(), true);
+            exit(var_dump($response->getBody()));
+            */
+            return $this->render('CinheticPublicBundle:Api:cinemas.html.twig', array(
+                'movies' => $cinemas["feed"]['movie'],
+            ));
+        }
+
+
+
+    /**
+     * All cinemas using API Allocine
+     */
+    public function searchAction($word =  null)
+        {
+
+            $helper = new \AlloHelper;
+            $profile = 'long';
+            $codes = array();
+            // Envoi de la requête
+            $actor = $helper->showtimesByZip(75002, $profile);
+
+            return $this->render('CinheticPublicBundle:Api:actor.html.twig', array(
+                'entity' => $actor,
+            ));
+
+           /* $client = $this->get('guzzle.client');
+
+            $req = $client->get('http://api.allocine.fr/rest/v3/showtimelist?code=61282&partner=yW5kcm9pZC12M3M');
+            $response = $req->send();
+            $status = $response->getStatusCode();
+            $cinemas = json_decode($response->getBody(), true);
+            exit(var_dump($response->getBody()));
+            */
             return $this->render('CinheticPublicBundle:Api:cinemas.html.twig', array(
                 'movies' => $cinemas["feed"]['movie'],
             ));

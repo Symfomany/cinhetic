@@ -1,0 +1,33 @@
+{% extends 'CinheticPublicBundle::layout.html.twig' %}
+
+{% block content %}
+
+<h1>Acteur {{ entity.name.given }} {{ entity.name.family }}</h1>
+<hr />
+<br />
+
+<div class="well">
+    <div class="row">
+        <div class="col-md-3">
+            <a class="fancybox" href="{{ entity.picture.href }}">
+                <img class="img-thumbnail" src="{{ entity.picture.href }}" />
+            </a>
+        </div>
+        <div class="col-md-8">
+            <p>Né le <i>{{ entity.birthDate }} à {{ entity.birthPlace }}</i></p>
+            {#<p>Nationalité: {{ entity.nationality[0] }}</p>#}
+            <p>Role: {{ entity.activityShort }}</p>
+            <p>Biographie:
+                <div class="alert alert-block">
+                 {{ entity.biography|raw }}
+                </div>
+            </p>
+            <p>{{ entity.trailerEmbed|raw }}</p>
+            {#<p>Lien: <a href="{{ entity.link.href }}">Lien ver son site</a></p>#}
+            <h3>Participation</h3>
+                {% include "CinheticPublicBundle:Api:_listbeta.html.twig" %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

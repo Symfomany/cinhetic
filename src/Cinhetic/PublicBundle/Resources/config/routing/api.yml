@@ -6,6 +6,14 @@ apis_show:
     pattern:  /show/{code}
     defaults: { _controller: "CinheticPublicBundle:Api:show" }
 
+apis_actor:
+    pattern:  /actor/{code}
+    defaults: { _controller: "CinheticPublicBundle:Api:actor" }
+
+apis_filmography:
+    pattern:  /filmography/{code}
+    defaults: { _controller: "CinheticPublicBundle:Api:filmography" }
+
 apis_cinemas:
-    pattern:  /cinemas
-    defaults: { _controller: "CinheticPublicBundle:Api:cinemas" }
+    pattern:  /cinemas/{zipcode}
+    defaults: { _controller: "CinheticPublicBundle:Api:cinemas", 'zipcode' : 75002 }

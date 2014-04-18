@@ -43,11 +43,10 @@
                             {% include 'CinheticPublicBundle:Slots:flashdatas.html.twig' %}
                             {{ render(controller('CinheticPublicBundle:Main:search' , {'word': app.request.request.get('search')})) }}
 
-                            <div class="row">
-                                <a href="{{ path('apis') }}" class="pull-right btn btn-danger"><i class="glyphicon glyphicon-road"></i><span class="label label-default">New</span> API Allociné here</a></li>
+                            <div class="row pull-right">
+                                <i class="glyphicon glyphicon-road"></i> <a href="{{ path('apis') }}"><span class="label label-default"><strong>New!</strong></span> API Allociné</a></li>
+                                <img src="http://images.pcastuces.com/apps/48x48/allocine.png" />
                             </div>
-                            {#{% include 'CinheticPublicBundle:Slots:_search.html.twig' %}#}
-
 
                             {% block content %}
                                 {% for key, message in app.session.flashbag.all() %}

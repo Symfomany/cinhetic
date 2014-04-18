@@ -1,0 +1,39 @@
+{% extends 'CinheticPublicBundle::layout.html.twig' %}
+
+{% block content %}
+
+<h1>Liste des Cinemas</h1>
+<hr />
+<br />
+    {% for entity in cinemas %}
+        <div class="well">
+            {#{%  debug entity.place.theater %}#}
+            <div class="col-md-3">
+                <img class="img-thumbnail" src="http://maps.googleapis.com/maps/api/staticmap?center={{ entity.place.theater.geoloc.lat  }},{{ entity.place.theater.geoloc.long  }}&zoom=11&size=200x200&sensor=false">
+            </div>
+            <div class="col-md-8">
+
+                <h3>{{ entity.place.theater.name  }}</h3>
+                    <p>Ville: {{ entity.place.theater.city  }}</p>
+                    <a target="_blank" class="pull-right btn btn-danger" href="{{ entity.place.theater.link[0].href  }}" >Lien vers le cinéma</a>
+
+                    {% for movietime in entity.movieShowtimes %}
+                        {% if movietime.onShow.movie.title is defined %}
+                            <p>
+                                <a href="{{ path('apis_show', {'code' : movietime.onShow.movie.code}) }}">
+                                    {{ movietime.onShow.movie.title }}
+                                </a> - {{  movietime.display }}
+                            </p>
+                        {% endif %}
+                    {% endfor %}
+            </div>
+            <div class="clear clearfix"></div>
+        </div>
+    {% else %}
+        <div class="alert alert-warning">
+            <i class="glyphicon glyphicon-exclamation-sign"></i> Aucun cinéms de trouver.
+        </div>
+    {% endfor %}
+
+
+{% endblock %}
