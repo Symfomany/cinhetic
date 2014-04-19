@@ -116,13 +116,15 @@ class MainController extends Controller
      */
     public function responsePayboxAction()
     {
-        $status = $this->get('request')->query->get('status');
-        return $this->render(
-            'CinheticPublicBundle:Main:return.html.twig',
-            array(
-                'status'     => $status,
-            )
+
+        //messages flash se jouant qu'une seule fois
+        $this->get('session')->getFlashBag()->add(
+            'success',
+            'Votre commande de votre film a bien été prise en compte'
         );
+
+        //redirections
+        return $this->redirect($this->generateUrl('Cinhetic_public_homepage'));
     }
 
     /**
