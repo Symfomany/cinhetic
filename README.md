@@ -138,6 +138,33 @@ CinheticPublicBundle:
     resource: "@CinheticPublicBundle/Resources/config/routing.yml"
 ```
 
+Installation
+------------
+
+### Add configure in parameters for send email in localhost
+
+``` parameters.yml
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: julien@meetserious.com
+    mailer_password: xxxxxxx
+```
+
+``` config.yml
+swiftmailer:
+   transport: gmail
+   host:      smtp.gmail.com
+   username:  "%mailer_user%"
+   password:  "%mailer_password%"
+   spool:     { type: memory }
+```
+
+And execute command line like:
+
+```
+    php app/console cinhetic:email email=julien@meetserious.com nom="Boyer Julien" message="Hello Ju!"
+```
+
 ### Refresh assets
 
 ``` bash
@@ -217,6 +244,8 @@ Chapters covered in project
 * Models: Annotations, Relationship (1:1;,1:n;n:m), Repositories, DQL
 * Form: Types of fields, Dependancies with Model, Validations
 * API Rest using Allocine V3 with Guzzle HTTP Framework
+* Add custom command with console component
+* Use SwiftMailer to send test email
 
 
 
