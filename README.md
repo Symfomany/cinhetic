@@ -250,7 +250,7 @@ Chapters covered in project
 * Add custom command with console component
 * Use SwiftMailer to send test email
 * Add service with Service Container
-* Implement payment solution in solution
+* Implement payment solution in bundle
 
 
 
