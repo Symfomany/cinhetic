@@ -53,10 +53,6 @@ class MainController extends Controller
 
         $paginator = $this->get('knp_paginator'); //je mets en place la pagination
 
-        $this->email = $this->get('cinhetic_public.email');
-        $this->email->send(null, 'CinheticPublicBundle:Email:welcome.html.twig', "Bienvenue sur Cinhetic", 'julien@meetserious.com', null,
-            array( 'content' => 'coucou sa va?')
-        );
         $movies = $em->getRepository('CinheticPublicBundle:Movies')->getAllMovies();
         $cities = $em->getRepository('CinheticPublicBundle:Cinema')->getCitiesOfMovies();
         $seances = $em->getRepository('CinheticPublicBundle:Sessions')->getNextSessions();

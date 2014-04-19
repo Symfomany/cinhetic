@@ -249,6 +249,7 @@ Chapters covered in project
 * API Rest using Allocine V3 with Guzzle HTTP Framework
 * Add custom command with console component
 * Use SwiftMailer to send test email
+* Add service with Service Container
 
 
 
@@ -276,6 +277,7 @@ Features
 * Comments by movies with forms
 * API Rest using Allocine V3 with Guzzle HTTP Framework
 * Ajax Search instant with Allocine API
+* Add Email Decorator in service
 
 
 Evolution
