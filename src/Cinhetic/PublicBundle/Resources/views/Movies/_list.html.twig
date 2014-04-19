@@ -16,7 +16,14 @@
                             </a>
                         </h3>
                         <hr />
-
+                        <div class="clear">
+                            <span class="pull-right">
+                                <form action="{{ url }}" method="post">
+                                    {{ paybox.form(form) }}
+                                    <button class="btn btn-info" type="submit"> <i class="glyphicon glyphicon-euro"></i> Pré-commander ce film en Blue-Ray</button>
+                                </form>
+                            </span>
+                        </div>
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#detail" data-toggle="tab">Détail</a></li>

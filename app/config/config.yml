@@ -203,3 +203,14 @@ knp_paginator:
         pagination: CinheticPublicBundle:Slots:pagination.html.twig     # sliding pagination controls template
 
 
+#Lexik Paybox
+lexik_paybox:
+    servers:
+      primary:
+        system_path: '/cgi/modulev500-RhE5-64bits.cgi'
+    parameters:
+        site:  '1999888'   # Site number provided by the bank
+        rank:  '32'        # Rank number provided by the bank
+        login: '110647233' # Customer's login provided by Paybox
+        hmac:
+            key: '0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF' # Key used to compute the hmac hash, provided by Paybox

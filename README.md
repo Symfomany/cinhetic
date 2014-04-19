@@ -250,6 +250,7 @@ Chapters covered in project
 * Add custom command with console component
 * Use SwiftMailer to send test email
 * Add service with Service Container
+* Implement payment solution in solution
 
 
 
@@ -278,7 +279,7 @@ Features
 * API Rest using Allocine V3 with Guzzle HTTP Framework
 * Ajax Search instant with Allocine API
 * Add Email Decorator in service
-
+* Add Pre-Order for Movies in Paybox with LexikPayboxBundle
 
 Evolution
 ----------------------------------
