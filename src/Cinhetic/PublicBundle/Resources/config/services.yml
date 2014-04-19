@@ -7,6 +7,7 @@ parameters:
     cinhetic_public.form_directors.class: Cinhetic\PublicBundle\Form\DirectorsType
     cinhetic_public.form_movies.class: Cinhetic\PublicBundle\Form\MoviesType
     cinhetic_public.form_search.class: Cinhetic\PublicBundle\Form\SearchType
+    cinhetic_public.email.class: Cinhetic\PublicBundle\EmailDecorator\Email
 
 services:
 #    Form as Services
@@ -40,6 +41,11 @@ services:
         tags:
           - { name: form.type, alias: search }
 
+
+#    Email Service
+    cinhetic_public.email:
+      class: %cinhetic_public.email.class%
+      arguments: [@service_container]
 
     # Repositories as service
 
