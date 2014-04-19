@@ -138,7 +138,7 @@ CinheticPublicBundle:
     resource: "@CinheticPublicBundle/Resources/config/routing.yml"
 ```
 
-Installation
+Send Email in localhost
 ------------
 
 ### Add configure in parameters for send email in localhost
