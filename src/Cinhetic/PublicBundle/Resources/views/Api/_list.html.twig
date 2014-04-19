@@ -1,20 +1,20 @@
 
     {% for entity in movies %}
         <div class="well">
-            <h3><a href="{{ path('apis_show', {'code' : entity.code }) }}">{% if entity.originalTitle is defined %}{{ entity.originalTitle }}{% endif %}</a></h3>
+            <h3><a href="{{ path('apis_show', {'code' : entity.code }) }}">{% if entity.originalTitle is defined %}{{ entity.originalTitle|convert_encoding('UTF-8', 'iso-8859-1') }}{% endif %}</a></h3>
             <div class="row">
                 <div class="col-md-4">
                     <img src="{{ entity.poster.href }}" class="img-thumbnail" />
                 </div>
                 <div class="col-md-8">
-                    <p><i class="glyphicon glyphicon-th"></i> {% for genre in entity.genre %}
-                        {{ genre[0] }}
+                    <p><i class="glyphicon glyphicon-th"></i> Catégorie: {% for genre in entity.genre %}
+                        {{ genre[0]|convert_encoding('UTF-8', 'iso-8859-1') }}
                     {% endfor %}</p>
-                    <p>Date de sortie: {{ entity.release.releaseDate }}</p>
-                    <p><small><i class="glyphicon glyphicon-tags"></i>{% if entity.keywords is defined %} Mots-clefs: {{ entity.keywords }}{% endif %}</small></p>
-                    <p>{% if entity.directors is defined %} Réalisateur: {{ entity.directors }}{% endif %}</p>
-                    <p>{% if entity.actors is defined %} Acteurs: {{ entity.actors }}{% endif %}</p>
-                    <p>{% if entity.synopsisShort is defined %}<i class="glyphicon glyphicon-list-alt"></i>  Synopsis: {{ entity.synopsisShort|raw }}{% endif %}</p>
+                    <p><i class="glyphicon glyphicon-calendar"></i> Date de sortie: {{ entity.release.releaseDate }}</p>
+                    <p><small><i class="glyphicon glyphicon-tags"></i> {% if entity.keywords is defined %} Mots-clefs: {{ entity.keywords|convert_encoding('UTF-8', 'iso-8859-1') }}{% endif %}</small></p>
+                    <p>{% if entity.directors is defined %} Réalisateur: {{ entity.directors|convert_encoding('UTF-8', 'iso-8859-1') }}{% endif %}</p>
+                    <p>{% if entity.actors is defined %} Acteurs: {{ entity.actors|convert_encoding('UTF-8', 'iso-8859-1') }}{% endif %}</p>
+                    <p>{% if entity.synopsisShort is defined %}<i class="glyphicon glyphicon-list-alt"></i>  Synopsis: <i>{{ entity.synopsisShort|convert_encoding('UTF-8', 'iso-8859-1')|raw }}</i>{% endif %}</p>
                     <p class="pull-left"><span class="btn btn-warning"><i class="glyphicon glyphicon-eye-open"></i> {{ entity.statistics.userRatingCount  }} vues</span></p>
                    {% if entity.statistics.commentCount is defined %}
                        <p class="pull-left"><span class="btn btn-warning"><i class="glyphicon glyphicon-comment"></i> {{ entity.statistics.commentCount  }} vues</span></p>

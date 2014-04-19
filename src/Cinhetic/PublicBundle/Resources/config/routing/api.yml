@@ -10,6 +10,10 @@ apis_actor:
     pattern:  /actor/{code}
     defaults: { _controller: "CinheticPublicBundle:Api:actor" }
 
+apis_search:
+    pattern:  /search/
+    defaults: { _controller: "CinheticPublicBundle:Api:search" }
+
 apis_filmography:
     pattern:  /filmography/{code}
     defaults: { _controller: "CinheticPublicBundle:Api:filmography" }

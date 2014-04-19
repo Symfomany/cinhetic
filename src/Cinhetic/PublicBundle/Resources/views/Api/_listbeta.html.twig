@@ -2,7 +2,7 @@
     {% for entity in movies %}
         {% if entity.movie is defined %}
             <div class="alert alert-warning">
-                <h3><a href="{{ path('apis_show', {'code' : entity.movie.code }) }}">{% if entity.movie.originalTitle is defined %}{{ entity.movie.originalTitle }}{% endif %}</a></h3>
+                <h3><a href="{{ path('apis_show', {'code' : entity.movie.code }) }}">{% if entity.movie.originalTitle is defined %}{{ entity.movie.originalTitle|convert_encoding('UTF-8', 'iso-8859-1') }}{% endif %}</a></h3>
                 <div class="row">
                     <div class="col-md-8">
                         <p>{% if entity.movie.synopsisShort is defined %}<i class="glyphicon glyphicon-list-alt"></i>  Synopsis: {{ entity.movie.synopsisShort|raw }}{% endif %}</p>

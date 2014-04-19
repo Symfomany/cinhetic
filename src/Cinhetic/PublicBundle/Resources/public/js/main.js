@@ -51,6 +51,42 @@ $(function () {
     }
 
 
+    if ($("#search_input_api").length > 0) {
+        $("#search_input_api").autocomplete({
+            minLength: 2,
+            scrollHeight: 220,
+            source: function(req, add) {
+                return $.ajax({
+                    url: $("#search_input_api").attr('data-url'),
+                    type: "get",
+                    dataType: "json",
+                    data: "search=" + req.term,
+                    async: true,
+                    cache: true,
+                    success: function(data) {
+                        return add($.map(data, function(item) {
+                            return {
+                                nom: item.nom,
+                                url: item.url
+                            };
+                        }));
+                    }
+                });
+            },
+            focus: function(event, ui) {
+                $(this).val(ui.item.nom);
+                return false;
+            },
+            select: function(event, ui) {
+                $('#search_input_api').val(ui.item.nom);
+                return false;
+            }
+        }).data("ui-autocomplete")._renderItem = function(ul, item) {
+            return $("<li></li>").data("ui-autocomplete-item", item).append("" + item.nom + "").appendTo(ul.addClass("list-row"));
+        };
+    }
+
+
 
     $('#myTab a').click(function (e) {
         e.preventDefault();

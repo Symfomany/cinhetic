@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h1>Filmographie de  {{ entity.name.given }} {{ entity.name.family }}</h1>
+<h1>Filmographie de  {{ entity.name.given|convert_encoding('UTF-8', 'iso-8859-1') }} {{ entity.name.family|convert_encoding('UTF-8', 'iso-8859-1') }}</h1>
 <hr />
 <br />
 

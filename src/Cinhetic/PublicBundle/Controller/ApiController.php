@@ -36,6 +36,41 @@ class ApiController extends Controller
         ));
     }
 
+    /**
+     * Search Movies by word using API Allocine
+     */
+    public function searchAction($ajax = false)
+    {
+        $request = $this->get('request');
+        $word = $request->query->get('search');
+        $ajax = $request->query->get('ajax');
+
+        $helper = new \AlloHelper;
+        $movies = $helper->search($word);
+
+        if(!$ajax){
+            if(isset($movies['movie']) && is_object($movies['movie'])){
+    //            exit(var_dump($movies['movie']->getArray()));
+                $movies =  $movies['movie']->getArray();
+            }
+            return $this->render('CinheticPublicBundle:Api:search.html.twig', array(
+                'movies' => $movies
+            ));
+        }else{
+
+            $results_final = array();
+            if (!empty($movies))
+                if(isset($movies['movie']) && is_object($movies['movie'])){
+                    foreach ($movies['movie'] as $movie)
+                    $results_final[] = array(
+                        'nom' => utf8_encode($movie['originalTitle'])
+                    );
+                }
+//            exit(var_dump($results_final));
+            return new JsonResponse($results_final);
+        }
+    }
+
 
     /**
      * Show a movie using API Allocine
@@ -152,37 +187,6 @@ class ApiController extends Controller
      * All cinemas using API Allocine
      */
     public function cinemasyZipAction($zipcode=  null)
-        {
-
-            $helper = new \AlloHelper;
-            $profile = 'long';
-            $codes = array();
-            // Envoi de la requête
-            $actor = $helper->showtimesByZip(75002, $profile);
-
-            return $this->render('CinheticPublicBundle:Api:actor.html.twig', array(
-                'entity' => $actor,
-            ));
-
-           /* $client = $this->get('guzzle.client');
-
-            $req = $client->get('http://api.allocine.fr/rest/v3/showtimelist?code=61282&partner=yW5kcm9pZC12M3M');
-            $response = $req->send();
-            $status = $response->getStatusCode();
-            $cinemas = json_decode($response->getBody(), true);
-            exit(var_dump($response->getBody()));
-            */
-            return $this->render('CinheticPublicBundle:Api:cinemas.html.twig', array(
-                'movies' => $cinemas["feed"]['movie'],
-            ));
-        }
-
-
-
-    /**
-     * All cinemas using API Allocine
-     */
-    public function searchAction($word =  null)
         {
 
             $helper = new \AlloHelper;

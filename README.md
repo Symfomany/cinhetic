@@ -163,6 +163,8 @@ And execute command line like:
 
 ```
     php app/console cinhetic:email email=julien@meetserious.com nom="Boyer Julien" message="Hello Ju!"
+    or
+    php app/console swiftmailer:email:send
 ```
 
 ### Refresh assets

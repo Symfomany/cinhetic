@@ -1,0 +1,22 @@
+    {% for entity in movies %}
+            <div class="well">
+                <div class="row">
+                    <div class="col-md-4">
+                        {% if entity.poster.url is defined %}
+                            <a href="{{ entity.poster.url }}" class="fancybox">
+                                <img class="img-thumbnail" src="{{ entity.poster.url }}" />
+                            </a>
+                        {% endif %}
+                    </div>
+                    <div class="col-md-8">
+                        <h3><a href="{{ path('apis_show', {'code' : entity.code }) }}">{% if entity.originalTitle is defined %}{{ entity.originalTitle|convert_encoding('UTF-8', 'iso-8859-1') }}{% endif %}</a></h3>
+                        <p>Réalisateur: {{ entity.castingShort.directors|convert_encoding('UTF-8', 'iso-8859-1') }}</p>
+                        <p>Acteurs: {{ entity.castingShort.actors|convert_encoding('UTF-8', 'iso-8859-1') }}</p>
+                        <a href="{{ path('apis_show', {'code' : entity.code }) }}" class="pull-right btn btn-danger">Lien vers le film</a>
+                    </div>
+            </div>
+    {% else %}
+        <div class="alert alert-warning">
+            <i class="glyphicon glyphicon-exclamation-sign"></i> Aucun film de trouver.
+        </div>
+    {% endfor %}

@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h1>Acteur {{ entity.name.given }} {{ entity.name.family }}</h1>
+<h1>Acteur {{ entity.name.given|convert_encoding('UTF-8', 'iso-8859-1') }} {{ entity.name.family|convert_encoding('UTF-8', 'iso-8859-1') }}</h1>
 <hr />
 <br />
 
@@ -16,10 +16,10 @@
         <div class="col-md-8">
             <p>Né le <i>{{ entity.birthDate }} à {{ entity.birthPlace }}</i></p>
             {#<p>Nationalité: {{ entity.nationality[0] }}</p>#}
-            <p>Role: {{ entity.activityShort }}</p>
+            <p>Role: {{ entity.activityShort|convert_encoding('UTF-8', 'iso-8859-1') }}</p>
             <p>Biographie:
                 <div class="alert alert-block">
-                 {{ entity.biography|raw }}
+                 {{ entity.biography|convert_encoding('UTF-8', 'iso-8859-1')|raw }}
                 </div>
             </p>
             <p>{{ entity.trailerEmbed|raw }}</p>
