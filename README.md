@@ -46,6 +46,7 @@ Screenshots
 ![ScreenShot](https://raw.github.com/Symfomany/cinhetic/master/screenshots/Screen14.png)
 ![ScreenShot](https://raw.github.com/Symfomany/cinhetic/master/screenshots/Screen7.png)
 ![ScreenShot](https://raw.github.com/Symfomany/cinhetic/master/screenshots/Screen12.png)
+![ScreenShot](https://raw.github.com/Symfomany/cinhetic/master/screenshots/Screen15.png)
 
 
 1) Installing the Cinhetic Standard Edition
@@ -274,6 +275,7 @@ Features
 * Search engine in elastic search engine
 * Comments by movies with forms
 * API Rest using Allocine V3 with Guzzle HTTP Framework
+* Ajax Search instant with Allocine API
 
 
 Evolution
