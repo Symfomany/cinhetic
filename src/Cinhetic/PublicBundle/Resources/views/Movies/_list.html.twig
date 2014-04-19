@@ -18,10 +18,12 @@
                         <hr />
                         <div class="clear">
                             <span class="pull-right">
-                                <form action="{{ url }}" method="post">
-                                    {{ paybox.form(form) }}
-                                    <button class="btn btn-info" type="submit"> <i class="glyphicon glyphicon-euro"></i> Pré-commander ce film en Blue-Ray</button>
-                                </form>
+                                {% if paybox is defined %}
+                                    <form action="{{ url }}" method="post">
+                                        {{ paybox.form(form) }}
+                                        <button class="btn btn-info" type="submit"> <i class="glyphicon glyphicon-euro"></i> Pré-commander ce film en Blue-Ray</button>
+                                    </form>
+                                {% endif %}
                             </span>
                         </div>
                         <!-- Nav tabs -->
