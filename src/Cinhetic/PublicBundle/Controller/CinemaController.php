@@ -11,15 +11,14 @@ use FOS\RestBundle\Controller\Annotations as Rest;
 
 
 /**
- * Cinema controller.
- *
+ * Class CinemaController
+ * @package Cinhetic\PublicBundle\Controller
  */
 class CinemaController extends Controller
 {
 
     /**
      * Lists all Cinema entities.
-     *
      */
     public function indexAction()
     {
@@ -35,7 +34,6 @@ class CinemaController extends Controller
 
     /**
      * Creates a new Cinema entity.
-     *
      */
     public function createAction(Request $request)
     {
@@ -75,7 +73,6 @@ class CinemaController extends Controller
 
     /**
      * Displays a form to create a new Cinema entity.
-     *
      */
     public function newAction()
     {
@@ -90,7 +87,6 @@ class CinemaController extends Controller
 
     /**
      * Finds and displays a Cinema entity.
-     *
      */
     public function showAction($id)
     {
@@ -111,7 +107,6 @@ class CinemaController extends Controller
 
     /**
      * Displays a form to edit an existing Cinema entity.
-     *
      */
     public function editAction($id)
     {
@@ -135,9 +130,7 @@ class CinemaController extends Controller
 
     /**
     * Creates a form to edit a Cinema entity.
-    *
     * @param Cinema $entity The entity
-    *
     * @return \Symfony\Component\Form\Form The form
     */
     private function createEditForm(Cinema $entity)
@@ -153,7 +146,6 @@ class CinemaController extends Controller
     }
     /**
      * Edits an existing Cinema entity.
-     *
      */
     public function updateAction(Request $request, $id)
     {
@@ -183,7 +175,6 @@ class CinemaController extends Controller
     }
     /**
      * Deletes a Cinema entity.
-     *
      */
     public function deleteAction(Request $request, $id)
     {
@@ -207,9 +198,7 @@ class CinemaController extends Controller
 
     /**
      * Creates a form to delete a Cinema entity by id.
-     *
      * @param mixed $id The entity id
-     *
      * @return \Symfony\Component\Form\Form The form
      */
     private function createDeleteForm($id)

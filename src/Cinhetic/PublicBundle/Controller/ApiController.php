@@ -2,16 +2,10 @@
 
 namespace Cinhetic\PublicBundle\Controller;
 
-use Cinhetic\PublicBundle\Form\SearchType;
 use Guzzle\Http\Client;
-use JsonSchema\Uri\Retrievers\Curl;
-use Misd\GuzzleBundle\MisdGuzzleBundle;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-use Cinhetic\PublicBundle\Entity\Movies;
-use Cinhetic\PublicBundle\Form\MoviesType;
 use FOS\RestBundle\Controller\Annotations as Rest;
 
 /**
@@ -23,12 +17,23 @@ class ApiController extends Controller
 {
 
     /**
+     * @var \AlloHelper
+     */
+    protected $helper;
+
+    /**
+     * Constructor of APIController
+     */
+    public function __construct(){
+        $this->helper = new \AlloHelper;
+    }
+
+    /**
      * Lists all Movies using API Allocine
      */
     public function indexAction()
     {
-        $helper = new \AlloHelper;
-        $movies = $helper->movielist();
+        $movies = $this->helper->movielist();
 
 //        exit(var_dump($movies['movie']));
         return $this->render('CinheticPublicBundle:Api:index.html.twig', array(
@@ -39,14 +44,14 @@ class ApiController extends Controller
     /**
      * Search Movies by word using API Allocine
      */
-    public function searchAction($ajax = false)
+    public function searchAction()
     {
         $request = $this->get('request');
         $word = $request->query->get('search');
         $ajax = $request->query->get('ajax');
 
-        $helper = new \AlloHelper;
-        $movies = $helper->search($word);
+        
+        $movies = $this->helper->search($word);
 
         if(!$ajax){
             if(isset($movies['movie']) && is_object($movies['movie'])){
@@ -77,12 +82,8 @@ class ApiController extends Controller
      */
     public function showAction($code = null)
         {
-           // Créer l'objet
-           $helper = new \AlloHelper;
            $profile = 'long';
-
-           // Envoi de la requête
-            $movie = $helper->movie($code, $profile );
+            $movie = $this->helper->movie($code, $profile );
 //            exit(var_dump($movie));
 
             return $this->render('CinheticPublicBundle:Api:show.html.twig', array(
@@ -97,12 +98,8 @@ class ApiController extends Controller
      */
     public function actorAction($code = null)
         {
-           // Créer l'objet
-           $helper = new \AlloHelper;
            $profile = 'long';
-
-           // Envoi de la requête
-            $actor = $helper->person($code, $profile);
+            $actor = $this->helper->person($code, $profile);
 //            exit(var_dump($actor));
 
             return $this->render('CinheticPublicBundle:Api:actor.html.twig', array(
@@ -118,13 +115,8 @@ class ApiController extends Controller
      */
     public function filmographyAction($code = null)
         {
-           // Créer l'objet
-           $helper = new \AlloHelper;
            $profile = 'long';
-
-           // Envoi de la requête
-            $filmography = $helper->filmography($code, $profile);
-
+           $filmography = $this->helper->filmography($code, $profile);
 //            exit(var_dump($filmography['participation'][2]['movie']['originalTitle']));
 
             return $this->render('CinheticPublicBundle:Api:filmography.html.twig', array(
@@ -140,9 +132,7 @@ class ApiController extends Controller
      */
     public function cinemasAction($zipcode = "75000")
         {
-
-            $helper = new \AlloHelper;
-            $cinemas = $helper->showtimesByZip($zipcode);
+            $cinemas = $this->helper->showtimesByZip($zipcode);
 //            exit(var_dump($cinemas));
 
             return $this->render('CinheticPublicBundle:Api:cinemas.html.twig', array(
@@ -157,12 +147,8 @@ class ApiController extends Controller
      */
     public function cinemasyPositionAction($long = null, $lat = null)
         {
-
-            $helper = new \AlloHelper;
             $profile = 'long';
-            $codes = array();
-            // Envoi de la requête
-            $actor = $helper->showtimesByPosition(12.5655,12.3532, $profile);
+            $actor = $this->helper->showtimesByPosition(12.5655,12.3532, $profile);
 
             return $this->render('CinheticPublicBundle:Api:actor.html.twig', array(
                 'entity' => $actor,
@@ -189,11 +175,8 @@ class ApiController extends Controller
     public function cinemasyZipAction($zipcode=  null)
         {
 
-            $helper = new \AlloHelper;
             $profile = 'long';
-            $codes = array();
-            // Envoi de la requête
-            $actor = $helper->showtimesByZip(75002, $profile);
+            $actor = $this->helper->showtimesByZip(75002, $profile);
 
             return $this->render('CinheticPublicBundle:Api:actor.html.twig', array(
                 'entity' => $actor,

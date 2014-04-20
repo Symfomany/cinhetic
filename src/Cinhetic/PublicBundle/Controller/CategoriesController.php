@@ -10,20 +10,18 @@ use Cinhetic\PublicBundle\Form\CategoriesType;
 
 
 /**
- * Categories controller.
- *
+ * Class CategoriesController
+ * @package Cinhetic\PublicBundle\Controller
  */
 class CategoriesController extends Controller
 {
 
     /**
      * Lists all Categories entities.
-     *
      */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
         $entities = $em->getRepository('CinheticPublicBundle:Categories')->findAll();
 
         return $this->render('CinheticPublicBundle:Categories:index.html.twig', array(
@@ -34,7 +32,6 @@ class CategoriesController extends Controller
 
     /**
      * Creates a new Categories entity.
-     *
      */
     public function createAction(Request $request)
     {
@@ -58,9 +55,7 @@ class CategoriesController extends Controller
 
     /**
     * Creates a form to create a Categories entity.
-    *
     * @param Categories $entity The entity
-    *
     * @return \Symfony\Component\Form\Form The form
     */
     private function createCreateForm(Categories $entity)
@@ -70,7 +65,6 @@ class CategoriesController extends Controller
             'method' => 'POST',
             'attr' => array('id' => "handlecategorie")
         ));
-
         $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning"), 'label' => 'Créer cette catégorie'));
 
         return $form;
@@ -78,7 +72,6 @@ class CategoriesController extends Controller
 
     /**
      * Displays a form to create a new Categories entity.
-     *
      */
     public function newAction()
     {
@@ -93,12 +86,10 @@ class CategoriesController extends Controller
 
     /**
      * Finds and displays a Categories entity.
-     *
      */
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-
         $entity = $em->getRepository('CinheticPublicBundle:Categories')->find($id);
 
         if (!$entity) {
@@ -114,12 +105,10 @@ class CategoriesController extends Controller
 
     /**
      * Displays a form to edit an existing Categories entity.
-     *
      */
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-
         $entity = $em->getRepository('CinheticPublicBundle:Categories')->find($id);
 
         if (!$entity) {
@@ -138,9 +127,7 @@ class CategoriesController extends Controller
 
     /**
     * Creates a form to edit a Categories entity.
-    *
     * @param Categories $entity The entity
-    *
     * @return \Symfony\Component\Form\Form The form
     */
     private function createEditForm(Categories $entity)
@@ -157,12 +144,10 @@ class CategoriesController extends Controller
     }
     /**
      * Edits an existing Categories entity.
-     *
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
-
         $entity = $em->getRepository('CinheticPublicBundle:Categories')->find($id);
 
         if (!$entity) {
@@ -189,7 +174,6 @@ class CategoriesController extends Controller
 
     /**
      * Deletes a Categories entity.
-     *
      */
     public function deleteAction(Request $request, $id)
     {
@@ -213,9 +197,7 @@ class CategoriesController extends Controller
 
     /**
      * Creates a form to delete a Categories entity by id.
-     *
      * @param mixed $id The entity id
-     *
      * @return \Symfony\Component\Form\Form The form
      */
     private function createDeleteForm($id)

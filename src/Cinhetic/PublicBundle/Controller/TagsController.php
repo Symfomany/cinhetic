@@ -10,8 +10,8 @@ use Cinhetic\PublicBundle\Form\TagsType;
 
 
 /**
- * Tags controller.
- *
+ * Class TagsController
+ * @package Cinhetic\PublicBundle\Controller
  */
 class TagsController extends Controller
 {

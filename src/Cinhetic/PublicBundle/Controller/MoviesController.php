@@ -12,8 +12,8 @@ use Cinhetic\PublicBundle\Form\MoviesType;
 use FOS\RestBundle\Controller\Annotations as Rest;
 
 /**
- * Movies controller.
- *
+ * Class MoviesController
+ * @package Cinhetic\PublicBundle\Controller
  */
 class MoviesController extends Controller
 {
@@ -23,10 +23,9 @@ class MoviesController extends Controller
      * Search Movies in Engine Search
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function searchAction($ajax = false)
+    public function searchAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $request = $this->get('request');
         $paginator = $this->get('knp_paginator');
         $movies = $em->getRepository('CinheticPublicBundle:Movies')->findAll();
         $ajax = $request->query->get('ajax');

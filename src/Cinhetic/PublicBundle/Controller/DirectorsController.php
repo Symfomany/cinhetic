@@ -9,15 +9,14 @@ use Cinhetic\PublicBundle\Entity\Directors;
 use Cinhetic\PublicBundle\Form\DirectorsType;
 
 /**
- * Directors controller.
- *
+ * Class DirectorsController
+ * @package Cinhetic\PublicBundle\Controller
  */
 class DirectorsController extends Controller
 {
 
     /**
      * Lists all Directors entities.
-     *
      */
     public function indexAction()
     {
@@ -29,9 +28,9 @@ class DirectorsController extends Controller
             'entities' => $entities,
         ));
     }
+
     /**
      * Creates a new Directors entity.
-     *
      */
     public function createAction(Request $request)
     {
@@ -55,9 +54,7 @@ class DirectorsController extends Controller
 
     /**
     * Creates a form to create a Directors entity.
-    *
     * @param Directors $entity The entity
-    *
     * @return \Symfony\Component\Form\Form The form
     */
     private function createCreateForm(Directors $entity)
@@ -74,7 +71,6 @@ class DirectorsController extends Controller
 
     /**
      * Displays a form to create a new Directors entity.
-     *
      */
     public function newAction()
     {
@@ -89,7 +85,6 @@ class DirectorsController extends Controller
 
     /**
      * Finds and displays a Directors entity.
-     *
      */
     public function showAction($id)
     {
@@ -102,7 +97,6 @@ class DirectorsController extends Controller
         }
 
         $deleteForm = $this->createDeleteForm($id);
-
         $paginator = $this->get('knp_paginator');
 
         $pagination = $paginator->paginate(
@@ -120,7 +114,6 @@ class DirectorsController extends Controller
 
     /**
      * Displays a form to edit an existing Directors entity.
-     *
      */
     public function editAction($id)
     {
@@ -144,9 +137,7 @@ class DirectorsController extends Controller
 
     /**
     * Creates a form to edit a Directors entity.
-    *
     * @param Directors $entity The entity
-    *
     * @return \Symfony\Component\Form\Form The form
     */
     private function createEditForm(Directors $entity)
@@ -164,7 +155,6 @@ class DirectorsController extends Controller
 
     /**
      * Edits an existing Directors entity.
-     *
      */
     public function updateAction(Request $request, $id)
     {
@@ -196,7 +186,6 @@ class DirectorsController extends Controller
 
     /**
      * Deletes a Directors entity.
-     *
      */
     public function deleteAction(Request $request, $id)
     {
@@ -220,9 +209,7 @@ class DirectorsController extends Controller
 
     /**
      * Creates a form to delete a Directors entity by id.
-     *
      * @param mixed $id The entity id
-     *
      * @return \Symfony\Component\Form\Form The form
      */
     private function createDeleteForm($id)

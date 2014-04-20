@@ -22,7 +22,7 @@ use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface,
     protected $router;
 
     /**
-        * @var \Doctrine\ORM\EntityManager
+     * @var \Doctrine\ORM\EntityManager
      */
     protected $em;
 
@@ -33,15 +33,16 @@ use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface,
     protected $templating;
 
     /**
-     * @var
+     * @var Mailer service
      */
     protected $mailer;
 
     /**
-    * Constructor Dependances
+     * Constructor of dependencies
      * @param RouterInterface $router
      * @param EntityManager $em
-     * @param Session $session
+     * @param EngineInterface $templating
+     * @param $mailer
      */
     public function __construct(RouterInterface $router, EntityManager $em,  EngineInterface $templating, $mailer) {
         $this->router = $router;
@@ -58,7 +59,6 @@ use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface,
      */
     public function onAuthenticationSuccess(Request $request, TokenInterface $token) {
         $user = $token->getUser();
-
         $referer = $this->router->generate('Cinhetic_public_homepage');
 
         //send email notification
@@ -69,9 +69,6 @@ use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface,
             ->setContentType("text/html")
             ->setBody( $this->templating->render('CinheticPublicBundle:Email:connexion.html.twig', array('email' => $user->getEmail())));
             $this->mailer->send($message);
-
-        if($referer == 'http://'.$request->getHttpHost().'/login')
-            $referer = $this->router->generate('Cinhetic_public_homepage');
 
         return new RedirectResponse($referer);
     }

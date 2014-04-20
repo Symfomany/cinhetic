@@ -95,7 +95,6 @@ class ActorsController extends Controller
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-
         $entity = $em->getRepository('CinheticPublicBundle:Actors')->find($id);
 
         if (!$entity) {
@@ -103,7 +102,6 @@ class ActorsController extends Controller
         }
 
         $deleteForm = $this->createDeleteForm($id);
-
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $entity->getMovies(),

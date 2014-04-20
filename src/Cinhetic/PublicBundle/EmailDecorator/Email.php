@@ -51,8 +51,9 @@ class Email {
     protected $configuration;
 
     /**
-     * Constructor with EngineInterface & Mailer
-     * @param \Symfony\Component\DependencyInjection\ContainerInterface $container
+     *  Constructor of dependencies
+     * @param EngineInterface $templating
+     * @param $mailer
      */
     public function __construct(EngineInterface $templating, $mailer) {
         $this->templating = $templating;

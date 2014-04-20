@@ -9,8 +9,8 @@ use Cinhetic\PublicBundle\Entity\Sessions;
 use Cinhetic\PublicBundle\Form\SessionsType;
 
 /**
- * Sessions controller.
- *
+ * Class SessionsController
+ * @package Cinhetic\PublicBundle\Controller
  */
 class SessionsController extends Controller
 {

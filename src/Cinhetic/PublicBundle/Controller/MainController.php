@@ -9,7 +9,10 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContext;
 
-
+/**
+ * Class MainController
+ * @package Cinhetic\PublicBundle\Controller
+ */
 class MainController extends Controller
 {
 
@@ -49,6 +52,30 @@ class MainController extends Controller
      */
     public function indexAction()
     {
+        $username = "Symfomany";
+        $feed = "http://search.twitter.com/search.atom?q=from:" . $username . "&rpp=1";
+
+        //Initialize the Curl session
+        $ch = curl_init();
+        //Set curl to return the data instead of printing it to the browser.
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        //Set the URL
+        curl_setopt($ch, CURLOPT_URL, $feed);
+        //Execute the fetch
+        $twitterFeed = curl_exec($ch);
+        //Close the connection
+        curl_close($ch);
+
+        $stepOne = explode("<content type=\"html\">", $twitterFeed);
+        $stepTwo = explode("</content>", $stepOne[1]);
+        $tweet = $stepTwo[0];
+        $tweet = htmlspecialchars_decode($tweet,ENT_QUOTES);
+
+        //$twitterFeed = file_get_contents($feed);
+        echo('&quot;'.$tweet.'&quot;');
+
+        exit();
+
         $paybox = $this->get('lexik_paybox.request_handler');
         $paybox->setParameters(array(
             'PBX_CMD'          => 'CMD'.time(),
@@ -164,9 +191,8 @@ class MainController extends Controller
      * Login Authentification
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function loginAction()
+    public function loginAction(Request $request)
     {
-        $request = $this->getRequest();
         $session = $request->getSession();
         if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {
             $error = $request->attributes->get(SecurityContext::AUTHENTICATION_ERROR);
