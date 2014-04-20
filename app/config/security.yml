@@ -15,6 +15,7 @@ security:
           pattern:        ^/administration
           anonymous:      true
           form_login:
+            success_handler:  cinhetic_public.handler_auth
             provider:               fos_userbundle
             csrf_provider:          form.csrf_provider
             check_path:             fos_user_security_check
