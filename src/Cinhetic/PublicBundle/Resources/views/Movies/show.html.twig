@@ -2,116 +2,150 @@
 
 
 {% block content %}
-    <h1>Le film {{ entity.title|title }}</h1>
-
-    <table class="record_properties">
-        <tbody>
-            <tr>
-                <th>Type de film</th>
-                <td>{{ entity.typeFilm }}</td>
-            </tr>
-            <tr>
-                <th>Titre</th>
-                <td>{{ entity.title }}</td>
-            </tr>
-            <tr>
-                <th>Synopsis</th>
-                <td>{{ entity.synopsis|raw }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ entity.description|raw }}</td>
-            </tr>
-            <tr>
-                <th>Trailer</th>
-                <td>{{ entity.trailer|raw }}</td>
-            </tr>
-            <tr>
-                <th>Languages</th>
-                <td>{{ entity.languages }}</td>
-            </tr>
-            <tr>
-                <th>Distributeur</th>
-                <td>{{ entity.distributeur }}</td>
-            </tr>
-            <tr>
-                <th>Bo</th>
-                <td>{{ entity.bo }}</td>
-            </tr>
-            <tr>
-                <th>Année</th>
-                <td>{{ entity.annee }}</td>
-            </tr>
-            <tr>
-                <th>Budget</th>
-                <td>{{ entity.budget }}</td>
-            </tr>
-            <tr>
-                <th>Durée</th>
-                <td>{{ entity.duree }}</td>
-            </tr>
-            <tr>
-                <th>Date de sortie</th>
-                <td>{{ entity.dateRelease|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
-                <th>Note de presse</th>
-                <td>{{ entity.notePresse }}</td>
-            </tr>
-            <tr>
-                <th>Visible</th>
-                <td>{{ entity.visible }}</td>
-            </tr>
-            <tr>
-                <th>Cover</th>
-                <td>{{ entity.cover }}</td>
-            </tr>
-            <tr>
-                <th>Date de création</th>
-                <td>{{ entity.dateCreated|date('Y-m-d H:i:s') }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <h4>Les acteurs</h4>
-    {% for entity in entity.actors %}
-        <div class="alert alert-warning">
-            {{ entity.firstname|title }}
-            {{ entity.lastname|title }}
-        </div>
-    {% endfor %}
-    <h4>Les réalisateurs</h4>
-    {% for entity in entity.directors %}
-        <div class="alert alert-warning">
-            {{ entity.firstname|title }}
-            {{ entity.lastname|title }}
-        </div>
-    {% endfor %}
-    <h4>Les cinémas qui le diffuse:</h4>
-    {% for entity in entity.cinemas %}
-        <div class="alert alert-warning">
-            {{ entity.title|title }} à
-            {{ entity.ville|title }}
-        </div>
-    {% endfor %}
-    <h4>Media:</h4>
-    {% for entity in entity.medias %}
-        <div class="thumbnail">
-            {% if entity.nature == "1" %}
-                <img class="thumbnail" src="{{ entity.picture|raw }}" />
-            {% else %}
-                {{ entity.video|raw }}
-            {% endif %}
-        </div>
-    {% endfor %}
-    <h4>Tags asssociés:</h4>
+    <br/>
     {% for entity in entity.tags %}
         <span class="label label-default">{{ entity.word }}</span>
     {% endfor %}
+    <div class="well">
+        <div class="row featurette">
+            <div class="col-md-4">
+                <img class="featurette-image img-responsive" alt="{{ entity.title|title }}" src="{{ cover }}">
+            </div>
+            <div class="col-md-7">
+                <h1 class="featurette-heading">{{ entity.title|title }}<span class="text-muted"> ({{ entity.annee }})</span></h1>
+                <span>Type de film : {{ entity.typeFilm }}</span>
+                <p class="lead">{{ entity.synopsis|truncate(500,true,'...') }}</p>
+                <button class="btn btn-info">En savoir plus</button>
+            </div>
+        </div>
 
+        <br>
 
-        <a class="btn" href="{{ path('movies_edit', { 'id': entity.id }) }}">
-            Editer
-        </a>
-        {{ form(delete_form) }}
+        <ul class="nav nav-tabs" id="myTab">
+            <li class="active"><a href="#home" data-toggle="tab">Bande annonce</a></li>
+            <li><a href="#profile" data-toggle="tab" class="cercles">Informations</a></li>
+            <li><a href="#messages" data-toggle="tab">Images</a></li>
+            <li><a href="#acteurs" data-toggle="tab">Autres</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane active" id="home"><br>
+                <div class="row">
+                    <div class="col-md-5 col-md-offset-3">
+                            {{ entity.trailer|raw }}
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="profile"><br>
+                <div class="container marketing">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <input type="text" attr-value="{{ entity.duree }}" readOnly="true" data-fgColor="#E74C3C" data-max="10" class="dial">
+                            <h2>Durée (heure)</h2>
+                        </div>
+                        <div class="col-lg-4">
+                            <input type="text" attr-value="{{ entity.budget }}" readOnly="true" data-max="3000000" data-fgColor="#3498DB" class="dial">
+                            <h2>Budget (€)</h2>
+                        </div>
+                        <div class="col-lg-4">
+                            <input type="text" attr-value="{{ entity.notePresse }}" readOnly="true" data-max="5" data-fgColor="#9B59B6" class="dial">
+                            <h2>Note de presse</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <h3>Histoire</h3>
+                        <p>{{ entity.description|raw }}</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="tab-pane" id="messages"><br>
+                <div class="row">
+                    <div class="col-md-5 col-md-offset-3">
+                        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                {% for i in 0..(entity.medias|length - 1) %}
+                                    <li data-target="#myCarousel" data-slide-to="{{ i }}" {% if i == 0 %}class="active"{% endif %}></li>
+                                {% endfor %}
+                            </ol>
+                            <div class="carousel-inner">
+                                {% for entity in entity.medias %}
+                                    <div class="item{% if loop.index == 1%} active{% endif %}">
+                                        {% if entity.nature == "1" %}
+                                            <img src="{{ entity.picture|raw }}" width="900px" height="500px">
+                                        {% endif %}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+                            <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="tab-pane" id="acteurs">
+
+                <div class="row">
+                    <div class="col-6 col-sm-6 col-lg-4">
+                        <h2>Les acteurs</h2>
+                            {% for entity in entity.actors %}
+                                <p>
+                                    {{ entity.firstname|title }}
+                                    {{ entity.lastname|title }}
+                                </p>
+                            {% endfor %}
+                    </div>
+                    <div class="col-6 col-sm-6 col-lg-4">
+                        <h2>Les réalisateurs</h2>
+                        {% for entity in entity.directors %}
+                            <p>
+                                {{ entity.firstname|title }}
+                                {{ entity.lastname|title }}
+                            </p>
+                        {% endfor %}
+                    </div>
+                    <div class="col-6 col-sm-6 col-lg-4">
+                        <h2>Les cinémas</h2>
+                        {% for entity in entity.cinemas %}
+                            <p>
+                                {{ entity.title|title }} à {{ entity.ville|title }}
+                            </p>
+                        {% endfor %}
+                    </div>
+                </div>
+
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts '@CinheticPublicBundle/Resources/public/js/knob.js'  %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    <script type="text/javascript">
+        $(function () {
+            $('#myTab a:first').tab('show');
+            $(".dial").knob();
+            $('#myTab').on('click', "a.cercles", function(){
+                $('.dial').each(function()
+                {
+                    $(this).animate(
+                        {
+                            value : parseInt($(this).attr('attr-value'))
+                        },
+                        {
+                            duration: 1000,
+                            progress : function(){
+                                $(this).val(this.value).trigger('change')
+                            }
+                        }
+                    );
+                });
+            })
+        });
+    </script>
 {% endblock %}
