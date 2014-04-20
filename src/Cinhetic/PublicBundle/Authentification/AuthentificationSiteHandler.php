@@ -2,16 +2,11 @@
 
 namespace  Cinhetic\PublicBundle\Authentification;
 
-use Symfony\Component\Routing\RouterInterface,
+use
     Symfony\Component\HttpFoundation\RedirectResponse,
     Symfony\Component\HttpFoundation\Request,
-    Doctrine\ORM\EntityManager,
     Symfony\Component\Security\Http\Authentication\AuthenticationSuccessHandlerInterface,
-    Symfony\Component\Security\Http\Authentication\AuthenticationFailureHandlerInterface,
     Symfony\Component\Security\Core\Authentication\Token\TokenInterface,
-    Symfony\Component\HttpFoundation\Session\Session,
-    Symfony\Component\Security\Core\Exception\AuthenticationException,
-    Symfony\Component\Security\Http\Logout\LogoutSuccessHandlerInterface,
     Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -27,9 +22,7 @@ class AuthentificationSiteHandler implements  AuthenticationSuccessHandlerInterf
 
     /**
      * Constructor Dependances
-     * @param RouterInterface $router
-     * @param EntityManager $em
-     * @param Session $session
+     * @param ContainerInterface $container
      */
     public function __construct(ContainerInterface $container) {
 
