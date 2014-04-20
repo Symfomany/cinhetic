@@ -1,38 +1,27 @@
 {% extends 'CinheticPublicBundle::layout.html.twig' %}
 
 {% block content %}
-    <h1>Voir la catégorie {{ entity.title|title}}</h1>
-
-    <table class="record_properties">
-        <tbody>
-            <tr>
-                <th>Nom de la catégorie</th>
-                <td>{{ entity.title }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ entity.description|raw }}</td>
-            </tr>
-            <tr>
-                <td class="text-success">{{ entity.movies|length|default("0") }}</td>
-            </tr>
-            <tr>
-                <th>Création</th>
-                <td>{{ entity.dateCreated|date('Y-m-d H:i:s') }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    {% if entity.movies is not empty %}
-        <h3>Les films de cette catégorie</h3>
-        {% for entity in entity.movies %}
-            <div class="alert alert-warning">
-                <a href="{{ path('movies_show', { 'id': entity.id }) }}">{{ entity.title|title }}</a>
+    <div class="well">
+        <h1>Catégorie {{ entity.title|title}}</h1>
+        <p>{{ entity.description|raw }}</p>
+        {% if entity.movies is not empty %}
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>Les films de cette catégorie</h3>
+                    <div class="list-group">
+                        {% for entity in entity.movies %}
+                            <a href="{{ path('movies_show', { 'id': entity.id }) }}" class="list-group-item">
+                                <h4 class="list-group-item-heading">{{ entity.title|title }}</h4>
+                                <p class="list-group-item-text">{{ entity.synopsis|truncate(500,true,'...') }}</p>
+                            </a>
+                        {% endfor %}
+                    </div>
+                </div>
             </div>
-        {% endfor %}
-    {% endif %}
+        {% endif %}
 
-       <a class="btn btn-primary" href="{{ path('categories_edit', { 'id': entity.id }) }}">
-            Editer la catégorie
-        </a>
+           <a class="btn btn-primary" href="{{ path('categories_edit', { 'id': entity.id }) }}">
+                Editer la catégorie
+            </a>
+    </div>
 {% endblock %}

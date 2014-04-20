@@ -231,8 +231,8 @@ class MoviesController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
         
+        // TODO : create a real cover
         $cover = '';
-
         foreach ($entity->getMedias() as $picture) {
             if ($picture->getNature())
             {

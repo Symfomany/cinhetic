@@ -61,7 +61,7 @@
             </div>
             <div class="tab-pane" id="messages"><br>
                 <div class="row">
-                    <div class="col-md-5 col-md-offset-3">
+                    <div class="col-md-8 col-md-offset-2">
                         <div id="myCarousel" class="carousel slide" data-ride="carousel">
                             <ol class="carousel-indicators">
                                 {% for i in 0..(entity.medias|length - 1) %}
@@ -72,7 +72,7 @@
                                 {% for entity in entity.medias %}
                                     <div class="item{% if loop.index == 1%} active{% endif %}">
                                         {% if entity.nature == "1" %}
-                                            <img src="{{ entity.picture|raw }}" width="900px" height="500px">
+                                            <img src="{{ entity.picture|raw }}">
                                         {% endif %}
                                     </div>
                                 {% endfor %}

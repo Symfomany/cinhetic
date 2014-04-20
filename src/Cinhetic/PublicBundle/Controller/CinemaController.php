@@ -103,9 +103,23 @@ class CinemaController extends Controller
         }
 
         $deleteForm = $this->createDeleteForm($id);
+        
+        // TODO : create a real cover
+        $cover = array();
+        foreach ($entity->getMovies() as $movie) {
+            $cover[$movie->getId()] = NULL;
+            foreach ($movie->getMedias() as $picture) {
+                if ($picture->getNature())
+                {
+                    $cover[$movie->getId()] = $picture->getPicture();
+                    break;
+                }
+            }
+        }
 
         return $this->render('CinheticPublicBundle:Cinema:show.html.twig', array(
             'entity'      => $entity,
+            'cover' => $cover,
             'delete_form' => $deleteForm->createView(),        ));
     }
 
