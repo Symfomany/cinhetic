@@ -39,7 +39,7 @@ class Email {
      * @param type $user
      * @param type $templating
      */
-    public function send($user = null, $templating = null,$subject = "Email de Cinhetic Project", $to = null, $key = null, $datas = array(), $contentType = 'text/html', $base_url = 'http://www.horus-solution.com/', $sender = null,  $level = 0) {
+    public function send($user = null, $templating = null,$subject = "Email de Cinhetic Project", $to = null, $key = null, $datas = array(), $contentType = 'text/html', $base_url = 'http://94.23.5.209/web/', $sender = null,  $level = 0) {
 
         $this->base_url = $base_url;
 

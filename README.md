@@ -9,7 +9,6 @@ Roadmap: Handle movies, categories of movies, tags of movies, actors, directors,
 In some words: **Minimalist** features, **Collaborative** solution, **Pragmatic** and **Responsive** project
 
 
-
 Demo
 ------------------
 http://94.23.5.209/web/
@@ -19,7 +18,6 @@ Login: demo
 Mdp: demo
 ```
 
-
 Documentation
 ------------------
 http://94.23.5.209/docs/
@@ -28,6 +26,16 @@ http://94.23.5.209/docs/
 Documentation for training
 ------------
 http://94.23.5.209/web/apprentissage
+
+
+Requirements
+------------
+
+* PHP >=5.3.3
+* PHPUnit ~ 3.7
+* Elastic Search running
+* PECL hash >= 1.1
+* openssl enabled
 
 
 Screenshots

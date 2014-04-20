@@ -37,7 +37,7 @@ EOT
      * @param OutputInterface $output
      * @return int|null|void
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    public function execute(InputInterface $input, OutputInterface $output)
     {
         $email = $input->getArgument('email');
         $nom = $input->getArgument('nom');

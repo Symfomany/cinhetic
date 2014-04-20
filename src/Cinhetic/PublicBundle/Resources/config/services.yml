@@ -8,6 +8,8 @@ parameters:
     cinhetic_public.form_movies.class: Cinhetic\PublicBundle\Form\MoviesType
     cinhetic_public.form_search.class: Cinhetic\PublicBundle\Form\SearchType
     cinhetic_public.email.class: Cinhetic\PublicBundle\EmailDecorator\Email
+    cinhetic_public.console_command.class: Cinhetic\PublicBundle\Command\EmailCommand
+    cinhetic_public.response_listener.class: Cinhetic\PublicBundle\Listener\IpnListener
 
 services:
 #    Form as Services
@@ -41,6 +43,17 @@ services:
         tags:
           - { name: form.type, alias: search }
 
+    cinhetic_public.console_command:
+        class: %cinhetic_public.console_command.class%
+        tags:
+          - { name: console.command }
+
+#    Lexik Listener
+    cinhetic_public.paybox.response_listener:
+            class: %cinhetic_public.response_listener.class%
+            arguments: [ %kernel.root_dir%, @filesystem ]
+            tags:
+                - { name: kernel.event_listener, event: paybox.ipn_response, method: onPayboxIpnResponse }
 
 #    Email Service
     cinhetic_public.email:

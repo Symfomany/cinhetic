@@ -111,7 +111,7 @@ class MoviesRepository extends EntityRepository
             ->select('m')
             ->from('Cinhetic\PublicBundle\Entity\Movies', 'm')
             ->where('m.visible = 1')
-            ->andWhere('m.dateRelease >= :current')
+            ->andWhere('m.dateRelease <= :current')
             ->orderBy('m.id', 'DESC')
             ->setParameter('current' , new \Datetime('midnight'));
 
@@ -127,10 +127,10 @@ class MoviesRepository extends EntityRepository
         $query = $this->getEntityManager()
             ->createQuery(
                 'SELECT p
-                    FROM CinheticPublicBundle:Movies p
-                    WHERE p.dateRelease >= :current
-                    AND p.visible = 1
-                    ORDER BY p.title ASC'
+                FROM CinheticPublicBundle:Movies p
+                WHERE p.dateRelease >= :current
+                AND p.visible = 1
+                ORDER BY p.title ASC'
             )
             ->setParameters(
             array(
@@ -167,7 +167,7 @@ class MoviesRepository extends EntityRepository
                 'SELECT m
                     FROM CinheticPublicBundle:Medias m
                     JOIN m.movies mo
-                    WHERE mo.dateRelease >= :current
+                    WHERE mo.dateRelease <= :current
                     AND mo.visible = 1
                     AND mo.cover = 1
                     ORDER BY mo.id DESC'

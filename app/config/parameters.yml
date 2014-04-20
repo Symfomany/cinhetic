@@ -8,7 +8,7 @@ parameters:
     database_password: djscrave
     mailer_transport: smtp
     mailer_host: 127.0.0.1
-    mailer_user: julien@meetserious.com
-    mailer_password: djscrave
+    mailer_user: "julien@meetserious.com"
+    mailer_password: "djscrave"
     locale: fr
     secret: 65c4vc43vc6nbv710326b46b46vnvc654c56cnb46556gf5d156ds56456dds6f44s
