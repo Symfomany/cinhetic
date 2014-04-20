@@ -11,7 +11,7 @@
 
     <link rel="stylesheet" type="text/css" href="http://bootswatch.com/darkly/bootstrap.min.css"/>
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/flick/jquery-ui.css" />
-    {% stylesheets '@CinheticPublicBundle/Resources/public/css/main.css' filter='yui_css' %}
+    {% stylesheets '@CinheticPublicBundle/Resources/public/css/main.css'  %}
     <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>
     {% endstylesheets %}
     <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.css" />
@@ -35,8 +35,10 @@
 {% block body %}
     <div class="container-fluid">
         <div class="row-fluid">
-            {% include 'CinheticPublicBundle:Slots:topmenu.html.twig' %}
-            <div class="col-sm-9 main">
+            {% block topmenu %}
+                {% include 'CinheticPublicBundle:Slots:topmenu.html.twig' %}
+            {% endblock %}
+            <div class="col-sm-12 main">
 
                 {% include 'CinheticPublicBundle:Slots:flashdatas.html.twig' %}
 
