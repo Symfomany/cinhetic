@@ -1,0 +1,8 @@
+UPGRADE
+=======================
+
+### General
+ * Upload a image cover for Movie
+
+### BDD
+ALTER TABLE  `movies` ADD  `image` VARCHAR( 250 ) NULL AFTER  `description` ;

@@ -37,8 +37,8 @@
         "jms/serializer-bundle": "dev-master",
         "api-allocine/api-allocine-helper": "dev-master",
         "doctrine/doctrine-fixtures-bundle": "2.2.*",
-        "lexik/paybox-bundle": "dev-master"
-
+        "lexik/paybox-bundle": "dev-master",
+        "imagine/imagine": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [

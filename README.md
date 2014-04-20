@@ -39,6 +39,7 @@ Requirements
 * PHPUnit ~ 3.7
 * Elastic Search running
 * PECL hash >= 1.1
+* Fileinfo module
 * openssl enabled
 
 
