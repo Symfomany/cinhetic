@@ -1,6 +1,11 @@
 Cinhetic Project
 ========================
 
+![Project Status](http://stillmaintained.com/lexik/LexikPayboxBundle.png)
+
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/378718a0-ea77-4592-89eb-9bf47214efc9/big.png)](https://insight.sensiolabs.com/projects/378718a0-ea77-4592-89eb-9bf47214efc9)
+
+
 Welcome to the Cinhetic Project - a fully-functional application built in Symfony2
 framework to learn this framework in 360° that you can use to handle **cinematographic world**!
 
