@@ -268,6 +268,7 @@ Chapters covered in project
 * Use SwiftMailer to send test email
 * Add service with Service Container
 * Implement payment solution in bundle
+* Upload image in entity with Imagine library
 
 
 
@@ -279,6 +280,7 @@ Features
 * Visibility on Movies and cover action in homepage
 * Pagination for results with "KNPPaginatorBundles"
 * Datas Fixtures with "Doctrine Fixtures"
+* Upload File Image in Movie with Imagine library for thumb
 * Homepage with custom template by Bootsrapp Twitter
 * Form & Repositories in services
 * Add authentification & firewall administration for user connected with "FOSUserBundle"
