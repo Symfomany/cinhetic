@@ -11,22 +11,52 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  */
 class Email {
 
-    protected $container;
-    protected $administrateur;
+    /**
+     * @var EngineInterface
+     */
+    protected $templating;
+    /**
+     * @var Mailer Service
+     */
+    protected $mailer;
+
+    /**
+     * @var
+     */
     protected $base_url;
+
+    /**
+     * @var string
+     */
     protected $base_img;
+
+    /**
+     * @var
+     */
     protected $key;
+
+    /**
+     * @var
+     */
     protected $route;
-    protected $datas;
+
+    /**
+     * @var
+     */
     protected $params;
+
+    /**
+     * @var
+     */
     protected $configuration;
 
     /**
-     * Constructor with Container
+     * Constructor with EngineInterface & Mailer
      * @param \Symfony\Component\DependencyInjection\ContainerInterface $container
      */
-    public function __construct(ContainerInterface $container) {
-        $this->container = $container;
+    public function __construct(EngineInterface $templating, $mailer) {
+        $this->templating = $templating;
+        $this->mailer = $mailer;
         $this->administrateur = $this->container->getParameter('email_administrateur');
         $this->base_url = $this->container->getParameter('url_base');
         $this->base_img = $this->base_url . '/bundles/cinhetic/email/img/';
@@ -42,11 +72,7 @@ class Email {
     public function send($user = null, $templating = null,$subject = "Email de Cinhetic Project", $to = null, $key = null, $datas = array(), $contentType = 'text/html', $base_url = 'http://94.23.5.209/web/', $sender = null,  $level = 0) {
 
         $this->base_url = $base_url;
-
         $etats = array("Bas", "Normal", "Haut", "Urgent", "Immédiat");
-        // Initialisation
-        if(empty($sender))
-            $sender = array($this->container->getParameter('email_membre') => 'Horus');
 
         // Initialisation
         if(!empty($key))
@@ -60,7 +86,7 @@ class Email {
             ->setTo($to)
             ->setFrom($sender)
             ->setContentType('text/html')
-            ->setBody($this->container->get('templating')->render($templating, array(
+            ->setBody($this->templating->render($templating, array(
                 'user' => $user,
                 'datas' => $this->datas,
                 'base_img' => $this->base_img,
@@ -69,7 +95,7 @@ class Email {
                 'configuration' => $this->configuration,
             )));
 
-        $this->container->get('mailer')->send($message);
+        $this->mailer->send($message);
         return true;
     }
 

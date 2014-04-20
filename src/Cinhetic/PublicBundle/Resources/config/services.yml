@@ -47,7 +47,7 @@ services:
 #    Handler authentification
     cinhetic_public.handler_auth:
         class: %cinhetic_public.handler_auth.class%
-        arguments: [ @service_container ]
+        arguments: [ @router, @doctrine.orm.entity_manager, @templating, @mailer ]
 
 
 #    Command Console
@@ -66,10 +66,9 @@ services:
 #    Email Service
     cinhetic_public.email:
       class: %cinhetic_public.email.class%
-      arguments: [@service_container]
+      arguments: [@templating, @mailer]
 
     # Repositories as service
-
     cinhetic_public.repository.movies:
       class: Cinhetic\PublicBundle\Repository\MoviesRepository
       factory_service: doctrine.orm.default_entity_manager

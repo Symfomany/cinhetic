@@ -2,31 +2,52 @@
 
 namespace  Cinhetic\PublicBundle\Authentification;
 
-use
+use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface,
     Symfony\Component\HttpFoundation\RedirectResponse,
     Symfony\Component\HttpFoundation\Request,
+    Doctrine\ORM\EntityManager,
     Symfony\Component\Security\Http\Authentication\AuthenticationSuccessHandlerInterface,
     Symfony\Component\Security\Core\Authentication\Token\TokenInterface,
-    Symfony\Component\DependencyInjection\ContainerInterface;
+   Symfony\Component\Routing\RouterInterface;
 
 /**
  * Class AuthenticationSiteHandler
  * @package Cinhetic\PublicBundle\Authentication
  */
-class AuthentificationSiteHandler implements  AuthenticationSuccessHandlerInterface{
+;class AuthentificationSiteHandler implements  AuthenticationSuccessHandlerInterface{
 
     /**
-     * @var \Symfony\Component\DependencyInjection\ContainerInterface
+     * @var \Symfony\Component\Routing\RouterInterface
      */
-    protected $container;
+    protected $router;
 
     /**
-     * Constructor Dependances
-     * @param ContainerInterface $container
+        * @var \Doctrine\ORM\EntityManager
      */
-    public function __construct(ContainerInterface $container) {
+    protected $em;
 
-        $this->container = $container;
+
+    /**
+     * @var \Symfony\Component\Form\Extension\Templating\TemplatingExtension
+     */
+    protected $templating;
+
+    /**
+     * @var
+     */
+    protected $mailer;
+
+    /**
+    * Constructor Dependances
+     * @param RouterInterface $router
+     * @param EntityManager $em
+     * @param Session $session
+     */
+    public function __construct(RouterInterface $router, EntityManager $em,  EngineInterface $templating, $mailer) {
+        $this->router = $router;
+        $this->em = $em;
+        $this->templating = $templating;
+        $this->mailer = $mailer;
     }
 
     /**
@@ -38,7 +59,7 @@ class AuthentificationSiteHandler implements  AuthenticationSuccessHandlerInterf
     public function onAuthenticationSuccess(Request $request, TokenInterface $token) {
         $user = $token->getUser();
 
-        $referer = $this->container->get('router')->generate('Cinhetic_public_homepage');
+        $referer = $this->router->generate('Cinhetic_public_homepage');
 
         //send email notification
         $message = \Swift_Message::newInstance()
@@ -46,11 +67,11 @@ class AuthentificationSiteHandler implements  AuthenticationSuccessHandlerInterf
             ->setFrom('julien@meetserious.com')
             ->setTo($user->getEmail())
             ->setContentType("text/html")
-            ->setBody($this->container->get('templating')->render('CinheticPublicBundle:Email:connexion.html.twig', array('email' => $user->getEmail())));
-        $this->container->get('mailer')->send($message);
+            ->setBody( $this->templating->render('CinheticPublicBundle:Email:connexion.html.twig', array('email' => $user->getEmail())));
+            $this->mailer->send($message);
 
         if($referer == 'http://'.$request->getHttpHost().'/login')
-            $referer = $this->container->get('router')->generate('Cinhetic_public_homepage');
+            $referer = $this->router->generate('Cinhetic_public_homepage');
 
         return new RedirectResponse($referer);
     }
