@@ -59,6 +59,8 @@ Screenshots
 ![ScreenShot](https://raw.github.com/Symfomany/cinhetic/master/screenshots/Screen7.png)
 ![ScreenShot](https://raw.github.com/Symfomany/cinhetic/master/screenshots/Screen12.png)
 ![ScreenShot](https://raw.github.com/Symfomany/cinhetic/master/screenshots/Screen15.png)
+![ScreenShot](https://raw.github.com/Symfomany/cinhetic/master/screenshots/Screen16.png)
+
 
 
 1) Installing the Cinhetic Standard Edition
@@ -301,3 +303,4 @@ Evolution
 * Documentation by PHPDoc
 * Advanced APIs for Mobiles Apps
 * Acceptance tests with Codeception
+* New design with Front-End/UX Developper @UnPetitLu https://twitter.com/UnPetitLu
