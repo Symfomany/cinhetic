@@ -9,6 +9,7 @@ parameters:
     cinhetic_public.form_search.class: Cinhetic\PublicBundle\Form\SearchType
     cinhetic_public.email.class: Cinhetic\PublicBundle\EmailDecorator\Email
     cinhetic_public.console_command.class: Cinhetic\PublicBundle\Command\EmailCommand
+    cinhetic_public.handler_auth.class: Cinhetic\PublicBundle\Authentification\AuthenticationSiteHandler
     cinhetic_public.response_listener.class: Cinhetic\PublicBundle\Listener\IpnListener
 
 services:
@@ -43,12 +44,19 @@ services:
         tags:
           - { name: form.type, alias: search }
 
+#    Handler authentification
+    cinhetic_public.handler_auth:
+        class: %cinhetic_public.handler_auth.class%
+        arguments: [ @router, @doctrine.orm.entity_manager, @session ]
+
+
+#    Command Console
     cinhetic_public.console_command:
         class: %cinhetic_public.console_command.class%
         tags:
           - { name: console.command }
 
-#    Lexik Listener
+#    Paybox Listener
     cinhetic_public.paybox.response_listener:
             class: %cinhetic_public.response_listener.class%
             arguments: [ %kernel.root_dir%, @filesystem ]
