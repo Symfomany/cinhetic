@@ -256,6 +256,7 @@ Chapters covered in project
 * Installation third bundles like FOSUserBundle, KNPPaginator...
 * Routing layer
 * Doctrine ORM & DQL
+* Add Listener in security layer
 * Console CLI Generators & configuration
 * View: Twig Engine with inheritance, including, rendering, filters...
 * Controllers: CRUD, Bind with Form/Entity, Entity Manager, HTTP Methods, Request object, Flash Message, services, redirection/forward
