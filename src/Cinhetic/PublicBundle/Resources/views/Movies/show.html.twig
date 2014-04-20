@@ -40,15 +40,15 @@
                 <div class="container marketing">
                     <div class="row">
                         <div class="col-lg-4">
-                            <input type="text" attr-value="{{ entity.duree }}" readOnly="true" data-fgColor="#E74C3C" data-max="10" class="dial">
-                            <h2>Durée (heure)</h2>
+                            <input type="text" attr-value="{{ entity.duree }}" data-step="0.1" data-max="10" readOnly="true" data-fgColor="#E74C3C" class="dial">
+                            <h2>Durée (heures)</h2>
                         </div>
                         <div class="col-lg-4">
                             <input type="text" attr-value="{{ entity.budget }}" readOnly="true" data-max="3000000" data-fgColor="#3498DB" class="dial">
                             <h2>Budget (€)</h2>
                         </div>
                         <div class="col-lg-4">
-                            <input type="text" attr-value="{{ entity.notePresse }}" readOnly="true" data-max="5" data-fgColor="#9B59B6" class="dial">
+                            <input type="text" attr-value="{{ entity.notePresse }}" data-step="0.1"  readOnly="true" data-max="5" data-fgColor="#9B59B6" class="dial">
                             <h2>Note de presse</h2>
                         </div>
                     </div>
@@ -135,11 +135,12 @@
                 {
                     $(this).animate(
                         {
-                            value : parseInt($(this).attr('attr-value'))
+                            value : parseInt($(this).attr('attr-value')),
                         },
                         {
                             duration: 1000,
                             progress : function(){
+                                console.log(this.value)
                                 $(this).val(this.value).trigger('change')
                             }
                         }
