@@ -269,6 +269,7 @@ Chapters covered in project
 * Add service with Service Container
 * Implement payment solution in bundle
 * Upload image in entity with Imagine library
+* Embed form with Medias Videos for Movies (use Essence to display movies)
 
 
 
@@ -299,6 +300,7 @@ Features
 * Ajax Search instant with Allocine API
 * Add Email Decorator in service
 * Add Pre-Order for Movies in Paybox with LexikPayboxBundle
+* Embed form with Medias Videos use Essence for display
 
 Evolution
 ----------------------------------
