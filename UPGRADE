@@ -3,6 +3,9 @@ UPGRADE
 
 ### General
  * Upload a image cover for Movie
+ * Update medias content in relation with movies
 
 ### BDD
-ALTER TABLE  `movies` ADD  `image` VARCHAR( 250 ) NULL AFTER  `description` ;
+* ALTER TABLE  `movies` ADD  `image` VARCHAR( 250 ) NULL AFTER  `description` ;
+* DROP TABLE `medias_movies`
+* ALTER TABLE  `medias` ADD  `movies_id` INT NOT NULL AFTER  `id` ;

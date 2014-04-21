@@ -2,7 +2,9 @@
 
 namespace Cinhetic\PublicBundle\Controller;
 
+use Cinhetic\PublicBundle\Entity\Medias;
 use Cinhetic\PublicBundle\Form\SearchType;
+use Essence\Essence;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -170,7 +172,12 @@ class MoviesController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('movies_show', array('id' => $entity->getId())));
+            $this->get('session')->getFlashBag()->add(
+                'success',
+                'Votre film a bien été crée'
+            );
+
+            return $this->redirect($this->generateUrl('movies'));
         }
 
         return $this->render('CinheticPublicBundle:Movies:new.html.twig', array(
@@ -188,6 +195,11 @@ class MoviesController extends Controller
     */
     private function createCreateForm(Movies $entity)
     {
+        //create media
+        $media1 = new Medias();
+        $media1->setMovies($entity);
+        $entity->addMedia($media1);
+
         $form = $this->createForm(new MoviesType(), $entity, array(
             'action' => $this->generateUrl('movies_create'),
             'attr' => array('id' => 'handlemovie',  'novalidate' => "novalidate"),
@@ -207,6 +219,8 @@ class MoviesController extends Controller
     {
         $entity = new Movies();
         $form   = $this->createCreateForm($entity);
+
+
 
         return $this->render('CinheticPublicBundle:Movies:new.html.twig', array(
             'entity' => $entity,
@@ -261,12 +275,23 @@ class MoviesController extends Controller
         }
 
         $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
+
+        $Essence = Essence::instance();
+        $medias = $entity->getMedias();
+        $mediasembed = array();
+
+        if(!empty($medias))
+            foreach($medias as $media){
+                if($media->getNature() == 2)
+                    $mediasembed[] = $Essence->embed($media->getVideo());
+            }
+
+
 
         return $this->render('CinheticPublicBundle:Movies:edit.html.twig', array(
             'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+            'mediasembed'      => $mediasembed,
+            'form'   => $editForm->createView(),
         ));
     }
 
@@ -304,21 +329,37 @@ class MoviesController extends Controller
             throw $this->createNotFoundException('Unable to find Movies entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
             $em->flush();
+            $this->get('session')->getFlashBag()->add(
+                'success',
+                'Votre film a bien été modifié'
+            );
 
-            return $this->redirect($this->generateUrl('movies_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('movies'));
         }
+
+
+        $Essence = Essence::instance();
+        $medias = $entity->getMedias();
+        $mediasembed = array();
+
+        if(!empty($medias))
+            foreach($medias as $media){
+                if($media->getNature() == 2)
+                    $mediasembed[] = $Essence->embed($media->getVideo());
+            }
+
 
         return $this->render('CinheticPublicBundle:Movies:edit.html.twig', array(
             'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+            'mediasembed'      => $mediasembed,
+            'form'   => $editForm->createView(),
         ));
+
     }
 
 

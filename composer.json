@@ -38,7 +38,8 @@
         "api-allocine/api-allocine-helper": "dev-master",
         "doctrine/doctrine-fixtures-bundle": "2.2.*",
         "lexik/paybox-bundle": "dev-master",
-        "imagine/imagine": "dev-master"
+        "imagine/imagine": "dev-master",
+        "fg/essence": "2.4.0"
     },
     "scripts": {
         "post-install-cmd": [

@@ -69,12 +69,19 @@ class MoviesType extends AbstractType
             ))
             ->add('visible')
             ->add('cover')
-            ->add('category', null, array('label' => "Catégorie associée"))
+            ->add('category', null, array('required' => true,'label' => "Catégorie associée"))
             ->add('actors', null, array('label' => "Acteurs qui ont joué dans ce film"))
             ->add('cinemas', null, array('label' => "Cinéma qui le diffusent"))
-            ->add('directors', null, array('label' => "Réalisateur"))
+            ->add('directors', null, array('required' => true,'label' => "Réalisateur"))
             ->add('moviesRelated', null, array('label' => "Film associé"))
             ->add('tags', null, array('label' => "Tags associé"))
+            ->add('medias', 'collection', array(
+                'type' => new MediasType(),
+                'allow_add' => true,
+                'allow_delete' => true,
+                'by_reference' => false
+            ));
+
         ;
     }
     
@@ -84,7 +91,7 @@ class MoviesType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Cinhetic\PublicBundle\Entity\Movies'
+            'data_class' => 'Cinhetic\PublicBundle\Entity\Movies',
         ));
     }
 

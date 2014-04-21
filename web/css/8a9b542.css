@@ -1,0 +1,119 @@
+html, body{
+min-height: 100%;
+}
+a{
+
+    text-decoration: none;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+.alert .table a{
+color: #222 !important;
+}
+.media-body{
+color: #202d3b !important;
+}
+.close{
+color: #000000 !important;
+}
+.well p{
+color: white !important;
+}
+h4, h3{
+color: white !important;
+}
+.dz-success-mark, .dz-error-mark{
+    display: none !important;
+}
+.record_actions, .record_actions li{
+    list-style: none;
+    padding: 0;
+}
+form div{
+    margin: 10px;
+}
+label{
+    color: #18bc9c;
+}
+.alert .table a.btn{
+    color: white !important;
+    text-decoration: none;
+}
+
+#sendsearch{
+    position: relative;
+    top: 15px;
+    right: 63px;
+}
+.dropdown-menu > li > a{
+    color: cadetblue !important;
+    text-decoration: none !important;
+}
+#listreceipts h3 a{
+    color: darkkhaki;
+    text-decoration: none;
+}
+#listreceipts h3 a:hover{
+    color: #18bc9c;
+}
+img{
+    max-width: 100%;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+img:hover{
+    opacity(0.6);
+}
+
+
+
+.overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background-color: rgba(255, 255, 255, 0.5);
+    z-index: 9000;
+    position: fixed;
+}
+
+.overlay img{
+    margin-top: 300px;
+    margin-left: 700px;
+    position:absolute;
+}
+.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus{
+    color: white !important;
+}
+table a, .table a{
+    text-decoration: none !important;
+    display: block;
+    margin: 5px;
+    min-width: 60px;
+
+}
+table>thead>tr>th, .table>thead>tr>th, table>tbody>tr>th, .table>tbody>tr>th, table>tfoot>tr>th, .table>tfoot>tr>th, table>thead>tr>td, .table>thead>tr>td, table>tbody>tr>td, .table>tbody>tr>td, table>tfoot>tr>td, .table>tfoot>tr>td{
+    padding: 5px;
+}
+
+
+#navbar-main .navbar-nav>li>a:hover,
+#navbar-main .navbar-nav>li>a:focus
+{
+    background-color: #28415b;
+    color: #ffffff;
+}
+.col-lg-4
+{
+    text-align: center;
+}
+
+.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand{
+margin-left: 5px;
+}

@@ -3,7 +3,6 @@
 namespace Cinhetic\PublicBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
@@ -45,7 +44,7 @@ class Movies
      * @Assert\NotBlank()
      * @Assert\Length(
      *      min = "10",
-     *      max = "150",
+     *      max = "5500",
      *      minMessage = "Votre synopsis doit faire au moins {{ limit }} caractères",
      *      maxMessage = "Votre synopsis ne peut pas être plus long que {{ limit }} caractères"
      * )
@@ -58,7 +57,7 @@ class Movies
      * @Assert\NotBlank()
      * @Assert\Length(
      *      min = "20",
-     *      max = "1050",
+     *      max = "9050",
      *      minMessage = "Votre description doit faire au moins {{ limit }} caractères",
      *      maxMessage = "Votre description ne peut pas être plus long que {{ limit }} caractères"
      * )
@@ -202,16 +201,9 @@ class Movies
 
     /**
      * @var \Doctrine\Common\Collections\Collection
-     * @ORM\ManyToMany(targetEntity="Medias", inversedBy="movies")
-     * @ORM\JoinTable(name="medias_movies",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="movies_id", referencedColumnName="id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="medias_id", referencedColumnName="id")
-     *   }
-     * )
-     *     */
+     * @Assert\Valid
+     * @ORM\OneToMany(targetEntity="Medias", mappedBy="movies", cascade={"all"})
+     */
     private $medias;
 
     /**
@@ -756,6 +748,7 @@ class Movies
         return $this;
     }
 
+
     /**
      * Remove directors
      *
@@ -776,6 +769,15 @@ class Movies
         return $this->directors;
     }
 
+    public function setMedias(ArrayCollection $medias)
+    {
+        foreach ($medias as $media) {
+            $this->addMedia($this);
+        }
+
+        $this->medias = $medias;
+    }
+
     /**
      * Add medias
      *
@@ -785,6 +787,7 @@ class Movies
     public function addMedia(\Cinhetic\PublicBundle\Entity\Medias $medias)
     {
         $this->medias[] = $medias;
+        $medias->setMovies($this);
 
         return $this;
     }
