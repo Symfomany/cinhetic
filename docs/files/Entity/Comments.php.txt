@@ -156,11 +156,10 @@ class Comments
 
     /**
      * Set user
-     *
      * @param \Cinhetic\PublicBundle\Entity\User $user
      * @return Comments
      */
-    public function setUser(\Cinhetic\PublicBundle\Entity\User $user = null)
+    public function setUser(User $user = null)
     {
         $this->user = $user;
 

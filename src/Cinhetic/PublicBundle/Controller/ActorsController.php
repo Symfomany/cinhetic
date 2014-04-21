@@ -9,16 +9,18 @@ use Cinhetic\PublicBundle\Entity\Actors;
 use Cinhetic\PublicBundle\Form\ActorsType;
 
 
+
 /**
  * Actors controller.
- *
+ * Class ActorsController
+ * @package Cinhetic\PublicBundle\Controller
  */
 class ActorsController extends Controller
 {
 
     /**
      * Lists all Actors entities.
-     *
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function indexAction()
     {
@@ -30,9 +32,11 @@ class ActorsController extends Controller
             'entities' => $entities,
         ));
     }
+
     /**
      * Creates a new Actors entity.
-     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function createAction(Request $request)
     {
@@ -56,9 +60,7 @@ class ActorsController extends Controller
 
     /**
     * Creates a form to create a Actors entity.
-    *
     * @param Actors $entity The entity
-    *
     * @return \Symfony\Component\Form\Form The form
     */
     private function createCreateForm(Actors $entity)
@@ -73,9 +75,10 @@ class ActorsController extends Controller
         return $form;
     }
 
+
     /**
      * Displays a form to create a new Actors entity.
-     *
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function newAction()
     {
@@ -88,9 +91,12 @@ class ActorsController extends Controller
         ));
     }
 
+
     /**
      * Finds and displays a Actors entity.
-     *
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
     public function showAction($id)
     {
@@ -117,9 +123,12 @@ class ActorsController extends Controller
         ));
     }
 
+
     /**
      * Displays a form to edit an existing Actors entity.
-     *
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
     public function editAction($id)
     {
@@ -143,9 +152,7 @@ class ActorsController extends Controller
 
     /**
     * Creates a form to edit a Actors entity.
-    *
     * @param Actors $entity The entity
-    *
     * @return \Symfony\Component\Form\Form The form
     */
     private function createEditForm(Actors $entity)
@@ -159,9 +166,13 @@ class ActorsController extends Controller
 
         return $form;
     }
+
     /**
      * Edits an existing Actors entity.
-     *
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
     public function updateAction(Request $request, $id)
     {
@@ -189,9 +200,14 @@ class ActorsController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
+
+
     /**
      * Deletes a Actors entity.
-     *
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
     public function deleteAction(Request $request, $id)
     {
@@ -215,9 +231,7 @@ class ActorsController extends Controller
 
     /**
      * Creates a form to delete a Actors entity by id.
-     *
      * @param mixed $id The entity id
-     *
      * @return \Symfony\Component\Form\Form The form
      */
     private function createDeleteForm($id)

@@ -8,10 +8,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use FOS\RestBundle\Controller\Annotations as Rest;
 
+
 /**
- * Api controller.
- * Using Guzzle HTTP Frameworks
- *
+ * Class ApiController
+ * @package Cinhetic\PublicBundle\Controller
  */
 class ApiController extends Controller
 {
@@ -28,21 +28,24 @@ class ApiController extends Controller
         $this->helper = new \AlloHelper;
     }
 
+
     /**
      * Lists all Movies using API Allocine
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function indexAction()
     {
         $movies = $this->helper->movielist();
 
-//        exit(var_dump($movies['movie']));
         return $this->render('CinheticPublicBundle:Api:index.html.twig', array(
             'movies' => $movies['movie'],
         ));
     }
 
+
     /**
      * Search Movies by word using API Allocine
+     * @return JsonResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function searchAction()
     {
@@ -55,7 +58,6 @@ class ApiController extends Controller
 
         if(!$ajax){
             if(isset($movies['movie']) && is_object($movies['movie'])){
-    //            exit(var_dump($movies['movie']->getArray()));
                 $movies =  $movies['movie']->getArray();
             }
             return $this->render('CinheticPublicBundle:Api:search.html.twig', array(
@@ -71,7 +73,7 @@ class ApiController extends Controller
                         'nom' => utf8_encode($movie['originalTitle'])
                     );
                 }
-//            exit(var_dump($results_final));
+
             return new JsonResponse($results_final);
         }
     }
@@ -79,12 +81,13 @@ class ApiController extends Controller
 
     /**
      * Show a movie using API Allocine
+     * @param null $code
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function showAction($code = null)
         {
            $profile = 'long';
             $movie = $this->helper->movie($code, $profile );
-//            exit(var_dump($movie));
 
             return $this->render('CinheticPublicBundle:Api:show.html.twig', array(
                 'entity' => $movie,
@@ -92,15 +95,15 @@ class ApiController extends Controller
         }
 
 
-
     /**
      * Show a movie using API Allocine
+     * @param null $code
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function actorAction($code = null)
         {
            $profile = 'long';
-            $actor = $this->helper->person($code, $profile);
-//            exit(var_dump($actor));
+           $actor = $this->helper->person($code, $profile);
 
             return $this->render('CinheticPublicBundle:Api:actor.html.twig', array(
                 'entity' => $actor,
@@ -112,12 +115,13 @@ class ApiController extends Controller
 
     /**
      * Show a movie using API Allocine
+     * @param null $code
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function filmographyAction($code = null)
         {
            $profile = 'long';
            $filmography = $this->helper->filmography($code, $profile);
-//            exit(var_dump($filmography['participation'][2]['movie']['originalTitle']));
 
             return $this->render('CinheticPublicBundle:Api:filmography.html.twig', array(
                 'entity' => $filmography,
@@ -126,14 +130,14 @@ class ApiController extends Controller
         }
 
 
-
     /**
      * All cinemas using API Allocine
+     * @param string $zipcode
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function cinemasAction($zipcode = "75000")
         {
             $cinemas = $this->helper->showtimesByZip($zipcode);
-//            exit(var_dump($cinemas));
 
             return $this->render('CinheticPublicBundle:Api:cinemas.html.twig', array(
                 'cinemas' => $cinemas['theaterShowtimes']->getArray(),
@@ -144,6 +148,9 @@ class ApiController extends Controller
 
     /**
      * All cinemas using API Allocine
+     * @param null $long
+     * @param null $lat
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function cinemasyPositionAction($long = null, $lat = null)
         {
@@ -171,6 +178,8 @@ class ApiController extends Controller
 
     /**
      * All cinemas using API Allocine
+     * @param null $zipcode
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function cinemasyZipAction($zipcode=  null)
         {
@@ -180,18 +189,6 @@ class ApiController extends Controller
 
             return $this->render('CinheticPublicBundle:Api:actor.html.twig', array(
                 'entity' => $actor,
-            ));
-
-           /* $client = $this->get('guzzle.client');
-
-            $req = $client->get('http://api.allocine.fr/rest/v3/showtimelist?code=61282&partner=yW5kcm9pZC12M3M');
-            $response = $req->send();
-            $status = $response->getStatusCode();
-            $cinemas = json_decode($response->getBody(), true);
-            exit(var_dump($response->getBody()));
-            */
-            return $this->render('CinheticPublicBundle:Api:cinemas.html.twig', array(
-                'movies' => $cinemas["feed"]['movie'],
             ));
         }
 

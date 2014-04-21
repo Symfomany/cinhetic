@@ -18,22 +18,26 @@ use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface,
 
     /**
      * @var \Symfony\Component\Routing\RouterInterface
+     * Routing
      */
     protected $router;
 
     /**
      * @var \Doctrine\ORM\EntityManager
+     * Entity Manager
      */
     protected $em;
 
 
     /**
-     * @var \Symfony\Component\Form\Extension\Templating\TemplatingExtension
+     * @var \Symfony\Bundle\FrameworkBundle\Templating\EngineInterface
+     * Template service
      */
     protected $templating;
 
     /**
      * @var Mailer service
+     * Mailer service
      */
     protected $mailer;
 

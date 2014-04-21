@@ -16,6 +16,7 @@ use FOS\UserBundle\Model\User as BaseUser;
 class User extends BaseUser
 {
     /**
+     * @var $id
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -85,8 +86,9 @@ class User extends BaseUser
     private $favorites;
 
 
-
-
+    /**
+     *
+     */
     public function __construct()
     {
         parent::__construct();

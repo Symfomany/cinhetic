@@ -22,6 +22,7 @@ class MediasType extends AbstractType
     }
     
     /**
+     * Set defaults options
      * @param OptionsResolverInterface $resolver
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
@@ -32,6 +33,7 @@ class MediasType extends AbstractType
     }
 
     /**
+     * Get name of form
      * @return string
      */
     public function getName()

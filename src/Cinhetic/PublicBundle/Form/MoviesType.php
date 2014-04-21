@@ -86,6 +86,7 @@ class MoviesType extends AbstractType
     }
     
     /**
+     * Set defaults options
      * @param OptionsResolverInterface $resolver
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
@@ -96,6 +97,7 @@ class MoviesType extends AbstractType
     }
 
     /**
+     * Get name of form
      * @return string
      */
     public function getName()

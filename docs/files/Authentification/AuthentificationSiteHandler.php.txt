@@ -1,0 +1,83 @@
+<?php
+
+namespace  Cinhetic\PublicBundle\Authentification;
+
+use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface,
+    Symfony\Component\HttpFoundation\RedirectResponse,
+    Symfony\Component\HttpFoundation\Request,
+    Doctrine\ORM\EntityManager,
+    Symfony\Component\Security\Http\Authentication\AuthenticationSuccessHandlerInterface,
+    Symfony\Component\Security\Core\Authentication\Token\TokenInterface,
+   Symfony\Component\Routing\RouterInterface;
+
+/**
+ * Class AuthenticationSiteHandler
+ * @package Cinhetic\PublicBundle\Authentication
+ */
+;class AuthentificationSiteHandler implements  AuthenticationSuccessHandlerInterface{
+
+    /**
+     * @var \Symfony\Component\Routing\RouterInterface
+     * Routing
+     */
+    protected $router;
+
+    /**
+     * @var \Doctrine\ORM\EntityManager
+     * Entity Manager
+     */
+    protected $em;
+
+
+    /**
+     * @var \Symfony\Bundle\FrameworkBundle\Templating\EngineInterface
+     * Template service
+     */
+    protected $templating;
+
+    /**
+     * @var Mailer service
+     * Mailer service
+     */
+    protected $mailer;
+
+    /**
+     * Constructor of dependencies
+     * @param RouterInterface $router
+     * @param EntityManager $em
+     * @param EngineInterface $templating
+     * @param $mailer
+     */
+    public function __construct(RouterInterface $router, EntityManager $em,  EngineInterface $templating, $mailer) {
+        $this->router = $router;
+        $this->em = $em;
+        $this->templating = $templating;
+        $this->mailer = $mailer;
+    }
+
+    /**
+     * Method Authentification Sucess
+     * @param Request $request
+     * @param TokenInterface $token
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function onAuthenticationSuccess(Request $request, TokenInterface $token) {
+        $user = $token->getUser();
+        $referer = $this->router->generate('Cinhetic_public_homepage');
+
+        //send email notification
+        $message = \Swift_Message::newInstance()
+            ->setSubject('Connexion à Cinhetic Project')
+            ->setFrom('julien@meetserious.com')
+            ->setTo($user->getEmail())
+            ->setContentType("text/html")
+            ->setBody( $this->templating->render('CinheticPublicBundle:Email:connexion.html.twig', array('email' => $user->getEmail())));
+            $this->mailer->send($message);
+
+        return new RedirectResponse($referer);
+    }
+
+}
+
+
+?>

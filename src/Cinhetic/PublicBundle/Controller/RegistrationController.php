@@ -70,6 +70,8 @@ class RegistrationController extends BaseController
 
     /**
      * Tell the user to check his email provider
+     * @return mixed
+     * @throws NotFoundHttpException
      */
     public function checkEmailAction()
     {
@@ -87,6 +89,10 @@ class RegistrationController extends BaseController
     }
 
 
+    /**
+     * get Engine Templating
+     * @return mixed
+     */
     protected function getEngine()
     {
         return $this->container->getParameter('fos_user.template.engine');

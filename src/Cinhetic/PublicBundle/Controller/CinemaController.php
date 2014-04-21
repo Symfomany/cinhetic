@@ -19,6 +19,7 @@ class CinemaController extends Controller
 
     /**
      * Lists all Cinema entities.
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function indexAction()
     {
@@ -34,6 +35,8 @@ class CinemaController extends Controller
 
     /**
      * Creates a new Cinema entity.
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function createAction(Request $request)
     {
@@ -71,8 +74,10 @@ class CinemaController extends Controller
         return $form;
     }
 
+
     /**
      * Displays a form to create a new Cinema entity.
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function newAction()
     {
@@ -85,8 +90,12 @@ class CinemaController extends Controller
         ));
     }
 
+
     /**
      * Finds and displays a Cinema entity.
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
     public function showAction($id)
     {
@@ -107,6 +116,9 @@ class CinemaController extends Controller
 
     /**
      * Displays a form to edit an existing Cinema entity.
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
     public function editAction($id)
     {
@@ -144,8 +156,13 @@ class CinemaController extends Controller
 
         return $form;
     }
+
     /**
      * Edits an existing Cinema entity.
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
     public function updateAction(Request $request, $id)
     {
@@ -173,8 +190,14 @@ class CinemaController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
+
+
     /**
      * Deletes a Cinema entity.
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
     public function deleteAction(Request $request, $id)
     {

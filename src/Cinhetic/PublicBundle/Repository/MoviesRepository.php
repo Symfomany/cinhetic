@@ -54,7 +54,6 @@ class MoviesRepository extends EntityRepository
 
     /**
      * Get Current movies by criteria
-     * @param null $word
      * @return array
      */
     public function getCurrentMovies(){
@@ -74,9 +73,10 @@ class MoviesRepository extends EntityRepository
             return $query->getResult();
     }
 
+
     /**
      * Get Current movies by criteria
-     * @param null $word
+     * @param string $ville
      * @return array
      */
     public function getMoviesByCity($ville = ""){
@@ -120,7 +120,6 @@ class MoviesRepository extends EntityRepository
 
     /**
      * Get Active movies by criteria
-     * @param null $word
      * @return array
      */
     public function getActiveMovies(){
@@ -143,7 +142,7 @@ class MoviesRepository extends EntityRepository
 
     /**
      * Get all Movies order by date release
-     * @param null $limit
+     * @param integer $limit
      * @return array
      */
     public function getAllMovies($limit = 10){
@@ -158,7 +157,7 @@ class MoviesRepository extends EntityRepository
 
     /**
      * Get current movies with limit
-     * @param null $word
+     * @param integer $limit
      * @return array
      */
     public function getCoverMovies($limit = 5){
@@ -183,7 +182,7 @@ class MoviesRepository extends EntityRepository
 
     /**
      * Get movies stars
-     * @param null $word
+     * @param integer $limit
      * @return array
      */
     public function getStarMovies($limit = 3){

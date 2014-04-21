@@ -16,8 +16,9 @@ class EmailCommand extends ContainerAwareCommand
 {
 
     /**
-     * Configure email
+     * Configure email in CLI
      */
+
     protected function configure()
     {
         $this->setName('cinhetic:email')
@@ -33,6 +34,7 @@ EOT
 
 
     /**
+     * Execute command line
      * @param InputInterface $input
      * @param OutputInterface $output
      * @return int|null|void

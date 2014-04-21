@@ -2,8 +2,6 @@
 
 namespace Cinhetic\PublicBundle\EmailDecorator;
 
-use Symfony\Component\DependencyInjection\ContainerInterface;
-
 /**
  * Class Email
  * Email Class Service
@@ -13,40 +11,49 @@ class Email {
 
     /**
      * @var EngineInterface
+     * Template service
      */
     protected $templating;
+
     /**
      * @var Mailer Service
+     * Mailer service
      */
     protected $mailer;
 
     /**
-     * @var
+     * @var string
+     * Base url
      */
     protected $base_url;
 
     /**
      * @var string
+     * Base img
      */
     protected $base_img;
 
     /**
-     * @var
+     * @var string
+     * key for security in email
      */
     protected $key;
 
     /**
      * @var
+     * name of route
      */
     protected $route;
 
     /**
-     * @var
+     * @var array
+     * params array
      */
     protected $params;
 
     /**
-     * @var
+     * @var array
+     * all configuration
      */
     protected $configuration;
 
@@ -65,23 +72,31 @@ class Email {
         $this->datas = array();
     }
 
+
     /**
      *  Send E-Mail
-     * @param type $user
-     * @param type $templating
+     * @param null $user
+     * @param null $templating
+     * @param string $subject
+     * @param null $to
+     * @param null $key
+     * @param array $datas
+     * @param string $contentType
+     * @param string $base_url
+     * @param null $sender
+     * @param int $level
+     * @return bool
      */
     public function send($user = null, $templating = null,$subject = "Email de Cinhetic Project", $to = null, $key = null, $datas = array(), $contentType = 'text/html', $base_url = 'http://94.23.5.209/web/', $sender = null,  $level = 0) {
 
         $this->base_url = $base_url;
         $etats = array("Bas", "Normal", "Haut", "Urgent", "Immédiat");
 
-        // Initialisation
         if(!empty($key))
             $this->key = $key;
         if(!empty($datas))
             $this->datas = $datas;
 
-        // Sending Email
         $message = \Swift_Message::newInstance()
             ->setSubject("[Priorité = ".$etats[$level]."] ".$subject)
             ->setTo($to)

@@ -94,10 +94,9 @@ class MoviesController extends Controller
         }
     }
 
-
-
     /**
      * Lists all Movies
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function indexAction()
     {
@@ -112,6 +111,7 @@ class MoviesController extends Controller
 
     /**
      * Get Current Movies
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function currentMoviesAction()
     {
@@ -126,8 +126,8 @@ class MoviesController extends Controller
 
 
     /**
-     * get Star Movies entities.
-     *
+     * Get Star Movies entities.
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function starsMoviesAction()
     {
@@ -142,8 +142,8 @@ class MoviesController extends Controller
 
 
     /**
-     * get Star Movies entities.
-     *
+     * Get Star Movies entities.
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function carousselMoviesAction()
     {
@@ -159,7 +159,8 @@ class MoviesController extends Controller
 
     /**
      * Creates a new Movies entity.
-     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function createAction(Request $request)
     {
@@ -188,14 +189,11 @@ class MoviesController extends Controller
 
     /**
     * Creates a form to create a Movies entity.
-    *
     * @param Movies $entity The entity
-    *
     * @return \Symfony\Component\Form\Form The form
     */
     private function createCreateForm(Movies $entity)
     {
-        //create media
         $media1 = new Medias();
         $media1->setMovies($entity);
         $entity->addMedia($media1);
@@ -211,9 +209,10 @@ class MoviesController extends Controller
         return $form;
     }
 
+
     /**
      * Displays a form to create a new Movies entity.
-     *
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function newAction()
     {
@@ -228,9 +227,12 @@ class MoviesController extends Controller
         ));
     }
 
+
     /**
      * Finds and displays a Movies entity.
-     *
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
     public function showAction($id)
     {
@@ -260,9 +262,12 @@ class MoviesController extends Controller
             'delete_form' => $deleteForm->createView(),        ));
     }
 
+
     /**
      * Displays a form to edit an existing Movies entity.
-     *
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
     public function editAction($id)
     {
@@ -297,9 +302,7 @@ class MoviesController extends Controller
 
     /**
     * Creates a form to edit a Movies entity.
-    *
     * @param Movies $entity The entity
-    *
     * @return \Symfony\Component\Form\Form The form
     */
     private function createEditForm(Movies $entity)
@@ -315,9 +318,13 @@ class MoviesController extends Controller
     }
 
 
+
     /**
      * Edits an existing Movies entity.
-     *
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
     public function updateAction(Request $request, $id)
     {
@@ -342,7 +349,6 @@ class MoviesController extends Controller
             return $this->redirect($this->generateUrl('movies'));
         }
 
-
         $Essence = Essence::instance();
         $medias = $entity->getMedias();
         $mediasembed = array();
@@ -353,7 +359,6 @@ class MoviesController extends Controller
                     $mediasembed[] = $Essence->embed($media->getVideo());
             }
 
-
         return $this->render('CinheticPublicBundle:Movies:edit.html.twig', array(
             'entity'      => $entity,
             'mediasembed'      => $mediasembed,
@@ -362,10 +367,12 @@ class MoviesController extends Controller
 
     }
 
-
     /**
      * Deletes a Movies entity.
-     *
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
     public function deleteAction(Request $request, $id)
     {
@@ -390,7 +397,8 @@ class MoviesController extends Controller
 
     /**
      * Get Movies entity in City.
-     *
+     * @param string $ville
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function cityAction($ville= "Paris")
     {
@@ -411,10 +419,11 @@ class MoviesController extends Controller
     }
 
 
-
     /**
      * Enable Movies entity.
-     *
+     * @param Movies $id
+     * @param int $activation
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function activationAction(Movies $id, $activation = 1)
     {
@@ -424,13 +433,11 @@ class MoviesController extends Controller
         $em->persist($id);
         $em->flush();
 
-        //messages flash se jouant qu'une seule fois
         $this->get('session')->getFlashBag()->add(
             'success',
             'Votre modification sur l\'activation a bien été prise en compte'
         );
 
-        //redirections
         return $this->redirect($this->generateUrl('Cinhetic_public_homepage'));
     }
 
@@ -438,7 +445,9 @@ class MoviesController extends Controller
 
     /**
      * Cover Movies entity.
-     *
+     * @param Movies $id
+     * @param $cover
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function coverAction(Movies $id, $cover)
     {
@@ -448,20 +457,18 @@ class MoviesController extends Controller
         $em->persist($id);
         $em->flush();
 
-        //messages flash se jouant qu'une seule fois
         $this->get('session')->getFlashBag()->add(
             'success',
             'Votre mise en avant a bien été prise en compte'
         );
 
-        //redirections
         return $this->redirect($this->generateUrl('Cinhetic_public_homepage'));
     }
 
-
     /**
      * Deletes a Movies by link
-     *
+     * @param Movies $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function deletelinkAction(Movies $id)
     {
@@ -473,9 +480,7 @@ class MoviesController extends Controller
 
     /**
      * Creates a form to delete a Movies entity by id.
-     *
      * @param mixed $id The entity id
-     *
      * @return \Symfony\Component\Form\Form The form
      */
     private function createDeleteForm($id)

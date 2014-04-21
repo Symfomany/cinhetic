@@ -54,7 +54,6 @@ class MoviesRepository extends EntityRepository
 
     /**
      * Get Current movies by criteria
-     * @param null $word
      * @return array
      */
     public function getCurrentMovies(){
@@ -74,9 +73,10 @@ class MoviesRepository extends EntityRepository
             return $query->getResult();
     }
 
+
     /**
      * Get Current movies by criteria
-     * @param null $word
+     * @param string $ville
      * @return array
      */
     public function getMoviesByCity($ville = ""){
@@ -111,7 +111,7 @@ class MoviesRepository extends EntityRepository
             ->select('m')
             ->from('Cinhetic\PublicBundle\Entity\Movies', 'm')
             ->where('m.visible = 1')
-            ->andWhere('m.dateRelease >= :current')
+            ->andWhere('m.dateRelease <= :current')
             ->orderBy('m.id', 'DESC')
             ->setParameter('current' , new \Datetime('midnight'));
 
@@ -120,17 +120,16 @@ class MoviesRepository extends EntityRepository
 
     /**
      * Get Active movies by criteria
-     * @param null $word
      * @return array
      */
     public function getActiveMovies(){
         $query = $this->getEntityManager()
             ->createQuery(
                 'SELECT p
-                    FROM CinheticPublicBundle:Movies p
-                    WHERE p.dateRelease >= :current
-                    AND p.visible = 1
-                    ORDER BY p.title ASC'
+                FROM CinheticPublicBundle:Movies p
+                WHERE p.dateRelease >= :current
+                AND p.visible = 1
+                ORDER BY p.title ASC'
             )
             ->setParameters(
             array(
@@ -143,7 +142,7 @@ class MoviesRepository extends EntityRepository
 
     /**
      * Get all Movies order by date release
-     * @param null $limit
+     * @param integer $limit
      * @return array
      */
     public function getAllMovies($limit = 10){
@@ -158,7 +157,7 @@ class MoviesRepository extends EntityRepository
 
     /**
      * Get current movies with limit
-     * @param null $word
+     * @param integer $limit
      * @return array
      */
     public function getCoverMovies($limit = 5){
@@ -167,7 +166,7 @@ class MoviesRepository extends EntityRepository
                 'SELECT m
                     FROM CinheticPublicBundle:Medias m
                     JOIN m.movies mo
-                    WHERE mo.dateRelease >= :current
+                    WHERE mo.dateRelease <= :current
                     AND mo.visible = 1
                     AND mo.cover = 1
                     ORDER BY mo.id DESC'
@@ -183,7 +182,7 @@ class MoviesRepository extends EntityRepository
 
     /**
      * Get movies stars
-     * @param null $word
+     * @param integer $limit
      * @return array
      */
     public function getStarMovies($limit = 3){
