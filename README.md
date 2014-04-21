@@ -22,6 +22,10 @@ Login: demo
 Mdp: demo
 ```
 
+Web App on Google Play
+------------------
+https://play.google.com/store/apps/details?id=com.cinhetic.cinhetic
+
 Documentation
 ------------------
 http://94.23.5.209/docs/
@@ -61,6 +65,7 @@ Screenshots
 ![ScreenShot](https://raw.github.com/Symfomany/cinhetic/master/screenshots/Screen12.png)
 ![ScreenShot](https://raw.github.com/Symfomany/cinhetic/master/screenshots/Screen15.png)
 ![ScreenShot](https://raw.github.com/Symfomany/cinhetic/master/screenshots/Screen16.png)
+![ScreenShot](https://raw.github.com/Symfomany/cinhetic/master/screenshots/Screen17.png)
 
 
 
@@ -302,6 +307,7 @@ Features
 * Add Email Decorator in service
 * Add Pre-Order for Movies in Paybox with LexikPayboxBundle
 * Embed form with Medias Videos use Essence for display
+* Webapp released on Google Play
 
 Evolution
 ----------------------------------
