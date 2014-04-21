@@ -162,6 +162,13 @@ $(function () {
         return $('#overlay').removeClass('hide');
     });
 
+    if($(window).width() >= 200 && $(window).width() <= 748){
+        $('a[href]').on("click", function (event) {
+            return $('#overlay').removeClass('hide').delay(1500).fadeOut('slow');
+        });
+    }
+
+
     $("input[required]").on("blur", function (event) {
         if ($(this).val().length == 0 && $(this).val() == "") {
             return $(this).addClass('parsley-error');

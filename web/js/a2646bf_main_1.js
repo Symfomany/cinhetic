@@ -162,6 +162,11 @@ $(function () {
         return $('#overlay').removeClass('hide');
     });
 
+    if($(window).width() >= 200 && $(window).width() <= 748){
+        alert('ok');
+    }
+
+
     $("input[required]").on("blur", function (event) {
         if ($(this).val().length == 0 && $(this).val() == "") {
             return $(this).addClass('parsley-error');

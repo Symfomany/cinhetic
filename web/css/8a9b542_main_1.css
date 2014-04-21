@@ -1,5 +1,10 @@
 html, body{
-min-height: 100%;
+    min-height: 100%;
+    background: url(http://emoticonswallpapers.com/background/skulls/skulls-background-pattern-0418.jpg) repeat;
+}
+
+p, h1, h2, h3, h4,div, a{
+    font-family: 'Sniglet', cursive; !important;
 }
 a{
 
@@ -42,11 +47,6 @@ label{
     text-decoration: none;
 }
 
-#sendsearch{
-    position: relative;
-    top: 15px;
-    right: 63px;
-}
 .dropdown-menu > li > a{
     color: cadetblue !important;
     text-decoration: none !important;
@@ -98,6 +98,9 @@ table a, .table a{
     min-width: 60px;
 
 }
+table a:hover, .table a:hover{
+    color: #999;
+}
 table>thead>tr>th, .table>thead>tr>th, table>tbody>tr>th, .table>tbody>tr>th, table>tfoot>tr>th, .table>tfoot>tr>th, table>thead>tr>td, .table>thead>tr>td, table>tbody>tr>td, .table>tbody>tr>td, table>tfoot>tr>td, .table>tfoot>tr>td{
     padding: 5px;
 }
@@ -116,4 +119,68 @@ table>thead>tr>th, .table>thead>tr>th, table>tbody>tr>th, .table>tbody>tr>th, ta
 
 .navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand{
 margin-left: 5px;
+}
+.navbar-nav>li{
+
+}
+.navbar-default .navbar-nav>li>a{
+    font-size: 13px !important;
+}
+.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand{
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+#search_form{
+    height: 80px;
+    margin-bottom: 10px;
+}
+#search_form input[type="search"]{
+    border: 7px solid #333;
+    padding: 23px;
+}
+h1,h2,h3{
+    text-shadow: 1px 1px #000, 1px 1px #000;
+    margin: 30px;
+}
+#sendsearch{
+    position: relative;
+    top: 23px;
+    right: 69px;
+}
+.table>caption+thead>tr:first-child>th, .table>colgroup+thead>tr:first-child>th, .table>thead:first-child>tr:first-child>th, .table>caption+thead>tr:first-child>td, .table>colgroup+thead>tr:first-child>td, .table>thead:first-child>tr:first-child>td{
+    padding: 12px;
+    font-size: 16px;
+    min-width: 100px;
+    text-shadow: 1px 1px #000, 1px 1px #000;
+}
+video, iframe {
+    width: 100%    !important;
+    height: 300px   !important;
+}
+
+@media (min-width: 300px) and (max-width: 768px) {
+    h1,h2,h3{
+        font-size: 23px;
+    }
+    table>thead>tr>th, .table>thead>tr>th, table>tbody>tr>th, .table>tbody>tr>th, table>tfoot>tr>th, .table>tfoot>tr>th, table>thead>tr>td, .table>thead>tr>td, table>tbody>tr>td, .table>tbody>tr>td, table>tfoot>tr>td, .table>tfoot>tr>td{
+        font-size: 12px;
+    }
+    .navbar-default .navbar-nav>li>a{
+        font-size: 12px !important;
+    }
+    .alert a, .alert .alert-link{
+        font-size: 13px;
+    }
+    .btn{
+        padding: 8px 12px;
+        font-size: 13px;
+        line-height: 1;
+    }
+    .well p{
+        font-size: 12px;
+    }
+    .nav-tabs>li>a, .nav-pills>li>a{
+        font-size: 13px;
+    }
 }

@@ -11,6 +11,8 @@
 
     <link rel="stylesheet" type="text/css" href="http://bootswatch.com/darkly/bootstrap.min.css"/>
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/flick/jquery-ui.css" />
+    <link href='http://fonts.googleapis.com/css?family=Sniglet' rel='stylesheet' type='text/css'>
+
     {#{% stylesheets '@CinheticPublicBundle/Resources/public/css/main.css' filter='yui_css' %}#}
         {#<link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>#}
     {#{% endstylesheets %}#}
@@ -27,7 +29,6 @@
     <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
 
-
 {% endblock %}
 
 
@@ -43,10 +44,10 @@
                             {% include 'CinheticPublicBundle:Slots:flashdatas.html.twig' %}
                             {{ render(controller('CinheticPublicBundle:Main:search' , {'word': app.request.request.get('search')})) }}
 
-                            <div class="row pull-right">
-                                <i class="glyphicon glyphicon-road"></i> <a href="{{ path('apis') }}"><span class="label label-default"><strong>New!</strong></span> API Allociné</a></li>
-                                <img src="http://images.pcastuces.com/apps/48x48/allocine.png" />
-                            </div>
+                            {#<div class="row pull-right">#}
+                                {#<i class="glyphicon glyphicon-road"></i> <a href="{{ path('apis') }}"><span class="label label-default"><strong>New!</strong></span> API Allociné</a></li>#}
+                                {#<img src="http://images.pcastuces.com/apps/48x48/allocine.png" />#}
+                            {#</div>#}
 
                             {% block content %}
                                 {% for key, message in app.session.flashbag.all() %}

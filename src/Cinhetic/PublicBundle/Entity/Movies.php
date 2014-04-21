@@ -2,6 +2,7 @@
 
 namespace Cinhetic\PublicBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -769,15 +770,6 @@ class Movies
         return $this->directors;
     }
 
-    public function setMedias(ArrayCollection $medias)
-    {
-        foreach ($medias as $media) {
-            $this->addMedia($this);
-        }
-
-        $this->medias = $medias;
-    }
-
     /**
      * Add medias
      *
@@ -823,11 +815,22 @@ class Movies
         return $this->medias;
     }
 
+
+    /**
+     * Set medias
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function setMedias(\Cinhetic\PublicBundle\Entity\Medias $medias)
+    {
+        $this->medias = $medias;
+
+        return $this;
+    }
+
     /**
      * Add movies
-     *
-     * @param \Cinhetic\PublicBundle\Entity\Movies $movies
-     * @return Movies
+     * @param Movies $movies
+     * @return $this
      */
     public function addMovie(\Cinhetic\PublicBundle\Entity\Movies $movies)
     {
