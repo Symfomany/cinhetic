@@ -57,7 +57,13 @@ class MoviesType extends AbstractType
             ->add('annee')
             ->add('budget')
             ->add('duree')
-            ->add('dateRelease', null, array('label' => "Date de sortie"))
+            ->add('dateRelease', 'datetime',
+                array(
+                    'attr' => array('class' => 'datepicker'),
+                    'widget' => 'single_text',
+                    'format' => 'yyyy-MM-dd',
+                    'label' => "Date de sortie"
+                ))
             ->add('notePresse','choice', array(
                 'choices'   => array(
                     '1' => 'Naz',

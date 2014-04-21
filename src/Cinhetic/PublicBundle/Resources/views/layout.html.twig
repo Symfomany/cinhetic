@@ -25,6 +25,10 @@
     <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>
     {% endstylesheets %}
 
+    {% stylesheets '@CinheticPublicBundle/Resources/public/css/datepicker.css' %}
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>
+    {% endstylesheets %}
+
     <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.css" />
     <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
@@ -94,6 +98,10 @@
     {% endjavascripts %}
 
     {% javascripts '@CinheticPublicBundle/Resources/public/js/jquery.raty.min.js'  %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    {% javascripts '@CinheticPublicBundle/Resources/public/js/bootstrap-datepicker.js'  %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
 

@@ -156,6 +156,10 @@ $(function () {
         return $('#advancedsearch').toggleClass('hide', '');
     });
 
+    $('.datepicker').datepicker({
+        format: 'yyyy-mm-dd'
+    });
+
     $('form').on("submit", function (event) {
         $(this).find('button[type=submit]').attr('disabled', 'disabled');
         $(this).find('button[type=submit]').text('Envoi en cours...');
@@ -163,7 +167,9 @@ $(function () {
     });
 
     if($(window).width() >= 200 && $(window).width() <= 748){
-        alert('ok');
+        $('a[href]').on("click", function (event) {
+            return $('#overlay').removeClass('hide').delay(1500).fadeOut('slow');
+        });
     }
 
 

@@ -156,6 +156,10 @@ $(function () {
         return $('#advancedsearch').toggleClass('hide', '');
     });
 
+    $('.datepicker').datepicker({
+        format: 'yyyy-mm-dd'
+    });
+
     $('form').on("submit", function (event) {
         $(this).find('button[type=submit]').attr('disabled', 'disabled');
         $(this).find('button[type=submit]').text('Envoi en cours...');

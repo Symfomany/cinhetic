@@ -3,6 +3,12 @@ html, body{
     background: url(http://emoticonswallpapers.com/background/skulls/skulls-background-pattern-0418.jpg) repeat;
 }
 
+.col-sm-12{
+    background: #222;
+    -moz-box-shadow: 0 0 5px #888;
+    -webkit-box-shadow: 0 0 5px#888;
+    box-shadow: 0 0 5px #888;
+}
 p, h1, h2, h3, h4,div, a{
     font-family: 'Sniglet', cursive; !important;
 }
@@ -68,8 +74,12 @@ img{
 img:hover{
     opacity(0.6);
 }
-
-
+.datepicker td, .datepicker th{
+    color: #222 !important;
+}
+.datepicker td.active:active, .datepicker td.active:hover:active, .datepicker td.active.active, .datepicker td.active:hover.active{
+    color: #fff !important;
+}
 
 .overlay{
     position: absolute;
