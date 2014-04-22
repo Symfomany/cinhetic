@@ -48,6 +48,23 @@ form div{
 }
 label{
     color: #18bc9c;
+    margin-right: 10px;
+    vertical-align: top;
+}
+textarea{
+    border-radius: 5px;
+}
+.bootstrap-select{
+    background: none;
+}
+button, html input[type="button"], input[type="reset"], input[type="submit"]{
+    padding: 10px;
+    border-radius: 3px;
+    border: 1px solid #222;
+    color: #111;
+}
+select.form-control {
+    color: #464545 !important;
 }
 .alert .table a.btn{
     color: white !important;

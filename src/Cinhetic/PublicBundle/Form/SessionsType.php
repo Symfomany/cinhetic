@@ -21,7 +21,7 @@ class SessionsType extends AbstractType
         $builder
             ->add('dateSession', 'datetime',
                 array(
-                    'attr' => array('class' => 'datepicker'),
+                    'attr' => array('class' => 'form-control datepicker'),
                     'widget' => 'single_text',
                     'format' => 'yyyy-MM-dd',
                     'label' => "Date de session"

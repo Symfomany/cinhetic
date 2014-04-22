@@ -32,7 +32,7 @@ class MoviesType extends AbstractType
             ->add('synopsis', null, array('attr' => array("class" => "ckeditor")))
             ->add('description', null, array('attr' => array("class" => "ckeditor")))
             ->add('file', null, array("label" => "Image à mettre en avant",'attr' => array('accept', "image/*", "capture" => "capture")))
-            ->add('trailer', null, array('attr' => array("cols" => 80, "rows" => 7)))
+            ->add('trailer', null, array('attr' => array("class" => "form-control", "cols" => 80, "rows" => 7)))
             ->add('languages', "language")
             ->add('distributeur', 'choice', array(
                 'label' => "Maison de production",
@@ -59,7 +59,7 @@ class MoviesType extends AbstractType
             ->add('duree')
             ->add('dateRelease', 'datetime',
                 array(
-                    'attr' => array('class' => 'datepicker'),
+                    'attr' => array('class' => 'datepicker form-control'),
                     'widget' => 'single_text',
                     'format' => 'yyyy-MM-dd',
                     'label' => "Date de sortie"
