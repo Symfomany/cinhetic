@@ -63,7 +63,7 @@ services:
             tags:
                 - { name: kernel.event_listener, event: paybox.ipn_response, method: onPayboxIpnResponse }
 
-#    Email Service
+#     Email Service
     cinhetic_public.email:
       class: %cinhetic_public.email.class%
       arguments: [@templating, @mailer]
