@@ -9,6 +9,7 @@ html, body{
     -webkit-box-shadow: 0 0 5px#888;
     box-shadow: 0 0 5px #888;
 }
+
 p, h1, h2, h3, h4,div, a{
     font-family: 'Sniglet', cursive; !important;
 }
@@ -54,8 +55,10 @@ label{
 }
 
 .dropdown-menu > li > a{
-    color: cadetblue !important;
-    text-decoration: none !important;
+    font-size: 13px;
+}
+.navbar-default .navbar-nav>li>a{
+text-shadow: 1px 1px #1d3349,1px 1px #1d3349;
 }
 #listreceipts h3 a{
     color: darkkhaki;
@@ -155,8 +158,11 @@ h1,h2,h3{
 }
 #sendsearch{
     position: relative;
-    top: 23px;
-    right: 69px;
+    top: 14px;
+    right: 82px;
+}
+.tab-content>.tab-pane{
+    padding: 15px;
 }
 .table>caption+thead>tr:first-child>th, .table>colgroup+thead>tr:first-child>th, .table>thead:first-child>tr:first-child>th, .table>caption+thead>tr:first-child>td, .table>colgroup+thead>tr:first-child>td, .table>thead:first-child>tr:first-child>td{
     padding: 12px;
@@ -204,6 +210,15 @@ video, iframe {
 .navbar-default{
     box-shadow: 8px 8px 12px #111;
 }
+.btn{
+    margin: 10px;
+}
+.navbar-nav>li>.dropdown-menu a, .navbar-nav>li.dropdown{
+    height: auto;
+}
+
+
+
 @media (min-width: 300px) and (max-width: 768px) {
     h1,h2,h3{
         font-size: 23px;
