@@ -21,6 +21,7 @@
                     <ul class="dropdown-menu">
                         <li {% if  app.request.attributes.get('_route') == "sessions" %} class="active" {% endif %}><a href="{{ path('sessions') }}"><i class="glyphicon glyphicon-calendar"></i> Séances</a></li>
                         <li {% if  app.request.attributes.get('_route') == "tags" %} class="active" {% endif %}><a href="{{ path('tags') }}"><i class="glyphicon glyphicon-tags"></i> Tags</a></li>
+                        <li {% if  app.request.attributes.get('_route') == "comments" %} class="active" {% endif %}><a href="{{ path('comments') }}"><i class="glyphicon glyphicon-comment"></i> Commentaires</a></li>
                         <li {% if  app.request.attributes.get('_route') == "apis" %} class="active" {% endif %}><a href="{{ path('apis') }}"><span class="label label-default"><strong>New!</strong></span> API Allociné</a></li>
                     </ul>
                 </li>

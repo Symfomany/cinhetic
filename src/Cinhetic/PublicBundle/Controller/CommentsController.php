@@ -209,7 +209,7 @@ class CommentsController extends Controller
     {
         $form = $this->createForm(new CommentsType(), $entity, array(
             'action' => $this->generateUrl('comments_update', array('id' => $entity->getId())),
-            'method' => 'PUT',
+            'method' => 'POST',
         ));
 
         $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning"), 'label' => 'Modifier ce cinéma'));

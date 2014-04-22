@@ -149,7 +149,7 @@ class CinemaController extends Controller
     {
         $form = $this->createForm(new CinemaType(), $entity, array(
             'action' => $this->generateUrl('cinema_update', array('id' => $entity->getId())),
-            'method' => 'PUT',
+            'method' => 'POST',
         ));
 
         $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning"), 'label' => 'Modifier ce cinéma'));

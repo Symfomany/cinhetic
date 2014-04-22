@@ -315,7 +315,7 @@ class MoviesController extends Controller
     {
         $form = $this->createForm(new MoviesType(), $entity, array(
             'action' => $this->generateUrl('movies_update', array('id' => $entity->getId())),
-            'method' => 'PUT',
+            'method' => 'POST',
         ));
 
         $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning"), 'label' => 'Modifier ce film'));

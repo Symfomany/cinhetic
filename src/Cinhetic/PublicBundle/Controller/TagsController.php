@@ -152,7 +152,7 @@ class TagsController extends Controller
     {
         $form = $this->createForm(new TagsType(), $entity, array(
             'action' => $this->generateUrl('tags_update', array('id' => $entity->getId())),
-            'method' => 'PUT',
+            'method' => 'POST',
             'attr' => array('id' => "handletags")
         ));
 
@@ -188,6 +188,22 @@ class TagsController extends Controller
 
             return $this->redirect($this->generateUrl('tags_edit', array('id' => $id)));
         }
+        $errors = $this->get('validator')->validate($editForm);
+
+        exit(var_dump($_POST));
+        foreach ($errors as $error)
+        {
+            $errorsArray[] = array(
+                'elementId' => str_replace('data.', '', $error->getPropertyPath()),
+                'errorMessage' => $error->getMessage(),
+            );
+        }
+        exit(var_dump($errorsArray));
+
+//          print_r($errors);
+//        exit('');
+
+        exit(var_dump($editForm->getErrorsAsString()));
 
         return $this->render('CinheticPublicBundle:Tags:edit.html.twig', array(
             'entity'      => $entity,

@@ -149,7 +149,7 @@ class SessionsController extends Controller
     {
         $form = $this->createForm(new SessionsType(), $entity, array(
             'action' => $this->generateUrl('sessions_update', array('id' => $entity->getId())),
-            'method' => 'PUT',
+            'method' => 'POST',
         ));
 
         $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning"), 'label' => 'Modifier cette séance'));

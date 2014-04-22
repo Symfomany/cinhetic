@@ -158,7 +158,7 @@ class DirectorsController extends Controller
     {
         $form = $this->createForm(new DirectorsType(), $entity, array(
             'action' => $this->generateUrl('directors_update', array('id' => $entity->getId())),
-            'method' => 'PUT',
+            'method' => 'POST',
         ));
 
         $form->add('submit', 'submit', array('label' => 'Update'));

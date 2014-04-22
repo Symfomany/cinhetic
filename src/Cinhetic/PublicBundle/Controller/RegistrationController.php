@@ -52,12 +52,13 @@ class RegistrationController extends BaseController
 
             $userManager->updateUser($user);
 
-            if (null === $response = $event->getResponse()) {
-                $url = $this->container->get('router')->generate('fos_user_registration_confirmed');
-                $response = new RedirectResponse($url);
-            }
+            $this->container->get('session')->getFlashBag()->add(
+                'success',
+                'Votre inscription a bien été effectuée'
+            );
 
-            $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
+            $url = $this->container->get('router')->generate('fos_user_security_login');
+            $response = new RedirectResponse($url);
 
             return $response;
         }
