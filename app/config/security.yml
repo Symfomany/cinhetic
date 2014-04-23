@@ -11,13 +11,11 @@ security:
         id: fos_user.user_provider.username_email
 
     firewalls:
-        dev:
-            pattern:  ^/(_(profiler|wdt)|css|images|js)/
-            security: false
         main:
           pattern:        ^/administration
           anonymous:      true
           form_login:
+            success_handler:  cinhetic_public.handler_auth
             provider:               fos_userbundle
             csrf_provider:          form.csrf_provider
             check_path:             fos_user_security_check

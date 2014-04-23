@@ -28,9 +28,9 @@
                 <td class="text-success"><a href="{{ path('cinema_show', {'id': entity.cinema.id }) }}"><span class="badge"><i class="glyphicon glyphicon-map-marker"></i> {{ entity.cinema.title|title }}</span></a></td>
                 <td>
 
-                        <a href="{{ path('sessions_show', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-search"></i> Voir</a>
+                        <a class="btn btn-primary btn-sm" href="{{ path('sessions_show', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-search"></i> Voir</a>
 
-                        <a href="{{ path('sessions_edit', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-pencil"></i> Editer</a>
+                        <a class="btn btn-warning btn-sm" href="{{ path('sessions_edit', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-pencil"></i> Editer</a>
 
                 </td>
             </tr>

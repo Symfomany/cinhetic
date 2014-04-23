@@ -1,7 +1,7 @@
 {% block search %}
     <nav class="navbar" role="navigation">
         <p></p>
-        <form action="{{ path('Cinhetic_public_search') }}" method="post"  role="search">
+        <form id="search_form" action="{{ path('Cinhetic_public_search') }}" method="post"  role="search">
             <div class="form-group has-success has-feedback col-sm-10 col-sm-offset-1">
                 {{ form_widget(form.search,{"id" : "search_input",'attr': {"id" : "search_input", "value" :  word, "data-url" : path('Cinhetic_public_search', {'ajax': "true"}) }}) }}
                 {#<input id="search_input" data-url="{{ path('Cinhetic_public_search', {'ajax' : 'true'}) }}" name="search" value="{{ app.request.query.get('search') }}" type="search" class="form-control"  placeholder="Rechercher un film, une catégorie, un cinéma...">#}

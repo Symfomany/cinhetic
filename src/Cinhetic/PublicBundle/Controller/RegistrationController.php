@@ -44,24 +44,23 @@ class RegistrationController extends BaseController
         $form = $formFactory->createForm();
         $form->setData($user);
 
-        if ('POST' === $request->getMethod()) {
-            $form->bind($request);
+        $form->handleRequest($request);
 
-            if ($form->isValid()) {
-                $event = new FormEvent($form, $request);
-                $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
+        if ($form->isValid()) {
+            $event = new FormEvent($form, $request);
+            $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
 
-                $userManager->updateUser($user);
+            $userManager->updateUser($user);
 
-                if (null === $response = $event->getResponse()) {
-                    $url = $this->container->get('router')->generate('fos_user_registration_confirmed');
-                    $response = new RedirectResponse($url);
-                }
+            $this->container->get('session')->getFlashBag()->add(
+                'success',
+                'Votre inscription a bien été effectuée'
+            );
 
-                $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
+            $url = $this->container->get('router')->generate('fos_user_security_login');
+            $response = new RedirectResponse($url);
 
-                return $response;
-            }
+            return $response;
         }
 
         return $this->container->get('templating')->renderResponse('CinheticPublicBundle:User:register.html.'.$this->getEngine(), array(
@@ -72,6 +71,8 @@ class RegistrationController extends BaseController
 
     /**
      * Tell the user to check his email provider
+     * @return mixed
+     * @throws NotFoundHttpException
      */
     public function checkEmailAction()
     {
@@ -89,6 +90,10 @@ class RegistrationController extends BaseController
     }
 
 
+    /**
+     * get Engine Templating
+     * @return mixed
+     */
     protected function getEngine()
     {
         return $this->container->getParameter('fos_user.template.engine');

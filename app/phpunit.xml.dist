@@ -11,7 +11,7 @@
     processIsolation            = "false"
     stopOnFailure               = "false"
     syntaxCheck                 = "false"
-    bootstrap                   = "bootstrap.php.cache" >
+    bootstrap                   = "../tests/_bootstrap.php" >
 
     <testsuites>
         <testsuite name="Project Test Suite">
@@ -19,6 +19,18 @@
             <directory>../src/*/Bundle/*Bundle/Tests</directory>
         </testsuite>
     </testsuites>
+
+    <!-- Quels fichiers sont concernés par l'évaluation du code coverage -->
+    <filter>
+        <whitelist>
+            <directory>./</directory>
+            <exclude>
+                <directory>./Resources</directory>
+                <directory>./Tests</directory>
+                <directory>./vendor</directory>
+            </exclude>
+        </whitelist>
+    </filter>
 
     <!--
     <php>

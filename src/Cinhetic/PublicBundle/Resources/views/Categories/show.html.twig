@@ -1,13 +1,14 @@
 {% extends 'CinheticPublicBundle::layout.html.twig' %}
 
 {% block content %}
+
     <div class="well">
-        <h1>Catégorie {{ entity.title|title}}</h1>
+        <h1 style="margin-left:0">Catégorie {{ entity.title|title}}</h1>
         <p>{{ entity.description|raw }}</p>
         {% if entity.movies is not empty %}
             <div class="row">
                 <div class="col-md-12">
-                    <h3>Les films de cette catégorie</h3>
+                    <h3 style="margin-left:0">Les films de cette catégorie</h3>
                     <div class="list-group">
                         {% for entity in entity.movies %}
                             <a href="{{ path('movies_show', { 'id': entity.id }) }}" class="list-group-item">
@@ -17,11 +18,11 @@
                         {% endfor %}
                     </div>
                 </div>
-            </div>
         {% endif %}
 
            <a class="btn btn-primary" href="{{ path('categories_edit', { 'id': entity.id }) }}">
-                Editer la catégorie
+                Editer
             </a>
+            {{ form(delete_form, {'attr' : {'style' : 'display:inline-block'} } ) }}
     </div>
 {% endblock %}

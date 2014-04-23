@@ -1,0 +1,30 @@
+{% extends 'CinheticPublicBundle::layout.html.twig' %}
+
+{% block content %}
+
+<h1>Rechercher un film</h1>
+<hr />
+<br />
+    {% include 'CinheticPublicBundle:Api:_search.html.twig' %}
+
+    <p class="clearfix clear">
+       <a href="{{ path('apis_cinemas') }}" class="pull-right"> <i class="glyphicon glyphicon-th-list"></i> Voir les cinémas à Paris</a>
+    </p>
+    <div class="row">
+        <div class="col-md-8">
+            <ul class="nav nav-pills">
+                <li class="">
+                    <a href="{{ path('apis_cinemas', {'zipcode' : 69000}) }}">Voir à Lyon </a>
+                </li>
+                <li>
+                    <a href="{{ path('apis_cinemas', {'zipcode' : 13000}) }}">Voir à Marseille </a>
+                </li>
+                <li>
+                    <a href="{{ path('apis_cinemas', {'zipcode' : 75000}) }}">Voir à Paris </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+   {% include "CinheticPublicBundle:Api:_listsearch.html.twig" %}
+{% endblock %}

@@ -19,7 +19,13 @@ class SessionsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('dateSession')
+            ->add('dateSession', 'datetime',
+                array(
+                    'attr' => array('class' => 'form-control datepicker'),
+                    'widget' => 'single_text',
+                    'format' => 'yyyy-MM-dd',
+                    'label' => "Date de session"
+                ))
             ->add('movies', null, array('label' => "Films associés"))
             ->add('cinema', null, array('label' => "Cinéma associé"))
         ;

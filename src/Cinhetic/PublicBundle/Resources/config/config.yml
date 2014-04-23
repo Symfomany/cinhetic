@@ -1,3 +1,95 @@
+parameters:
+  email_administrateur: julien@meetserious.com
+  email_membre: julien@meetserious.com
+  email_pro:  julien@meetserious.com
+  url_base: 'http://www.cinhetic.ju/'
+  paginate_by_page: 5
+  carte_1 : 4970101122334455
+  carte_2 : 4970101122334463
+  carte_3 : 4970101122334471
+  expiry: 1212
+  cvv:  123
+  password: secret3
+  url_base: github.com/Symfomany/cinhetic/
+  key_autoloading: 5ghfjhgsddf6aad9gx55sdq12gffh395d2w1gim2ool4yu9idf5595hjgf9552649jyt49r6fdgdf616mv51sf132
+  key_regenerate_password: s6d4gdh8d6fg54hg864dg64f64hdg48h6f8hdsd1561dsq6dqs46d135s1g6h6879y4163535sdfsd65965sdghj
+  facebookAppId: "552592408160039"
+  facebookAppSecret: "befaf20ca0324ef67028b564463f4ccc"
+  sujet_mail:
+    0: Une question / Un renseignement
+    1: Mise à jour de mes coordonnées
+    2: Demande de partenariat
+    4: Devenir Partenaire
+    6: Création d'une publicité
+    7: Un problème technique
+    8: Autre
+
+  payline:
+        #Merchant ID
+        MERCHANT_ID: '74523340176234'
+        # dev : 45487140921333
+        # prod : 12191122155280
+        #Certificate key
+        ACCESS_KEY: 'q52K10EEPaoEBgS51M7K'
+        # dev: L9qyGPFUNur9b7thY1BP
+        # prod: kdVqTbqkfJGoHI9S6kMM
+        #Proxy URL (optional)
+        PROXY_HOST: null
+        #Proxy port number without 'quotes' (optional)
+        PROXY_PORT: null
+        #Proxy login (optional)
+        PROXY_LOGIN: ''
+        #Proxy password (optional)
+        PROXY_PASSWORD: ''
+        #Demonstration (FALSE) or production (TRUE) mode
+        PRODUCTION: FALSE
+        #prod: TRUE
+        #Default payment currency (ex: 978 = EURO)
+        PAYMENT_CURRENCY: 978
+        ORDER_CURRENCY: 978
+        #Protocol (ex: SSL = HTTPS)
+        SECURITY_MODE: ''
+        #Payline pages language
+        LANGUAGE_CODE: ''
+        #Default payment method
+        PAYMENT_ACTION: 101
+        #Default payment mode
+        PAYMENT_MODE: 'CPT'
+        #Default payment template URL
+        CUSTOM_PAYMENT_TEMPLATE_URL: ''
+        CUSTOM_PAYMENT_PAGE_CODE: ''
+        #Contract type default (ex: 001 = CB: 003 = American Express...)
+    #    CONTRACT_NUMBER: '4534580'
+        CONTRACT_NUMBER: '1234567'
+        #prod : 4534580
+        #dev : 1234567
+        #Contract type multiple values (separator: ;)
+        CONTRACT_NUMBER_LIST: ''
+        #Contract type multiple values (separator: ;)
+        SECOND_CONTRACT_NUMBER_LIST: ''
+        #Chemin d'accès au répertoire des fichiers WSDL
+        WSDL_PATH: '../../wsdl/'
+        #Durées du timeout d'appel des webservices
+        SECONDARY_CALL_TIMEOUT: 15
+        #Nombres de tentatives sur les chaines primaire et secondaire par transaction
+        SECONDARY_MAX_FAIL_RETRY: 2
+        #Durées d'attente avant le rejoue de la transaction
+        SECONDARY_REPLAY_TIMER: 15
+        #Codes erreurs payline qui signifie l'échec de la transaction
+        PAYLINE_ERR_CODE: '02101,02102,02103'
+        #Nom des services web autorisés à basculer
+        PAYLINE_WS_SWITCH_ENABLE:  ''
+        #Durées d'attente pour rebasculer en mode nominal
+        PAYLINE_SWITCH_BACK_TIMER: 600
+        #Préfixe du token sur le site primaire
+        PRIMARY_TOKEN_PREFIX: '1'
+        #Préfixe du token sur le site secondaire
+        SECONDARY_TOKEN_PREFIX: '2'
+        #Chemin du fichier ini
+        INI_FILE: '../../properties/HighDefinition.ini'
+        #Préfixe du token sur le site primaire
+        PAYLINE_ERR_TOKEN: '02317,02318'
+        PAYLINE_AUTORIZE_WALLET_CARD : 'CB,VISA,MASTERCARD'
 twig:
     globals:
       base_url: 'http://www.cinhetic.ju/'

@@ -25,6 +25,8 @@ class AppKernel extends Kernel
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Misd\GuzzleBundle\MisdGuzzleBundle(),
+            new Lexik\Bundle\PayboxBundle\LexikPayboxBundle(),
+
 
 //            Our Bundle
             new Cinhetic\PublicBundle\CinheticPublicBundle()

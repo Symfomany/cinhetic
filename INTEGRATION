@@ -1,0 +1,49 @@
+UPGRADE
+=======================
+
+
+### General Integration
+
+
+ * Page Cinema & Sessions interconnected with API Allocine
+ * Add movies in session card since API movies
+ * Add comments in ajax with added in list
+ * Add lifecycles &  register Event Listeners and Subscribers for entities
+ * Add spool emails for members
+ * Add HTTP Cache in views from routing & controllers
+ * Add movies in favorites with session & service
+ * Page Author & Director
+ * Add listener for last activities
+ * Add rate for actors
+ * Add photos for cinemas
+ * Add links for directors
+ * Add studio & teams of actors for a directors
+ * Verify tags in auto-complete for movies & creation
+ * Verify actors / directors firstname & lastname
+ * OCR for a movies profil rating views points
+ * Add Wikipedia API for directors & actors
+ * Add animations in JS about Bootsrapp Twiter & third components
+ * Add a better slideshow
+ * Tagged actors in movies picture
+ * Page archives of movies
+ * Add node in realtime
+ * Page Category (with icons) & Page Tag
+ * List of comments
+ * Scan QRCODE with movies
+ * Select muliple for mobile
+ * Switch with SASS & COMPASS
+ * Textarea adapted for mobile
+ * Scroll horizontal in mobile
+ * Search engin more userfriendly with btn search
+ * Date of birth of actor
+ * Min. textarea for mobile
+ * Optimize select for mobile
+ * Optional menu with contact - about -presentation
+ * Loader for Mobile
+ * Created ago with twig bundle
+ * Add service for follow tweet & defaut tweet in main page
+ * Connection with FOSFacebooBundle
+ * Add view movies in lightbox btn
+ * Views & Controllers detectiond
+ * Add notifictions & email sended
+

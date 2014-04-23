@@ -1,9 +1,58 @@
 {% extends 'CinheticPublicBundle::layout.html.twig' %}
 
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts '@CinheticPublicBundle/Resources/public/js/medias.js' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
 
 {% block content %}
     <h1> <i class="glyphicon glyphicon-plus"></i> Création de film</h1>
 
-    {{ form(form) }}
+<form method="post" action="{{ path('movies_create') }}" id="handlemovie" novalidate="novalidate" enctype="multipart/form-data">
+    <h3>Présentation</h3>
+    {{ form_row(form.title) }}
+    {{ form_row(form.typeFilm) }}
+    <hr />
+    {{ form_row(form.synopsis) }}
+    {{ form_row(form.description) }}
+    <hr />
+    <h3>Description</h3>
+    {{ form_row(form.file) }}
+    {{ form_row(form.trailer) }}
+    {{ form_row(form.languages) }}
+    {{ form_row(form.distributeur) }}
+    {{ form_row(form.bo) }}
+    {{ form_row(form.annee) }}
+    {{ form_row(form.budget) }}
+    {{ form_row(form.duree) }}
+    {{ form_row(form.dateRelease) }}
+    <hr />
+    <h3>Caractéristiques</h3>
+    {{ form_row(form.notePresse) }}
+    {{ form_row(form.visible) }}
+    {{ form_row(form.cover) }}
+    <hr />
+    <h3>Relations</h3>
+    {{ form_row(form.category) }}
+    {{ form_row(form.actors) }}
+    {{ form_row(form.cinemas) }}
+    {{ form_row(form.directors) }}
+    <hr />
+    <h3>Extras</h3>
+    {{ form_row(form.moviesRelated) }}
+    {{ form_row(form.tags) }}
+    <h3>Ajouter des vidéos</h3>
+    <div class="row-fluid alert alert-info">
+        <ul class="medias" data-prototype="{{ form_widget(form.medias.vars.prototype)|e }}">
+            {% for media in form.medias %}
+                <li>{{ form_row(media.video) }}</li>
+
+            {% endfor %}
+        </ul>
+    </div>
+    {{ form_rest(form) }}
+</form>
 
 {% endblock %}

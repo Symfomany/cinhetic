@@ -13,16 +13,16 @@
             </div>
             <div class="col-md-8">
 
-                <h3>{{ entity.place.theater.name  }}</h3>
-                    <p>Ville: {{ entity.place.theater.city  }}</p>
+                <h3>{{ entity.place.theater.name|convert_encoding('UTF-8', 'iso-8859-1')  }}</h3>
+                    <p>Ville: {{ entity.place.theater.city|convert_encoding('UTF-8', 'iso-8859-1')  }}</p>
                     <a target="_blank" class="pull-right btn btn-danger" href="{{ entity.place.theater.link[0].href  }}" >Lien vers le cinéma</a>
 
                     {% for movietime in entity.movieShowtimes %}
                         {% if movietime.onShow.movie.title is defined %}
                             <p>
                                 <a href="{{ path('apis_show', {'code' : movietime.onShow.movie.code}) }}">
-                                    {{ movietime.onShow.movie.title }}
-                                </a> - {{  movietime.display }}
+                                    {{ movietime.onShow.movie.title|convert_encoding('UTF-8', 'iso-8859-1') }}
+                                </a> - {{  movietime.display|convert_encoding('UTF-8', 'iso-8859-1') }}
                             </p>
                         {% endif %}
                     {% endfor %}

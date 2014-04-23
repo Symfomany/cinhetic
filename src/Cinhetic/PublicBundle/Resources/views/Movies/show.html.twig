@@ -9,7 +9,7 @@
     <div class="well">
         <div class="row featurette">
             <div class="col-md-4">
-                <img class="featurette-image img-responsive" alt="{{ entity.title|title }}" src="{{ cover }}">
+                <img class="featurette-image img-responsive" alt="{{ entity.title|title }}" src="{{ entity.webPath }}">
             </div>
             <div class="col-md-7">
                 <h1 class="featurette-heading">{{ entity.title|title }}<span class="text-muted"> ({{ entity.annee }})</span></h1>
@@ -118,7 +118,12 @@
 
         </div>
     </div>
+</div>
 
+    <a class="btn btn-primary" href="{{ path('movies_edit', { 'id': entity.id }) }}">
+    Edit
+    </a>
+    {{ form(delete_form, {'attr' : {'style' : 'display:inline-block'} } ) }}
 {% endblock %}
 
 {% block javascripts %}

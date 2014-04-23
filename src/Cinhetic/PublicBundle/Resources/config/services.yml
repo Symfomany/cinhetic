@@ -7,6 +7,14 @@ parameters:
     cinhetic_public.form_directors.class: Cinhetic\PublicBundle\Form\DirectorsType
     cinhetic_public.form_movies.class: Cinhetic\PublicBundle\Form\MoviesType
     cinhetic_public.form_search.class: Cinhetic\PublicBundle\Form\SearchType
+    cinhetic_public.email.class: Cinhetic\PublicBundle\EmailDecorator\Email
+    cinhetic_public.console_command.class: Cinhetic\PublicBundle\Command\EmailCommand
+    cinhetic_public.handler_auth.class: Cinhetic\PublicBundle\Authentification\AuthentificationSiteHandler
+    cinhetic_public.response_listener.class: Cinhetic\PublicBundle\Listener\IpnListener
+
+
+
+
 
 services:
 #    Form as Services
@@ -40,9 +48,38 @@ services:
         tags:
           - { name: form.type, alias: search }
 
+#    Handler authentification
+    cinhetic_public.handler_auth:
+        class: %cinhetic_public.handler_auth.class%
+        arguments: [ @router, @doctrine.orm.entity_manager, @templating, @mailer ]
+
+
+#    Add extension of twig
+    cinhetic.twig.cinhetic_extension:
+            class: Cinhetic\PublicBundle\Twig\CinheticExtension
+            tags:
+                - { name: twig.extension }
+
+#    Command Console
+    cinhetic_public.console_command:
+        class: %cinhetic_public.console_command.class%
+        tags:
+          - { name: console.command }
+
+#    Paybox Listener
+    cinhetic_public.paybox.response_listener:
+            class: %cinhetic_public.response_listener.class%
+            arguments: [ %kernel.root_dir%, @filesystem ]
+            tags:
+                - { name: kernel.event_listener, event: paybox.ipn_response, method: onPayboxIpnResponse }
+
+#     Email Service
+    cinhetic_public.email:
+      class: %cinhetic_public.email.class%
+      arguments: [@templating, @mailer]
+
 
     # Repositories as service
-
     cinhetic_public.repository.movies:
       class: Cinhetic\PublicBundle\Repository\MoviesRepository
       factory_service: doctrine.orm.default_entity_manager

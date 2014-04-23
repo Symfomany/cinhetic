@@ -10,15 +10,16 @@ use Cinhetic\PublicBundle\Form\TagsType;
 
 
 /**
- * Tags controller.
- *
+ * Class TagsController
+ * @package Cinhetic\PublicBundle\Controller
  */
 class TagsController extends Controller
 {
 
+
     /**
      * Lists all Tags entities.
-     *
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function indexAction()
     {
@@ -34,7 +35,8 @@ class TagsController extends Controller
 
     /**
      * Creates a new Tags entity.
-     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function createAction(Request $request)
     {
@@ -58,9 +60,7 @@ class TagsController extends Controller
 
     /**
     * Creates a form to create a Tags entity.
-    *
     * @param Tags $entity The entity
-    *
     * @return \Symfony\Component\Form\Form The form
     */
     private function createCreateForm(Tags $entity)
@@ -76,9 +76,10 @@ class TagsController extends Controller
         return $form;
     }
 
+
     /**
      * Displays a form to create a new Tags entity.
-     *
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function newAction()
     {
@@ -91,9 +92,12 @@ class TagsController extends Controller
         ));
     }
 
+
     /**
      * Finds and displays a Tags entity.
-     *
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
     public function showAction($id)
     {
@@ -112,9 +116,12 @@ class TagsController extends Controller
             'delete_form' => $deleteForm->createView(),        ));
     }
 
+
     /**
      * Displays a form to edit an existing Tags entity.
-     *
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
     public function editAction($id)
     {
@@ -138,16 +145,14 @@ class TagsController extends Controller
 
     /**
     * Creates a form to edit a Tags entity.
-    *
     * @param Tags $entity The entity
-    *
     * @return \Symfony\Component\Form\Form The form
     */
     private function createEditForm(Tags $entity)
     {
         $form = $this->createForm(new TagsType(), $entity, array(
             'action' => $this->generateUrl('tags_update', array('id' => $entity->getId())),
-            'method' => 'PUT',
+            'method' => 'POST',
             'attr' => array('id' => "handletags")
         ));
 
@@ -159,7 +164,10 @@ class TagsController extends Controller
 
     /**
      * Edits an existing Tags entity.
-     *
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
     public function updateAction(Request $request, $id)
     {
@@ -180,6 +188,22 @@ class TagsController extends Controller
 
             return $this->redirect($this->generateUrl('tags_edit', array('id' => $id)));
         }
+        $errors = $this->get('validator')->validate($editForm);
+
+        exit(var_dump($_POST));
+        foreach ($errors as $error)
+        {
+            $errorsArray[] = array(
+                'elementId' => str_replace('data.', '', $error->getPropertyPath()),
+                'errorMessage' => $error->getMessage(),
+            );
+        }
+        exit(var_dump($errorsArray));
+
+//          print_r($errors);
+//        exit('');
+
+        exit(var_dump($editForm->getErrorsAsString()));
 
         return $this->render('CinheticPublicBundle:Tags:edit.html.twig', array(
             'entity'      => $entity,
@@ -191,7 +215,10 @@ class TagsController extends Controller
 
     /**
      * Deletes a Tags entity.
-     *
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
     public function deleteAction(Request $request, $id)
     {
@@ -215,9 +242,7 @@ class TagsController extends Controller
 
     /**
      * Creates a form to delete a Tags entity by id.
-     *
      * @param mixed $id The entity id
-     *
      * @return \Symfony\Component\Form\Form The form
      */
     private function createDeleteForm($id)

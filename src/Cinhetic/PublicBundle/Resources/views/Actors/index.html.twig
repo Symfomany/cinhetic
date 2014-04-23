@@ -2,7 +2,7 @@
 
 
 {% block content %}
-    <h1> <i class="glyphicon glyphicon-user"></i> Liste des acteurs [{{ entities|length }}]</h1>
+    <h1> <i class="glyphicon glyphicon-user"></i> Liste des Acteurs [{{ entities|length }}]</h1>
     <hr />
 
     <table class="records_list  table table-striped">
@@ -12,8 +12,8 @@
                 <th>Nom</th>
                 <th>Ville</th>
                 <th>Biographie</th>
-                <th style="width:85px">Création</th>
-                <th style="width:86px">Nb de films</th>
+                <th>Création</th>
+                <th style="width:7%">Nb de films</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -26,13 +26,9 @@
                 <td>{{ entity.biography|raw|truncate(200,true,'...') }}</td>
                 <td><small>{% if entity.dateCreated %}{{ entity.dateCreated|date('Y-m-d') }}{% endif %}</small></td>
                 <td><p class="text-center">{{ entity.movies|length|default('0') }} <i class="glyphicon glyphicon-download-alt"></i></p></td>
-
                 <td>
-
-                        <a  href="{{ path('actors_show', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-search"></i> Voir</a>
-
-                        <a  href="{{ path('actors_edit', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-pencil"></i> Editer</a>
-
+                        <a  class="btn btn-primary btn-sm" href="{{ path('actors_show', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-search"></i> Voir</a>
+                        <a  class="btn btn-warning btn-sm" href="{{ path('actors_edit', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-pencil"></i> Editer</a>
                 </td>
             </tr>
         {% endfor %}

@@ -22,9 +22,9 @@
                 <td class="text-success">{{ entity.movies|length|default("0") }}</td>
                 <td>
 
-                        <a href="{{ path('categories_show', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-search"></i> Voir</a>
+                        <a class="btn btn-primary btn-sm" href="{{ path('categories_show', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-search"></i> Voir</a>
 
-                        <a href="{{ path('categories_edit', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-pencil"></i> Editer</a>
+                        <a class="btn btn-warning btn-sm" href="{{ path('categories_edit', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-pencil"></i> Editer</a>
 
                 </td>
             </tr>

@@ -10,15 +10,16 @@ use Cinhetic\PublicBundle\Entity\Comments;
 use Cinhetic\PublicBundle\Form\CommentsType;
 
 /**
- * Comments controller.
- *
+ * Class CommentsController
+ * @package Cinhetic\PublicBundle\Controller
  */
 class CommentsController extends Controller
 {
 
+
     /**
      * Lists all Comments entities.
-     *
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function indexAction()
     {
@@ -32,9 +33,11 @@ class CommentsController extends Controller
     }
 
 
+
     /**
      * Creates a new Comments entity.
-     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function createAction(Request $request)
     {
@@ -58,9 +61,7 @@ class CommentsController extends Controller
 
     /**
     * Creates a form to create a Comments entity.
-    *
     * @param Comments $entity The entity
-    *
     * @return \Symfony\Component\Form\Form The form
     */
     private function createCreateForm(Comments $entity)
@@ -75,9 +76,10 @@ class CommentsController extends Controller
         return $form;
     }
 
+
     /**
      * Displays a form to create a new Comments entity.
-     *
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function newAction()
     {
@@ -90,9 +92,13 @@ class CommentsController extends Controller
         ));
     }
 
+
     /**
      * Displays a form to create a new Comments entity.
-     *
+     * @param Request $request
+     * @param null $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
     public function commentMovieAction(Request $request, $id = null)
     {
@@ -115,7 +121,7 @@ class CommentsController extends Controller
             if (!$movie) {
                 throw $this->createNotFoundException('Unable to find Movies entity.');
             }
-            //facultatif pour ceux qui utilise FOSUserBundle et la sécurité
+
             $user = $this->getUser();
 
             $content = $form['content']->getData();
@@ -143,9 +149,12 @@ class CommentsController extends Controller
         ));
     }
 
+
     /**
      * Finds and displays a Comments entity.
-     *
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
     public function showAction($id)
     {
@@ -164,9 +173,12 @@ class CommentsController extends Controller
             'delete_form' => $deleteForm->createView(),        ));
     }
 
+
     /**
      * Displays a form to edit an existing Comments entity.
-     *
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
     public function editAction($id)
     {
@@ -190,25 +202,28 @@ class CommentsController extends Controller
 
     /**
     * Creates a form to edit a Comments entity.
-    *
     * @param Comments $entity The entity
-    *
     * @return \Symfony\Component\Form\Form The form
     */
     private function createEditForm(Comments $entity)
     {
         $form = $this->createForm(new CommentsType(), $entity, array(
             'action' => $this->generateUrl('comments_update', array('id' => $entity->getId())),
-            'method' => 'PUT',
+            'method' => 'POST',
         ));
 
         $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning"), 'label' => 'Modifier ce cinéma'));
 
         return $form;
     }
+
+
     /**
      * Edits an existing Comments entity.
-     *
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
     public function updateAction(Request $request, $id)
     {
@@ -236,9 +251,13 @@ class CommentsController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
+
     /**
      * Deletes a Comments entity.
-     *
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
     public function deleteAction(Request $request, $id)
     {
@@ -262,9 +281,7 @@ class CommentsController extends Controller
 
     /**
      * Creates a form to delete a Comments entity by id.
-     *
      * @param mixed $id The entity id
-     *
      * @return \Symfony\Component\Form\Form The form
      */
     private function createDeleteForm($id)

@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h1>Film {{ entity.originalTitle }}</h1>
+<h1>Film {{ entity.originalTitle|convert_encoding('UTF-8', 'iso-8859-1') }}</h1>
 <hr />
 <br />
 
@@ -14,21 +14,21 @@
                     </a>
                 </div>
                 <div class="col-md-8">
-                    <h3><a href="{{ path('apis_show', {'code' : entity.code }) }}">{% if entity.originalTitle is defined %}{{ entity.originalTitle }}{% endif %}</a></h3>
-                    <p><small><i class="glyphicon glyphicon-tags"></i>{% if entity.keywords is defined %} Mots-clefs: {{ entity.keywords }}{% endif %}</small></p>
+                    <h3><a href="{{ path('apis_show', {'code' : entity.code }) }}">{% if entity.originalTitle is defined %}{{ entity.originalTitle|convert_encoding('UTF-8', 'iso-8859-1') }}{% endif %}</a></h3>
+                    <p><small><i class="glyphicon glyphicon-tags"></i>{% if entity.keywords is defined %} Mots-clefs: {{ entity.keywords|convert_encoding('UTF-8', 'iso-8859-1') }}{% endif %}</small></p>
                     <p>{% if entity.productionYear is defined %} Année: <i>{{ entity.productionYear }}</i>{% endif %}</p>
                     <p>{% if entity.releaseDate is defined %}<i class="glyphicon glyphicon-calendar"></i>  Date de sortie: {{ entity.releaseDate }}{% endif %}</p>
                     <p>{% if entity.nationality is defined %}Nationalités:
 
                             {% for nationalite in entity.nationality  %}
-                                <span class="label label-primary">{{ nationalite[0] }}</span>
+                                <span class="label label-primary">{{ nationalite[0]|convert_encoding('UTF-8', 'iso-8859-1') }}</span>
                             {% endfor %}
 
                         {% endif %}</p>
                     <p>
                         {% if entity.genre is defined %}Genre:
                             {% for genre in entity.genre  %}
-                                <span class="label label-default"><i class="glyphicon glyphicon-list-alt"></i> {{ genre[0] }}</span>
+                                <span class="label label-default"><i class="glyphicon glyphicon-list-alt"></i> {{ genre[0]|convert_encoding('UTF-8', 'iso-8859-1') }}</span>
                             {% endfor %}
                         {% endif %}
                     </p>
@@ -39,44 +39,55 @@
                             <li>Date de sortie: {{ release.releaseDate }}</li>
                             <ul>
                                 {% for country in release.country  %}
-                                    <li>Pays: {{ country[0] }}</li>
+                                    <li>Pays: {{ country[0]|convert_encoding('UTF-8', 'iso-8859-1') }}</li>
                                 {% endfor  %}
                                 {% for releaseState in release.releaseState  %}
-                                    <li>Sortie: {{ releaseState[0] }}</li>
+                                    <li>Sortie: {{ releaseState[0]|convert_encoding('UTF-8', 'iso-8859-1') }}</li>
                                 {% endfor  %}
                                 {% for distributor in release.distributor  %}
-                                    <li>Distributeur: {{ distributor.name }}</li>
+                                    <li>Distributeur: {{ distributor.name|convert_encoding('UTF-8', 'iso-8859-1') }}</li>
                                 {% endfor  %}
                             </ul>
                         {% endfor %}
                     </ul>
                     {% endif %}
                     </p>
-                    <p>{% if entity.directors is defined %} Réalisateur: {{ entity.directors }}{% endif %}</p>
-                    <p>{% if entity.actors is defined %} Acteurs: {{ entity.actors }}{% endif %}</p>
-                    <h4>Liens</h4>
-                    <div class="row">
-                        {% for link in entity.link  %}
-                            <div class="col-md-2 label"><a href="{{ link.href }}" ><i class="glyphicon glyphicon-link"></i> {{ link.name }}</a></div>
-                        {% endfor  %}
-                    </div>
-                    <h4>Statistiques</h4>
-                    <p>Nombre de commentaire: {{ entity.statistics.commentCount }} commentaires</p>
-                    <p>Nombre de vues sur photos: {{ entity.statistics.photoCount }} nb de vues de photos</p>
-                    <p>Nombre de vues sur videos: {{ entity.statistics.videoCount }}nb de vues de vidéos</p>
+                    <p>{% if entity.directors is defined %} Réalisateur: {{ entity.directors|convert_encoding('UTF-8', 'iso-8859-1') }}{% endif %}</p>
+                    <p>{% if entity.actors is defined %} Acteurs: {{ entity.actors|convert_encoding('UTF-8', 'iso-8859-1') }}{% endif %}</p>
+                    {% if entity.link is defined %}
+                        <h4>Liens</h4>
+                            <div class="row">
+                                {% for link in entity.link  %}
+                                    <div class="col-md-4 label"><a href="{{ link.href }}" ><i class="glyphicon glyphicon-link"></i> {{ link.name|convert_encoding('UTF-8', 'iso-8859-1') }}</a></div>
+                                {% endfor  %}
+                            </div>
+                    {% endif  %}
+
+                    {% if entity.statistics is defined %}
+                        <h4>Statistiques</h4>
+                        {% if entity.statistics.commentCount is defined %}
+                            <p>Nombre de commentaire: {{ entity.statistics.commentCount }} commentaires</p>
+                        {% endif %}
+                        <p>Nombre de vues sur photos: {{ entity.statistics.photoCount }} nb de vues de photos</p>
+                        <p>Nombre de vues sur videos: {{ entity.statistics.videoCount }}nb de vues de vidéos</p>
+                    {% endif %}
                     <hr />
-                    <h4>Actualités</h4>
-                    {% for news in entity.news  %}
-                        <div class="alert alert-block alert-error">{{ news.title }}<br />
-                            <img src="{{ news.picture.href }}" class="img-thumbnail" />
-                        </div>
-                    {% endfor  %}
+                    {% if entity.news is defined %}
+                        <h4>Actualités</h4>
+                        {% for news in entity.news  %}
+                            <div class="alert alert-block alert-error">{{ news.title|convert_encoding('UTF-8', 'iso-8859-1') }}<br />
+                                {% if news.picture is defined %}
+                                    <img src="{{ news.picture.href }}" class="img-thumbnail" />
+                                {% endif %}
+                            </div>
+                        {% endfor  %}
+                    {% endif  %}
                     <hr />
                     <h4>Casting</h4>
                     <ul>
                         {% for casting in entity.castingShort  %}
-                            <li>Résalisateurs: {{ casting.directors }}</li>
-                            <li>Acteurs: {{ casting.actors }}</li>
+                            <li>Résalisateurs: {{ casting.directors|convert_encoding('UTF-8', 'iso-8859-1') }}</li>
+                            <li>Acteurs: {{ casting.actors|convert_encoding('UTF-8', 'iso-8859-1') }}</li>
                             {% if casting.actors is defined %}
                         <a class="fancybox" href="{{ casting.picture.href }}">
                             <img src="{{ casting.picture.href }}" class="img-thumbnail" />
@@ -87,8 +98,8 @@
                     <div class="row">
                         {% for casting in entity.castMember  %}
                             <div class="col-md-3">
-                                Acteur: <a href="{{ path('apis_actor', {'code' : casting.person.code}) }}">{{ casting.person.name }}</a>
-                                - <i>{{ casting.activity[0] }}</i> <br />
+                                Acteur: <a href="{{ path('apis_actor', {'code' : casting.person.code}) }}">{{ casting.person.name|convert_encoding('UTF-8', 'iso-8859-1') }}</a>
+                                - <i>{{ casting.activity[0]|convert_encoding('UTF-8', 'iso-8859-1') }}</i> <br />
                                 {% if casting.picture.href is defined %}
                                     <a href="{{ path('apis_actor', {'code' : casting.person.code}) }}">
                                         <img src="{{ casting.picture.href }}" class="img-thumbnail" />
@@ -98,7 +109,7 @@
                         {% endfor  %}
                     </div>
                     <hr />
-                    <p>{% if entity.synopsis is defined %}<i class="glyphicon glyphicon-list-alt"></i>  Synopsis: {{ entity.synopsis|raw }}{% endif %}</p>
+                    <p>{% if entity.synopsis is defined %}<i class="glyphicon glyphicon-list-alt"></i>  Synopsis: {{ entity.synopsis|convert_encoding('UTF-8', 'iso-8859-1')|raw }}{% endif %}</p>
                     <p>{% if entity.trailerEmbed is defined %} <div class="alert alert-block col-md-offset-3">{{ entity.trailerEmbed|raw }}</div>{% endif %}</p>
                 </div>
             </div>

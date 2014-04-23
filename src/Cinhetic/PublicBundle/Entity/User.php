@@ -16,6 +16,7 @@ use FOS\UserBundle\Model\User as BaseUser;
 class User extends BaseUser
 {
     /**
+     * @var $id
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -85,8 +86,9 @@ class User extends BaseUser
     private $favorites;
 
 
-
-
+    /**
+     *
+     */
     public function __construct()
     {
         parent::__construct();
@@ -346,6 +348,43 @@ class User extends BaseUser
     public function getFavorites()
     {
         return $this->favorites;
+    }
+
+
+    /**
+     * Get Department of user
+     * @return string
+     */
+    public function getDepartement(){
+        return substr($this->zipcode,0,2);
+    }
+
+    /**
+     * Get age of user
+     * @return null|string
+     */
+    public function getAge()
+    {
+        if ($dob = $this->getDob()) {
+            $now = new \Datetime('now');
+            $today['month'] = $now->format('m');
+            $today['day'] = $now->format('d');
+            $today['year'] = $now->format('Y');
+
+            $years = $today['year'] - $dob->format('Y');
+
+            if ($today['month'] <= $dob->format('m')) {
+                if ($dob->format('m') == $today['month']) {
+                    if ($dob->format('d') > $today['day'])
+                        $years--;
+                } else
+                    $years--;
+            }
+
+            return $years;
+        }
+
+        return null;
     }
 
 

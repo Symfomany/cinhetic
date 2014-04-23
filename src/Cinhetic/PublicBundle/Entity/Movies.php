@@ -2,6 +2,7 @@
 
 namespace Cinhetic\PublicBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -9,10 +10,10 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Movies
- *
  * @ORM\Table(name="movies")
  * @ORM\Entity(repositoryClass="Cinhetic\PublicBundle\Repository\MoviesRepository")
  * @UniqueEntity(fields="title", message="Le titre est deja pris!")
+ * @ORM\HasLifecycleCallbacks
  */
 class Movies
 {
@@ -28,6 +29,7 @@ class Movies
     /**
      * @var string
      * @Assert\NotBlank()
+     * @Assert\Choice(choices = {"Long-Metrage", "Moyen-Metrage", "Court-Metrage"}, message = "Choisissez une nature valide.")
      * @ORM\Column(name="type_film", type="string", length=250, nullable=true)
      */
     private $typeFilm;
@@ -35,6 +37,12 @@ class Movies
     /**
      * @var string
      * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = "15",
+     *      max = "500",
+     *      minMessage = "Votre titre doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre titre ne peut pas être plus long que {{ limit }} caractères"
+     * )
      * @ORM\Column(name="title", type="string", length=250, nullable=true)
      */
     private $title;
@@ -44,7 +52,7 @@ class Movies
      * @Assert\NotBlank()
      * @Assert\Length(
      *      min = "10",
-     *      max = "150",
+     *      max = "5500",
      *      minMessage = "Votre synopsis doit faire au moins {{ limit }} caractères",
      *      maxMessage = "Votre synopsis ne peut pas être plus long que {{ limit }} caractères"
      * )
@@ -57,7 +65,7 @@ class Movies
      * @Assert\NotBlank()
      * @Assert\Length(
      *      min = "20",
-     *      max = "1050",
+     *      max = "9050",
      *      minMessage = "Votre description doit faire au moins {{ limit }} caractères",
      *      maxMessage = "Votre description ne peut pas être plus long que {{ limit }} caractères"
      * )
@@ -92,6 +100,7 @@ class Movies
     /**
      * @var string
      * @Assert\NotBlank()
+     * @Assert\Choice(choices = {"Warner_Bros", "Paramont", "HBO", "TwentiethCenturyFox", "UniversalPicturesGroup", "ColumbiaPictures", "WaltDisney", "MarvelEntertainment", "Lucasfilm"}, message = "Choisissez un distributeur valide.")
      * @ORM\Column(name="distributeur", type="string", length=250, nullable=true)
      */
     private $distributeur;
@@ -99,6 +108,7 @@ class Movies
     /**
      * @var string
      * @Assert\NotBlank()
+     * @Assert\Choice(choices = {"VO", "VOST", "VOFR"}, message = "Choisissez une bo valide.")
      * @ORM\Column(name="bo", type="string", length=250, nullable=true)
      */
     private $bo;
@@ -201,16 +211,9 @@ class Movies
 
     /**
      * @var \Doctrine\Common\Collections\Collection
-     * @ORM\ManyToMany(targetEntity="Medias", inversedBy="movies")
-     * @ORM\JoinTable(name="medias_movies",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="movies_id", referencedColumnName="id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="medias_id", referencedColumnName="id")
-     *   }
-     * )
-     *     */
+     * @Assert\Valid
+     * @ORM\OneToMany(targetEntity="Medias", mappedBy="movies", cascade={"all"})
+     */
     private $medias;
 
     /**
@@ -218,7 +221,6 @@ class Movies
      * @ORM\OneToMany(targetEntity="Comments", mappedBy="movie")
      */
     private $comments;
-
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -256,6 +258,29 @@ class Movies
      * )
      */
     private $tags;
+
+
+    /**
+     * @ORM\Column(name="image", type="string", length=250, nullable=true)
+     */
+    private $image;
+
+    /**
+     * @Assert\Image(
+     *     minWidth = 200,
+     *     minHeight  = 100,
+     *     maxWidth = 3000,
+     *     maxHeight = 3000,
+     *     maxSize = "6000k",
+     *     mimeTypes = {"image/jpg","image/jpeg", "image/png", "image/gif", "image/bmp"},
+     *     mimeTypesMessage = "Image au format non supporté",
+     *    maxWidthMessage = "Image trop grande en largeur {{ width }}px. Le maximum en largeur est de {{ max_width }}px" ,
+     *    minWidthMessage = "Image trop petite en largeur {{ width }}px. Le minimum en largeur est de {{ min_width }}px" ,
+     *    minHeightMessage = "Image trop petite en hauteur {{ height }}px. Le mimum en hauteur est de {{ min_height }}px" ,
+     *    maxHeightMessage = "Image trop grande en hauteur  {{ height }}px. Le maximum en hauteur est de {{ max_height }}px"
+     * )
+     */
+    public $file;
 
     /**
      * Constructor
@@ -630,6 +655,7 @@ class Movies
         return $this->cover;
     }
 
+
     /**
      * Set dateCreated
      *
@@ -732,6 +758,7 @@ class Movies
         return $this;
     }
 
+
     /**
      * Remove directors
      *
@@ -761,6 +788,7 @@ class Movies
     public function addMedia(\Cinhetic\PublicBundle\Entity\Medias $medias)
     {
         $this->medias[] = $medias;
+        $medias->setMovies($this);
 
         return $this;
     }
@@ -796,11 +824,22 @@ class Movies
         return $this->medias;
     }
 
+
+    /**
+     * Set medias
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function setMedias(\Cinhetic\PublicBundle\Entity\Medias $medias)
+    {
+        $this->medias = $medias;
+
+        return $this;
+    }
+
     /**
      * Add movies
-     *
-     * @param \Cinhetic\PublicBundle\Entity\Movies $movies
-     * @return Movies
+     * @param Movies $movies
+     * @return $this
      */
     public function addMovie(\Cinhetic\PublicBundle\Entity\Movies $movies)
     {
@@ -948,5 +987,118 @@ class Movies
     public function getComments()
     {
         return $this->comments;
+    }
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     * @return Movies
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string 
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+
+    /**
+     * Absolute Path
+     * @return null|string
+     */
+    public function getAbsolutePath()
+    {
+        return null === $this->image ? null : $this->getUploadRootDir().'/'.$this->image;
+    }
+
+    /**
+     * Web path
+     * @return null|string
+     */
+    public function getWebPath()
+    {
+        return null === $this->image ? null : $this->getUploadDir().'/'.$this->image;
+    }
+
+    /**
+     * Upload Path
+     * @return string
+     */
+    protected function getUploadRootDir()
+    {
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+
+    /**
+     * Upload dir
+     * @return string
+     */
+    protected function getUploadDir()
+    {
+        return 'uploads/movies';
+    }
+
+
+
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preUpload()
+    {
+        if (null !== $this->file) {
+            $this->image = $this->file->getClientOriginalName();
+        }
+    }
+
+
+    /**
+     * Upload action
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
+     */
+    public function upload()
+    {
+        if (null === $this->file){
+            return;
+        }
+        $this->image = $this->file->getClientOriginalName();
+        $extension = $this->file->guessExtension();
+
+        $this->file->move($this->getUploadRootDir(), $this->file->getClientOriginalName());
+        $path_parts = pathinfo($this->getAbsolutePath());
+
+        $imagine = new \Imagine\Gd\Imagine();
+        $imagine
+            ->open($this->getAbsolutePath())
+            ->thumbnail(new \Imagine\Image\Box(350, 160))
+            ->save(
+                $this->getUploadRootDir().'/' . $path_parts['filename'] . '-thumb.' . $extension,
+                array(
+                    'quality' => 80
+                )
+            );
+
+    }
+
+    /**
+     * @ORM\PostRemove()
+     */
+    public function removeUpload()
+    {
+        if ($file = $this->getAbsolutePath()) {
+            @unlink($file);
+        }
     }
 }

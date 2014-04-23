@@ -9,7 +9,10 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContext;
 
-
+/**
+ * Class MainController
+ * @package Cinhetic\PublicBundle\Controller
+ */
 class MainController extends Controller
 {
 
@@ -24,13 +27,49 @@ class MainController extends Controller
 
 
     /**
+     * Homepage Get Started
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function oneAction()
+    {
+        return $this->render('CinheticPublicBundle:Apprentissage:01.html.twig');
+    }
+
+
+    /**
+     * Apprentissage Get Started
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function apprentissageAction()
+    {
+        return $this->render('CinheticPublicBundle:Apprentissage:apprentissage.html.twig');
+    }
+
+
+    /**
      * Main Dashboard Homepage
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
+        $paybox = $this->get('lexik_paybox.request_handler');
+        $paybox->setParameters(array(
+            'PBX_CMD'          => 'CMD'.time(),
+            'PBX_DEVISE'       => '978',
+            'PBX_PORTEUR'      => 'test@paybox.com',
+            'PBX_RETOUR'       => 'Mt:M;Ref:R;Auto:A;Erreur:E',
+            'PBX_TOTAL'        => '1000',
+            'PBX_TYPEPAIEMENT' => 'CARTE',
+            'PBX_TYPECARTE'    => 'CB',
+            'PBX_EFFECTUE'     => $this->generateUrl('lexik_paybox_return', array('status' => 'success'), true),
+            'PBX_REFUSE'       => $this->generateUrl('lexik_paybox_return', array('status' => 'denied'), true),
+            'PBX_ANNULE'       => $this->generateUrl('lexik_paybox_return', array('status' => 'canceled'), true),
+            'PBX_RUF1'         => 'POST',
+            'PBX_REPONDRE_A'   => $this->generateUrl('lexik_paybox_ipn', array('time' => time()), true),
+        ));
 
+
+        $em = $this->getDoctrine()->getManager();
         $paginator = $this->get('knp_paginator'); //je mets en place la pagination
 
         $movies = $em->getRepository('CinheticPublicBundle:Movies')->getAllMovies();
@@ -45,13 +84,65 @@ class MainController extends Controller
             5
         );
 
+
         return $this->render('CinheticPublicBundle:Main:index.html.twig',  array(
             'movies' => $pagination,
             'cities' => $cities,
             'seances' => $seances,
             'categories' => $categories,
             'tags' => $tags,
+            'url'  => $paybox->getUrl(),
+            'form' => $paybox->getForm()->createView()
         ));
+    }
+
+    /**
+     * Sample action of a confirmation payment page on witch the user is sent
+     * after he seizes his payment informations on the Paybox's platform.
+     * This action must only containts presentation logic.
+     */
+    public function buildPayboxAction()
+    {
+        $status = $this->get('request')->query->get('status');
+        return $this->render(
+            'CinheticPublicBundle:Main:return.html.twig',
+            array(
+                'status'     => $status,
+            )
+        );
+    }
+
+    /**
+     * Sample action of a confirmation payment page on witch the user is sent
+     * after he seizes his payment informations on the Paybox's platform.
+     * This action must only containts presentation logic.
+     */
+    public function responsePayboxAction()
+    {
+
+        //messages flash se jouant qu'une seule fois
+        $this->get('session')->getFlashBag()->add(
+            'success',
+            'Votre commande de votre film a bien été prise en compte'
+        );
+
+        //redirections
+        return $this->redirect($this->generateUrl('Cinhetic_public_homepage'));
+    }
+
+    /**
+     * Sample action of a confirmation payment page on witch the user is sent
+     * after he seizes his payment informations on the Paybox's platform.
+     * This action must only containts presentation logic.
+     */
+    public function returnPayboxPayboxAction($time)
+    {
+        return $this->render(
+            'CinheticPublicBundle:Main:time.html.twig',
+            array(
+                'time'     => $time,
+            )
+        );
     }
 
     /**
@@ -76,9 +167,8 @@ class MainController extends Controller
      * Login Authentification
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function loginAction()
+    public function loginAction(Request $request)
     {
-        $request = $this->getRequest();
         $session = $request->getSession();
         if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {
             $error = $request->attributes->get(SecurityContext::AUTHENTICATION_ERROR);

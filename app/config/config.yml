@@ -91,19 +91,33 @@ doctrine:
         # path:     "%database_path%"
 
     orm:
-        auto_generate_proxy_classes: "%kernel.debug%"
-        auto_mapping: true
+        default_entity_manager: default
+        entity_managers:
+          default:
+            dql:
+             numeric_functions:
+                 dateformat: Cinhetic\PublicBundle\AST\Functions\DateFormat
+                 geo:  Cinhetic\PublicBundle\AST\Functions\Geo
+                 age:  Cinhetic\PublicBundle\AST\Functions\Age
+                 round:  Cinhetic\PublicBundle\AST\Functions\Round
+            connection: default
+            mappings:
+              CinheticPublicBundle : ~
+          site:
+            connection: default
+            mappings:
+              CinheticPublicBundle : ~
         # query_cache_driver:    apc
         # metadata_cache_driver: apc
         # result_cache_driver: apc
 
 # Swiftmailer Configuration
 swiftmailer:
-    transport: "%mailer_transport%"
-    host:      "%mailer_host%"
-    username:  "%mailer_user%"
-    password:  "%mailer_password%"
-    spool:     { type: memory }
+   transport: gmail
+   host:      smtp.gmail.com
+   username:  "%mailer_user%"
+   password:  "%mailer_password%"
+   spool:     { type: memory }
 
 
 #Fos User Bundle
@@ -202,4 +216,27 @@ knp_paginator:
     template:
         pagination: CinheticPublicBundle:Slots:pagination.html.twig     # sliding pagination controls template
 
+
+#Lexik Paybox
+lexik_paybox:
+    servers:
+      primary:
+        system_path: '/cgi/modulev500-RhE5-64bits.cgi'
+    parameters:
+        site:  '1999888'   # Site number provided by the bank
+        rank:  '32'        # Rank number provided by the bank
+        login: '110647233' # Customer's login provided by Paybox
+        hmac:
+            key: '0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF' # Key used to compute the hmac hash, provided by Paybox
+
+
+
+#Cinhetic Bundle
+cinhetic_public:
+  base_url: http://www.cinhetic.ju
+  nb_movies_per_page: 7
+  nb_categories_per_page: 5
+  nb_actors_per_page: 4
+  nb_directors_per_page: 4
+  nb_comments_per_page: 10
 

@@ -4,7 +4,6 @@ namespace Cinhetic\PublicBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 
 /**
@@ -27,29 +26,31 @@ class Medias
 
     /**
      * @var integer
-     *
+     * @Assert\Choice(choices = {"1", "2"}, message = "Choisissez une nature valide.")
      * @ORM\Column(name="nature", type="integer", nullable=true)
      */
     private $nature;
 
     /**
      * @var string
-     *
+     * @Assert\Url(message="La vidéo doit être une url")
      * @ORM\Column(name="picture", type="text", nullable=true)
      */
     private $picture;
 
     /**
      * @var string
-     *
+     * @Assert\Url(message="La vidéo doit être une url")
      * @ORM\Column(name="video", type="text", nullable=true)
      */
     private $video;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Movies", inversedBy="medias")
+     * @var \movies
+     * @ORM\ManyToOne(targetEntity="Movies", inversedBy="medias")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="movies_id", referencedColumnName="id")
+     * })
      */
     private $movies;
 
@@ -60,9 +61,17 @@ class Medias
     public function __construct()
     {
         $this->dateCreated = new \Datetime('now');
-
+        $this->movies = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+
+
+    /**
+     * @return int
+     */
+    public function __toString(){
+        return $this->video;
+    }
 
     /**
      * Get id
@@ -163,18 +172,11 @@ class Medias
     public function setMovies(\Cinhetic\PublicBundle\Entity\Movies $movies = null)
     {
         $this->movies = $movies;
+        $this->nature = 2;
 
         return $this;
     }
 
-
-
-    /**
-     * @return string
-     */
-    public function __toString(){
-        return $this->picture;
-    }
 
     /**
      * Add movies
@@ -185,7 +187,7 @@ class Medias
     public function addMovie(\Cinhetic\PublicBundle\Entity\Movies $movies)
     {
         $this->movies[] = $movies;
-
+        $this->nature = 2;
         return $this;
     }
 

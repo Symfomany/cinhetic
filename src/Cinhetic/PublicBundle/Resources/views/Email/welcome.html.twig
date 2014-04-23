@@ -1,0 +1,50 @@
+
+{% block body %}
+    {% include 'CinheticPublicBundle:Email:header.html.twig'  with { 'sujet' :  sujet , 'datas' : datas} %}
+    <h3>Cinhetic Project</h3>
+    <p>Welcome to the Cinhetic Project - a fully-functional application built in Symfony2 framework to learn this framework in 360° that you can use to handle cinematographic world!</p>
+    <p>Roadmap: Handle movies, categories of movies, tags of movies, actors, directors, cinemas, sessions, users, comments...</p>
+    <p>In some words: Minimalist features, Collaborative solution, Pragmatic and Responsive project
+    <h3>Capters covered</h3>
+    Installation & Configuration of Symfony2 Framework
+    Multi-syntax in Yaml, Xml, PHP
+    ClassLoader & PSR-0 & Composer Component
+    Installation third bundles like FOSUserBundle, KNPPaginator...
+    Routing layer
+    Doctrine ORM & DQL
+    Console CLI Generators & configuration
+    View: Twig Engine with inheritance, including, rendering, filters...
+    Controllers: CRUD, Bind with Form/Entity, Entity Manager, HTTP Methods, Request object, Flash Message, services, redirection/forward
+    Models: Annotations, Relationship (1:1;,1:n;n:m), Repositories, DQL
+    Form: Types of fields, Dependancies with Model, Validations
+    API Rest using Allocine V3 with Guzzle HTTP Framework
+    Add custom command with console component
+    Use SwiftMailer to send test email
+    <h3>Features</h3>
+    Search Engine Movies
+    Top Rated Movies
+    Page Movie with complete description
+    Visibility on Movies and cover action in homepage
+    Pagination for results with "KNPPaginatorBundles"
+    Datas Fixtures with "Doctrine Fixtures"
+    Homepage with custom template by Bootsrapp Twitter
+    Form & Repositories in services
+    Add authentification & firewall administration for user connected with "FOSUserBundle"
+    Rest API for Movies(CRUD) & Categories & Author & Directors with FOSRestBundle
+    Page Category to list all movies related
+    Page Tag to list movies related by keywords
+    Page My Account related my informations
+    View all comments by movies
+    Add favorites movies in session
+    Add optional node layers (socket.io) for comment
+    Categories & Tags in cloud keywords
+    Trailers of movies in slideshow
+    Search engine in elastic search engine
+    Comments by movies with forms
+    API Rest using Allocine V3 with Guzzle HTTP Framework
+    Ajax Search instant with Allocine API
+    </p>
+    <br/>
+    <br/>
+    {% include 'CinheticPublicBundle:Email:footer.html.twig'  with { 'base_img' :  base_img , 'datas' : datas} %}
+{% endblock %}

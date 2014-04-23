@@ -22,9 +22,9 @@
                 <td><a href="{{ path('movies_cities', {'ville': entity.ville }) }}"><span class="badge"> <i class="glyphicon glyphicon-map-marker"></i> {{ entity.ville }}</span></a></td>
                 <td>{{ entity.sessions|length|default('0') }} séances</td>
                 <td>
-                        <a href="{{ path('cinema_show', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-search"></i> Voir</a>
+                        <a class="btn btn-primary btn-sm" href="{{ path('cinema_show', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-search"></i> Voir</a>
 
-                        <a href="{{ path('cinema_edit', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-pencil"></i> Editer</a>
+                        <a class="btn btn-warning btn-sm" href="{{ path('cinema_edit', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-pencil"></i> Editer</a>
                 </td>
             </tr>
         {% endfor %}

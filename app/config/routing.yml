@@ -54,7 +54,9 @@ apprentissage_01:
     pattern:  /apprentissage/http-fondations-symfony2
     defaults: { _controller: CinheticPublicBundle:Main:one }
 
-
+# Lexik paybox
+lexik_paybox:
+    resource: '@LexikPayboxBundle/Resources/config/routing.yml'
 
 # Authentification
 fos_user_security_check:

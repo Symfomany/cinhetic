@@ -9,7 +9,10 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContext;
 
-
+/**
+ * Class LayoutController - Decorator of Layout
+ * @package Cinhetic\PublicBundle\Controller
+ */
 class LayoutController extends Controller
 {
 

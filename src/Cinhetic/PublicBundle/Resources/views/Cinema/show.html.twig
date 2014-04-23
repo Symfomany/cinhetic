@@ -93,9 +93,9 @@
                 <hr class="featurette-divider">
         {% endfor %}
 
-        <a class="btn" href="{{ path('cinema_edit', { 'id': entity.id }) }}">
+        <a class="btn btn-primary" href="{{ path('cinema_edit', { 'id': entity.id }) }}">
             Editer
         </a>
-        {{ form(delete_form) }}
+        {{ form(delete_form, {'attr' : {'style' : 'display:inline-block'} } ) }}
     </div>
 {% endblock %}

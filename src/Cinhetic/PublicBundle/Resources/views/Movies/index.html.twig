@@ -10,8 +10,8 @@
                 <th>Titre</th>
                 <th>Synopsis</th>
                 <th>Réalisateurs</th>
-                <th style="width:100px">Nb d'acteurs</th>
-                <th style="width:110px">Date de sortie</th>
+                <th>Nb d'acteurs</th>
+                <th>Date de sortie</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -28,7 +28,7 @@
                         </a>
                     {% endfor %}
                 </td>
-                <td><p class="text-center">{{ entity.actors|length|default('0') }} acteurs</p></td>
+                <td>{{ entity.actors|length|default('0') }} acteurs</td>
                 <td>{% if entity.dateRelease %}{{ entity.dateRelease|date('d/m/Y') }}{% endif %}</td>
                 <td>
                            <a class="btn btn-primary btn-sm"  href="{{ path('movies_show', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-search"></i> Voir</a>

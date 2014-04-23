@@ -1,4 +1,6 @@
 {% extends 'CinheticPublicBundle::layout.html.twig' %}
+{% import 'LexikPayboxBundle:Macro:paybox.html.twig' as paybox %}
+
 {% block javascripts %}
     {{ parent() }}
     <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap-carousel.min.js"></script>
@@ -6,13 +8,17 @@
 
 {% block content %}
 
-    {{ render(controller('CinheticPublicBundle:Movies:carousselMovies')) }}
+    {#{{ render(controller('CinheticPublicBundle:Movies:carousselMovies')) }}#}
 
+    <div class="row">
     <div class="btn-group">
         <h3><i class="glyphicon glyphicon-bookmark"></i> Les 5 Prochaines séances</h3>
         {% for entity in seances %}
-          <a class="btn btn-default" href="{{ path('movies_show', {'id' : entity.movies.id}) }}"> {{ entity.movies.title }} le  à {{ entity.cinema.title }} le {{ entity.dateSession|date('d/m/Y H:i') }}</a>
+          <div class="col-md-8">
+                <a class="btn btn-primary" href="{{ path('movies_show', {'id' : entity.movies.id}) }}"> {{ entity.movies.title }} le  à {{ entity.cinema.title }} le {{ entity.dateSession|date('d/m/Y H:i') }}</a>
+          </div>
         {% endfor %}
+    </div>
     </div>
 
     <div class="btn-group">

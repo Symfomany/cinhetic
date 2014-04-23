@@ -2,40 +2,23 @@
 
 
 {% block content %}
-    <h1>Réalisateur {{ entity.firstname }} {{ entity.lastname }}</h1>
 
-    <table class="record_properties">
-        <tbody>
-            <tr>
-                <th>Prénom</th>
-                <td>{{ entity.firstname }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ entity.lastname }}</td>
-            </tr>
-            <tr>
-                <th>Biographie</th>
-                <td>{{ entity.biography|raw }}</td>
-            </tr>
-            <tr>
-                <th>Note</th>
-                <td>{{ entity.note }}</td>
-            </tr>
-            <tr>
-                <th>Date de création</th>
-                <td>{{ entity.dateCreated|date('Y-m-d H:i:s') }}</td>
-            </tr>
-        </tbody>
-    </table>
-    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="featurette-heading" style="margin-left: 0;">{{ entity.firstname }} {{ entity.lastname }}</h2>
+            <p class="lead">{{ entity.biography|striptags|raw }}</p>
+        </div>
+    </div>
 
-    <h1>Films réalisés</h1>
+    <hr class="featurette-divider">
+
+    <h4>Films réalisés</h4>
     {% include 'CinheticPublicBundle:Movies:_list.html.twig' %}
-    <hr />
+    
+    <hr class="featurette-divider">
 
-    <a href="{{ path('directors_edit', { 'id': entity.id }) }}">
+    <a class="btn btn-primary" href="{{ path('directors_edit', { 'id': entity.id }) }}">
         Edit
     </a>
-    {{ form(delete_form) }}
+    {{ form(delete_form, {'attr' : {'style' : 'display:inline-block'} } ) }}
 {% endblock %}

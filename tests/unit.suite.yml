@@ -5,4 +5,8 @@
 
 class_name: CodeGuy
 modules:
-    enabled: [CodeHelper]
+  enabled: [CodeHelper, Symfony2]
+  config:
+        Symfony2:
+           app_path: 'app'
+           environment: 'test'
