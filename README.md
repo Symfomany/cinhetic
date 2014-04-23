@@ -314,6 +314,7 @@ Features
 * Ajax Search instant with Allocine API
 * Add Email Decorator in service
 * Semantic Configuration of Bundle
+* Test environment for Unit & Fct Test
 * Add Pre-Order for Movies in Paybox with LexikPayboxBundle
 * Embed form with Medias Videos use Essence for display
 * Webapp released on Google Play
