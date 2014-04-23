@@ -276,6 +276,7 @@ Chapters covered in project
 * Implement payment solution in bundle
 * Upload image in entity with Imagine library
 * Add Twig extensions
+* Custom AST walkers for Doctrine ORM
 * Embed form with Medias Videos for Movies (use Essence to display movies)
 
 
