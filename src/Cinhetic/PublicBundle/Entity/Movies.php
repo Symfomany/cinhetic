@@ -29,6 +29,7 @@ class Movies
     /**
      * @var string
      * @Assert\NotBlank()
+     * @Assert\Choice(choices = {"Long-Metrage", "Moyen-Metrage", "Court-Metrage"}, message = "Choisissez une nature valide.")
      * @ORM\Column(name="type_film", type="string", length=250, nullable=true)
      */
     private $typeFilm;
@@ -36,6 +37,12 @@ class Movies
     /**
      * @var string
      * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = "15",
+     *      max = "500",
+     *      minMessage = "Votre titre doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre titre ne peut pas être plus long que {{ limit }} caractères"
+     * )
      * @ORM\Column(name="title", type="string", length=250, nullable=true)
      */
     private $title;
@@ -93,6 +100,7 @@ class Movies
     /**
      * @var string
      * @Assert\NotBlank()
+     * @Assert\Choice(choices = {"Warner_Bros", "Paramont", "HBO", "TwentiethCenturyFox", "UniversalPicturesGroup", "ColumbiaPictures", "WaltDisney", "MarvelEntertainment", "Lucasfilm"}, message = "Choisissez un distributeur valide.")
      * @ORM\Column(name="distributeur", type="string", length=250, nullable=true)
      */
     private $distributeur;
@@ -100,6 +108,7 @@ class Movies
     /**
      * @var string
      * @Assert\NotBlank()
+     * @Assert\Choice(choices = {"VO", "VOST", "VOFR"}, message = "Choisissez une bo valide.")
      * @ORM\Column(name="bo", type="string", length=250, nullable=true)
      */
     private $bo;

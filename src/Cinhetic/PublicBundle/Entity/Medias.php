@@ -26,7 +26,7 @@ class Medias
 
     /**
      * @var integer
-     *
+     * @Assert\Choice(choices = {"1", "2"}, message = "Choisissez une nature valide.")
      * @ORM\Column(name="nature", type="integer", nullable=true)
      */
     private $nature;

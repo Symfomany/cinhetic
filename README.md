@@ -322,6 +322,7 @@ Features
 Evolution
 ----------------------------------
 * Mongo for notifications & private message
+* Store sessions in database
 * Node layer for notifications in real time
 * Form & Controllers & Repositories in services
 * Documentation by PHPDoc

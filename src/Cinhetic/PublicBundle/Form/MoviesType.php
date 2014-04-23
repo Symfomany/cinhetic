@@ -37,7 +37,7 @@ class MoviesType extends AbstractType
             ->add('distributeur', 'choice', array(
                 'label' => "Maison de production",
                 'choices'   => array(
-                    'Warner Bros' => 'Warner Bros',
+                    'Warner_Bros' => 'Warner Bros',
                     'Paramont' => 'Paramont',
                     'HBO' => 'HBO',
                     'TwentiethCenturyFox' => 'TwentiethCenturyFox',
