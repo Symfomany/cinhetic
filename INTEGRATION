@@ -8,7 +8,7 @@ UPGRADE
  * Page Cinema & Sessions interconnected with API Allocine
  * Add movies in session card since API movies
  * Add comments in ajax with added in list
- * Add lifecycle &  register Event Listeners and Subscribers for entities
+ * Add lifecycles &  register Event Listeners and Subscribers for entities
  * Add HTTP Cache in views from routing & controllers
  * Add movies in favorites with session & service
  * Page Author & Director
