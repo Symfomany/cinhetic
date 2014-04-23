@@ -268,6 +268,7 @@ Chapters covered in project
 * Use Assetic to handle ressources
 * Inheritance between bundles to override some behaviors
 * Override layout's form and his blocks
+* Expose a Semantic Configuration of Bundle
 * View: Twig Engine with inheritance, including, rendering, filters...
 * Controllers: CRUD, Bind with Form/Entity, Entity Manager, HTTP Methods, Request object, Flash Message, services, redirection/forward
 * Models: Annotations, Relationship (1:1;,1:n;n:m), Repositories, DQL
@@ -312,6 +313,7 @@ Features
 * API Rest using Allocine V3 with Guzzle HTTP Framework
 * Ajax Search instant with Allocine API
 * Add Email Decorator in service
+* Semantic Configuration of Bundle
 * Add Pre-Order for Movies in Paybox with LexikPayboxBundle
 * Embed form with Medias Videos use Essence for display
 * Webapp released on Google Play
