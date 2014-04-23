@@ -91,8 +91,22 @@ doctrine:
         # path:     "%database_path%"
 
     orm:
-        auto_generate_proxy_classes: "%kernel.debug%"
-        auto_mapping: true
+        default_entity_manager: default
+        entity_managers:
+          default:
+            dql:
+             numeric_functions:
+                 dateformat: Cinhetic\PublicBundle\AST\Functions\DateFormat
+                 geo:  Cinhetic\PublicBundle\AST\Functions\Geo
+                 age:  Cinhetic\PublicBundle\AST\Functions\Age
+                 round:  Cinhetic\PublicBundle\AST\Functions\Round
+            connection: default
+            mappings:
+              CinheticPublicBundle : ~
+          site:
+            connection: default
+            mappings:
+              CinheticPublicBundle : ~
         # query_cache_driver:    apc
         # metadata_cache_driver: apc
         # result_cache_driver: apc
