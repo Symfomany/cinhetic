@@ -12,8 +12,8 @@
                 <th>Nom</th>
                 <th>Ville</th>
                 <th>Biographie</th>
-                <th>Création</th>
-                <th>Nb de films</th>
+                <th style="width:85px">Création</th>
+                <th style="width:86px">Nb de films</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -25,7 +25,7 @@
                 <td><span class="text-danger">{{ entity.city }}</span></td>
                 <td>{{ entity.biography|raw|truncate(200,true,'...') }}</td>
                 <td><small>{% if entity.dateCreated %}{{ entity.dateCreated|date('Y-m-d') }}{% endif %}</small></td>
-                <td>{{ entity.movies|length|default('0') }} <i class="glyphicon glyphicon-download-alt"></i></td>
+                <td><p class="text-center">{{ entity.movies|length|default('0') }} <i class="glyphicon glyphicon-download-alt"></i></p></td>
 
                 <td>
 
