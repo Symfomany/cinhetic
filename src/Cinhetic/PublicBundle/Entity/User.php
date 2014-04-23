@@ -352,6 +352,43 @@ class User extends BaseUser
 
 
     /**
+     * Get Department of user
+     * @return string
+     */
+    public function getDepartement(){
+        return substr($this->zipcode,0,2);
+    }
+
+    /**
+     * Get age of user
+     * @return null|string
+     */
+    public function getAge()
+    {
+        if ($dob = $this->getDob()) {
+            $now = new \Datetime('now');
+            $today['month'] = $now->format('m');
+            $today['day'] = $now->format('d');
+            $today['year'] = $now->format('Y');
+
+            $years = $today['year'] - $dob->format('Y');
+
+            if ($today['month'] <= $dob->format('m')) {
+                if ($dob->format('m') == $today['month']) {
+                    if ($dob->format('d') > $today['day'])
+                        $years--;
+                } else
+                    $years--;
+            }
+
+            return $years;
+        }
+
+        return null;
+    }
+
+
+    /**
      * @return string
      */
     public function __toString(){

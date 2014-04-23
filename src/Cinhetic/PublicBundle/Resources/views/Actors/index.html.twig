@@ -24,7 +24,7 @@
                 <td><a href="{{ path('actors_show', { 'id': entity.id }) }}">{{ entity.firstname }} {{ entity.lastname }}</a></td>
                 <td><span class="text-danger">{{ entity.city }}</span></td>
                 <td>{{ entity.biography|raw|truncate(200,true,'...') }}</td>
-                <td><small>{% if entity.dateCreated %}{{ entity.dateCreated|date('Y-m-d') }}{% endif %}</small></td>
+                <td><small>{% if entity.dateCreated %}{{ entity.dateCreated|ago }}{% endif %}</small></td>
                 <td>{{ entity.movies|length|default('0') }} <i class="glyphicon glyphicon-download-alt"></i></td>
 
                 <td>
