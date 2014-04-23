@@ -228,3 +228,15 @@ lexik_paybox:
         login: '110647233' # Customer's login provided by Paybox
         hmac:
             key: '0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF' # Key used to compute the hmac hash, provided by Paybox
+
+
+
+#Cinhetic Bundle
+cinhetic_public:
+  base_url: http://www.cinhetic.ju
+  nb_movies_per_page: 7
+  nb_categories_per_page: 5
+  nb_actors_per_page: 4
+  nb_directors_per_page: 4
+  nb_comments_per_page: 10
+

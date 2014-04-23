@@ -205,8 +205,6 @@ class CinheticExtension extends \Twig_Extension
         return json_decode($val);
     }
 
-
-
     /**
      * Get name of my extension
      * @return string

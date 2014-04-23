@@ -263,7 +263,11 @@ Chapters covered in project
 * Routing layer
 * Doctrine ORM & DQL
 * Add Listener in security layer
+* Use configuration variables in YAML
 * Console CLI Generators & configuration
+* Use Assetic to handle ressources
+* Inheritance between bundles to override some behaviors
+* Override layout's form and his blocks
 * View: Twig Engine with inheritance, including, rendering, filters...
 * Controllers: CRUD, Bind with Form/Entity, Entity Manager, HTTP Methods, Request object, Flash Message, services, redirection/forward
 * Models: Annotations, Relationship (1:1;,1:n;n:m), Repositories, DQL
@@ -275,6 +279,7 @@ Chapters covered in project
 * Add service with Service Container
 * Implement payment solution in bundle
 * Upload image in entity with Imagine library
+* Use global variables in twig
 * Add Twig extensions
 * Custom AST walkers for Doctrine ORM
 * Embed form with Medias Videos for Movies (use Essence to display movies)

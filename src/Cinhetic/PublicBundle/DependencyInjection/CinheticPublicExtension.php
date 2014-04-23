@@ -8,9 +8,8 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
 
 /**
- * This is the class that loads and manages your bundle configuration
- *
- * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html}
+ * Class CinheticPublicExtension
+ * @package Cinhetic\PublicBundle\DependencyInjection
  */
 class CinheticPublicExtension extends Extension
 {
@@ -24,5 +23,14 @@ class CinheticPublicExtension extends Extension
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
+
+    }
+
+    /**
+     * @return string
+     */
+    public function getXsdValidationBasePath()
+    {
+        return __DIR__.'/../Resources/config/';
     }
 }

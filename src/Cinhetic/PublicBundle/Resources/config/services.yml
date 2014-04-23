@@ -12,6 +12,10 @@ parameters:
     cinhetic_public.handler_auth.class: Cinhetic\PublicBundle\Authentification\AuthentificationSiteHandler
     cinhetic_public.response_listener.class: Cinhetic\PublicBundle\Listener\IpnListener
 
+
+
+
+
 services:
 #    Form as Services
     cinhetic_public.form_actors:
@@ -73,6 +77,7 @@ services:
     cinhetic_public.email:
       class: %cinhetic_public.email.class%
       arguments: [@templating, @mailer]
+
 
     # Repositories as service
     cinhetic_public.repository.movies:

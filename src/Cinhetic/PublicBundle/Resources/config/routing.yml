@@ -53,7 +53,7 @@ CinheticPublicBundle_apis:
         resource: "@CinheticPublicBundle/Resources/config/routing/api.yml"
         prefix:   /apis
 
-# Api
+# Api of Paybox
 lexik_paybox_return:
     pattern:  /paybox-return
     defaults: { _controller: CinheticPublicBundle:Main:responsePaybox }
