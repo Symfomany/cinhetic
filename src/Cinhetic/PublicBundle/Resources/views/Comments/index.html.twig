@@ -22,9 +22,9 @@
                 <td><i>{{ entity.content }}</i></td>
                 <td><i class="glyphicon glyphicon-calendar"></i> {% if entity.dateCreated %}{{ entity.dateCreated|ago }}{% endif %}</td>
                 <td>
-                        <a href="{{ path('comments_show', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-search"></i> Voir</a>
+                        <a class="btn btn-primary btn-sm" href="{{ path('comments_show', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-search"></i> Voir</a>
 
-                        <a href="{{ path('comments_edit', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-pencil"></i> Editer</a>
+                        <a class="btn btn-warning btn-sm" href="{{ path('comments_edit', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-pencil"></i> Editer</a>
                 </td>
             </tr>
         {% endfor %}

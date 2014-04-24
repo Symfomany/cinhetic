@@ -1,59 +1,24 @@
 {% extends 'CinheticPublicBundle::layout.html.twig' %}
 
 {% block content %}
-    <h1>Fiche Acteur {{ entity.firstname|title}} {{ entity.lastname|title }}</h1>
 
-    <table class="record_properties">
-        <tbody>
-            <tr>
-                <th>Prénom</th>
-                <td>{{ entity.firstname }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ entity.lastname }}</td>
-            </tr>
-            <tr>
-                <th>Date de naissance</th>
-                <td>{{ entity.dob|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
-                <th>Ville</th>
-                <td>{{ entity.city }}</td>
-            </tr>
-            <tr>
-                <th>Nationalité</th>
-                <td>{{ entity.nationality|raw }}</td>
-            </tr>
-            <tr>
-                <th>Biographie</th>
-                <td>{{ entity.biography|raw }}</td>
-            </tr>
-            <tr>
-                <th>Roles</th>
-                <td>{{ entity.roles|raw }}</td>
-            </tr>
-            <tr>
-                <th>Récompenses et Awards</th>
-                <td>{{ entity.recompenses|raw }}</td>
-            </tr>
-            <tr>
-                <th>Création</th>
-                <td>{{ entity.dateCreated|ago }}</td>
-            </tr>
-            <tr>
-                <th>Nb de films</th>
-                <td>{{ entity.movies|length|default('0') }} <i class="glyphicon glyphicon-download-alt"></i></td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="featurette-heading" style="margin-left: 0;">{{ entity.firstname|title}} {{ entity.lastname|title }}</h2>
+            <p class="lead">{{ entity.biography|striptags|raw }}</p>
+            <p class="lead">Il est à ce jour {{ entity.roles|striptags|raw }}. Il a été récompensé de  {{ entity.recompenses|striptags|raw }} et à tourné dans plus de {{ entity.movies|length|default('0') }} films.</p>
+        </div>
+    </div>
 
-    <h1>Films joués</h1>
-        {% include 'CinheticPublicBundle:Movies:_list.html.twig' %}
-    <hr />
+    <hr class="featurette-divider">
 
-    <a class="btn" href="{{ path('actors_edit', { 'id': entity.id }) }}">
+    <h4>Films joués</h4>
+    {% include 'CinheticPublicBundle:Movies:_list.html.twig' %}
+    
+    <hr class="featurette-divider">
+
+    <a class="btn btn-primary" href="{{ path('actors_edit', { 'id': entity.id }) }}">
         Editer
     </a>
-    {{ form(delete_form) }}
+    {{ form(delete_form, {'attr' : {'style' : 'display:inline-block'} } ) }}
 {% endblock %}

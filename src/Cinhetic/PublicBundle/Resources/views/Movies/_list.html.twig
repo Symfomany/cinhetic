@@ -42,13 +42,13 @@
                         <div class="tab-content">
                             <div class="tab-pane active" id="detail">
 
-                                <p><i class="glyphicon glyphicon-flag"></i> Langue: <i>{{ entity.bo }}</i></p>
-                                <p class="text-danger"><i class="glyphicon glyphicon-thumbs-up"></i> Note: {{ entity.notePresse }}/5</p>
-                                <p class="text-warning"><i class="glyphicon glyphicon-usd"></i> Budget: {{ entity.budget }} <b>€</b></p>
-                                <small><i class="glyphicon glyphicon-time"></i> Date de sortie {{entity.dateRelease|date('d/m/Y')}} - {{ entity.annee|title }} </small>
-                                <small> Année{{entity.annee }}</small>
-                                <p class="well"><i class="glyphicon glyphicon-comment"></i> <b>Synopsis:</b> {{ entity.synopsis }}</p>
-                                <p><i class="glyphicon glyphicon-list-alt"></i> <b>Film:</b> {{ entity.description|truncate(600, true, '...') }} </p>
+                                <p><i class="glyphicon glyphicon-flag"></i> Langue : <i>{{ entity.bo }}</i></p>
+                                <p><i class="glyphicon glyphicon-thumbs-up"></i> Note : {{ entity.notePresse }}/5</p>
+                                <p><i class="glyphicon glyphicon-usd"></i> Budget : {{ entity.budget }} <b>€</b></p>
+                                <p><i class="glyphicon glyphicon-time"></i> Date de sortie : {{entity.dateRelease|date('d/m/Y')}} - {{ entity.annee|title }} </p>
+                                <p><span class="glyphicon glyphicon-calendar"></span> Année : {{entity.annee }}</p>
+                                <p><i class="glyphicon glyphicon-comment"></i> Synopsis : {{ entity.synopsis }}</p>
+                                <p><i class="glyphicon glyphicon-list-alt"></i> Film : {{ entity.description|truncate(600, true, '...') }} </p>
                                 <hr /><br />
                                 {% if entity.visible == "true" %}
                                     <div class="pull-right"><a class="btn btn-danger" href="{{ path('movies_activation', {'id' : entity.id,'activation' : "false"}) }}"><i class="glyphicon glyphicon-remove"></i> Desactiver</a></div>
@@ -76,36 +76,45 @@
                                 </div>
                             </div>
                             <div class="tab-pane" id="acteurs">
-                                <h3>Les acteurs</h3>
-                                {% for entity in entity.actors %}
-                                    <div class="well">
-                                        <a href="{{ path('actors_show', {'id' : entity.id}) }}">{{ entity.firstname|title }}
-                                            {{ entity.lastname|title }}</a>
+                                <div class="row">
+                                    <div class="col-md-11">
+                                        <h2 class="text-center">Les acteurs</h2>
+                                         {% for entity in entity.actors %}
+                                            <p class="text-center"><a href="{{ path('actors_show', {'id' : entity.id}) }}">{{ entity.firstname|title }}
+                                            {{ entity.lastname|title }}</a></p>
+                                        {% endfor %}
                                     </div>
-                                {% endfor %}
+                                </div>
                             </div>
                             <div class="tab-pane" id="realisateurs">
-                                <h3>Les réalisateurs</h3>
-                                {% for entity in entity.directors %}
-                                    <div class="well">
-                                        <a href="{{ path('directors_show', {'id' : entity.id}) }}">{{ entity.firstname|title }}
-                                            {{ entity.lastname|title }}</a>
+                                <div class="row">
+                                    <div class="col-md-11">
+                                        <h2 class="text-center">Les réalisateurs</h2>
+                                          {% for entity in entity.directors %}
+                                            <p class="text-center"><a href="{{ path('directors_show', {'id' : entity.id}) }}">{{ entity.firstname|title }}
+                                            {{ entity.lastname|title }}</a></p>
+                                        {% endfor %}
                                     </div>
-                                {% endfor %}
+                                </div>
                             </div>
-                            <div class="tab-pane" id="cinemas">
 
-                                <h3>Les cinémas qui le diffuse:</h3>
-                                {% for entity in entity.cinemas %}
-                                    <div class="well">
-                                        <a href="{{ path('cinema_show', {'id' : entity.id}) }}">{{ entity.title|title }} à
-                                            {{ entity.ville|title }}</a>
+                            <div class="tab-pane" id="cinemas">
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <h2 class="text-center">Les cinémas qui le diffuse</h2>
+                                          {% for entity in entity.cinemas %}
+                                            <p class="text-center"><a href="{{ path('cinema_show', {'id' : entity.id}) }}">{{ entity.title|title }} à
+                                            {{ entity.ville|title }}</a></p>
+                                        {% endfor %}
                                     </div>
-                                {% endfor %}
-                                <h3>Tags asssociés:</h3>
-                                {% for entity in entity.tags %}
-                                    <span class="label label-default"><a href="{{ path('tags_show', {'id' : entity.id}) }}">{{ entity.word }}</a> </span>
-                                {% endfor %}
+
+                                    <div class="col-md-5">
+                                        <h2 class="text-center">Tags asssociés</h2>
+                                          {% for entity in entity.tags %}
+                                            <p class="text-center"><a href="{{ path('tags_show', {'id' : entity.id}) }}">{{ entity.word }}</a></p>
+                                        {% endfor %}
+                                    </div>
+                                </div>
                             </div>
                             <div class="tab-pane" id="commentaires">
                                 {{ render(controller('CinheticPublicBundle:Comments:commentMovie', {'id' : entity.id})) }}

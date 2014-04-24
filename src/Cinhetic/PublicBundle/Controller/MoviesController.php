@@ -247,19 +247,8 @@ class MoviesController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
 
-        $cover = '';
-
-        foreach ($entity->getMedias() as $picture) {
-            if ($picture->getNature())
-            {
-                $cover = $picture->getPicture();
-                break;
-            }
-        }
-
         return $this->render('CinheticPublicBundle:Movies:show.html.twig', array(
             'entity'      => $entity,
-            'cover' => $cover,
             'delete_form' => $deleteForm->createView(),        ));
     }
 

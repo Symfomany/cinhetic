@@ -55,43 +55,47 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Cinema</h1>
+    <div class="well">
+        <h1>Cinema {{ entity.title }} {{ entity.ville }}</h1>
 
-    <table class="record_properties">
-        <tbody>
-            <tr>
-                <th>Nom du cinéma</th>
-                <td>{{ entity.title }}</td>
-            </tr>
-            <tr>
-                <th>Ville</th>
-                <td>{{ entity.ville }}</td>
-            </tr>
-        </tbody>
-    </table>
+        <div id="map_canvas"></div>
 
+        <h3>Les films à ce cinéma</h3>
+        <hr class="featurette-divider">
+        {% for movie in entity.movies %}
+            <div class="row featurette">
+                    <div class="col-md-5">
+                       <a href="{{ path('movies_show', { 'id': movie.id }) }}">
+                            {% if cover[movie.id] is defined %}
+                                <img class="featurette-image img-responsive" src="{{ cover[movie.id] }}">
+                            {% else %}
+                                <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="500x500" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MDAiIGhlaWdodD0iNTAwIj48cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iI2VlZSI+PC9yZWN0Pjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjI1MCIgeT0iMjUwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjMxcHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+NTAweDUwMDwvdGV4dD48L3N2Zz4=">
+                            {% endif %}
+                       </a>
+                    </div>
 
-    <div id="map_canvas"></div>
+                    <div class="col-md-7">
+                        <h2 class="featurette-heading">{{ movie.title|title }}</h2>
+                        <p class="lead">Séances :</ps>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <ul class="list-group">
+                                    {% for session in entity.sessions %}
+                                        {% if session.movies.id is sameas(movie.id) %}
+                                            <li class="list-group-item"><a href="{{ path('sessions_show', { 'id': session.id }) }}">{% if session.dateSession %}Le {{ session.dateSession|date('Y-m-d') }} à {{ session.dateSession|date('H:i') }}{% endif %}</a></li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="featurette-divider">
+        {% endfor %}
 
-    <h3>Les films à ce cinéma</h3>
-    {% for entity in entity.movies %}
-        <div class="alert alert-warning">
-            <a href="{{ path('movies_show', { 'id': entity.id }) }}">{{ entity.title|title }}</a>
-        </div>
-    {% endfor %}
-
-    <h3>Les séances de ce cinéma</h3>
-    {% for entity in entity.sessions %}
-        <div class="alert alert-warning">
-           <a href="{{ path('sessions_show', { 'id': entity.id }) }}">
-               {% if entity.dateSession %}Le {{ entity.dateSession|date('Y-m-d') }} à {{ entity.dateSession|date('H:i') }}{% endif %}
-                {{ entity.movies.title|title }}
-           </a>
-        </div>
-    {% endfor %}
-
-        <a class="btn" href="{{ path('cinema_edit', { 'id': entity.id }) }}">
+        <a class="btn btn-primary" href="{{ path('cinema_edit', { 'id': entity.id }) }}">
             Editer
         </a>
-    {{ form(delete_form) }}
+        {{ form(delete_form, {'attr' : {'style' : 'display:inline-block'} } ) }}
+    </div>
 {% endblock %}

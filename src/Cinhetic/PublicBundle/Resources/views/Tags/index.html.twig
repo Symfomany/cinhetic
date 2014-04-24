@@ -19,8 +19,8 @@
                 <td><i class="glyphicon glyphicon-tag"></i> {{ entity.word }}</td>
                 <td>
 
-                        <a href="{{ path('tags_show', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-search"></i> Voir</a>
-                        <a href="{{ path('tags_edit', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-pencil"></i> Editer</a>
+                        <a class="btn btn-primary btn-sm" href="{{ path('tags_show', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-search"></i> Voir</a>
+                        <a class="btn btn-warning btn-sm" href="{{ path('tags_edit', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-pencil"></i> Editer</a>
 
                 </td>
             </tr>
