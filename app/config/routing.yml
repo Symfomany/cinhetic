@@ -23,6 +23,14 @@ fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /change-password
 
+fos_facebook_channel:
+    resource: "@FOSFacebookBundle/Resources/config/routing.xml"
+
+_security_login:
+    pattern: /loginfb
+
+_security_check:
+    pattern: /loginfb_check
 
 # Override FOSUser
 CinheticPublicBundle_user:

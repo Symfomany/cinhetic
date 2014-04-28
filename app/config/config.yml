@@ -142,7 +142,12 @@ services:
        class: Twig_Extensions_Extension_Intl
        tags:
            - { name: twig.extension }
-
+    my.facebook.user:
+        class: Cinhetic\PublicBundle\Security\User\Provider\FacebookProvider
+        arguments:
+            facebook: "@fos_facebook.api"
+            userManager: "@fos_user.user_manager"
+            validator: "@validator"
 
 
 #Elastic Search
@@ -229,7 +234,13 @@ lexik_paybox:
         hmac:
             key: '0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF' # Key used to compute the hmac hash, provided by Paybox
 
-
+#Facebook Bundle
+fos_facebook:
+    alias:  facebook
+    app_id: 552592408160039
+    secret: befaf20ca0324ef67028b564463f4ccc
+    cookie: true
+    permissions: [email, user_birthday, user_location]
 
 #Cinhetic Bundle
 cinhetic_public:
