@@ -245,8 +245,7 @@ fos_facebook:
 
 #HWIOAuthBundle
 hwi_oauth:
-    # name of the firewall in which this bundle is active, this setting MUST be set
-    firewall_name: secured_area
+    firewall_name: facebook
     fosub:
       username_iterations: 30
       properties:

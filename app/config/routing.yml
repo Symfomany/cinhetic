@@ -57,15 +57,6 @@ apprentissage_01:
 lexik_paybox:
     resource: '@LexikPayboxBundle/Resources/config/routing.yml'
 
-# Authentification
-fos_user_security_check:
-    pattern:  /administration/login_check
-
-fos_user_security_logout:
-    pattern:  /administration/logout
-    defaults: { _controller: FOSUserBundle:Security:logout }
-
-
 #HWIOAuthBundle routes
 hwi_oauth_security:
     resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
@@ -81,3 +72,19 @@ hwi_oauth_redirect:
 
 facebook_login:
     pattern: /login/check-facebook
+
+facebook_logout:
+    pattern: /administration/logout
+    defaults: { _controller: FOSUserBundle:Main:logout }
+
+
+# Authentification
+fos_user_security_check:
+    pattern:  /administration/login_check
+    defaults: { _controller: FOSUserBundle:Security:login }
+
+fos_user_security_logout:
+    pattern:  /administration/logout
+    defaults: { _controller: FOSUserBundle:Main:logout }
+
+

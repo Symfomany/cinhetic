@@ -182,4 +182,15 @@ class MainController extends Controller
         ));
     }
 
+    /**
+     * Logout action
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function logoutAction() {
+
+        $this->get('security.context')->setToken(null);
+        $this->get('request')->getSession()->invalidate();
+        return $this->redirect($this->generateUrl('fos_user_security_login'));
+    }
+
 }
