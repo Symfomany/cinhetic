@@ -9,6 +9,7 @@ use FOS\UserBundle\FOSUserEvents;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use FOS\UserBundle\Controller\RegistrationController as BaseController;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class RegistrationController
@@ -21,7 +22,7 @@ class RegistrationController extends BaseController
      * Register an account
      * @return null|RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function registerAction()
+    public function registerAction(Request $request)
     {
         /** @var $formFactory \FOS\UserBundle\Form\Factory\FactoryInterface */
         $formFactory = $this->container->get('fos_user.registration.form.factory');
@@ -29,7 +30,6 @@ class RegistrationController extends BaseController
         $userManager = $this->container->get('fos_user.user_manager');
         /** @var $dispatcher \Symfony\Component\EventDispatcher\EventDispatcherInterface */
         $dispatcher = $this->container->get('event_dispatcher');
-        $request = $this->container->get('request');
 
         $user = $userManager->createUser();
         $user->setEnabled(true);

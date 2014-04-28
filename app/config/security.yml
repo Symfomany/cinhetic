@@ -9,20 +9,24 @@ security:
     providers:
       chain_provider:
         chain:
-          providers: [fos_userbundle, my_fos_facebook_provider]
+          providers: [fos_userbundle]
       fos_userbundle:
         id: fos_user.user_provider.username_email
-      my_fos_facebook_provider:
-        id: my.facebook.user
 
     firewalls:
         secured_area:
-          fos_facebook:
-              login_path: _security_login
-              check_path: _security_check
+            anonymous: ~
+            oauth:
+              resource_owners:
+                  facebook:           "/login/check-facebook"
+              login_path:        /login
+              use_forward:       false
+              failure_path:      /login
+              oauth_user_provider:
+                service: user_facebook.provider
         main:
           pattern:        ^/administration
-          anonymous:      true
+          anonymous: true
           form_login:
             success_handler:  cinhetic_public.handler_auth
             provider:               fos_userbundle

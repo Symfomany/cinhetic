@@ -27,6 +27,8 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Misd\GuzzleBundle\MisdGuzzleBundle(),
             new Lexik\Bundle\PayboxBundle\LexikPayboxBundle(),
+            new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
+
 
 
 //            Our Bundle

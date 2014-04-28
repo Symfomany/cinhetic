@@ -122,9 +122,9 @@ swiftmailer:
 
 #Fos User Bundle
 fos_user:
-   db_driver:     orm                        # Le type de BDD à utiliser, nous utilisons l'ORM Doctrine depuis le début
+   db_driver:     orm
    firewall_name: main
-   user_class:    Cinhetic\PublicBundle\Entity\User # La classe de l'entité User que nous utilisons
+   user_class:    Cinhetic\PublicBundle\Entity\User
 
 
 
@@ -237,10 +237,28 @@ lexik_paybox:
 #Facebook Bundle
 fos_facebook:
     alias:  facebook
-    app_id: 552592408160039
-    secret: befaf20ca0324ef67028b564463f4ccc
+    app_id: %api_facebook_id%
+    secret: %api_facebook_secret%
     cookie: true
     permissions: [email, user_birthday, user_location]
+
+
+#HWIOAuthBundle
+hwi_oauth:
+    # name of the firewall in which this bundle is active, this setting MUST be set
+    firewall_name: secured_area
+    fosub:
+      username_iterations: 30
+      properties:
+          # these properties will be used/redefined later in the custom FOSUBUserProvider service.
+          facebook: facebook_id
+    resource_owners:
+        facebook:
+            type:                facebook
+            client_id:           552592408160039
+            client_secret:       befaf20ca0324ef67028b564463f4ccc
+            options:
+                display: popup #dialog is optimized for popup window
 
 #Cinhetic Bundle
 cinhetic_public:

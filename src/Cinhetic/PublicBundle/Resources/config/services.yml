@@ -79,6 +79,12 @@ services:
       arguments: [@templating, @mailer]
 
 
+#     Facebook User Service
+    user_facebook.provider:
+      class: Cinhetic\PublicBundle\Security\User\Bridge\FOSUBUserProvider
+      arguments: [@fos_user.user_manager,{facebook: facebookId}]
+
+
     # Repositories as service
     cinhetic_public.repository.movies:
       class: Cinhetic\PublicBundle\Repository\MoviesRepository

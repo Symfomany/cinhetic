@@ -94,6 +94,14 @@ class User extends BaseUser
 
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="facebookAccessToken", type="string", length=255)
+     */
+    protected $facebookAccessToken;
+
+
+    /**
      *
      */
     public function __construct()
@@ -459,5 +467,28 @@ class User extends BaseUser
         if (isset($fbdata['email'])) {
             $this->setEmail($fbdata['email']);
         }
+    }
+
+    /**
+     * Set facebookAccessToken
+     *
+     * @param string $facebookAccessToken
+     * @return User
+     */
+    public function setFacebookAccessToken($facebookAccessToken)
+    {
+        $this->facebookAccessToken = $facebookAccessToken;
+
+        return $this;
+    }
+
+    /**
+     * Get facebookAccessToken
+     *
+     * @return string 
+     */
+    public function getFacebookAccessToken()
+    {
+        return $this->facebookAccessToken;
     }
 }

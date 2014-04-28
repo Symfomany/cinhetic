@@ -9,4 +9,6 @@ UPGRADE
 ### BDD
 * ALTER TABLE  `movies` ADD  `image` VARCHAR( 250 ) NULL AFTER  `description` ;
 * DROP TABLE `medias_movies`
-* ALTER TABLE  `medias` ADD  `movies_id` INT NOT NULL AFTER  `id` ;
+* ALTER TABLE  `user` ADD  `facebookId` VARCHAR(255) NOT NULL AFTER  `id` ;
+* ALTER TABLE  `user` ADD  `facebookAccessToken` VARCHAR(255) INT NOT NULL AFTER  `id` ;
+

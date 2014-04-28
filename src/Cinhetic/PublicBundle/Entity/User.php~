@@ -1,21 +1,22 @@
 <?php
 // src/Sdz/UserBundle/Entity/User.php
 
-namespace Ezap\PublicBundle\Entity;
+namespace Cinhetic\PublicBundle\Entity;
 
-use FOS\UserBundle\Entity\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
-use Ezap\ReceiptBundle\Entity\Receipt;
-
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use FOS\UserBundle\Model\User as BaseUser;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="user")
- * @ORM\Entity(repositoryClass="Ezap\PublicBundle\Repository\UserRepository")
+ * @ORM\Entity(repositoryClass="Cinhetic\PublicBundle\Repository\UserRepository")
  */
 class User extends BaseUser
 {
     /**
+     * @var $id
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -75,7 +76,7 @@ class User extends BaseUser
      * @ORM\ManyToMany(targetEntity="Movies")
      * @ORM\JoinTable(name="user_favoris",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="user_id", referencedColumnName="movies_id")
+     *     @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      *   },
      *   inverseJoinColumns={
      *     @ORM\JoinColumn(name="movies_id", referencedColumnName="id")
@@ -84,12 +85,31 @@ class User extends BaseUser
      */
     private $favorites;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="facebookId", type="string", length=255)
+     */
+    protected $facebookId;
 
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="facebookAccessToken", type="string", length=255)
+     */
+    protected $facebookAccessToken;
 
+
+    /**
+     *
+     */
     public function __construct()
     {
         parent::__construct();
+        $this->createdAt = new \Datetime('now');
+        $this->updatedAt = new \Datetime('now');
+
         // your own logic
     }
 
@@ -311,4 +331,141 @@ class User extends BaseUser
     }
 
 
+
+    /**
+     * Add favorites
+     *
+     * @param \Cinhetic\PublicBundle\Entity\Movies $favorites
+     * @return User
+     */
+    public function addFavorite(\Cinhetic\PublicBundle\Entity\Movies $favorites)
+    {
+        $this->favorites[] = $favorites;
+
+        return $this;
+    }
+
+    /**
+     * Remove favorites
+     *
+     * @param \Cinhetic\PublicBundle\Entity\Movies $favorites
+     */
+    public function removeFavorite(\Cinhetic\PublicBundle\Entity\Movies $favorites)
+    {
+        $this->favorites->removeElement($favorites);
+    }
+
+    /**
+     * Get favorites
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFavorites()
+    {
+        return $this->favorites;
+    }
+
+
+    /**
+     * Get Department of user
+     * @return string
+     */
+    public function getDepartement(){
+        return substr($this->zipcode,0,2);
+    }
+
+    /**
+     * Get age of user
+     * @return null|string
+     */
+    public function getAge()
+    {
+        if ($dob = $this->getDob()) {
+            $now = new \Datetime('now');
+            $today['month'] = $now->format('m');
+            $today['day'] = $now->format('d');
+            $today['year'] = $now->format('Y');
+
+            $years = $today['year'] - $dob->format('Y');
+
+            if ($today['month'] <= $dob->format('m')) {
+                if ($dob->format('m') == $today['month']) {
+                    if ($dob->format('d') > $today['day'])
+                        $years--;
+                } else
+                    $years--;
+            }
+
+            return $years;
+        }
+
+        return null;
+    }
+
+
+    /**
+     * @return string
+     */
+    public function __toString(){
+        return $this->email." ".$this->username;
+    }
+
+
+    /**
+     * Serialize an user object
+     * @return string
+     */
+    public function serialize()
+    {
+        return serialize(array($this->facebookId, parent::serialize()));
+    }
+
+    /**
+     * Deserialize an user object
+     * @param string $data
+     */
+    public function unserialize($data)
+    {
+        list($this->facebookId, $parentData) = unserialize($data);
+        parent::unserialize($parentData);
+    }
+
+
+    /**
+     * @param string $facebookId
+     * @return void
+     */
+    public function setFacebookId($facebookId)
+    {
+        $this->facebookId = $facebookId;
+        $this->setUsername($facebookId);
+    }
+
+    /**
+     * @return string
+     */
+    public function getFacebookId()
+    {
+        return $this->facebookId;
+    }
+
+    /**
+     * @param Array
+     */
+    public function setFBData($fbdata)
+    {
+        if (isset($fbdata['id'])) {
+            $this->setFacebookId($fbdata['id']);
+            $this->addRole('ROLE_FACEBOOK');
+        }
+        if (isset($fbdata['first_name'])) {
+            $this->setFirstname($fbdata['first_name']);
+        }
+        if (isset($fbdata['last_name'])) {
+            $this->setLastname($fbdata['last_name']);
+        }
+        if (isset($fbdata['email'])) {
+            $this->setEmail($fbdata['email']);
+        }
+    }
 }

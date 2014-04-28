@@ -23,14 +23,6 @@ fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /change-password
 
-fos_facebook_channel:
-    resource: "@FOSFacebookBundle/Resources/config/routing.xml"
-
-_security_login:
-    pattern: /loginfb
-
-_security_check:
-    pattern: /loginfb_check
 
 # Override FOSUser
 CinheticPublicBundle_user:
@@ -50,7 +42,6 @@ CinheticPublicBundle_profil_edit:
 homepage:
     pattern:  /
     defaults: { _controller: CinheticPublicBundle:Main:home }
-
 
 
 # Tutoriaux API
@@ -73,3 +64,20 @@ fos_user_security_check:
 fos_user_security_logout:
     pattern:  /administration/logout
     defaults: { _controller: FOSUserBundle:Security:logout }
+
+
+#HWIOAuthBundle routes
+hwi_oauth_security:
+    resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
+    prefix: /login
+
+hwi_oauth_connect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/connect.xml"
+    prefix: /login
+
+hwi_oauth_redirect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
+    prefix:   /login
+
+facebook_login:
+    pattern: /login/check-facebook
