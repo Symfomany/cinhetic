@@ -249,13 +249,12 @@ hwi_oauth:
     fosub:
       username_iterations: 30
       properties:
-          # these properties will be used/redefined later in the custom FOSUBUserProvider service.
           facebook: facebook_id
     resource_owners:
       facebook:
           type:                facebook
-          client_id:           552592408160039
-          client_secret:       befaf20ca0324ef67028b564463f4ccc
+          client_id:            %api_facebook_id%
+          client_secret:        %api_facebook_secret%
           options:
               display: popup #dialog is optimized for popup window
 

@@ -7,7 +7,7 @@
     {% endif %}
     <div class="btn-group">
         {% for owner in hwi_oauth_resource_owners() %}
-            <a target="_blank" class="btn btn-danger" href="{{ hwi_oauth_login_url(owner) }}">{{ owner | trans({}, 'HWIOAuthBundle') }}</a> <br />
+            <a class="btn btn-danger" href="{{ hwi_oauth_login_url(owner) }}">{{ owner | trans({}, 'HWIOAuthBundle') }}</a> <br />
         {% endfor %}
     </div>
 {% endblock hwi_oauth_content %}

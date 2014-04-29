@@ -18,15 +18,16 @@ security:
           anonymous: ~
           oauth:
             resource_owners:
-                facebook:           "/login/check-facebook"
+              facebook:           "/login/check-facebook"
             login_path:        /login
             use_forward:       false
             failure_path:      /login
+            success_handler:  cinhetic_public.handler_auth
             oauth_user_provider:
               service: user_facebook.provider
         main:
           pattern:        ^/administration
-          anonymous: true
+          security: true
           form_login:
             success_handler:  cinhetic_public.handler_auth
             provider:               fos_userbundle
