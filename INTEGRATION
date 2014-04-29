@@ -47,3 +47,130 @@ UPGRADE
  * Views & Controllers detectiond
  * Add notifictions & email sended
 
+
+
+
+### Apps Auth
+
+OAuth:
+
+Détenteur des données (Resource Owner) : vous
+Serveur de ressources (Resource Server) : un serveur Google
+Client (Client Application) : un site internet quelconque
+Serveur d’autorisation (Authorization Server) : un serveur Google
+Scénario :
+
+Un site internet quelconque souhaite accéder aux informations de votre profil Google.
+Vous êtes redirigé par le client (le site internet) vers le serveur d’autorisation (Google).
+Si vous autorisez l’accès, le serveur d’autorisation (Google) envoie un code d’autorisation au site internet.
+Ce code est échangé (entre le site internet et Google) par un token d’accès de façon transparente pour vous.
+Le site internet peut donc maintenant utiliser ce token d’accès pour accéder aux données de votre profil par le serveur de ressources (Google).
+
+-------------
+
+Quand utiliser ce type d’autorisation ?
+
+Avec ce type d’autorisation, les identifiants (et donc le mot de passe) sont envoyés au client et ensuite au serveur d’autorisation. Il est donc impératif qu’il y ait une confiance absolue entre ces 2 entités. Il est donc principalement utilisé lorsque le client a été développé par la même autorité que celle fournissant le serveur d’autorisation. On pourrait par exemple imaginer un site web example.com voulant accéder à des ressources protégées de son propre sous-domaine api.example.com. L’utilisateur ne serait donc pas surpris de renseigner son mot de passe sur le site example.com puisque son compte a été créé sur ce même site.
+
+Exemple :
+
+Détenteur des données (Resource Owner) : vous ayant un compte sur le site acme.com de la société Acme
+Serveur de ressources (Resource Server) : la société Acme exposant son API à api.acme.com
+Client (Client Application) : le site internet acme.com de la société Acme
+Serveur d’autorisation (Authorization Server) : un serveur de la société Acme
+Scénario :
+
+La société Acme fait les choses bien et a pensé à mettre à disposition à des applications tierces une API RESTful exposant tout plein de méthodes pratiques pour récupérer des données diverses et variées de ses utilisateurs.
+Cette société se dit qu’il serait pratique d’utiliser sa propre API pour éviter de réinventer la roue et de maintenir du code à plusieurs endroits.
+Elle a donc besoin d’un token d’accès pour appeler les méthodes de son API.
+Pour cela elle vous demande de renseigner vos identifiants de connexion via un formulaire HTML classique tel que vous le faites habituellement.
+L’application côté serveur (le site acme.com) va échanger vos identifiants contre un token d’accès auprès du serveur d’autorisation (si vos identifiants sont valides bien évidemment).
+L’application peut donc maintenant utiliser ce token d’accès auprès du serveur de ressources (api.acme.com).
+
+Amazon
+
+* Client Id: amzn1.application-oa2-client.0ff1bd1f94b24d158cc10d35a814ce87
+* Secret: a17483412878577bdc862e97996aa2422edcf0e4e23d81f6ef3071a9a1c2d296
+
+DISQUS
+
+* API key: yXIU8ivEjLCT51I28sA0gYW7HIRcBoUyMdj8hnHFSTlO3hogtE8DH6q2zbm4kjAe
+* Secret: jJplYD72oIDp0wUGUToLkGpZWNBgZuH56vgPKajMQWs7jVP29x7nybsl8N2QqRXg
+
+Dropbox:
+Client ID : aoq0ohucovdbkl3
+
+Flickr:
+Clé : 76afbde6f2e02921f30991c2789d84e5
+Secret: 642fcd882bae6ec9
+
+Github:
+Client ID
+d616a3183b8a888fc5b2
+Client Secret
+ba618f8086b8e9122447f7c7137c363eb0609d6c
+
+Google:
+driven-backbone-565
+Client ID	835100706812-ds2sssfhe98db41nv5rsrd15rgfc3ut4.apps.googleusercontent.com
+Client secret	uTxvyi_Je6bEKMhX3ZEvuxfq
+API key	AIzaSyCWhGHLYmEAdqSa1RNsEsO2A7AFwXCt7ug
+Referers	
+http://94.23.5.209/web/administration
+Activation date	Apr 29, 2014 3:32 AM
+
+Instagram
+CLIENT ID	de16e97bd56e413282924bc907b642fa
+CLIENT SECRET	ef1fcfbb46864d2db62da6853435b230
+WEBSITE URL	http://94.23.5.209/web
+REDIRECT URI	http://94.23.5.209/web
+
+
+Linkedin
+Entreprise :
+Cinhetic
+
+Nom de l'application :
+Cinhetic
+
+Clé API :
+759ytfqzaixtxo
+
+Clé secrète :
+mLsefActr5mB4wlK
+
+Token utilisateur OAuth :
+33bf8a8b-9b7e-4e79-84da-42a7a97fe42a
+
+Secret utilisateur OAuth :
+17b9f8de-a77d-40ad-a595-debe801c3659
+
+
+Twitter
+
+Application settings
+Keep the "API secret" a secret. This key should never be human-readable in your application.
+API key	LWKDRPmFymEBsGnyolmA
+API secret	dZfqT6cFM4kXun2KLMirwIvWmFSfQEhmdHkTlxqA0
+Access level	 Read-only (modify app permissions)
+Owner	Symfomany
+Owner ID	28117848
+
+Your access token
+This access token can be used to make API requests on your own account's behalf. Do not share your access token secret with anyone.
+Access token	28117848-WewxolTGfO10lh66A7fnLmfwSgybPmJXpuqbprcWR
+Access token secret	gxZ5lUkVlIljVwVJZXn0rnIDD1mGn8UZKQnpCVBRc
+Access level	Read-only
+Owner	Symfomany
+Owner ID	28117848
+
+Yahoo
+
+Consumer Key:
+Consumer Secret:
+Application URL:
+Callback Domain:
+dj0yJmk9R0JYUTdVWTFhTlB0JmQ9WVdrOVlVWkhaVGhyTkdFbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD04Nw--
+735aedcd49ab6af834129c05e2d811318f441434
+http://www.meetserious.com
+www.meetserious.com

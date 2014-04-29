@@ -252,12 +252,12 @@ hwi_oauth:
           # these properties will be used/redefined later in the custom FOSUBUserProvider service.
           facebook: facebook_id
     resource_owners:
-        facebook:
-            type:                facebook
-            client_id:           552592408160039
-            client_secret:       befaf20ca0324ef67028b564463f4ccc
-            options:
-                display: popup #dialog is optimized for popup window
+      facebook:
+          type:                facebook
+          client_id:           552592408160039
+          client_secret:       befaf20ca0324ef67028b564463f4ccc
+          options:
+              display: popup #dialog is optimized for popup window
 
 #Cinhetic Bundle
 cinhetic_public:

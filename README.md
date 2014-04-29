@@ -43,6 +43,7 @@ Requirements
 * PHPUnit ~ 3.7
 * Elastic Search running
 * PECL hash >= 1.1
+* Curl module enabled
 * Fileinfo module
 * openssl enabled
 
@@ -284,6 +285,8 @@ Chapters covered in project
 * Add Twig extensions
 * Custom AST walkers for Doctrine ORM
 * Embed form with Medias Videos for Movies (use Essence to display movies)
+* Add Provider & Bridges to firewall security & services
+* OAuth 2.0 protocol across social networks
 
 
 
@@ -318,6 +321,7 @@ Features
 * Add Pre-Order for Movies in Paybox with LexikPayboxBundle
 * Embed form with Medias Videos use Essence for display
 * Webapp released on Google Play
+* Cross connect via Oauth 2.0
 
 Evolution
 ----------------------------------
