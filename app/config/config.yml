@@ -142,12 +142,12 @@ services:
        class: Twig_Extensions_Extension_Intl
        tags:
            - { name: twig.extension }
-    my.facebook.user:
-        class: Cinhetic\PublicBundle\Security\User\Provider\FacebookProvider
-        arguments:
-            facebook: "@fos_facebook.api"
-            userManager: "@fos_user.user_manager"
-            validator: "@validator"
+#    my.facebook.user:
+#        class: Cinhetic\PublicBundle\Security\User\Provider\FacebookProvider
+#        arguments:
+#            facebook: "@fos_facebook.api"
+#            userManager: "@fos_user.user_manager"
+#            validator: "@validator"
 
 
 #Elastic Search
@@ -235,28 +235,28 @@ lexik_paybox:
             key: '0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF' # Key used to compute the hmac hash, provided by Paybox
 
 #Facebook Bundle
-fos_facebook:
-    alias:  facebook
-    app_id: %api_facebook_id%
-    secret: %api_facebook_secret%
-    cookie: true
-    permissions: [email, user_birthday, user_location]
+#fos_facebook:
+#    alias:  facebook
+#    app_id: %api_facebook_id%
+#    secret: %api_facebook_secret%
+#    cookie: true
+#    permissions: [email, user_birthday, user_location]
 
 
 #HWIOAuthBundle
-hwi_oauth:
-    firewall_name: facebook
-    fosub:
-      username_iterations: 30
-      properties:
-          facebook: facebook_id
-    resource_owners:
-      facebook:
-          type:                facebook
-          client_id:            %api_facebook_id%
-          client_secret:        %api_facebook_secret%
-          options:
-              display: popup #dialog is optimized for popup window
+#hwi_oauth:
+#    firewall_name: facebook
+#    fosub:
+#      username_iterations: 30
+#      properties:
+#          facebook: facebook_id
+#    resource_owners:
+#      facebook:
+#          type:                facebook
+#          client_id:            %api_facebook_id%
+#          client_secret:        %api_facebook_secret%
+#          options:
+#              display: popup #dialog is optimized for popup window
 
 #Cinhetic Bundle
 cinhetic_public:
