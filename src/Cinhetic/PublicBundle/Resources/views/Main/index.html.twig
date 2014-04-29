@@ -4,6 +4,20 @@
 {% block javascripts %}
     {{ parent() }}
     <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap-carousel.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#scrollTop').click(function(e)
+            {
+                e.preventDefault();
+                $("html, body").animate({
+                    scrollTop: 0
+                    }, {
+                    duration: "slow",
+                    easing: "easeOutQuad"
+                });
+            });
+        });
+    </script>
 {% endblock %}
 
 {% block content %}
@@ -11,21 +25,35 @@
     {#{{ render(controller('CinheticPublicBundle:Movies:carousselMovies')) }}#}
 
     <div class="row">
-    <div class="btn-group">
-        <h3><i class="glyphicon glyphicon-bookmark"></i> Les 5 Prochaines séances</h3>
-        {% for entity in seances %}
-          <div class="col-md-8">
-                <a class="btn btn-primary" href="{{ path('movies_show', {'id' : entity.movies.id}) }}"> {{ entity.movies.title }} le  à {{ entity.cinema.title }} le {{ entity.dateSession|date('d/m/Y H:i') }}</a>
-          </div>
-        {% endfor %}
-    </div>
-    </div>
-
-    <div class="btn-group">
-        <h3><i class="glyphicon glyphicon-map-marker"></i> Villes</h3>
-        {% for entity in cities %}
-            <a class="btn btn-default" href="{{ path('movies_cities', {'ville' : entity.ville}) }}">{{ entity.ville }}</a>
-        {% endfor %}
+        <div class="col-md-5 col-md-offset-3">
+            <h3 class="text-center"><i class="glyphicon glyphicon-bookmark"></i> Les Prochaines séances</h3>
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                {% if seances|length - 1 > 0 %}
+                    <ol class="carousel-indicators">
+                        {% for i in 0..(seances|length - 1) %}
+                            <li data-target="#myCarousel" data-slide-to="{{ i }}" {% if i == 0 %}class="active"{% endif %}></li>
+                        {% endfor %}
+                    </ol>
+                {% endif %}
+                <div class="carousel-inner">
+                    {% for entity in seances %}
+                        <div class="item{% if loop.index == 1%} active{% endif %}">
+                            <img src="{{ entity.movies.image }}">
+                            <div class="container">
+                                <div class="carousel-caption">
+                                    <p>{{ entity.movies.title }} le  à {{ entity.cinema.title }} le {{ entity.dateSession|date('d/m/Y H:i') }}</p>
+                                    <p><a class="btn btn-primary" href="{{ path('movies_show', {'id' : entity.movies.id}) }}" role="button">Visualiser</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                {% if seances|length - 1 > 0 %}
+                    <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+                    <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+                {% endif %}
+            </div>
+        </div>
     </div>
 
     <br />
@@ -40,28 +68,10 @@
         </div>
     </div>
 
-    <br />
-    <hr />
-    <div class="page-header">
-        <h1><i class="glyphicon glyphicon-th-large"></i> Tous les films de Cinhetic</h1>
-    </div>
-    {% include 'CinheticPublicBundle:Movies:_list.html.twig' %}
-    <hr />
-    <br />
+    <hr class="featurette-divider">
 
     <div class="page-footer">
-        <div class="alert alert-block alert-sucess">
-            <h3><i class="glyphicon glyphicon-bookmark"></i> Les catégories de films</h3>
-                {% for entity in categories %}
-                   <span class="label label-default"><a href="{{ path('categories_show', {'id': entity.id}) }}">{{ entity.title }}</a></span>
-                {% endfor %}
-        </div>
-
-        <div class="alert alert-block alert-sucess">
-            <h3><i class="glyphicon glyphicon-bookmark"></i> Les tags de films</h3>
-                {% for entity in tags %}
-                    <span class="label label-default"><a href="{{ path('tags_show', {'id' : entity.id}) }}">{{ entity.word }}</a></span>
-                {% endfor %}
-        </div>
+        <p class="pull-right"><a id="scrollTop" href="#">Back to top</a></p>
+        <p>© 2014 Company, Inc. · <a href="#">Privacy</a> · <a href="#">Terms</a></p>
     </div>
 {% endblock %}
