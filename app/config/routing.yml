@@ -3,9 +3,20 @@ Cinhetic_public:
     prefix:   /administration
 
 
+
 #FOS Routing
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+
+# My Authentification
+fos_user_security_check:
+    pattern:  /administration/login_check
+    defaults: { _controller: FOSUserBundle:Security:login }
+
+fos_user_security_logout:
+    pattern:  /administration/logout
+    defaults: { _controller: FOSUserBundle:Main:logout }
 
 fos_user_profile:
     resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
@@ -42,6 +53,10 @@ CinheticPublicBundle_profil_edit:
 homepage:
     pattern:  /
     defaults: { _controller: CinheticPublicBundle:Main:home }
+    
+oauth2callback:
+    pattern:  /oauth2callback
+    defaults: { _controller: CinheticPublicBundle:Main:home }
 
 
 # Tutoriaux API
@@ -59,33 +74,43 @@ lexik_paybox:
 
 
 #HWIOAuthBundle routes
-#hwi_oauth_security:
-#    resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
-#    prefix: /oauth/login
-#
-#hwi_oauth_connect:
-#    resource: "@HWIOAuthBundle/Resources/config/routing/connect.xml"
-#    prefix: /oauth/connect
-#
-#hwi_oauth_redirect:
-#    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
-#    prefix:   /oauth/redirect
-#
-#facebook_login:
-#    pattern: /login/check-facebook
-#
-#facebook_logout:
-#    pattern: /administration/logout
-#    defaults: { _controller: FOSUserBundle:Main:logout }
+hwi_oauth_security:
+    resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
+    prefix: /administration/oauth/login
+
+hwi_oauth_connect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/connect.xml"
+    prefix: /administration/oauth/connect
+
+hwi_oauth_redirect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
+    prefix:   /administration/oauth/redirect
+
+#Oauth Routes
+facebook_login:
+    pattern: /administration/oauth/login/check-facebook
 
 
-# Authentification
-fos_user_security_check:
-    pattern:  /administration/login_check
-    defaults: { _controller: FOSUserBundle:Security:login }
 
-fos_user_security_logout:
-    pattern:  /administration/logout
+github_login:
+    pattern: /administration/oauth/check-github
+
+google_login:
+    pattern: /administration/oauth/check-google
+
+twitter_login:
+    pattern: /administration/oauth/check-twitter
+
+facebook_logout:
+    pattern: /administration/logout
     defaults: { _controller: FOSUserBundle:Main:logout }
 
 
+#Oauth Security
+oauth_security_check:
+    pattern:  /administration/login_check
+    defaults: { _controller: FOSUserBundle:Security:login }
+
+oauth_security_logout:
+    pattern:  /administration/logout
+    defaults: { _controller: FOSUserBundle:Main:logout }

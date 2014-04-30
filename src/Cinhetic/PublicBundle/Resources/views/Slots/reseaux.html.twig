@@ -6,8 +6,45 @@
         <span>{{ error }}</span>
     {% endif %}
     <div class="btn-group">
+        <div class="well">
+            <h4>Social Connect</h4>
+        <img usemap="#socialmap" width="400" height="238" src="http://rustleblog.files.wordpress.com/2013/05/flat-design-social-icon.png" />
+            {#<img src="http://rustleblog.files.wordpress.com/2013/05/flat-design-social-icon.png" alt="" usemap="#map1398846482011">#}
+            {#<map id="map1398846482011" name="map1398846482011">#}
+                {#<area shape="rect" coords="0,0,75,75" title="" alt="" href="www.twitter.com" target="_self">#}
+                {#<area shape="rect" coords="83,0,150,75" title="" alt="" href="facebook.com" target="_self">#}
+                {#<area shape="rect" coords="160,0,239,77" title="" alt="" href="google.com" target="_self">#}
+                {#<area shape="rect" coords="0,161,74,238" title="" alt="" href="Linkedin.com" target="_self">#}
+                {#<area shape="rect" coords="162,161,237,238" title="" alt="" href="github.com" target="_self">#}
+                {#<area shape="rect" coords="398,236,399,237" alt="HTML Map" title="HTML Map" href="http://www.html-map.com/" target="_self">#}
+            {#</map>#}
+        <map name="socialmap">
         {% for owner in hwi_oauth_resource_owners() %}
-            <a class="btn btn-danger" href="{{ hwi_oauth_login_url(owner) }}">{{ owner | trans({}, 'HWIOAuthBundle') }}</a> <br />
+            {% if owner == "facebook" %}
+                <a  href="{{ hwi_oauth_login_url(owner) }}">
+                    <area shape="rect" coords="83,0,150,75" title="Facebook" alt="Facebook" href="{{ hwi_oauth_login_url(owner) }}" target="_self">
+                    {#<img src="http://luxurytravelboutique.cruiseholidays.com/images/buttons/socialmedia/Facebook/Facebook-Buttons-56-1.png" />#}
+                </a>
+             {% elseif owner == "google" %}
+                <a  href="{{ hwi_oauth_login_url(owner) }}">
+                    <area shape="rect" coords="160,0,239,77" title="Google" alt="Google" href="{{ hwi_oauth_login_url(owner) }}" target="_self">
+                    {#<img src="http://www.justinclick.com/assets/images/google_connect_button.png" />#}
+                </a>
+            {% elseif owner == "github" %}
+                <a  href="{{ hwi_oauth_login_url(owner) }}">
+                    <area shape="rect" coords="162,161,237,238" title="Github" alt="Github" href="{{ hwi_oauth_login_url(owner) }}" target="_self">
+
+                    {#<img src="https://raw.github.com/bchanx/logos-in-pure-css/master/banner.png" />#}
+                </a>
+            {% elseif owner == "twitter" %}
+                <a  href="{{ hwi_oauth_login_url(owner) }}">
+                    <area shape="rect" coords="0,0,75,75" title="Twitter" alt="Twitter" href="{{ hwi_oauth_login_url(owner) }}" target="_self">
+
+                    {#<img src="http://37.media.tumblr.com/tumblr_l14y3rjwsG1qbv78mo1_250.png" />#}
+                </a>
+            {% endif  %}
         {% endfor %}
+        </map>
+        </div>
     </div>
 {% endblock hwi_oauth_content %}

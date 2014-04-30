@@ -66,13 +66,13 @@ use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface,
         $referer = $this->router->generate('Cinhetic_public_homepage');
 
         //send email notification
-        $message = \Swift_Message::newInstance()
-            ->setSubject('Connexion à Cinhetic Project')
-            ->setFrom('julien@meetserious.com')
-            ->setTo($user->getEmail())
-            ->setContentType("text/html")
-            ->setBody( $this->templating->render('CinheticPublicBundle:Email:connexion.html.twig', array('email' => $user->getEmail())));
-            $this->mailer->send($message);
+//        $message = \Swift_Message::newInstance()
+//            ->setSubject('Connexion à Cinhetic Project')
+//            ->setFrom('julien@meetserious.com')
+//            ->setTo($user->getEmail())
+//            ->setContentType("text/html")
+//            ->setBody( $this->templating->render('CinheticPublicBundle:Email:connexion.html.twig', array('email' => $user->getEmail())));
+//            $this->mailer->send($message);
 
         return new RedirectResponse($referer);
     }

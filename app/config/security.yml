@@ -14,17 +14,25 @@ security:
         id: fos_user.user_provider.username_email
 
     firewalls:
-#        facebook:
-#          anonymous: ~
-#          oauth:
-#            resource_owners:
-#              facebook:           "/login/check-facebook"
-#            login_path:        /login
-#            use_forward:       false
-#            failure_path:      /login
-#            success_handler:  cinhetic_public.handler_auth
-#            oauth_user_provider:
-#              service: user_facebook.provider
+        facebook:
+          pattern:        ^/administration/oauth
+          anonymous: ~
+          logout:
+              path:           /administration/oauth/logout
+              target:         /administration/oauthconnect
+          oauth:
+            resource_owners:
+              facebook:           "/administration/oauth/login/check-facebook"
+              github:             "/administration/oauth/check-github"
+              google:             "/administration/oauth/check-google"
+              twitter:            "/administration/oauth/check-twitter"
+            use_forward:       false
+            failure_path: /administration/oauth/connect
+            login_path: /administration/oauth/login
+            check_path: /administration/oauth/connect
+            success_handler:  cinhetic_public.handler_auth
+            oauth_user_provider:
+              service: user_facebook.provider
         main:
           pattern:        ^/administration
           security: true
@@ -39,15 +47,16 @@ security:
             path:   /administration/logout
             target: /login
           remember_me:
-            key:      "%secret%"
-            lifetime: 31536000 # 365 jours en secondes
-            path:     /
-            domain:   ~ # Prend la valeur par défaut du domaine courant depuis $_SERVER
-
+              key:      "%secret%"
+              lifetime: 31536000 # 365 jours en secondes
+              path:     /
+              domain:   ~ # Prend la valeur par défaut du domaine courant depuis $_SERVER
 
     access_control:
         - { path: ^/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/administration, role: ROLE_USER }
-#        - { path: ^/facebook/,           role: [ROLE_FACEBOOK] }
+        - { path: ^/administration/oauth, role: ROLE_USER }
+        - { path: ^/administration/oauth/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/administration/oauth/connect, roles: IS_AUTHENTICATED_ANONYMOUSLY }

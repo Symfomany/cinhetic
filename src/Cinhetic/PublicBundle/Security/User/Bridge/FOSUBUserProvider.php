@@ -71,6 +71,22 @@ class FOSUBUserProvider implements AccountConnectorInterface, OAuthAwareUserProv
             throw new AccountNotLinkedException(sprintf("User '%s' not found.", $username));
         }
 
+        $service = $response->getResourceOwner()->getName();
+        $setter = 'set'.ucfirst($service);
+        $setter_id = $setter.'Id';
+        $setter_token = $setter.'AccessToken';
+        // create new user here
+//        $user = $this->userManager->createUser();
+        $user->$setter_id($username);
+        $user->$setter_token($response->getAccessToken());
+        //I have set all requested data with the user's username
+        //modify here with relevant data
+//        $user->setUsername($username);
+//        $user->setEmail($username);
+//        $user->setPassword($username);
+        $user->setEnabled(true);
+        $this->userManager->updateUser($user);
+
         return $user;
     }
 
@@ -81,6 +97,8 @@ class FOSUBUserProvider implements AccountConnectorInterface, OAuthAwareUserProv
     {
         $property = $this->getProperty($response);
         $setter = 'set'.ucfirst($property);
+        $setter_id = $setter.'Id';
+        $setter_token = $setter.'AccessToken';
 
         if (!method_exists($user, $setter)) {
             throw new \RuntimeException(sprintf("Class '%s' should have a method '%s'.", get_class($user), $setter));
@@ -90,10 +108,14 @@ class FOSUBUserProvider implements AccountConnectorInterface, OAuthAwareUserProv
 
         if (null !== $previousUser = $this->userManager->findUserBy(array($property => $username))) {
             $previousUser->$setter(null);
+            $previousUser->$setter_id(null);
+            $previousUser->$setter_token(null);
             $this->userManager->updateUser($previousUser);
         }
 
         $user->$setter($username);
+        $user->$setter_id($username);
+        $user->$setter_token($response->getAccessToken());
 
         $this->userManager->updateUser($user);
     }
