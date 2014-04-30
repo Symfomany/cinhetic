@@ -21,13 +21,13 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new FOS\ElasticaBundle\FOSElasticaBundle(),
             new FOS\RestBundle\FOSRestBundle(),
-//            new FOS\FacebookBundle\FOSFacebookBundle(),
+            new FOS\FacebookBundle\FOSFacebookBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Misd\GuzzleBundle\MisdGuzzleBundle(),
             new Lexik\Bundle\PayboxBundle\LexikPayboxBundle(),
-//            new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
+            new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
 
 
 

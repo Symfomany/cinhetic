@@ -2,7 +2,6 @@ Cinhetic_public:
     resource: "@CinheticPublicBundle/Resources/config/routing.yml"
     prefix:   /administration
 
-
 #FOS Routing
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
@@ -43,6 +42,10 @@ homepage:
     pattern:  /
     defaults: { _controller: CinheticPublicBundle:Main:home }
 
+oauth2callback:
+    pattern:  /oauth2callback
+    defaults: { _controller: CinheticPublicBundle:Main:home }
+
 
 # Tutoriaux API
 apprentissage:
@@ -59,25 +62,39 @@ lexik_paybox:
 
 
 #HWIOAuthBundle routes
-#hwi_oauth_security:
-#    resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
-#    prefix: /oauth/login
-#
-#hwi_oauth_connect:
-#    resource: "@HWIOAuthBundle/Resources/config/routing/connect.xml"
-#    prefix: /oauth/connect
-#
-#hwi_oauth_redirect:
-#    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
-#    prefix:   /oauth/redirect
-#
-#facebook_login:
-#    pattern: /login/check-facebook
-#
-#facebook_logout:
-#    pattern: /administration/logout
-#    defaults: { _controller: FOSUserBundle:Main:logout }
 
+hwi_oauth_security:
+    resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
+    prefix: /oauth/login
+
+hwi_oauth_connect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/connect.xml"
+    prefix: /oauth/connect
+
+hwi_oauth_redirect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
+    prefix:   /oauth/redirect
+
+facebook_login:
+    pattern: /oauth/login/check-facebook
+
+github_login:
+    pattern: /oauth/login/check-github
+
+google_login:
+    pattern: /oauth/login/check-google
+
+oauth_target:
+    pattern: /oauth/target
+    defaults: { _controller: CinheticPublicBundle:Security:oauthTarget }
+
+facebook_logout:
+    pattern: /administration/logout
+    defaults: { _controller: FOSUserBundle:Main:logout }
+
+oauth_register:
+    pattern: /oauthRegister
+    defaults: { _controller: CinheticPublicBundle:Security:oauthRegister }
 
 # Authentification
 fos_user_security_check:

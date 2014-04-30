@@ -80,9 +80,9 @@ services:
 
 
 #     Facebook User Service
-#    user_facebook.provider:
-#      class: Cinhetic\PublicBundle\Security\User\Bridge\FOSUBUserProvider
-#      arguments: [@fos_user.user_manager,{facebook: facebookId}]
+    user_facebook.provider:
+      class: Cinhetic\PublicBundle\Security\User\Bridge\FOSUBUserProvider
+      arguments: [@fos_user.user_manager,{facebook: facebookId, google: googleId}]
 
 
     # Repositories as service

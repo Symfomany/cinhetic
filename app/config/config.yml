@@ -235,28 +235,37 @@ lexik_paybox:
             key: '0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF' # Key used to compute the hmac hash, provided by Paybox
 
 #Facebook Bundle
-#fos_facebook:
-#    alias:  facebook
-#    app_id: %api_facebook_id%
-#    secret: %api_facebook_secret%
-#    cookie: true
-#    permissions: [email, user_birthday, user_location]
+fos_facebook:
+    alias:  facebook
+    app_id: %api_facebook_id%
+    secret: %api_facebook_secret%
+    cookie: true
+    permissions: [email, user_birthday, user_location]
 
 
 #HWIOAuthBundle
-#hwi_oauth:
-#    firewall_name: facebook
-#    fosub:
-#      username_iterations: 30
-#      properties:
-#          facebook: facebook_id
-#    resource_owners:
-#      facebook:
-#          type:                facebook
-#          client_id:            %api_facebook_id%
-#          client_secret:        %api_facebook_secret%
-#          options:
-#              display: popup #dialog is optimized for popup window
+hwi_oauth:
+    firewall_name: facebook
+    fosub:
+      username_iterations: 30
+      properties:
+          facebook: facebook_id
+    resource_owners:
+      github:
+        type:                github
+        client_id:           d616a3183b8a888fc5b2
+        client_secret:       ba618f8086b8e9122447f7c7137c363eb0609d6c
+      google:
+        type:                google
+        client_id:           835100706812-ds2sssfhe98db41nv5rsrd15rgfc3ut4.apps.googleusercontent.com
+        client_secret:       uTxvyi_Je6bEKMhX3ZEvuxfq
+        scope:               "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
+      facebook:
+          type:                facebook
+          client_id:            %api_facebook_id%
+          client_secret:        %api_facebook_secret%
+          options:
+              display: popup #dialog is optimized for popup window
 
 #Cinhetic Bundle
 cinhetic_public:

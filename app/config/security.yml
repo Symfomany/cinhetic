@@ -14,17 +14,6 @@ security:
         id: fos_user.user_provider.username_email
 
     firewalls:
-#        facebook:
-#          anonymous: ~
-#          oauth:
-#            resource_owners:
-#              facebook:           "/login/check-facebook"
-#            login_path:        /login
-#            use_forward:       false
-#            failure_path:      /login
-#            success_handler:  cinhetic_public.handler_auth
-#            oauth_user_provider:
-#              service: user_facebook.provider
         main:
           pattern:        ^/administration
           security: true
@@ -39,10 +28,26 @@ security:
             path:   /administration/logout
             target: /login
           remember_me:
-            key:      "%secret%"
-            lifetime: 31536000 # 365 jours en secondes
-            path:     /
-            domain:   ~ # Prend la valeur par défaut du domaine courant depuis $_SERVER
+              key:      "%secret%"
+              lifetime: 31536000 # 365 jours en secondes
+              path:     /
+              domain:   ~ # Prend la valeur par défaut du domaine courant depuis $_SERVER
+        facebook:
+          anonymous: ~
+          pattern:    ^/oauth/.*
+          oauth:
+            resource_owners:
+              facebook:           "/oauth/login/check-facebook"
+              github:             "/oauth/login/check-github"
+              google:             "/oauth/login/check-google"
+            login_path:        /oauth/login
+            use_forward:       false
+            failure_path: /oauth/login
+            check_path: /oauth/login_check
+            default_target_path: /oauth/target/
+            success_handler:  cinhetic_public.handler_auth
+            oauth_user_provider:
+              service: user_facebook.provider
 
 
     access_control:
@@ -50,4 +55,6 @@ security:
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/administration, role: ROLE_USER }
-#        - { path: ^/facebook/,           role: [ROLE_FACEBOOK] }
+        - { path: ˆ/oauth/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ˆ/oauth/target, roles: ROLE_OAUTH_USER }
+
