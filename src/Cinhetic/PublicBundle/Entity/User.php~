@@ -101,6 +101,33 @@ class User extends BaseUser
     protected $facebookAccessToken;
 
 
+
+    /** @ORM\Column(name="googleId", type="string", length=255, nullable=true) */
+    protected $googleId;
+
+
+    /** @ORM\Column(name="googleAccessToken", type="string", length=255, nullable=true) */
+    protected $googleAccessToken;
+
+
+    /** @ORM\Column(name="twitterId", type="string", length=255, nullable=true) */
+    protected $twitterId;
+
+
+    /** @ORM\Column(name="twitterAccessToken", type="string", length=255, nullable=true) */
+    protected $twitterAccessToken;
+
+
+
+    /** @ORM\Column(name="githubId", type="string", length=255, nullable=true) */
+    protected $githubId;
+
+
+    /** @ORM\Column(name="githubAccessToken", type="string", length=255, nullable=true) */
+    protected $githubAccessToken;
+
+
+
     /**
      *
      */
@@ -467,5 +494,120 @@ class User extends BaseUser
         if (isset($fbdata['email'])) {
             $this->setEmail($fbdata['email']);
         }
+    }
+
+    /**
+     * Set facebookAccessToken
+     *
+     * @param string $facebookAccessToken
+     * @return User
+     */
+    public function setFacebookAccessToken($facebookAccessToken)
+    {
+        $this->facebookAccessToken = $facebookAccessToken;
+
+        return $this;
+    }
+
+    /**
+     * Get facebookAccessToken
+     *
+     * @return string 
+     */
+    public function getFacebookAccessToken()
+    {
+        return $this->facebookAccessToken;
+    }
+
+    /**
+     * Set googleId
+     *
+     * @param string $googleId
+     * @return User
+     */
+    public function setGoogleId($googleId)
+    {
+        $this->googleId = $googleId;
+
+        return $this;
+    }
+
+    /**
+     * Get googleId
+     *
+     * @return string 
+     */
+    public function getGoogleId()
+    {
+        return $this->googleId;
+    }
+
+    /**
+     * Set twitterId
+     *
+     * @param string $googleId
+     * @return User
+     */
+    public function setTwitterId($twitterId)
+    {
+        $this->twitterId = $twitterId;
+
+        return $this;
+    }
+
+    /**
+     * Get googleId
+     *
+     * @return string
+     */
+    public function getTwitterId()
+    {
+        return $this->twitterId;
+    }
+
+    /**
+     * Set googleAccessToken
+     *
+     * @param string $googleAccessToken
+     * @return User
+     */
+    public function setGoogleAccessToken($googleAccessToken)
+    {
+        $this->googleAccessToken = $googleAccessToken;
+
+        return $this;
+    }
+
+    /**
+     * Get googleAccessToken
+     *
+     * @return string 
+     */
+    public function getGoogleAccessToken()
+    {
+        return $this->googleAccessToken;
+    }
+
+    /**
+     * Set setTwitterAccessToken
+     *
+     * @param string $twitterAccessToken
+     * @return User
+     */
+    public function setTwitterAccessToken($twitterAccessToken)
+    {
+        $this->twitterAccessToken = $twitterAccessToken;
+
+        return $this;
+    }
+
+    /**
+     * Get twitterAccessToken
+     *
+     * @return string
+     */
+    public function getTwitterAccessToken()
+    {
+        return $this->twitterAccessToken;
     }
 }

@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Gedmo\Mapping\Annotation as Gedmo; // gedmo annotations
 
 
 /**
@@ -281,6 +282,14 @@ class Movies
      * )
      */
     public $file;
+
+
+    /**
+     * @Gedmo\Slug(fields={"title"}, updatable=false, separator="-")
+     * @ORM\Column(name="slug", type="string", length=250, nullable=true)
+     */
+    private $slug;
+    
 
     /**
      * Constructor
@@ -1100,5 +1109,28 @@ class Movies
         if ($file = $this->getAbsolutePath()) {
             @unlink($file);
         }
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Movies
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

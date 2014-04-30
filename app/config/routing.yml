@@ -89,3 +89,12 @@ github_login:
 
 google_login:
     pattern: /login/check-google
+
+twitter_login:
+    pattern: /login/check-twitter
+
+linkedin_login:
+    pattern: /login/check-linkedin
+
+flickr_login:
+    pattern: /login/check-flickr

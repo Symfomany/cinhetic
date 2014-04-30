@@ -28,6 +28,9 @@ security:
               facebook:           "/login/check-facebook"
               github:             "/login/check-github"
               google:             "/login/check-google"
+              twitter:            "/login/check-twitter"
+              linkedin:           "/login/check-linkedin"
+              flickr:             "/login/check-flickr"
             login_path:        /login
             check_path:        fos_user_security_check
             failure_path:      /login

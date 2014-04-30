@@ -11,4 +11,8 @@ UPGRADE
 * DROP TABLE `medias_movies`
 * ALTER TABLE  `user` ADD  `facebookId` VARCHAR(255) NOT NULL AFTER  `id` ;
 * ALTER TABLE  `user` ADD  `facebookAccessToken` VARCHAR(255) INT NOT NULL AFTER  `id` ;
+* ALTER TABLE  `user` ADD  `googleId` VARCHAR(255) NOT NULL AFTER  `id` ;
+* ALTER TABLE  `user` ADD  `googleAccessToken` VARCHAR(255) INT NOT NULL AFTER  `id` ;
+* ALTER TABLE  `user` ADD  `twitterAccessToken` VARCHAR( 255 ) NULL AFTER  `facebookAccessToken` ;
+* ALTER TABLE  `user` ADD  `twitterId` VARCHAR( 255 ) NULL AFTER  `facebookAccessToken` ;
 

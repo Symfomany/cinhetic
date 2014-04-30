@@ -5,6 +5,7 @@ namespace Cinhetic\PublicBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Gedmo\Mapping\Annotation as Gedmo; // gedmo annotations
 
 
 /**
@@ -48,6 +49,14 @@ class Actors
      * @ORM\Column(name="lastname", type="string", length=250, nullable=true)
      */
     private $lastname;
+
+
+
+    /**
+     * @Gedmo\Slug(fields={"firstname", "lastname"}, updatable=false, separator="-")
+     * @ORM\Column(name="slug", type="string", length=250, nullable=true)
+     */
+    private $slug;
 
     /**
      * @var \DateTime
@@ -393,5 +402,29 @@ class Actors
      */
     public function __toString(){
         return $this->firstname." ".$this->lastname;
+    }
+
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Movies
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

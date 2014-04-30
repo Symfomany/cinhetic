@@ -82,7 +82,7 @@ services:
 #     Facebook User Service
     fosubuser.provider:
       class: Cinhetic\PublicBundle\Security\User\Bridge\FOSUBUserProvider
-      arguments: [@fos_user.user_manager,{facebook: facebookId, google: googleId}]
+      arguments: [@fos_user.user_manager,{facebook: facebookId, google: googleId, twitter: twitterId, github: githubId, linkedin: linkedinId, flickr: flickrId}]
 
 
     # Repositories as service

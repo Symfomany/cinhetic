@@ -103,6 +103,7 @@ doctrine:
             connection: default
             mappings:
               CinheticPublicBundle : ~
+
           site:
             connection: default
             mappings:
@@ -222,6 +223,14 @@ knp_paginator:
         pagination: CinheticPublicBundle:Slots:pagination.html.twig     # sliding pagination controls template
 
 
+# Doctrine Extensions
+stof_doctrine_extensions:
+    orm:
+      default:
+          sluggable: true
+          timestampable: true
+          tree: true
+
 #Lexik Paybox
 lexik_paybox:
     servers:
@@ -253,6 +262,10 @@ hwi_oauth:
       properties:
         facebook: facebook_id
         google: google_id
+        twitter: twitter_id
+        github: github_id
+        linkedin: linkedin_id
+        flickr: flickr_id
     resource_owners:
       github:
         type:                github
@@ -271,7 +284,14 @@ hwi_oauth:
           type:                facebook
           client_id:            %api_facebook_id%
           client_secret:        %api_facebook_secret%
-
+      linkedin:
+          type:                linkedin
+          client_id:           759ytfqzaixtxo
+          client_secret:        mLsefActr5mB4wlK
+      flickr:
+          type:                flickr
+          client_id:           1011e1627b76b4d8e1e64686f1814aa3
+          client_secret:       064a7c31c78a75c2
 #Cinhetic Bundle
 cinhetic_public:
   base_url: http://www.cinhetic.ju

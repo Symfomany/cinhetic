@@ -109,6 +109,40 @@ class User extends BaseUser
     /** @ORM\Column(name="googleAccessToken", type="string", length=255, nullable=true) */
     protected $googleAccessToken;
 
+
+    /** @ORM\Column(name="twitterId", type="string", length=255, nullable=true) */
+    protected $twitterId;
+
+
+    /** @ORM\Column(name="twitterAccessToken", type="string", length=255, nullable=true) */
+    protected $twitterAccessToken;
+
+
+    /** @ORM\Column(name="githubId", type="string", length=255, nullable=true) */
+    protected $githubId;
+
+
+    /** @ORM\Column(name="githubAccessToken", type="string", length=255, nullable=true) */
+    protected $githubAccessToken;
+
+
+    /** @ORM\Column(name="linkedinId", type="string", length=255, nullable=true) */
+    protected $linkedinId;
+
+
+    /** @ORM\Column(name="linkedinAccessToken", type="string", length=255, nullable=true) */
+    protected $linkedinAccessToken;
+
+
+    /** @ORM\Column(name="flickrId", type="string", length=255, nullable=true) */
+    protected $flickrId;
+
+
+    /** @ORM\Column(name="flickrAccessToken", type="string", length=255, nullable=true) */
+    protected $flickrAccessToken;
+
+
+
     /**
      *
      */
@@ -524,6 +558,29 @@ class User extends BaseUser
     }
 
     /**
+     * Set twitterId
+     *
+     * @param string $googleId
+     * @return User
+     */
+    public function setTwitterId($twitterId)
+    {
+        $this->twitterId = $twitterId;
+
+        return $this;
+    }
+
+    /**
+     * Get googleId
+     *
+     * @return string
+     */
+    public function getTwitterId()
+    {
+        return $this->twitterId;
+    }
+
+    /**
      * Set googleAccessToken
      *
      * @param string $googleAccessToken
@@ -545,4 +602,171 @@ class User extends BaseUser
     {
         return $this->googleAccessToken;
     }
+
+    /**
+     * Set setTwitterAccessToken
+     *
+     * @param string $twitterAccessToken
+     * @return User
+     */
+    public function setTwitterAccessToken($twitterAccessToken)
+    {
+        $this->twitterAccessToken = $twitterAccessToken;
+
+        return $this;
+    }
+
+    /**
+     * Get twitterAccessToken
+     *
+     * @return string
+     */
+    public function getTwitterAccessToken()
+    {
+        return $this->twitterAccessToken;
+    }
+
+    /**
+     * Set githubId
+     *
+     * @param string $githubId
+     * @return User
+     */
+    public function setGithubId($githubId)
+    {
+        $this->githubId = $githubId;
+
+        return $this;
+    }
+
+    /**
+     * Get githubId
+     *
+     * @return string 
+     */
+    public function getGithubId()
+    {
+        return $this->githubId;
+    }
+
+    /**
+     * Set githubAccessToken
+     *
+     * @param string $githubAccessToken
+     * @return User
+     */
+    public function setGithubAccessToken($githubAccessToken)
+    {
+        $this->githubAccessToken = $githubAccessToken;
+
+        return $this;
+    }
+
+    /**
+     * Get githubAccessToken
+     *
+     * @return string 
+     */
+    public function getGithubAccessToken()
+    {
+        return $this->githubAccessToken;
+    }
+
+
+
+    /**
+     * Set linkedinId
+     *
+     * @param string $linkedinId
+     * @return User
+     */
+    public function setLinkedinId($linkedinId)
+    {
+        $this->linkedinId = $linkedinId;
+
+        return $this;
+    }
+
+    /**
+     * Get linkedinId
+     *
+     * @return string
+     */
+    public function getLinkedinId()
+    {
+        return $this->linkedinId;
+    }
+
+
+    /**
+     * Set linkedinAccessToken
+     *
+     * @param string $linkedinAccessToken
+     * @return User
+     */
+    public function setLinkedinAccessToken($linkedinAccessToken)
+    {
+        $this->linkedinAccessToken = $linkedinAccessToken;
+
+        return $this;
+    }
+
+    /**
+     * Get linkedinAccessToken
+     *
+     * @return string
+     */
+    public function getLinkedinAccessToken()
+    {
+        return $this->linkedinAccessToken;
+    }
+
+
+    /**
+     * Set flickrAccessToken
+     *
+     * @param string $flickrAccessToken
+     * @return User
+     */
+    public function setFlickrAccessToken($flickrAccessToken)
+    {
+        $this->flickrAccessToken = $flickrAccessToken;
+
+        return $this;
+    }
+
+    /**
+     * Get flickrAccessToken
+     *
+     * @return string
+     */
+    public function getFlickrAccessToken()
+    {
+        return $this->flickrAccessToken;
+    }
+
+
+    /**
+     * Set flickrId
+     *
+     * @param string $flickrId
+     * @return User
+     */
+    public function setFlickrId($flickrId)
+    {
+        $this->flickrId = $flickrId;
+
+        return $this;
+    }
+
+    /**
+     * Get linkedinId
+     *
+     * @return string
+     */
+    public function getFlickrId()
+    {
+        return $this->flickrId;
+    }
+
 }
