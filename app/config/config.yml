@@ -255,6 +255,10 @@ hwi_oauth:
         type:                github
         client_id:           d616a3183b8a888fc5b2
         client_secret:       ba618f8086b8e9122447f7c7137c363eb0609d6c
+      twitter:
+        type:                twitter
+        client_id:           LWKDRPmFymEBsGnyolmA
+        client_secret:       dZfqT6cFM4kXun2KLMirwIvWmFSfQEhmdHkTlxqA0
       google:
         type:                google
         client_id:           835100706812-ds2sssfhe98db41nv5rsrd15rgfc3ut4.apps.googleusercontent.com
@@ -264,6 +268,7 @@ hwi_oauth:
           type:                facebook
           client_id:            %api_facebook_id%
           client_secret:        %api_facebook_secret%
+          scope: ""
           options:
               display: popup #dialog is optimized for popup window
 

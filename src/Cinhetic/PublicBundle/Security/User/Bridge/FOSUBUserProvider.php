@@ -81,11 +81,31 @@ class FOSUBUserProvider implements AccountConnectorInterface, OAuthAwareUserProv
             $this->userManager->updateUser($previousUser);
         }
 
+<<<<<<< HEAD
         //we connect current user
         $user->$setter_id($username);
         $user->$setter_token($response->getAccessToken());
 
         $this->userManager->updateUser($user);
+=======
+        $service = $response->getResourceOwner()->getName();
+        $setter = 'set'.ucfirst($service);
+        $setter_id = $setter.'Id';
+        $setter_token = $setter.'AccessToken';
+        // create new user here
+//        $user = $this->userManager->createUser();
+        $user->$setter_id($username);
+        $user->$setter_token($response->getAccessToken());
+        //I have set all requested data with the user's username
+        //modify here with relevant data
+//        $user->setUsername($username);
+//        $user->setEmail($username);
+//        $user->setPassword($username);
+        $user->setEnabled(true);
+        $this->userManager->updateUser($user);
+
+        return $user;
+>>>>>>> aca9a128d79191fc2afb629b6b8c461c0c7df410
     }
 
     /**
@@ -93,6 +113,7 @@ class FOSUBUserProvider implements AccountConnectorInterface, OAuthAwareUserProv
      */
     public function loadUserByOAuthUserResponse(UserResponseInterface $response)
     {
+<<<<<<< HEAD
         $username = $response->getUsername();
         $user = $this->userManager->findUserBy(array($this->getProperty($response) => $username));
         //when the user is registrating
@@ -113,16 +134,38 @@ class FOSUBUserProvider implements AccountConnectorInterface, OAuthAwareUserProv
             $user->setEnabled(true);
             $this->userManager->updateUser($user);
             return $user;
+=======
+        $property = $this->getProperty($response);
+        $setter = 'set'.ucfirst($property);
+        $setter_id = $setter.'Id';
+        $setter_token = $setter.'AccessToken';
+
+        if (!method_exists($user, $setter)) {
+            throw new \RuntimeException(sprintf("Class '%s' should have a method '%s'.", get_class($user), $setter));
+>>>>>>> aca9a128d79191fc2afb629b6b8c461c0c7df410
         }
 
         //if user exists - go with the HWIOAuth way
         $user = parent::loadUserByOAuthUserResponse($response);
 
+<<<<<<< HEAD
         $serviceName = $response->getResourceOwner()->getName();
         $setter = 'set' . ucfirst($serviceName) . 'AccessToken';
 
         //update access token
         $user->$setter($response->getAccessToken());
+=======
+        if (null !== $previousUser = $this->userManager->findUserBy(array($property => $username))) {
+            $previousUser->$setter(null);
+            $previousUser->$setter_id(null);
+            $previousUser->$setter_token(null);
+            $this->userManager->updateUser($previousUser);
+        }
+
+        $user->$setter($username);
+        $user->$setter_id($username);
+        $user->$setter_token($response->getAccessToken());
+>>>>>>> aca9a128d79191fc2afb629b6b8c461c0c7df410
 
         return $user;
     }

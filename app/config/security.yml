@@ -49,7 +49,6 @@ security:
             oauth_user_provider:
               service: user_facebook.provider
 
-
     access_control:
         - { path: ^/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
@@ -57,4 +56,3 @@ security:
         - { path: ^/administration, role: ROLE_USER }
         - { path: ˆ/oauth/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ˆ/oauth/target, roles: ROLE_OAUTH_USER }
-
