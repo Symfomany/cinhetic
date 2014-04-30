@@ -15,7 +15,7 @@ In some words: **Minimalist** features, **Collaborative** solution, **Pragmatic*
 
 Demo
 ------------------
-http://94.23.5.209/web/
+http://ns365800.ip-94-23-5.eu/web/
 
 ```
 Login: demo
@@ -28,12 +28,12 @@ https://play.google.com/store/apps/details?id=com.cinhetic.cinhetic
 
 Documentation
 ------------------
-http://94.23.5.209/docs/
+http://ns365800.ip-94-23-5.eu/docs/
 
 
 Documentation for training
 ------------
-http://94.23.5.209/web/apprentissage
+http://ns365800.ip-94-23-5.eu/web/apprentissage
 
 
 Requirements

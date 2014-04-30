@@ -245,11 +245,14 @@ fos_facebook:
 
 #HWIOAuthBundle
 hwi_oauth:
-    firewall_name: facebook
+    connect:
+      account_connector: fosubuser.provider
+    firewall_name: main
     fosub:
       username_iterations: 30
       properties:
-          facebook: facebook_id
+        facebook: facebook_id
+        google: google_id
     resource_owners:
       github:
         type:                github
@@ -261,16 +264,13 @@ hwi_oauth:
         client_secret:       dZfqT6cFM4kXun2KLMirwIvWmFSfQEhmdHkTlxqA0
       google:
         type:                google
-        client_id:           835100706812-ds2sssfhe98db41nv5rsrd15rgfc3ut4.apps.googleusercontent.com
-        client_secret:       uTxvyi_Je6bEKMhX3ZEvuxfq
+        client_id:           592804639260-omp9kcr1gfs6k5o719146is2jknl1f2n.apps.googleusercontent.com
+        client_secret:       yx0iBnIfoYTDIq5eQJPvy7N8
         scope:               "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
       facebook:
           type:                facebook
           client_id:            %api_facebook_id%
           client_secret:        %api_facebook_secret%
-          scope: ""
-          options:
-              display: popup #dialog is optimized for popup window
 
 #Cinhetic Bundle
 cinhetic_public:

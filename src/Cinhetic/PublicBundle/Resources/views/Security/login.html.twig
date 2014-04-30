@@ -52,11 +52,6 @@
                     </div>
                 </div>
                 <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-                <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-                <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
-                
-                {% include 'CinheticPublicBundle:Slots:reseaux.html.twig' %}
-
 
                 <button class="btn btn-lg btn-info btn-block"  name="_submit" type="submit">
                     <i class="glyphicon glyphicon-lock"></i>

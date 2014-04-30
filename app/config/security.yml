@@ -1,58 +1,59 @@
 security:
     encoders:
-         Cinhetic\PublicBundle\Entity\User: sha512
+        FOS\UserBundle\Model\UserInterface: sha512
 
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER
         ROLE_SUPER_ADMIN: ROLE_ADMIN
 
     providers:
-      chain_provider:
-        chain:
-          providers: [fos_userbundle]
       fos_userbundle:
         id: fos_user.user_provider.username_email
 
     firewalls:
+        dev:
+          pattern:  ^/(_(profiler|wdt)|css|images|js)/
+          security: false
         main:
-          pattern:        ^/administration
-          security: true
+          pattern:        ^/
+          anonymous:    true
           form_login:
             success_handler:  cinhetic_public.handler_auth
             provider:               fos_userbundle
             csrf_provider:          form.csrf_provider
             check_path:             fos_user_security_check
-            always_use_default_target_path: true
-            default_target_path: /administration
+          oauth:
+            remember_me: true
+            resource_owners:
+              facebook:           "/login/check-facebook"
+              github:             "/login/check-github"
+              google:             "/login/check-google"
+            login_path:        /login
+            check_path:        fos_user_security_check
+            failure_path:      /login
+            success_handler:  cinhetic_public.handler_auth
+            oauth_user_provider:
+              service: fosubuser.provider
           logout:
-            path:   /administration/logout
+            path:   /logout
             target: /login
           remember_me:
               key:      "%secret%"
               lifetime: 31536000 # 365 jours en secondes
               path:     /
               domain:   ~ # Prend la valeur par défaut du domaine courant depuis $_SERVER
-        facebook:
-          anonymous: ~
-          pattern:    ^/oauth/.*
-          oauth:
-            resource_owners:
-              facebook:           "/oauth/login/check-facebook"
-              github:             "/oauth/login/check-github"
-              google:             "/oauth/login/check-google"
-            login_path:        /oauth/login
-            use_forward:       false
-            failure_path: /oauth/login
-            check_path: /oauth/login_check
-            default_target_path: /oauth/target/
-            success_handler:  cinhetic_public.handler_auth
-            oauth_user_provider:
-              service: user_facebook.provider
+
+        login:
+          pattern:  ^/login$
+          security: false
+          remember_me:
+            key: "%secret%"
+            lifetime: 31536000 # 365 days in seconds
+            path: /
+            domain: ~ # Defaults to the current domain from $_SERVER
 
     access_control:
         - { path: ^/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/administration, role: ROLE_USER }
-        - { path: ˆ/oauth/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ˆ/oauth/target, roles: ROLE_OAUTH_USER }
