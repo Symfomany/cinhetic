@@ -15,7 +15,7 @@ In some words: **Minimalist** features, **Collaborative** solution, **Pragmatic*
 
 Demo
 ------------------
-http://ns365800.ip-94-23-5.eu/web/
+http://ns365800.ip-94-23-5.eu/demo/web/
 
 ```
 Login: demo
@@ -33,7 +33,7 @@ http://ns365800.ip-94-23-5.eu/docs/
 
 Documentation for training
 ------------
-http://ns365800.ip-94-23-5.eu/web/apprentissage
+http://ns365800.ip-94-23-5.eu/demo/web/apprentissage
 
 
 Requirements
