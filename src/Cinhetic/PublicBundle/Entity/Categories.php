@@ -67,6 +67,14 @@ class Categories
     private $dateCreated;
 
 
+
+    /**
+     * @var \DateTime
+     * @Gedmo\Timestampable(on="update")
+     * @ORM\Column(name="date_updated", type="datetime", nullable=true)
+     */
+    private $dateUpdated;
+
     /**
      * @ORM\OneToMany(targetEntity="Movies", mappedBy="category")
      */

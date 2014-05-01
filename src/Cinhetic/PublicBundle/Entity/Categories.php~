@@ -82,19 +82,19 @@ class Categories
 
     /**
      * @Gedmo\TreeLeft
-     * @ORM\Column(name="lft", type="integer")
+     * @ORM\Column(name="lft", type="integer",nullable=true)
      */
     private $lft;
 
     /**
      * @Gedmo\TreeLevel
-     * @ORM\Column(name="lvl", type="integer")
+     * @ORM\Column(name="lvl", type="integer",nullable=true)
      */
     private $lvl;
 
     /**
      * @Gedmo\TreeRight
-     * @ORM\Column(name="rgt", type="integer")
+     * @ORM\Column(name="rgt", type="integer",nullable=true)
      */
     private $rgt;
 
@@ -106,13 +106,12 @@ class Categories
 
     /**
      * @Gedmo\TreeParent
-     * @ORM\ManyToOne(targetEntity="Category", inversedBy="children")
-     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="CASCADE")
+     * @ORM\ManyToOne(targetEntity="Categories", inversedBy="children")
      */
     private $parent;
 
     /**
-     * @ORM\OneToMany(targetEntity="Category", mappedBy="parent")
+     * @ORM\OneToMany(targetEntity="Categories", mappedBy="parent")
      * @ORM\OrderBy({"lft" = "ASC"})
      */
     private $children;
@@ -209,6 +208,7 @@ class Categories
     {
         $this->movies = new \Doctrine\Common\Collections\ArrayCollection();
         $this->dateCreated = new \Datetime('now');
+        $this->children = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -267,4 +267,188 @@ class Categories
     {
         return $this->slug;
     }
+
+    /**
+     * Set position
+     *
+     * @param integer $position
+     * @return Categories
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+
+        return $this;
+    }
+
+    /**
+     * Get position
+     *
+     * @return integer 
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    /**
+     * Set lft
+     *
+     * @param integer $lft
+     * @return Categories
+     */
+    public function setLft($lft)
+    {
+        $this->lft = $lft;
+
+        return $this;
+    }
+
+    /**
+     * Get lft
+     *
+     * @return integer 
+     */
+    public function getLft()
+    {
+        return $this->lft;
+    }
+
+    /**
+     * Set lvl
+     *
+     * @param integer $lvl
+     * @return Categories
+     */
+    public function setLvl($lvl)
+    {
+        $this->lvl = $lvl;
+
+        return $this;
+    }
+
+    /**
+     * Get lvl
+     *
+     * @return integer
+     */
+    public function getLvl()
+    {
+        return $this->lvl;
+    }
+
+    /**
+     * Set rgt
+     *
+     * @param integer $rgt
+     * @return Categories
+     */
+    public function setRgt($rgt)
+    {
+        $this->rgt = $rgt;
+
+        return $this;
+    }
+
+    /**
+     * Get rgt
+     *
+     * @return integer 
+     */
+    public function getRgt()
+    {
+        return $this->rgt;
+    }
+
+    /**
+     * Set root
+     *
+     * @param integer $root
+     * @return Categories
+     */
+    public function setRoot($root)
+    {
+        $this->root = $root;
+
+        return $this;
+    }
+
+    /**
+     * Get root
+     *
+     * @return integer 
+     */
+    public function getRoot()
+    {
+        return $this->root;
+    }
+
+    /**
+     * Set parent
+     *
+     * @param \Cinhetic\PublicBundle\Entity\Categories $parent
+     * @return Categories
+     */
+    public function setParent(\Cinhetic\PublicBundle\Entity\Categories $parent = null)
+    {
+        $this->parent = $parent;
+
+        return $this;
+    }
+
+    /**
+     * Get parent
+     *
+     * @return \Cinhetic\PublicBundle\Entity\Categories
+     */
+    public function getParent()
+    {
+        return $this->parent;
+    }
+
+    /**
+     * Add children
+     *
+     * @param \Cinhetic\PublicBundle\Entity\Categories $children
+     * @return Categories
+     */
+    public function addChild(\Cinhetic\PublicBundle\Entity\Categories $children)
+    {
+        $this->children[] = $children;
+
+        return $this;
+    }
+
+    /**
+     * Remove children
+     *
+     * @param \Cinhetic\PublicBundle\Entity\Categories $children
+     */
+    public function removeChild(\Cinhetic\PublicBundle\Entity\Categories $children)
+    {
+        $this->children->removeElement($children);
+    }
+
+    /**
+     * Get children
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getChildren()
+    {
+        return $this->children;
+    }
+
+    /**
+     * Get Option for choices
+     * @return string
+     */
+    public function getOptionLabel()
+    {
+        return str_repeat(
+            html_entity_decode('...', ENT_QUOTES, 'UTF-8'),
+            ($this->getLvl() + 1) * 2
+        ) . $this->getTitle();
+    }
+
 }
