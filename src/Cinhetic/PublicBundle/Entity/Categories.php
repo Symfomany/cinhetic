@@ -14,7 +14,7 @@ use Gedmo\Mapping\Annotation as Gedmo; // gedmo annotations
  * @ORM\Entity(repositoryClass="Cinhetic\PublicBundle\Repository\CategoriesRepository")
  * @UniqueEntity(fields="title", message="Le titre est deja pris!")
  */
-class Categories
+class Categories implements TimestampableInterface
 {
     /**
      * @var integer
@@ -459,4 +459,27 @@ class Categories
         ) . $this->getTitle();
     }
 
+
+    /**
+     * Set dateUpdated
+     *
+     * @param \DateTime $dateUpdated
+     * @return Movies
+     */
+    public function setDateUpdated(\Datetime $dateUpdated)
+    {
+        $this->dateUpdated = $dateUpdated;
+
+        return $this;
+    }
+
+    /**
+     * Get dateUpdated
+     *
+     * @return \DateTime
+     */
+    public function getDateUpdated()
+    {
+        return $this->dateUpdated;
+    }
 }

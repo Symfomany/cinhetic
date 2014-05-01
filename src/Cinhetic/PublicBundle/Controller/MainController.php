@@ -13,7 +13,7 @@ use Symfony\Component\Security\Core\SecurityContext;
  * Class MainController
  * @package Cinhetic\PublicBundle\Controller
  */
-class MainController extends Controller
+class MainController extends AbstractController
 {
 
     /**
@@ -68,25 +68,17 @@ class MainController extends Controller
             'PBX_REPONDRE_A'   => $this->generateUrl('lexik_paybox_ipn', array('time' => time()), true),
         ));
 
-
         $em = $this->getDoctrine()->getManager();
-        $paginator = $this->get('knp_paginator'); //je mets en place la pagination
 
-        $movies = $em->getRepository('CinheticPublicBundle:Movies')->getAllMovies();
+        $movies = $this->getRepository('Movies')->getAllMovies();
         $cities = $em->getRepository('CinheticPublicBundle:Cinema')->getCitiesOfMovies();
         $seances = $em->getRepository('CinheticPublicBundle:Sessions')->getNextSessions();
         $categories = $em->getRepository('CinheticPublicBundle:Categories')->findAll();
         $tags = $em->getRepository('CinheticPublicBundle:Tags')->findAll();
 
-        $pagination = $paginator->paginate(
-            $movies,
-            $this->get('request')->query->get('page', 1) /*page number*/,
-            5
-        );
 
-
-        return $this->render('CinheticPublicBundle:Main:index.html.twig',  array(
-            'movies' => $pagination,
+        return $this->display('index.html.twig',  array(
+            'movies' => $this->paginate($movies),
             'cities' => $cities,
             'seances' => $seances,
             'categories' => $categories,
@@ -121,10 +113,7 @@ class MainController extends Controller
     {
 
         //messages flash se jouant qu'une seule fois
-        $this->get('session')->getFlashBag()->add(
-            'success',
-            'Votre commande de votre film a bien été prise en compte'
-        );
+        $this->setMessage('Votre commande de votre film a bien été prise en compte');
 
         //redirections
         return $this->redirect($this->generateUrl('Cinhetic_public_homepage'));

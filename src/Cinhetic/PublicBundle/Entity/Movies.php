@@ -16,7 +16,7 @@ use Gedmo\Mapping\Annotation as Gedmo; // gedmo annotations
  * @UniqueEntity(fields="title", message="Le titre est deja pris!")
  * @ORM\HasLifecycleCallbacks
  */
-class Movies
+class Movies implements TimestampableInterface
 {
     /**
      * @var integer
@@ -1147,7 +1147,7 @@ class Movies
      * @param \DateTime $dateUpdated
      * @return Movies
      */
-    public function setDateUpdated($dateUpdated)
+    public function setDateUpdated(\Datetime $dateUpdated)
     {
         $this->dateUpdated = $dateUpdated;
 
