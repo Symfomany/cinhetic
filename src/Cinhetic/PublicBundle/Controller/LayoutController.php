@@ -13,7 +13,7 @@ use Symfony\Component\Security\Core\SecurityContext;
  * Class LayoutController - Decorator of Layout
  * @package Cinhetic\PublicBundle\Controller
  */
-class LayoutController extends Controller
+class LayoutController extends AbstractController
 {
 
 

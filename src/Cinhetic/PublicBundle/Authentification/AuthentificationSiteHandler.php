@@ -14,7 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface,
  * Class AuthenticationSiteHandler
  * @package Cinhetic\PublicBundle\Authentication
  */
-;class AuthentificationSiteHandler implements  AuthenticationSuccessHandlerInterface{
+;class AuthentificationSiteHandler implements AuthenticationSuccessHandlerInterface{
 
     /**
      * @var \Symfony\Component\Routing\RouterInterface

@@ -27,15 +27,12 @@ class AbstractController extends Controller
      */
     public function display($views = null, $params = array()){
 
-        $controller = get_called_class();
-
-        if (0 === preg_match('#^(.*?\\\\Controller\\\\(.+)Controller)#', $controller, $match)) {
+        if (0 === preg_match('#^(.*?\\\\Controller\\\\(.+)Controller)#', get_called_class(), $match)) {
             throw new \InvalidArgumentException(sprintf('The "%s" controller is not a valid "class::method" string.', $controller));
         }
 
         return $this->render(self::$bundle.":".$match[2].":".$views ,  $params);
     }
-
 
     /**
      * Paginate all result
@@ -54,7 +51,6 @@ class AbstractController extends Controller
 
         return $pagination;
     }
-
 
     /**
      * Get Repository of Entity

@@ -18,7 +18,7 @@ use FOS\RestBundle\Controller\Annotations as Rest;
  * Class MoviesController
  * @package Cinhetic\PublicBundle\Controller
  */
-class MoviesController extends Controller
+class MoviesController extends AbstractController
 {
 
     /**

@@ -13,7 +13,7 @@ use Cinhetic\PublicBundle\Form\CommentsType;
  * Class CommentsController
  * @package Cinhetic\PublicBundle\Controller
  */
-class CommentsController extends Controller
+class CommentsController extends AbstractController
 {
 
 
@@ -23,9 +23,7 @@ class CommentsController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('CinheticPublicBundle:Comments')->findAll();
+        $entities = $this->getRepository('Comments')->findAll();
 
         return $this->render('CinheticPublicBundle:Comments:index.html.twig', array(
             'entities' => $entities,
@@ -42,16 +40,9 @@ class CommentsController extends Controller
     public function createAction(Request $request)
     {
         $entity = new Comments();
-        $form = $this->createCreateForm($entity);
-        $form->handleRequest($request);
+        $form = $this->get('cinhetic_public.manager_comments')->createForm($entity);
+        $this->get('cinhetic_public.manager_comments')->create($entity);
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
-            $em->flush();
-
-            return $this->redirect($this->generateUrl('comments_show', array('id' => $entity->getId())));
-        }
 
         return $this->render('CinheticPublicBundle:Comments:new.html.twig', array(
             'entity' => $entity,
@@ -60,31 +51,13 @@ class CommentsController extends Controller
     }
 
     /**
-    * Creates a form to create a Comments entity.
-    * @param Comments $entity The entity
-    * @return \Symfony\Component\Form\Form The form
-    */
-    private function createCreateForm(Comments $entity)
-    {
-        $form = $this->createForm(new CommentsType(), $entity, array(
-            'action' => $this->generateUrl('comments_create'),
-            'method' => 'POST',
-        ));
-
-        $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning"), 'label' => 'Créer ce commentaire'));
-
-        return $form;
-    }
-
-
-    /**
      * Displays a form to create a new Comments entity.
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function newAction()
     {
         $entity = new Comments();
-        $form   = $this->createCreateForm($entity);
+        $form = $this->get('cinhetic_public.manager_comments')->createForm($entity);
 
         return $this->render('CinheticPublicBundle:Comments:new.html.twig', array(
             'entity' => $entity,
@@ -156,20 +129,12 @@ class CommentsController extends Controller
      * @return \Symfony\Component\HttpFoundation\Response
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
-    public function showAction($id)
+    public function showAction(Comments $id)
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('CinheticPublicBundle:Comments')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Comments entity.');
-        }
-
-        $deleteForm = $this->createDeleteForm($id);
+        $deleteForm = $this->get('cinhetic_public.manager_comments')->deleteForm($id);
 
         return $this->render('CinheticPublicBundle:Comments:show.html.twig', array(
-            'entity'      => $entity,
+            'entity'      => $id,
             'delete_form' => $deleteForm->createView(),        ));
     }
 
@@ -180,41 +145,17 @@ class CommentsController extends Controller
      * @return \Symfony\Component\HttpFoundation\Response
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
-    public function editAction($id)
+    public function editAction(Comments $id)
     {
-        $em = $this->getDoctrine()->getManager();
+        $editForm = $this->get('cinhetic_public.manager_comments')->editForm($id);
+        $deleteForm = $this->get('cinhetic_public.manager_comments')->deleteForm($id);
 
-        $entity = $em->getRepository('CinheticPublicBundle:Comments')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Comments entity.');
-        }
-
-        $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('CinheticPublicBundle:Comments:edit.html.twig', array(
-            'entity'      => $entity,
+            'entity'      => $id,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
-    }
-
-    /**
-    * Creates a form to edit a Comments entity.
-    * @param Comments $entity The entity
-    * @return \Symfony\Component\Form\Form The form
-    */
-    private function createEditForm(Comments $entity)
-    {
-        $form = $this->createForm(new CommentsType(), $entity, array(
-            'action' => $this->generateUrl('comments_update', array('id' => $entity->getId())),
-            'method' => 'POST',
-        ));
-
-        $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning"), 'label' => 'Modifier ce cinéma'));
-
-        return $form;
     }
 
 
@@ -225,28 +166,15 @@ class CommentsController extends Controller
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
-    public function updateAction(Request $request, $id)
+    public function updateAction(Request $request,Comments $id)
     {
-        $em = $this->getDoctrine()->getManager();
+        $deleteForm = $this->get('cinhetic_public.manager_comments')->deleteForm($id);
+        $editForm = $this->get('cinhetic_public.manager_comments')->editForm($id);
+        $this->get('cinhetic_public.manager_comments')->update($id);
 
-        $entity = $em->getRepository('CinheticPublicBundle:Comments')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Comments entity.');
-        }
-
-        $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createEditForm($entity);
-        $editForm->handleRequest($request);
-
-        if ($editForm->isValid()) {
-            $em->flush();
-
-            return $this->redirect($this->generateUrl('comments_edit', array('id' => $id)));
-        }
 
         return $this->render('CinheticPublicBundle:Comments:edit.html.twig', array(
-            'entity'      => $entity,
+            'entity'      => $id,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
@@ -259,39 +187,11 @@ class CommentsController extends Controller
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
-    public function deleteAction(Request $request, $id)
+    public function deleteAction(Request $request,Comments $id)
     {
-        $form = $this->createDeleteForm($id);
-        $form->handleRequest($request);
-
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('CinheticPublicBundle:Comments')->find($id);
-
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Comments entity.');
-            }
-
-            $em->remove($entity);
-            $em->flush();
-        }
+        $this->get('cinhetic_public.manager_comments')->remove($id);
 
         return $this->redirect($this->generateUrl('comments'));
     }
 
-    /**
-     * Creates a form to delete a Comments entity by id.
-     * @param mixed $id The entity id
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm($id)
-    {
-
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('comments_delete', array('id' => $id)))
-            ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
-            ->getForm()
-        ;
-    }
 }

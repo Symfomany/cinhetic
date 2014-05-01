@@ -14,7 +14,7 @@ use FOS\RestBundle\Controller\Annotations as Rest;
  * Class CinemaController
  * @package Cinhetic\PublicBundle\Controller
  */
-class CinemaController extends Controller
+class CinemaController extends AbstractController
 {
 
     /**
@@ -23,9 +23,7 @@ class CinemaController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('CinheticPublicBundle:Cinema')->findAll();
+        $entities = $this->getRepository('Cinema')->findAll();
 
         return $this->render('CinheticPublicBundle:Cinema:index.html.twig', array(
             'entities' => $entities,
@@ -41,16 +39,9 @@ class CinemaController extends Controller
     public function createAction(Request $request)
     {
         $entity = new Cinema();
-        $form = $this->createCreateForm($entity);
-        $form->handleRequest($request);
+        $form = $this->get('cinhetic_public.manager_cinema')->createForm($entity);
+        $this->get('cinhetic_public.manager_cinema')->create($entity);
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
-            $em->flush();
-
-            return $this->redirect($this->generateUrl('cinema_show', array('id' => $entity->getId())));
-        }
 
         return $this->render('CinheticPublicBundle:Cinema:new.html.twig', array(
             'entity' => $entity,
@@ -58,21 +49,6 @@ class CinemaController extends Controller
         ));
     }
 
-    /**
-    * Creates a form to create a Cinema entity.
-    * @param Cinema $entity The entity
-    * @return \Symfony\Component\Form\Form The form
-    */
-    private function createCreateForm(Cinema $entity)
-    {
-        $form = $this->createForm(new CinemaType(), $entity, array(
-            'action' => $this->generateUrl('cinema_create'),
-            'method' => 'POST',
-        ));
-
-        $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning"), 'label' => 'Créer ce cinéma'));
-        return $form;
-    }
 
 
     /**
@@ -82,7 +58,7 @@ class CinemaController extends Controller
     public function newAction()
     {
         $entity = new Cinema();
-        $form   = $this->createCreateForm($entity);
+        $form = $this->get('cinhetic_public.manager_cinema')->createForm($entity);
 
         return $this->render('CinheticPublicBundle:Cinema:new.html.twig', array(
             'entity' => $entity,
@@ -97,21 +73,13 @@ class CinemaController extends Controller
      * @return \Symfony\Component\HttpFoundation\Response
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
-    public function showAction($id)
+    public function showAction(Cinema $id)
     {
-        $em = $this->getDoctrine()->getManager();
+        $deleteForm = $this->get('cinhetic_public.manager_cinema')->deleteForm($id);
 
-        $entity = $em->getRepository('CinheticPublicBundle:Cinema')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Cinema entity.');
-        }
-
-        $deleteForm = $this->createDeleteForm($id);
-        
         // TODO : create a real cover
         $cover = array();
-        foreach ($entity->getMovies() as $movie) {
+        foreach ($id->getMovies() as $movie) {
             $cover[$movie->getId()] = NULL;
             foreach ($movie->getMedias() as $picture) {
                 if ($picture->getNature())
@@ -123,7 +91,7 @@ class CinemaController extends Controller
         }
 
         return $this->render('CinheticPublicBundle:Cinema:show.html.twig', array(
-            'entity'      => $entity,
+            'entity'      => $id,
             'cover' => $cover,
             'delete_form' => $deleteForm->createView(),        ));
     }
@@ -134,42 +102,18 @@ class CinemaController extends Controller
      * @return \Symfony\Component\HttpFoundation\Response
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
-    public function editAction($id)
+    public function editAction(Cinema $id)
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('CinheticPublicBundle:Cinema')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Cinema entity.');
-        }
-
-        $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
+        $editForm = $this->get('cinhetic_public.manager_cinema')->editForm($id);
+        $deleteForm = $this->get('cinhetic_public.manager_cinema')->deleteForm($id);
 
         return $this->render('CinheticPublicBundle:Cinema:edit.html.twig', array(
-            'entity'      => $entity,
+            'entity'      => $id,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
 
-    /**
-    * Creates a form to edit a Cinema entity.
-    * @param Cinema $entity The entity
-    * @return \Symfony\Component\Form\Form The form
-    */
-    private function createEditForm(Cinema $entity)
-    {
-        $form = $this->createForm(new CinemaType(), $entity, array(
-            'action' => $this->generateUrl('cinema_update', array('id' => $entity->getId())),
-            'method' => 'POST',
-        ));
-
-        $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning"), 'label' => 'Modifier ce cinéma'));
-
-        return $form;
-    }
 
     /**
      * Edits an existing Cinema entity.
@@ -178,28 +122,15 @@ class CinemaController extends Controller
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
-    public function updateAction(Request $request, $id)
+    public function updateAction(Request $request,Cinema $id)
     {
-        $em = $this->getDoctrine()->getManager();
+        $deleteForm = $this->get('cinhetic_public.manager_cinema')->deleteForm($id);
+        $editForm = $this->get('cinhetic_public.manager_cinema')->editForm($id);
+        $this->get('cinhetic_public.manager_cinema')->update($id);
 
-        $entity = $em->getRepository('CinheticPublicBundle:Cinema')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Cinema entity.');
-        }
-
-        $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createEditForm($entity);
-        $editForm->handleRequest($request);
-
-        if ($editForm->isValid()) {
-            $em->flush();
-
-            return $this->redirect($this->generateUrl('cinema_edit', array('id' => $id)));
-        }
 
         return $this->render('CinheticPublicBundle:Cinema:edit.html.twig', array(
-            'entity'      => $entity,
+            'entity'      => $id,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
@@ -213,38 +144,11 @@ class CinemaController extends Controller
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
-    public function deleteAction(Request $request, $id)
+    public function deleteAction(Request $request,Cinema $id)
     {
-        $form = $this->createDeleteForm($id);
-        $form->handleRequest($request);
-
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('CinheticPublicBundle:Cinema')->find($id);
-
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Cinema entity.');
-            }
-
-            $em->remove($entity);
-            $em->flush();
-        }
+        $this->get('cinhetic_public.manager_cinema')->remove($id);
 
         return $this->redirect($this->generateUrl('cinema'));
     }
 
-    /**
-     * Creates a form to delete a Cinema entity by id.
-     * @param mixed $id The entity id
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm($id)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('cinema_delete', array('id' => $id)))
-            ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
-            ->getForm()
-        ;
-    }
 }

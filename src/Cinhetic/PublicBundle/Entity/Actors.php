@@ -51,7 +51,6 @@ class Actors
     private $lastname;
 
 
-
     /**
      * @Gedmo\Slug(fields={"firstname", "lastname"}, updatable=false, separator="-")
      * @ORM\Column(name="slug", type="string", length=250, nullable=true)
@@ -59,7 +58,6 @@ class Actors
     private $slug;
 
     /**
-     * @var \DateTime
      * @ORM\Column(name="dob", type="date", nullable=true)
      */
     private $dob;
@@ -79,7 +77,7 @@ class Actors
     /**
      * @var string
      * @Assert\Length(
-     *      min = "3",
+     *      min = "2",
      *      max = "50",
      *      minMessage = "Votre nationalité doit faire au moins {{ limit }} caractères",
      *      maxMessage = "Votre nationalité ne peut pas être plus long que {{ limit }} caractères"
@@ -92,7 +90,7 @@ class Actors
      * @var string
      * @Assert\Length(
      *      min = "15",
-     *      max = "50",
+     *      max = "15000",
      *      minMessage = "Votre biographie doit faire au moins {{ limit }} caractères",
      *      maxMessage = "Votre biographie ne peut pas être plus long que {{ limit }} caractères"
      * )

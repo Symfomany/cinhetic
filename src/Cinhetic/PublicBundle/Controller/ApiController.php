@@ -13,7 +13,7 @@ use FOS\RestBundle\Controller\Annotations as Rest;
  * Class ApiController
  * @package Cinhetic\PublicBundle\Controller
  */
-class ApiController extends Controller
+class ApiController extends AbstractController
 {
 
     /**

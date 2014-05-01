@@ -3,4 +3,5 @@
 {% block content %}
     <h1> <i class="glyphicon glyphicon-pencil"></i> Editer l'acteur {{ entity.firstname|title}} {{ entity.lastname|title}} </h1>
     {{ form(edit_form) }}
+    {{ form(delete_form) }}
 {% endblock %}
