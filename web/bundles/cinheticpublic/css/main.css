@@ -11,7 +11,7 @@ html, body{
 }
 
 p, h1, h2, h3, h4,div, a{
-    font-family: 'Sniglet', cursive; !important;
+    font-family: 'Ubuntu', sans-serif !important;
 }
 a{
 
@@ -93,6 +93,9 @@ img{
 }
 img:hover{
     opacity(0.6);
+}
+.featurette-heading{
+    margin: 0;
 }
 .datepicker td, .datepicker th{
     color: #222 !important;
@@ -235,6 +238,23 @@ video, iframe {
 }
 
 
+.banner {
+    position: relative;
+    overflow: auto;
+    margin: 0 auto;
+    box-shadow: 1px 1px 12px #111;
+
+}
+.banner li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.banner ul li { float: left; }
+.banner ul li img{
+    max-width: 800px !important;
+    max-height: 350px !important;
+}
 
 @media (min-width: 300px) and (max-width: 768px) {
     h1,h2,h3{

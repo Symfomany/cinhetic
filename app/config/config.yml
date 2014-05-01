@@ -255,15 +255,6 @@ lexik_paybox:
         hmac:
             key: '0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF' # Key used to compute the hmac hash, provided by Paybox
 
-#Facebook Bundle
-fos_facebook:
-    alias:  facebook
-    app_id: %api_facebook_id%
-    secret: %api_facebook_secret%
-    cookie: true
-    permissions: [email, user_birthday, user_location]
-
-
 #HWIOAuthBundle
 hwi_oauth:
     connect:
