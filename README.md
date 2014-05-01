@@ -288,6 +288,7 @@ Chapters covered in project
 * Add Provider & Bridges to firewall security & services
 * OAuth 2.0 protocol across social networks
 * Tree behavior in Categories Entity
+* Add Managers to handle actions in service with Controllers
 
 
 Features
@@ -323,6 +324,7 @@ Features
 * Webapp released on Google Play
 * Cross connect via Oauth 2.0
 * Tree nested in entities
+* Handle controllers ith Managers
 
 
 Evolution
