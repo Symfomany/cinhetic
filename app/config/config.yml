@@ -96,6 +96,10 @@ doctrine:
         default_entity_manager: default
         entity_managers:
           default:
+            filters:
+              softdeleteable:
+                class: Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter
+                enabled: true
             dql:
              numeric_functions:
                  dateformat: Cinhetic\PublicBundle\AST\Functions\DateFormat
@@ -237,6 +241,7 @@ stof_doctrine_extensions:
       sluggable: true
       timestampable: true
       tree: true
+      softdeleteable: true
 
 #Lexik Paybox
 lexik_paybox:

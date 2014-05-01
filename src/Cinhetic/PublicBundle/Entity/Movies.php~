@@ -14,9 +14,10 @@ use Gedmo\Mapping\Annotation as Gedmo; // gedmo annotations
  * @ORM\Table(name="movies")
  * @ORM\Entity(repositoryClass="Cinhetic\PublicBundle\Repository\MoviesRepository")
  * @UniqueEntity(fields="title", message="Le titre est deja pris!")
+ * @Gedmo\SoftDeleteable(fieldName="dateDeleted", timeAware=false)
  * @ORM\HasLifecycleCallbacks
  */
-class Movies
+class Movies implements TimestampableInterface
 {
     /**
      * @var integer
@@ -195,6 +196,12 @@ class Movies
      * @ORM\Column(name="date_updated", type="datetime", nullable=true)
      */
     private $dateUpdated;
+
+    /**
+     * @var \DateTime
+     * @ORM\Column(name="date_deleted", type="datetime", nullable=true)
+     */
+    private $dateDeleted;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -1139,5 +1146,28 @@ class Movies
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * Set dateUpdated
+     *
+     * @param \DateTime $dateUpdated
+     * @return Movies
+     */
+    public function setDateUpdated(\Datetime $dateUpdated)
+    {
+        $this->dateUpdated = $dateUpdated;
+
+        return $this;
+    }
+
+    /**
+     * Get dateUpdated
+     *
+     * @return \DateTime 
+     */
+    public function getDateUpdated()
+    {
+        return $this->dateUpdated;
     }
 }

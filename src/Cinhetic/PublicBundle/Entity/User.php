@@ -14,6 +14,7 @@ use Gedmo\Mapping\Annotation as Gedmo; // gedmo annotations
  * @ORM\Entity
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="Cinhetic\PublicBundle\Repository\UserRepository")
+ * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=true)
  */
 class User extends BaseUser
 {
@@ -71,6 +72,11 @@ class User extends BaseUser
      * @ORM\Column(type="datetime", name="updated_at")
      */
     protected $updatedAt;
+    
+    /**
+     * @ORM\Column(type="datetime", name="deleted_at")
+     */
+    protected $deletedAt;
 
 
     /**
@@ -772,4 +778,27 @@ class User extends BaseUser
         return $this->flickrId;
     }
 
+
+    /**
+     * Set deletedAt
+     *
+     * @param \DateTime $deletedAt
+     * @return User
+     */
+    public function setDeletedAt($deletedAt)
+    {
+        $this->deletedAt = $deletedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get deletedAt
+     *
+     * @return \DateTime 
+     */
+    public function getDeletedAt()
+    {
+        return $this->deletedAt;
+    }
 }

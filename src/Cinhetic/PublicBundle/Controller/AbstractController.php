@@ -9,7 +9,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
  * Class AbstractController
  * @package Cinhetic\PublicBundle\Controller
  */
-class AbstractController extends Controller
+
+abstract class AbstractController extends Controller
 {
 
     /**
@@ -28,7 +29,7 @@ class AbstractController extends Controller
     public function display($views = null, $params = array()){
 
         if (0 === preg_match('#^(.*?\\\\Controller\\\\(.+)Controller)#', get_called_class(), $match)) {
-            throw new \InvalidArgumentException(sprintf('The "%s" controller is not a valid "class::method" string.', $controller));
+            throw new \InvalidArgumentException(sprintf('The "%s" controller is not a valid "class::method" string.', get_called_class()));
         }
 
         return $this->render(self::$bundle.":".$match[2].":".$views ,  $params);
@@ -41,7 +42,6 @@ class AbstractController extends Controller
      * @return mixed
      */
     public function paginate($datas = array(), $limit = 50){
-
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $datas,
