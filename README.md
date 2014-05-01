@@ -287,7 +287,7 @@ Chapters covered in project
 * Embed form with Medias Videos for Movies (use Essence to display movies)
 * Add Provider & Bridges to firewall security & services
 * OAuth 2.0 protocol across social networks
-
+* Tree behavior in Categories Entity
 
 
 Features
@@ -322,6 +322,8 @@ Features
 * Embed form with Medias Videos use Essence for display
 * Webapp released on Google Play
 * Cross connect via Oauth 2.0
+* Tree nested in entities
+
 
 Evolution
 ----------------------------------

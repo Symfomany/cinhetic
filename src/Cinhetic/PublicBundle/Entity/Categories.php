@@ -208,6 +208,7 @@ class Categories
     {
         $this->movies = new \Doctrine\Common\Collections\ArrayCollection();
         $this->dateCreated = new \Datetime('now');
+        $this->children = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
