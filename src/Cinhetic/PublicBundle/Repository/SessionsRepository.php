@@ -15,7 +15,7 @@ class SessionsRepository extends EntityRepository
      * @param null $limit
      * @return array
      */
-    public function getNextSessions($limit = 5){
+    public function getNextSessions($limit = 3){
         $query = $this->getEntityManager()
             ->createQuery(
                 'SELECT p

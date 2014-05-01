@@ -160,10 +160,10 @@ class MoviesController extends Controller
     public function carousselMoviesAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $entities = $em->getRepository('CinheticPublicBundle:Movies')->getCoverMovies();
+        $imgs = $em->getRepository('CinheticPublicBundle:Movies')->getAllImagesOfMovies();
 
         return $this->render('CinheticPublicBundle:Movies:caroussel.html.twig', array(
-            'entities' => $entities,
+            'imgs' => $imgs,
         ));
     }
 

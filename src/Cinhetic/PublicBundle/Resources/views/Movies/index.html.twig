@@ -20,7 +20,7 @@
             <tr>
                 <td><a href="{{ path('movies_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td class="text-success"><a href="{{ path('movies_show', { 'id': entity.id }) }}">{{ entity.title }}</a></td>
-                <td>{{ entity.synopsis|raw|truncate(250,true, "...") }}</td>
+                <td>{{ entity.synopsis|convert_encoding( 'iso-8859-1', 'UTF-8') |striptags|truncate(350,true, "...") }}</td>
                 <td>
                     {% for entity in entity.directors %}
                         <a href="{{ path('directors_show', { 'id': entity.id }) }}">{{ entity.firstname|title }}

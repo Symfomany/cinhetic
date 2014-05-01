@@ -20,6 +20,15 @@
         <hr />
         <h3>Description</h3>
         {{ form_row(form.file) }}
+        <div class="row">
+            <div class="col-lg-5">
+            {% if entity.image is not empty %}
+                <a class="fancybox" href="{{ base_url ~ imgmovies ~ entity.image }}" alt="...">
+                    <img class="img-thumbnail" src="{{ base_url ~ imgmovies ~ entity.image }}" alt="...">
+                </a>
+            {% endif %}
+            </div>
+        </div>
         {{ form_row(form.trailer) }}
         {{ form_row(form.languages) }}
         {{ form_row(form.distributeur) }}

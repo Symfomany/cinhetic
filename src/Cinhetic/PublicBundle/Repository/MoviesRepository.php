@@ -75,6 +75,24 @@ class MoviesRepository extends EntityRepository
 
 
     /**
+     * Get images of movies
+     * @return array
+     */
+    public function getAllImagesOfMovies(){
+        $query = $this->getEntityManager()
+            ->createQuery(
+                'SELECT p
+                    FROM CinheticPublicBundle:Movies p
+                    WHERE p.visible = 1
+                    AND p.image IS NOT NULL
+                    ORDER BY p.id DESC'
+            );
+
+            return $query->getResult();
+    }
+
+
+    /**
      * Get Current movies by criteria
      * @param string $ville
      * @return array

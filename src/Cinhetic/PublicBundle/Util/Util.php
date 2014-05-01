@@ -15,6 +15,7 @@ class Util
 {
 
     /**
+     * Slugize string
      * @param $text
      * @return string
      */
@@ -26,6 +27,7 @@ class Util
     }
 
     /**
+     * Underscorize string
      * @param $string
      * @return string
      */
@@ -49,6 +51,7 @@ class Util
     }
 
     /**
+     * Camelize the word
      * @param $string
      * @return mixed
      */
@@ -60,6 +63,7 @@ class Util
     }
 
     /**
+     * get Date in FR
      * @param null $day
      * @param null $month
      * @param null $year
@@ -88,6 +92,7 @@ class Util
     }
 
     /**
+     * remove all accents
      * @param $text
      * @return mixed
      */
@@ -107,33 +112,10 @@ class Util
         return $text;
     }
 
-    /**
-     * @param null $city
-     * @param null $date
-     * @return null
-     */
-    public static function getMeteo($city = null, $date=null)
-    {
-
-        /**
-         * Google Geoloc
-         */
-        $cityclean = str_replace(" ", "+", $city);
-        $details_url = "http://api.worldweatheronline.com/free/v1/weather.ashx?q=".$cityclean."&format=json&num_of_days=1&date".$date."&key=9xmrqdsffsqwe9uu2huvcdb3";
-
-        $ch = @curl_init();
-        @curl_setopt($ch, CURLOPT_URL, $details_url);
-        @curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        $meteo = json_decode(curl_exec($ch), true);
-
-        if(array_key_exists('data',$meteo))
-            return $meteo['data'];
-
-        return null;
-    }
 
 
     /**
+     * get Geocode of user
      * @param null $city
      * @return array|null
      */

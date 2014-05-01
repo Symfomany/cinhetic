@@ -34,6 +34,7 @@ sensio_framework_extra:
     view:
         annotations: false
 
+# Rest APIs
 fos_rest:
     param_fetcher_listener: true
     body_listener: true
@@ -108,7 +109,7 @@ doctrine:
                 type: annotation
                 prefix: Gedmo\Tree\Entity
                 dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Tree/Entity"
-                alias: GedmoTree # this one is optional and will default to the name set for the mapping
+                alias: GedmoTree
                 is_bundle: false
 
           site:
@@ -133,7 +134,6 @@ fos_user:
    db_driver:     orm
    firewall_name: main
    user_class:    Cinhetic\PublicBundle\Entity\User
-
 
 
 #Services
@@ -232,11 +232,11 @@ knp_paginator:
 
 # Doctrine Extensions
 stof_doctrine_extensions:
-    orm:
-      default:
-          sluggable: true
-          timestampable: true
-          tree: true
+  orm:
+    default:
+      sluggable: true
+      timestampable: true
+      tree: true
 
 #Lexik Paybox
 lexik_paybox:
@@ -276,29 +276,31 @@ hwi_oauth:
     resource_owners:
       github:
         type:                github
-        client_id:           d616a3183b8a888fc5b2
-        client_secret:       ba618f8086b8e9122447f7c7137c363eb0609d6c
+        client_id:           %api_github_id%
+        client_secret:       %api_github_secret%
       twitter:
         type:                twitter
-        client_id:           LWKDRPmFymEBsGnyolmA
-        client_secret:       dZfqT6cFM4kXun2KLMirwIvWmFSfQEhmdHkTlxqA0
+        client_id:           %api_twitter_id%
+        client_secret:       %api_twitter_secret%
       google:
         type:                google
-        client_id:           592804639260-omp9kcr1gfs6k5o719146is2jknl1f2n.apps.googleusercontent.com
-        client_secret:       yx0iBnIfoYTDIq5eQJPvy7N8
+        client_id:           %api_google_id%
+        client_secret:       %api_google_secret%
         scope:               "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
       facebook:
-          type:                facebook
-          client_id:            %api_facebook_id%
-          client_secret:        %api_facebook_secret%
+        type:                facebook
+        client_id:           %api_facebook_id%
+        client_secret:       %api_facebook_secret%
       linkedin:
-          type:                linkedin
-          client_id:           759ytfqzaixtxo
-          client_secret:        mLsefActr5mB4wlK
+        type:                linkedin
+        client_id:           %api_linkedin_id%
+        client_secret:       %api_linkedin_secret%
       flickr:
-          type:                flickr
-          client_id:           1011e1627b76b4d8e1e64686f1814aa3
-          client_secret:       064a7c31c78a75c2
+        type:                flickr
+        client_id:           %api_flickr_id%
+        client_secret:       %api_flickr_secret%
+
+
 #Cinhetic Bundle
 cinhetic_public:
   base_url: http://www.cinhetic.ju

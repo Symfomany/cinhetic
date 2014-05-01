@@ -75,7 +75,7 @@ class MoviesType extends AbstractType
             ))
             ->add('visible')
             ->add('cover')
-            ->add('category', null, array('required' => true,'label' => "Catégorie associée"))
+            ->add('category', null, array('required' => true, 'property' => 'optionLabel'))
             ->add('actors', null, array('label' => "Acteurs qui ont joué dans ce film"))
             ->add('cinemas', null, array('label' => "Cinéma qui le diffusent"))
             ->add('directors', null, array('required' => true,'label' => "Réalisateur"))

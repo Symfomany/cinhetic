@@ -53,7 +53,7 @@ class Movies
      * @Assert\NotBlank()
      * @Assert\Length(
      *      min = "10",
-     *      max = "5500",
+     *      max = "15500",
      *      minMessage = "Votre synopsis doit faire au moins {{ limit }} caractères",
      *      maxMessage = "Votre synopsis ne peut pas être plus long que {{ limit }} caractères"
      * )
@@ -66,7 +66,7 @@ class Movies
      * @Assert\NotBlank()
      * @Assert\Length(
      *      min = "20",
-     *      max = "9050",
+     *      max = "19050",
      *      minMessage = "Votre description doit faire au moins {{ limit }} caractères",
      *      maxMessage = "Votre description ne peut pas être plus long que {{ limit }} caractères"
      * )

@@ -6,8 +6,8 @@
                 {{ entity.trailer|raw }}
             </div>
             <div class="col-md-7">
-                <h2 style="margin-left:0" class="featurette-heading"><a href="{{ path('movies_show', {'id' : entity.id}) }}">{{ entity.title }}</a></h2>
-                <p class="lead">{{ entity.synopsis|raw|truncate(250,true, "...") }}</p>
+                <h2 class="featurette-heading"><a href="{{ path('movies_show', {'id' : entity.id}) }}">{{ entity.title }}</a></h2>
+                <p>{{ entity.synopsis|striptags|raw|truncate(250,true, "...") }}</p>
             </div>
         </div>
         {% if loop.last == false %}

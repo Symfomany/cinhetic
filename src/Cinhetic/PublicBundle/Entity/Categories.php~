@@ -1,14 +1,18 @@
 <?php
 
-namespace Ezap\PublicBundle\Entity;
+namespace Cinhetic\PublicBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Gedmo\Mapping\Annotation as Gedmo; // gedmo annotations
 
 /**
  * Categories
- *
  * @ORM\Table(name="categories")
- * @ORM\Entity
+ * @Gedmo\Tree(type="nested")
+ * @ORM\Entity(repositoryClass="Cinhetic\PublicBundle\Repository\CategoriesRepository")
+ * @UniqueEntity(fields="title", message="Le titre est deja pris!")
  */
 class Categories
 {
@@ -23,14 +27,34 @@ class Categories
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = "10",
+     *      max = "200",
+     *      minMessage = "Votre titre doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre titre ne peut pas être plus long que {{ limit }} caractères"
+     * )
      * @ORM\Column(name="title", type="string", length=250, nullable=true)
      */
     private $title;
 
+
+
+    /**
+     * @Gedmo\Slug(fields={"title"}, updatable=false, separator="-")
+     * @ORM\Column(name="slug", type="string", length=250, nullable=true)
+     */
+    private $slug;
+
+
     /**
      * @var string
-     *
+     * @Assert\Length(
+     *      min = "50",
+     *      max = "1500",
+     *      minMessage = "Votre description doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre description ne peut pas être plus long que {{ limit }} caractères"
+     * )
      * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
@@ -49,6 +73,50 @@ class Categories
     protected $movies;
 
 
+    /**
+     * @Gedmo\SortablePosition
+     * @ORM\Column(name="position", type="integer")
+     */
+    private $position;
+
+
+    /**
+     * @Gedmo\TreeLeft
+     * @ORM\Column(name="lft", type="integer")
+     */
+    private $lft;
+
+    /**
+     * @Gedmo\TreeLevel
+     * @ORM\Column(name="lvl", type="integer")
+     */
+    private $lvl;
+
+    /**
+     * @Gedmo\TreeRight
+     * @ORM\Column(name="rgt", type="integer")
+     */
+    private $rgt;
+
+    /**
+     * @Gedmo\TreeRoot
+     * @ORM\Column(name="root", type="integer", nullable=true)
+     */
+    private $root;
+
+    /**
+     * @Gedmo\TreeParent
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="children")
+     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="CASCADE")
+     */
+    private $parent;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Category", mappedBy="parent")
+     * @ORM\OrderBy({"lft" = "ASC"})
+     */
+    private $children;
+    
     /**
      * Get id
      *
@@ -133,5 +201,70 @@ class Categories
      */
     public function __toString(){
         return $this->title;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->movies = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->dateCreated = new \Datetime('now');
+    }
+
+    /**
+     * Add movies
+     *
+     * @param \Cinhetic\PublicBundle\Entity\Movies $movies
+     * @return Categories
+     */
+    public function addMovie(\Cinhetic\PublicBundle\Entity\Movies $movies)
+    {
+        $this->movies[] = $movies;
+
+        return $this;
+    }
+
+    /**
+     * Remove movies
+     *
+     * @param \Cinhetic\PublicBundle\Entity\Movies $movies
+     */
+    public function removeMovie(\Cinhetic\PublicBundle\Entity\Movies $movies)
+    {
+        $this->movies->removeElement($movies);
+    }
+
+    /**
+     * Get movies
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMovies()
+    {
+        return $this->movies;
+    }
+
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Movies
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

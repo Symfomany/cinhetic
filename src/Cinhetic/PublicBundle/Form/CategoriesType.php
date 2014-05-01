@@ -20,6 +20,13 @@ class CategoriesType extends AbstractType
     {
         $builder
             ->add('title', null, array('label' => "Titre"))
+            ->add('parent', 'entity', array(
+                'class' => 'CinheticPublicBundle:Categories',
+                'property' => 'OptionLabel',
+                'required' => false,
+                'empty_value' => 'Choisissez une catégorie parente',
+                'label' => 'Catégorie parente'
+            ))
             ->add('description', null, array('attr' => array("class" => "ckeditor")))
         ;
     }
