@@ -19,18 +19,16 @@ class CinheticPublicExtension extends Extension
     public function load(array $configs, ContainerBuilder $container)
     {
         $configuration = new Configuration();
-        $config = $this->processConfiguration($configuration, $configs);
+        $this->processConfiguration($configuration, $configs);
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
 
     }
 
-    /**
-     * @return string
-     */
-    public function getXsdValidationBasePath()
+
+    public function getAlias()
     {
-        return __DIR__.'/../Resources/config/';
+        return 'cinhetic_public';
     }
 }

@@ -292,6 +292,7 @@ hwi_oauth:
         client_secret:       %api_flickr_secret%
 
 
+
 #Cinhetic Bundle
 cinhetic_public:
   base_url: http://www.cinhetic.ju

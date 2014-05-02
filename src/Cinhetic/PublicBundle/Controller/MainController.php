@@ -52,6 +52,8 @@ class MainController extends AbstractController
      */
     public function indexAction()
     {
+//        $feeds = $this->get('cinhetic_public.webservice_twitter')->getFeeds();
+//        exit(var_dump($feeds));
         $paybox = $this->get('lexik_paybox.request_handler');
         $paybox->setParameters(array(
             'PBX_CMD'          => 'CMD'.time(),
@@ -70,16 +72,12 @@ class MainController extends AbstractController
 
         $em = $this->getDoctrine()->getManager();
 
-        $movies = $this->getRepository('Movies')->getAllMovies();
-        $cities = $em->getRepository('CinheticPublicBundle:Cinema')->getCitiesOfMovies();
         $seances = $em->getRepository('CinheticPublicBundle:Sessions')->getNextSessions();
         $categories = $em->getRepository('CinheticPublicBundle:Categories')->findAll();
         $tags = $em->getRepository('CinheticPublicBundle:Tags')->findAll();
 
 
         return $this->display('index.html.twig',  array(
-            'movies' => $this->paginate($movies),
-            'cities' => $cities,
             'seances' => $seances,
             'categories' => $categories,
             'tags' => $tags,

@@ -289,7 +289,7 @@ Chapters covered in project
 * OAuth 2.0 protocol across social networks
 * Tree behavior in Categories Entity
 * Add Managers to handle actions in service with Controllers
-
+* Add Listener to kernel event listener
 
 Features
 ----------------------------------
@@ -325,6 +325,8 @@ Features
 * Cross connect via Oauth 2.0
 * Tree nested in entities
 * Handle controllers ith Managers
+* Add Prexecute method in controller by listener
+* Last activity of users
 
 
 Evolution

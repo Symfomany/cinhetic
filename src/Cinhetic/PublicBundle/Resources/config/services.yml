@@ -29,6 +29,11 @@ parameters:
 
 services:
 
+#   Twitter service
+    cinhetic_public.webservice_twitter:
+      class: Cinhetic\PublicBundle\Webservice\Twitter
+      arguments: [@guzzle.client]
+
 #   Activity Listener
     cinhetic_public.activity.listener:
       class: Cinhetic\PublicBundle\Listener\ActivityListener
@@ -43,7 +48,6 @@ services:
       public: true
       tags:
           - { name: kernel.event_listener, event: kernel.controller, method: onCoreController }
-
 
 #    Form as Services
     cinhetic_public.form_actors:
@@ -168,24 +172,24 @@ services:
       arguments: [@fos_user.user_manager,{facebook: facebookId, google: googleId, twitter: twitterId, github: githubId, linkedin: linkedinId, flickr: flickrId}]
 
 
+
     # Repositories as service
     cinhetic_public.repository.movies:
       class: Cinhetic\PublicBundle\Repository\MoviesRepository
       factory_service: doctrine.orm.default_entity_manager
-      factory_method: ['CinheticPublicBundle:Movies']
+      factory_method: getRepository
 
     cinhetic_public.repository.cinema:
       class: Cinhetic\PublicBundle\Repository\CinemaRepository
       factory_service: doctrine.orm.default_entity_manager
-      factory_method: ['CinheticPublicBundle:Cinema']
+      factory_method: getRepository
 
     cinhetic_public.repository.actors:
       class: Cinhetic\PublicBundle\Repository\ActorsRepository
       factory_service: doctrine.orm.default_entity_manager
-      factory_method: ['CinheticPublicBundle:Actors']
+      factory_method: getRepository
 
     cinhetic_public.repository.sessions:
       class: Cinhetic\PublicBundle\Repository\SessionsRepository
       factory_service: doctrine.orm.default_entity_manager
       factory_method: getRepository
-      factory_method: ['CinheticPublicBundle:Sessions']
