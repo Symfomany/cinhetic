@@ -74,7 +74,8 @@ class CategoriesController extends AbstractController
 
         return $this->render('CinheticPublicBundle:Categories:show.html.twig', array(
             'entity'      => $id,
-            'delete_form' => $deleteForm->createView(),        ));
+            'delete_form' => $deleteForm->createView(),
+        ));
     }
 
     /**

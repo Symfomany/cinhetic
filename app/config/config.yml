@@ -154,12 +154,7 @@ services:
        class: Twig_Extensions_Extension_Intl
        tags:
            - { name: twig.extension }
-#    my.facebook.user:
-#        class: Cinhetic\PublicBundle\Security\User\Provider\FacebookProvider
-#        arguments:
-#            facebook: "@fos_facebook.api"
-#            userManager: "@fos_user.user_manager"
-#            validator: "@validator"
+
 
 
 #Elastic Search

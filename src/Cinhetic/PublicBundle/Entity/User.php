@@ -44,6 +44,7 @@ class User extends BaseUser
 
     /**
      * @ORM\Column(type="text", name="tel")
+     * @Assert\Regex(pattern="/^(0|\+[1-9][0-9]{0,2})[1-9]([-. ]?[0-9]{2}){4}$/", message="Le téléphone est invalide")
      */
     protected $tel;
 
@@ -77,7 +78,6 @@ class User extends BaseUser
      * @ORM\Column(type="datetime", name="deleted_at")
      */
     protected $deletedAt;
-
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -153,6 +153,12 @@ class User extends BaseUser
 
 
     /**
+     * @var string $lastActivity
+     * @ORM\Column(name="lastActivity", type="datetime", nullable=true)
+     */
+    public $lastActivity;
+
+    /**
      *
      */
     public function __construct()
@@ -160,8 +166,8 @@ class User extends BaseUser
         parent::__construct();
         $this->createdAt = new \Datetime('now');
         $this->updatedAt = new \Datetime('now');
+        $this->lastActivity = new \Datetime('now');
 
-        // your own logic
     }
 
     /**
@@ -800,5 +806,61 @@ class User extends BaseUser
     public function getDeletedAt()
     {
         return $this->deletedAt;
+    }
+
+
+    /**
+     * Set online datetime
+     * @return bool
+     */
+    public function isOnline()
+    {
+        $delay = new \DateTime();
+        $delay->setTimestamp(strtotime('5 minutes ago'));
+        if($this->getLastActivity() < $delay)
+            return false;
+        return true;
+    }
+
+    /**
+     * is Active
+     * @return bool
+     */
+    public function isActive(){
+        $delay = new \DateTime();
+        $delay->setTimestamp(strtotime('5 minutes ago'));
+        if($this->getLastActivity() >= $delay )
+            return true;
+        else
+            return false;
+    }
+
+    /**
+     * is Active Now
+     */
+    public function isActiveNow()
+    {
+        $this->setLastActivity(new \DateTime());
+
+        return $this;
+    }
+
+    /**
+     * Get lastActivity
+     *
+     * @return \DateTime
+     */
+    public function getLastActivity()
+    {
+        return $this->lastActivity;
+    }
+
+    /**
+     * Set lastActivity
+     * @param \DateTime $dateupdate
+     */
+    public function setLastActivity(\DateTime $dateupdate)
+    {
+        $this->lastActivity = $dateupdate;
     }
 }

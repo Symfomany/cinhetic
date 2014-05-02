@@ -34,7 +34,7 @@ class ActorsController extends AbstractController
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function createAction(Request $request)
+    public function createAction()
     {
         $entity = new Actors();
         $form = $this->get('cinhetic_public.manager_actors')->createForm($entity);
@@ -107,7 +107,7 @@ class ActorsController extends AbstractController
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
-    public function updateAction(Request $request, Actors $id)
+    public function updateAction(Actors $id)
     {
 
         $deleteForm = $this->get('cinhetic_public.manager_actors')->deleteForm($id);
@@ -128,7 +128,7 @@ class ActorsController extends AbstractController
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
-    public function deleteAction(Request $request,Actors $id)
+    public function deleteAction(Actors $id)
     {
         $this->get('cinhetic_public.manager_actors')->remove($id);
 

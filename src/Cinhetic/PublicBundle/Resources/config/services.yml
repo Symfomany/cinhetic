@@ -28,6 +28,23 @@ parameters:
 
 
 services:
+
+#   Activity Listener
+    cinhetic_public.activity.listener:
+      class: Cinhetic\PublicBundle\Listener\ActivityListener
+      arguments: [@security.context, @doctrine.orm.entity_manager]
+      scope: request
+      tags:
+        - { name: kernel.event_listener, event: kernel.controller, method: onCoreController }
+
+#    Preexecute Method
+    cinhetic_public.prexecute_listener:
+      class:  Cinhetic\PublicBundle\Listener\PreMethodListener
+      public: true
+      tags:
+          - { name: kernel.event_listener, event: kernel.controller, method: onCoreController }
+
+
 #    Form as Services
     cinhetic_public.form_actors:
         class: %cinhetic_public.form_actors.class%

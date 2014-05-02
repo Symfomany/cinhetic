@@ -34,7 +34,7 @@ class DirectorsController extends AbstractController
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function createAction(Request $request)
+    public function createAction()
     {
         $entity = new Directors();
         $form = $this->get('cinhetic_public.manager_directors')->createForm($entity);
@@ -107,7 +107,7 @@ class DirectorsController extends AbstractController
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
-    public function updateAction(Request $request,Directors $id)
+    public function updateAction(Directors $id)
     {
         $deleteForm = $this->get('cinhetic_public.manager_directors')->deleteForm($id);
         $editForm = $this->get('cinhetic_public.manager_directors')->editForm($id);
@@ -128,7 +128,7 @@ class DirectorsController extends AbstractController
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
-    public function deleteAction(Request $request,Directors $id)
+    public function deleteAction(Directors $id)
     {
         $this->get('cinhetic_public.manager_directors')->remove($id);
 
