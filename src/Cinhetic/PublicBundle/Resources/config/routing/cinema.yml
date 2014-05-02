@@ -33,3 +33,11 @@ cinema_delete:
 cinema_api_all:
   type: rest
   resource: Cinhetic\PublicBundle\Controller\CinemaController
+
+cinema_one_api:
+  pattern: /{id}/one.{_format}
+  defaults: { _controller: CinheticPublicBundle:Cinema:one }
+
+cinema_all_api:
+  pattern: /all.{_format}
+  defaults: { _controller: CinheticPublicBundle:Cinema:all }

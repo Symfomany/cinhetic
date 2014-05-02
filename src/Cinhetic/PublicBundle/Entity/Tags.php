@@ -5,11 +5,12 @@ namespace Cinhetic\PublicBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
 
 /**
  * Tags
- *
+ * @ExclusionPolicy("all")
  * @ORM\Table(name="tags")
  * @ORM\Entity(repositoryClass="Cinhetic\PublicBundle\Repository\TagsRepository")
  */
@@ -17,7 +18,7 @@ class Tags
 {
     /**
      * @var integer
-     *
+     * @Expose
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
@@ -25,6 +26,7 @@ class Tags
     private $id;
 
     /**
+     * @Expose
      * @var string
      * @Assert\Length(
      *      min = "3",

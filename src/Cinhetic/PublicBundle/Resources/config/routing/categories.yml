@@ -33,3 +33,11 @@ categories_delete:
 categories_api_all:
   type: rest
   resource: Cinhetic\PublicBundle\Controller\CategoriesController
+
+categories_one_api:
+  pattern: /{id}/one.{_format}
+  defaults: { _controller: CinheticPublicBundle:Categories:one }
+
+categories_all_api:
+  pattern: /all.{_format}
+  defaults: { _controller: CinheticPublicBundle:Categories:all }

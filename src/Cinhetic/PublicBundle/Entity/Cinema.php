@@ -5,6 +5,9 @@ namespace Cinhetic\PublicBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
+
 
 /**
  * Cinema
@@ -12,12 +15,13 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Table(name="cinema")
  * @ORM\Entity(repositoryClass="Cinhetic\PublicBundle\Repository\CinemaRepository")
  * @UniqueEntity(fields="title", message="Le titre est deja pris!")
+ * @ExclusionPolicy("all")
  */
 class Cinema
 {
     /**
      * @var integer
-     *
+     * @Expose
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
@@ -25,6 +29,7 @@ class Cinema
     private $id;
 
     /**
+     * @Expose
      * @var string
      * @Assert\Length(
      *      min = "15",
@@ -37,6 +42,7 @@ class Cinema
     private $title;
 
     /**
+     * @Expose
      * @var string
      * @Assert\Length(
      *      min = "2",
@@ -57,7 +63,7 @@ class Cinema
 
     /**
      * @var \Doctrine\Common\Collections\Collection
-     *
+     * @Expose
      * @ORM\ManyToMany(targetEntity="Movies", inversedBy="cinemas")
      * @ORM\JoinTable(name="cinema_movies",
      *   joinColumns={

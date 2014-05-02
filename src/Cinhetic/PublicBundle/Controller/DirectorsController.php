@@ -4,6 +4,8 @@ namespace Cinhetic\PublicBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Cinhetic\PublicBundle\Entity\Directors;
+use FOS\RestBundle\Controller\Annotations as Rest;
+
 
 /**
  * Class DirectorsController
@@ -131,6 +133,33 @@ class DirectorsController extends AbstractController
         $this->get('cinhetic_public.manager_directors')->remove($id);
 
         return $this->redirect($this->generateUrl('directors'));
+    }
+
+
+
+    /************************************************************************************************************
+     ***************************************************************** API Override Call ********************************************
+     *************************************************************************************************************/
+
+    /**
+     * @Rest\View
+     * Return All Directors
+     */
+    public function allAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $directors = $em->getRepository('CinheticPublicBundle:Directors')->findAll();
+
+        return array('directors' => $directors);
+    }
+
+    /**
+     * @Rest\View
+     * Return one Directors
+     */
+    public function oneAction(Directors $id)
+    {
+        return array('directors' => $id);
     }
 
 }

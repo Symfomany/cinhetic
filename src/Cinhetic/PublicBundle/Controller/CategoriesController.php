@@ -3,10 +3,8 @@
 namespace Cinhetic\PublicBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use Cinhetic\PublicBundle\Entity\Categories;
-use Cinhetic\PublicBundle\Form\CategoriesType;
+use FOS\RestBundle\Controller\Annotations as Rest;
 
 
 /**
@@ -133,5 +131,33 @@ class CategoriesController extends AbstractController
 
         return $this->redirect($this->generateUrl('categories'));
     }
+
+
+
+    /************************************************************************************************************
+     ***************************************************************** API Override Call ********************************************
+     *************************************************************************************************************/
+
+    /**
+     * @Rest\View
+     * Return All Categories
+     */
+    public function allAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $categories = $em->getRepository('CinheticPublicBundle:Categories')->findAll();
+
+        return array('categories' => $categories);
+    }
+
+    /**
+     * @Rest\View
+     * Return one Categories
+     */
+    public function oneAction(Categories $id)
+    {
+        return array('categorie' => $id);
+    }
+
 
 }

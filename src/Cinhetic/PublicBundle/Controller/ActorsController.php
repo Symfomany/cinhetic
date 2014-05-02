@@ -4,6 +4,7 @@ namespace Cinhetic\PublicBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Cinhetic\PublicBundle\Entity\Actors;
+use FOS\RestBundle\Controller\Annotations as Rest;
 
 
 
@@ -133,5 +134,33 @@ class ActorsController extends AbstractController
 
         return $this->redirect($this->generateUrl('actors'));
     }
+
+
+
+    /************************************************************************************************************
+     ***************************************************************** API Override Call ********************************************
+     *************************************************************************************************************/
+
+    /**
+     * @Rest\View
+     * Return All Actors
+     */
+    public function allAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $actors = $em->getRepository('CinheticPublicBundle:Actors')->findAll();
+
+        return array('actors' => $actors);
+    }
+
+    /**
+     * @Rest\View
+     * Return one Actors
+     */
+    public function oneAction(Actors $id)
+    {
+        return array('movie' => $id);
+    }
+
 
 }

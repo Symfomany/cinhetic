@@ -3,10 +3,8 @@
 namespace Cinhetic\PublicBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use Cinhetic\PublicBundle\Entity\Tags;
-use Cinhetic\PublicBundle\Form\TagsType;
+use FOS\RestBundle\Controller\Annotations as Rest;
 
 
 /**
@@ -135,5 +133,33 @@ class TagsController extends AbstractController
 
         return $this->redirect($this->generateUrl('tags'));
     }
+
+
+    /************************************************************************************************************
+     ***************************************************************** API Override Call ********************************************
+     *************************************************************************************************************/
+
+    /**
+     * @Rest\View
+     * Return All Tags
+     */
+    public function allAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $tags = $em->getRepository('CinheticPublicBundle:Tags')->findAll();
+
+        return array('tags' => $tags);
+    }
+
+    /**
+     * @Rest\View
+     * Return one Tag
+     */
+    public function oneAction(Tags $id)
+    {
+        return array('tag' => $id);
+    }
+
+
 
 }

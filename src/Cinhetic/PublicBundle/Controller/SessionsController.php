@@ -3,10 +3,8 @@
 namespace Cinhetic\PublicBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use Cinhetic\PublicBundle\Entity\Sessions;
-use Cinhetic\PublicBundle\Form\SessionsType;
+use FOS\RestBundle\Controller\Annotations as Rest;
 
 /**
  * Class SessionsController
@@ -137,5 +135,32 @@ class SessionsController extends AbstractController
 
         return $this->redirect($this->generateUrl('sessions'));
     }
+
+
+    /************************************************************************************************************
+     ***************************************************************** API Override Call ********************************************
+     *************************************************************************************************************/
+
+    /**
+     * @Rest\View
+     * Return All Sessions
+     */
+    public function allAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $sessions = $em->getRepository('CinheticPublicBundle:Sessions')->findAll();
+
+        return array('sessions' => $sessions);
+    }
+
+    /**
+     * @Rest\View
+     * Return one Sessions
+     */
+    public function oneAction(Sessions $id)
+    {
+        return array('session' => $id);
+    }
+
 
 }

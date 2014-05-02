@@ -6,6 +6,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Gedmo\Mapping\Annotation as Gedmo; // gedmo annotations
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
+
 
 /**
  * Categories
@@ -13,12 +16,13 @@ use Gedmo\Mapping\Annotation as Gedmo; // gedmo annotations
  * @Gedmo\Tree(type="nested")
  * @ORM\Entity(repositoryClass="Cinhetic\PublicBundle\Repository\CategoriesRepository")
  * @UniqueEntity(fields="title", message="Le titre est deja pris!")
+ * @ExclusionPolicy("all")
  */
 class Categories implements TimestampableInterface
 {
     /**
      * @var integer
-     *
+     * @Expose
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
@@ -26,6 +30,7 @@ class Categories implements TimestampableInterface
     private $id;
 
     /**
+     * @Expose
      * @var string
      * @Assert\NotBlank()
      * @Assert\Length(
@@ -48,6 +53,7 @@ class Categories implements TimestampableInterface
 
 
     /**
+     * @Expose
      * @var string
      * @Assert\Length(
      *      min = "50",
@@ -65,8 +71,6 @@ class Categories implements TimestampableInterface
      * @ORM\Column(name="date_created", type="datetime", nullable=true)
      */
     private $dateCreated;
-
-
 
     /**
      * @var \DateTime
@@ -113,6 +117,7 @@ class Categories implements TimestampableInterface
     private $root;
 
     /**
+     *
      * @Gedmo\TreeParent
      * @ORM\ManyToOne(targetEntity="Categories", inversedBy="children")
      */

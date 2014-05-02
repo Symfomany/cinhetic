@@ -34,3 +34,11 @@ tags_delete:
 tags_api_all:
   type: rest
   resource: Cinhetic\PublicBundle\Controller\TagsController
+
+tags_one_api:
+  pattern: /{id}/one.{_format}
+  defaults: { _controller: CinheticPublicBundle:Tags:one }
+
+tags_all_api:
+  pattern: /all.{_format}
+  defaults: { _controller: CinheticPublicBundle:Tags:all }

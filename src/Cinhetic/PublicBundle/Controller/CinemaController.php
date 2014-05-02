@@ -3,10 +3,7 @@
 namespace Cinhetic\PublicBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use Cinhetic\PublicBundle\Entity\Cinema;
-use Cinhetic\PublicBundle\Form\CinemaType;
 use FOS\RestBundle\Controller\Annotations as Rest;
 
 
@@ -149,6 +146,32 @@ class CinemaController extends AbstractController
         $this->get('cinhetic_public.manager_cinema')->remove($id);
 
         return $this->redirect($this->generateUrl('cinema'));
+    }
+
+
+    /************************************************************************************************************
+     ***************************************************************** API Override Call ********************************************
+     *************************************************************************************************************/
+
+    /**
+     * @Rest\View
+     * Return All Cinema
+     */
+    public function allAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $cinemas = $em->getRepository('CinheticPublicBundle:Cinema')->findAll();
+
+        return array('cinemas' => $cinemas);
+    }
+
+    /**
+     * @Rest\View
+     * Return one Cinema
+     */
+    public function oneAction(Cinema $id)
+    {
+        return array('cinema' => $id);
     }
 
 }

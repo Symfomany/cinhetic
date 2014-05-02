@@ -51,6 +51,10 @@ movies_api_all:
   type: rest
   resource: Cinhetic\PublicBundle\Controller\MoviesController
 
-one_api:
+movies_one_api:
   pattern: /{id}/one.{_format}
   defaults: { _controller: CinheticPublicBundle:Movies:one }
+
+movies_all_api:
+  pattern: /all.{_format}
+  defaults: { _controller: CinheticPublicBundle:Movies:all }

@@ -5,19 +5,20 @@ namespace Cinhetic\PublicBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
 
 /**
  * Sessions
- *
  * @ORM\Table(name="sessions", indexes={@ORM\Index(name="movies_id", columns={"movies_id"})})
  * @ORM\Entity(repositoryClass="Cinhetic\PublicBundle\Repository\SessionsRepository")
+ * @ExclusionPolicy("all")
  */
 class Sessions
 {
     /**
      * @var integer
-     *
+     * @Expose
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
@@ -25,6 +26,7 @@ class Sessions
     private $id;
 
     /**
+     * @Expose
      * @var \DateTime
      * @ORM\Column(name="date_session", type="datetime", nullable=true)
      */
@@ -32,7 +34,7 @@ class Sessions
 
     /**
      * @var \Movies
-     *
+     * @Expose
      * @ORM\ManyToOne(targetEntity="Movies")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="movies_id", referencedColumnName="id")
@@ -43,7 +45,7 @@ class Sessions
 
     /**
      * @var \Movies
-     *
+     * @Expose
      * @ORM\ManyToOne(targetEntity="Cinema", inversedBy="sessions")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="cinema_id", referencedColumnName="id")

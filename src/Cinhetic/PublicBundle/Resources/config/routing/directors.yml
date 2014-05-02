@@ -30,6 +30,14 @@ directors_delete:
     requirements: { _method: post|delete }
 
 # API directors
-director_api_all:
+directors_api_all:
   type: rest
   resource: Cinhetic\PublicBundle\Controller\DirectorsController
+
+directors_one_api:
+  pattern: /{id}/one.{_format}
+  defaults: { _controller: CinheticPublicBundle:Directors:one }
+
+directors_all_api:
+  pattern: /all.{_format}
+  defaults: { _controller: CinheticPublicBundle:Directors:all }

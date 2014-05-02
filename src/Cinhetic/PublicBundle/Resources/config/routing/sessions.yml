@@ -34,3 +34,11 @@ sessions_delete:
 sessions_api_all:
   type: rest
   resource: Cinhetic\PublicBundle\Controller\SessionsController
+
+sessions_one_api:
+  pattern: /{id}/one.{_format}
+  defaults: { _controller: CinheticPublicBundle:Sessions:one }
+
+sessions_all_api:
+  pattern: /all.{_format}
+  defaults: { _controller: CinheticPublicBundle:Sessions:all }

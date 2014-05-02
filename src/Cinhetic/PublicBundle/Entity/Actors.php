@@ -6,11 +6,12 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Gedmo\Mapping\Annotation as Gedmo; // gedmo annotations
-
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
 
 /**
  * Actors
- *
+ * @ExclusionPolicy("all")
  * @ORM\Table(name="actors")
  * @ORM\Entity(repositoryClass="Cinhetic\PublicBundle\Repository\ActorsRepository")
  * @UniqueEntity(fields={"firstname","lastname"}, message="Le titre est deja pris!")
@@ -19,7 +20,7 @@ class Actors
 {
     /**
      * @var integer
-     *
+     * @Expose
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
@@ -28,6 +29,7 @@ class Actors
 
     /**
      * @var string
+     * @Expose
      * @Assert\Length(
      *      min = "3",
      *      max = "500",
@@ -40,6 +42,7 @@ class Actors
 
     /**
      * @var string
+     * @Expose
      * @Assert\Length(
      *      min = "3",
      *      max = "500",
@@ -58,6 +61,8 @@ class Actors
     private $slug;
 
     /**
+     * @var string
+     * @Expose
      * @ORM\Column(name="dob", type="date", nullable=true)
      */
     private $dob;
@@ -75,6 +80,7 @@ class Actors
     private $city;
 
     /**
+     * @Expose
      * @var string
      * @Assert\Length(
      *      min = "2",
@@ -87,6 +93,7 @@ class Actors
     private $nationality;
 
     /**
+     * @Expose
      * @var string
      * @Assert\Length(
      *      min = "15",
@@ -114,7 +121,7 @@ class Actors
 
     /**
      * @var \DateTime
-     *
+     * @Expose
      * @ORM\Column(name="date_created", type="datetime", nullable=true)
      */
     private $dateCreated;

@@ -7,6 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Gedmo\Mapping\Annotation as Gedmo; // gedmo annotations
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
 
 
 /**
@@ -16,12 +18,13 @@ use Gedmo\Mapping\Annotation as Gedmo; // gedmo annotations
  * @UniqueEntity(fields="title", message="Le titre est deja pris!")
  * @Gedmo\SoftDeleteable(fieldName="dateDeleted", timeAware=true)
  * @ORM\HasLifecycleCallbacks
+ * @ExclusionPolicy("all")
  */
 class Movies implements TimestampableInterface
 {
     /**
      * @var integer
-     *
+     * @Expose
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
@@ -30,6 +33,7 @@ class Movies implements TimestampableInterface
 
     /**
      * @var string
+     * @Expose
      * @Assert\NotBlank()
      * @Assert\Choice(choices = {"Long-Metrage", "Moyen-Metrage", "Court-Metrage"}, message = "Choisissez une nature valide.")
      * @ORM\Column(name="type_film", type="string", length=250, nullable=true)
@@ -38,6 +42,7 @@ class Movies implements TimestampableInterface
 
     /**
      * @var string
+     * @Expose
      * @Assert\NotBlank()
      * @Assert\Length(
      *      min = "15",
@@ -51,6 +56,7 @@ class Movies implements TimestampableInterface
 
     /**
      * @var string
+     * @Expose
      * @Assert\NotBlank()
      * @Assert\Length(
      *      min = "10",
@@ -64,6 +70,7 @@ class Movies implements TimestampableInterface
 
     /**
      * @var string
+     * @Expose
      * @Assert\NotBlank()
      * @Assert\Length(
      *      min = "20",
@@ -109,6 +116,7 @@ class Movies implements TimestampableInterface
 
     /**
      * @var string
+     * @Expose
      * @Assert\NotBlank()
      * @Assert\Choice(choices = {"VO", "VOST", "VOFR"}, message = "Choisissez une bo valide.")
      * @ORM\Column(name="bo", type="string", length=250, nullable=true)
@@ -117,6 +125,7 @@ class Movies implements TimestampableInterface
 
     /**
      * @var integer
+     * @Expose
      * @Assert\Range(
      *      min = 1930,
      *      max = 2016,
@@ -141,6 +150,7 @@ class Movies implements TimestampableInterface
 
     /**
      * @var integer
+     * @Expose
      * @Assert\Range(
      *      min = 0.5,
      *      max = 5,
@@ -153,12 +163,14 @@ class Movies implements TimestampableInterface
 
     /**
      * @var \DateTime
+     * @Expose
      * @ORM\Column(name="date_release", type="date", nullable=true)
      */
     private $dateRelease;
 
     /**
      * @var float
+     * @Expose
      * @Assert\Range(
      *      min = 1,
      *      max = 5,
@@ -171,21 +183,21 @@ class Movies implements TimestampableInterface
 
     /**
      * @var boolean
-     *
+     * @Expose
      * @ORM\Column(name="visible", type="boolean", nullable=true)
      */
     private $visible;
 
     /**
      * @var boolean
-     *
+     * @Expose
      * @ORM\Column(name="cover", type="boolean", nullable=true)
      */
     private $cover;
 
     /**
      * @var \DateTime
-     *
+     * @Expose
      * @ORM\Column(name="date_created", type="datetime", nullable=true)
      */
     private $dateCreated;
@@ -276,6 +288,7 @@ class Movies implements TimestampableInterface
 
 
     /**
+     * @Expose
      * @ORM\Column(name="image", type="string", length=250, nullable=true)
      */
     private $image;

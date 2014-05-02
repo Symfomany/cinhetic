@@ -5,6 +5,9 @@ namespace Cinhetic\PublicBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
+
 
 /**
  * Directors
@@ -12,12 +15,13 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Table(name="directors")
  * @ORM\Entity(repositoryClass="Cinhetic\PublicBundle\Repository\DirectorsRepository")
  * @UniqueEntity(fields={"firstname","lastname"}, message="Le titre est deja pris!")
+ * @ExclusionPolicy("all")
  */
 class Directors
 {
     /**
      * @var integer
-     *
+     * @Expose
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
@@ -26,6 +30,7 @@ class Directors
 
     /**
      * @var string
+     * @Expose
      * @Assert\Length(
      *      min = "3",
      *      max = "500",
@@ -38,6 +43,7 @@ class Directors
 
     /**
      * @var string
+     * @Expose
      * @Assert\Length(
      *      min = "3",
      *      max = "500",
@@ -50,6 +56,7 @@ class Directors
 
     /**
      * @var string
+     * @Expose
      * @Assert\Length(
      *      min = "15",
      *      max = "500",
@@ -62,6 +69,7 @@ class Directors
 
     /**
      * @var float
+     * @Expose
      * @Assert\Range(
      *      min = 1,
      *      max = 5,

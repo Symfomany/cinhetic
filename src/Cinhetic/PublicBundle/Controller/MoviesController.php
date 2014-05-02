@@ -8,7 +8,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Essence\Essence;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Cinhetic\PublicBundle\Entity\Movies;
 use Cinhetic\PublicBundle\Form\MoviesType;
@@ -28,7 +27,7 @@ class MoviesController extends AbstractController
 
 
     /**
-     *
+     * Constructor
      */
     public function __construct(){
         $this->embed = Essence::instance();
@@ -514,12 +513,9 @@ class MoviesController extends AbstractController
      * @Rest\View
      * Return one Movie
      */
-    public function oneAction($id)
+    public function oneAction(Movies $id)
     {
-        $em = $this->getDoctrine()->getManager();
-        $movie = $em->getRepository('CinheticPublicBundle:Movies')->find($id);
-
-        return array('movie' => $movie);
+        return array('movie' => $id);
     }
 
 
