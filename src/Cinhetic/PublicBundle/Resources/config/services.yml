@@ -29,10 +29,15 @@ parameters:
 
 services:
 
-#   Twitter service
-    cinhetic_public.webservice_twitter:
-      class: Cinhetic\PublicBundle\Webservice\Twitter
-      arguments: [@guzzle.client]
+##   Twitter service
+#    cinhetic_public.webservice_twitter:
+#      class: Cinhetic\PublicBundle\Webservice\Twitter
+#      arguments: [@guzzle.client, %api_twitter_id%, %api_twitter_secret%, %api_twitter_access_token%, %api_twitter_access_token_secret%]
+#
+##   Flickr service
+#    cinhetic_public.webservice_flickr:
+#      class: Cinhetic\PublicBundle\Webservice\Flickr
+#      arguments: [@guzzle.client, %api_flickr_id%, %api_flickr_secret%]
 
 #   Activity Listener
     cinhetic_public.activity.listener:

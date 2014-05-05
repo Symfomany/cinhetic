@@ -28,6 +28,7 @@ class AppKernel extends Kernel
             new Lexik\Bundle\PayboxBundle\LexikPayboxBundle(),
             new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            new Eko\FeedBundle\EkoFeedBundle(),
 
 
 

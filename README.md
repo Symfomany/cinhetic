@@ -290,6 +290,8 @@ Chapters covered in project
 * Tree behavior in Categories Entity
 * Add Managers to handle actions in service with Controllers
 * Add Listener to kernel event listener
+* Read Rss and populate the database
+* Webservices Factory to handle Youtube, Twitter, Flickr & Thumbr APIs
 
 Features
 ----------------------------------
@@ -327,7 +329,8 @@ Features
 * Handle controllers ith Managers
 * Add Prexecute method in controller by listener
 * Last activity of users
-
+* RSS Reader and populating with Eko\RssBundle
+* Webservices called in service Youtube, Thumbr, Flickr & Twitter
 
 Evolution
 ----------------------------------

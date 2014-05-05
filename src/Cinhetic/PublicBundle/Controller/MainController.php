@@ -45,15 +45,17 @@ class MainController extends AbstractController
         return $this->render('CinheticPublicBundle:Apprentissage:apprentissage.html.twig');
     }
 
-
     /**
      * Main Dashboard Homepage
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function indexAction()
     {
-//        $feeds = $this->get('cinhetic_public.webservice_twitter')->getFeeds();
-//        exit(var_dump($feeds));
+//        $feeds = $this->get('cinhetic_public.webservice_flickr')->getFeeds();
+//        foreach ($feeds['photos']['photo'] as $photo) {
+//            echo '<li><a href="' . $this->buildPhotoURL($photo, 'medium') . '" title="' . $photo['title'] . '"><img src="' . $this->buildPhotoURL($photo, 'square') . '" alt="' . $photo['title'] . '" title="' . $photo['title'] . '" /></a></li>';
+//        }
+//        exit();
         $paybox = $this->get('lexik_paybox.request_handler');
         $paybox->setParameters(array(
             'PBX_CMD'          => 'CMD'.time(),

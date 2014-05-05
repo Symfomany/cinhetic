@@ -40,7 +40,8 @@
         "lexik/paybox-bundle": "dev-master",
         "imagine/imagine": "dev-master",
         "fg/essence": "2.4.0",
-        "hwi/oauth-bundle": "dev-master"
+        "hwi/oauth-bundle": "dev-master",
+        "eko/feedbundle": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [
