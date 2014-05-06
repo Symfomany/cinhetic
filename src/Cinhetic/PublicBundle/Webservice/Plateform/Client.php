@@ -1,12 +1,32 @@
 <?php
 
 namespace Cinhetic\PublicBundle\Webservice\Plateform;
+use Cinhetic\PublicBundle\Webservice\OAuthInterface;
+use Guzzle\Plugin\Oauth\OauthPlugin;
+use Guzzle\Service\Client as ClientService;
+use Symfony\Component\OptionsResolver\Exception\InvalidOptionsException;
+
 
 /**
- * Class AbstractPlateform
+ * Class Client
  * @package Cinhetic\PublicBundle\Webservice
  */
-abstract class AbstractPlateform implements \SeekableIterator, \ArrayAccess, \Countable{
+class Client implements \SeekableIterator, \ArrayAccess, \Countable, OAuthInterface {
+
+
+
+    /**
+     * Oauth
+     * @var
+     */
+    protected $oauth;
+
+    /**
+     * Client
+     * @var
+     */
+    protected $client;
+
 
     /**
      * Params array
@@ -26,6 +46,40 @@ abstract class AbstractPlateform implements \SeekableIterator, \ArrayAccess, \Co
      */
     protected $position;
 
+    /**
+     * Key Client
+     * @var
+     */
+    protected $customerkey;
+
+    /**
+     * Secret Client
+     * @var
+     */
+    protected $customersecret;
+
+
+    /**
+     * Callback Url
+     * @var
+     */
+    protected $callbackurl;
+
+
+    /**
+     * Constructor
+     * @param ClientService $client
+     * @param $params
+     */
+    public function __construct(ClientService $client, $params){
+        $this->client = $client;
+        $this->params = $params;
+        $this->customerkey = $params['consumer_key'];
+        $this->customersecret = $params['consumer_secret'];
+        $this->callbackurl = $params['callback_url'];
+        $this->oauth = new OauthPlugin($params);
+        $this->client->addSubscriber($this->oauth);
+    }
 
 
 
@@ -47,7 +101,6 @@ abstract class AbstractPlateform implements \SeekableIterator, \ArrayAccess, \Co
 
 
     /**
-     * (PHP 5 &gt;= 5.0.0)<br/>
      * Return the current element
      * @link http://php.net/manual/en/iterator.current.php
      * @return mixed Can return any type.
@@ -195,4 +248,148 @@ abstract class AbstractPlateform implements \SeekableIterator, \ArrayAccess, \Co
         return $this->params;
     }
 
+
+    /**
+     * Set OAuth
+     * @param $consumerKey
+     * @param $consumerSecret
+     * @return mixed
+     */
+    public function setOAuth($consumerKey, $consumerSecret)
+    {
+        // TODO: Implement setOAuth() method.
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getOauth()
+    {
+        return $this->oauth;
+    }
+
+    /**
+     * @param mixed $position
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+
+    /**
+     * @param mixed $client
+     */
+    public function setClient($client)
+    {
+        $this->client = $client;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getClient()
+    {
+        return $this->client;
+    }
+
+    /**
+     * @param mixed $customersecret
+     */
+    public function setCustomersecret($customersecret)
+    {
+        $this->customersecret = $customersecret;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCustomersecret()
+    {
+        return $this->customersecret;
+    }
+
+    /**
+     * @param mixed $customerkey
+     */
+    public function setCustomerkey($customerkey)
+    {
+        $this->customerkey = $customerkey;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCustomerkey()
+    {
+        return $this->customerkey;
+    }
+
+
+    /**
+     * @param mixed $callbackurl
+     */
+    public function setCallbackurl($callbackurl)
+    {
+        $this->callbackurl = $callbackurl;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCallbackurl()
+    {
+        return $this->callbackurl;
+    }
+
+
+
+
+    /**
+     * Setting the name of app
+     * @param $name
+     * @return mixed
+     */
+    public function setAppName($name)
+    {
+        // TODO: Implement setAppName() method.
+    }
+
+    /**
+     * Set redirect an url
+     * @param $url
+     * @return mixed
+     */
+    public function setRedirectUrl($url)
+    {
+        // TODO: Implement setRedirectUrl() method.
+    }
+
+    /**
+     * Get Access Token
+     * @return mixed
+     */
+    public function getAccessToken()
+    {
+        // TODO: Implement getAccessToken() method.
+    }
+
+    /**
+     * Set access token
+     * @param $token
+     * @return mixed
+     */
+    public function setAccessToken($token)
+    {
+        // TODO: Implement setAccessToken() method.
+    }
 }

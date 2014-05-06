@@ -6,10 +6,10 @@ use Guzzle\Plugin\Oauth\OauthPlugin;
 use Guzzle\Service\Client;
 
 /**
- * Class Youtube
+ * Class YoutubeClient
  * @package Cinhetic\PublicBundle\Webservice
  */
-class Youtube extends AbstractPlateform implements WebserviceInterface {
+class YoutubeClient extends AbstractPlateform implements WebserviceInterface {
     /**
      * Get All Feeds
      * @return mixed

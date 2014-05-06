@@ -3,6 +3,9 @@ imports:
     - { resource: security.yml }
     - { resource: '@CinheticPublicBundle/Resources/config/config.yml' }
     - { resource: '@CinheticPublicBundle/Resources/config/services.yml' }
+    - { resource: '@CinheticPublicBundle/Resources/config/forms.yml' }
+    - { resource: '@CinheticPublicBundle/Resources/config/orm.yml' }
+
 
 framework:
     default_locale: fr

@@ -25,14 +25,12 @@ parameters:
 
 
 
-
-
 services:
 
-##   Twitter service
-#    cinhetic_public.webservice_twitter:
-#      class: Cinhetic\PublicBundle\Webservice\Twitter
-#      arguments: [@guzzle.client, %api_twitter_id%, %api_twitter_secret%, %api_twitter_access_token%, %api_twitter_access_token_secret%]
+#   WebServicesFactory
+    cinhetic_public.webservices:
+      class: Cinhetic\PublicBundle\Webservice\WebServicesFactory
+      arguments: [@guzzle.client]
 #
 ##   Flickr service
 #    cinhetic_public.webservice_flickr:
@@ -54,87 +52,7 @@ services:
       tags:
           - { name: kernel.event_listener, event: kernel.controller, method: onCoreController }
 
-#    Form as Services
-    cinhetic_public.form_actors:
-        class: %cinhetic_public.form_actors.class%
-        tags:
-          - { name: form.type, alias: actors }
-
-    cinhetic_public.manager_actors:
-        class: %cinhetic_public.manager_actors.class%
-        arguments: [@form.factory,@cinhetic_public.form_actors,@router,@doctrine.orm.entity_manager, @request]
-        scope: request
-
-    cinhetic_public.form_directors:
-        class: %cinhetic_public.form_directors.class%
-        tags:
-          - { name: form.type, alias: actors }
-
-    cinhetic_public.manager_directors:
-        class: %cinhetic_public.manager_directors.class%
-        arguments: [@form.factory,@cinhetic_public.form_directors,@router,@doctrine.orm.entity_manager, @request]
-        scope: request
-
-    cinhetic_public.form_categories:
-        class: %cinhetic_public.form_categories.class%
-        tags:
-          - { name: form.type, alias: categories }
-
-    cinhetic_public.manager_categories:
-        class: %cinhetic_public.manager_categories.class%
-        arguments: [@form.factory,@cinhetic_public.form_categories,@router,@doctrine.orm.entity_manager, @request]
-        scope: request
-
-    cinhetic_public.form_cinema:
-        class: %cinhetic_public.form_cinema.class%
-        tags:
-          - { name: form.type, alias: cinemas }
-
-    cinhetic_public.manager_cinema:
-        class: %cinhetic_public.manager_cinema.class%
-        arguments: [@form.factory,@cinhetic_public.form_cinema,@router,@doctrine.orm.entity_manager, @request]
-        scope: request
-
-    cinhetic_public.form_movies:
-        class: %cinhetic_public.form_movies.class%
-        tags:
-          - { name: form.type, alias: movies }
-
-    cinhetic_public.manager_movies:
-        class: %cinhetic_public.manager_movies.class%
-        arguments: [@form.factory,@cinhetic_public.form_movies,@router,@doctrine.orm.entity_manager, @request]
-        scope: request
-
-    cinhetic_public.form_sessions:
-        class: %cinhetic_public.form_sessions.class%
-        tags:
-          - { name: form.type, alias: sessions }
-
-    cinhetic_public.manager_sessions:
-        class: %cinhetic_public.manager_sessions.class%
-        arguments: [@form.factory,@cinhetic_public.form_sessions,@router,@doctrine.orm.entity_manager, @request]
-        scope: request
-
-    cinhetic_public.form_tags:
-        class: %cinhetic_public.form_tags.class%
-        tags:
-          - { name: form.type, alias: tags }
-
-    cinhetic_public.manager_tags:
-        class: %cinhetic_public.manager_tags.class%
-        arguments: [@form.factory,@cinhetic_public.form_tags,@router,@doctrine.orm.entity_manager, @request]
-        scope: request
-
-    cinhetic_public.form_comments:
-        class: %cinhetic_public.form_comments.class%
-        tags:
-          - { name: form.type, alias: comments }
-
-    cinhetic_public.manager_comments:
-        class: %cinhetic_public.manager_comments.class%
-        arguments: [@form.factory,@cinhetic_public.form_comments,@router,@doctrine.orm.entity_manager, @request]
-        scope: request
-
+#   Form Search
     cinhetic_public.form_search:
         class: %cinhetic_public.form_search.class%
         tags:
@@ -175,34 +93,3 @@ services:
     fosubuser.provider:
       class: Cinhetic\PublicBundle\Security\User\Bridge\FOSUBUserProvider
       arguments: [@fos_user.user_manager,{facebook: facebookId, google: googleId, twitter: twitterId, github: githubId, linkedin: linkedinId, flickr: flickrId}]
-
-
-
-    # Repositories as service
-    cinhetic_public.repository.movies:
-      class: Cinhetic\PublicBundle\Repository\MoviesRepository
-      factory_service: doctrine.orm.default_entity_manager
-      factory_method: getRepository
-      arguments:
-        - Cinhetic\PublicBundle\Entity\Movies
-
-    cinhetic_public.repository.cinema:
-      class: Cinhetic\PublicBundle\Repository\CinemaRepository
-      factory_service: doctrine.orm.default_entity_manager
-      factory_method: getRepository
-      arguments:
-          - Cinhetic\PublicBundle\Entity\Cinema
-
-    cinhetic_public.repository.actors:
-      class: Cinhetic\PublicBundle\Repository\ActorsRepository
-      factory_service: doctrine.orm.default_entity_manager
-      factory_method: getRepository
-      arguments:
-        - Cinhetic\PublicBundle\Entity\Actors
-
-    cinhetic_public.repository.sessions:
-      class: Cinhetic\PublicBundle\Repository\SessionsRepository
-      factory_service: doctrine.orm.default_entity_manager
-      factory_method: getRepository
-      arguments:
-        - Cinhetic\PublicBundle\Entity\Sessions

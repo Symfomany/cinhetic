@@ -1,13 +1,14 @@
 <?php
 
 namespace Cinhetic\PublicBundle\Webservice\Plateform;
+use Cinhetic\PublicBundle\Webservice\WebServicesInterface;
 
 
 /**
- * Class Thumblr
+ * Class ThumblrClient
  * @package Cinhetic\PublicBundle\Webservice
  */
-class Thumblr extends AbstractPlateform implements WebServicesInterface {
+class ThumblrClient extends Client implements WebServicesInterface {
 
     /**
      * Get All Feeds

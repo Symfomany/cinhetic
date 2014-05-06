@@ -7,7 +7,7 @@ namespace Cinhetic\PublicBundle\Webservice;
  * Interface OAuthInterface
  * @package Cinhetic\PublicBundle\Webservice
  */
-interface OAuthBuilderInterface{
+interface OAuthInterface{
 
 
 /**

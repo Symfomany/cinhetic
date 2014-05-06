@@ -336,6 +336,7 @@ Evolution
 ----------------------------------
 * Mongo for notifications & private message
 * Store sessions in database
+* Implement Angular JS Binding MMVC
 * Node layer for notifications in real time
 * Form & Controllers & Repositories in services
 * Documentation by PHPDoc
