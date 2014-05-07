@@ -1,0 +1,240 @@
+/*  SHORTCODES  */
+.ufo-shortcode.half, .ufo-shortcode.half-last {float:left;width:48%;margin-right:4%;}
+.ufo-shortcode.half-last {margin-right:0}
+
+.ufo-shortcode.third, .ufo-shortcode.third-last {float:left;width:30%;margin-right:5%;}
+.ufo-shortcode.third-last {margin-right:0}
+
+.ufo-shortcode.fourth, .ufo-shortcode.fourth-last {float:left;width:23%;margin-right:2%;}
+.ufo-shortcode.fourth-last {margin-right:0}
+
+.ufo-shortcode.box, .ufo-shortcode.code {
+background:#FFF;
+border:1px solid #CCCCCC;
+-moz-border-radius: 4px;
+-webkit-border-radius: 4px;
+padding:10px;
+margin:10px 0px;
+clear:both;
+}
+
+a.ufo-code-toggle {float:left;clear:both; width:100%;}
+
+img.ufo-shortcode.half-image, img.ufo-shortcode.half-image-last {float:left;width:46%;padding:4px;border:1px solid #EAEAEA;margin:10px 0;margin-right:4%;}
+
+img.ufo-shortcode.half-image-last {margin-right:0px;}
+
+img.ufo-shortcode.third-image, img.ufo-shortcode.third-image-last {float:left;width:30%;margin:10px 0;margin-right:2%;padding:4px;border:1px solid #EAEAEA;float:left;}
+
+img.ufo-shortcode.third-image-last {margin-right:0px;}
+
+.ufo-shortcode.hilite {background-color:#fff000;}
+.ufo-shortcode.google-map {padding:4px;background: none repeat scroll 0 0 #F9F9F9;
+   border: 1px solid #DFDFDF;margin-bottom:15px;max-width:100%;}
+
+hr.ufo-shortcode  {
+height: 1px;
+border: none;
+border-top: solid 1px #CCC;
+clear: both;
+}
+
+.clearboth {clear:both;}
+
+
+/* BUTTONS */
+a.ufo-shortcode.button {
+background-color: #FFF;
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fefefe), color-stop(100%, #efefef));
+background-image: -webkit-linear-gradient(top, #fefefe, #efefef);
+background-image: -moz-linear-gradient(top, #fefefe, #efefef);
+background-image: -ms-linear-gradient(top, #fefefe, #efefef);
+background-image: -o-linear-gradient(top, #fefefe, #efefef);
+background-image: linear-gradient(top, #fefefe, #efefef);
+border: 1px solid #ddd;
+border-bottom: 1px solid #BBB;
+-webkit-border-radius: 2px;
+-moz-border-radius: 2px;
+border-radius: 2px;
+color: #333;
+line-height: 1;
+padding: 8px 12px;
+text-align: center;
+text-shadow: 1px 1px 0 #FFF;
+cursor:pointer;
+font: bold 12px "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+color:#3d3d3d;
+float:left;
+margin-right:8px;margin-bottom:4px;
+}
+
+a.ufo-shortcode.button.large { padding:14px 20px; font-size:16px;}
+
+a.ufo-shortcode.button:hover {
+color:#333;
+background-color: #DDD;
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #eee), color-stop(100%, #ededed));
+background-image: -webkit-linear-gradient(top, #eee, #ededed);
+background-image: -moz-linear-gradient(top, #eee, #ededed);
+background-image: -ms-linear-gradient(top, #eee, #ededed);
+background-image: -o-linear-gradient(top, #eee, #ededed);
+background-image: linear-gradient(top, #eee, #ededed);
+border: 1px solid #ccc;
+border-bottom: 1px solid #999;
+cursor: pointer;
+text-shadow: 0 1px 0 #DDD;
+text-decoration:none;
+}
+
+
+a.ufo-shortcode.button.green {
+background-color: #7FBF4D;
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #7FBF4D), color-stop(100%, #63A62F));
+background-image: -webkit-linear-gradient(top, #7FBF4D, #63A62F);
+background-image: -moz-linear-gradient(top, #7FBF4D, #63A62F);
+background-image: -ms-linear-gradient(top, #7FBF4D, #63A62F);
+background-image: -o-linear-gradient(top, #7FBF4D, #63A62F);
+background-image: linear-gradient(top, #7FBF4D, #63A62F);
+border: 1px solid #63A62F;
+border-bottom: 1px solid #5B992B;
+-webkit-box-shadow: inset 0 1px 0 0 #96CA6D;
+-moz-box-shadow: inset 0 1px 0 0 #96ca6d;
+box-shadow: inset 0 1px 0 0 #96CA6D;
+color: white;
+text-shadow: 0 -1px 0 #4C9021;
+}
+
+
+a.ufo-shortcode.button.green:hover {
+background-color: #76B347;
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #76B347), color-stop(100%, #5E9E2E));
+background-image: -webkit-linear-gradient(top, #76B347, #5E9E2E);
+background-image: -moz-linear-gradient(top, #76B347, #5E9E2E);
+background-image: -ms-linear-gradient(top, #76B347, #5E9E2E);
+background-image: -o-linear-gradient(top, #76B347, #5E9E2E);
+background-image: linear-gradient(top, #76B347, #5E9E2E);
+-webkit-box-shadow: inset 0 1px 0 0 #8DBF67;
+-moz-box-shadow: inset 0 1px 0 0 #8dbf67;
+box-shadow: inset 0 1px 0 0 #8DBF67;
+cursor: pointer;
+}
+
+
+a.ufo-shortcode.button.blue {
+background-color: #52A8E8;
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #52A8E8), color-stop(100%, #377AD0));
+background-image: -webkit-linear-gradient(top, #52A8E8, #377AD0);
+background-image: -moz-linear-gradient(top, #52A8E8, #377AD0);
+background-image: -ms-linear-gradient(top, #52A8E8, #377AD0);
+background-image: -o-linear-gradient(top, #52A8E8, #377AD0);
+background-image: linear-gradient(top, #52A8E8, #377AD0);
+border-top: 1px solid #4081AF;
+border-right: 1px solid #2E69A3;
+border-bottom: 1px solid #20559A;
+border-left: 1px solid #2E69A3;
+-webkit-box-shadow: inset 0 1px 0 0 #72B9EB, 0 1px 2px 0 #B3B3B3;
+-moz-box-shadow: inset 0 1px 0 0 #72b9eb, 0 1px 2px 0 #b3b3b3;
+box-shadow: inset 0 1px 0 0 #72B9EB, 0 1px 2px 0 #B3B3B3;
+color: white;
+text-shadow: 0 -1px 1px #3275BC;
+-webkit-background-clip: padding-box;
+}
+
+a.ufo-shortcode.button.blue:hover {
+background-color: #3E9EE5;
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3E9EE5), color-stop(100%, #206BCB));
+background-image: -webkit-linear-gradient(top, #3E9EE5 0%, #206BCB 100%);
+background-image: -moz-linear-gradient(top, #3E9EE5 0%, #206BCB 100%);
+background-image: -ms-linear-gradient(top, #3E9EE5 0%, #206BCB 100%);
+background-image: -o-linear-gradient(top, #3E9EE5 0%, #206BCB 100%);
+background-image: linear-gradient(top, #3E9EE5 0%, #206BCB 100%);
+border-top: 1px solid #2A73A6;
+border-right: 1px solid #165899;
+border-bottom: 1px solid #07428F;
+border-left: 1px solid #165899;
+-webkit-box-shadow: inset 0 1px 0 0 #62B1E9;
+-moz-box-shadow: inset 0 1px 0 0 #62b1e9;
+box-shadow: inset 0 1px 0 0 #62B1E9;
+cursor: pointer;
+text-shadow: 0 -1px 1px #1D62AB;
+}
+
+
+a.ufo-shortcode.button.red {
+background-color: #EE432E;
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #EE432E), color-stop(50%, #C63929), color-stop(50%, #B51700), color-stop(100%, #891100));
+background-image: -webkit-linear-gradient(top, #EE432E 0%, #C63929 50%, #B51700 50%, #891100 100%);
+background-image: -moz-linear-gradient(top, #EE432E 0%, #C63929 50%, #B51700 50%, #891100 100%);
+background-image: -ms-linear-gradient(top, #EE432E 0%, #C63929 50%, #B51700 50%, #891100 100%);
+background-image: -o-linear-gradient(top, #EE432E 0%, #C63929 50%, #B51700 50%, #891100 100%);
+background-image: linear-gradient(top, #EE432E 0%, #C63929 50%, #B51700 50%, #891100 100%);
+border: 1px solid #951100;
+color: white;
+text-shadow: 0px -1px 1px rgba(0, 0, 0, 0.8);
+}
+
+a.ufo-shortcode.button.red:hover {
+background-color: #F37873;
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #F37873), color-stop(50%, #DB504D), color-stop(50%, #CB0500), color-stop(100%, #A20601));
+background-image: -webkit-linear-gradient(top, #F37873 0%, #DB504D 50%, #CB0500 50%, #A20601 100%);
+background-image: -moz-linear-gradient(top, #F37873 0%, #DB504D 50%, #CB0500 50%, #A20601 100%);
+background-image: -ms-linear-gradient(top, #F37873 0%, #DB504D 50%, #CB0500 50%, #A20601 100%);
+background-image: -o-linear-gradient(top, #F37873 0%, #DB504D 50%, #CB0500 50%, #A20601 100%);
+background-image: linear-gradient(top, #F37873 0%, #DB504D 50%, #CB0500 50%, #A20601 100%);
+cursor: pointer;
+}
+
+
+a.ufo-shortcode.button.black {
+	-webkit-box-shadow: inset 0 0 1px 1px #4D4D4D;
+	-moz-box-shadow: inset 0 0 1px 1px #4D4D4D;
+	-ms-box-shadow: inset 0 0 1px 1px #4D4D4D;
+	-o-box-shadow: inset 0 0 1px 1px #4D4D4D;
+	box-shadow: inset 0 0 1px 1px #4D4D4D;
+	background: none repeat scroll 0 0 #2d2d2d;
+	border: 1px solid #333333;
+	color: #FFFFFF;
+	text-shadow: none;
+}
+
+a.ufo-shortcode.button.black:hover {
+	background: #3d3d3d;
+	cursor: pointer;
+	color: #FFFFFF;
+}
+
+
+a.ufo-shortcode.button.purple {
+background: -webkit-gradient(linear, 0 0, 0 100%, color-stop(0, #9E76E8), color-stop(1, #6224DE));
+color: white;
+text-shadow: 0px -1px 1px #473569;
+}
+
+a.ufo-shortcode.button.purple:hover {
+background: -webkit-gradient(linear, 0 0, 0 100%, color-stop(0, #8D69CF), color-stop(1, #561FC4));
+cursor: pointer;
+}
+
+
+.ufo-shortcode.map .map-container {
+margin: 0 0 15px;
+border: solid 1px #CCC;
+max-width:100%;
+}
+
+/* =Responsiveness: Mobile (Portrait)
+================================================== */
+
+/* Note: Design for a width of 320px */
+
+@media only screen and (max-width: 767px) {
+	.ufo-shortcode.half, .ufo-shortcode.half-last, .ufo-shortcode.third, .ufo-shortcode.third-last, .ufo-shortcode.fourth, .ufo-shortcode.fourth-last {width:100%;max-width:100%;margin-right:0}
+}
+/* =Responsiveness: Mobile (Landscape)
+================================================== */
+
+/* Note: Design for a width of 480px */
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+	
+}

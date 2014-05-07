@@ -1,0 +1,51 @@
+a {
+	color: #ED2939;
+}
+
+a:hover {
+	color: #F04D5B;
+}
+
+#wrap-inside {
+	border-top: 4px solid #ED2939;
+}
+
+article .meta a:hover {
+	color: #ED2939;
+}
+
+article h2 a:hover {
+	color: #ED2939;
+}
+
+ul.nav li a:hover {
+	color: #ED2939;
+}
+
+ul.nav li.current-menu-item a,ul.nav li.current_page_item a {
+	color: #ED2939;
+}
+
+h2.slide-title a:hover {
+	color: #ED2939;
+}
+
+.ufo-recent .meta a:hover {
+	color: #ED2939;
+}
+
+.ufo-recent .meta h4 a:hover {
+	color: #ED2939;
+}
+
+.galleries article h2 a:hover {
+	color: #ED2939;
+}
+
+a.action-button {
+	background: #ED2939;
+}
+
+a.action-button:hover {
+	background: #F04D5B;
+}

@@ -1,0 +1,51 @@
+a {
+	color: #00AD83;
+}
+
+a:hover {
+	color: #4AC5A7;
+}
+
+#wrap-inside {
+	border-top: 4px solid #00AD83;
+}
+
+article .meta a:hover {
+	color: #00AD83;
+}
+
+article h2 a:hover {
+	color: #00AD83;
+}
+
+ul.nav li a:hover {
+	color: #00AD83;
+}
+
+ul.nav li.current-menu-item a,ul.nav li.current_page_item a {
+	color: #00AD83;
+}
+
+h2.slide-title a:hover {
+	color: #00AD83;
+}
+
+.ufo-recent .meta a:hover {
+	color: #00AD83;
+}
+
+.ufo-recent .meta h4 a:hover {
+	color: #00AD83;
+}
+
+.galleries article h2 a:hover {
+	color: #00AD83;
+}
+
+a.action-button {
+	background: #00AD83;
+}
+
+a.action-button:hover {
+	background: #4AC5A7;
+}

@@ -1,0 +1,51 @@
+a {
+	color: #F39EBC;
+}
+
+a:hover {
+	color: #F5ADC6;
+}
+
+#wrap-inside {
+	border-top: 4px solid #F39EBC;
+}
+
+article .meta a:hover {
+	color: #F39EBC;
+}
+
+article h2 a:hover {
+	color: #F39EBC;
+}
+
+ul.nav li a:hover {
+	color: #F39EBC;
+}
+
+ul.nav li.current-menu-item a,ul.nav li.current_page_item a {
+	color: #F39EBC;
+}
+
+h2.slide-title a:hover {
+	color: #F39EBC;
+}
+
+.ufo-recent .meta a:hover {
+	color: #F39EBC;
+}
+
+.ufo-recent .meta h4 a:hover {
+	color: #F39EBC;
+}
+
+.galleries article h2 a:hover {
+	color: #F39EBC;
+}
+
+a.action-button {
+	background: #F39EBC;
+}
+
+a.action-button:hover {
+	background: #F5ADC6;
+}

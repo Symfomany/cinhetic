@@ -1,0 +1,312 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: twitter\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-04-11 17:05+0300\n"
+"PO-Revision-Date: 2014-04-11 17:05+0300\n"
+"Last-Translator: bestwebsoft.com <plugins@bestwebsoft.com>\n"
+"Language-Team: BestWebSoft <plugin@bestwebsoft.com>\n"
+"Language: ua_UA\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: twitter.php:74
+#: twitter.php:356
+msgid "Twitter Settings"
+msgstr "Установки Twitter"
+
+#: twitter.php:74
+msgid "Twitter"
+msgstr "Twitter"
+
+#: twitter.php:170
+msgid "requires"
+msgstr "потребує"
+
+#: twitter.php:170
+msgid "or higher, that is why it has been deactivated! Please upgrade WordPress and try again."
+msgstr "чи вище, тому він був деактивований! Будь ласка оновіть WordPress та спробуйте ще раз."
+
+#: twitter.php:170
+msgid "Back to the WordPress"
+msgstr "Повернутися до WordPress на"
+
+#: twitter.php:170
+msgid "Plugins page"
+msgstr "Сторінку плагинів"
+
+#: twitter.php:197
+msgid "Settings saved"
+msgstr "Устаноки збережено"
+
+#: twitter.php:219
+msgid "Error: File size > 32K"
+msgstr "Помилка: Розмір файлу > 32K"
+
+#: twitter.php:221
+msgid "Error: Invalid file type"
+msgstr "Помилка: Невірний тип файлу"
+
+#: twitter.php:227
+msgid "Upload successful."
+msgstr "Завантаження пройшло вдало."
+
+#: twitter.php:229
+msgid "Error: moving file failed"
+msgstr "Помилка: не вдалося перемістити файл"
+
+#: twitter.php:232
+msgid "Error: check image width or height"
+msgstr "Помилка: перевірте ширину або висоту зображення"
+
+#: twitter.php:236
+msgid "Uploading Error: check image properties"
+msgstr "Помилка завантаження: перевірте властивості зображення"
+
+#: twitter.php:252
+#: twitter.php:291
+msgid "Wrong license key"
+msgstr ""
+
+#: twitter.php:284
+msgid "Something went wrong. Try again later. If the error will appear again, please, contact us <a href=http://support.bestwebsoft.com>BestWebSoft</a>. We are sorry for inconvenience."
+msgstr ""
+
+#: twitter.php:293
+msgid "This license key is bind to another site"
+msgstr ""
+
+#: twitter.php:295
+msgid "Unfortunately, you have exceeded the number of available tries. Please, upload the plugin manually."
+msgstr ""
+
+#: twitter.php:312
+msgid "Failed to open the zip archive. Please, upload the plugin manually"
+msgstr ""
+
+#: twitter.php:318
+msgid "Your server does not support either ZipArchive or Phar. Please, upload the plugin manually"
+msgstr ""
+
+#: twitter.php:322
+#: twitter.php:331
+msgid "Failed to download the zip archive. Please, upload the plugin manually"
+msgstr ""
+
+#: twitter.php:335
+msgid "Something went wrong. Try again later or upload the plugin manually. We are sorry for inconvienience."
+msgstr ""
+
+#: twitter.php:350
+msgid "Please, enter Your license key"
+msgstr ""
+
+#: twitter.php:358
+#: twitter.php:620
+#: twitter.php:632
+msgid "Settings"
+msgstr "Установки"
+
+#: twitter.php:359
+#, fuzzy
+msgid "Extra settings"
+msgstr "Установки Twitter"
+
+#: twitter.php:360
+msgid "Go PRO"
+msgstr ""
+
+#: twitter.php:363
+msgid "Notice:"
+msgstr ""
+
+#: twitter.php:363
+msgid "The plugin's settings have been changed. In order to save them please don't forget to click the 'Save Changes' button."
+msgstr ""
+
+#: twitter.php:369
+msgid "Settings for the button \"Follow Me\":"
+msgstr "Установки для кнопки \"Follow Me\":"
+
+#: twitter.php:373
+msgid "Enter your username:"
+msgstr "Введіть ім'я користувача:"
+
+#: twitter.php:377
+msgid "If you do not have Twitter account yet, you should create it using this link"
+msgstr "Якщо ви ще не маєте акаунту Twitte, вам слід створити його, використовуючи це посилання"
+
+#: twitter.php:378
+msgid "Paste the shortcode &lsqb;follow_me&rsqb; into the necessary page or post to use the \"Follow Me\" button."
+msgstr "Додайте шорткод &lsqb;follow_me&rsqb; в контент сторінки або поста, де ви хочете вивести кнопку \"Follow Me\"."
+
+#: twitter.php:379
+msgid "If you would like to use this button in some other place, please paste this line into the template source code"
+msgstr "Якщо ви хочете використовувати цю кнопку в іншому місці, будь ласка, додайте цей рядок у вихідний код шаблону"
+
+#: twitter.php:384
+msgid "Choose display settings:"
+msgstr "Виберіть показувати установки:"
+
+#: twitter.php:388
+msgid "Standard button"
+msgstr "Стандартна кнопка"
+
+#: twitter.php:390
+msgid "Custom button"
+msgstr "Кастомна кнопка"
+
+#: twitter.php:400
+msgid "Current image:"
+msgstr "Поточне зображення: "
+
+#: twitter.php:408
+msgid "\"Follow Me\" image:"
+msgstr "Зображення \"Follow Me\":"
+
+#: twitter.php:414
+msgid "Image properties: max image width:100px; max image height:100px; max image size:32Kb; image types:\"jpg\", \"jpeg\"."
+msgstr "Властивості зображення: макс. ширина зображення: 100px; макс. висота зображення: 100px; макс. розмір зображення: 32Kb; типи зображень: \"jpg\", \"jpeg\"."
+
+#: twitter.php:421
+msgid "Settings for the \"Twitter\" button:"
+msgstr "Налаштування для кнопки \"Twitter\":"
+
+#: twitter.php:424
+msgid "Disable the \"Twitter\" button:"
+msgstr "Вимкнути кнопку \"Twitter\":"
+
+#: twitter.php:427
+msgid "The button \"T\" will not be displayed. Just the shortcode &lsqb;follow_me&rsqb; will work."
+msgstr "Кнопка \"T\" не буде відображатися. Буде працювати тільки шорткод &lsqb;follow_me&rsqb;."
+
+#: twitter.php:432
+msgid "Choose the \"Twitter\" icon position:"
+msgstr "Виберіть розташування піктограми \"Twitter\":"
+
+#: twitter.php:435
+msgid "Top position"
+msgstr "Верхнє положення"
+
+#: twitter.php:436
+msgid "Bottom position"
+msgstr "Нижнє положення"
+
+#: twitter.php:437
+msgid "By clicking this icon a user can add the article he/she likes to his/her Twitter page."
+msgstr "При натисканні на цю піктограму користувач може додати статтю, яка йому сподобалась, до своєї сторінки Twitter."
+
+#: twitter.php:443
+#: twitter.php:485
+msgid "Save Changes"
+msgstr "Зберегти зміни"
+
+#: twitter.php:451
+msgid "If you enjoy our plugin, please give it 5 stars on WordPress"
+msgstr ""
+
+#: twitter.php:452
+msgid "Rate the plugin"
+msgstr ""
+
+#: twitter.php:455
+msgid "If there is something wrong about it, please contact us"
+msgstr ""
+
+#: twitter.php:467
+msgid "Please choose the necessary post types (or single pages) where Twitter button will be displayed:"
+msgstr ""
+
+#: twitter.php:474
+msgid "Show URL for pages"
+msgstr ""
+
+#: twitter.php:480
+msgid "Example of site pages' tree"
+msgstr ""
+
+#: twitter.php:490
+msgid "If you upgrade to Pro version all your settings will be saved."
+msgstr ""
+
+#: twitter.php:497
+msgid "Unlock premium options by upgrading to a PRO version."
+msgstr ""
+
+#: twitter.php:498
+#: twitter.php:711
+msgid "Learn More"
+msgstr ""
+
+#: twitter.php:501
+msgid "Go"
+msgstr ""
+
+#: twitter.php:513
+msgid "Congratulations! The PRO version of the plugin is successfully download and activated."
+msgstr ""
+
+#: twitter.php:515
+msgid "Please, go to"
+msgstr ""
+
+#: twitter.php:515
+#, fuzzy
+msgid "the setting page"
+msgstr "Устаноки збережено"
+
+#: twitter.php:516
+msgid "You will be redirected automatically in 5 seconds."
+msgstr ""
+
+#: twitter.php:521
+msgid "You can download and activate"
+msgstr ""
+
+#: twitter.php:523
+msgid "version of this plugin by entering Your license key."
+msgstr ""
+
+#: twitter.php:525
+msgid "You can find your license key on your personal page Client area, by clicking on the link"
+msgstr ""
+
+#: twitter.php:527
+msgid "(your username is the email you specify when purchasing the product)."
+msgstr ""
+
+#: twitter.php:535
+#: twitter.php:545
+msgid "Go!"
+msgstr ""
+
+#: twitter.php:538
+msgid "Unfortunately, you have exceeded the number of available tries per day. Please, upload the plugin manually."
+msgstr ""
+
+#: twitter.php:599
+msgid "Click here if you like this article."
+msgstr "Натисніть тут, якщо Вам сподобалася ця стаття."
+
+#: twitter.php:633
+msgid "FAQ"
+msgstr "Часті питання"
+
+#: twitter.php:634
+msgid "Support"
+msgstr "Підтримка"
+
+#: twitter.php:714
+msgid "It's time to upgrade your <strong>Twitter</strong> to <strong>PRO</strong> version"
+msgstr ""
+
+#: twitter.php:715
+msgid "Extend standard plugin functionality with new great options"
+msgstr ""
+

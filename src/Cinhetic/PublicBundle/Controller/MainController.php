@@ -51,19 +51,19 @@ class MainController extends AbstractController
      */
     public function indexAction()
     {
-        $params['consumer_key'] = $this->container->getParameter('api_flickr_id');
-        $params['consumer_secret'] = $this->container->getParameter('api_flickr_secret');
-        $params['callback_url'] = null;
-
-        $webservice = $this->get('cinhetic_public.webservices')->build('Flickr', $params);
-        $feeds = $webservice->getFeeds();
-        exit(var_dump($feeds));
-
-        foreach ($feeds['photos']['photo'] as $photo) {
-            echo '<li><a href="' . $this->buildPhotoURL($photo, 'medium') . '" title="' . $photo['title'] . '"><img src="' . $this->buildPhotoURL($photo, 'square') . '" alt="' . $photo['title'] . '" title="' . $photo['title'] . '" /></a></li>';
-        }
-
-        exit();
+//        $params['consumer_key'] = $this->container->getParameter('api_flickr_id');
+//        $params['consumer_secret'] = $this->container->getParameter('api_flickr_secret');
+//        $params['callback_url'] = null;
+//
+//        $webservice = $this->get('cinhetic_public.webservices')->build('Flickr', $params);
+//        $feeds = $webservice->getFeeds();
+//        exit(var_dump($feeds));
+//
+//        foreach ($feeds['photos']['photo'] as $photo) {
+//            echo '<li><a href="' . $this->buildPhotoURL($photo, 'medium') . '" title="' . $photo['title'] . '"><img src="' . $this->buildPhotoURL($photo, 'square') . '" alt="' . $photo['title'] . '" title="' . $photo['title'] . '" /></a></li>';
+//        }
+//
+//        exit();
         $paybox = $this->get('lexik_paybox.request_handler');
         $paybox->setParameters(array(
             'PBX_CMD'          => 'CMD'.time(),

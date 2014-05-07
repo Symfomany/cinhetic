@@ -1,0 +1,4 @@
+*** InterStellar Changelog ***
+
+2012.09.20 - version 1.0
+ * Initial release
