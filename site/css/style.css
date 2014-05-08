@@ -1079,7 +1079,17 @@
 					line-height: 3em;
 					padding: 0 0.5em 0 0.5em;
 					outline: 0;
+				    -webkit-transition: all .2s ease-in;
+				    -moz-transition: all .2s ease-in;
+				    -o-transition: all .2s ease-in;
+				    transition: all .2s ease-in;
 				}
+
+				#nav ul li a:hover {
+					
+					color: #006699;
+				}
+
 
 /*********************************************************************************/
 /* Intro                                                                         */
@@ -1394,6 +1404,9 @@
 			.poptrox-popup:hover .closer:hover {
 				opacity: 1.0;
 			}
+
+
+
 			
 /*********************************************************************************/
 /* Touch Mode                                                                    */
@@ -1414,3 +1427,14 @@
 			body.touch .poptrox-popup .closer {
 				opacity: 1.0 !important;
 			}
+
+
+	#wa{
+		position: absolute;
+		margin-left: 800px;
+		color: #222;
+		font-size: 14px;
+	}
+	#wa img{
+		width: 53px;
+	}

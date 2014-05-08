@@ -2,7 +2,6 @@ Cinhetic Project
 ========================
 
 ![Project Status](http://stillmaintained.com/lexik/LexikPayboxBundle.png)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Symfomany/cinhetic/badges/quality-score.png?s=e581977dbe520062202a5d26b7ffdc8d6ebf7393)](https://scrutinizer-ci.com/g/Symfomany/cinhetic/)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/5f2f2540-3843-4d77-8fce-ce8477a800f7/big.png)](https://insight.sensiolabs.com/projects/5f2f2540-3843-4d77-8fce-ce8477a800f7)
 
 Welcome to the Cinhetic Project - a fully-functional application built in Symfony2
