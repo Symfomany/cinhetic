@@ -1,13 +1,9 @@
 {% block search %}
-    <nav class="navbar" role="navigation">
-        <p></p>
-        <form id="search_form" action="{{ path('Cinhetic_public_search') }}" method="post"  role="search">
-            <div class="form-group has-success has-feedback col-sm-10 col-sm-offset-1">
-                {{ form_widget(form.search,{"id" : "search_input",'attr': {"id" : "search_input", "value" :  word, "data-url" : path('Cinhetic_public_search', {'ajax': "true"}) }}) }}
-                {#<input id="search_input" data-url="{{ path('Cinhetic_public_search', {'ajax' : 'true'}) }}" name="search" value="{{ app.request.query.get('search') }}" type="search" class="form-control"  placeholder="Rechercher un film, une catégorie, un cinéma...">#}
+     <form action="{{ path('Cinhetic_public_search') }}" method="post"  role="search" class="pull-right col-xs-12 col-sm-6">
+            <div class="input-group no-margin">
+                <span class="input-group-addon" style="border:none;background: #fff;background: rgba(0,0,0,.05);"><i class="fa fa-search"></i></span>
+                {{ form_widget(form.search,{"id" : "search_input",'attr': {"class": "form-control no-padding-hr" ,"id" : "search_input", "value" :  word, "data-url" : path('Cinhetic_public_search', {'ajax': "true"}) }}) }}
+                           {{ form_rest(form) }}
             </div>
-            <button id="sendsearch" type="submit" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-search"></i></button>
-            {{ form_rest(form) }}
         </form>
-    </nav>
 {% endblock %}

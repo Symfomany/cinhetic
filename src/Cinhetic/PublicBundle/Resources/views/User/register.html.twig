@@ -1,8 +1,37 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
+{% extends "FOSUserBundle::layout_disconnect.html.twig" %}
 
 {% block fos_user_content %}
-    <div class="well">
-        <h1><i class="glyphicon glyphicon-ok-circle"></i> Création de compte</h1>
-        {% include "FOSUserBundle:Registration:register_content.html.twig" %}
-    </div>
+  	<div class="page-signup-alt">
+    <h1 class="form-header">Créer ton compte</h1>
+
+	<!-- Form -->
+	<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST"  id="signup-form_id"  class="panel">
+	    {# {{ form_widget(form) }} #}
+	    <div class="form-group">
+	    	 {{ form_widget(form.email, {"attr" : {"placeholder": "email","class" : "form-control input-lg"} }) }}
+		</div>
+		 <div class="form-group">
+	    	 {{ form_widget(form.username, {"attr" : {"placeholder": "login","class" : "form-control input-lg"} }) }}
+		</div>
+		<div class="form-group">
+	    	 {{ form_widget(form.plainPassword.first, {"attr" : {"placeholder": "mot de passe","class" : "form-control input-lg"} }) }}
+		</div>
+		<div class="form-group">
+	    	 {{ form_widget(form.plainPassword.second, {"attr" : {"placeholder": "resaisissez votre mot de passe","class" : "form-control input-lg"} }) }}
+		</div>
+	    <div class="form-actions">
+			<input type="submit" value="Création de compte" class="btn btn-primary btn-lg btn-block">
+		</div>
+	</form>
+
+
+	<!-- / Form -->
+
+	<div class="signup-with">
+		<div class="header">ou loguer par</div>
+		<a href="index.html" class="btn btn-lg btn-facebook rounded"><i class="fa fa-facebook"></i></a>&nbsp;&nbsp;
+		<a href="index.html" class="btn btn-lg btn-info rounded"><i class="fa fa-twitter"></i></a>&nbsp;&nbsp;
+		<a href="index.html" class="btn btn-lg btn-danger rounded"><i class="fa fa-google-plus"></i></a>
+	</div>
+	</div>
 {% endblock fos_user_content %}

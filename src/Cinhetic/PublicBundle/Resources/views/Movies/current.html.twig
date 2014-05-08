@@ -1,5 +1,34 @@
 {% block currentmovies %}
-    <h1><i class="glyphicon glyphicon-star"></i> Films à l'affiche</h1>
+                <div class="panel panel-default widget-support-tickets" id="dashboard-support-tickets">
+                    <div class="panel-heading">
+                        <span class="panel-title"><i class="glyphicon glyphicon-star"></i> Films à l'affiche</span>
+                        <div class="panel-heading-controls">
+                            <div class="panel-heading-text"><a href="#">{{ entities|length }} films</a></div>
+                        </div>
+                    </div> <!-- / .panel-heading -->
+                    <div class="panel-body tab-content-padding">
+                        <!-- Panel padding, without vertical padding -->
+                        <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 300px;"><div class="panel-padding no-padding-vr" style="overflow: hidden; width: auto; height: 300px;">
+
+                    {% for entity in entities %}
+                            <div class="ticket">
+                                <a href="{{ path('movies_show', {'id' : entity.id}) }}" title="" class="ticket-title">{{ entity.title }}</a>
+                                <span class="ticket-info">
+                                    {{ entity.synopsis|striptags|raw|truncate(250,true, "...") }}
+                                </span>
+                            </div> <!-- / .ticket -->
+                     {% else %}
+                            <div class="alert alert-warning">
+                                <i class="glyphicon glyphicon-exclamation-sign"></i> Il n'y a pas de film à l'affiche
+                            </div>
+                    {% endfor %}
+                        </div>
+                    </div>
+                    </div> <!-- / .panel-body -->
+                </div> <!-- / .panel -->
+
+{#
+    <h3><i class="glyphicon glyphicon-star"></i> Films à l'affiche</h3>
     {% for entity in entities %}
         <div class="row featurette">
             <div class="col-md-5">
@@ -18,4 +47,6 @@
             <i class="glyphicon glyphicon-exclamation-sign"></i> Il n'y a pas de film à l'affiche
         </div>
     {% endfor %}
+
+    #}
 {% endblock %}

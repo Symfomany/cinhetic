@@ -1,19 +1,6 @@
 $(function () {
     $('#flashdatas .alert').delay(5000).slideUp('fast');
 
-    $(".fancybox").fancybox();
-
-    $('select[multiple="multiple"]').selectpicker({});
-
-
-    $('.star').raty({
-        numberMax : 5,
-        readOnly: true,
-        halfShow : true,
-        score: function() {
-            return $(this).attr('data-number')
-        }
-    });
 
     if ($("#search_input").length > 0) {
         $("#search_input").autocomplete({
@@ -85,13 +72,6 @@ $(function () {
             return $("<li></li>").data("ui-autocomplete-item", item).append("" + item.nom + "").appendTo(ul.addClass("list-row"));
         };
     }
-
-
-
-    $('#myTab a').click(function (e) {
-        e.preventDefault();
-        $(this).tab('show');
-    });
 
 
     $(window).scroll(function () {
