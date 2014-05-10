@@ -38,11 +38,42 @@ class ActorsController extends AbstractController
     {
         $entity = new Actors();
         $form = $this->get('cinhetic_public.manager_actors')->createForm($entity);
-        $this->get('cinhetic_public.manager_actors')->create($entity);
+        
+
+        if($this->get('cinhetic_public.manager_actors')->create($entity)){
+            $this->setMessage("L'acteur a été crée");
+           return $this->redirect($this->generateUrl('actors'));
+        }
 
         return $this->render('CinheticPublicBundle:Actors:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
+        ));
+    }
+
+
+
+    /**
+     * Edits an existing Actors entity.
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     */
+    public function updateAction(Actors $id)
+    {
+
+        $deleteForm = $this->get('cinhetic_public.manager_actors')->deleteForm($id);
+        $editForm = $this->get('cinhetic_public.manager_actors')->editForm($id);
+        if($this->get('cinhetic_public.manager_actors')->update($id)){
+            $this->setMessage("L'acteur a été modifié");
+           return $this->redirect($this->generateUrl('actors'));
+        }
+
+        return $this->render('CinheticPublicBundle:Actors:edit.html.twig', array(
+            'entity'      => $id,
+            'edit_form'   => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -99,27 +130,6 @@ class ActorsController extends AbstractController
         ));
     }
 
-
-    /**
-     * Edits an existing Actors entity.
-     * @param Request $request
-     * @param $id
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
-     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
-     */
-    public function updateAction(Actors $id)
-    {
-
-        $deleteForm = $this->get('cinhetic_public.manager_actors')->deleteForm($id);
-        $editForm = $this->get('cinhetic_public.manager_actors')->editForm($id);
-        $this->get('cinhetic_public.manager_actors')->update($id);
-
-        return $this->render('CinheticPublicBundle:Actors:edit.html.twig', array(
-            'entity'      => $id,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
 
     /**
      * Deletes a Categories entity.

@@ -20,7 +20,10 @@ h1{
 }
 .page-header h1{
     font-size: 24px;
+    transition: 5s;
 }
+
+
 .theme-default #main-navbar .widget-messages-alt .message-subject:hover{
     color: #1a7ab9;
 }
@@ -42,3 +45,109 @@ h1{
     border: 1px solid #eee;
 
 }
+#content-wrapper{
+    opacity: 0;
+}
+img{
+     max-width: 100%;
+     -webkit-transition: all 0.5s ease-in-out;
+     -moz-transition: all 0.5s ease-in-out;
+     -o-transition: all 0.5s ease-in-out;
+     transition: all 0.5s ease-in-out;
+ }
+ .panel-title{
+    text-shadow: 1px 1px white,1px 1px white;
+ }
+ a:focus, a:hover{
+    color: #444;
+ }
+ .btn{
+    -webkit-transition: all 0.5s ease-in-out;
+     -moz-transition: all 0.5s ease-in-out;
+     -o-transition: all 0.5s ease-in-out;
+     transition: all 0.5s ease-in-out;
+ }
+ img:hover{
+     opacity(0.6);
+ }
+.theme-default .label.label-primary.label-tag{
+    margin: 5px;
+}
+ .overlay{
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 200%;
+     z-index: 10;
+     background-color: rgba(255, 255, 255, 0.5);
+     z-index: 9000;
+}
+ 
+.overlay img{
+     margin-top: 300px;
+     margin-left: 700px;
+     position:absolute;
+ }
+
+.panel .widget-comments .comment, .panel.widget-comments .comment{
+    margin: 0px;
+}
+.table-striped>tbody>tr:nth-child(odd)>td .btn, .table-striped>tbody>tr:nth-child(odd)>th .btn{
+    margin-bottom: 10px;
+}
+
+
+form label{
+    margin-top: 10px;
+}
+
+
+
+
+
+
+
+ @media (min-width: 300px) and (max-width: 768px) {
+     h1,h2,h3{
+         font-size: 23px;
+     }
+     table>thead>tr>th, .table>thead>tr>th, table>tbody>tr>th, .table>tbody>tr>th, table>tfoot>tr>th, .table>tfoot>tr>th, table>thead>tr>td, .table>thead>tr>td, table>tbody>tr>td, .table>tbody>tr>td, table>tfoot>tr>td, .table>tfoot>tr>td{
+         font-size: 12px;
+     }
+     .navbar-default .navbar-nav>li>a{
+         font-size: 12px !important;
+     }
+     .alert a, .alert .alert-link{
+         font-size: 13px;
+     }
+     .btn{
+         padding: 8px 12px;
+         font-size: 13px;
+         line-height: 1;
+         margin: 10px;
+     }
+     .well p{
+         font-size: 12px;
+     }
+     .nav-tabs>li>a, .nav-pills>li>a{
+         font-size: 13px;
+     }
+ 
+     .navbar-nav>li{
+         height: 40px;
+     }
+     .navbar-nav>li a{
+         height: 40px;
+     }
+     #sendsearch {
+         position: relative;
+         top: -72px;
+         left: 305px;
+     }
+     #link_logo{
+         right: 14px;
+        height: 55px;
+    } 
+ }
+

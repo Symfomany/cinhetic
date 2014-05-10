@@ -11,7 +11,7 @@
         <div class="navbar-collapse collapse" id="navbar-main">
             <ul class="nav navbar-nav">
                 <li {% if  app.request.attributes.get('_route') == "Cinhetic_public_homepage" %} class="active" {% endif %}><a href="{{ path('Cinhetic_public_homepage') }}"><i class="glyphicon glyphicon-home"></i> Home</a></li>
-                <li {% if  app.request.attributes.get('_route') == "actors" %} class="active" {% endif %}><a href="{{ path('actors') }}"><i class="glyphicon glyphicon-user"></i> Acteurs</a></li>
+                <li {% if  app.request.attributes.get('_route') == "actors" %} class="active" {% endif %}><a href="{{ path('actors') }}"><i class="fa fa-group"></i> Acteurs</a></li>
                 <li {% if  app.request.attributes.get('_route') == "directors" %} class="active" {% endif %}><a href="{{ path('directors') }}"><i class="glyphicon glyphicon-facetime-video"></i> Réalisateurs</a></li>
                 <li {% if  app.request.attributes.get('_route') == "movies" %} class="active" {% endif %}><a  href="{{ path('movies') }}"><i class="glyphicon glyphicon-film"></i> Films</a></li>
                 <li {% if  app.request.attributes.get('_route') == "categories" %} class="active" {% endif %}><a href="{{ path('categories') }}"><i class="glyphicon glyphicon-th-list"></i> Catégories</a></li>

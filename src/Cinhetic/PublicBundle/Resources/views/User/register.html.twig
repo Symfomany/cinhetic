@@ -2,26 +2,44 @@
 
 {% block fos_user_content %}
   	<div class="page-signup-alt">
-    <h1 class="form-header">Créer ton compte</h1>
+    <h1 class="form-header"><i class="glyphicon glyphicon-user"></i> Créer ton compte</h1>
 
 	<!-- Form -->
 	<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST"  id="signup-form_id"  class="panel">
 	    {# {{ form_widget(form) }} #}
-	    <div class="form-group">
-	    	 {{ form_widget(form.email, {"attr" : {"placeholder": "email","class" : "form-control input-lg"} }) }}
-		</div>
-		 <div class="form-group">
+
+ 		<div class="form-group">
+                    <div class="input-group">
+                   <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+    	    	 {{ form_widget(form.email, {"attr" : {"placeholder": "email","class" : "form-control input-lg"} }) }}
+        </div>
+          </div>
+
+        <div class="form-group">
+                    <div class="input-group">
+                   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
 	    	 {{ form_widget(form.username, {"attr" : {"placeholder": "login","class" : "form-control input-lg"} }) }}
-		</div>
-		<div class="form-group">
+        </div>
+          </div>
+	   
+	   <div class="form-group">
+                    <div class="input-group">
+                   <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
 	    	 {{ form_widget(form.plainPassword.first, {"attr" : {"placeholder": "mot de passe","class" : "form-control input-lg"} }) }}
-		</div>
-		<div class="form-group">
+        </div>
+          </div>
+
+	   <div class="form-group">
+                    <div class="input-group">
+                   <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
 	    	 {{ form_widget(form.plainPassword.second, {"attr" : {"placeholder": "resaisissez votre mot de passe","class" : "form-control input-lg"} }) }}
-		</div>
+        </div>
+          </div>
+
 	    <div class="form-actions">
 			<input type="submit" value="Création de compte" class="btn btn-primary btn-lg btn-block">
 		</div>
+		 {{ form_rest(form) }}
 	</form>
 
 
@@ -35,3 +53,36 @@
 	</div>
 	</div>
 {% endblock fos_user_content %}
+
+
+{% block javascripts %}
+{{ parent() }}
+    <script type="text/javascript">
+        var init = [];
+            init.push(function () {
+                $("#signup-form_id").validate({
+                    ignore: '.ignore, .select2-input',
+                        focusInvalid: false,
+                        rules: {
+                            'fos_user_registration_form_email': {
+                                required: true,
+								email: true
+                            },
+                            'fos_user_registration_form_username': {
+                                required: true
+                            },
+                             'fos_user_registration_form_plainPassword_first': {
+                                required: true,
+                                minlength: 6
+                            },
+                             'fos_user_registration_form_plainPassword_second': {
+                                required: true,
+                                minlength: 6,
+                                equalTo: "#fos_user_registration_form_plainPassword_first"
+                            },
+                        }
+                 });
+             });
+            window.PixelAdmin.start(init);
+    </script>
+{% endblock %}

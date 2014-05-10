@@ -1,10 +1,110 @@
 {% extends 'CinheticPublicBundle::layout.html.twig' %}
 
 
+{% block titlepage %}<i class="fa fa-search page-header-icon"></i>&nbsp;&nbsp;Résultat de recherche{% endblock %}
+
+
 {% block content %}
+
+
+<div class="page-search">
+
+		<div class="search-text">
+			<strong>{{ movies.getTotalItemCount }}</strong> résultat trouvé pour: <span class="text-primary">{{ app.request.get('search') }}</span>
+		</div> <!-- / .search-text -->
+
+		<!-- Tabs -->
+		<div class="search-tabs">
+			<ul class="nav nav-tabs">
+				<li class="active">
+					<a href="#search-tabs-all" data-toggle="tab">All <span class="label label-primary">{{ movies.getTotalItemCount }}</span></a>
+				</li>
+				{#<li>
+					<a href="#search-tabs-users" data-toggle="tab">Users <span class="label label-success">5</span></a>
+				</li>
+				<li>
+					<a href="#search-tabs-messages" data-toggle="tab">Messages <span class="label label-danger">9</span></a>
+				</li> #}
+			</ul> <!-- / .nav -->
+		</div>
+		<!-- / Tabs -->
+
+		<!-- Panel -->
+		<div class="panel search-panel">
+
+			<!-- Search form -->
+			<form action="{{ path('Cinhetic_public_search') }}" id="form_search" method="post"  role="search" class="search-form bg-primary">
+				<div class="input-group input-group-lg">
+					<span class="input-group-addon no-background"><i class="fa fa-search"></i></span>
+					<input type="text" name="search" data-url="{{ path('Cinhetic_public_search', {'ajax': 'true'}) }}"  value="{{ app.request.get('search') }}" class="form-control" id="search_page_ajax" placeholder="Rechercher un film, une catégorie, un tag, un réalisateur, un acteur...">
+					<span class="input-group-btn">
+						<button class="btn" type="submit">Rechercher</button>
+					</span>
+				</div> <!-- / .input-group -->
+			</form>
+
+			<!-- / Search form -->
+
+			<!-- Search results -->
+			<div class="panel-body tab-content">
+
+				<!-- Classic search -->
+
+				<ul class="search-classic tab-pane fade in active" id="search-tabs-all">
+					{% for entity in movies %}
+						<li>
+							<span class="pull-right">
+								<span data-rating="{{ entity.notePresse }}" class="rating"></span>
+							</span>
+							<a class="search-title" href="{{ path('movies_show', {'id' : entity.id}) }}">
+	                            {{ entity.title|title }}
+	                        </a>
+	                        {% if entity.category.id is defined %}
+	                            <a href="{{ path('categories_show', {'id' : entity.category.id}) }}">
+	                                - {{ entity.category.title|title }}
+	                            </a>
+	                        {% endif %}
+							<div class="search-content">
+								{{ entity.description|truncate(600, true, '...') }}		                              
+							</div> <!-- / .search-content -->
+							<div class="search-tags">
+								<span class="search-tags-text">Tags:</span>
+								{% for entity in entity.tags %}
+		                            <a class="label label-success">{{ entity.word }}</a>
+	                        {% endfor %}
+							</div> <!-- / .search-tags -->
+						</li>
+	 				{% else %}
+			            <div class="alert alert-warning">
+			                <i class="glyphicon glyphicon-exclamation-sign"></i> Il n'y a pas de film
+			            </div>
+		       		{% endfor %}
+	            </div>
+        
+
+
+					
+					
+				</ul>
+				<!-- / Classic search -->
+
+			</div>
+			<!-- / Search results -->
+
+			<!-- Panel Footer -->
+			<div class="panel-footer">
+				    {{ knp_pagination_render(movies) }}
+			</div> <!-- / .panel-footer -->
+
+		</div> 
+		<!-- / Panel -->
+
+	</div>
+	{#
     <h1><i class="glyphicon glyphicon-facetime-video"></i> Recherche des Films [{{ movies|length }}]</h1>
     <hr />
 
     {% include 'CinheticPublicBundle:Movies:_list.html.twig' %}
 
+	#}
 {% endblock %}

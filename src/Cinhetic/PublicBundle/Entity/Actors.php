@@ -35,6 +35,7 @@ class Actors
      *      max = "500",
      *      minMessage = "Votre prénom doit faire au moins {{ limit }} caractères",
      *      maxMessage = "Votre prénom ne peut pas être plus long que {{ limit }} caractères"
+     *   
      * )
      * @ORM\Column(name="firstname", type="string", length=250, nullable=true)
      */

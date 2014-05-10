@@ -11,7 +11,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * Comments
  *
  * @ORM\Table(name="comments", indexes={@ORM\Index(name="user_id", columns={"user_id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Cinhetic\PublicBundle\Repository\CommentsRepository")
  */
 class Comments
 {

@@ -72,20 +72,14 @@ class MoviesController extends AbstractController
 
                         return $this->render('CinheticPublicBundle:Movies:searchpage.html.twig',  array(
                             'form' => $form->createView(),
-                            'movies' => $pagination,
+                            'movies' => $this->paginate($movies,7)
                         ));
             }
 
-            $pagination = $paginator->paginate(
-                $movies,
-                $this->get('request')->query->get('pageone', 1) /*page number*/,
-                5,
-                array('pageParameterName' => 'pageone')
-            );
 
             return $this->render('CinheticPublicBundle:Movies:searchpage.html.twig',  array(
                 'form' => $form->createView(),
-                'movies' => $pagination,
+                'movies' => $this->paginate($movies,7)
             ));
 
         }else{

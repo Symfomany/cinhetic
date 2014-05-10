@@ -20,315 +20,78 @@
         </div>
     </div>
     <div>
-        <div class="col-lg-6">
-            <div class="panel panel-warning" id="dashboard-recent">
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="panel panel-inverse" id="dashboard-recent">
                             <div class="panel-heading">
-                                <span class="panel-title"><i class="panel-title-icon fa fa-comments text-danger"></i>Commentaires</span>
-                                <ul class="nav nav-tabs nav-tabs-xs">
-                                    <li class="active">
-                                        <a href="#dashboard-recent-comments" data-toggle="tab">Comments</a>
-                                    </li>
-                                </ul>
+                                <span class="panel-title"><i class="panel-title-icon fa fa-comments"></i>Commentaires</span>
+                                <div class="panel-heading-controls">
+                                        {{ knp_pagination_render(comments) }} 
+                                </div>
                             </div> <!-- / .panel-heading -->
                             <div class="tab-content">
-
-                                <!-- Comments widget -->
-
-                                <!-- Without padding -->
                                 <div class="widget-comments panel-body tab-pane no-padding fade active in" id="dashboard-recent-comments">
-                                    <!-- Panel padding, without vertical padding -->
-                                    <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 300px;"><div class="panel-padding no-padding-vr" style="overflow: hidden; width: auto; height: 300px;">
-                                        <div class="comment">
-                                            <div class="comment-body">
-                                                <div class="comment-by">
-                                                    <a href="#" title="">Denise Steiner</a> commented on <a href="#" title="">Article Name</a>
-                                                </div>
-                                                <div class="comment-text">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.
-                                                </div>
-                                                <div class="comment-actions">
-                                                    <a href="#"><i class="fa fa-pencil"></i>Edit</a>
-                                                    <a href="#"><i class="fa fa-times"></i>Remove</a>
-                                                    <span class="pull-right">2 hours ago</span>
-                                                </div>
-                                            </div> <!-- / .comment-body -->
-                                        </div> <!-- / .comment -->
-
-                                        <div class="comment">
-                                            <div class="comment-body">
-                                                <div class="comment-by">
-                                                    <a href="#" title="">Michelle Bortz</a> commented on <a href="#" title="">Article Name</a>
-                                                </div>
-                                                <div class="comment-text">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.
-                                                </div>
-                                                <div class="comment-actions">
-                                                    <a href="#"><i class="fa fa-pencil"></i>Edit</a>
-                                                    <a href="#"><i class="fa fa-times"></i>Remove</a>
-                                                    <span class="pull-right">2 hours ago</span>
-                                                </div>
-                                            </div> <!-- / .comment-body -->
-                                        </div> <!-- / .comment -->
-
-                                        <div class="comment">
-                                            <div class="comment-body">
-                                                <div class="comment-by">
-                                                    <a href="#" title="">Robert Jang</a> commented on <a href="#" title="">Article Name</a>
-                                                </div>
-                                                <div class="comment-text">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.
-                                                </div>
-                                                <div class="comment-actions">
-                                                    <a href="#"><i class="fa fa-pencil"></i>Edit</a>
-                                                    <a href="#"><i class="fa fa-times"></i>Remove</a>
-                                                    <span class="pull-right">2 hours ago</span>
-                                                </div>
-                                            </div> <!-- / .comment-body -->
-                                        </div> <!-- / .comment -->
-
-                                        <div class="comment">
-                                            <div class="comment-body">
-                                                <div class="comment-by">
-                                                    <a href="#" title="">Timothy Owens</a> commented on <a href="#" title="">Article Name</a>
-                                                </div>
-                                                <div class="comment-text">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.
-                                                </div>
-                                                <div class="comment-actions">
-                                                    <a href="#"><i class="fa fa-pencil"></i>Edit</a>
-                                                    <a href="#"><i class="fa fa-times"></i>Remove</a>
-                                                    <span class="pull-right">2 hours ago</span>
-                                                </div>
-                                            </div> <!-- / .comment-body -->
-                                        </div> <!-- / .comment -->
-
-                                        <div class="comment">
-                                            <div class="comment-body">
-                                                <div class="comment-by">
-                                                    <a href="#" title="">Denise Steiner</a> commented on <a href="#" title="">Article Name</a>
-                                                </div>
-                                                <div class="comment-text">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.
-                                                </div>
-                                                <div class="comment-actions">
-                                                    <a href="#"><i class="fa fa-pencil"></i>Edit</a>
-                                                    <a href="#"><i class="fa fa-times"></i>Remove</a>
-                                                    <span class="pull-right">2 hours ago</span>
-                                                </div>
-                                            </div> <!-- / .comment-body -->
-                                        </div> <!-- / .comment -->
-
-                                        <div class="comment">
-                                            <div class="comment-body">
-                                                <div class="comment-by">
-                                                    <a href="#" title="">Michelle Bortz</a> commented on <a href="#" title="">Article Name</a>
-                                                </div>
-                                                <div class="comment-text">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.
-                                                </div>
-                                                <div class="comment-actions">
-                                                    <a href="#"><i class="fa fa-pencil"></i>Edit</a>
-                                                    <a href="#"><i class="fa fa-times"></i>Remove</a>
-                                                    <span class="pull-right">2 hours ago</span>
-                                                </div>
-                                            </div> <!-- / .comment-body -->
-                                        </div> <!-- / .comment -->
-
-                                        <div class="comment">
-                                            <div class="comment-body">
-                                                <div class="comment-by">
-                                                    <a href="#" title="">Robert Jang</a> commented on <a href="#" title="">Article Name</a>
-                                                </div>
-                                                <div class="comment-text">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.
-                                                </div>
-                                                <div class="comment-actions">
-                                                    <a href="#"><i class="fa fa-pencil"></i>Edit</a>
-                                                    <a href="#"><i class="fa fa-times"></i>Remove</a>
-                                                    <span class="pull-right">2 hours ago</span>
-                                                </div>
-                                            </div> <!-- / .comment-body -->
-                                        </div> <!-- / .comment -->
-
-                                        <div class="comment">
-                                            <div class="comment-body">
-                                                <div class="comment-by">
-                                                    <a href="#" title="">Timothy Owens</a> commented on <a href="#" title="">Article Name</a>
-                                                </div>
-                                                <div class="comment-text">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.
-                                                </div>
-                                                <div class="comment-actions">
-                                                    <a href="#"><i class="fa fa-pencil"></i>Edit</a>
-                                                    <a href="#"><i class="fa fa-times"></i>Remove</a>
-                                                    <span class="pull-right">2 hours ago</span>
-                                                </div>
-                                            </div> <!-- / .comment-body -->
-                                        </div> <!-- / .comment -->
-
-                                        <div class="comment">
-                                            <div class="comment-body">
-                                                <div class="comment-by">
-                                                    <a href="#" title="">Robert Jang</a> commented on <a href="#" title="">Article Name</a>
-                                                </div>
-                                                <div class="comment-text">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.
-                                                </div>
-                                                <div class="comment-actions">
-                                                    <a href="#"><i class="fa fa-pencil"></i>Edit</a>
-                                                    <a href="#"><i class="fa fa-times"></i>Remove</a>
-                                                    <span class="pull-right">2 hours ago</span>
-                                                </div>
-                                            </div> <!-- / .comment-body -->
-                                        </div> <!-- / .comment -->
-
-                                        <div class="comment">
-                                            <div class="comment-body">
-                                                <div class="comment-by">
-                                                    <a href="#" title="">Timothy Owens</a> commented on <a href="#" title="">Article Name</a>
-                                                </div>
-                                                <div class="comment-text">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.
-                                                </div>
-                                                <div class="comment-actions">
-                                                    <a href="#"><i class="fa fa-pencil"></i>Edit</a>
-                                                    <a href="#"><i class="fa fa-times"></i>Remove</a>
-                                                    <span class="pull-right">2 hours ago</span>
-                                                </div>
-                                            </div> <!-- / .comment-body -->
-                                        </div> <!-- / .comment -->
+                                    <div class="slimScrollDiv">
+                                        {% for comment in comments %}
+                                            <div class="comment">
+                                                <div class="comment-body">
+                                                    <div class="comment-by">
+                                                        <a href="#" title="">{{ comment.user.username }}</a> sur le film <a href="#" title="">{{ comment.movie.title }}</a>
+                                                    </div>
+                                                    <div class="comment-text">
+                                                        {{ comment.content }}
+                                                    </div>
+                                                    <div class="comment-actions">
+                                                        <a href="#"><i class="fa fa-times"></i>Supprimer</a>
+                                                        <a href="#"><i class="fa fa-pencil"></i>Editer</a>
+                                                        <span class="pull-right">{{ comment.dateCreated|ago }}</span>
+                                                    </div>
+                                                </div> <!-- / .comment-body -->
+                                            </div> <!-- / .comment -->
+                                        {% else %}
+                                        <div class="alert">
+                                                <strong>Attention</strong> Aucun commentaire a été chargé
+                                        </div>
+                                        {% endfor %}
                                     </div><div class="slimScrollBar"></div></div>
                                 </div> <!-- / .widget-comments -->
-
-                                <!-- Threads widget -->
-
-                                <!-- Without padding -->
-                                <div class="widget-threads panel-body tab-pane no-padding fade" id="dashboard-recent-threads">
-                                    <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 300px;"><div class="panel-padding no-padding-vr" style="overflow: hidden; width: auto; height: 300px;">
-                                        <div class="thread">
-                                            <div class="thread-body">
-                                                <span class="thread-time">14h</span>
-                                                <a href="#" class="thread-title">Lorem ipsum dolor sit amet</a>
-                                                <div class="thread-info">started by <a href="#" title="">Robert Jang</a> in <a href="#" title="">Forum name</a></div>
-                                            </div> <!-- / .thread-body -->
-                                        </div> <!-- / .thread -->
-
-                                        <div class="thread">
-                                            <div class="thread-body">
-                                                <span class="thread-time">14h</span>
-                                                <a href="#" class="thread-title">Lorem ipsum dolor sit amet</a>
-                                                <div class="thread-info">started by <a href="#" title="">Michelle Bortz</a> in <a href="#" title="">Forum name</a></div>
-                                            </div> <!-- / .thread-body -->
-                                        </div> <!-- / .thread -->
-
-                                        <div class="thread">
-                                            <div class="thread-body">
-                                                <span class="thread-time">14h</span>
-                                                <a href="#" class="thread-title">Lorem ipsum dolor sit amet</a>
-                                                <div class="thread-info">started by <a href="#" title="">Timothy Owens</a> in <a href="#" title="">Forum name</a></div>
-                                            </div> <!-- / .thread-body -->
-                                        </div> <!-- / .thread -->
-
-                                        <div class="thread">
-                                            <div class="thread-body">
-                                                <span class="thread-time">14h</span>
-                                                <a href="#" class="thread-title">Lorem ipsum dolor sit amet</a>
-                                                <div class="thread-info">started by <a href="#" title="">Denise Steiner</a> in <a href="#" title="">Forum name</a></div>
-                                            </div> <!-- / .thread-body -->
-                                        </div> <!-- / .thread -->
-
-                                        <div class="thread">
-                                            <div class="thread-body">
-                                                <span class="thread-time">14h</span>
-                                                <a href="#" class="thread-title">Lorem ipsum dolor sit amet</a>
-                                                <div class="thread-info">started by <a href="#" title="">Robert Jang</a> in <a href="#" title="">Forum name</a></div>
-                                            </div> <!-- / .thread-body -->
-                                        </div> <!-- / .thread -->
-
-                                        <div class="thread">
-                                            <div class="thread-body">
-                                                <span class="thread-time">14h</span>
-                                                <a href="#" class="thread-title">Lorem ipsum dolor sit amet</a>
-                                                <div class="thread-info">started by <a href="#" title="">Robert Jang</a> in <a href="#" title="">Forum name</a></div>
-                                            </div> <!-- / .thread-body -->
-                                        </div> <!-- / .thread -->
-
-                                        <div class="thread">
-                                            <div class="thread-body">
-                                                <span class="thread-time">14h</span>
-                                                <a href="#" class="thread-title">Lorem ipsum dolor sit amet</a>
-                                                <div class="thread-info">started by <a href="#" title="">Michelle Bortz</a> in <a href="#" title="">Forum name</a></div>
-                                            </div> <!-- / .thread-body -->
-                                        </div> <!-- / .thread -->
-
-                                        <div class="thread">
-                                            <div class="thread-body">
-                                                <span class="thread-time">14h</span>
-                                                <a href="#" class="thread-title">Lorem ipsum dolor sit amet</a>
-                                                <div class="thread-info">started by <a href="#" title="">Timothy Owens</a> in <a href="#" title="">Forum name</a></div>
-                                            </div> <!-- / .thread-body -->
-                                        </div> <!-- / .thread -->
-
-                                        <div class="thread">
-                                            <div class="thread-body">
-                                                <span class="thread-time">14h</span>
-                                                <a href="#" class="thread-title">Lorem ipsum dolor sit amet</a>
-                                                <div class="thread-info">started by <a href="#" title="">Denise Steiner</a> in <a href="#" title="">Forum name</a></div>
-                                            </div> <!-- / .thread-body -->
-                                        </div> <!-- / .thread -->
-
-                                        <div class="thread">
-                                            <div class="thread-body">
-                                                <span class="thread-time">14h</span>
-                                                <a href="#" class="thread-title">Lorem ipsum dolor sit amet</a>
-                                                <div class="thread-info">started by <a href="#" title="">Robert Jang</a> in <a href="#" title="">Forum name</a></div>
-                                            </div> <!-- / .thread-body -->
-                                        </div> <!-- / .thread -->
-                                        <div class="thread">
-                                            <div class="thread-body">
-                                                <span class="thread-time">14h</span>
-                                                <a href="#" class="thread-title">Lorem ipsum dolor sit amet</a>
-                                                <div class="thread-info">started by <a href="#" title="">Robert Jang</a> in <a href="#" title="">Forum name</a></div>
-                                            </div> <!-- / .thread-body -->
-                                        </div> <!-- / .thread -->
-
-                                        <div class="thread">
-                                            <div class="thread-body">
-                                                <span class="thread-time">14h</span>
-                                                <a href="#" class="thread-title">Lorem ipsum dolor sit amet</a>
-                                                <div class="thread-info">started by <a href="#" title="">Michelle Bortz</a> in <a href="#" title="">Forum name</a></div>
-                                            </div> <!-- / .thread-body -->
-                                        </div> <!-- / .thread -->
-
-                                        <div class="thread">
-                                            <div class="thread-body">
-                                                <span class="thread-time">14h</span>
-                                                <a href="#" class="thread-title">Lorem ipsum dolor sit amet</a>
-                                                <div class="thread-info">started by <a href="#" title="">Timothy Owens</a> in <a href="#" title="">Forum name</a></div>
-                                            </div> <!-- / .thread-body -->
-                                        </div> <!-- / .thread -->
-
-                                        <div class="thread">
-                                            <div class="thread-body">
-                                                <span class="thread-time">14h</span>
-                                                <a href="#" class="thread-title">Lorem ipsum dolor sit amet</a>
-                                                <div class="thread-info">started by <a href="#" title="">Denise Steiner</a> in <a href="#" title="">Forum name</a></div>
-                                            </div> <!-- / .thread-body -->
-                                        </div> <!-- / .thread -->
-
-                                        <div class="thread">
-                                            <div class="thread-body">
-                                                <span class="thread-time">14h</span>
-                                                <a href="#" class="thread-title">Lorem ipsum dolor sit amet</a>
-                                                <div class="thread-info">started by <a href="#" title="">Robert Jang</a> in <a href="#" title="">Forum name</a></div>
-                                            </div> <!-- / .thread-body -->
-                                        </div> <!-- / .thread -->
-                                    </div><div class="slimScrollBar"></div></div>
-                                </div> <!-- / .panel-body -->
-                            </div>
-                        </div>
+                    </div>
                 </div>
 
+                <div class="col-lg-6">
+                    <div class="panel colourable" >
+                            <div class="panel-heading">
+                                <span class="panel-title">
+                                    <i class="panel-title-icon fa fa-twitter"></i>Allocine Tweets
+                                </span>
+                            </div> <!-- / .panel-heading -->
+                            <div class="panel-body">
+                           <table class="table table-striped">
+                                <tbody>
+                                    {% for tweet in tweets %}
+                                        <tr>
+                                            <td>
+                                                <i class="fa fa-twitter-square"></i>
+                                            </td> 
+                                            <td> 
+                                                {{ tweet.text|raw }}</div>
+                                            </td> <!-- / .thread -->
+                                        </tr>
+                                    {% else %}
+                                    <tr>
+                                        <td colspan="2">
+                                            <div class="alert">
+                                                <strong>Attention</strong> Aucun tweets n'a été chargé
+                                            </div>
+                                        </td>
+                                    <tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                            </div>
+                    </div>
+                </div>
     </div>
     <div class="page-footer">
         <div class="row">

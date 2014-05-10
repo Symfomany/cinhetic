@@ -1,12 +1,5 @@
 {% extends "CinheticPublicBundle::layout_disconnect.html.twig" %}
 
-{% block stylesheets %}
-    {{ parent() }}
-    {% stylesheets '@CinheticPublicBundle/Resources/public/css/login.css' %}
-        <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>
-    {% endstylesheets %}
-{% endblock %}
-
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block topmenu %}
@@ -14,8 +7,6 @@
 
 {% block fos_user_content %}
             
-
-
     <h1 class="form-header"><i class="glyphicon glyphicon-off"></i>  Authentification</h1>
 
             <form  id="signin-form_id" class="panel" action="{{ path("fos_user_security_check") }}" method="post">
@@ -31,12 +22,11 @@
 
                 <div class="form-group">
                     <div class="input-group">
-                   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                    <input name="_username" value="{{ last_username }}" id="username_id" type="text" class="form-control input-lg" placeholder=" {{ 'auth.email'|trans({}, 'CinheticPublicBundle') }}"
-                           required="required">
+                       <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input name="_username" value="{{ last_username }}" id="username_id" type="text" class="form-control input-lg" placeholder=" {{ 'auth.email'|trans({}, 'CinheticPublicBundle') }}"
+                               required="required">
+                    </div>
                 </div>
-                </div>
-                <p></p>
 
                  <div class="form-group signin-password">
                     <div class="input-group">
@@ -47,9 +37,12 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-                        <label for="remember_me"> {{ 'auth.rememberme'|trans({}, 'CinheticPublicBundle') }}</label>
-                        <i class="col-md-offset-1 glyphicon glyphicon-question-sign"></i> <a href="{{ path('CinheticPublicBundle_user') }}"> Pas encore inscrit ?</a>
+                            <div class="checkbox pull-left">
+                                <label>
+                                    <input type="checkbox" name="_remember_me" class="px"> <span class="lbl">Remember me</span>
+                                </label>
+                            </div>                     
+                        <a class="col-md-offset-3" href="{{ path('CinheticPublicBundle_user') }}"><i class="glyphicon glyphicon-ok"></i> Inscription</a>
                     </div>
                 </div>
                 <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
@@ -77,3 +70,22 @@
 
 
 {% endblock fos_user_content %}
+
+{% block javascripts %}
+{{ parent() }}
+    <script type="text/javascript">
+        var init = [];
+            init.push(function () {
+                $("#signin-form_id").validate({
+                    ignore: '.ignore, .select2-input',
+                        focusInvalid: false,
+                        rules: {
+                            'username_id': {
+                                required: true
+                            },
+                        }
+                 });
+             });
+            window.PixelAdmin.start(init);
+    </script>
+{% endblock %}

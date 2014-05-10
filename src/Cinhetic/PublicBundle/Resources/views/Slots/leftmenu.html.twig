@@ -1,57 +1,100 @@
 {% block leftmenu %}
-    <div class="col-md-2 sidebar">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4><a href="#"><i class="glyphicon glyphicon-bell"></i> Mes Alertes <span class="badge">2</span></a></h4>
-            </div>
-            <div class="panel-body">
-                {% if warn > 0 %}
-                    <div class="">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        <strong><i class="glyphicon glyphicon-exclamation-sign"></i> Attention!</strong> Vous avez <strong>{{ warn }}</strong> factures désactivées
+    
+
+<!-- 4. $MAIN_MENU =================================================================================
+
+        Main menu
+        
+        Notes:
+        * to make the menu item active, add a class 'active' to the <li>
+          example: <li class="active">...</li>
+        * multilevel submenu example:
+            <li class="mm-dropdown">
+              <a href="#"><span class="mm-text">Submenu item text 1</span></a>
+              <ul>
+                <li>...</li>
+                <li class="mm-dropdown">
+                  <a href="#"><span class="mm-text">Submenu item text 2</span></a>
+                  <ul>
+                    <li>...</li>
+                    ...
+                  </ul>
+                </li>
+                ...
+              </ul>
+            </li>
+-->
+    <div id="main-menu" role="navigation">
+        <div id="main-menu-inner">
+            <div class="menu-content top" id="menu-content-demo">
+                <!-- Menu custom content demo
+                     CSS:        styles/pixel-admin-less/demo.less or styles/pixel-admin-scss/_demo.scss
+                     Javascript: html/assets/demo/demo.js
+                 -->
+                <div>
+                    <div class="text-bg"><span class="text-slim">Bienvenue, </span> <span class="text-semibold">{% if app.user.username is defined %} {{ app.user.username }}{% endif %}</span></div>
+
+                    <div class="btn-group">
+                        <a href="#" class="btn btn-xs btn-primary btn-outline dark"><i class="fa fa-envelope"></i></a>
+                        <a href="#" class="btn btn-xs btn-primary btn-outline dark"><i class="fa fa-user"></i></a>
+                        <a href="#" class="btn btn-xs btn-primary btn-outline dark"><i class="fa fa-cog"></i></a>
+                        <a href="{{ path('fos_user_security_logout') }}" class="btn btn-xs btn-danger btn-outline dark"><i class="fa fa-power-off"></i></a>
                     </div>
-                {% else %}
-                {% endif %}
-            </div>
-        </div>
-
-
-        <hr />
-
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4><a href="#"><i class="glyphicon glyphicon-comment"></i> Mes messages <span class="badge">4</span></a></h4>
-            </div>
-            <div class="panel-body">
-                <div class="">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    <h6 class=""><i class="glyphicon glyphicon-time"></i> Il y a 2 heures</h6>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi gravida est nisl, ac pharetra purus blandit vel...</p>
-                    <div class="clear clearfix"></div>
-                </div>
-                <div class="">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    <h6 class=""><i class="glyphicon glyphicon-time"></i> Il y a 3 heures</h6>
-                    <p> Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos...</p>
-                    <div class="clear clearfix"></div>
-                </div>
-                <div class="">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    <h6 class=""><i class="glyphicon glyphicon-time"></i> Il y a 5 heures</h6>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi gravida est nisl, ac pharetra purus blandit vel... </p>
-                    <div class="clear clearfix"></div>
-                </div>
-                <div class="">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    <h6 class=""><i class="glyphicon glyphicon-time"></i> Il y a 1 jour</h6>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi gravida est nisl, ac pharetra purus blandit vel...</p>
-                    <div class="clear clearfix"></div>
+                    <a href="#" class="close">&times;</a>
                 </div>
             </div>
-            <div class="panel-footer">
-                <a class="btn btn-danger" href="#"><i class="glyphicon glyphicon-share-alt"></i> Tous les messages</a>
+            <ul class="navigation">
+                <li {% if  app.request.attributes.get('_route') == "Cinhetic_public_homepage" %} class="active" {% endif %}>
+                    <a href="#"><i class="menu-icon fa fa-home"></i> <span class="mm-text">Home</span></a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="menu-icon fa fa-bookmark"></i> <span class="mm-text"> Les derniers films</span></a>
+                    </a>
+                </li>
+                <li>
+                     <a href="#">
+                        <i class="menu-icon fa fa-group"></i> <span class="mm-text"> Les acteurs stars</span></a>
+                    </a>
+                </li>
+                 <li>
+                     <a href="#">
+                        <i class="menu-icon fa fa-camera"></i> <span class="mm-text"> Les réalisateurs</span></a>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="menu-icon fa fa-home"></i> <span class="mm-text"> Timeline de films</span></a>
+                    </a>
+                </li>
+                 <li>
+                    <a href="#">
+                        <i class="menu-icon fa fa-comment"></i> <span class="mm-text"> Tous les commentaires</span></a>
+                    </a>
+                </li>
+                 <li>
+                     <a href="#">
+                        <i class="menu-icon fa fa-camera"></i> <span class="mm-text"> Toutes les photos</span></a>
+                    </a>
+                </li>
+                <li>
+                     <a href="#">
+                       <i class="menu-icon fa  fa-film"></i> <span class="mm-text"> Toutes les vidéos</span></a>
+                    </a>
+                </li>
+                <li>
+                     <a href="#">
+                        <i class="menu-icon fa fa-map-marker"></i> <span class="mm-text"> Toutes les cinémas</span></a>
+                    </a>
+                </li>
+            </ul> <!-- / .navigation -->
+            <div class="menu-content">
+                <a href="" class="btn btn-primary btn-block btn-outline dark">
+                    Créer un film
+                </a>
             </div>
-        </div>
-    </div>
+        </div> <!-- / #main-menu-inner -->
+    </div> <!-- / #main-menu -->
+<!-- /4. $MAIN_MENU -->
 {% endblock %}
 
