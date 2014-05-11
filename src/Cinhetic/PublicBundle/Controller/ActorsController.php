@@ -38,10 +38,9 @@ class ActorsController extends AbstractController
     {
         $entity = new Actors();
         $form = $this->get('cinhetic_public.manager_actors')->createForm($entity);
-        
 
-        if($this->get('cinhetic_public.manager_actors')->create($entity)){
-            $this->setMessage("L'acteur a été crée");
+        if($this->get('cinhetic_public.manager_actors')->validation($form, $entity) == TRUE){
+           $this->setMessage("L'acteur a été crée");
            return $this->redirect($this->generateUrl('actors'));
         }
 
@@ -64,15 +63,16 @@ class ActorsController extends AbstractController
     {
 
         $deleteForm = $this->get('cinhetic_public.manager_actors')->deleteForm($id);
-        $editForm = $this->get('cinhetic_public.manager_actors')->editForm($id);
-        if($this->get('cinhetic_public.manager_actors')->update($id)){
-            $this->setMessage("L'acteur a été modifié");
+        $form = $this->get('cinhetic_public.manager_actors')->editForm($id);
+
+        if($this->get('cinhetic_public.manager_actors')->validation($form, $id) == TRUE){
+           $this->setMessage("L'acteur a été modifié");
            return $this->redirect($this->generateUrl('actors'));
         }
 
         return $this->render('CinheticPublicBundle:Actors:edit.html.twig', array(
             'entity'      => $id,
-            'edit_form'   => $editForm->createView(),
+            'edit_form'   => $form->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -140,6 +140,7 @@ class ActorsController extends AbstractController
      */
     public function deleteAction(Actors $id)
     {
+        $this->setMessage("L'acteur a bien été supprimé",'success');
         $this->get('cinhetic_public.manager_actors')->remove($id);
 
         return $this->redirect($this->generateUrl('actors'));

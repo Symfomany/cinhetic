@@ -59,9 +59,9 @@ class MoviesType extends AbstractType
             ->add('duree')
             ->add('dateRelease', 'datetime',
                 array(
-                    'attr' => array('class' => 'datepicker form-control'),
+                    'attr' => array('class' => 'datepick form-control'),
                     'widget' => 'single_text',
-                    'format' => 'yyyy-MM-dd',
+                    'format' => 'dd/MM/yyyy',
                     'label' => "Date de sortie"
                 ))
             ->add('notePresse','choice', array(
@@ -73,8 +73,8 @@ class MoviesType extends AbstractType
                     '5' => "Excellent réalisateur"),
                 'required'  => false,
             ))
-            ->add('visible')
-            ->add('cover')
+            ->add('visible', null, array('attr' => array('class' => "px")))
+            ->add('cover', null, array('attr' => array('class' => "px")))
             ->add('category', null, array('required' => true, 'property' => 'optionLabel'))
             ->add('actors', null, array('label' => "Acteurs qui ont joué dans ce film"))
             ->add('cinemas', null, array('label' => "Cinéma qui le diffusent"))

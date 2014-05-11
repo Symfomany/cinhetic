@@ -1,21 +1,23 @@
 {% extends 'CinheticPublicBundle::layout.html.twig' %}
 
 
+{% block titlepage %}<i class="fa fa-video-camera"></i>&nbsp;&nbsp;Fiche du réalisateur {{ entity.firstname }} {{ entity.lastname }}{% endblock %}
+
 {% block content %}
 
     <div class="row">
         <div class="col-md-12">
-            <h2 class="featurette-heading" style="margin-left: 0;">{{ entity.firstname }} {{ entity.lastname }}</h2>
-            <p class="lead">{{ entity.biography|striptags|raw }}</p>
+            <h3 class="featurette-heading" style="margin-left: 0;">{{ entity.firstname }} {{ entity.lastname }}</h3>
+            <hr />
+            <p class="">{{ entity.biography|striptags|raw }}</p>
         </div>
     </div>
 
-    <hr class="featurette-divider">
-
-    <h4>Films réalisés</h4>
+    <h3>Films réalisés</h3>
+    <hr />
+    
     {% include 'CinheticPublicBundle:Movies:_list.html.twig' %}
     
-    <hr class="featurette-divider">
 
     <a class="btn btn-primary" href="{{ path('directors_edit', { 'id': entity.id }) }}">
         Edit

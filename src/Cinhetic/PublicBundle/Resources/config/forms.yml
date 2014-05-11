@@ -40,9 +40,9 @@ services:
           - { name: form.type, alias: actors }
 
     cinhetic_public.manager_directors:
+        scope: request
         class: %cinhetic_public.manager_directors.class%
         arguments: [@form.factory,@cinhetic_public.form_directors,@router,@doctrine.orm.entity_manager, @request]
-        scope: request
 
     cinhetic_public.form_categories:
         class: %cinhetic_public.form_categories.class%

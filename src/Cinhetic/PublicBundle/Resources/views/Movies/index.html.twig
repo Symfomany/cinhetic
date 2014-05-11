@@ -1,24 +1,24 @@
 {% extends 'CinheticPublicBundle::layout.html.twig' %}
 
+{% block titlepage %}<i class="fa fa-film"></i>&nbsp;&nbsp;Les films{% endblock %}
+
+
 {% block content %}
-    <h1><i class="glyphicon glyphicon-film"></i> Liste des Films [{{ entities|length }}]</h1>
-    <hr />
+
     <table class="records_list  table table-striped">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Titre</th>
                 <th>Synopsis</th>
                 <th>Réalisateurs</th>
-                <th>Nb d'acteurs</th>
-                <th>Date de sortie</th>
+                <th>Acteurs</th>
+                <th>Sortie</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('movies_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td class="text-success"><a href="{{ path('movies_show', { 'id': entity.id }) }}">{{ entity.title }}</a></td>
                 <td>{{ entity.synopsis|convert_encoding( 'iso-8859-1', 'UTF-8') |striptags|truncate(350,true, "...") }}</td>
                 <td>
@@ -28,7 +28,7 @@
                         </a>
                     {% endfor %}
                 </td>
-                <td>{{ entity.actors|length|default('0') }} acteurs</td>
+                <td class="text-primary"><i class="fa fa-group"></i> {{ entity.actors|length|default('0') }}</td>
                 <td>{% if entity.dateRelease %}{{ entity.dateRelease|date('d/m/Y') }}{% endif %}</td>
                 <td>
                            <a class="btn btn-primary btn-sm"  href="{{ path('movies_show', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-search"></i> Voir</a>

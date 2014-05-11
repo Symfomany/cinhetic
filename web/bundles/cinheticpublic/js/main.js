@@ -1,19 +1,52 @@
 $(function () {
     $('#flashdatas .alert').delay(5000).slideUp('fast');
-
-    $(".fancybox").fancybox();
-
-    $('select[multiple="multiple"]').selectpicker({});
-
-
-    $('.star').raty({
-        numberMax : 5,
-        readOnly: true,
-        halfShow : true,
-        score: function() {
-            return $(this).attr('data-number')
-        }
+    $('#search_input').focus(function(){
+            $('#form_search').stop(true,true).animate({
+                'width': '600px'
+            });
     });
+ $('#search_input').blur(function(){
+            $('#form_search').stop(true,true).animate({
+                'width': '50%'
+            });
+    });
+
+
+    if ($("#search_page_ajax").length > 0) {
+        $("#search_page_ajax").autocomplete({
+            minLength: 2,
+            scrollHeight: 220,
+            source: function(req, add) {
+                return $.ajax({
+                    url: $("#search_page_ajax").attr('data-url'),
+                    type: "get",
+                    dataType: "json",
+                    data: "word=" + req.term,
+                    async: true,
+                    cache: true,
+                    success: function(data) {
+                        return add($.map(data, function(item) {
+                            return {
+                                nom: item.nom,
+                                url: item.url
+                            };
+                        }));
+                    }
+                });
+            },
+            focus: function(event, ui) {
+                $(this).val(ui.item.nom);
+                return false;
+            },
+            select: function(event, ui) {
+                window.location.href = ui.item.url;
+                return false;
+            }
+        }).data("ui-autocomplete")._renderItem = function(ul, item) {
+            return $("<li></li>").data("ui-autocomplete-item", item).append("<a href=\"" + item.url + "\">" + item.nom + "</span></a>").appendTo(ul.addClass("list-row"));
+        };
+    }
+
 
     if ($("#search_input").length > 0) {
         $("#search_input").autocomplete({
@@ -85,13 +118,6 @@ $(function () {
             return $("<li></li>").data("ui-autocomplete-item", item).append("" + item.nom + "").appendTo(ul.addClass("list-row"));
         };
     }
-
-
-
-    $('#myTab a').click(function (e) {
-        e.preventDefault();
-        $(this).tab('show');
-    });
 
 
     $(window).scroll(function () {

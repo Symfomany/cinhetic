@@ -70,8 +70,8 @@ abstract class AbstractController extends Controller
      */
     public function setMessage($message = "Opération bien effectuée", $criticality = "success"){
         $this->get('session')->getFlashBag()->add(
-            $message,
-            $criticality
+            $criticality,
+            $message
         );
 
     }

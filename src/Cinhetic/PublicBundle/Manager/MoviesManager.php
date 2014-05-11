@@ -66,33 +66,18 @@ class MoviesManager
      * @param movies $entity
      * @return bool
      */
-    public function update(Movies $entity){
+    public function validation($form, Movies $entity){
 
-        $editForm = $this->editForm($entity);
-        $editForm->handleRequest($this->request);
-
-        if ($editForm->isValid()) {
-            $this->processPersist($entity);
-            return true;
-        }
-
-    }
-
-    /**
-     * Create movies
-     * @param Movies $entity
-     * @return bool
-     */
-    public function create(Movies $entity){
-
-        $form = $this->createForm($entity);
         $form->handleRequest($this->request);
+
         if ($form->isValid()) {
             $this->processPersist($entity);
             return true;
         }
 
+        return false;
     }
+
 
     /**
      * Remove movies

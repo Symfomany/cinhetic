@@ -31,6 +31,7 @@ class Directors
     /**
      * @var string
      * @Expose
+     * @Assert\NotBlank
      * @Assert\Length(
      *      min = "3",
      *      max = "500",
@@ -44,6 +45,7 @@ class Directors
     /**
      * @var string
      * @Expose
+     * @Assert\NotBlank
      * @Assert\Length(
      *      min = "3",
      *      max = "500",

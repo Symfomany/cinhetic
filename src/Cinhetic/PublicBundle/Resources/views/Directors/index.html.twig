@@ -1,13 +1,12 @@
 {% extends 'CinheticPublicBundle::layout.html.twig' %}
 
+{% block titlepage %}<i class="fa fa-video-camera"></i>&nbsp;&nbsp;Les réalisateurs{% endblock %}
+
 
 {% block content %}
-    <h1><i class="glyphicon glyphicon-facetime-video"></i> Liste des Réalisateurs [{{ entities|length }}]</h1>
-
     <table class="records_list  table table-striped">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Nom</th>
                 <th>Biographie</th>
                 <th>Note</th>
@@ -17,7 +16,6 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('directors_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td><i class="text-danger"><a href="{{ path('directors_show', { 'id': entity.id }) }}">{{ entity.firstname }} {{ entity.lastname }}</a></i></td>
                 <td>{{ entity.biography }}</td>
                 <td>{{ entity.note }}</td>

@@ -46,12 +46,6 @@ class ActorsManager
     protected $request;
 
 
-    /**
-     * Validator service
-     * @var \Symfony\Component\HttpFoundation\Request
-     */
-    protected $validator;
-
 
     /**
      * Constructor
@@ -60,13 +54,12 @@ class ActorsManager
      * @param RouterInterface $router
      * @param EntityManager $em
      */
-    public function __construct(FormFactory $formFactory, $form, RouterInterface $router, EntityManager $em, Request $request, \Symfony\Component\Validator\Validator $validator){
+    public function __construct(FormFactory $formFactory, $form, RouterInterface $router, EntityManager $em, Request $request){
         $this->formFactory = $formFactory;
         $this->form = $form;
         $this->router = $router;
         $this->em = $em;
         $this->request = $request;
-        $this->validator = $validator;
     }
 
     /**
@@ -74,49 +67,15 @@ class ActorsManager
      * @param Actors $entity
      * @return bool
      */
-    public function update(Actors $entity){
+    public function validation($form, Actors $entity){
 
-        $editForm = $this->editForm($entity);
-        $editForm->handleRequest($this->request);
-
-        $test = $this->request;
-        //exit(var_dump($test));
-
-        //exit(var_dump($this->request));
-          $validator = $this->validator;
-         $errorList = $validator->validate($editForm);
-       foreach( $errorList as $error )
-        {
-            // Do stuff with:
-            echo   $error->getPropertyPath();
-            echo $error->getMessage();
-            exit(print_r($$error->getMessage()));
-
-        }
-                exit(print_r($errorList));
-
-        if ($editForm->isValid()) {
-            $this->processPersist($entity);
-            return true;
-        }
-        exit(var_dump($form->getErrors()));
-        return false;
-    }
-
-    /**
-     * Create actors
-     * @param Actors $entity
-     * @return bool
-     */
-    public function create(Actors $entity){
-
-        $form = $this->createForm($entity);
         $form->handleRequest($this->request);
-        if ($form->isValid()) {
 
+        if ($form->isValid()) {
             $this->processPersist($entity);
             return true;
         }
+
         return false;
     }
 
@@ -145,7 +104,7 @@ class ActorsManager
         $form = $this->formFactory->createBuilder($this->form, $entity, array(
             'action' => $this->router->generate('actors_create'),
             'method' => 'POST',
-            "attr" => array('id' => "form_actor")
+            "attr" => array('id' => "form_actor", "novalidate" => "novalidate")
         ));
 
         $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning"), 'label' => 'Créer cet acteur'));
@@ -163,7 +122,7 @@ class ActorsManager
         $form = $this->formFactory->createBuilder($this->form, $entity, array(
             'action' => $this->router->generate('actors_update', array('id' => $entity->getId())),
             'method' => 'POST',
-            "attr" => array('id' => "form_actor")
+            "attr" => array('id' => "form_actor", "novalidate" => "novalidate")
         ));
 
         $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning"), 'label' => 'Modifier cet acteur'));

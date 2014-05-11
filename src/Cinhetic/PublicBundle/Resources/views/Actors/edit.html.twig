@@ -1,37 +1,23 @@
 {% extends 'CinheticPublicBundle::layout.html.twig' %}
 
+{% block titlepage %}<i class="fa fa-pencil"></i>&nbsp;&nbsp;Editer l'acteur {{ entity.firstname|title}} {{ entity.lastname|title}}{% endblock %}
+
+
 {% block content %}
-    <h1> <i class="glyphicon glyphicon-pencil"></i> Editer l'acteur {{ entity.firstname|title}} {{ entity.lastname|title}} </h1>
-        {{ form(edit_form) }}
+    {{ form(edit_form) }}
     {{ form(delete_form) }}
 {% endblock %}
+
 
 {% block javascripts %}
 {{ parent() }}
 
-	<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/codemirror.min.css" />
-	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/theme/blackboard.min.css">
-	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/theme/monokai.min.css">
-	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/codemirror.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/mode/xml/xml.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/2.36.0/formatting.min.js"></script>
-
     <script type="text/javascript">
-        var init = [];
         $("select").select2({
                             allowClear: true,
                             placeholder: "Selectionnez..."
                 });
-      	  $('.datepick').datepicker();
-            init.push(function () {
-				$('.ckeditor').summernote({
-						height: 200,
-						tabsize: 2,
-						codemirror: {
-							theme: 'monokai'
-						}
-				});
-             });
-            window.PixelAdmin.start(init);
+          $('.datepick').datepicker();
+           
     </script>
 {% endblock %}

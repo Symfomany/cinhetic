@@ -47,6 +47,7 @@ h1{
 }
 #content-wrapper{
     opacity: 0;
+    padding-bottom: 30px;
 }
 img{
      max-width: 100%;
@@ -93,7 +94,9 @@ img{
 .panel .widget-comments .comment, .panel.widget-comments .comment{
     margin: 0px;
 }
-.table-striped>tbody>tr:nth-child(odd)>td .btn, .table-striped>tbody>tr:nth-child(odd)>th .btn{
+.table-striped>tbody>tr:nth-child(odd)>td .btn, .table-striped>tbody>tr:nth-child(odd)>th .btn,
+.table-striped>tbody>tr:nth-child(even)>td .btn, .table-striped>tbody>tr:nth-child(even)>th .btn
+{
     margin-bottom: 10px;
 }
 
@@ -102,7 +105,10 @@ form label{
     margin-top: 10px;
 }
 
-
+form .btn.btn-labeled{
+    margin-top:20px;
+    margin-bottom:20px;
+}
 
 
 

@@ -83,6 +83,27 @@ $(function () {
         };
     }
 
+    /*
+    $('#Cinhetic_publicbundle_actors_city').autocomplete({
+        source : function(requete, reponse){ // les deux arguments représentent les données nécessaires au plugin
+        $.ajax({
+                url : 'http://ws.geonames.org/searchJSON', // on appelle le script JSON
+                dataType : 'json', // on spécifie bien que le type de données est en JSON
+                data : {
+                    name_startsWith : $('#Cinhetic_publicbundle_actors_city').val(), // on donne la chaîne de caractère tapée dans le champ de recherche
+                    maxRows : 15
+                },
+                
+                success : function(donnee){
+                    reponse($.map(donnee.geonames, function(objet){
+                        return objet.name + ', ' + objet.countryName; // on retourne cette forme de suggestion
+                    }));
+                }
+            });
+        }
+    });
+*/
+
 
     if ($("#search_input_api").length > 0) {
         $("#search_input_api").autocomplete({
@@ -192,11 +213,6 @@ $(function () {
         return $('#overlay').removeClass('hide');
     });
 
-    if($(window).width() >= 200 && $(window).width() <= 748){
-        $('a[href]').on("click", function (event) {
-            return $('#overlay').removeClass('hide').delay(1500).fadeOut('slow');
-        });
-    }
 
 
     $("input[required]").on("blur", function (event) {

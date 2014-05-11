@@ -170,11 +170,11 @@ class MoviesController extends AbstractController
     public function createAction(Request $request)
     {
         $entity = new Movies();
-        $form = $this->createCreateForm($entity);
-        $form->handleRequest($request);
+        $form = $this->get('cinhetic_public.manager_movies')->createForm($entity);
 
-        if ($form->isValid()) {
-            $this->processPersist($entity);
+        if($this->get('cinhetic_public.manager_movies')->validation($form, $entity) == TRUE){
+            $this->setMessage("Le film a été crée");
+           return $this->redirect($this->generateUrl('movies')); 
         }
 
         return $this->render('CinheticPublicBundle:Movies:new.html.twig', array(
@@ -183,129 +183,7 @@ class MoviesController extends AbstractController
         ));
     }
 
-    /**
-    * Creates a form to create a Movies entity.
-    * @param Movies $entity The entity
-    * @return \Symfony\Component\Form\Form The form
-    */
-    private function createCreateForm(Movies $entity)
-    {
-        $media1 = new Medias();
-        $media1->setMovies($entity);
-        $entity->addMedia($media1);
-
-        $form = $this->createForm(new MoviesType(), $entity, array(
-            'action' => $this->generateUrl('movies_create'),
-            'attr' => array('id' => 'handlemovie',  'novalidate' => "novalidate"),
-            'method' => 'POST'
-        ));
-
-        $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning"), 'label' => 'Créer ce film'));
-
-        return $form;
-    }
-
-
-    /**
-     * Displays a form to create a new Movies entity.
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function newAction()
-    {
-        $entity = new Movies();
-        $form   = $this->createCreateForm($entity);
-
-        return $this->render('CinheticPublicBundle:Movies:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        ));
-    }
-
-
-    /**
-     * Finds and displays a Movies entity.
-     * @param $id
-     * @return \Symfony\Component\HttpFoundation\Response
-     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
-     */
-    public function showAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('CinheticPublicBundle:Movies')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Movies entity.');
-        }
-
-        $deleteForm = $this->createDeleteForm($id);
-
-        return $this->render('CinheticPublicBundle:Movies:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),        ));
-    }
-
-
-    /**
-     * Displays a form to edit an existing Movies entity.
-     * @param $id
-     * @return \Symfony\Component\HttpFoundation\Response
-     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
-     */
-    public function editAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('CinheticPublicBundle:Movies')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Movies entity.');
-        }
-        $editForm = $this->createEditForm($entity);
-        $mediasembed = $this->generateEmbed($entity);
-
-        return $this->render('CinheticPublicBundle:Movies:edit.html.twig', array(
-            'entity'      => $entity,
-            'mediasembed'      => $mediasembed,
-            'form'   => $editForm->createView(),
-        ));
-    }
-
-    /**
-     * Generate Embed videos
-     * @param ArrayCollection $medias
-     */
-    protected function generateEmbed(Movies $entity){
-        $medias = $entity->getMedias();
-        $mediasembed = array();
-
-        if(!empty($medias))
-            foreach($medias as $media){
-                if($media->getNature() == 2)
-                    $mediasembed[] = $this->embed->embed($media->getVideo());
-            }
-
-        return $mediasembed;
-    }
-
-    /**
-    * Creates a form to edit a Movies entity.
-    * @param Movies $entity The entity
-    * @return \Symfony\Component\Form\Form The form
-    */
-    private function createEditForm(Movies $entity)
-    {
-        $form = $this->createForm(new MoviesType(), $entity, array(
-            'action' => $this->generateUrl('movies_update', array('id' => $entity->getId())),
-            'method' => 'POST',
-        ));
-
-        $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning"), 'label' => 'Modifier ce film'));
-
-        return $form;
-    }
-
-
+  
 
     /**
      * Edits an existing Movies entity.
@@ -314,29 +192,21 @@ class MoviesController extends AbstractController
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
-    public function updateAction(Request $request, $id)
+    public function updateAction(Request $request, Movies $id)
     {
-        $em = $this->getDoctrine()->getManager();
+        
+        $mediasembed = $this->generateEmbed($id);
+        $form = $this->get('cinhetic_public.manager_movies')->editForm($id);
 
-        $entity = $em->getRepository('CinheticPublicBundle:Movies')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Movies entity.');
+        if($this->get('cinhetic_public.manager_movies')->validation($form, $id) == TRUE){
+            $this->setMessage("Le film a été modifié");
+           return $this->redirect($this->generateUrl('actors')); 
         }
-
-        $editForm = $this->createEditForm($entity);
-        $editForm->handleRequest($request);
-
-        if ($editForm->isValid()) {
-            $this->processPersist($entity);
-        }
-
-        $mediasembed = $this->generateEmbed($entity);
 
         return $this->render('CinheticPublicBundle:Movies:edit.html.twig', array(
-            'entity'      => $entity,
+            'entity'      => $id,
             'mediasembed'      => $mediasembed,
-            'form'   => $editForm->createView(),
+            'form'   => $form->createView(),
         ));
 
     }
@@ -366,6 +236,79 @@ class MoviesController extends AbstractController
 
         return $this->redirect($this->generateUrl('movies'));
     }
+
+
+    /**
+     * Displays a form to create a new Movies entity.
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function newAction()
+    {
+        $entity = new Movies();
+        $form = $this->get('cinhetic_public.manager_movies')->createForm($entity);
+
+        return $this->render('CinheticPublicBundle:Movies:new.html.twig', array(
+            'entity' => $entity,
+            'form'   => $form->createView(),
+        ));
+    }
+
+
+    /**
+     * Finds and displays a Movies entity.
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     */
+    public function showAction(Movies $id)
+    {
+
+        $deleteForm = $this->createDeleteForm($id);
+
+        return $this->render('CinheticPublicBundle:Movies:show.html.twig', array(
+            'entity'      => $id,
+            'delete_form' => $deleteForm->createView()  
+         ));
+    }
+
+
+    /**
+     * Displays a form to edit an existing Movies entity.
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     */
+    public function editAction(Movies $id)
+    {
+       
+        $form = $this->get('cinhetic_public.manager_movies')->editForm($id);
+        $mediasembed = $this->generateEmbed($id);
+
+        return $this->render('CinheticPublicBundle:Movies:edit.html.twig', array(
+            'entity'      => $id,
+            'mediasembed'      => $mediasembed,
+            'form'   => $form->createView(),
+        ));
+    }
+
+    /**
+     * Generate Embed videos
+     * @param ArrayCollection $medias
+     */
+    protected function generateEmbed(Movies $entity){
+        $medias = $entity->getMedias();
+        $mediasembed = array();
+
+        if(!empty($medias))
+            foreach($medias as $media){
+                if($media->getNature() == 2)
+                    $mediasembed[] = $this->embed->embed($media->getVideo());
+            }
+
+        return $mediasembed;
+    }
+
+
 
 
     /**

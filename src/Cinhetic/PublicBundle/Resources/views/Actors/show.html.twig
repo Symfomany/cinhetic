@@ -1,18 +1,21 @@
 {% extends 'CinheticPublicBundle::layout.html.twig' %}
 
+{% block titlepage %}<i class="fa fa-search"></i>&nbsp;&nbsp;Fiche de {{ entity.firstname|title}} {{ entity.lastname|title }}{% endblock %}
+
+
 {% block content %}
 
     <div class="row">
         <div class="col-md-12">
-            <h2 class="featurette-heading" style="margin-left: 0;">{{ entity.firstname|title}} {{ entity.lastname|title }}</h2>
-            <p class="lead">{{ entity.biography|striptags|raw }}</p>
-            <p class="lead">Il est à ce jour {{ entity.roles|striptags|raw }}. Il a été récompensé de  {{ entity.recompenses|striptags|raw }} et à tourné dans plus de {{ entity.movies|length|default('0') }} films.</p>
+            <h3 class="featurette-heading" style="margin-left: 0;">{{ entity.firstname|title}} {{ entity.lastname|title }}</h3>
+            <hr />
+            <p class="">{{ entity.biography|striptags|raw }}</p>
+            <p class="">Il est à ce jour {{ entity.roles|striptags|raw }}. Il a été récompensé de  {{ entity.recompenses|striptags|raw }} et à tourné dans plus de {{ entity.movies|length|default('0') }} films.</p>
         </div>
     </div>
 
-    <hr class="featurette-divider">
-
-    <h4>Films joués</h4>
+    <h3>Films joués</h3>
+    <hr />
     {% include 'CinheticPublicBundle:Movies:_list.html.twig' %}
     
     <hr class="featurette-divider">

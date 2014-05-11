@@ -30,6 +30,7 @@ class Actors
     /**
      * @var string
      * @Expose
+     * @Assert\NotBlank
      * @Assert\Length(
      *      min = "3",
      *      max = "500",
@@ -44,6 +45,7 @@ class Actors
     /**
      * @var string
      * @Expose
+     * @Assert\NotBlank
      * @Assert\Length(
      *      min = "3",
      *      max = "500",
@@ -64,7 +66,7 @@ class Actors
     /**
      * @var string
      * @Expose
-     * @ORM\Column(name="dob", type="date", nullable=true)
+     * @ORM\Column(name="dob", type="string", nullable=true)
      */
     private $dob;
 

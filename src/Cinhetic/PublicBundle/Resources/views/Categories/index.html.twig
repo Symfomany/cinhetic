@@ -1,25 +1,23 @@
 {% extends 'CinheticPublicBundle::layout.html.twig' %}
 
+{% block titlepage %}<i class="fa fa-list"></i>&nbsp;&nbsp;Les categories{% endblock %}
+
 {% block content %}
-    <h1> <i class="glyphicon glyphicon-th-list"></i> Liste des categories [{{ entities|length }}]</h1>
-    <hr />
     <table class="records_list table table-striped">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Titre</th>
                 <th>Description</th>
-                <th>Nb de films</th>
+                <th>Films</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('categories_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td class="text-success"><a href="{{ path('categories_show', {'id' : entity.id}) }}">{{ entity.title }}</a></td>
-                <td class="text-danger">{{ entity.description|raw }}</td>
-                <td class="text-success">{{ entity.movies|length|default("0") }}</td>
+                <td><a href="{{ path('categories_show', {'id' : entity.id}) }}">{{ entity.title }}</a></td>
+                <td>{{ entity.description|raw }}</td>
+                <td class="text-success"><i class="fa fa-folder"></i> {{ entity.movies|length|default("0") }}</td>
                 <td>
 
                         <a class="btn btn-primary btn-sm" href="{{ path('categories_show', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-search"></i> Voir</a>

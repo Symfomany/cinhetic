@@ -80,9 +80,8 @@ class MainController extends AbstractController
         $params['oauth_access_token'] = $this->container->getParameter('api_twitter_access_token');
         $params['oauth_access_token_secret'] = $this->container->getParameter('api_twitter_access_token_secret');
         $params['callback_url'] = null;
-        //$webservice = $this->get('cinhetic_public.webservices')->build('Twitter', $params);
-        //$tweets = $webservice->getFeeds('allocine', 7);
-        $tweets = array();
+        $webservice = $this->get('cinhetic_public.webservices')->build('Twitter', $params);
+        $tweets = $webservice->getFeeds('allocine', 7);
 
         return $this->display('index.html.twig',  array(
             'seances' => $seances,

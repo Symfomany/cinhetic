@@ -38,7 +38,11 @@ class DirectorsController extends AbstractController
     {
         $entity = new Directors();
         $form = $this->get('cinhetic_public.manager_directors')->createForm($entity);
-        $this->get('cinhetic_public.manager_directors')->create($entity);
+
+        if($this->get('cinhetic_public.manager_directors')->validation($form, $entity) === true){
+           $this->setMessage("Le réalisateur a été crée");
+           return $this->redirect($this->generateUrl('directors'));
+        }
 
         return $this->render('CinheticPublicBundle:Directors:new.html.twig', array(
             'entity' => $entity,
@@ -46,6 +50,31 @@ class DirectorsController extends AbstractController
         ));
     }
 
+
+
+    /**
+     * Edits an existing Directors entity.
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     */
+    public function updateAction(Directors $id)
+    {
+        $deleteForm = $this->get('cinhetic_public.manager_directors')->deleteForm($id);
+        $form = $this->get('cinhetic_public.manager_directors')->editForm($id);
+
+        if($this->get('cinhetic_public.manager_directors')->validation($form, $id) == TRUE){
+            $this->setMessage("Le réalisateur a été modifié");
+           return $this->redirect($this->generateUrl('directors'));
+        }
+
+        return $this->render('CinheticPublicBundle:Directors:edit.html.twig', array(
+            'entity'      => $id,
+            'edit_form'   => $form->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
 
 
     /**
@@ -100,26 +129,6 @@ class DirectorsController extends AbstractController
     }
 
 
-    /**
-     * Edits an existing Directors entity.
-     * @param Request $request
-     * @param $id
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
-     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
-     */
-    public function updateAction(Directors $id)
-    {
-        $deleteForm = $this->get('cinhetic_public.manager_directors')->deleteForm($id);
-        $editForm = $this->get('cinhetic_public.manager_directors')->editForm($id);
-        $this->get('cinhetic_public.manager_directors')->update($id);
-
-        return $this->render('CinheticPublicBundle:Directors:edit.html.twig', array(
-            'entity'      => $id,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
-
 
     /**
      * Deletes a Directors entity.
@@ -130,6 +139,7 @@ class DirectorsController extends AbstractController
      */
     public function deleteAction(Directors $id)
     {
+        $this->setMessage('Le réalisateur a bien été supprimé','success');
         $this->get('cinhetic_public.manager_directors')->remove($id);
 
         return $this->redirect($this->generateUrl('directors'));

@@ -66,33 +66,18 @@ class DirectorsManager
      * @param Directors $entity
      * @return bool
      */
-    public function update(Directors $entity){
+    public function validation($form, Directors $entity){
 
-        $editForm = $this->editForm($entity);
-        $editForm->handleRequest($this->request);
-
-        if ($editForm->isValid()) {
-            $this->processPersist($entity);
-            return true;
-        }
-
-    }
-
-    /**
-     * Create directors
-     * @param Directors $entity
-     * @return bool
-     */
-    public function create(Directors $entity){
-
-        $form = $this->createForm($entity);
         $form->handleRequest($this->request);
+
         if ($form->isValid()) {
             $this->processPersist($entity);
             return true;
         }
 
+        return false;
     }
+
 
     /**
      * Remove directors
@@ -119,6 +104,8 @@ class DirectorsManager
         $form = $this->formFactory->createBuilder($this->form, $entity, array(
             'action' => $this->router->generate('directors_create'),
             'method' => 'POST',
+             "attr" => array('id' => "form_director", "novalidate" => "novalidate")
+
         ));
 
         $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning"), 'label' => 'Créer ce réalisateur'));
@@ -136,6 +123,7 @@ class DirectorsManager
         $form = $this->formFactory->createBuilder($this->form, $entity, array(
             'action' => $this->router->generate('directors_update', array('id' => $entity->getId())),
             'method' => 'POST',
+            "attr" => array('id' => "form_director", "novalidate" => "novalidate")
         ));
 
         $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning"), 'label' => 'Modifier ce réalisateur'));

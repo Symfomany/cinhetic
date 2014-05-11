@@ -1,8 +1,9 @@
 {% extends 'CinheticPublicBundle::layout.html.twig' %}
 
+
+{% block titlepage %}<i class="fa fa-plus"></i>&nbsp;&nbsp;Création d'acteur{% endblock %}
+
 {% block content %}
-    <h1> <i class="glyphicon glyphicon-plus"></i> Création d'acteur</h1>
-    <hr />
     {{ form(form) }}
 {% endblock %}
 
@@ -10,29 +11,13 @@
 {% block javascripts %}
 {{ parent() }}
 
-	<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/codemirror.min.css" />
-	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/theme/blackboard.min.css">
-	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/theme/monokai.min.css">
-	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/codemirror.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/mode/xml/xml.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/2.36.0/formatting.min.js"></script>
-
     <script type="text/javascript">
-        var init = [];
-            init.push(function () {
-            	$("select[multiple]").select2({
+        $("select").select2({
                             allowClear: true,
-                            placeholder: "Select a State"
+                            placeholder: "Selectionnez..."
                 });
-				$('.ckeditor').summernote({
-						height: 200,
-						tabsize: 2,
-						codemirror: {
-							theme: 'monokai'
-						}
-				});
-             });
-            window.PixelAdmin.start(init);
+      	  $('.datepick').datepicker();
+           
     </script>
 {% endblock %}
 
