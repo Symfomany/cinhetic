@@ -4,6 +4,8 @@
 
 
 {% block content %}
+<div class="table-light">
+
     <table class="records_list  table table-striped">
         <thead>
             <tr>
@@ -16,9 +18,11 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><i class="text-danger"><a href="{{ path('directors_show', { 'id': entity.id }) }}">{{ entity.firstname }} {{ entity.lastname }}</a></i></td>
+                <td><a href="{{ path('directors_show', { 'id': entity.id }) }}">{{ entity.firstname }} {{ entity.lastname }}</a></td>
                 <td>{{ entity.biography }}</td>
-                <td>{{ entity.note }}</td>
+                <td>
+                    <span data-rating="{{ entity.note }}" class="rating"></span>
+                </td>
                 <td>
                     <a class="btn btn-primary btn-sm" href="{{ path('directors_show', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-search"></i> Voir</a>
                     <a class="btn btn-warning btn-sm" href="{{ path('directors_edit', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-pencil"></i> Editer</a>
@@ -27,7 +31,7 @@
         {% endfor %}
         </tbody>
     </table>
-
+</div>
         <hr />
             <a class="btn btn-danger" href="{{ path('directors_new') }}">
                 Créer un nouveau réalisateur

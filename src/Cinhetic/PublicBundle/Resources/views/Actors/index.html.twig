@@ -4,6 +4,7 @@
 
 
 {% block content %}
+<div class="table-light">
 
     <table class="records_list  table table-striped">
         <thead>
@@ -12,8 +13,7 @@
                 <th>Nom</th>
                 <th>Ville</th>
                 <th>Biographie</th>
-                <th>Création</th>
-                <th style="width:7%">Nb de films</th>
+                <th>Films</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -22,10 +22,9 @@
             <tr>
                 <td><a href="{{ path('actors_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td><a href="{{ path('actors_show', { 'id': entity.id }) }}">{{ entity.firstname }} {{ entity.lastname }}</a></td>
-                <td><span class="text-danger">{{ entity.city }}</span></td>
+                <td>{{ entity.city }}</td>
                 <td>{{ entity.biography|raw|truncate(200,true,'...') }}</td>
-                <td><small>{% if entity.dateCreated %}{{ entity.dateCreated|date('Y-m-d') }}{% endif %}</small></td>
-                <td><p class="text-center">{{ entity.movies|length|default('0') }} <i class="glyphicon glyphicon-download-alt"></i></p></td>
+                <td class="text-primary"><p class="text-center">{{ entity.movies|length|default('0') }} <i class="glyphicon glyphicon-download-alt"></i></p></td>
                 <td>
                         <a  class="btn btn-primary btn-sm" href="{{ path('actors_show', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-search"></i> Voir</a>
                         <a  class="btn btn-warning btn-sm" href="{{ path('actors_edit', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-pencil"></i> Editer</a>
@@ -34,6 +33,7 @@
         {% endfor %}
         </tbody>
     </table>
+</div>
     <hr />
 
     <a href="{{ path('actors_new') }}" class="btn btn-danger">

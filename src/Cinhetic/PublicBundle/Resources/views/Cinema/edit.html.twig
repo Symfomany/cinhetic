@@ -1,9 +1,8 @@
 {% extends 'CinheticPublicBundle::layout.html.twig' %}
 
+{% block titlepage %}<i class="fa fa-pencil"></i>&nbsp;&nbsp;Editer le cinéma{% endblock %}
 
 {% block content %}
-    <h1>Editer le cinéma {{ entity.title }}</h1>
-
     {{ form(edit_form) }}
     {{ form(delete_form) }}
 {% endblock %}

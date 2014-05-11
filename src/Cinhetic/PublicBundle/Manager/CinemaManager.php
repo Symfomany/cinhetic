@@ -66,33 +66,16 @@ class CinemaManager
      * @param Cinema $entity
      * @return bool
      */
-    public function update(Cinema $entity){
-
-        $editForm = $this->editForm($entity);
-        $editForm->handleRequest($this->request);
-
-        if ($editForm->isValid()) {
-            $this->processPersist($entity);
-            return true;
-        }
-
-    }
-
-    /**
-     * Create cinema
-     * @param Cinema $entity
-     * @return bool
-     */
-    public function create(Cinema $entity){
-
-        $form = $this->createForm($entity);
+    public function validation($form, Cinema $entity){
         $form->handleRequest($this->request);
+
         if ($form->isValid()) {
             $this->processPersist($entity);
             return true;
         }
-
+         return false;
     }
+
 
     /**
      * Remove cinema

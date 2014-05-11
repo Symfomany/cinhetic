@@ -109,7 +109,7 @@ class MoviesController extends AbstractController
         $entities = $em->getRepository('CinheticPublicBundle:Movies')->findAll();
 
         return $this->render('CinheticPublicBundle:Movies:index.html.twig', array(
-            'entities' => $entities,
+            'entities' => $this->paginate($entities,7),
         ));
     }
 

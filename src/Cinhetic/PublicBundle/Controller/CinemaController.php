@@ -37,8 +37,10 @@ class CinemaController extends AbstractController
     {
         $entity = new Cinema();
         $form = $this->get('cinhetic_public.manager_cinema')->createForm($entity);
-        $this->get('cinhetic_public.manager_cinema')->create($entity);
-
+        if($this->get('cinhetic_public.manager_cinema')->validation($form, $entity) == TRUE){
+           $this->setMessage("Le cinéma a été crée");
+           return $this->redirect($this->generateUrl('cinema'));
+        }
 
         return $this->render('CinheticPublicBundle:Cinema:new.html.twig', array(
             'entity' => $entity,
@@ -46,6 +48,31 @@ class CinemaController extends AbstractController
         ));
     }
 
+
+
+    /**
+     * Edits an existing Cinema entity.
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     */
+    public function updateAction(Request $request,Cinema $id)
+    {
+        $deleteForm = $this->get('cinhetic_public.manager_cinema')->deleteForm($id);
+        $form = $this->get('cinhetic_public.manager_cinema')->editForm($id);
+        
+        if($this->get('cinhetic_public.manager_cinema')->validation($form, $id) == TRUE){
+           $this->setMessage("Le cinéma a été modifié");
+           return $this->redirect($this->generateUrl('cinema'));
+        }
+
+        return $this->render('CinheticPublicBundle:Cinema:edit.html.twig', array(
+            'entity'      => $id,
+            'edit_form'   => $form->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
 
 
     /**
@@ -103,28 +130,6 @@ class CinemaController extends AbstractController
     {
         $editForm = $this->get('cinhetic_public.manager_cinema')->editForm($id);
         $deleteForm = $this->get('cinhetic_public.manager_cinema')->deleteForm($id);
-
-        return $this->render('CinheticPublicBundle:Cinema:edit.html.twig', array(
-            'entity'      => $id,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
-
-
-    /**
-     * Edits an existing Cinema entity.
-     * @param Request $request
-     * @param $id
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
-     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
-     */
-    public function updateAction(Request $request,Cinema $id)
-    {
-        $deleteForm = $this->get('cinhetic_public.manager_cinema')->deleteForm($id);
-        $editForm = $this->get('cinhetic_public.manager_cinema')->editForm($id);
-        $this->get('cinhetic_public.manager_cinema')->update($id);
-
 
         return $this->render('CinheticPublicBundle:Cinema:edit.html.twig', array(
             'entity'      => $id,

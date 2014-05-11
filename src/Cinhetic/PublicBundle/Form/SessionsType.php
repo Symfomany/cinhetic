@@ -21,13 +21,19 @@ class SessionsType extends AbstractType
         $builder
             ->add('dateSession', 'datetime',
                 array(
-                    'attr' => array('class' => 'form-control datepicker'),
+                    'attr' => array('class' => 'form-control datepick'),
                     'widget' => 'single_text',
-                    'format' => 'yyyy-MM-dd',
-                    'label' => "Date de session"
+                    'format' => 'dd/MM/yyyy',
+                    'label' => "Date de la séance"
                 ))
-            ->add('movies', null, array('label' => "Films associés"))
-            ->add('cinema', null, array('label' => "Cinéma associé"))
+             ->add('hourSession', 'text',
+                array(
+                    'mapped' => false,
+                    'label' => "Heure de la séance",
+                    'attr' => array('class' => 'hour form-control'),
+                ))
+            ->add('movies', null, array('required' => "required",'label' => "Films associés"))
+            ->add('cinema', null, array('required' => "required",'label' => "Cinéma associé"))
         ;
     }
     

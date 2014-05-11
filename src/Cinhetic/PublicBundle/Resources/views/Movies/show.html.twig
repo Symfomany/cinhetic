@@ -1,30 +1,50 @@
 {% extends 'CinheticPublicBundle::layout.html.twig' %}
 
+{% block titlepage %}<i class="fa fa-search"></i>&nbsp;&nbsp;Fiche de film{% endblock %}
 
 {% block content %}
-    <br/>
     {% for entity in entity.tags %}
-        <span class="label label-default">{{ entity.word }}</span>
+        <a class="label label-primary label-tag">{{ entity.word }}</a>
     {% endfor %}
+
     <div class="well">
-        <div class="row featurette">
+        <div class="row">
             <div class="col-md-4">
-                <img class="featurette-image img-responsive" alt="{{ entity.title|title }}" src="{{ entity.image }}">
+                <img class="img-responsive" src="{{ base_url ~ imgmovies ~ entity.image }}" alt="...">
+
+                 <a class="btn btn-success btn-labeled pull-right" data-toggle="modal" data-target="#modal-blurred-img"><span class="btn-label icon fa fa-search"></span>
+                    Voir l'image en grand</a>
+                
+                <div id="modal-blurred-img" class="modal fade modal-blur" tabindex="-1" role="dialog" style="display: none;">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <img src="{{ base_url ~ imgmovies ~ entity.image }}" alt="...">
+                            </div>
+                        </div> <!-- / .modal-content -->
+                    </div> <!-- / .modal-dialog -->
+                </div> <!-- / .modal -->
             </div>
             <div class="col-md-7">
                 <h1 class="featurette-heading">{{ entity.title|title }}<span class="text-muted"> ({{ entity.annee }})</span></h1>
                 <span>Type de film : {{ entity.typeFilm }}</span>
-                <p class="lead">{{ entity.synopsis|truncate(500,true,'...') }}</p>
-                <button class="btn btn-info">En savoir plus</button>
+                <p class="">{{ entity.synopsis|raw }}</p>
             </div>
         </div>
+     </div>
+     <div class="row">
+        <div class="col-md-12">
+            <div class="">
+                <p class="">{{ entity.description|raw }}</p>
+            </div>
+        </div>
+    </div>
 
-        <br>
 
         <ul class="nav nav-tabs" id="myTab">
             <li class="active"><a href="#home" data-toggle="tab">Bande annonce</a></li>
             <li><a href="#profile" data-toggle="tab" class="cercles">Informations</a></li>
-            <li><a href="#messages" data-toggle="tab">Images</a></li>
+            <li><a href="#messages" data-toggle="tab">Messages</a></li>
             <li><a href="#acteurs" data-toggle="tab">Autres</a></li>
         </ul>
 
@@ -115,7 +135,6 @@
                         {% endfor %}
                     </div>
                 </div>
-
         </div>
     </div>
 </div>

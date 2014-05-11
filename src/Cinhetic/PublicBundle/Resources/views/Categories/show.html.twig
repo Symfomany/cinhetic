@@ -1,9 +1,11 @@
 {% extends 'CinheticPublicBundle::layout.html.twig' %}
 
+{% block titlepage %}<i class="fa fa-search"></i>&nbsp;&nbsp;Catégorie {{ entity.title|title}}{% endblock %}
+
+
 {% block content %}
 
-    <div class="well">
-        <h1 style="margin-left:0">Catégorie {{ entity.title|title}}</h1>
+        <h1 style="margin-left:0">{{ entity.title|title}}</h1>
         <p>{{ entity.description|raw }}</p>
         {% if entity.movies is not empty %}
             <div class="row">
@@ -20,9 +22,7 @@
                 </div>
         {% endif %}
 
-           <a class="btn btn-primary" href="{{ path('categories_edit', { 'id': entity.id }) }}">
-                Editer
+           <a class="pull-right btn-labeled btn btn-primary" href="{{ path('categories_edit', { 'id': entity.id }) }}">
+               <i class="fa fa-pencil"></i> Editer cette catégorie
             </a>
-            {{ form(delete_form, {'attr' : {'style' : 'display:inline-block'} } ) }}
-    </div>
 {% endblock %}

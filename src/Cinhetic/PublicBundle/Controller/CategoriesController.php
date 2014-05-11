@@ -23,7 +23,7 @@ class CategoriesController extends AbstractController
         $entities = $this->getRepository('Categories')->findAll();
 
         return $this->render('CinheticPublicBundle:Categories:index.html.twig', array(
-            'entities' => $entities,
+            'entities' => $this->paginate($entities,7),
         ));
     }
 
@@ -37,12 +37,41 @@ class CategoriesController extends AbstractController
     {
         $entity = new Categories();
         $form = $this->get('cinhetic_public.manager_categories')->createForm($entity);
-        $this->get('cinhetic_public.manager_categories')->create($entity);
 
+        if($this->get('cinhetic_public.manager_categories')->validation($form, $entity) == TRUE){
+           $this->setMessage("La catégorie a été crée");
+           return $this->redirect($this->generateUrl('categories'));
+        }
 
         return $this->render('CinheticPublicBundle:Categories:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
+        ));
+    }
+
+
+
+    /**
+     * Edits an existing Categories entity.
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     */
+    public function updateAction(Request $request,Categories $id)
+    {
+        $deleteForm = $this->get('cinhetic_public.manager_categories')->deleteForm($id);
+        $form = $this->get('cinhetic_public.manager_categories')->editForm($id);
+
+        if($this->get('cinhetic_public.manager_categories')->validation($form, $id) == TRUE){
+           $this->setMessage("La catégorie a été modifié");
+           return $this->redirect($this->generateUrl('categories'));
+        }
+
+        return $this->render('CinheticPublicBundle:Categories:edit.html.twig', array(
+            'entity'      => $id,
+            'edit_form'   => $form->createView(),
+            'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -96,27 +125,6 @@ class CategoriesController extends AbstractController
         ));
     }
 
-
-    /**
-     * Edits an existing Categories entity.
-     * @param Request $request
-     * @param $id
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
-     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
-     */
-    public function updateAction(Request $request,Categories $id)
-    {
-        $deleteForm = $this->get('cinhetic_public.manager_categories')->deleteForm($id);
-        $editForm = $this->get('cinhetic_public.manager_categories')->editForm($id);
-        $this->get('cinhetic_public.manager_categories')->update($id);
-
-
-        return $this->render('CinheticPublicBundle:Categories:edit.html.twig', array(
-            'entity'      => $id,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
 
 
     /**

@@ -1,8 +1,8 @@
 {% extends 'CinheticPublicBundle::layout.html.twig' %}
 
-{% block content %}
-    <h1> <i class="glyphicon glyphicon-pencil"></i> Editer la catégorie {{ entity.title|title}}</h1>
+{% block titlepage %}<i class="fa fa-pencil"></i>&nbsp;&nbsp;Editer la catégorie {{ entity.title|title}}{% endblock %}
 
+{% block content %}
     {{ form(edit_form) }}
     {{ form(delete_form) }}
 

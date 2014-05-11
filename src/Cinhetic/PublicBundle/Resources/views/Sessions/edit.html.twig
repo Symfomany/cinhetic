@@ -1,17 +1,41 @@
 {% extends 'CinheticPublicBundle::layout.html.twig' %}
 
+{% block titlepage %}<i class="fa fa-pencil"></i>&nbsp;&nbsp;Editer une séance{% endblock %}
+
 
 {% block content %}
-    <h1> <i class="glyphicon glyphicon-pencil"></i> Editer la séance</h1>
-
     {{ form(edit_form) }}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('sessions') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    {{ form(delete_form) }}
+
+{% endblock %}
+
+
+
+{#
+    Javascripts
+#}
+{% block javascripts %}
+    {{ parent() }}
+
+   
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/hinclude/0.9.5/hinclude.min.js"></script>
+    <script src="http://modernizr.com/downloads/modernizr-latest.js"></script>
+
+    {% javascripts '@CinheticPublicBundle/Resources/public/js/bootstrap.min.js' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {% javascripts '@CinheticPublicBundle/Resources/public/js/pixel-admin.min.js' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+       <script type="text/javascript">
+	       var options = {
+				minuteStep: 5,
+				orientation: $('body').hasClass('right-to-left') ? { x: 'right', y: 'auto'} : { x: 'auto', y: 'auto'}
+			}
+			$('.hour').timepicker(options);
+			$('.datepick').datepicker();
+    	</script>
+
 {% endblock %}

@@ -16,7 +16,7 @@
                 <li {% if  app.request.attributes.get('_route') == "movies" %} class="active" {% endif %}><a  href="{{ path('movies') }}"><i class="glyphicon glyphicon-film"></i> Films</a></li>
                 <li {% if  app.request.attributes.get('_route') == "categories" %} class="active" {% endif %}><a href="{{ path('categories') }}"><i class="glyphicon glyphicon-th-list"></i> Catégories</a></li>
                 <li {% if  app.request.attributes.get('_route') == "cinema" %} class="active" {% endif %}><a href="{{ path('cinema') }}"><i class="glyphicon glyphicon-road"></i> Cinémas</a></li>
-                <li class="dropdown">
+                <li {% if  app.request.attributes.get('_route') == "sessions" or app.request.attributes.get('_route') == "tags" or app.request.attributes.get('_route') == "comments" or app.request.attributes.get('_route') == "apis" %} class="dropdown active" {% else %} class="dropdown"{% endif %}>
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-plus"></i> Plus <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li {% if  app.request.attributes.get('_route') == "sessions" %} class="active" {% endif %}><a href="{{ path('sessions') }}"><i class="glyphicon glyphicon-calendar"></i> Séances</a></li>

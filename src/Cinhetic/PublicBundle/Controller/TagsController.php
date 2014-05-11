@@ -24,7 +24,7 @@ class TagsController extends AbstractController
         $entities = $this->getRepository('Tags')->findAll();
 
         return $this->render('CinheticPublicBundle:Tags:index.html.twig', array(
-            'entities' => $entities,
+            'entities' => $this->paginate($entities,7),
         ));
     }
 
@@ -38,12 +38,40 @@ class TagsController extends AbstractController
     {
         $entity = new Tags();
         $form = $this->get('cinhetic_public.manager_tags')->createForm($entity);
-        $this->get('cinhetic_public.manager_tags')->create($entity);
 
+        if($this->get('cinhetic_public.manager_tags')->validation($form, $entity) == TRUE){
+           $this->setMessage("Le tag a été crée");
+           return $this->redirect($this->generateUrl('tags'));
+        }
 
         return $this->render('CinheticPublicBundle:Tags:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
+        ));
+    }
+
+
+    /**
+     * Edits an existing Tags entity.
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     */
+    public function updateAction(Request $request,Tags $id)
+    {
+        $deleteForm = $this->get('cinhetic_public.manager_tags')->deleteForm($id);
+        $form = $this->get('cinhetic_public.manager_tags')->editForm($id);
+
+        if($this->get('cinhetic_public.manager_tags')->validation($form, $id) == TRUE){
+           $this->setMessage("Le tag a été crée");
+           return $this->redirect($this->generateUrl('tags'));
+        }
+
+        return $this->render('CinheticPublicBundle:Tags:edit.html.twig', array(
+            'entity'      => $id,
+            'edit_form'   => $form->createView(),
+            'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -98,26 +126,6 @@ class TagsController extends AbstractController
         ));
     }
 
-
-    /**
-     * Edits an existing Tags entity.
-     * @param Request $request
-     * @param $id
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
-     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
-     */
-    public function updateAction(Request $request,Tags $id)
-    {
-        $deleteForm = $this->get('cinhetic_public.manager_tags')->deleteForm($id);
-        $editForm = $this->get('cinhetic_public.manager_tags')->editForm($id);
-        $this->get('cinhetic_public.manager_tags')->update($id);
-
-        return $this->render('CinheticPublicBundle:Tags:edit.html.twig', array(
-            'entity'      => $id,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
 
 
     /**

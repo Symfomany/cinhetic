@@ -105,13 +105,20 @@ form label{
     margin-top: 10px;
 }
 
-form .btn.btn-labeled{
+form .btn.btn-labeled, form button[type="submit"]{
     margin-top:20px;
     margin-bottom:20px;
 }
 
+.table tbody>tr>td, .table tbody>tr>th, .table tfoot>tr>td, .table tfoot>tr>th, .table thead>tr>td, .table thead>tr>th{
+    min-width: 150px;
+}
 
-
+.theme-default #main-navbar .dropdown-menu>li.active>a{
+    background: #f8f8f8;
+    border-top: none!important;
+    border-bottom: none!important;
+}
 
 
  @media (min-width: 300px) and (max-width: 768px) {

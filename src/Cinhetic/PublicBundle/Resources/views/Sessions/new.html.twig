@@ -1,16 +1,8 @@
 {% extends 'CinheticPublicBundle::layout.html.twig' %}
 
 
+{% block titlepage %}<i class="fa fa-add"></i>&nbsp;&nbsp;Ajouter une séance{% endblock %}
+
 {% block content %}
-    <h1> <i class="glyphicon glyphicon-plus"></i> Créer la séance</h1>
-
     {{ form(form) }}
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('sessions') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
 {% endblock %}

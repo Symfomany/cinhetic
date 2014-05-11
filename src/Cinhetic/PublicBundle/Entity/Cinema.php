@@ -32,8 +32,8 @@ class Cinema
      * @Expose
      * @var string
      * @Assert\Length(
-     *      min = "15",
-     *      max = "1500",
+     *      min = "3",
+     *      max = "100",
      *      minMessage = "Votre titre doit faire au moins {{ limit }} caractères",
      *      maxMessage = "Votre titre ne peut pas être plus long que {{ limit }} caractères"
      * )

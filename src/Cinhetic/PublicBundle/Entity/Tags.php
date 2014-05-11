@@ -13,6 +13,7 @@ use JMS\Serializer\Annotation\Expose;
  * @ExclusionPolicy("all")
  * @ORM\Table(name="tags")
  * @ORM\Entity(repositoryClass="Cinhetic\PublicBundle\Repository\TagsRepository")
+ * @UniqueEntity(fields="word", message="Le mots-clef existe déjà")
  */
 class Tags
 {

@@ -5,6 +5,7 @@
 
 {% block content %}
 
+<div class="table-light">
     <table class="records_list  table table-striped">
         <thead>
             <tr>
@@ -29,7 +30,7 @@
                     {% endfor %}
                 </td>
                 <td class="text-primary"><i class="fa fa-group"></i> {{ entity.actors|length|default('0') }}</td>
-                <td>{% if entity.dateRelease %}{{ entity.dateRelease|date('d/m/Y') }}{% endif %}</td>
+                <td>{% if entity.dateRelease %}<i class="fa fa-calendar"></i> {{ entity.dateRelease|date('d/m/Y') }}{% endif %}</td>
                 <td>
                            <a class="btn btn-primary btn-sm"  href="{{ path('movies_show', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-search"></i> Voir</a>
                            <a class="btn btn-warning btn-sm"  href="{{ path('movies_edit', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-pencil"></i> Editer</a>
@@ -51,6 +52,15 @@
         {% endfor %}
         </tbody>
     </table>
+        <div class="table-footer">
+            <div class="table-caption">
+                <div class="pull-right">
+                {{ knp_pagination_render(entities) }}
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+</div>
     <hr />
     <a class="btn btn-danger"  href="{{ path('movies_new') }}">
         <i class="glyphicon glyphicon-plus"></i>  Création de film

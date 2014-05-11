@@ -1,9 +1,8 @@
 {% extends 'CinheticPublicBundle::layout.html.twig' %}
 
+{% block titlepage %}<i class="glyphicon glyphicon-pencil"></i>&nbsp;&nbsp;Editer le tags{% endblock %}
 
 {% block content %}
-    <h1> <i class="glyphicon glyphicon-pencil"></i> Editer le Tags {{ entity.word }}</h1>
-
     {{ form(edit_form) }}
 
     {{ form(delete_form) }}

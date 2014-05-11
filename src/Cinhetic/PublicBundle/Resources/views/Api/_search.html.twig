@@ -1,8 +1,10 @@
 {% block search %}
     <form action="{{ path('apis_search') }}" method="get"  role="search">
         <div class="form-group has-success has-feedback col-sm-10">
-            <input id="search_input_api" data-url="{{ path('apis_search', {'ajax' : 'true'}) }}" name="search" value="{{ app.request.query.get('search') }}" type="search" class="form-control"  placeholder="Rechercher un film avec l'API Allociné">
+			<div class="input-group">
+				<span class="input-group-addon"><i class="fa fa-search"></i></span>
+				<input type="text" placeholder="Rechercher un film avec l'API Allociné" id="search_input_api" class="form-control">
+			</div>
         </div>
-        <button id="sendsearch" type="submit" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-search"></i></button>
     </form>
 {% endblock %}

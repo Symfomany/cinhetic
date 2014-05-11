@@ -1,13 +1,14 @@
 {% extends 'CinheticPublicBundle::layout.html.twig' %}
 
+{% block titlepage %}<i class="glyphicon glyphicon-tags"></i>&nbsp;&nbsp;Tags{% endblock %}
+
 
 {% block content %}
-    <h1><i class="glyphicon glyphicon-tags"></i>  Liste des tags [{{ entities|length }}]</h1>
-    <hr />
+
+    <div class="table-light">
     <table class="records_list  table table-striped">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Mot-clef</th>
                 <th>Actions</th>
             </tr>
@@ -15,8 +16,7 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('tags_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td><i class="glyphicon glyphicon-tag"></i> {{ entity.word }}</td>
+                <td><a href="{{ path('tags_show', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-tag"></i> {{ entity.word }}</a></td>
                 <td>
 
                         <a class="btn btn-primary btn-sm" href="{{ path('tags_show', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-search"></i> Voir</a>
@@ -27,7 +27,15 @@
         {% endfor %}
         </tbody>
     </table>
-
+    <div class="table-footer">
+            <div class="table-caption">
+                <div class="pull-right">
+                {{ knp_pagination_render(entities) }}
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+</div>
     <hr />
 
     <a class="btn btn-danger" href="{{ path('tags_new') }}">

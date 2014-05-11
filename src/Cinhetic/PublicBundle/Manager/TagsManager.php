@@ -61,37 +61,21 @@ class TagsManager
         $this->request = $request;
     }
 
-    /**
-     * Update movie
-     * @param Tags $entity
-     * @return bool
-     */
-    public function update(Tags $entity){
-
-        $editForm = $this->editForm($entity);
-        $editForm->handleRequest($this->request);
-
-        if ($editForm->isValid()) {
-            $this->processPersist($entity);
-            return true;
-        }
-
-    }
 
     /**
      * Create tags
      * @param Tags $entity
      * @return bool
      */
-    public function create(Tags $entity){
+    public function validation($form, Tags $entity){
 
-        $form = $this->createForm($entity);
         $form->handleRequest($this->request);
         if ($form->isValid()) {
             $this->processPersist($entity);
             return true;
         }
-
+        
+        return false;
     }
 
     /**

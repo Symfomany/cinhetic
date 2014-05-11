@@ -83,31 +83,21 @@ class SessionsManager
      * @param Sessions $entity
      * @return bool
      */
-    public function create(Sessions $entity){
+    public function validation($form, Sessions $entity){
 
-        $form = $this->createForm($entity);
         $form->handleRequest($this->request);
+        $hour = $form["hourSession"]->getData();
+        $datein = $form["dateSession"]->getData();
+        $datein = $datein->modify($hour);
+        $entity->setDateSession($datein);
+        
         if ($form->isValid()) {
             $this->processPersist($entity);
             return true;
         }
-
+            return false;
     }
 
-    /**
-     * Remove sessions
-     * @param Sessions $id
-     */
-    public function remove(Sessions $id)
-    {
-        $form = $this->deleteForm($id);
-        $form->handleRequest($this->request);
-
-        if ($form->isValid()) {
-            $this->processDelete($id);
-            return true;
-        }
-    }
 
     /**
      * Creates a form to create a sessions entity.

@@ -22,7 +22,7 @@ class SessionsController extends AbstractController
         $entities = $this->getRepository('Sessions')->findAll();
 
         return $this->render('CinheticPublicBundle:Sessions:index.html.twig', array(
-            'entities' => $entities,
+            'entities' => $this->paginate($entities,7),
         ));
     }
 
@@ -36,7 +36,11 @@ class SessionsController extends AbstractController
     {
         $entity = new Sessions();
         $form = $this->get('cinhetic_public.manager_sessions')->createForm($entity);
-        $this->get('cinhetic_public.manager_sessions')->create($entity);
+
+        if($this->get('cinhetic_public.manager_sessions')->validation($form, $entity) ==  true){
+            $this->setMessage("La séance a été crée");
+            return $this->redirect($this->generateUrl('sessions')); 
+        }
 
 
         return $this->render('CinheticPublicBundle:Sessions:new.html.twig', array(
@@ -46,6 +50,30 @@ class SessionsController extends AbstractController
     }
 
 
+
+    /**
+     * Edits an existing Sessions entity.
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     */
+    public function updateAction(Request $request, Sessions $id)
+    {
+        $deleteForm = $this->get('cinhetic_public.manager_sessions')->deleteForm($id);
+        $form = $this->get('cinhetic_public.manager_sessions')->editForm($id);
+
+        if($this->get('cinhetic_public.manager_sessions')->validation($form, $id) ==  true){
+            $this->setMessage("La séance a été crée");
+            return $this->redirect($this->generateUrl('sessions')); 
+        }
+
+        return $this->render('CinheticPublicBundle:Sessions:edit.html.twig', array(
+            'entity'      => $id,
+            'edit_form'   => $form->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
 
     /**
      * Displays a form to create a new Sessions entity.
@@ -91,29 +119,7 @@ class SessionsController extends AbstractController
         $editForm = $this->get('cinhetic_public.manager_sessions')->editForm($id);
         $deleteForm = $this->get('cinhetic_public.manager_sessions')->deleteForm($id);
 
-        return $this->render('CinheticPublicBundle:Sessions:edit.html.twig', array(
-            'entity'      => $id,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
-
-
-    /**
-     * Edits an existing Sessions entity.
-     * @param Request $request
-     * @param $id
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
-     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
-     */
-    public function updateAction(Request $request,Sessions $id)
-    {
-        $deleteForm = $this->get('cinhetic_public.manager_sessions')->deleteForm($id);
-        $editForm = $this->get('cinhetic_public.manager_sessions')->editForm($id);
-        $this->get('cinhetic_public.manager_sessions')->update($id);
-
-
-
+        $editForm->get('hourSession')->setData($id->getDateSession()->format('H:i a'));
         return $this->render('CinheticPublicBundle:Sessions:edit.html.twig', array(
             'entity'      => $id,
             'edit_form'   => $editForm->createView(),

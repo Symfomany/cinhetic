@@ -61,37 +61,21 @@ class CategoriesManager
         $this->request = $request;
     }
 
-    /**
-     * Update movie
-     * @param categories $entity
-     * @return bool
-     */
-    public function update(Categories $entity){
-
-        $editForm = $this->editForm($entity);
-        $editForm->handleRequest($this->request);
-
-        if ($editForm->isValid()) {
-            $this->processPersist($entity);
-            return true;
-        }
-
-    }
 
     /**
      * Create categories
      * @param categories $entity
      * @return bool
      */
-    public function create(Categories $entity){
+    public function validation($form, Categories $entity){
 
-        $form = $this->createForm($entity);
         $form->handleRequest($this->request);
         if ($form->isValid()) {
             $this->processPersist($entity);
             return true;
         }
 
+        return false;
     }
 
     /**

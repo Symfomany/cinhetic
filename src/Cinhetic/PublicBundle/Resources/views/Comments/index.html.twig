@@ -1,39 +1,42 @@
 {% extends 'CinheticPublicBundle::layout.html.twig' %}
 
+{% block titlepage %}<i class="fa fa-comments"></i>&nbsp;&nbsp;Commentaires{% endblock %}
+
 
 {% block content %}
-    <h1> <i class="glyphicon glyphicon-comment"></i> Liste des commentaires</h1>
 
-    <table class="records_list  table table-striped">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Note</th>
-                <th>Commentaire</th>
-                <th>Date de création</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for entity in entities %}
-            <tr>
-                <td><a href="{{ path('comments_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.note }}</td>
-                <td><i>{{ entity.content }}</i></td>
-                <td><i class="glyphicon glyphicon-calendar"></i> {% if entity.dateCreated %}{{ entity.dateCreated|ago }}{% endif %}</td>
-                <td>
-                        <a class="btn btn-primary btn-sm" href="{{ path('comments_show', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-search"></i> Voir</a>
+<div class="panel widget-comments">
+                    <div class="panel-heading">
+                        <div class="pull-right">
+                            {{ knp_pagination_render(entities) }}
+                        </div>
+                        <span class="panel-title"><i class="panel-title-icon fa fa-comment-o"></i>Derniers comentaires</span>
+                        <div class="clearfix"></div>
+                    </div> <!-- / .panel-heading -->
+                    <div class="panel-body">
 
-                        <a class="btn btn-warning btn-sm" href="{{ path('comments_edit', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-pencil"></i> Editer</a>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                    {% for entity in entities %}
+                        <div class="comment">
+                            <img src="assets/demo/avatars/5.jpg" alt="" class="comment-avatar">
+                            <div class="comment-body">
+                                <div class="comment-by">
+                                    <a href="#" title="">{{ entity.user.username }}</a> a commenté sur <a href="#" title="">{{ entity.movie.title }}</a>
+                                </div>
+                                <div class="comment-text">
+                                   {{ entity.content }}
+                                </div>
+                                <div class="comment-actions">
+                                    <a href="#"><i class="fa fa-pencil"></i>Editer</a>
+                                    <a href="#"><i class="fa fa-times"></i>Supprimer</a>
+                                    <span class="pull-right">{{ entity.dateCreated|ago }}</span>
+                                </div>
+                            </div> <!-- / .comment-body -->
+                        </div> <!-- / .comment -->
+                         {% endfor %}
 
+                        
 
-    <a href="{{ path('comments_new') }}" class="btn btn-danger">
-        Crée un nouveau commentaire
-    </a>
+                    </div> <!-- / .panel-body -->
+                </div>
 
     {% endblock %}
