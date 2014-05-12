@@ -1,41 +1,18 @@
-<div class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <a id="main_link_logo" href="{{ path('Cinhetic_public_homepage') }}"><img id="main_img_logo" src="/web/images/cinema.png" /> Cinhetic</a>
-            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
-        <div class="navbar-collapse collapse" id="navbar-main">
-            <ul class="nav navbar-nav">
-                <li {% if  app.request.attributes.get('_route') == "Cinhetic_public_homepage" %} class="active" {% endif %}><a href="{{ path('Cinhetic_public_homepage') }}"><i class="glyphicon glyphicon-home"></i> Home</a></li>
-                <li {% if  app.request.attributes.get('_route') == "actors" %} class="active" {% endif %}><a href="{{ path('actors') }}"><i class="fa fa-group"></i> Acteurs</a></li>
-                <li {% if  app.request.attributes.get('_route') == "directors" %} class="active" {% endif %}><a href="{{ path('directors') }}"><i class="glyphicon glyphicon-facetime-video"></i> Réalisateurs</a></li>
-                <li {% if  app.request.attributes.get('_route') == "movies" %} class="active" {% endif %}><a  href="{{ path('movies') }}"><i class="glyphicon glyphicon-film"></i> Films</a></li>
-                <li {% if  app.request.attributes.get('_route') == "categories" %} class="active" {% endif %}><a href="{{ path('categories') }}"><i class="glyphicon glyphicon-th-list"></i> Catégories</a></li>
-                <li {% if  app.request.attributes.get('_route') == "cinema" %} class="active" {% endif %}><a href="{{ path('cinema') }}"><i class="glyphicon glyphicon-road"></i> Cinémas</a></li>
-                <li {% if  app.request.attributes.get('_route') == "sessions" or app.request.attributes.get('_route') == "tags" or app.request.attributes.get('_route') == "comments" or app.request.attributes.get('_route') == "apis" %} class="dropdown active" {% else %} class="dropdown"{% endif %}>
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-plus"></i> Plus <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li {% if  app.request.attributes.get('_route') == "sessions" %} class="active" {% endif %}><a href="{{ path('sessions') }}"><i class="glyphicon glyphicon-calendar"></i> Séances</a></li>
-                        <li {% if  app.request.attributes.get('_route') == "tags" %} class="active" {% endif %}><a href="{{ path('tags') }}"><i class="glyphicon glyphicon-tags"></i> Tags</a></li>
-                        <li {% if  app.request.attributes.get('_route') == "comments" %} class="active" {% endif %}><a href="{{ path('comments') }}"><i class="glyphicon glyphicon-comment"></i> Commentaires</a></li>
-                        <li {% if  app.request.attributes.get('_route') == "apis" %} class="active" {% endif %}><a href="{{ path('apis') }}"><span class="label label-default"><strong>New!</strong></span> API Allociné</a></li>
-                    </ul>
-                </li>
+{% block topmenu %}
+<ul class="nav navbar-nav">
+  <li {% if  app.request.attributes.get('_route') == "Cinhetic_public_homepage" %} class="active" {% endif %}><a href="{{ path('Cinhetic_public_homepage') }}"><i class="glyphicon glyphicon-home"></i> Home</a></li>
+    <li {% if  app.request.attributes.get('_route') == "actors" %} class="active" {% endif %}><a href="{{ path('actors') }}"><i class="glyphicon glyphicon-user"></i> Acteurs</a></li>
+    <li {% if  app.request.attributes.get('_route') == "directors" %} class="active" {% endif %}><a href="{{ path('directors') }}"><i class="glyphicon glyphicon-facetime-video"></i> Réalisateurs</a></li>
+    <li {% if  app.request.attributes.get('_route') == "movies" %} class="active" {% endif %}><a  href="{{ path('movies') }}"><i class="glyphicon glyphicon-film"></i> Films</a></li>
+    <li {% if  app.request.attributes.get('_route') == "categories" %} class="active" {% endif %}><a href="{{ path('categories') }}"><i class="glyphicon glyphicon-th-list"></i> Catégories</a></li>
+    <li {% if  app.request.attributes.get('_route') == "cinema" %} class="active" {% endif %}><a href="{{ path('cinema') }}"><i class="glyphicon glyphicon-road"></i> Cinémas</a></li>
+    <li  {% if  app.request.attributes.get('_route') == "sessions" or app.request.attributes.get('_route') == "tags" or app.request.attributes.get('_route') == "comments" or app.request.attributes.get('_route') == "apis" %} class="dropdown active" {% else %} class="dropdown"{% endif %}>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-plus"></i> Plus <b class="caret"></b></a>
+<ul class="dropdown-menu">
+    <li {% if  app.request.attributes.get('_route') == "sessions" %} class="active" {% endif %}><a href="{{ path('sessions') }}"><i class="glyphicon glyphicon-calendar"></i> Séances</a></li>
+    <li {% if  app.request.attributes.get('_route') == "tags" %} class="active" {% endif %}><a href="{{ path('tags') }}"><i class="glyphicon glyphicon-tags"></i> Tags</a></li>
+    <li {% if  app.request.attributes.get('_route') == "comments" %} class="active" {% endif %}><a href="{{ path('comments') }}"><i class="glyphicon glyphicon-comment"></i> Commentaires</a></li>
+    <li {% if  app.request.attributes.get('_route') == "apis" %} class="active" {% endif %}><a href="{{ path('apis') }}"><span class="label label-default"><strong>New!</strong></span> API Allociné</a></li>
+</ul>
 
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Paramètres <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{{ path('CinheticPublicBundle_profil') }}" id="configuration"><i class="glyphicon glyphicon-user"></i> Mon Compte</a></li>
-                        <li><a href="{{ path('CinheticPublicBundle_profil_edit') }}" id="configuration"><i class="glyphicon glyphicon-pencil"></i> Editer mon compte</a></li>
-                        <li><a href="{{ path('fos_user_security_logout') }}" id="configuration"><i class="glyphicon glyphicon-off"></i> Deconnexion</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>
-<br /> <br /><br /><br />
+{% endblock %}

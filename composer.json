@@ -41,7 +41,8 @@
         "imagine/imagine": "dev-master",
         "fg/essence": "2.4.0",
         "hwi/oauth-bundle": "dev-master",
-        "eko/feedbundle": "dev-master"
+        "eko/feedbundle": "dev-master",
+        "whiteoctober/breadcrumbs-bundle": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [

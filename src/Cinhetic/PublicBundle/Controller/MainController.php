@@ -67,6 +67,10 @@ class MainController extends AbstractController
             'PBX_REPONDRE_A'   => $this->generateUrl('lexik_paybox_ipn', array('time' => time()), true),
         ));*/
 
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        // Simple example
+        $breadcrumbs->addItem("Home", $this->get("router")->generate("index"));
+
         $em = $this->getDoctrine()->getManager();
         $commentaires = $em->getRepository('CinheticPublicBundle:Comments')->getAllComments();
         

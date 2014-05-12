@@ -83,41 +83,70 @@ $(function () {
         };
     }
 
+    /*
+    $('#Cinhetic_publicbundle_actors_city').autocomplete({
+        source : function(requete, reponse){ // les deux arguments représentent les données nécessaires au plugin
+        $.ajax({
+                url : 'http://ws.geonames.org/searchJSON', // on appelle le script JSON
+                dataType : 'json', // on spécifie bien que le type de données est en JSON
+                data : {
+                    name_startsWith : $('#Cinhetic_publicbundle_actors_city').val(), // on donne la chaîne de caractère tapée dans le champ de recherche
+                    maxRows : 15
+                },
+                
+                success : function(donnee){
+                    reponse($.map(donnee.geonames, function(objet){
+                        return objet.name + ', ' + objet.countryName; // on retourne cette forme de suggestion
+                    }));
+                }
+            });
+        }
+    });
+*/
 
-    if ($("#search_input_api").length > 0) {
-        $("#search_input_api").autocomplete({
+
+    if ($("#Cinhetic_publicbundle_actors_city, #Cinhetic_publicbundle_cinema[ville]").length > 0) {
+        $("#Cinhetic_publicbundle_actors_city, #Cinhetic_publicbundle_cinema[ville]").autocomplete({
             minLength: 2,
             scrollHeight: 220,
-            source: function(req, add) {
+            source: function(req, response) {
                 return $.ajax({
-                    url: $("#search_input_api").attr('data-url'),
+                    url : 'http://ws.geonames.org/searchJSON', // on appelle le script JSON
                     type: "get",
                     dataType: "json",
-                    data: "search=" + req.term,
                     async: true,
                     cache: true,
-                    success: function(data) {
-                        return add($.map(data, function(item) {
-                            return {
-                                nom: item.nom,
-                                url: item.url
-                            };
+                    data : {
+                        featureClass: "P",
+                        style: "full",
+                        maxRows: 12,
+                        name_startsWith: req.term,
+                        countryName: "France",
+                        username: "demo"
+                    },
+                   success: function( data ) {
+                        response( $.map( data.geonames, function( item ) {
+                          return {
+                            label: item.name + (item.adminName1 ? ", " + item.adminName1 : "") + ", " + item.countryName,
+                            value: item.name,
+                        }
                         }));
-                    }
+                      }
                 });
             },
             focus: function(event, ui) {
-                $(this).val(ui.item.nom);
+                $(this).val(ui.item.adminName1);
                 return false;
             },
             select: function(event, ui) {
-                $('#search_input_api').val(ui.item.nom);
+                $('#search_input_api').val(ui.item.adminName1);
                 return false;
             }
         }).data("ui-autocomplete")._renderItem = function(ul, item) {
-            return $("<li></li>").data("ui-autocomplete-item", item).append("" + item.nom + "").appendTo(ul.addClass("list-row"));
+            return $("<li></li>").data("ui-autocomplete-item", item).append("" + item.value + "").appendTo(ul.addClass("list-row"));
         };
     }
+
 
 
     $(window).scroll(function () {
@@ -192,11 +221,6 @@ $(function () {
         return $('#overlay').removeClass('hide');
     });
 
-    if($(window).width() >= 200 && $(window).width() <= 748){
-        $('a[href]').on("click", function (event) {
-            return $('#overlay').removeClass('hide').delay(1500).fadeOut('slow');
-        });
-    }
 
 
     $("input[required]").on("blur", function (event) {

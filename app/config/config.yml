@@ -296,6 +296,18 @@ hwi_oauth:
 
 
 
+#Breadscrumb Bundle
+white_october_breadcrumbs: 
+  separator:          '/'
+  separatorClass:     'separator'
+  listId:             'wo-breadcrumbs'
+  listClass:          'breadcrumb'
+  itemClass:          ''
+  linkRel:            ''
+  locale:             ~
+  translation_domain: ~
+  viewTemplate:       CinheticPublicBundle:Slots:breadcrumbs.html.twig
+
 #Cinhetic Bundle
 cinhetic_public:
   base_url: http://www.cinhetic.ju
@@ -304,4 +316,3 @@ cinhetic_public:
   nb_actors_per_page: 4
   nb_directors_per_page: 4
   nb_comments_per_page: 10
-
