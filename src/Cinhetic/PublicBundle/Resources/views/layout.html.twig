@@ -138,8 +138,7 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     {% if app.user.username is defined %}
-                                        <li><a href="#"><span class="label label-warning pull-right">New</span>Profile</a></li>
-                                        <li><a href="#"><span class="badge badge-primary pull-right">New</span>Account</a></li>
+                                        <li><a href="{{ path('CinheticPublicBundle_profil') }}"><i class="fa fa-user"></i>&nbsp;&nbsp;My account</a></li>
                                         <li><a href="#"><i class="dropdown-icon fa fa-cog"></i>&nbsp;&nbsp;Settings</a></li>
                                         <li class="divider"></li>
                                         <li><a href="{{ path('fos_user_security_logout') }}"><i class="dropdown-icon fa fa-power-off"></i>&nbsp;&nbsp;Log Out</a></li>
