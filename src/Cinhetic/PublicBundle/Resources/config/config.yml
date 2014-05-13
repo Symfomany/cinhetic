@@ -2,7 +2,7 @@ parameters:
   email_administrateur: julien@meetserious.com
   email_membre: julien@meetserious.com
   email_pro:  julien@meetserious.com
-  url_base: 'http://www.cinhetic.ju/'
+  url_base: 'http://symfony.3wa.fr/'
   paginate_by_page: 5
   carte_1 : 4970101122334455
   carte_2 : 4970101122334463
