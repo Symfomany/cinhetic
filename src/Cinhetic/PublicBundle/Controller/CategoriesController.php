@@ -20,6 +20,10 @@ class CategoriesController extends AbstractController
      */
     public function indexAction()
     {
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
+        $breadcrumbs->addItem("Catégories", $this->generateUrl('categories'));
+
         $entities = $this->getRepository('Categories')->findAll();
 
         return $this->render('CinheticPublicBundle:Categories:index.html.twig', array(
@@ -82,6 +86,11 @@ class CategoriesController extends AbstractController
      */
     public function newAction()
     {
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
+        $breadcrumbs->addItem("Categories", $this->generateUrl('categories'));
+        $breadcrumbs->addItem("Créer");
+
         $entity = new Categories();
         $form = $this->get('cinhetic_public.manager_categories')->createForm($entity);
 
@@ -99,6 +108,11 @@ class CategoriesController extends AbstractController
      */
     public function showAction(Categories $id)
     {
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
+        $breadcrumbs->addItem("Categories", $this->generateUrl('categories'));
+        $breadcrumbs->addItem("Voir");
+
         $deleteForm = $this->get('cinhetic_public.manager_categories')->deleteForm($id);
 
         return $this->render('CinheticPublicBundle:Categories:show.html.twig', array(
@@ -115,6 +129,11 @@ class CategoriesController extends AbstractController
      */
     public function editAction(Categories $id)
     {
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
+        $breadcrumbs->addItem("Categories", $this->generateUrl('categories'));
+        $breadcrumbs->addItem("Editer");
+
         $editForm = $this->get('cinhetic_public.manager_categories')->editForm($id);
         $deleteForm = $this->get('cinhetic_public.manager_categories')->deleteForm($id);
 

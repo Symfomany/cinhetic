@@ -20,6 +20,10 @@ class CinemaController extends AbstractController
      */
     public function indexAction()
     {
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
+        $breadcrumbs->addItem("Cinémas", $this->generateUrl('cinema'));
+
         $entities = $this->getRepository('Cinema')->findAll();
 
         return $this->render('CinheticPublicBundle:Cinema:index.html.twig', array(
@@ -81,6 +85,12 @@ class CinemaController extends AbstractController
      */
     public function newAction()
     {
+
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
+        $breadcrumbs->addItem("Cinema", $this->generateUrl('cinema'));
+        $breadcrumbs->addItem("Créer");
+
         $entity = new Cinema();
         $form = $this->get('cinhetic_public.manager_cinema')->createForm($entity);
 
@@ -99,6 +109,11 @@ class CinemaController extends AbstractController
      */
     public function showAction(Cinema $id)
     {
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
+        $breadcrumbs->addItem("Cinema", $this->generateUrl('cinema'));
+        $breadcrumbs->addItem("Voir");
+
         $deleteForm = $this->get('cinhetic_public.manager_cinema')->deleteForm($id);
 
         // TODO : create a real cover
@@ -128,6 +143,11 @@ class CinemaController extends AbstractController
      */
     public function editAction(Cinema $id)
     {
+         $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
+        $breadcrumbs->addItem("Cinema", $this->generateUrl('cinema'));
+        $breadcrumbs->addItem("Editer");
+
         $editForm = $this->get('cinhetic_public.manager_cinema')->editForm($id);
         $deleteForm = $this->get('cinhetic_public.manager_cinema')->deleteForm($id);
 

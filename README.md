@@ -291,6 +291,7 @@ Chapters covered in project
 * Add Listener to kernel event listener
 * Read Rss and populate the database
 * Webservices Factory to handle Youtube, Twitter, Flickr & Thumbr APIs
+* Custom 404 & 500 errors page
 
 Features
 ----------------------------------
@@ -330,6 +331,8 @@ Features
 * Last activity of users
 * RSS Reader and populating with Eko\RssBundle
 * Webservices called in service Youtube, Thumbr, Flickr & Twitter
+* Custom execeptions &  errors page
+* Breadscrumb in controllers/views
 
 Evolution
 ----------------------------------

@@ -21,6 +21,11 @@ class DirectorsController extends AbstractController
      */
     public function indexAction()
     {
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
+        $breadcrumbs->addItem("Réalisateurs", $this->generateUrl('directors'));
+
+
         $entities = $this->getRepository('Directors')->findAll();
 
         return $this->render('CinheticPublicBundle:Directors:index.html.twig', array(
@@ -83,6 +88,11 @@ class DirectorsController extends AbstractController
      */
     public function newAction()
     {
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
+        $breadcrumbs->addItem("Réalisateurs", $this->generateUrl('directors'));
+        $breadcrumbs->addItem("Créer");
+
         $entity = new Directors();
         $form = $this->get('cinhetic_public.manager_directors')->createForm($entity);
 
@@ -100,6 +110,11 @@ class DirectorsController extends AbstractController
      */
     public function showAction(Directors $id)
     {
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
+        $breadcrumbs->addItem("Réalisateurs", $this->generateUrl('directors'));
+        $breadcrumbs->addItem("Voir");
+
         $deleteForm = $this->get('cinhetic_public.manager_directors')->deleteForm($id);
 
         return $this->render('CinheticPublicBundle:Directors:show.html.twig', array(
@@ -117,6 +132,11 @@ class DirectorsController extends AbstractController
      */
     public function editAction(Directors $id)
     {
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
+        $breadcrumbs->addItem("Réalisateurs", $this->generateUrl('directors'));
+        $breadcrumbs->addItem("Editer");
+
         $editForm = $this->get('cinhetic_public.manager_directors')->editForm($id);
         $deleteForm = $this->get('cinhetic_public.manager_directors')->deleteForm($id);
 

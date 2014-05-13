@@ -23,6 +23,11 @@ class CommentsController extends AbstractController
      */
     public function indexAction()
     {
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
+        $breadcrumbs->addItem("Commentaires", $this->generateUrl('comments'));
+
+
         $entities = $this->getRepository('Comments')->findAll();
 
         return $this->render('CinheticPublicBundle:Comments:index.html.twig', array(
@@ -56,6 +61,11 @@ class CommentsController extends AbstractController
      */
     public function newAction()
     {
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
+        $breadcrumbs->addItem("Commentaires", $this->generateUrl('comments'));
+        $breadcrumbs->addItem("Créer");
+
         $entity = new Comments();
         $form = $this->get('cinhetic_public.manager_comments')->createForm($entity);
 
@@ -131,6 +141,11 @@ class CommentsController extends AbstractController
      */
     public function showAction(Comments $id)
     {
+         $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
+        $breadcrumbs->addItem("Commentaires", $this->generateUrl('comments'));
+        $breadcrumbs->addItem("Voir");
+
         $deleteForm = $this->get('cinhetic_public.manager_comments')->deleteForm($id);
 
         return $this->render('CinheticPublicBundle:Comments:show.html.twig', array(
@@ -147,6 +162,11 @@ class CommentsController extends AbstractController
      */
     public function editAction(Comments $id)
     {
+         $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
+        $breadcrumbs->addItem("Commentaires", $this->generateUrl('comments'));
+        $breadcrumbs->addItem("Editer");
+
         $editForm = $this->get('cinhetic_public.manager_comments')->editForm($id);
         $deleteForm = $this->get('cinhetic_public.manager_comments')->deleteForm($id);
 

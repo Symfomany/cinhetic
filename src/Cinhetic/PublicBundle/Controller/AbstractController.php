@@ -19,6 +19,7 @@ abstract class AbstractController extends Controller
      */
     protected static $bundle = "CinheticPublicBundle";
 
+    
 
     /**
      * Display a render to twig

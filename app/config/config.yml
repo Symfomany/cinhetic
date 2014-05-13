@@ -298,7 +298,7 @@ hwi_oauth:
 
 #Breadscrumb Bundle
 white_october_breadcrumbs: 
-  separator:          '/'
+  separator:          ''
   separatorClass:     'separator'
   listId:             'wo-breadcrumbs'
   listClass:          'breadcrumb'
