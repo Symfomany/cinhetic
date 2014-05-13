@@ -14,7 +14,7 @@ In some words: **Minimalist** features, **Collaborative** solution, **Pragmatic*
 
 Demo
 ------------------
-http://ns365800.ip-94-23-5.eu/demo/web/
+http://symfony.3wa.fr/app.php/
 
 ```
 Login: demo

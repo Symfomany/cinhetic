@@ -4,6 +4,8 @@
 {% block titlepage %}<i class="fa fa-plus"></i>&nbsp;&nbsp;Ajouter un film{% endblock %}
 
 {% block content %}
+    {{ form_errors(form) }}
+
 <form method="post" action="{{ path('movies_create') }}" id="handlemovie" novalidate="novalidate" enctype="multipart/form-data">
     <div class="panel form-horizontal">
         <div class="panel-heading">

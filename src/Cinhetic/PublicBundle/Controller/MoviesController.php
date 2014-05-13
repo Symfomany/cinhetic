@@ -205,7 +205,7 @@ class MoviesController extends AbstractController
 
         if($this->get('cinhetic_public.manager_movies')->validation($form, $id) == TRUE){
             $this->setMessage("Le film a été modifié");
-           return $this->redirect($this->generateUrl('actors')); 
+           return $this->redirect($this->generateUrl('movies')); 
         }
 
         return $this->render('CinheticPublicBundle:Movies:edit.html.twig', array(
@@ -225,19 +225,7 @@ class MoviesController extends AbstractController
      */
     public function deleteAction(Request $request, $id)
     {
-        $form = $this->createDeleteForm($id);
-        $form->handleRequest($request);
-
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('CinheticPublicBundle:Movies')->find($id);
-
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Movies entity.');
-            }
-            $this->processRemove($id);
-
-        }
+        $this->get('cinhetic_public.manager_movies')->remove($id);
 
         return $this->redirect($this->generateUrl('movies'));
     }
@@ -410,43 +398,6 @@ class MoviesController extends AbstractController
         ;
     }
 
-    /**
-     * Process peristance & flush
-     * @param Movies $entity
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
-    protected function processPersist(Movies $entity, $message = "L'opération a bien été effectuée"){
-
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($entity);
-        $em->flush();
-
-        $this->get('session')->getFlashBag()->add(
-            'success',
-            $message
-        );
-
-        return $this->redirect($this->generateUrl('movies'));
-    }
-
-    /**
-     * Process peristance & flush
-     * @param Movies $entity
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
-    protected function processRemove(Movies $entity, $message = "L'opération a bien été effectuée"){
-
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($entity);
-        $em->flush();
-
-        $this->get('session')->getFlashBag()->add(
-            'success',
-            $message
-        );
-
-        return $this->redirect($this->generateUrl('movies'));
-    }
 
 
     /************************************************************************************************************

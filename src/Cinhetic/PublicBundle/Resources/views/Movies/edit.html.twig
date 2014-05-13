@@ -1,7 +1,10 @@
 {% extends 'CinheticPublicBundle::layout.html.twig' %}
 
+{% block titlepage %}<i class="fa fa-pencil"></i>&nbsp;&nbsp;Editer le film {{ entity.title|title }}{% endblock %}
+
 {% block content %}
-    <h1> <i class="glyphicon glyphicon-pencil"></i> Editer le film {{ entity.title|title }}</h1>
+
+    {{ form_errors(form) }}
 
     <form method="post" action="{{ path('movies_update', {'id' : entity.id}) }}" id="handlemovie" novalidate="novalidate" enctype="multipart/form-data">
         
@@ -147,11 +150,15 @@
     {% endjavascripts %}
 
     <script type="text/javascript">
+
+
         $('#file').pixelFileInput({ placeholder: 'Aucun fichier selectionné...' });
         $("#languages").select2({
                             allowClear: true,
                             placeholder: "Selectionnez..."
         });
         $('.datepick').datepicker();
+        $(document).ready(function() {
+        });
     </script>
 {% endblock %}
