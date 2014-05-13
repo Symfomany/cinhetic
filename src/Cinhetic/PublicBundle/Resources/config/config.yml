@@ -96,3 +96,5 @@ twig:
       base_url: 'http://www.cinhetic.ju/'
       imgsite: '/bundles/movies/images/'
       imgmovies: '/uploads/movies/'
+      imgactors: '/uploads/actors/'
+      imgdirectors: '/uploads/directors/'

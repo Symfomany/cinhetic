@@ -40,6 +40,6 @@ class CommentsType extends AbstractType
      */
     public function getName()
     {
-        return 'Cinhetic_publicbundle_comments';
+        return '';
     }
 }

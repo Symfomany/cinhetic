@@ -16,8 +16,9 @@ use JMS\Serializer\Annotation\Expose;
  * @ORM\Entity(repositoryClass="Cinhetic\PublicBundle\Repository\DirectorsRepository")
  * @UniqueEntity(fields={"firstname","lastname"}, message="Le titre est deja pris!")
  * @ExclusionPolicy("all")
+ * @ORM\HasLifecycleCallbacks
  */
-class Directors
+class Directors implements UploadableInterface
 {
     /**
      * @var integer
@@ -103,6 +104,32 @@ class Directors
      * )
      */
     private $movies;
+
+
+
+    /**
+     * @Expose
+     * @ORM\Column(name="image", type="string", length=250, nullable=true)
+     */
+    private $image;
+
+    /**
+     * @Assert\Image(
+     *     minWidth = 200,
+     *     minHeight  = 100,
+     *     maxWidth = 3000,
+     *     maxHeight = 3000,
+     *     maxSize = "6000k",
+     *     mimeTypes = {"image/jpg","image/jpeg", "image/png", "image/gif", "image/bmp"},
+     *     mimeTypesMessage = "Image au format non supporté",
+     *    maxWidthMessage = "Image trop grande en largeur {{ width }}px. Le maximum en largeur est de {{ max_width }}px" ,
+     *    minWidthMessage = "Image trop petite en largeur {{ width }}px. Le minimum en largeur est de {{ min_width }}px" ,
+     *    minHeightMessage = "Image trop petite en hauteur {{ height }}px. Le mimum en hauteur est de {{ min_height }}px" ,
+     *    maxHeightMessage = "Image trop grande en hauteur  {{ height }}px. Le maximum en hauteur est de {{ max_height }}px"
+     * )
+     */
+    public $file;
+
 
     /**
      * Constructor
@@ -272,6 +299,121 @@ class Directors
     {
         return $this->movies;
     }
+
+
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     * @return Movies
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string 
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+
+    /**
+     * Absolute Path
+     * @return null|string
+     */
+    public function getAbsolutePath()
+    {
+        return null === $this->image ? null : $this->getUploadRootDir().'/'.$this->image;
+    }
+
+    /**
+     * Web path
+     * @return null|string
+     */
+    public function getWebPath()
+    {
+        return null === $this->image ? null : $this->getUploadDir().'/'.$this->image;
+    }
+
+    /**
+     * Upload Path
+     * @return string
+     */
+    public function getUploadRootDir()
+    {
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+
+    /**
+     * Upload dir
+     * @return string
+     */
+    public function getUploadDir()
+    {
+        return 'uploads/directors';
+    }
+
+
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preUpload()
+    {
+        if (null !== $this->file) {
+            $this->image = $this->file->getClientOriginalName();
+        }
+    }
+
+
+    /**
+     * Upload action
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
+     */
+    public function upload()
+    {
+        if (null === $this->file){
+            return;
+        }
+        $this->image = $this->file->getClientOriginalName();
+        $extension = $this->file->guessExtension();
+
+        $this->file->move($this->getUploadRootDir(), $this->file->getClientOriginalName());
+        $path_parts = pathinfo($this->getAbsolutePath());
+
+        $imagine = new \Imagine\Gd\Imagine();
+        $imagine
+            ->open($this->getAbsolutePath())
+            ->thumbnail(new \Imagine\Image\Box(350, 160))
+            ->save(
+                $this->getUploadRootDir().'/' . $path_parts['filename'] . '-thumb.' . $extension,
+                array(
+                    'quality' => 80
+                )
+            );
+
+    }
+
+    /**
+     * @ORM\PostRemove()
+     */
+    public function removeUpload()
+    {
+        if ($file = $this->getAbsolutePath()) {
+            @unlink($file);
+        }
+    }
+
 
 
 

@@ -12,6 +12,7 @@
 {{ parent() }}
 
     <script type="text/javascript">
+        $('#file').pixelFileInput({ placeholder: 'Aucun fichier selectionné...' });
         $("select").select2({
                             allowClear: true,
                             placeholder: "Selectionnez..."

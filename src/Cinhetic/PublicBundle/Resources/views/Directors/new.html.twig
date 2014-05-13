@@ -6,3 +6,13 @@
 {% block content %}
     {{ form(form) }}
 {% endblock %}
+
+
+{% block javascripts %}
+{{ parent() }}
+
+    <script type="text/javascript">
+        $('#file').pixelFileInput({ placeholder: 'Aucun fichier selectionné...' });
+          
+    </script>
+{% endblock %}
