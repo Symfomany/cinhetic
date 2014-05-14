@@ -8,9 +8,9 @@
     <table class="records_list  table table-striped">
         <thead>
             <tr>
-                <th>Date de session</th>
-                <th>Film</th>
-                <th>Cinéma</th>
+                <th>{% if entities.isSorted('a.dateSession') and app.request.query.get('direction') == "desc" %} <i class="fa fa-arrow-circle-up"></i>{% else %}<i class="fa fa-arrow-circle-down"></i>{% endif %} {{ knp_pagination_sortable(entities, 'Date de session', 'a.dateSession') }}</th>
+                <th>{% if entities.isSorted('m.title') and app.request.query.get('direction') == "desc" %} <i class="fa fa-arrow-circle-up"></i>{% else %}<i class="fa fa-arrow-circle-down"></i>{% endif %} {{ knp_pagination_sortable(entities, 'Film', 'm.title') }}</th>
+                <th>{% if entities.isSorted('c.title') and app.request.query.get('direction') == "desc" %} <i class="fa fa-arrow-circle-up"></i>{% else %}<i class="fa fa-arrow-circle-down"></i>{% endif %} {{ knp_pagination_sortable(entities, 'Cinéma', 'c.title') }}</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -40,6 +40,16 @@
             <div class="table-caption">
                 <div class="pull-right">
                 {{ knp_pagination_render(entities) }}
+                    <th>
+                        <select id="display" name="display" class="form-control">
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="30">30</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                            <option value="500">500</option>
+                        </select>
+                    </th>
                 </div>
                 <div class="clearfix"></div>
             </div>

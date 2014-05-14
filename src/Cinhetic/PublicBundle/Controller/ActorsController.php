@@ -22,14 +22,19 @@ class ActorsController extends AbstractController
      */
     public function indexAction()
     {
-        $entities = $this->getRepository('Actors')->findAll();
+        $em = $this->getDoctrine()->getManager();
+        $entities = $em->createQuery(
+            'SELECT a
+            FROM CinheticPublicBundle:Actors a
+            ORDER BY a.lastname ASC'
+        );
 
         $breadcrumbs = $this->get("white_october_breadcrumbs");
         $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
         $breadcrumbs->addItem("Acteurs", $this->generateUrl('actors'));
 
         return $this->render('CinheticPublicBundle:Actors:index.html.twig', array(
-            'entities' => $entities
+            'entities' => $this->paginate($entities,7)
         ));
     }
 

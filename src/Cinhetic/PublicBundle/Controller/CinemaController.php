@@ -24,10 +24,14 @@ class CinemaController extends AbstractController
         $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
         $breadcrumbs->addItem("Cinémas", $this->generateUrl('cinema'));
 
-        $entities = $this->getRepository('Cinema')->findAll();
-
+        $em = $this->getDoctrine()->getManager();
+        $entities = $em->createQuery(
+            'SELECT a
+            FROM CinheticPublicBundle:Cinema a
+            ORDER BY a.title ASC'
+        );
         return $this->render('CinheticPublicBundle:Cinema:index.html.twig', array(
-            'entities' => $entities,
+            'entities' => $this->paginate($entities,7),
         ));
     }
 

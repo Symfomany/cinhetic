@@ -25,11 +25,14 @@ class DirectorsController extends AbstractController
         $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
         $breadcrumbs->addItem("Réalisateurs", $this->generateUrl('directors'));
 
-
-        $entities = $this->getRepository('Directors')->findAll();
-
+        $em = $this->getDoctrine()->getManager();
+        $entities = $em->createQuery(
+            'SELECT a
+            FROM CinheticPublicBundle:Directors a
+            ORDER BY a.lastname ASC'
+        );
         return $this->render('CinheticPublicBundle:Directors:index.html.twig', array(
-            'entities' => $entities,
+            'entities' => $this->paginate($entities,7),
         ));
     }
 

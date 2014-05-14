@@ -109,10 +109,12 @@ class MoviesController extends AbstractController
         $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
         $breadcrumbs->addItem("Films", $this->generateUrl('movies'));
 
-
         $em = $this->getDoctrine()->getManager();
-        $entities = $em->getRepository('CinheticPublicBundle:Movies')->findAll();
-
+        $entities = $em->createQuery(
+            'SELECT a
+            FROM CinheticPublicBundle:Movies a
+            ORDER BY a.title ASC'
+        );
         return $this->render('CinheticPublicBundle:Movies:index.html.twig', array(
             'entities' => $this->paginate($entities,7),
         ));

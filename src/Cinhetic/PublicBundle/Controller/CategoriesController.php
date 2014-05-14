@@ -24,8 +24,12 @@ class CategoriesController extends AbstractController
         $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
         $breadcrumbs->addItem("Catégories", $this->generateUrl('categories'));
 
-        $entities = $this->getRepository('Categories')->findAll();
-
+        $em = $this->getDoctrine()->getManager();
+        $entities = $em->createQuery(
+            'SELECT a
+            FROM CinheticPublicBundle:Categories a
+            ORDER BY a.title ASC'
+        );
         return $this->render('CinheticPublicBundle:Categories:index.html.twig', array(
             'entities' => $this->paginate($entities,7),
         ));

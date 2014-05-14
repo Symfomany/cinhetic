@@ -9,9 +9,8 @@
     <table class="records_list  table table-striped">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Ville</th>
+                <th>{% if entities.isSorted('a.lastname') and app.request.query.get('direction') == "desc" %} <i class="fa fa-arrow-circle-up"></i>{% else %}<i class="fa fa-arrow-circle-down"></i>{% endif %} {{ knp_pagination_sortable(entities, 'Nom', 'a.lastname') }}</th>
+                <th>{% if entities.isSorted('a.city') and app.request.query.get('direction') == "desc" %} <i class="fa fa-arrow-circle-up"></i>{% else %}<i class="fa fa-arrow-circle-down"></i>{% endif %} {{ knp_pagination_sortable(entities, 'Ville', 'a.city') }}</th>
                 <th>Biographie</th>
                 <th>Films</th>
                 <th>Actions</th>
@@ -20,7 +19,6 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('actors_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td><a href="{{ path('actors_show', { 'id': entity.id }) }}">{{ entity.firstname }} {{ entity.lastname }}</a></td>
                 <td>{{ entity.city }}</td>
                 <td>{{ entity.biography|raw|truncate(200,true,'...') }}</td>
@@ -33,6 +31,24 @@
         {% endfor %}
         </tbody>
     </table>
+     <div class="table-footer">
+            <div class="table-caption">
+                <div class="pull-right">
+                    {{ knp_pagination_render(entities) }}
+                    <th>
+                        <select id="display" name="display" class="form-control">
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="30">30</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                            <option value="500">500</option>
+                        </select>
+                    </th>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
 </div>
     <hr />
 

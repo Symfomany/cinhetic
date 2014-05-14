@@ -23,8 +23,14 @@ class SessionsController extends AbstractController
         $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
         $breadcrumbs->addItem("Séances", $this->generateUrl('sessions'));
 
-        $entities = $this->getRepository('Sessions')->findAll();
-
+        $em = $this->getDoctrine()->getManager();
+        $entities = $em->createQuery(
+            'SELECT a
+            FROM CinheticPublicBundle:Sessions a
+            JOIN a.movies m
+            JOIN a.cinema c
+            ORDER BY a.dateSession ASC'
+        );
         return $this->render('CinheticPublicBundle:Sessions:index.html.twig', array(
             'entities' => $this->paginate($entities,7),
         ));

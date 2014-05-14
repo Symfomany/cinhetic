@@ -26,8 +26,12 @@ class TagsController extends AbstractController
         $breadcrumbs->addItem("Tags", $this->generateUrl('tags'));
 
 
-        $entities = $this->getRepository('Tags')->findAll();
-
+        $em = $this->getDoctrine()->getManager();
+        $entities = $em->createQuery(
+            'SELECT a
+            FROM CinheticPublicBundle:Tags a
+            ORDER BY a.word ASC'
+        );
         return $this->render('CinheticPublicBundle:Tags:index.html.twig', array(
             'entities' => $this->paginate($entities,7),
         ));

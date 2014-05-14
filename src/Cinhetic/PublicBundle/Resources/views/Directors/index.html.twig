@@ -9,9 +9,9 @@
     <table class="records_list  table table-striped">
         <thead>
             <tr>
-                <th>Nom</th>
+                <th>{% if entities.isSorted('a.lastname') and app.request.query.get('direction') == "desc" %} <i class="fa fa-arrow-circle-up"></i>{% else %}<i class="fa fa-arrow-circle-down"></i>{% endif %} {{ knp_pagination_sortable(entities, 'Nom', 'a.lastname') }}</th>
                 <th>Biographie</th>
-                <th>Note</th>
+                <th>{% if entities.isSorted('a.note') and app.request.query.get('direction') == "desc" %} <i class="fa fa-arrow-circle-up"></i>{% else %}<i class="fa fa-arrow-circle-down"></i>{% endif %} {{ knp_pagination_sortable(entities, 'Note', 'a.note') }}</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -31,6 +31,24 @@
         {% endfor %}
         </tbody>
     </table>
+    <div class="table-footer">
+            <div class="table-caption">
+                <div class="pull-right">
+                {{ knp_pagination_render(entities) }}
+                    <th>
+                        <select id="display" name="display" class="form-control">
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="30">30</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                            <option value="500">500</option>
+                        </select>
+                    </th>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
 </div>
         <hr />
             <a class="btn btn-danger" href="{{ path('directors_new') }}">
