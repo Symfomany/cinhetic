@@ -56,6 +56,40 @@ class MoviesRepository extends EntityRepository
      * Get Current movies by criteria
      * @return array
      */
+    public function getRandomMovie(){
+
+ $query = $this->getEntityManager()
+            ->createQueryBuilder()
+            ->select('m')
+            ->from('Cinhetic\PublicBundle\Entity\Movies', 'm')
+            ->where('m.visible = 1')
+            ->andWhere('m.dateRelease <= :current')
+            ->orderBy('RAND()', 'DESC')
+            ->setParameter('current' , new \Datetime('midnight'))
+            ->setMaxResults(1);
+
+            return $query;
+    }
+
+
+    /**
+     * Get Current movies by criteria
+     * @return array
+     */
+    public function getCount(){
+        $query = $this->getEntityManager()
+            ->createQuery(
+                'SELECT COUNT(p)
+                    FROM CinheticPublicBundle:Movies p'
+            );
+
+            return $query->getSingleScalarResult();
+    }
+
+    /**
+     * Get Current movies by criteria
+     * @return array
+     */
     public function getCurrentMovies(){
         $query = $this->getEntityManager()
             ->createQuery(
@@ -133,7 +167,7 @@ class MoviesRepository extends EntityRepository
             ->orderBy('m.id', 'DESC')
             ->setParameter('current' , new \Datetime('midnight'));
 
-        return $queryBuilder;
+        return $queryBuilder->getQuery()->getResult();
     }
 
     /**

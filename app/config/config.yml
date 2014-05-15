@@ -109,6 +109,7 @@ doctrine:
                  geo:  Cinhetic\PublicBundle\AST\Functions\Geo
                  age:  Cinhetic\PublicBundle\AST\Functions\Age
                  round:  Cinhetic\PublicBundle\AST\Functions\Round
+                 rand:  Cinhetic\PublicBundle\AST\Functions\Rand
             connection: default
             mappings:
               CinheticPublicBundle : ~

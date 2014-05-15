@@ -19,7 +19,7 @@ class DirectorsController extends AbstractController
      * Lists all Directors entities.
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $breadcrumbs = $this->get("white_october_breadcrumbs");
         $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
@@ -32,7 +32,7 @@ class DirectorsController extends AbstractController
             ORDER BY a.lastname ASC'
         );
         return $this->render('CinheticPublicBundle:Directors:index.html.twig', array(
-            'entities' => $this->paginate($entities,7),
+            'entities' => $this->paginate($entities, $request->query->get('display',5))
         ));
     }
 

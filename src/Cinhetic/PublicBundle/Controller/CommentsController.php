@@ -31,7 +31,7 @@ class CommentsController extends AbstractController
         $entities = $this->getRepository('Comments')->findAll();
 
         return $this->render('CinheticPublicBundle:Comments:index.html.twig', array(
-            'entities' => $this->paginate($entities,7),
+            'entities' => $this->paginate($entities,5),
         ));
     }
 

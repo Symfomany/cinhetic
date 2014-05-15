@@ -26,4 +26,20 @@ class CinemaRepository extends EntityRepository
         return $query->getResult();
     }
 
+
+
+    /**
+     * Get Current movies by criteria
+     * @return array
+     */
+    public function getCount(){
+        $query = $this->getEntityManager()
+            ->createQuery(
+                'SELECT COUNT(p)
+                    FROM CinheticPublicBundle:Cinema p' 
+               );
+
+            return $query->getSingleScalarResult();
+    }
+
 }

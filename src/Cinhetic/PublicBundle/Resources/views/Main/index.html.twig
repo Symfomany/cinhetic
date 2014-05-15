@@ -10,6 +10,87 @@
 
     {# {{ render(controller('CinheticPublicBundle:Movies:carousselMovies')) }} #}
    
+   <div class="row">
+            <div class="col-md-4">
+
+<!-- 5. $PROFILE_WIDGET_LINKS_EXAMPLE ==============================================================
+
+                Profile widget - Links example
+-->
+                <div class="panel panel-success panel-dark widget-profile">
+                    <div class="panel-heading">
+                        <div class="widget-profile-bg-icon"><i class="fa fa-bar-chart-o"></i></div>
+                        <div class="widget-profile-header">
+                            <span>Statistiques</span><br>
+                            
+                        </div>
+                    </div> <!-- / .panel-heading -->
+                    <div class="list-group">
+                        <a href="{{ path('movies') }}" class="list-group-item"><i class="glyphicon glyphicon-film"></i> Films<span class="badge badge-info">{{ movies }}</span></a>
+                        <a href="{{ path('actors') }}" class="list-group-item"><i class="glyphicon glyphicon-user"></i> Acteurs<span class="badge badge-warning">{{ actors }}</span></a>
+                        <a href="{{ path('directors') }}" class="list-group-item"><i class="glyphicon glyphicon-facetime-video"></i> Réalisateurs<span class="badge badge-danger">{{ directors }}</span></a>
+                        <a href="{{ path('categories') }}" class="list-group-item"><i class="glyphicon glyphicon-th-list"></i> Catégories <span class="badge badge-success">{{ categories|length }}</span></a>
+                        <a href="{{ path('cinema') }}" class="list-group-item"><i class="glyphicon glyphicon glyphicon-road"></i> Cinémas <span class="badge badge-inverse">{{ cinemas }}</span></a>
+                    </div>
+                </div> <!-- / .panel -->
+<!-- /5. $PROFILE_WIDGET_LINKS_EXAMPLE -->
+
+            </div>
+            <div class="col-md-4">
+
+<!-- 6. $PROFILE_WIDGET_COUNTERS_EXAMPLE ===========================================================
+
+                Profile widget - Counters example
+-->
+                <div class="panel panel-info panel-dark widget-profile">
+                    <div class="panel-heading">
+                        <div class="widget-profile-bg-icon"><i class="fa fa-twitter"></i></div>
+                        <img src="https://pbs.twimg.com/profile_images/1908905076/AvatarFB2_bigger.JPG" alt="AlloCiné" class="widget-profile-avatar">
+                        <div class="widget-profile-header">
+                            <span>Allocine</span><br>
+                            <a href="https://twitter.com/allocine">https://twitter.com/allocine</a>
+                        </div>
+                    </div> <!-- / .panel-heading -->
+                    <div class="widget-profile-counters">
+                        <div class="col-xs-4"><span>131</span><br>TWEETS</div>
+                        <div class="col-xs-4"><span>230</span><br>FOLLOWERS</div>
+                        <div class="col-xs-4"><span>56</span><br>FOLLOWING</div>
+                    </div>
+                    <input type="text" placeholder="Write your tweet" class="form-control input-lg widget-profile-input">
+                    <div class="widget-profile-text">
+                     AlloCiné, le site de référence du cinéma et des séries TV ! Films au cinéma, horaires, news, festivals, communautés de fans...
+                    </div>
+                </div> <!-- / .panel -->
+<!-- /6. $PROFILE_WIDGET_COUNTERS_EXAMPLE -->
+
+            </div>
+            <div class="col-md-4">
+
+<!-- 7. $PROFILE_WIDGET_CENTERED_EXAMPLE ===========================================================
+
+                Profile widget - Centered example
+-->
+                <div class="panel panel-danger panel-dark panel-body-colorful widget-profile widget-profile-centered">
+                    <div class="panel-heading">
+                        {% if seance.movies.image is not empty %}
+                            <img class="widget-profile-avatar" src="{{ base_url ~ imgmovies ~ seance.movies.image }}" alt="...">
+                        {% endif %}
+                        <div class="widget-profile-header">
+                            <span>{{ seance.movies.title }}</span><br>
+                            <h5>{{ seance.cinema.title }} - {{ seance.cinema.ville }}</h5>
+                        </div>
+                    </div> <!-- / .panel-heading -->
+                    <div class="panel-body">
+                        <div class="widget-profile-text" style="padding: 0;">
+                            {{ seance.movies.title|convert_encoding( 'iso-8859-1', 'UTF-8') |striptags|truncate(350,true, "...") }}
+                        </div>
+                    </div>
+                </div> <!-- / .panel -->
+<!-- /7. $PROFILE_WIDGET_CENTERED_EXAMPLE -->
+
+            </div>
+        </div>
+
     <div class="row">
         <div class="col-lg-6">
             {{ render(controller('CinheticPublicBundle:Movies:currentMovies')) }}

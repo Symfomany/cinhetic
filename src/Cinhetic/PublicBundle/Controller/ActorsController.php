@@ -20,7 +20,7 @@ class ActorsController extends AbstractController
      * Lists all Actors entities.
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $entities = $em->createQuery(
@@ -34,7 +34,7 @@ class ActorsController extends AbstractController
         $breadcrumbs->addItem("Acteurs", $this->generateUrl('actors'));
 
         return $this->render('CinheticPublicBundle:Actors:index.html.twig', array(
-            'entities' => $this->paginate($entities,7)
+            'entities' => $this->paginate($entities, $request->query->get('display',5))
         ));
     }
 

@@ -40,16 +40,9 @@
             <div class="table-caption">
                 <div class="pull-right">
                 {{ knp_pagination_render(entities) }}
-                    <th>
-                        <select id="display" name="display" class="form-control">
-                            <option value="5">5</option>
-                            <option value="10">10</option>
-                            <option value="30">30</option>
-                            <option value="50">50</option>
-                            <option value="100">100</option>
-                            <option value="500">500</option>
-                        </select>
-                    </th>
+                </div>
+                <div class="pull-right">
+                  {{ include('CinheticPublicBundle:Slots:display.html.twig') }}
                 </div>
                 <div class="clearfix"></div>
             </div>

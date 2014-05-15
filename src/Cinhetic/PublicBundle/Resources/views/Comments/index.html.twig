@@ -10,6 +10,9 @@
                         <div class="pull-right">
                             {{ knp_pagination_render(entities) }}
                         </div>
+                        <div class="pull-right">
+                          {{ include('CinheticPublicBundle:Slots:display.html.twig') }}
+                        </div>
                         <span class="panel-title"><i class="panel-title-icon fa fa-comment-o"></i>Derniers comentaires</span>
                         <div class="clearfix"></div>
                     </div> <!-- / .panel-heading -->

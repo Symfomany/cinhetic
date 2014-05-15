@@ -77,6 +77,18 @@ class MainController extends AbstractController
         $seances = $em->getRepository('CinheticPublicBundle:Sessions')->getNextSessions();
         $categories = $em->getRepository('CinheticPublicBundle:Categories')->findAll();
         $tags = $em->getRepository('CinheticPublicBundle:Tags')->findAll();
+              
+        $movies = $em->getRepository('CinheticPublicBundle:Movies')->getCount();
+        $actors = $em->getRepository('CinheticPublicBundle:Actors')->getCount();
+        $directors = $em->getRepository('CinheticPublicBundle:Directors')->getCount();
+        $cinemas = $em->getRepository('CinheticPublicBundle:Cinema')->getCount();
+
+
+        $seance = null;
+        if(!empty($seances)){
+            shuffle($seances);
+            $seance = array_shift(array_values($seances));
+        }
         
         // Twitter feeds
         $params['consumer_key'] = $this->container->getParameter('api_twitter_id');
@@ -94,7 +106,12 @@ class MainController extends AbstractController
             'comments' => $this->paginate($commentaires,5),
             'tags' => $tags,
             'url'  => null,
-            'form' => null
+            'form' => null,
+            'movies' => $movies,
+            'actors' => $actors,
+            'directors' => $directors,
+            'cinemas' => $cinemas,
+            'seance' => $seance
            // 'url'  => $paybox->getUrl(),
             //'form' => $paybox->getForm()->createView()
         ));
