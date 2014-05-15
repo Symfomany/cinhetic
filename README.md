@@ -292,6 +292,7 @@ Chapters covered in project
 * Read Rss and populate the database
 * Webservices Factory to handle Youtube, Twitter, Flickr & Thumbr APIs
 * Custom 404 & 500 errors page
+* Youtube API in OAuth
 
 Features
 ----------------------------------
@@ -301,7 +302,7 @@ Features
 * Visibility on Movies and cover action in homepage
 * Pagination for results with "KNPPaginatorBundles"
 * Datas Fixtures with "Doctrine Fixtures"
-* Upload File Image in Movie with Imagine library for thumb
+* Upload File Image in Movies/Actors/Directors with Imagine library for thumb
 * Homepage with custom template by Bootsrapp Twitter
 * Form & Repositories in services
 * Add authentification & firewall administration for user connected with "FOSUserBundle"
@@ -333,6 +334,7 @@ Features
 * Webservices called in service Youtube, Thumbr, Flickr & Twitter
 * Custom execeptions &  errors page
 * Breadscrumb in controllers/views
+* Youtube API in OAuth
 
 Evolution
 ----------------------------------

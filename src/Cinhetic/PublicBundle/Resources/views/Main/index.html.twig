@@ -69,24 +69,26 @@
 <!-- 7. $PROFILE_WIDGET_CENTERED_EXAMPLE ===========================================================
 
                 Profile widget - Centered example
--->
-                <div class="panel panel-danger panel-dark panel-body-colorful widget-profile widget-profile-centered">
-                    <div class="panel-heading">
-                        {% if seance.movies.image is not empty %}
-                            <img class="widget-profile-avatar" src="{{ base_url ~ imgmovies ~ seance.movies.image }}" alt="...">
-                        {% endif %}
-                        <div class="widget-profile-header">
-                            <span>{{ seance.movies.title }}</span><br>
-                            <h5>{{ seance.cinema.title }} - {{ seance.cinema.ville }}</h5>
+-->             {% if seance is not empty %}
+                    <div class="panel panel-danger panel-dark panel-body-colorful widget-profile">
+                        <div class="panel-heading">
+                            <div class="widget-profile-bg-icon"><i class="fa fa-twitter"></i></div>
+                            {% if seance.movies.image is not empty %}
+                                <img class="widget-profile-avatar" src="{{ base_url ~ imgmovies ~ seance.movies.image }}" alt="...">
+                            {% endif %}
+                            <div class="widget-profile-header">
+                                <span>{{ seance.movies.title }}</span><br>
+                                <h5>{{ seance.cinema.title }} - {{ seance.cinema.ville }}</h5>
+                            </div>
+                        </div> <!-- / .panel-heading -->
+                        <div class="panel-body">
+                            <div class="widget-profile-text" style="padding: 0;">
+                                {{ seance.movies.synopsis|striptags|truncate(300,true, "...") }}
+                            </div>
                         </div>
-                    </div> <!-- / .panel-heading -->
-                    <div class="panel-body">
-                        <div class="widget-profile-text" style="padding: 0;">
-                            {{ seance.movies.title|convert_encoding( 'iso-8859-1', 'UTF-8') |striptags|truncate(350,true, "...") }}
-                        </div>
-                    </div>
-                </div> <!-- / .panel -->
-<!-- /7. $PROFILE_WIDGET_CENTERED_EXAMPLE -->
+                    </div> <!-- / .panel -->
+               {% endif %}
+
 
             </div>
         </div>
