@@ -19,7 +19,7 @@ class ActorsRepository extends EntityRepository
         $query = $this->getEntityManager()
             ->createQuery(
                 'SELECT COUNT(p)
-                    FROM CinheticPublicBundle:Actors p' 
+                    FROM CinheticPublicBundle:Actors p'
                );
 
             return $query->getSingleScalarResult();

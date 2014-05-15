@@ -120,6 +120,9 @@ form .btn.btn-labeled, form button[type="submit"]{
     border-bottom: none!important;
 }
 
+#content-wrapper select#display{
+    padding: 0px;
+}
 
  @media (min-width: 300px) and (max-width: 768px) {
      h1,h2,h3{

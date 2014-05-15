@@ -63,9 +63,9 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
     <script type="text/javascript">
         $(function() {
-            $('#content-wrapper').animate(
+            $('#content-wrapper').not('#main-menu').stop(true,true).animate(
                 {opacity:1,top:'30px'},'fast');
-        });
+         });
     </script>
 {% endblock %}
 
@@ -112,25 +112,12 @@
                     <div class="right clearfix">
                         <ul class="nav navbar-nav pull-right right-navbar-nav">
 
-<!-- 3. $NAVBAR_ICON_BUTTONS =======================================================================
-
-                            Navbar Icon Buttons
-
-                            NOTE: .nav-icon-btn triggers a dropdown menu on desktop screens only. On small screens .nav-icon-btn acts like a hyperlink.
-
-                            Classes:
-                            * 'nav-icon-btn-info'
-                            * 'nav-icon-btn-success'
-                            * 'nav-icon-btn-warning'
-                            * 'nav-icon-btn-danger' 
--->
                             <li class="nav-icon-btn nav-icon-btn-danger dropdown">
                               {{ include('CinheticPublicBundle:Slots:notifications.html.twig') }}
                             </li>
                             <li class="nav-icon-btn nav-icon-btn-success dropdown">
                                {{ include('CinheticPublicBundle:Slots:messages.html.twig') }}
                             </li>
-<!-- /3. $END_NAVBAR_ICON_BUTTONS -->
 
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle user-menu" data-toggle="dropdown">
@@ -143,7 +130,21 @@
                                         <li class="divider"></li>
                                         <li><a href="{{ path('fos_user_security_logout') }}"><i class="dropdown-icon fa fa-power-off"></i>&nbsp;&nbsp;Log Out</a></li>
                                     {% else %}
-                                        <li><a href="{{ path('fos_user_security_login') }}"><i class="dropdown-icon fa fa-sign-in"></i>&nbsp;&nbsp;Login</a></li>
+                                        {#<li><a href="{{ path('fos_user_security_login') }}"><i class="dropdown-icon fa fa-sign-in"></i>&nbsp;&nbsp;Login</a></li>#}
+                                        <li><a data-toggle="modal" data-target="#modal-blurred-bg"><i class="dropdown-icon fa fa-sign-in"></i>&nbsp;&nbsp;Login</a></li>
+                                        <div id="modal-blurred-bg" class="modal fade modal-blur" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+                                            <div class="modal-dialog modal-sm">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal">×</button>
+                                                        <h4 class="modal-title"><i class="glyphicon glyphicon-off"></i>  Authentification</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        {{ include('CinheticPublicBundle:Slots:login.html.twig') }}
+                                                    </div>
+                                                </div> <!-- / .modal-content -->
+                                            </div> <!-- / .modal-dialog -->
+                                        </div>
                                     {% endif %}
                                 </ul>
                             </li>
@@ -225,6 +226,7 @@
     {% javascripts '@CinheticPublicBundle/Resources/public/js/bootstrap.min.js' %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
+
     {% javascripts '@CinheticPublicBundle/Resources/public/js/pixel-admin.min.js' %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}

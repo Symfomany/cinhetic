@@ -17,6 +17,17 @@ class MainController extends AbstractController
 {
 
 
+    /**
+     * @var \AlloHelper
+     */
+    protected $helper;
+
+    /**
+     * Constructor of APIController
+     */
+    public function __construct(){
+        $this->helper = new \AlloHelper;
+    }
 
     /**
      * Homepage Get Started
@@ -83,11 +94,29 @@ class MainController extends AbstractController
         $directors = $em->getRepository('CinheticPublicBundle:Directors')->getCount();
         $cinemas = $em->getRepository('CinheticPublicBundle:Cinema')->getCount();
 
+        $allocine_movies = $this->helper->movielist();
 
+        $vues = array();
+            if(isset($allocine_movies['movie']) && is_object($allocine_movies['movie'])){
+            foreach($allocine_movies['movie'] as $mov){
+                $vues[] = array(
+                    "title" => $mov['originalTitle'],
+                    "nbviews" => $mov['statistics']['userRatingCount'],
+                    "nbcomments" => $mov['statistics']['commentCount'],
+                );
+            }
+        }
+        
+        $stats_movies_categories = $em->getRepository('CinheticPublicBundle:Movies')->getStatsMoviesCategories();
+        
         $seance = null;
         if(!empty($seances)){
             shuffle($seances);
-            $seance = array_shift(array_values($seances));
+            if(count($seances) > 1){
+                $seance = array_shift(array_values($seances));
+            }else{
+                $seance = $seances[0];
+            }
         }
         
         // Twitter feeds
@@ -98,6 +127,8 @@ class MainController extends AbstractController
         $params['callback_url'] = null;
         $webservice = $this->get('cinhetic_public.webservices')->build('Twitter', $params);
         $tweets = $webservice->getFeeds('allocine', 7);
+        $infos = $webservice->getInfos('allocine');
+
 
         return $this->display('index.html.twig',  array(
             'seances' => $seances,
@@ -108,9 +139,12 @@ class MainController extends AbstractController
             'url'  => null,
             'form' => null,
             'movies' => $movies,
+            'vues' => $vues,
+            'infos' => $infos,
             'actors' => $actors,
             'directors' => $directors,
             'cinemas' => $cinemas,
+            'stats_movies_categories' => $stats_movies_categories,
             'seance' => $seance
            // 'url'  => $paybox->getUrl(),
             //'form' => $paybox->getForm()->createView()

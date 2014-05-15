@@ -52,17 +52,17 @@
         {% endfor %}
         </tbody>
     </table>
-        <div class="table-footer">
-            <div class="table-caption">
-                <div class="pull-right">
-                {{ knp_pagination_render(entities) }}
-                </div>
-                <div class="pull-right">
-                  {{ include('CinheticPublicBundle:Slots:display.html.twig') }}
-                </div>
-                <div class="clearfix"></div>
+    <div class="table-footer">
+        <div class="table-caption">
+            <div class="pull-right">
+            {{ knp_pagination_render(entities) }}
             </div>
+            <div class="pull-right">
+              {{ include('CinheticPublicBundle:Slots:display.html.twig') }}
+            </div>
+            <div class="clearfix"></div>
         </div>
+    </div>
 </div>
     <hr />
     <a class="btn btn-danger"  href="{{ path('movies_new') }}">

@@ -76,6 +76,24 @@ class MoviesRepository extends EntityRepository
      * Get Current movies by criteria
      * @return array
      */
+    public function getStatsMoviesCategories(){
+
+        $query = $this->getEntityManager()
+            ->createQuery(
+                "SELECT COUNT(m.id) as nbmovies, c.title
+                    FROM CinheticPublicBundle:Categories c
+                    JOIN c.movies m
+                    GROUP BY c.id
+                    ORDER BY nbmovies DESC"
+            );
+
+            return $query->setMaxResults(5)->getScalarResult();
+    }
+
+    /**
+     * Get Current movies by criteria
+     * @return array
+     */
     public function getCount(){
         $query = $this->getEntityManager()
             ->createQuery(
@@ -167,6 +185,7 @@ class MoviesRepository extends EntityRepository
             ->orderBy('m.id', 'DESC')
             ->setParameter('current' , new \Datetime('midnight'));
 
+
         return $queryBuilder->getQuery()->getResult();
     }
 
@@ -187,6 +206,7 @@ class MoviesRepository extends EntityRepository
             array(
                 'current' => new \Datetime('midnight'),
             ));
+
 
             return $query;
     }
