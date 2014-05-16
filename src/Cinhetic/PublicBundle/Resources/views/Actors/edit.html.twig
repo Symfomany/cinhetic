@@ -5,20 +5,20 @@
 
 {% block content %}
     {% if entity.image is not empty %}
-                <a class="btn btn-success btn-labeled pull-right" data-toggle="modal" data-target="#modal-blurred-img"><span class="btn-label icon fa fa-search"></span>
-                    Voir l'image actuelle</a>
-                
-                <div id="modal-blurred-img" class="modal fade modal-blur" tabindex="-1" role="dialog" style="display: none;">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <img src="{{ base_url ~ imgactors ~ entity.image }}" alt="...">
-                            </div>
-                        </div> <!-- / .modal-content -->
-                    </div> <!-- / .modal-dialog -->
-                </div> <!-- / .modal -->
+        <a class="btn btn-success btn-labeled pull-right" data-toggle="modal" data-target="#modal-blurred-img"><span class="btn-label icon fa fa-search"></span>
+            Voir l'image actuelle</a>
 
-            {% endif %}
+        <div id="modal-blurred-img" class="modal fade modal-blur" tabindex="-1" role="dialog" style="display: none;">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <img src="{{ base_url ~ imgactors ~ entity.image }}" alt="...">
+                    </div>
+                </div> <
+            </div>
+        </div>
+
+    {% endif %}
     {{ form(edit_form) }}
     {{ form(delete_form) }}
 {% endblock %}

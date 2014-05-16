@@ -245,6 +245,23 @@ class MoviesRepository extends EntityRepository
     /**
      * Get Ratio of Active Movies
      */
+    public function getRatioActusMovies(){
+
+        $nb = $this->getNbMovies();
+
+        $nb_criteria = $this->getEntityManager()
+            ->createQuery(
+                'SELECT COUNT(p.id)
+                    FROM CinheticPublicBundle:Movies p
+                    WHERE p.dateRelease >= :now'
+            )->setParameter('now', new \Datetime('now'))->getSingleScalarResult();
+
+        return floor(((float)$nb_criteria * 100) / (float)$nb);
+    }
+
+    /**
+     * Get Ratio of Active Movies
+     */
     public function getRatioCoverMovies($cover = 1){
 
         $nb = $this->getNbMovies();

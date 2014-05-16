@@ -122,8 +122,18 @@ form .btn.btn-labeled, form button[type="submit"]{
 
 #content-wrapper select#display{
     padding: 0px;
+    cursor: ns-resize;
+    width: 40px;
+    padding: 16px;
 }
 
+.fa-arrows{
+    cursor: ns-resize;
+
+}
+
+.must-have-class{
+}
  @media (min-width: 300px) and (max-width: 768px) {
      h1,h2,h3{
          font-size: 23px;

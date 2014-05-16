@@ -86,8 +86,31 @@
 
 
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-6">
             <script>
+                init.push(function () {
+                    Morris.Bar({
+                        element: 'hero-bar',
+                        data: [
+                            {% for stat in vues %}
+                            {
+                                device: "{{ stat.title }}", nb: {{ stat.nbviews }}
+                            }
+                            {% if not loop.last %},{% endif %}
+                            {% endfor %}
+                        ],
+                        xkey: 'device',
+                        ykeys: ['nb'],
+                        labels: ['Nb'],
+                        barRatio: 0.4,
+                        xLabelAngle: 35,
+                        hideHover: 'auto',
+                        barColors: PixelAdmin.settings.consts.COLORS,
+                        gridLineColor: '#cfcfcf',
+                        resize: true
+                    });
+                });
+
                 init.push(function () {
                     var doughnutChartData = [
                     {% for stat in stats_movies_categories %}
@@ -127,49 +150,13 @@
                 <div class="panel-body">
                     <div class="graph-container">
                         <div id="jq-flot-pie"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <script>
-                init.push(function () {
-                    Morris.Bar({
-                        element: 'hero-bar',
-                        data: [
-                        {% for stat in vues %}
-                            {
-                                device: "{{ stat.title }}", nb: {{ stat.nbviews }}
-                            } 
-                            {% if not loop.last %},{% endif %} 
-                        {% endfor %}                          
-                        ],
-                        xkey: 'device',
-                        ykeys: ['nb'],
-                        labels: ['Nb'],
-                        barRatio: 0.4,
-                        xLabelAngle: 35,
-                        hideHover: 'auto',
-                        barColors: PixelAdmin.settings.consts.COLORS,
-                        gridLineColor: '#cfcfcf',
-                        resize: true
-                    });
-                });
-            </script>
-            <!-- / Javascript -->
-
-            <div class="panel">
-                <div class="panel-heading">
-                    <span class="panel-title"><i class="panel-title-icon fa fa-eye"></i> Nombre de visites des films populaires</span>
-                </div>
-                <div class="panel-body">
-                    <div class="graph-container">
                         <div id="hero-bar" class="graph"></div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+
+        <div class="col-md-6">
            <!-- Javascript -->
                 <script>
                     init.push(function () {
@@ -256,6 +243,41 @@
                                                 <div class="stat-cell bordered no-border-t no-padding-hr">
                                                     <div class="pie-chart" data-percent="{{ ratioenabledusers }}" id="easy-pie-chart-4">
                                                         <div class="pie-chart-label">{{ ratioenabledusers }}%</div>
+                                                    </div>
+                                                </div>
+                                            </div> <!-- /.stat-row -->
+                                        </div> <!-- /.stat-panel -->
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="stat-panel text-center">
+                                            <div class="stat-row">
+                                                <div class="stat-cell bg-dark-gray padding-sm text-xs text-semibold">
+                                                    <i class="fa fa-calendar"></i>&nbsp;&nbsp;Films d'actualités
+                                                </div>
+                                            </div>
+                                            <div class="stat-row">
+                                                <div class="stat-cell bordered no-border-t no-padding-hr">
+                                                    <div class="pie-chart" data-percent="{{ ratiofilmsactus }}" id="easy-pie-chart-3">
+                                                        <div class="pie-chart-label">{{ ratiofilmsactus }}%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="stat-panel text-center">
+                                            <div class="stat-row">
+                                                <div class="stat-cell bg-dark-gray padding-sm text-xs text-semibold">
+                                                    <i class="fa fa-thumbs-o-up"></i>&nbsp;&nbsp;Cinéma actifs
+                                                </div>
+                                            </div> <!-- /.stat-row -->
+                                            <div class="stat-row">
+                                                <div class="stat-cell bordered no-border-t no-padding-hr">
+                                                    <div class="pie-chart" data-percent="{{ ratiocinemaseance }}" id="easy-pie-chart-4">
+                                                        <div class="pie-chart-label">{{ ratiocinemaseance }}%</div>
                                                     </div>
                                                 </div>
                                             </div> <!-- /.stat-row -->
@@ -391,7 +413,5 @@
                 </div>
             </div>
         </div>
-        <p>© 2014 Company, Inc. · <a href="#">Privacy</a> · <a href="#">Terms</a></p>
-
     </div>
 {% endblock %}

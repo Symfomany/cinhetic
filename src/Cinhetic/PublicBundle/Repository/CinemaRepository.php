@@ -27,6 +27,42 @@ class CinemaRepository extends EntityRepository
     }
 
 
+    /**
+     * Get Number of Movies
+     */
+    public function getNbCinemas(){
+        $query = $this->getEntityManager()
+            ->createQuery(
+                'SELECT COUNT(p.id)
+                    FROM CinheticPublicBundle:Cinema p'
+            );
+
+        return $query->getSingleScalarResult();
+
+    }
+
+    /**
+     * Get Cinemas has seance
+     * @return \Doctrine\ORM\QueryBuilder
+     */
+    public function getRatioHasSeance(\Datetime $date)
+    {
+        $nb = $this->getNbCinemas();
+
+        $nb_criteria = $this->getEntityManager()
+            ->createQuery(
+                'SELECT COUNT(c.id)
+                    FROM CinheticPublicBundle:Sessions s
+                    JOIN s.cinema c
+                    WHERE s.dateSession >= :date
+                    GROUP BY c.id'
+            )->setParameter('date', $date)->getSingleScalarResult();
+
+        return floor(((float)$nb_criteria * 100) / (float)$nb);
+
+    }
+
+
 
     /**
      * Get Current movies by criteria

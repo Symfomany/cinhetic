@@ -2,6 +2,7 @@
 
 namespace Cinhetic\PublicBundle\Controller;
 
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Cinhetic\PublicBundle\Entity\Categories;
 use FOS\RestBundle\Controller\Annotations as Rest;
@@ -28,7 +29,7 @@ class CategoriesController extends AbstractController
         $entities = $em->createQuery(
             'SELECT a
             FROM CinheticPublicBundle:Categories a
-            ORDER BY a.title ASC'
+            ORDER BY a.position ASC'
         );
         return $this->render('CinheticPublicBundle:Categories:index.html.twig', array(
             'entities' =>  $this->paginate($entities, $request->query->get('display',5))
@@ -149,6 +150,34 @@ class CategoriesController extends AbstractController
     }
 
 
+    /**
+     * Update position
+     */
+    public function positionAction(Request $request)
+    {
+        $datas = $request->request->get('datas');
+        $datas = explode('&', $datas);
+        $em = $this->getDoctrine()->getManager();
+
+        $i = 1;
+        // Datas
+        foreach($datas as $data){
+            $data = explode('=', $data);
+            if(isset($datas[1])){
+                $category = $em->getRepository('CinheticPublicBundle:Categories')->find($data[1]);
+                if($category){
+                    $category->setPosition($i);
+                    $em->persist($category);
+                    $em->flush();
+                    $i++;
+                }
+            }
+        }
+
+        return new JsonResponse(true);
+
+
+    }
 
     /**
      * Deletes a Categories entity.

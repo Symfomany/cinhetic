@@ -13,8 +13,6 @@ use Cinhetic\PublicBundle\Entity\Comments;
  */
 class CommentsController extends AbstractController
 {
-
-
     /**
      * Lists all Comments entities.
      * @return \Symfony\Component\HttpFoundation\Response

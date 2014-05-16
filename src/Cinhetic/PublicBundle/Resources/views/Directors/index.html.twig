@@ -9,6 +9,7 @@
     <table class="records_list  table table-striped">
         <thead>
             <tr>
+                <th>Profil</th>
                 <th>{% if entities.isSorted('a.lastname') and app.request.query.get('direction') == "desc" %} <i class="fa fa-arrow-circle-up"></i>{% else %}<i class="fa fa-arrow-circle-down"></i>{% endif %} {{ knp_pagination_sortable(entities, 'Nom', 'a.lastname') }}</th>
                 <th>Biographie</th>
                 <th>{% if entities.isSorted('a.note') and app.request.query.get('direction') == "desc" %} <i class="fa fa-arrow-circle-up"></i>{% else %}<i class="fa fa-arrow-circle-down"></i>{% endif %} {{ knp_pagination_sortable(entities, 'Note', 'a.note') }}</th>
@@ -18,6 +19,13 @@
         <tbody>
         {% for entity in entities %}
             <tr>
+                <td>{% if entity.image is not empty %}
+                        <img class="img-thumbnail" src="{{ base_url ~ imgdirectors ~ entity.image }}" alt="...">
+
+                    {% else %}
+                        <img class="img-thumbnail" src="http://placehold.it/150x150" alt="...">
+                    {% endif %}
+                </td>
                 <td><a href="{{ path('directors_show', { 'id': entity.id }) }}">{{ entity.firstname }} {{ entity.lastname }}</a></td>
                 <td>{{ entity.biography }}</td>
                 <td>

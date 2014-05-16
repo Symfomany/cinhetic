@@ -15,6 +15,10 @@ categories_create:
     defaults: { _controller: "CinheticPublicBundle:Categories:create" }
     requirements: { _method: post }
 
+categories_position:
+    pattern:  /position
+    defaults: { _controller: "CinheticPublicBundle:Categories:position" }
+
 categories_edit:
     pattern:  /{id}/edit
     defaults: { _controller: "CinheticPublicBundle:Categories:edit" }

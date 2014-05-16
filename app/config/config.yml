@@ -241,6 +241,7 @@ stof_doctrine_extensions:
       timestampable: true
       tree: true
       softdeleteable: true
+      sortable: true
 
 #Lexik Paybox
 lexik_paybox:

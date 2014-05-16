@@ -4,20 +4,22 @@
 
 {% block content %}
 <div class="table-light">
-    <table class="records_list table table-striped">
+    <table data-url='{{  path("categories_position") }}' class="records_list table table-striped">
         <thead>
             <tr>
                 <th>{% if entities.isSorted('a.title') and app.request.query.get('direction') == "desc" %} <i class="fa fa-arrow-circle-up"></i>{% else %}<i class="fa fa-arrow-circle-down"></i>{% endif %} {{ knp_pagination_sortable(entities, 'Titre', 'a.title') }}</th>
                 <th>Description</th>
+                <th>Position</th>
                 <th>Films</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
-            <tr>
+            <tr id="category_{{ entity.id }}">
                 <td><a href="{{ path('categories_show', {'id' : entity.id}) }}">{{ entity.title }}</a></td>
                 <td>{{ entity.description|raw }}</td>
+                <td><i class="fa fa-arrows"></i></td>
                 <td class="text-success"><i class="fa fa-folder"></i> {{ entity.movies|length|default("0") }}</td>
                 <td>
 
@@ -48,4 +50,62 @@
         <i class="glyphicon glyphicon-plus"></i>  Creation de la catégorie
     </a>
 
-    {% endblock %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $( document ).ready(function() {
+
+            $('#content-wrapper table.table tbody td, #content-wrapper table.table tbody th', '#content-wrapper table.table').each(function () {
+                var cell = $(this);
+                cell.width(cell.width());
+            });
+
+            $('#content-wrapper table.table tbody').sortable({
+                items: '> tr',
+                forcePlaceholderSize: true,
+                dropOnEmpty: false,
+                distance: 45,
+                revert: 150,
+                delay: 300,
+                handle: ".fa-arrows",
+                placeholder:'must-have-class',
+                opacity: 0.6,
+                update: function(event, ui) {
+                    var info =  $(this).sortable("serialize");
+                    $.ajax({
+                        type: "POST",
+                        url: $('#content-wrapper table.table').attr('data-url'),
+                        data: {"datas" : info},
+                        success: function(){
+                            $(this).clearQueue().queue(function (next) {
+                                $(this).addClass("alert"); next();
+                            }).delay(200).queue(function (next) {
+                                $(this).removeClass("alert"); next();
+                            });
+                        }
+                    });
+
+                },
+                start: function (event, ui) {
+                    // Build a placeholder cell that spans all the cells in the row
+                    var cellCount = 0;
+                    $('td, th', ui.helper).each(function () {
+                        // For each TD or TH try and get it's colspan attribute, and add that or 1 to the total
+                        var colspan = 1;
+                        var colspanAttr = $(this).attr('colspan');
+                        if (colspanAttr > 1) {
+                            colspan = colspanAttr;
+                        }
+                        cellCount += colspan;
+                    });
+
+                    // Add the placeholder UI - note that this is the item's content, so TD rather thanTR
+                    ui.placeholder.html('<td colspan="' + cellCount + '">&nbsp;</td>');
+                }
+            }).disableSelection();
+
+        });
+    </script>
+{% endblock %}

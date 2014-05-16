@@ -98,6 +98,8 @@ class MainController extends AbstractController
         $ratioactivemovies = $em->getRepository('CinheticPublicBundle:Movies')->getRatioActiveMovies();
         $ratiocovermovies = $em->getRepository('CinheticPublicBundle:Movies')->getRatioCoverMovies();
         $ratioenabledusers = $em->getRepository('CinheticPublicBundle:User')->getRatioActiveActors();
+        $ratiofilmsactus = $em->getRepository('CinheticPublicBundle:Movies')->getRatioActusMovies();
+        $ratiocinemaseance = $em->getRepository('CinheticPublicBundle:Cinema')->getRatioHasSeance(new \Datetime('now'));
 
 
         $allocine_movies = $this->helper->movielist();
@@ -154,6 +156,8 @@ class MainController extends AbstractController
             'ratioactivemovies' => $ratioactivemovies,
             'ratiocovermovies' => $ratiocovermovies,
             'ratioenabledusers' => $ratioenabledusers,
+            'ratiofilmsactus' => $ratiofilmsactus,
+            'ratiocinemaseance' => $ratiocinemaseance,
             'cinemas' => $cinemas,
             'stats_movies_categories' => $stats_movies_categories,
             'seance' => $seance
