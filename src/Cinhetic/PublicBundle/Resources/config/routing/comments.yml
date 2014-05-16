@@ -19,6 +19,14 @@ comments_create:
     defaults: { _controller: "CinheticPublicBundle:Comments:create" }
     requirements: { _method: post }
 
+comments_validation:
+    pattern:  /validation/{id}/{validate}
+    defaults: { _controller: "CinheticPublicBundle:Comments:validation" }
+
+comments_remove:
+    pattern:  /remove/{id}
+    defaults: { _controller: "CinheticPublicBundle:Comments:remove" }
+
 comments_edit:
     pattern:  /{id}/edit
     defaults: { _controller: "CinheticPublicBundle:Comments:edit" }

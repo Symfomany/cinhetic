@@ -62,6 +62,28 @@ class CommentsManager
     }
 
     /**
+     * Validation
+     * @param Comments $entity
+     * @return bool
+     */
+    public function validation(Comments $entity, $validate){
+        $entity->setState($validate);
+        $this->em->persist($entity);
+        $this->em->flush();
+        return true;
+    }
+
+    /**
+     * Validation
+     * @param Comments $entity
+     * @return bool
+     */
+    public function delete(Comments $entity){
+        $this->processDelete($entity);
+        return true;
+    }
+
+    /**
      * Update movie
      * @param Comments $entity
      * @return bool

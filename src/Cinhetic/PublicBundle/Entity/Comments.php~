@@ -1,14 +1,17 @@
 <?php
 
-namespace Ezap\PublicBundle\Entity;
+namespace Cinhetic\PublicBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
 
 /**
  * Comments
  *
  * @ORM\Table(name="comments", indexes={@ORM\Index(name="user_id", columns={"user_id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Cinhetic\PublicBundle\Repository\CommentsRepository")
  */
 class Comments
 {
@@ -23,18 +26,34 @@ class Comments
 
     /**
      * @var integer
-     *
+     * @Assert\Range(
+     *      min = 1,
+     *      max = 5,
+     *      minMessage = "Votre note doit etre entre 1 et 5",
+     *      maxMessage = "Votre note doit etre entre 1 et 5"
+     * )
      * @ORM\Column(name="note", type="integer", nullable=true)
      */
     private $note;
 
     /**
      * @var string
-     *
+     * @Assert\Length(
+     *      min = "15",
+     *      max = "500",
+     *      minMessage = "Votre contenu doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre contenu ne peut pas être plus long que {{ limit }} caractères"
+     * )
      * @ORM\Column(name="content", type="text", nullable=true)
      */
     private $content;
 
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="state", type="integer", nullable=true)
+     */
+    private $state;
     /**
      * @var \DateTime
      *
@@ -54,9 +73,7 @@ class Comments
 
 
     /**
-     * @var \User
-     *
-     * @ORM\ManyToOne(targetEntity="Movies")
+     * @ORM\ManyToOne(targetEntity="Movies", inversedBy="comments")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="movies_id", referencedColumnName="id")
      * })
@@ -145,11 +162,10 @@ class Comments
 
     /**
      * Set user
-     *
-     * @param \Ezap\PublicBundle\Entity\User $user
+     * @param \Cinhetic\PublicBundle\Entity\User $user
      * @return Comments
      */
-    public function setUser(\Ezap\PublicBundle\Entity\User $user = null)
+    public function setUser(User $user = null)
     {
         $this->user = $user;
 
@@ -159,10 +175,51 @@ class Comments
     /**
      * Get user
      *
-     * @return \Ezap\PublicBundle\Entity\User 
+     * @return \Cinhetic\PublicBundle\Entity\User
      */
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set movie
+     *
+     * @param \Cinhetic\PublicBundle\Entity\Movies $movie
+     * @return Comments
+     */
+    public function setMovie(\Cinhetic\PublicBundle\Entity\Movies $movie = null)
+    {
+        $this->movie = $movie;
+
+        return $this;
+    }
+
+    /**
+     * Get movie
+     *
+     * @return \Cinhetic\PublicBundle\Entity\Movies
+     */
+    public function getMovie()
+    {
+        return $this->movie;
+    }
+
+
+    /**
+     * @return string
+     */
+    public function __toString(){
+        return $this->getId();
+    }
+
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->dateCreated = new \Datetime('now');
+
     }
 }

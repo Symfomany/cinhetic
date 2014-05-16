@@ -94,6 +94,12 @@ class MainController extends AbstractController
         $directors = $em->getRepository('CinheticPublicBundle:Directors')->getCount();
         $cinemas = $em->getRepository('CinheticPublicBundle:Cinema')->getCount();
 
+        $ratiocommentaire = $em->getRepository('CinheticPublicBundle:Comments')->getRatioActiveComment();
+        $ratioactivemovies = $em->getRepository('CinheticPublicBundle:Movies')->getRatioActiveMovies();
+        $ratiocovermovies = $em->getRepository('CinheticPublicBundle:Movies')->getRatioCoverMovies();
+        $ratioenabledusers = $em->getRepository('CinheticPublicBundle:User')->getRatioActiveActors();
+
+
         $allocine_movies = $this->helper->movielist();
 
         $vues = array();
@@ -108,7 +114,7 @@ class MainController extends AbstractController
         }
         
         $stats_movies_categories = $em->getRepository('CinheticPublicBundle:Movies')->getStatsMoviesCategories();
-        
+
         $seance = null;
         if(!empty($seances)){
             shuffle($seances);
@@ -125,6 +131,7 @@ class MainController extends AbstractController
         $params['oauth_access_token'] = $this->container->getParameter('api_twitter_access_token');
         $params['oauth_access_token_secret'] = $this->container->getParameter('api_twitter_access_token_secret');
         $params['callback_url'] = null;
+
         $webservice = $this->get('cinhetic_public.webservices')->build('Twitter', $params);
         $tweets = $webservice->getFeeds('allocine', 7);
         $infos = $webservice->getInfos('allocine');
@@ -143,6 +150,10 @@ class MainController extends AbstractController
             'infos' => $infos,
             'actors' => $actors,
             'directors' => $directors,
+            'ratiocommentaire' => $ratiocommentaire,
+            'ratioactivemovies' => $ratioactivemovies,
+            'ratiocovermovies' => $ratiocovermovies,
+            'ratioenabledusers' => $ratioenabledusers,
             'cinemas' => $cinemas,
             'stats_movies_categories' => $stats_movies_categories,
             'seance' => $seance

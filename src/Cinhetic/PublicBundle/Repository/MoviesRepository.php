@@ -211,6 +211,53 @@ class MoviesRepository extends EntityRepository
             return $query;
     }
 
+    /**
+     * Get Number of Movies
+     */
+    public function getNbMovies(){
+        $query = $this->getEntityManager()
+            ->createQuery(
+                'SELECT COUNT(p.id)
+                    FROM CinheticPublicBundle:Movies p'
+            );
+
+        return $query->getSingleScalarResult();
+
+    }
+
+    /**
+     * Get Ratio of Active Movies
+     */
+    public function getRatioActiveMovies($visible = 1){
+
+        $nb = $this->getNbMovies();
+
+        $nb_criteria = $this->getEntityManager()
+            ->createQuery(
+                'SELECT COUNT(p.id)
+                    FROM CinheticPublicBundle:Movies p
+                    WHERE p.visible = :visible'
+            )->setParameter('visible', $visible)->getSingleScalarResult();
+
+        return floor(((float)$nb_criteria * 100) / (float)$nb);
+    }
+
+    /**
+     * Get Ratio of Active Movies
+     */
+    public function getRatioCoverMovies($cover = 1){
+
+        $nb = $this->getNbMovies();
+
+        $nb_criteria = $this->getEntityManager()
+            ->createQuery(
+                'SELECT COUNT(p.id)
+                    FROM CinheticPublicBundle:Movies p
+                    WHERE p.cover = :cover'
+            )->setParameter('cover', $cover)->getSingleScalarResult();
+
+        return floor(((float)$nb_criteria * 100) / (float)$nb);
+    }
 
     /**
      * Get all Movies order by date release

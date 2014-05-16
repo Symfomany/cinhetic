@@ -37,12 +37,15 @@
             $('#filter').mouseout(function(){
                 if($(this).val().length <= 2){
                     $('#content-wrapper .table-light tr').has('td').fadeIn('medium');
+                    $('.widget-comments .comment').fadeIn('medium');
+
                 }
             });
 
             $('#filter').blur(function(){
                 if($(this).val().length <= 2){
                     $('#content-wrapper .table-light tr').has('td').fadeIn('medium');
+                    $('.widget-comments .comment').fadeIn('medium').fadeIn('medium');
                 }
             });
 
@@ -50,8 +53,11 @@
                 if($('#filter').val().length > 2){
                     $('#content-wrapper .table-light tr').has('td').not(":containsIgnoreCase("+  $('#filter').val() +")").hide();
                     $('#content-wrapper .table-light tr').has('td').filter(":containsIgnoreCase("+  $('#filter').val() +")").show();
+                    $('.widget-comments .comment').not(":containsIgnoreCase("+  $('#filter').val() +")").hide();
+                    $('.widget-comments .comment').filter(":containsIgnoreCase("+  $('#filter').val() +")").show();
                 }else{
                     $('#content-wrapper .table-light tr').has('td').show();
+                    $('.widget-comments .comment').show();
                 }
             });
 
