@@ -175,9 +175,8 @@ class CategoriesController extends AbstractController
         }
 
         return new JsonResponse(true);
-
-
     }
+    
 
     /**
      * Deletes a Categories entity.

@@ -36,6 +36,12 @@
                     <a class="btn btn-warning btn-sm" href="{{ path('directors_edit', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-pencil"></i> Editer</a>
                 </td>
             </tr>
+            {% else %}
+                    <tr><td colspan="5">
+                        <div class="alert alert-danger">
+                            Pas de réalisateurs pour le moment.
+                    </div>
+                    </td></tr>
         {% endfor %}
         </tbody>
     </table>

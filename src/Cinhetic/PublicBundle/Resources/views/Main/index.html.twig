@@ -64,7 +64,7 @@
                     <div class="panel panel-danger panel-dark panel-body-colorful widget-profile">
                         <div class="panel-heading">
                             <div class="widget-profile-bg-icon"><i class="fa fa-film"></i></div>
-                            {% if seance.movies.image is not empty %}
+                            {% if seance.movies.image is defined %}
                                 <img class="widget-profile-avatar" src="{{ base_url ~ imgmovies ~ seance.movies.image }}" alt="...">
                             {% endif %}
                             <div class="widget-profile-header">

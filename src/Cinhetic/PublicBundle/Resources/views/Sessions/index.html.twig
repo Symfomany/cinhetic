@@ -33,6 +33,12 @@
 
                 </td>
             </tr>
+        {% else %}
+            <tr><td colspan="4">
+                <div class="alert alert-danger">
+                    Pas de séances pour le moment.
+            </div>
+            </td></tr>
         {% endfor %}
         </tbody>
     </table>

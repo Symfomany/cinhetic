@@ -93,7 +93,7 @@ parameters:
 twig:
     globals:
 #      base_url: 'http://94.23.5.209/demo/web/'
-      base_url: 'http://localhost/clone/cinhetic/web/'
+      base_url: 'http://www.cinhetic.ju/'
       imgsite: '/bundles/movies/images/'
       imgmovies: 'uploads/movies/'
       imgactors: 'uploads/actors/'

@@ -56,9 +56,10 @@ class CinemaRepository extends EntityRepository
                     JOIN s.cinema c
                     WHERE s.dateSession >= :date
                     GROUP BY c.id'
-            )->setParameter('date', $date)->getSingleScalarResult();
+            )->setParameter('date', $date)->getResult();
 
-        return floor(((float)$nb_criteria * 100) / (float)$nb);
+
+        return floor((count($nb_criteria) * 100) / (float)$nb);
 
     }
 

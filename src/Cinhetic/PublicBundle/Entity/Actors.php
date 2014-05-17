@@ -16,6 +16,7 @@ use JMS\Serializer\Annotation\Expose;
  * @ORM\Entity(repositoryClass="Cinhetic\PublicBundle\Repository\ActorsRepository")
  * @UniqueEntity(fields={"firstname","lastname"}, message="Le titre est deja pris!")
  * @ORM\HasLifecycleCallbacks
+ * @Gedmo\SoftDeleteable(fieldName="dateDeleted")
  */
 class Actors implements UploadableInterface
 {
@@ -122,6 +123,13 @@ class Actors implements UploadableInterface
      * @ORM\Column(name="recompenses", type="text", nullable=true)
      */
     private $recompenses;
+
+    /**
+     * @var \DateTime
+     * @Expose
+     * @ORM\Column(name="date_deleted", type="datetime", nullable=true)
+     */
+    private $dateDeleted;
 
     /**
      * @var \DateTime
@@ -396,6 +404,28 @@ class Actors implements UploadableInterface
         return $this->dateCreated;
     }
 
+    /**
+     * Set dateDeleted
+     *
+     * @param \DateTime $dateDeleted
+     * @return Actors
+     */
+    public function setDateDeleted($dateDeleted)
+    {
+        $this->dateDeleted = $dateDeleted;
+
+        return $this;
+    }
+
+    /**
+     * Get dateDeleted
+     *
+     * @return \DateTime 
+     */
+    public function getDateDeleted()
+    {
+        return $this->dateCreated;
+    }
     /**
      * Add movies
      *

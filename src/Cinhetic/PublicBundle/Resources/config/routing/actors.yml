@@ -29,6 +29,10 @@ actors_delete:
     defaults: { _controller: "CinheticPublicBundle:Actors:delete" }
     requirements: { _method: post|delete }
 
+actors_archived:
+    pattern:  /archived/{id}
+    defaults: { _controller: "CinheticPublicBundle:Actors:archived" }
+
 
 # API Actors
 actors_api_all:

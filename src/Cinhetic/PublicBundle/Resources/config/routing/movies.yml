@@ -45,6 +45,10 @@ movies_delete_link:
     pattern:  /{id}/delete
     defaults: { _controller: "CinheticPublicBundle:Movies:deletelink" }
 
+movies_archived:
+    pattern:  /archived/{id}
+    defaults: { _controller: "CinheticPublicBundle:Movies:archived" }
+
 
 # API Movies
 movies_api_all:

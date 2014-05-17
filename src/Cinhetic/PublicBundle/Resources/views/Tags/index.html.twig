@@ -24,6 +24,12 @@
 
                 </td>
             </tr>
+            {% else %}
+                    <tr><td colspan="2">
+                        <div class="alert alert-danger">
+                            Pas de tags pour le moment.
+                    </div>
+                    </td></tr>
         {% endfor %}
         </tbody>
     </table>

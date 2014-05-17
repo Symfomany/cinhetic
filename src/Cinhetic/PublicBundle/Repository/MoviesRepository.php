@@ -177,16 +177,13 @@ class MoviesRepository extends EntityRepository
     public function getActiveMoviesBuilder()
     {
         $queryBuilder = $this->getEntityManager()
-            ->createQueryBuilder()
+            ->createQueryBuilder('m')
             ->select('m')
             ->from('Cinhetic\PublicBundle\Entity\Movies', 'm')
-            ->where('m.visible = 1')
-            ->andWhere('m.dateRelease <= :current')
-            ->orderBy('m.id', 'DESC')
-            ->setParameter('current' , new \Datetime('midnight'));
+            ->orderBy('m.id', 'DESC');
 
 
-        return $queryBuilder->getQuery()->getResult();
+        return $queryBuilder;
     }
 
     /**

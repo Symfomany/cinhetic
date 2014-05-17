@@ -13,6 +13,7 @@ use Cinhetic\PublicBundle\Entity\Movies;
 use Cinhetic\PublicBundle\Form\MoviesType;
 use FOS\RestBundle\Controller\Annotations as Rest;
 
+
 /**
  * Class MoviesController
  * @package Cinhetic\PublicBundle\Controller
@@ -40,6 +41,9 @@ class MoviesController extends AbstractController
     public function searchAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
+        $filters = $em->getFilters();
+        $filters->disable('softdeleteable');
+
         $paginator = $this->get('knp_paginator');
         $movies = $em->getRepository('CinheticPublicBundle:Movies')->findAll();
         $ajax = $request->query->get('ajax');
@@ -113,10 +117,33 @@ class MoviesController extends AbstractController
         $entities = $em->createQuery(
             'SELECT a
             FROM CinheticPublicBundle:Movies a
+            WHERE a.dateRelease <= :now
+            ORDER BY a.title ASC'
+        )->setParameter('now', new \Datetime('midnight'));
+
+        $filters = $em->getFilters();
+        $filters->disable('softdeleteable');
+
+        $em = $this->getDoctrine()->getManager();
+        $entities_next = $em->createQuery(
+            'SELECT a
+            FROM CinheticPublicBundle:Movies a
+            WHERE a.dateRelease >= :now
+            ORDER BY a.title ASC'
+        )->setParameter('now', new \Datetime('midnight'));
+
+        $em = $this->getDoctrine()->getManager();
+        $entities_archived = $em->createQuery(
+            'SELECT a
+            FROM CinheticPublicBundle:Movies a
             ORDER BY a.title ASC'
         );
+
+
         return $this->render('CinheticPublicBundle:Movies:index.html.twig', array(
-            'entities' => $this->paginate($entities, $request->query->get('display',5))
+            'entities' => $this->paginate($entities, $request->query->get('display',5)),
+            'entities_next' => $this->paginate($entities_next, $request->query->get('display',5)),
+            'entities_archived' => $this->paginate($entities_archived, $request->query->get('display',5)),
         ));
     }
 
@@ -401,6 +428,21 @@ class MoviesController extends AbstractController
     }
 
 
+    /**
+     * Validate a movies
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     */
+    public function archivedAction(Movies $id)
+    {
+
+        if($this->get('cinhetic_public.manager_movies')->delete($id) == true){
+            return new JsonResponse(true);
+        }
+
+        return new JsonResponse(false);
+    }
 
     /************************************************************************************************************
      ***************************************************************** API Override Call ********************************************

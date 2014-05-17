@@ -14,6 +14,7 @@
                 <th>{% if entities.isSorted('a.city') and app.request.query.get('direction') == "desc" %} <i class="fa fa-arrow-circle-up"></i>{% else %}<i class="fa fa-arrow-circle-down"></i>{% endif %} {{ knp_pagination_sortable(entities, 'Ville', 'a.city') }}</th>
                 <th>Biographie</th>
                 <th>Films</th>
+                <th>Archivé</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -32,10 +33,20 @@
                 <td>{{ entity.biography|raw|truncate(200,true,'...') }}</td>
                 <td class="text-primary"><p class="text-center">{{ entity.movies|length|default('0') }} <i class="glyphicon glyphicon-download-alt"></i></p></td>
                 <td>
+                    <input type="checkbox" data-id="{{ entity.id }}" data-url="{{ path('actors_archived', {'id' : entity.id }) }}" class="enabled" data-class="switcher-primary"
+                    {% if entity.dateDeleted is not empty %} checked="checked" {% endif %}>
+                </td>
+                <td>
                         <a  class="btn btn-primary btn-sm" href="{{ path('actors_show', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-search"></i> Voir</a>
                         <a  class="btn btn-warning btn-sm" href="{{ path('actors_edit', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-pencil"></i> Editer</a>
                 </td>
             </tr>
+            {% else %}
+                    <tr><td colspan="7">
+                        <div class="alert alert-danger">
+                            Pas d'acteurs pour le moment.
+                    </div>
+                    </td></tr>
         {% endfor %}
         </tbody>
     </table>
@@ -58,3 +69,26 @@
     </a>
 
     {% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        init.push(function () {
+            $('.enabled').switcher();
+            $('.switcher-primary :checkbox').click(function () {
+                $obj = $(this);
+                    $.ajax({
+                        url: $(this).attr('data-url'),
+                        type: "get",
+                        dataType: "json",
+                        data: {'id' : $(this).attr('data-id')},
+                        success: function (data) {
+                           $obj.parents('tr').fadeOut('slow');
+                        }
+                    }); 
+
+            });
+        });
+    </script>
+{% endblock %}

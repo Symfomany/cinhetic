@@ -5,27 +5,35 @@
 
 {% block content %}
 <div class="table-light">
-    <table class="records_list  table table-striped">
+    <table data-url='{{  path("cinema_position") }}' class="records_list  table table-striped">
         <thead>
             <tr>
                 <th>{% if entities.isSorted('a.title') and app.request.query.get('direction') == "desc" %} <i class="fa fa-arrow-circle-up"></i>{% else %}<i class="fa fa-arrow-circle-down"></i>{% endif %} {{ knp_pagination_sortable(entities, 'Titre', 'a.title') }}</th>
                 <th>{% if entities.isSorted('a.ville') and app.request.query.get('direction') == "desc" %} <i class="fa fa-arrow-circle-up"></i>{% else %}<i class="fa fa-arrow-circle-down"></i>{% endif %} {{ knp_pagination_sortable(entities, 'Ville', 'a.ville') }}</th>
                 <th>Séances</th>
+                <th>Position</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
-            <tr>
+            <tr id="cinema_{{ entity.id }}">
                 <td class="text-success"><a href="{{ path('cinema_show', {'id' : entity.id}) }}">{{ entity.title }}</a></td>
                 <td><a href="{{ path('movies_cities', {'ville': entity.ville }) }}"><span class="badge"> <i class="glyphicon glyphicon-map-marker"></i> {{ entity.ville }}</span></a></td>
                 <td class="text-primary"><i class="fa fa-play"></i> {{ entity.sessions|length|default('0') }} séances</td>
+                <td><i class="fa fa-arrows"></i></td>
                 <td>
                         <a class="btn btn-primary btn-sm" href="{{ path('cinema_show', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-search"></i> Voir</a>
 
                         <a class="btn btn-warning btn-sm" href="{{ path('cinema_edit', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-pencil"></i> Editer</a>
                 </td>
             </tr>
+            {% else %}
+                    <tr><td colspan="7">
+                        <div class="alert alert-danger">
+                            Pas de cinémas pour le moment.
+                    </div>
+                    </td></tr>
         {% endfor %}
         </tbody>
     </table>
@@ -49,3 +57,58 @@
     </a>
 
     {% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $( document ).ready(function() {
+
+            $('#content-wrapper table.table tbody td, #content-wrapper table.table tbody th', '#content-wrapper table.table').each(function () {
+                var cell = $(this);
+                cell.width(cell.width());
+            });
+
+            $('#content-wrapper table.table tbody').sortable({
+                items: '> tr',
+                forcePlaceholderSize: true,
+                dropOnEmpty: false,
+                distance: 45,
+                revert: 150,
+                delay: 300,
+                handle: ".fa-arrows",
+                placeholder:'must-have-class',
+                opacity: 0.6,
+                update: function(event, ui) {
+                    var info =  $(this).sortable("serialize");
+                    $.ajax({
+                        type: "POST",
+                        url: $('#content-wrapper table.table').attr('data-url'),
+                        data: {"datas" : info},
+                        success: function(){
+                            $('#content-wrapper table.table').effect("highlight", {}, 3000); 
+                        }
+                    });
+
+                },
+                start: function (event, ui) {
+                    // Build a placeholder cell that spans all the cells in the row
+                    var cellCount = 0;
+                    $('td, th', ui.helper).each(function () {
+                        // For each TD or TH try and get it's colspan attribute, and add that or 1 to the total
+                        var colspan = 1;
+                        var colspanAttr = $(this).attr('colspan');
+                        if (colspanAttr > 1) {
+                            colspan = colspanAttr;
+                        }
+                        cellCount += colspan;
+                    });
+
+                    // Add the placeholder UI - note that this is the item's content, so TD rather thanTR
+                    ui.placeholder.html('<td colspan="' + cellCount + '">&nbsp;</td>');
+                }
+            }).disableSelection();
+
+        });
+    </script>
+{% endblock %}

@@ -80,6 +80,15 @@ class MoviesManager
 
 
     /**
+     * Validation
+     * @param Movies $entity
+     * @return bool
+     */
+    public function delete(Movies $entity){
+        $this->processDelete($entity);
+        return true;
+    }
+    /**
      * Remove movies
      * @param Movies $id
      */

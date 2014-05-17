@@ -120,11 +120,11 @@ form .btn.btn-labeled, form button[type="submit"]{
     border-bottom: none!important;
 }
 
+
 #content-wrapper select#display{
     padding: 0px;
     cursor: ns-resize;
     width: 40px;
-    padding: 16px;
 }
 
 .fa-arrows{
@@ -132,8 +132,14 @@ form .btn.btn-labeled, form button[type="submit"]{
 
 }
 
-.must-have-class{
+ul.dropdown-menu{
+    border: 1px solid #eee
 }
+
+.widget-rating li{
+    padding: 3px !important;
+}
+
  @media (min-width: 300px) and (max-width: 768px) {
      h1,h2,h3{
          font-size: 23px;

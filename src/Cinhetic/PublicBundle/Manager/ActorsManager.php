@@ -62,21 +62,28 @@ class ActorsManager
         $this->request = $request;
     }
 
+
     /**
-     * Update movie
+     * Validation
      * @param Actors $entity
      * @return bool
      */
-    public function validation($form, Actors $entity){
+    public function delete(Actors $entity){
+        $this->processDelete($entity);
+        return true;
+    }
 
-        $form->handleRequest($this->request);
 
-        if ($form->isValid()) {
-            $this->processPersist($entity);
-            return true;
-        }
-
-        return false;
+    /**
+     * Validation
+     * @param Comments $entity
+     * @return bool
+     */
+    public function validate(Actors $entity, $validate){
+        $entity->set($validate);
+        $this->em->persist($entity);
+        $this->em->flush();
+        return true;
     }
 
     /**

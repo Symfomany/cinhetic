@@ -5,6 +5,7 @@ namespace Cinhetic\PublicBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Cinhetic\PublicBundle\Entity\Actors;
 use FOS\RestBundle\Controller\Annotations as Rest;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 
 
@@ -171,6 +172,21 @@ class ActorsController extends AbstractController
     }
 
 
+    /**
+     * Validate a actors
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     */
+    public function archivedAction(Actors $id)
+    {
+
+        if($this->get('cinhetic_public.manager_actors')->delete($id) == true){
+            return new JsonResponse(true);
+        }
+
+        return new JsonResponse(false);
+    }
 
     /************************************************************************************************************
      ***************************************************************** API Override Call ********************************************
