@@ -4,7 +4,30 @@
 {% block titlepage %}<i class="fa fa-plus"></i>&nbsp;&nbsp;Création d'acteur{% endblock %}
 
 {% block content %}
-    {{ form(form) }}
+     
+    <div class="row">
+        <div class="col-sm-3">
+            {{ form_row(form.firstname)}}
+        </div>
+        <div class="col-sm-3">
+            {{ form_row(form.lastname)}}
+        </div>
+        <div class="col-sm-3">
+            {{ form_row(form.dob)}}
+        </div>
+        <div class="col-sm-3">
+            {{ form_row(form.city)}}
+        </div>
+    </div>
+     <div class="row">
+        <div class="col-sm-6">
+            {{ form_row(form.nationality)}}
+        </div>
+        <div class="col-sm-6">
+            {{ form_row(form.file)}}
+        </div>
+    </div>
+    {{ form_rest(form) }} 
 {% endblock %}
 
 
@@ -17,7 +40,10 @@
                             allowClear: true,
                             placeholder: "Selectionnez..."
                 });
-      	  $('.datepick').datepicker();
+      	  $('.datepick').datepicker({
+            todayBtn: "linked",
+            format: 'yyyy-mm-dd'
+           });
            
     </script>
 {% endblock %}

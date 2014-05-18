@@ -108,7 +108,7 @@ class DirectorsManager
 
         ));
 
-        $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning"), 'label' => 'Créer ce réalisateur'));
+        $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning btn-labeled"), 'label' => 'Créer ce réalisateur'));
 
         return $form->getForm();
     }
@@ -126,7 +126,7 @@ class DirectorsManager
             "attr" => array('id' => "form_director", "novalidate" => "novalidate")
         ));
 
-        $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning"), 'label' => 'Modifier ce réalisateur'));
+        $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning btn-labeled"), 'label' => 'Modifier ce réalisateur'));
 
         return $form->getForm();
     }
@@ -142,7 +142,7 @@ class DirectorsManager
         return $this->formFactory->createBuilder()
             ->setAction($this->router->generate('directors_delete', array('id' => $id->getId())))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array('label' => 'Supprimer', 'attr' => array('class' => 'btn btn-danger')))
             ->getForm();
     }
 

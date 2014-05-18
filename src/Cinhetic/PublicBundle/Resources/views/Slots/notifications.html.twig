@@ -1,59 +1,35 @@
 {% block notifications %}
-    <a href="#notifications" class="dropdown-toggle" data-toggle="dropdown">
-        <span class="label">5</span>
-        <i class="nav-icon fa fa-bell"></i>
-        <span class="small-screen-text">Notifications</span>
+    <a href="#messages" class="dropdown-toggle" data-toggle="dropdown">
+        <span class="label">{{ entities|length }}</span>
+        <i class="nav-icon fa fa-comments"></i>
+        <span class="small-screen-text">Commentaires</span>
     </a>
 
-                                <!-- NOTIFICATIONS -->
-                                
-                                <!-- Javascript -->
-                                <script>
-                                    init.push(function () {
-                                        $('#main-navbar-notifications').slimScroll({ height: 250 });
-                                    });
-                                </script>
-                                <!-- / Javascript -->
 
-                                <div class="dropdown-menu widget-notifications no-padding" style="width: 300px">
-                                    <div class="notifications-list" id="main-navbar-notifications">
+<!-- Javascript -->
+<script>
+    init.push(function () {
+        $('#main-navbar-messages').slimScroll({ height: 250 });
+    });
+</script>
 
-                                        <div class="notification">
-                                            <div class="notification-title text-danger">SYSTEM</div>
-                                            <div class="notification-description"><strong>Error 500</strong>: Syntax error in index.php at line <strong>461</strong>.</div>
-                                            <div class="notification-ago">12h ago</div>
-                                            <div class="notification-icon fa fa-hdd-o bg-danger"></div>
-                                        </div> <!-- / .notification -->
+  
+<div class="dropdown-menu widget-messages-alt no-padding" style="width: 300px;">
+    <div class="messages-list" id="main-navbar-messages">
 
-                                        <div class="notification">
-                                            <div class="notification-title text-info">STORE</div>
-                                            <div class="notification-description">You have <strong>9</strong> new orders.</div>
-                                            <div class="notification-ago">12h ago</div>
-                                            <div class="notification-icon fa fa-truck bg-info"></div>
-                                        </div> <!-- / .notification -->
+        {% for entity in entities %}
+            <div class="message">
+                <a href="#" class="message-subject">{{ entity.content }}</a>
+                <div class="message-description">
+                    from <a href="#">Robert Jang</a>
+                    &nbsp;&nbsp;·&nbsp;&nbsp;
+                    {{ entity.dateCreated|ago }}
+                </div>
+            </div> <!-- / .message -->
+        {% endfor %}
 
-                                        <div class="notification">
-                                            <div class="notification-title text-default">CRON DAEMON</div>
-                                            <div class="notification-description">Job <strong>"Clean DB"</strong> has been completed.</div>
-                                            <div class="notification-ago">12h ago</div>
-                                            <div class="notification-icon fa fa-clock-o bg-default"></div>
-                                        </div> <!-- / .notification -->
+    </div> <!-- / .messages-list -->
+    <a href="{{ path('comments') }}" class="messages-link">Plus de commentaires</a>
+</div> <!-- / .dropdown-menu -->
 
-                                        <div class="notification">
-                                            <div class="notification-title text-success">SYSTEM</div>
-                                            <div class="notification-description">Server <strong>up</strong>.</div>
-                                            <div class="notification-ago">12h ago</div>
-                                            <div class="notification-icon fa fa-hdd-o bg-success"></div>
-                                        </div> <!-- / .notification -->
-
-                                        <div class="notification">
-                                            <div class="notification-title text-warning">SYSTEM</div>
-                                            <div class="notification-description"><strong>Warning</strong>: Processor load <strong>92%</strong>.</div>
-                                            <div class="notification-ago">12h ago</div>
-                                            <div class="notification-icon fa fa-hdd-o bg-warning"></div>
-                                        </div> <!-- / .notification -->
-
-                                    </div> <!-- / .notifications-list -->
-                                    <a href="#" class="notifications-link">MORE NOTIFICATIONS</a>
-                                </div> <!-- / .dropdown-menu -->
 {% endblock %}

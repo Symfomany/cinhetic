@@ -3,5 +3,13 @@
 {% block titlepage %}<i class="fa fa-plus"></i>&nbsp;&nbsp;Créer un cinéma{% endblock %}
 
 {% block content %}
+	<div class="row">
+        <div class="col-sm-6">
+            {{ form_row(form.title) }}
+        </div>
+        <div class="col-sm-6">
+            {{ form_row(form.ville) }}
+        </div>
+	</div>
     {{ form(form) }}
 {% endblock %}

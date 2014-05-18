@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Cinhetic\PublicBundle\Entity\Actors;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Cinhetic\PublicBundle\Util\WikiCreole;
 
 
 
@@ -16,6 +17,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
  */
 class ActorsController extends AbstractController
 {
+
 
     /**
      * Lists all Actors entities.
@@ -122,14 +124,34 @@ class ActorsController extends AbstractController
         $breadcrumbs->addItem("Acteurs", $this->generateUrl('actors'));
         $breadcrumbs->addItem("Voir");
 
-        $deleteForm = $this->get('cinhetic_public.manager_actors')->deleteForm($id);
+        /*
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "http://en.wikipedia.org/w/api.php?action=query&titles=".$id->getFullname()."&prop=revisions&rvprop=content&rvsection=0");
+        curl_setopt($ch, CURLOPT_USERAGENT, 'MonBot/1.0 (http://symfony.3wa.fr/)');
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $result = curl_exec($ch);
+        curl_close($ch);
+        */
+        /*
+        $client = $this->get('guzzle.client');
+        $client->setUserAgent('MonBot/1.0 (http://symfony.3wa.fr/)');
+        $response = $client->get("http://fr.wikipedia.org/w/api.php?action=query&titles=".$id->getFullname()."&prop=revisions&rvprop=content&rvsection=0&format=json")->send();
+        $response =  $response->json();
 
+        $mark = new WikiCreole();
+        if(!empty($response) && isset($response['query']['pages'])){
+            $wiki = $mark->parse(array_shift($response['query']['pages'])['revisions'][0]['*']);
+        }else{
+            $wiki = "";
+        }
+        */
+    
         return $this->render('CinheticPublicBundle:Actors:show.html.twig', array(
             'entity'      => $id,
             'movies'      => $this->paginate($id->getMovies()),
-            'delete_form' => $deleteForm->createView(),
         ));
     }
+
 
 
     /**

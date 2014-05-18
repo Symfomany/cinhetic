@@ -14,12 +14,36 @@
                     <div class="modal-body">
                         <img src="{{ base_url ~ imgactors ~ entity.image }}" alt="...">
                     </div>
-                </div> <
+                </div>
             </div>
         </div>
 
     {% endif %}
-    {{ form(edit_form) }}
+
+      <div class="row">
+        <div class="col-sm-3">
+            {{ form_row(edit_form.firstname)}}
+        </div>
+        <div class="col-sm-3">
+            {{ form_row(edit_form.lastname)}}
+        </div>
+        <div class="col-sm-3">
+            {{ form_row(edit_form.dob)}}
+        </div>
+        <div class="col-sm-3">
+            {{ form_row(edit_form.city)}}
+        </div>
+    </div>
+     <div class="row">
+        <div class="col-sm-6">
+            {{ form_row(edit_form.nationality)}}
+        </div>
+        <div class="col-sm-6">
+            {{ form_row(edit_form.file)}}
+        </div>
+    </div>
+
+    {{ form_rest(edit_form) }}
     {{ form(delete_form) }}
 {% endblock %}
 
@@ -34,7 +58,10 @@
                             allowClear: true,
                             placeholder: "Selectionnez..."
                 });
-          $('.datepick').datepicker();
+          $('.datepick').datepicker({
+            todayBtn: "linked",
+            format: 'yyyy-mm-dd'
+           });
            
     </script>
 {% endblock %}

@@ -4,6 +4,11 @@
 
 
 {% block content %}
+    <div class="row well">
+        <a href="{{ path('directors_new') }}" class="pull-right btn btn-primary btn-md btn-labeled">
+            <span class="btn-label icon fa fa-plus"></span>  Créer un réalisateur
+        </a>
+    </div>
 <div class="table-light">
 
     <table class="records_list  table table-striped">
@@ -27,7 +32,7 @@
                     {% endif %}
                 </td>
                 <td><a href="{{ path('directors_show', { 'id': entity.id }) }}">{{ entity.firstname }} {{ entity.lastname }}</a></td>
-                <td>{{ entity.biography }}</td>
+                <td>{{ entity.biography|striptags|truncate(200,true,'...') }}</td>
                 <td>
                     <span data-rating="{{ entity.note }}" class="rating"></span>
                 </td>
@@ -57,9 +62,25 @@
             </div>
         </div>
 </div>
-        <hr />
-            <a class="btn btn-danger" href="{{ path('directors_new') }}">
-                Créer un nouveau réalisateur
-            </a>
 
     {% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <style type="text/css" media="screen">
+        
+         @media only screen and (max-width: 800px) {
+           table.table td:nth-child(1), table.table td:nth-child(3),table.table td:nth-child(4),table.table td:nth-child(0),table td:nth-child(6),
+            table.table th:nth-child(6),table.table th:nth-child(1),table.table th:nth-child(3),table.table th:nth-child(4),table.table th:nth-child(0)
+             {display: none;}
+         }
+         
+        @media only screen and (max-width: 640px) {
+            table.table td:nth-child(3),table.table td:nth-child(6)
+            table.table th:nth-child(3),table.table th:nth-child(6)
+             {display: none;}
+        } 
+
+    </style>
+{% endblock %} 

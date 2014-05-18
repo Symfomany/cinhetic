@@ -4,5 +4,13 @@
 {% block titlepage %}<i class="fa fa-pencil"></i>&nbsp;&nbsp;Créer une categorie{% endblock %}
 
 {% block content %}
-    {{ form(form) }}
+		<div class="row">
+	        <div class="col-sm-6">
+	            {{ form_row(form.title) }}
+	        </div>
+	        <div class="col-sm-6">
+	            {{ form_row(form.parent) }}
+	        </div>
+    	</div>
+    {{ form_rest(form) }}
 {% endblock %}

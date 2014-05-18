@@ -59,7 +59,6 @@
             </div>
             <div class="col-md-4">
 
-
                {% if seance is not empty %}
                     <div class="panel panel-danger panel-dark panel-body-colorful widget-profile">
                         <div class="panel-heading">
@@ -68,8 +67,9 @@
                                 <img class="widget-profile-avatar" src="{{ base_url ~ imgmovies ~ seance.movies.image }}" alt="...">
                             {% endif %}
                             <div class="widget-profile-header">
-                                <span>{{ seance.movies.title }}</span><br>
+                                <span>{% if seance.movies.id is defined %}{{ seance.movies.title }}{% endif %}</span><br>
                                 <h5>{{ seance.cinema.title }} - {{ seance.cinema.ville }}</h5>
+                                <h5 class="pull-right"><i class="fa fa-calendar"></i> Date de sortie: <i>{{ seance.movies.dateRelease|date('d/m/Y') }}</i></h5>
                             </div>
                         </div> <!-- / .panel-heading -->
                         <div class="panel-body">
@@ -322,7 +322,12 @@
                                             <div class="comment">
                                                 <div class="comment-body">
                                                     <div class="comment-by">
-                                                       {% if comment.user.id is defined %} <a href="#" title="">{{ comment.user.username }}</a> sur le film <a href="#" title="">{{ comment.movie.title }}</a>{%  endif  %}
+                                                       {% if comment.user.id is defined %} 
+                                                            <a href="#" title="">{{ comment.user.username|truncate(25,"...",true) }}</a> 
+                                                       {%  endif  %}
+                                                       {% if comment.movie.title is defined %} 
+                                                        sur le film <a href="#" title="">{{ comment.movie.title }}</a>
+                                                       {%  endif  %}
                                                     </div>
                                                     <div class="comment-text">
                                                         {{ comment.content }}
@@ -415,3 +420,22 @@
         </div>
     </div>
 {% endblock %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <style type="text/css" media="screen">
+        
+         @media only screen and (max-width: 800px) {
+            #tweets_bloc > div.panel-body > table > tbody > tr > td:nth-child(1)
+             {display: none;}
+         }
+         
+        @media only screen and (max-width: 640px) {
+             #tweets_bloc > div.panel-body > table > tbody > tr > td:nth-child(1)
+            {display: none;}
+        } 
+
+    </style>
+{% endblock %} 

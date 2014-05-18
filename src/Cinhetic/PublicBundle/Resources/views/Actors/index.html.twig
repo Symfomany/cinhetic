@@ -4,6 +4,12 @@
 
 
 {% block content %}
+
+    <div class="row well">
+        <a href="{{ path('actors_new') }}" class="pull-right btn btn-primary btn-md btn-labeled">
+            <span class="btn-label icon fa fa-plus"></span>  Créer un acteur
+        </a>
+    </div>
 <div class="table-light">
 
     <table class="records_list  table table-striped">
@@ -30,7 +36,7 @@
                 </td>
                 <td><a href="{{ path('actors_show', { 'id': entity.id }) }}">{{ entity.firstname }} {{ entity.lastname }}</a></td>
                 <td>{{ entity.city }}</td>
-                <td>{{ entity.biography|raw|truncate(200,true,'...') }}</td>
+                <td>{{ entity.biography|striptags|truncate(200,true,'...') }}</td>
                 <td class="text-primary"><p class="text-center">{{ entity.movies|length|default('0') }} <i class="glyphicon glyphicon-download-alt"></i></p></td>
                 <td>
                     <input type="checkbox" data-id="{{ entity.id }}" data-url="{{ path('actors_archived', {'id' : entity.id }) }}" class="enabled" data-class="switcher-primary"
@@ -62,13 +68,29 @@
             </div>
         </div>
 </div>
-    <hr />
-
-    <a href="{{ path('actors_new') }}" class="btn btn-danger">
-        <i class="glyphicon glyphicon-plus"></i>  Créer un nouveau acteur
-    </a>
 
     {% endblock %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <style type="text/css" media="screen">
+        
+         @media only screen and (max-width: 800px) {
+           table.table td:nth-child(1), table.table td:nth-child(3),table.table td:nth-child(4),table.table td:nth-child(5),table.table td:nth-child(0),table td:nth-child(6),
+            table.table th:nth-child(6),table.table th:nth-child(1),table.table th:nth-child(3),table.table th:nth-child(4),table.table th:nth-child(5),table.table th:nth-child(0)
+             {display: none;}
+         }
+         
+        @media only screen and (max-width: 640px) {
+            table.table td:nth-child(3),table.table td:nth-child(5),table.table td:nth-child(6)
+            table.table th:nth-child(3),table.table th:nth-child(5),table.table th:nth-child(6)
+             {display: none;}
+        } 
+
+    </style>
+{% endblock %} 
 
 
 {% block javascripts %}

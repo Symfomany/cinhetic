@@ -13,6 +13,8 @@ use Cinhetic\PublicBundle\Entity\Comments;
  */
 class CommentsController extends AbstractController
 {
+
+
     /**
      * Lists all Comments entities.
      * @return \Symfony\Component\HttpFoundation\Response
@@ -242,5 +244,19 @@ class CommentsController extends AbstractController
 
         return $this->redirect($this->generateUrl('comments'));
     }
+
+    /**
+     * Lists all Comments entities.
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function commentsAction()
+    {
+        $entities = $this->getRepository('Comments')->findBy(array(), array('id' => 'DESC'), 7);
+
+        return $this->render('CinheticPublicBundle:Slots:notifications.html.twig', array(
+            'entities' => $entities
+        ));
+    }
+
 
 }

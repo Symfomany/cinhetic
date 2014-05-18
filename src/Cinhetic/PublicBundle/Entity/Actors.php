@@ -68,7 +68,7 @@ class Actors implements UploadableInterface
     /**
      * @var string
      * @Expose
-     * @ORM\Column(name="dob", type="string", nullable=true)
+     * @ORM\Column(name="dob", type="date", nullable=true)
      */
     private $dob;
 
@@ -243,6 +243,11 @@ class Actors implements UploadableInterface
         return $this->lastname;
     }
 
+
+    public function getFullname(){
+
+        return ucfirst($this->firstname)."_".ucfirst($this->lastname);
+    }
     /**
      * Set dob
      *
@@ -563,6 +568,35 @@ class Actors implements UploadableInterface
         if (null !== $this->file) {
             $this->image = $this->file->getClientOriginalName();
         }
+    }
+
+
+    /**
+     * Get age of user
+     * @return null|string
+     */
+    public function getAge()
+    {
+        if ($dob = $this->getDob()) {
+            $now = new \Datetime('now');
+            $today['month'] = $now->format('m');
+            $today['day'] = $now->format('d');
+            $today['year'] = $now->format('Y');
+
+            $years = $today['year'] - $dob->format('Y');
+
+            if ($today['month'] <= $dob->format('m')) {
+                if ($dob->format('m') == $today['month']) {
+                    if ($dob->format('d') > $today['day'])
+                        $years--;
+                } else
+                    $years--;
+            }
+
+            return $years;
+        }
+
+        return null;
     }
 
 

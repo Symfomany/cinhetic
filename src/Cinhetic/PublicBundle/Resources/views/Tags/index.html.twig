@@ -4,7 +4,11 @@
 
 
 {% block content %}
-
+    <div class="row well">
+        <a href="{{ path('tags_new') }}" class="pull-right btn btn-primary btn-md btn-labeled">
+            <span class="btn-label icon fa fa-plus"></span>  Créer un tag
+        </a>
+    </div>
     <div class="table-light">
     <table class="records_list  table table-striped">
         <thead>
@@ -45,10 +49,5 @@
             </div>
         </div>
 </div>
-    <hr />
+{% endblock %}
 
-    <a class="btn btn-danger" href="{{ path('tags_new') }}">
-        <i class="glyphicon glyphicon-plus"></i>  Créer un tag
-    </a>
-
-    {% endblock %}

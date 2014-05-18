@@ -1,16 +1,5 @@
 $(function () {
     $('#flashdatas .alert').delay(5000).slideUp('fast');
-    $('#search_input').focus(function(){
-            $('#form_search').stop(true,true).animate({
-                'width': '600px'
-            });
-    });
- $('#search_input').blur(function(){
-            $('#form_search').stop(true,true).animate({
-                'width': '315px'
-            });
-    });
-
 
     if ($("#search_page_ajax").length > 0) {
         $("#search_page_ajax").autocomplete({
@@ -144,7 +133,7 @@ $(function () {
     };
 
     var search = $('#search_input').val();
-    $("#listmovies *").highlight(search, "highlight");
+    $('#search_input').parents("#listmovies *").highlight(search, "highlight");
 
 
     $('.ishome').click(function (evt) {
@@ -200,6 +189,7 @@ $(function () {
         }, 600);
         return false;
     });
+    
 
     $('.alert-success').delay(5000).slideUp('fast');
 

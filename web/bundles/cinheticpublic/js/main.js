@@ -1,16 +1,5 @@
 $(function () {
     $('#flashdatas .alert').delay(5000).slideUp('fast');
-    $('#search_input').focus(function(){
-            $('#form_search').stop(true,true).animate({
-                'width': '600px'
-            });
-    });
- $('#search_input').blur(function(){
-            $('#form_search').stop(true,true).animate({
-                'width': '50%'
-            });
-    });
-
 
     if ($("#search_page_ajax").length > 0) {
         $("#search_page_ajax").autocomplete({
@@ -105,50 +94,6 @@ $(function () {
 */
 
 
-    if ($("#Cinhetic_publicbundle_actors_city, #Cinhetic_publicbundle_cinema[ville]").length > 0) {
-        $("#Cinhetic_publicbundle_actors_city, #Cinhetic_publicbundle_cinema[ville]").autocomplete({
-            minLength: 2,
-            scrollHeight: 220,
-            source: function(req, response) {
-                return $.ajax({
-                    url : 'http://ws.geonames.org/searchJSON', // on appelle le script JSON
-                    type: "get",
-                    dataType: "json",
-                    async: true,
-                    cache: true,
-                    data : {
-                        featureClass: "P",
-                        style: "full",
-                        maxRows: 12,
-                        name_startsWith: req.term,
-                        countryName: "France",
-                        username: "demo"
-                    },
-                   success: function( data ) {
-                        response( $.map( data.geonames, function( item ) {
-                          return {
-                            label: item.name + (item.adminName1 ? ", " + item.adminName1 : "") + ", " + item.countryName,
-                            value: item.name,
-                        }
-                        }));
-                      }
-                });
-            },
-            focus: function(event, ui) {
-                $(this).val(ui.item.adminName1);
-                return false;
-            },
-            select: function(event, ui) {
-                $('#search_input_api').val(ui.item.adminName1);
-                return false;
-            }
-        }).data("ui-autocomplete")._renderItem = function(ul, item) {
-            return $("<li></li>").data("ui-autocomplete-item", item).append("" + item.value + "").appendTo(ul.addClass("list-row"));
-        };
-    }
-
-
-
     $(window).scroll(function () {
         if ($(document).scrollTop() >= 100) {
             return $('body .navbar-default').stop(true, true).animate({
@@ -188,7 +133,7 @@ $(function () {
     };
 
     var search = $('#search_input').val();
-    $("#listmovies *").highlight(search, "highlight");
+    $('#search_input').parents("#listmovies *").highlight(search, "highlight");
 
 
     $('.ishome').click(function (evt) {
@@ -244,6 +189,8 @@ $(function () {
         }, 600);
         return false;
     });
+    
 
     $('.alert-success').delay(5000).slideUp('fast');
+
 });

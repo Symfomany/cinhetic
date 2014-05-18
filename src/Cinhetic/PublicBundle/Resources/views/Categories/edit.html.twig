@@ -3,7 +3,14 @@
 {% block titlepage %}<i class="fa fa-pencil"></i>&nbsp;&nbsp;Editer la catégorie {{ entity.title|title}}{% endblock %}
 
 {% block content %}
-    {{ form(edit_form) }}
+    <div class="row">
+	        <div class="col-sm-6">
+	            {{ form_row(edit_form.title) }}
+	        </div>
+	        <div class="col-sm-6">
+	            {{ form_row(edit_form.parent) }}
+	        </div>
+    	</div>
+    {{ form_rest(edit_form) }}
     {{ form(delete_form) }}
-
 {% endblock %}

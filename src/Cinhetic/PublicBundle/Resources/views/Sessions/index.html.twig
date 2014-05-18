@@ -3,7 +3,11 @@
 {% block titlepage %}<i class="glyphicon glyphicon-calendar"></i>&nbsp;&nbsp;Séances{% endblock %}
 
 {% block content %}
-    
+    <div class="row well">
+        <a href="{{ path('sessions_new') }}" class="pull-right btn btn-primary btn-md btn-labeled">
+            <span class="btn-label icon fa fa-plus"></span>  Créer une séance
+        </a>
+    </div>
     <div class="table-light">
     <table class="records_list  table table-striped">
         <thead>
@@ -54,10 +58,24 @@
             </div>
         </div>
 </div>
-    <hr />
+{% endblock %}
 
-    <a class="btn btn-danger" href="{{ path('sessions_new') }}">
-        <i class="glyphicon glyphicon-plus"></i> Créer une séance
-    </a>
 
-    {% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+
+    <style type="text/css" media="screen">
+        
+         @media only screen and (max-width: 800px) {
+             table.table td:nth-child(2),table.table td:nth-child(3),table.table td:nth-child(0),
+             table.table th:nth-child(2),table.table th:nth-child(3),table.table th:nth-child(0)
+             {display: none;}
+         }
+         
+        @media only screen and (max-width: 640px) {
+            table.table td:nth-child(2), table.table td:nth-child(3),
+            table.table th:nth-child(2),table.table th:nth-child(3){display: none;}
+        } 
+
+    </style>
+{% endblock %} 

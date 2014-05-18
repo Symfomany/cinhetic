@@ -4,6 +4,14 @@
 
 
 {% block content %}
+    <div class="row">
+        <div class="col-sm-6">
+            {{ form_row(edit_form.dateSession) }}
+        </div>
+        <div class="col-sm-6">
+            {{ form_row(edit_form.hourSession) }}
+        </div>
+    </div>
     {{ form(edit_form) }}
 
     {{ form(delete_form) }}
@@ -34,8 +42,15 @@
 				minuteStep: 5,
 				orientation: $('body').hasClass('right-to-left') ? { x: 'right', y: 'auto'} : { x: 'auto', y: 'auto'}
 			}
+            $("select").select2({
+                allowClear: true,
+                placeholder: "Selectionnez..."
+            });
 			$('.hour').timepicker(options);
-			$('.datepick').datepicker();
+            $('.datepick').datepicker({
+                todayBtn: "linked",
+                format: 'yyyy-mm-dd'
+           });   
     	</script>
 
 {% endblock %}

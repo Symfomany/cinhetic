@@ -11,7 +11,7 @@ collectionHolder2.find('li').each(function () {
 });
 
 function addTagForm2DeleteLink2($tagFormLi) {
-    var $removeFormA = $('<a class="btn btn-primary addmedias"><i class="glyphicon glyphicon-minus"></i> Supprimer cet média</a>');
+    var $removeFormA = $('<a class="btn btn-primary addmedias"><i class="glyphicon glyphicon-minus"></i> Supprimer ce média</a>');
     $tagFormLi.append($removeFormA);
 
     $removeFormA.on('click', function (e) {

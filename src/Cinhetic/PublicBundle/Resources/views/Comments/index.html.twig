@@ -42,7 +42,8 @@
 
                             <div class="comment-body">
                                 <div class="comment-by">
-                                    <a href="#" title="">{% if  entity.user.username is defined %}{{ entity.user.username }}{% else %} Inconnu {%  endif  %}</a> a commenté sur <a href="#" title="">{{ entity.movie.title }}</a>
+                                    <a href="#" title="">{% if  entity.user.username is defined %}{{ entity.user.username|truncate(25,"...",true) }}{% else %} Inconnu {%  endif  %}</a>
+                                    {% if  entity.movie.title is defined %} a commenté sur <a href="#" title="">{{ entity.movie.title }}</a>{%  endif  %}
                                 </div>
                                 <div class="comment-text">
                                     {{ entity.content }}
@@ -51,7 +52,8 @@
                                     <a href="{{ path('comments_remove', {'id' : entity.id} ) }}"><i class="fa fa-times"></i>Supprimer</a>
                                     <a href="{{ path('comments_validation', {'id' : entity.id, 'validate' : 2 }) }}"><i class="fa fa-check"></i>Approuver</a>
                                     <a href="{{ path('comments_validation', {'id' : entity.id, 'validate' : 0 }) }}"><i class="fa fa-minus-circle"></i>Désapprouver</a>
-                                    <span class="pull-right">{{ entity.dateCreated|ago }}</span>
+                                    <div class="row"><span class="pull-right">{{ entity.dateCreated|ago }}</span></div>
+                                        <div class="clearfix clear"></div>
                                 </div>
                             </div>
                         </div>
@@ -92,7 +94,8 @@
                                     <a href="{{ path('comments_remove', {'id' : entity.id} ) }}"><i class="fa fa-times"></i>Supprimer</a>
                                     <a href="{{ path('comments_validation', {'id' : entity.id, 'validate' : 2 }) }}"><i class="fa fa-check"></i>Approuver</a>
                                     <a href="{{ path('comments_validation', {'id' : entity.id, 'validate' : 0 }) }}"><i class="fa fa-minus-circle"></i>Désapprouver</a>
-                                    <span class="pull-right">{{ entity.dateCreated|ago }}</span>
+                                    <div class="row"><span class="pull-right">{{ entity.dateCreated|ago }}</span></div>
+                                        <div class="clearfix clear"></div>
                                 </div>
                             </div>
                         </div>
@@ -119,15 +122,16 @@
 
                             <div class="comment-body">
                                 <div class="comment-by">
-                                    <a href="#" title="">{% if  entity.user.username is defined %}{{ entity.user.username }}{% else %} Inconnu {%  endif  %}</a> a commenté sur <a href="#" title="">{{ entity.movie.title }}</a>
-                                </div>
+                                    <a href="#" title="">{% if  entity.user.username is defined %}{{ entity.user.username }}{% else %} Inconnu {%  endif  %}</a> 
+                        {% if  entity.movie.title is defined %} a commenté sur <a href="#" title="">{{ entity.movie.title }}</a>{%  endif  %} </div>
                                 <div class="comment-text">
                                     {{ entity.content }}
                                 </div>
                                 <div class="comment-actions">
                                     <a href="{{ path('comments_remove', {'id' : entity.id} ) }}"><i class="fa fa-times"></i>Supprimer</a>
                                     <a href="{{ path('comments_validation', {'id' : entity.id, 'validate' : 0 }) }}"><i class="fa fa-minus-circle"></i>Désapprouver</a>
-                                    <span class="pull-right">{{ entity.dateCreated|ago }}</span>
+                                    <div class="row"><span class="pull-right">{{ entity.dateCreated|ago }}</span></div>
+                                        <div class="clearfix clear"></div>
                                 </div>
                             </div>
                         </div>
@@ -154,7 +158,8 @@
 
                                 <div class="comment-body">
                                     <div class="comment-by">
-                                        <a href="#" title="">{% if  entity.user.username is defined %}{{ entity.user.username }}{% else %} Inconnu {%  endif  %}</a> a commenté sur <a href="#" title="">{{ entity.movie.title }}</a>
+                                        <a href="#" title="">{% if  entity.user.username is defined %}{{ entity.user.username }}{% else %} Inconnu {%  endif  %}</a>
+                                         {% if  entity.movie.title is defined %} a commenté sur <a href="#" title="">{{ entity.movie.title }}</a>{%  endif  %}
                                     </div>
                                     <div class="comment-text">
                                         {{ entity.content }}
@@ -163,7 +168,8 @@
                                         <a href="{{ path('comments_validation', {'id' : entity.id,  'validate' : 1} ) }}"><i class="fa fa-refresh"></i>Restaurer</a>
                                         <a href="{{ path('comments_validation', {'id' : entity.id, 'validate' : 2 }) }}"><i class="fa fa-check"></i>Approuver</a>
                                         <a href="{{ path('comments_validation', {'id' : entity.id, 'validate' : 0 }) }}"><i class="fa fa-minus-circle"></i>Désapprouver</a>
-                                        <span class="pull-right">{{ entity.dateCreated|ago }}</span>
+                                        <div class="row"><span class="pull-right">{{ entity.dateCreated|ago }}</span></div>
+                                        <div class="clearfix clear"></div>
                                     </div>
                                 </div>
                             </div>
@@ -191,3 +197,28 @@
         </div>
     </div>
 {% endblock %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <style type="text/css" media="screen">
+        
+         @media only screen and (max-width: 800px) {
+             .panel-title
+             {display: none;}
+             .panel-heading{
+                height: 45px;
+             }
+         }
+         
+        @media only screen and (max-width: 640px) {
+             .panel-title
+             {display: none;}
+             .panel-heading{
+                height: 45px;
+             }
+        } 
+
+    </style>
+{% endblock %} 

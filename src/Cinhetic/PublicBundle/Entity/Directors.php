@@ -62,7 +62,7 @@ class Directors implements UploadableInterface
      * @Expose
      * @Assert\Length(
      *      min = "15",
-     *      max = "500",
+     *      max = "50000",
      *      minMessage = "Votre biographie doit faire au moins {{ limit }} caractères",
      *      maxMessage = "Votre biographie ne peut pas être plus long que {{ limit }} caractères"
      * )
@@ -372,6 +372,35 @@ class Directors implements UploadableInterface
         if (null !== $this->file) {
             $this->image = $this->file->getClientOriginalName();
         }
+    }
+
+
+    /**
+     * Get age of user
+     * @return null|string
+     */
+    public function getAge()
+    {
+        if ($dob = $this->getDob()) {
+            $now = new \Datetime('now');
+            $today['month'] = $now->format('m');
+            $today['day'] = $now->format('d');
+            $today['year'] = $now->format('Y');
+
+            $years = $today['year'] - $dob->format('Y');
+
+            if ($today['month'] <= $dob->format('m')) {
+                if ($dob->format('m') == $today['month']) {
+                    if ($dob->format('d') > $today['day'])
+                        $years--;
+                } else
+                    $years--;
+            }
+
+            return $years;
+        }
+
+        return null;
     }
 
 

@@ -118,6 +118,7 @@ class MoviesController extends AbstractController
             'SELECT a
             FROM CinheticPublicBundle:Movies a
             WHERE a.dateRelease <= :now
+            AND a.dateDeleted IS NULL
             ORDER BY a.title ASC'
         )->setParameter('now', new \Datetime('midnight'));
 
@@ -129,6 +130,7 @@ class MoviesController extends AbstractController
             'SELECT a
             FROM CinheticPublicBundle:Movies a
             WHERE a.dateRelease >= :now
+            AND a.dateDeleted IS NULL
             ORDER BY a.title ASC'
         )->setParameter('now', new \Datetime('midnight'));
 
@@ -136,6 +138,7 @@ class MoviesController extends AbstractController
         $entities_archived = $em->createQuery(
             'SELECT a
             FROM CinheticPublicBundle:Movies a
+            WHERE a.dateDeleted IS NOT NULL
             ORDER BY a.title ASC'
         );
 
@@ -300,6 +303,29 @@ class MoviesController extends AbstractController
         return $this->render('CinheticPublicBundle:Movies:show.html.twig', array(
             'entity'      => $id,
             'delete_form' => $deleteForm->createView()  
+         ));
+    }
+
+
+    /**
+     * displays a Movies medias.
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     */
+    public function mediasAction(Movies $id)
+    {
+
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
+        $breadcrumbs->addItem("Films", $this->generateUrl('movies'));
+        $breadcrumbs->addItem("Film ".$id->getTitle(), $this->generateUrl('movies_show', array('id' => $id->getId())));
+        $breadcrumbs->addItem("Medias");
+
+
+        return $this->render('CinheticPublicBundle:Movies:medias.html.twig', array(
+            'entity'      => $id,
+            'medias'      => $id->getMedias(),
          ));
     }
 
