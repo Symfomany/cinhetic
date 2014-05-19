@@ -24,6 +24,10 @@ class ActorsController extends AbstractController
     {
         $entities = $this->getRepository('Actors')->findAll();
 
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
+        $breadcrumbs->addItem("Acteurs", $this->generateUrl('actors'));
+
         return $this->render('CinheticPublicBundle:Actors:index.html.twig', array(
             'entities' => $entities
         ));
@@ -84,6 +88,11 @@ class ActorsController extends AbstractController
      */
     public function newAction()
     {
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
+        $breadcrumbs->addItem("Acteurs", $this->generateUrl('actors'));
+        $breadcrumbs->addItem("Créer");
+
         $entity = new Actors();
         $form = $this->get('cinhetic_public.manager_actors')->createForm($entity);
 
@@ -102,6 +111,11 @@ class ActorsController extends AbstractController
      */
     public function showAction(Actors $id)
     {
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
+        $breadcrumbs->addItem("Acteurs", $this->generateUrl('actors'));
+        $breadcrumbs->addItem("Voir");
+
         $deleteForm = $this->get('cinhetic_public.manager_actors')->deleteForm($id);
 
         return $this->render('CinheticPublicBundle:Actors:show.html.twig', array(
@@ -120,6 +134,11 @@ class ActorsController extends AbstractController
      */
     public function editAction(Actors $id)
     {
+         $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
+        $breadcrumbs->addItem("Acteurs", $this->generateUrl('actors'));
+        $breadcrumbs->addItem("Editer");
+
         $editForm = $this->get('cinhetic_public.manager_actors')->editForm($id);
         $deleteForm = $this->get('cinhetic_public.manager_actors')->deleteForm($id);
 

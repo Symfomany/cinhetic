@@ -47,6 +47,7 @@ h1{
 }
 #content-wrapper{
     opacity: 0;
+    padding-bottom: 30px;
 }
 img{
      max-width: 100%;
@@ -93,7 +94,9 @@ img{
 .panel .widget-comments .comment, .panel.widget-comments .comment{
     margin: 0px;
 }
-.table-striped>tbody>tr:nth-child(odd)>td .btn, .table-striped>tbody>tr:nth-child(odd)>th .btn{
+.table-striped>tbody>tr:nth-child(odd)>td .btn, .table-striped>tbody>tr:nth-child(odd)>th .btn,
+.table-striped>tbody>tr:nth-child(even)>td .btn, .table-striped>tbody>tr:nth-child(even)>th .btn
+{
     margin-bottom: 10px;
 }
 
@@ -102,10 +105,20 @@ form label{
     margin-top: 10px;
 }
 
+form .btn.btn-labeled, form button[type="submit"]{
+    margin-top:20px;
+    margin-bottom:20px;
+}
 
+.table tbody>tr>td, .table tbody>tr>th, .table tfoot>tr>td, .table tfoot>tr>th, .table thead>tr>td, .table thead>tr>th{
+    min-width: 150px;
+}
 
-
-
+.theme-default #main-navbar .dropdown-menu>li.active>a{
+    background: #f8f8f8;
+    border-top: none!important;
+    border-bottom: none!important;
+}
 
 
  @media (min-width: 300px) and (max-width: 768px) {

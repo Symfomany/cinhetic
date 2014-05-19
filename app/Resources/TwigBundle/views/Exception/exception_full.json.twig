@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>An Error Occurred: {{ status_text }}</title>
+
+
+    <!-- Open Sans font from Google CDN -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.min.css"/>
+
+
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('css/widgets.min.css') }}"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('css/rtl.min.css') }}"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('css/themes.min.css') }}"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('css/pages.min.css') }}"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('css/pixel-admin.min.css') }}"/>
+
+
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/flick/jquery-ui.css" />
+    
+   
+    </head>
+ <body class="page-{% if status_code == '404' %}404{% else %}500{% endif %}">
+
+<script>var init = [];</script>
+
+    <div class="header">
+        <a href="index.html" class="logo">
+            <strong>Symfo</strong>academy
+        </a> <!-- / .logo -->
+    </div> <!-- / .header -->
+
+    <div class="error-code">{% if status_code == '404' %}404{% else %}500{% endif %}</div>
+
+    <div class="error-text">
+        <span class="oops">OUCH!</span><br>
+        <span class="hr"></span>
+        <br>
+        SOMETHING IS NOT QUITE RIGHT 
+        <br>
+        <span class="solve">We hope to solve it shortly</span>
+    </div> <!-- / .error-text -->
+
+    <form action="" class="search-form">
+        <input type="text" class="search-input" name="s">
+        <input type="submit" value="SEARCH" class="search-btn">
+    </form> 
+    {% if status_code == '500' %}
+    <p><small>{{ status_code }} {{ status_text }}</small> : {{ status_text }}</p>
+    {% endif %}
+    <!-- / .search-form -->
+         <!--[if lt IE 9]>
+    <script src="assets/javascripts/ie.min.js"></script>
+    <![endif]-->
+
+
+    <!-- Get jQuery from Google CDN -->
+    <!--[if !IE]> -->
+        <script type="text/javascript"> window.jQuery || document.write('<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js">'+"<"+"/script>"); </script>
+    <!-- <![endif]-->
+    <!--[if lte IE 9]>
+        <script type="text/javascript"> window.jQuery || document.write('<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js">'+"<"+"/script>"); </script>
+    <![endif]-->
+        <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+            <script scr="{{ asset('css/pixel-admin.min.js') }}"></script>
+
+    <script type="text/javascript">
+        $(function() {
+            $('#content-wrapper').animate(
+                {opacity:1,top:'30px'},'fast');
+        });
+    </script>
+    </body>
+</html>

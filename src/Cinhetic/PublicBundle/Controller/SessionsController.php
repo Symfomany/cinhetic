@@ -19,6 +19,10 @@ class SessionsController extends AbstractController
      */
     public function indexAction()
     {
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
+        $breadcrumbs->addItem("Séances", $this->generateUrl('sessions'));
+
         $entities = $this->getRepository('Sessions')->findAll();
 
         return $this->render('CinheticPublicBundle:Sessions:index.html.twig', array(
@@ -81,6 +85,12 @@ class SessionsController extends AbstractController
      */
     public function newAction()
     {
+        
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
+        $breadcrumbs->addItem("Séances", $this->generateUrl('sessions'));
+        $breadcrumbs->addItem("Créer");
+
         $entity = new Sessions();
         $form = $this->get('cinhetic_public.manager_sessions')->createForm($entity);
 
@@ -99,6 +109,11 @@ class SessionsController extends AbstractController
      */
     public function showAction(Sessions $id)
     {
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
+        $breadcrumbs->addItem("Séances", $this->generateUrl('sessions'));
+        $breadcrumbs->addItem("Voir");
+
         $deleteForm = $this->get('cinhetic_public.manager_sessions')->deleteForm($id);
 
         return $this->render('CinheticPublicBundle:Sessions:show.html.twig', array(
@@ -116,6 +131,11 @@ class SessionsController extends AbstractController
      */
     public function editAction(Sessions $id)
     {
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
+        $breadcrumbs->addItem("Séances", $this->generateUrl('sessions'));
+        $breadcrumbs->addItem("Editer");
+
         $editForm = $this->get('cinhetic_public.manager_sessions')->editForm($id);
         $deleteForm = $this->get('cinhetic_public.manager_sessions')->deleteForm($id);
 

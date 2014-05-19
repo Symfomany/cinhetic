@@ -16,6 +16,8 @@ use Symfony\Component\Security\Core\SecurityContext;
 class MainController extends AbstractController
 {
 
+
+
     /**
      * Homepage Get Started
      * @return \Symfony\Component\HttpFoundation\Response
@@ -66,6 +68,8 @@ class MainController extends AbstractController
             'PBX_RUF1'         => 'POST',
             'PBX_REPONDRE_A'   => $this->generateUrl('lexik_paybox_ipn', array('time' => time()), true),
         ));*/
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->addItem("Home", $this->get("router")->generate("index"));
 
         $em = $this->getDoctrine()->getManager();
         $commentaires = $em->getRepository('CinheticPublicBundle:Comments')->getAllComments();

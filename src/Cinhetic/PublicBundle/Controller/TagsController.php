@@ -21,6 +21,11 @@ class TagsController extends AbstractController
      */
     public function indexAction()
     {
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
+        $breadcrumbs->addItem("Tags", $this->generateUrl('tags'));
+
+
         $entities = $this->getRepository('Tags')->findAll();
 
         return $this->render('CinheticPublicBundle:Tags:index.html.twig', array(
@@ -82,6 +87,12 @@ class TagsController extends AbstractController
      */
     public function newAction()
     {
+        
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
+        $breadcrumbs->addItem("Tags", $this->generateUrl('tags'));
+        $breadcrumbs->addItem("Créer");
+
         $entity = new Tags();
         $form = $this->get('cinhetic_public.manager_tags')->createForm($entity);
 
@@ -100,11 +111,17 @@ class TagsController extends AbstractController
      */
     public function showAction(Tags $id)
     {
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
+        $breadcrumbs->addItem("Tags", $this->generateUrl('tags'));
+        $breadcrumbs->addItem("Voir");
+
         $deleteForm = $this->get('cinhetic_public.manager_tags')->deleteForm($id);
 
         return $this->render('CinheticPublicBundle:Tags:show.html.twig', array(
             'entity'      => $id,
-            'delete_form' => $deleteForm->createView(),        ));
+            'delete_form' => $deleteForm->createView(),    
+            ));
     }
 
 
@@ -116,6 +133,11 @@ class TagsController extends AbstractController
      */
     public function editAction(Tags $id)
     {
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
+        $breadcrumbs->addItem("Tags", $this->generateUrl('tags'));
+        $breadcrumbs->addItem("Editer");
+
         $editForm = $this->get('cinhetic_public.manager_tags')->editForm($id);
         $deleteForm = $this->get('cinhetic_public.manager_tags')->deleteForm($id);
 

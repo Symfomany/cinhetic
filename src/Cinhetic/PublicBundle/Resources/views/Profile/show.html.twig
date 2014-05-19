@@ -1,10 +1,13 @@
 {% extends "FOSUserBundle::layout.html.twig" %}
+{% block titlepage %}<i class="fa fa-user"></i>&nbsp;&nbsp;Mon compte{% endblock %}
+
 
 {% block fos_user_content %}
-    <div class="well">
-        <h1><i class="glyphicon glyphicon-user"></i> Mon compte</h1>
-        {% include "FOSUserBundle:Profile:show_content.html.twig" %}
-        <hr />
-        <a href="{{ path('CinheticPublicBundle_profil_edit') }}" class="btn btn-danger"><i class="glyphicon glyphicon-edit"></i>  Editer mon compte</a>
-    </div>
+<div class="panel colourable">
+		<div class="panel-body">
+		  {% include "FOSUserBundle:Profile:show_content.html.twig" %}
+		        <hr />
+		        <a href="{{ path('CinheticPublicBundle_profil_edit') }}" class="btn btn-danger"><i class="glyphicon glyphicon-edit"></i>  Editer mon compte</a>	
+		</div>
+	</div>
 {% endblock fos_user_content %}

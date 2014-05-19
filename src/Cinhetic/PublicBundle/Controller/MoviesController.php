@@ -105,6 +105,11 @@ class MoviesController extends AbstractController
      */
     public function indexAction()
     {
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
+        $breadcrumbs->addItem("Films", $this->generateUrl('movies'));
+
+
         $em = $this->getDoctrine()->getManager();
         $entities = $em->getRepository('CinheticPublicBundle:Movies')->findAll();
 
@@ -244,6 +249,11 @@ class MoviesController extends AbstractController
      */
     public function newAction()
     {
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
+        $breadcrumbs->addItem("Films", $this->generateUrl('movies'));
+        $breadcrumbs->addItem("Créer");
+
         $entity = new Movies();
         $form = $this->get('cinhetic_public.manager_movies')->createForm($entity);
 
@@ -263,6 +273,11 @@ class MoviesController extends AbstractController
     public function showAction(Movies $id)
     {
 
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
+        $breadcrumbs->addItem("Films", $this->generateUrl('movies'));
+        $breadcrumbs->addItem("Voir");
+
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('CinheticPublicBundle:Movies:show.html.twig', array(
@@ -280,6 +295,10 @@ class MoviesController extends AbstractController
      */
     public function editAction(Movies $id)
     {
+         $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
+        $breadcrumbs->addItem("Films", $this->generateUrl('movies'));
+        $breadcrumbs->addItem("Editer");
        
         $form = $this->get('cinhetic_public.manager_movies')->editForm($id);
         $mediasembed = $this->generateEmbed($id);

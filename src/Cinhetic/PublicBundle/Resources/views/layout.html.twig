@@ -1,0 +1,254 @@
+
+    
+{% extends "::base.html.twig" %}
+
+{% block title %}Symfomany Solution{% endblock %}
+
+{#
+    StylSheets
+#}
+{% block stylesheets %}
+    {{ parent() }}
+
+    <!-- Open Sans font from Google CDN -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin" rel="stylesheet" type="text/css">
+
+    {% stylesheets '@CinheticPublicBundle/Resources/public/css/bootstrap.min.css' %}
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>
+    {% endstylesheets %}
+
+
+    {% stylesheets '@CinheticPublicBundle/Resources/public/css/widgets.min.css' %}
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>
+    {% endstylesheets %}
+
+
+    {% stylesheets '@CinheticPublicBundle/Resources/public/css/rtl.min.css' %}
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>
+    {% endstylesheets %}
+
+
+    {% stylesheets '@CinheticPublicBundle/Resources/public/css/themes.min.css' %}
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>
+    {% endstylesheets %}
+
+    {% stylesheets '@CinheticPublicBundle/Resources/public/css/pages.min.css' %}
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>
+    {% endstylesheets %}
+
+
+    {% stylesheets '@CinheticPublicBundle/Resources/public/css/pixel-admin.min.css' %}
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>
+    {% endstylesheets %}
+
+
+    {% stylesheets '@CinheticPublicBundle/Resources/public/css/main.css' %}
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>
+    {% endstylesheets %}
+
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/flick/jquery-ui.css" />
+    
+    <!--[if lt IE 9]>
+    <script src="assets/javascripts/ie.min.js"></script>
+    <![endif]-->
+
+
+    <!-- Get jQuery from Google CDN -->
+    <!--[if !IE]> -->
+        <script type="text/javascript"> window.jQuery || document.write('<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js">'+"<"+"/script>"); </script>
+    <!-- <![endif]-->
+    <!--[if lte IE 9]>
+        <script type="text/javascript"> window.jQuery || document.write('<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js">'+"<"+"/script>"); </script>
+    <![endif]-->
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $('#content-wrapper').animate(
+                {opacity:1,top:'30px'},'fast');
+        });
+    </script>
+{% endblock %}
+
+
+{#
+    BODY
+#}
+{% block body %}
+<body class="theme-default">
+<div id="overlay" class="overlay hide">
+    <img src="{{ base_url }}images/loading.gif" />
+</div>
+<body class="theme-default main-menu-animated">
+  <script type="text/javascript">
+        var init = [];
+    </script>
+
+<div id="main-wrapper">
+      
+    <div id="main-navbar" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <!-- Main menu toggle -->
+        <button type="button" id="main-menu-toggle"><i class="navbar-icon fa fa-bars icon"></i><span class="hide-menu-text">HIDE MENU</span></button>
+        
+        <div class="navbar-inner">
+            <!-- Main navbar header -->
+            <div class="navbar-header">
+
+                <!-- Logo -->
+                <a href="{{ path('Cinhetic_public_homepage') }}" class="navbar-brand">
+                       <strong>Symfo</strong>Academy
+                </a>
+
+                <!-- Main navbar toggle -->
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navbar-collapse"><i class="navbar-icon fa fa-bars"></i></button>
+
+            </div> <!-- / .navbar-header -->
+
+            <div id="main-navbar-collapse" class="collapse navbar-collapse main-navbar-collapse">
+                <div>
+                          {{ include('CinheticPublicBundle:Slots:topmenu.html.twig') }}
+                </li>
+                    </ul> <!-- / .navbar-nav -->
+
+                    <div class="right clearfix">
+                        <ul class="nav navbar-nav pull-right right-navbar-nav">
+
+                            <li class="nav-icon-btn nav-icon-btn-danger dropdown">
+                                  {{ include('CinheticPublicBundle:Slots:notifications.html.twig') }}
+                            </li>
+                            <li class="nav-icon-btn nav-icon-btn-success dropdown">
+                               {{ include('CinheticPublicBundle:Slots:messages.html.twig') }}
+                            </li>
+<!-- /3. $END_NAVBAR_ICON_BUTTONS -->
+
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle user-menu" data-toggle="dropdown">
+                                    <span>{% if app.user.username is defined %} {{ app.user.username }}{% else %}Bienvenue <i class="fa fa-smile-o"></i>{% endif %}</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    {% if app.user.username is defined %}
+                                        <li><a href="{{ path('CinheticPublicBundle_profil') }}"><i class="fa fa-user"></i>&nbsp;&nbsp;My account</a></li>
+                                        <li><a href="#"><i class="dropdown-icon fa fa-cog"></i>&nbsp;&nbsp;Settings</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="{{ path('fos_user_security_logout') }}"><i class="dropdown-icon fa fa-power-off"></i>&nbsp;&nbsp;Log Out</a></li>
+                                    {% else %}
+                                        <li><a href="{{ path('fos_user_security_login') }}"><i class="dropdown-icon fa fa-sign-in"></i>&nbsp;&nbsp;Login</a></li>
+                                    {% endif %}
+                                </ul>
+                            </li>
+                        </ul> <!-- / .navbar-nav -->
+                    </div> <!-- / .right -->
+                </div>
+            </div> <!-- / #main-navbar-collapse -->
+        </div> <!-- / .navbar-inner -->
+    </div> <!-- / #main-navbar -->
+<!-- /2. $END_MAIN_NAVIGATION -->
+    {% include('CinheticPublicBundle:Slots:leftmenu.html.twig') %}
+
+    <div id="content-wrapper">
+        <ul class="breadcrumb breadcrumb-page">
+            <div class="breadcrumb-label text-light-gray">Où êtes-vous? </div>
+            {{ wo_render_breadcrumbs() }}
+        </ul>
+        <div class="page-header">
+            
+            <div class="row">
+                <!-- Page header, center on small screens -->
+                <h1 class="col-xs-12 col-sm-8 text-center text-left-sm">
+                    {% block titlepage %}<i class="fa fa-Home page-header-icon"></i>&nbsp;&nbsp;Home{% endblock %}
+                </h1>
+
+                <div class="col-xs-12 col-sm-8">
+                    <div class="row">
+                        <hr class="visible-xs no-grid-gutter-h">
+
+                        <!-- Margin -->
+                        <div class="visible-xs clearfix form-group-margin"></div>
+
+                    <!-- Search field -->
+                          {{ render(controller('CinheticPublicBundle:Main:search', {'word': app.request.request.get('search')})) }} 
+                    </div>
+                </div>
+            </div>
+        </div> <!-- / .page-header -->
+
+
+        <div class="row">
+            <div class="col-md-12">
+                {% include 'CinheticPublicBundle:Slots:flashdatas.html.twig' %}
+
+                {% block content %}
+                    {% for key, message in app.session.flashbag.all() %}
+                        <div class="alert-block alert alert-{{ key }}">
+                            {{ message|trans({}, 'FOSUserBundle') }}
+                        </div>
+                    {% endfor %}
+
+                    {# On définit ce block, dans lequel vont venir s'insérer les autres vues du bundle #}
+                    <div>
+                        {% block fos_user_content %}
+                        {% endblock fos_user_content %}
+                    </div>
+                {% endblock %}
+            </div>
+
+        </div>
+    </div> <!-- / #content-wrapper -->
+    <div id="main-menu-bg"></div>
+</div> <!-- / #main-wrapper -->
+
+</body>
+{% endblock %}
+
+
+{#
+    Javascripts
+#}
+{% block javascripts %}
+    {{ parent() }}
+
+   
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/hinclude/0.9.5/hinclude.min.js"></script>
+    <script src="http://modernizr.com/downloads/modernizr-latest.js"></script>
+
+    {% javascripts '@CinheticPublicBundle/Resources/public/js/bootstrap.min.js' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {% javascripts '@CinheticPublicBundle/Resources/public/js/pixel-admin.min.js' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+       <script type="text/javascript">
+        init.push(function () {
+
+                $("select[multiple]").select2({
+                            allowClear: true,
+                            placeholder: "Selectionnez..."
+                });
+                $('.datepick').datepicker();
+
+                $('.rating').each(function(){
+                    var obj = $(this);
+                    $('.rating').pixelRating({
+                        rating: obj.attr('data-rating')
+                    });
+
+                });
+                
+                $('.ckeditor').summernote({
+                        height: 200,
+                        tabsize: 2,
+                        codemirror: {
+                            theme: 'monokai'
+                        }
+                });
+        });
+        window.PixelAdmin.start(init);
+    </script>
+
+
+
+    {% javascripts '@CinheticPublicBundle/Resources/public/js/main.js' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
