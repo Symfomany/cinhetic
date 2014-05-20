@@ -5,6 +5,7 @@ namespace Cinhetic\PublicBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Cinhetic\PublicBundle\Entity\Cinema;
 use FOS\RestBundle\Controller\Annotations as Rest;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 
 /**
@@ -18,16 +19,21 @@ class CinemaController extends AbstractController
      * Lists all Cinema entities.
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $breadcrumbs = $this->get("white_october_breadcrumbs");
         $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
         $breadcrumbs->addItem("Cinémas", $this->generateUrl('cinema'));
 
-        $entities = $this->getRepository('Cinema')->findAll();
+        $em = $this->getDoctrine()->getManager();
+        $entities = $em->createQuery(
+            'SELECT a
+            FROM CinheticPublicBundle:Cinema a
+            ORDER BY a.position ASC'
+        );
 
         return $this->render('CinheticPublicBundle:Cinema:index.html.twig', array(
-            'entities' => $entities,
+            'entities' => $this->paginate($entities,$request->query->get('display',5))
         ));
     }
 
@@ -53,6 +59,32 @@ class CinemaController extends AbstractController
     }
 
 
+    /**
+     * Update position
+     */
+    public function positionAction(Request $request)
+    {
+        $datas = $request->request->get('datas');
+        $datas = explode('&', $datas);
+        $em = $this->getDoctrine()->getManager();
+
+        $i = 1;
+        // Datas
+        foreach($datas as $data){
+            $data = explode('=', $data);
+            if(isset($datas[1])){
+                $cinema = $em->getRepository('CinheticPublicBundle:Cinema')->find($data[1]);
+                if($cinema){
+                    $cinema->setPosition($i);
+                    $em->persist($cinema);
+                    $em->flush();
+                    $i++;
+                }
+            }
+        }
+
+        return new JsonResponse(true);
+    }
 
     /**
      * Edits an existing Cinema entity.

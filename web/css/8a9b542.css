@@ -19,8 +19,7 @@ h1{
     text-shadow: 1px 1px white,1px 1px white;
 }
 .page-header h1{
-    font-size: 24px;
-    transition: 5s;
+    font-size: 22px;
 }
 
 
@@ -108,6 +107,7 @@ form label{
 form .btn.btn-labeled, form button[type="submit"]{
     margin-top:20px;
     margin-bottom:20px;
+    float: right;
 }
 
 .table tbody>tr>td, .table tbody>tr>th, .table tfoot>tr>td, .table tfoot>tr>th, .table thead>tr>td, .table thead>tr>th{
@@ -120,6 +120,29 @@ form .btn.btn-labeled, form button[type="submit"]{
     border-bottom: none!important;
 }
 
+
+#content-wrapper select#display{
+    padding: 0px;
+    width: 40px;
+    margin-top: 10px;
+}
+
+.fa-arrows{
+    cursor: ns-resize;
+
+}
+
+ul.dropdown-menu{
+    border: 1px solid #eee
+}
+
+.widget-rating li{
+    padding: 3px !important;
+}
+
+table.table img{
+    width: 230px;
+}
 
  @media (min-width: 300px) and (max-width: 768px) {
      h1,h2,h3{
@@ -134,17 +157,12 @@ form .btn.btn-labeled, form button[type="submit"]{
      .alert a, .alert .alert-link{
          font-size: 13px;
      }
-     .btn{
-         padding: 8px 12px;
-         font-size: 13px;
-         line-height: 1;
-         margin: 10px;
-     }
      .well p{
          font-size: 12px;
      }
      .nav-tabs>li>a, .nav-pills>li>a{
-         font-size: 13px;
+         font-size: 11px;
+         padding: 10px;
      }
  
      .navbar-nav>li{
@@ -162,5 +180,16 @@ form .btn.btn-labeled, form button[type="submit"]{
          right: 14px;
         height: 55px;
     } 
+    ul.dropdown-menu>li>a{
+        font-size: 12px;
+        padding: 4px 14px;
+    }
+
+    .panel-title{
+        font-size: 13px;
+    }
+    .widget-comments .comment-body{
+        margin-left: 0px;
+    }
  }
 

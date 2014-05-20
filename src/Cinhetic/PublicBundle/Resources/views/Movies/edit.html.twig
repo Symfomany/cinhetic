@@ -1,17 +1,26 @@
 {% extends 'CinheticPublicBundle::layout.html.twig' %}
 
+{% block titlepage %}<i class="fa fa fa-pencil"></i>&nbsp;&nbsp;Editer le film {{ entity.title|title }}{% endblock %}
+
 {% block content %}
-    <h1> <i class="glyphicon glyphicon-pencil"></i> Editer le film {{ entity.title|title }}</h1>
+
+    {{ form_errors(form) }}
 
     <form method="post" action="{{ path('movies_update', {'id' : entity.id}) }}" id="handlemovie" novalidate="novalidate" enctype="multipart/form-data">
         
 <div class="panel form-horizontal">
         <div class="panel-heading">
-            <span class="panel-title">Présentation</span>
+            <span class="panel-title"><i class="fa fa-pencil"></i> Présentation</span>
         </div>
         <div class="panel-body">
-             {{ form_row(form.title) }}
-            {{ form_row(form.typeFilm) }}
+            <div class="row">
+                <div class="col-sm-6">
+                    {{ form_row(form.title) }}
+                </div>
+                <div class="col-sm-6">
+                    {{ form_row(form.typeFilm) }}
+                </div>
+            </div>
             {{ form_row(form.synopsis) }}
             {{ form_row(form.description) }}
         </div>
@@ -19,49 +28,70 @@
 
     <div class="panel form-horizontal">
         <div class="panel-heading">
-            <span class="panel-title">Description</span>
+            <span class="panel-title"><i class="fa fa-pencil"></i> Description</span>
         </div>
         <div class="panel-body">
-            {{ form_row(form.file) }}
-             {% if entity.image is not empty %}
-                <a class="btn btn-success btn-labeled pull-right" data-toggle="modal" data-target="#modal-blurred-img"><span class="btn-label icon fa fa-search"></span>
-                    Voir l'image actuelle</a>
-                
-                <div id="modal-blurred-img" class="modal fade modal-blur" tabindex="-1" role="dialog" style="display: none;">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <img src="{{ base_url ~ imgmovies ~ entity.image }}" alt="...">
-                            </div>
-                        </div> <!-- / .modal-content -->
-                    </div> <!-- / .modal-dialog -->
-                </div> <!-- / .modal -->
-
-            {% endif %}
-            {{ form_row(form.trailer) }}
-            {% if entity.trailer is not empty %}
-                <a class="btn btn-success btn-labeled pull-right" data-toggle="modal" data-target="#modal-blurred-trailer"><span class="btn-label icon fa fa-search"></span>
-                    Voir le trailer actuel</a>
-                
-                <div id="modal-blurred-trailer" class="modal fade modal-blur" tabindex="-1" role="dialog" style="display: none;">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                {{ entity.trailer|raw }}
-                            </div>
-                        </div> <!-- / .modal-content -->
-                    </div> <!-- / .modal-dialog -->
-                </div> <!-- / .modal -->
-
-            {% endif %}
-
-            {{ form_row(form.languages) }}
-            {{ form_row(form.distributeur) }}
-            {{ form_row(form.bo) }}
-            {{ form_row(form.annee) }}
-            {{ form_row(form.budget) }}
-            {{ form_row(form.duree) }}
-            {{ form_row(form.dateRelease) }}
+            <div class="row">
+                <div class="col-sm-6">
+                    {{ form_row(form.file) }}
+                 {% if entity.image is not empty %}
+                    <a class="btn btn-success btn-labeled pull-right" data-toggle="modal" data-target="#modal-blurred-img"><span class="btn-label icon fa fa-search"></span>
+                        Voir l'image actuelle</a>
+                    
+                    <div id="modal-blurred-img" class="modal fade modal-blur" tabindex="-1" role="dialog" style="display: none;">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <img src="{{ base_url ~ imgmovies ~ entity.image }}" alt="...">
+                                </div>
+                            </div> <!-- / .modal-content -->
+                        </div> <!-- / .modal-dialog -->
+                    </div> <!-- / .modal -->
+                {% endif %}
+                </div>
+                <div class="col-sm-6">
+                    {{ form_row(form.trailer) }}
+                    {% if entity.trailer is not empty %}
+                        <a class="btn btn-success btn-labeled pull-right" data-toggle="modal" data-target="#modal-blurred-trailer"><span class="btn-label icon fa fa-search"></span>
+                            Voir le trailer actuel</a>
+                        
+                        <div id="modal-blurred-trailer" class="modal fade modal-blur" tabindex="-1" role="dialog" style="display: none;">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        {{ entity.trailer|raw }}
+                                    </div>
+                                </div> <!-- / .modal-content -->
+                            </div> <!-- / .modal-dialog -->
+                        </div> <!-- / .modal -->
+                    {% endif %}
+                </div>
+            </div>
+            
+            
+            <div class="row">
+                <div class="col-sm-3">
+                    {{ form_row(form.languages) }}
+                </div>
+                <div class="col-sm-2">
+                    {{ form_row(form.distributeur) }}
+                </div>
+                <div class="col-sm-2">
+                    {{ form_row(form.bo) }}
+                </div>
+                <div class="col-sm-1">
+                    {{ form_row(form.annee) }}
+                </div>
+                <div class="col-sm-1">
+                    {{ form_row(form.budget) }}
+                </div>
+                <div class="col-sm-1">
+                    {{ form_row(form.duree) }}
+                </div>
+                <div class="col-sm-2">
+                    {{ form_row(form.dateRelease) }}
+                </div>
+            </div>
          </div>
     </div>
 
@@ -69,9 +99,10 @@
         <div class="col-sm-6">
             <div class="panel form-horizontal">
                 <div class="panel-heading">
-                    <span class="panel-title">Caractéristiques</span>
+                    <span class="panel-title"><i class="fa fa-pencil"></i> Caractéristiques</span>
                 </div>
                 <div class="panel-body">
+                    {{ form_row(form.category) }}
                     {{ form_row(form.notePresse) }}
 
                     <label class="checkbox-inline">
@@ -89,10 +120,9 @@
         <div class="col-sm-6">
             <div class="panel form-horizontal">
                 <div class="panel-heading">
-                    <span class="panel-title">Relations</span>
+                    <span class="panel-title"><i class="fa fa-pencil"></i> Relations</span>
                 </div>
                 <div class="panel-body">
-                    {{ form_row(form.category) }}
                     {{ form_row(form.actors) }}
                     {{ form_row(form.cinemas) }}
                     {{ form_row(form.directors) }}
@@ -105,7 +135,7 @@
         <div class="col-sm-6">
             <div class="panel form-horizontal">
                 <div class="panel-heading">
-                    <span class="panel-title">Extras</span>
+                    <span class="panel-title"><i class="fa fa-pencil"></i> Extras</span>
                 </div>
                 <div class="panel-body">
                     {{ form_row(form.moviesRelated) }}
@@ -117,7 +147,7 @@
         <div class="col-sm-6">
             <div class="panel form-horizontal">
                 <div class="panel-heading">
-                    <span class="panel-title">Vidéos</span>
+                    <span class="panel-title"><i class="fa fa-pencil"></i> Vidéos</span>
                 </div>
                 <div class="panel-body">
                     <div class="row-fluid">
@@ -147,11 +177,16 @@
     {% endjavascripts %}
 
     <script type="text/javascript">
+
+
         $('#file').pixelFileInput({ placeholder: 'Aucun fichier selectionné...' });
         $("#languages").select2({
-                            allowClear: true,
-                            placeholder: "Selectionnez..."
+            allowClear: true,
+            placeholder: "Selectionnez..."
         });
-        $('.datepick').datepicker();
+        $('.datepick').datepicker({
+            todayBtn: "linked",
+            format: 'yyyy-mm-dd'
+           });
     </script>
 {% endblock %}

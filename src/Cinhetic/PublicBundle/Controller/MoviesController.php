@@ -13,6 +13,7 @@ use Cinhetic\PublicBundle\Entity\Movies;
 use Cinhetic\PublicBundle\Form\MoviesType;
 use FOS\RestBundle\Controller\Annotations as Rest;
 
+
 /**
  * Class MoviesController
  * @package Cinhetic\PublicBundle\Controller
@@ -40,6 +41,9 @@ class MoviesController extends AbstractController
     public function searchAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
+        $filters = $em->getFilters();
+        $filters->disable('softdeleteable');
+
         $paginator = $this->get('knp_paginator');
         $movies = $em->getRepository('CinheticPublicBundle:Movies')->findAll();
         $ajax = $request->query->get('ajax');
@@ -103,18 +107,46 @@ class MoviesController extends AbstractController
      * Lists all Movies
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $breadcrumbs = $this->get("white_october_breadcrumbs");
         $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
         $breadcrumbs->addItem("Films", $this->generateUrl('movies'));
 
+        $em = $this->getDoctrine()->getManager();
+        $entities = $em->createQuery(
+            'SELECT a
+            FROM CinheticPublicBundle:Movies a
+            WHERE a.dateRelease <= :now
+            AND a.dateDeleted IS NULL
+            ORDER BY a.title ASC'
+        )->setParameter('now', new \Datetime('midnight'));
+
+        $filters = $em->getFilters();
+        $filters->disable('softdeleteable');
 
         $em = $this->getDoctrine()->getManager();
-        $entities = $em->getRepository('CinheticPublicBundle:Movies')->findAll();
+        $entities_next = $em->createQuery(
+            'SELECT a
+            FROM CinheticPublicBundle:Movies a
+            WHERE a.dateRelease >= :now
+            AND a.dateDeleted IS NULL
+            ORDER BY a.title ASC'
+        )->setParameter('now', new \Datetime('midnight'));
+
+        $em = $this->getDoctrine()->getManager();
+        $entities_archived = $em->createQuery(
+            'SELECT a
+            FROM CinheticPublicBundle:Movies a
+            WHERE a.dateDeleted IS NOT NULL
+            ORDER BY a.title ASC'
+        );
+
 
         return $this->render('CinheticPublicBundle:Movies:index.html.twig', array(
-            'entities' => $this->paginate($entities,7),
+            'entities' => $this->paginate($entities, $request->query->get('display',5)),
+            'entities_next' => $this->paginate($entities_next, $request->query->get('display',5)),
+            'entities_archived' => $this->paginate($entities_archived, $request->query->get('display',5)),
         ));
     }
 
@@ -205,7 +237,7 @@ class MoviesController extends AbstractController
 
         if($this->get('cinhetic_public.manager_movies')->validation($form, $id) == TRUE){
             $this->setMessage("Le film a été modifié");
-           return $this->redirect($this->generateUrl('actors')); 
+           return $this->redirect($this->generateUrl('movies')); 
         }
 
         return $this->render('CinheticPublicBundle:Movies:edit.html.twig', array(
@@ -225,19 +257,7 @@ class MoviesController extends AbstractController
      */
     public function deleteAction(Request $request, $id)
     {
-        $form = $this->createDeleteForm($id);
-        $form->handleRequest($request);
-
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('CinheticPublicBundle:Movies')->find($id);
-
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Movies entity.');
-            }
-            $this->processRemove($id);
-
-        }
+        $this->get('cinhetic_public.manager_movies')->remove($id);
 
         return $this->redirect($this->generateUrl('movies'));
     }
@@ -283,6 +303,29 @@ class MoviesController extends AbstractController
         return $this->render('CinheticPublicBundle:Movies:show.html.twig', array(
             'entity'      => $id,
             'delete_form' => $deleteForm->createView()  
+         ));
+    }
+
+
+    /**
+     * displays a Movies medias.
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     */
+    public function mediasAction(Movies $id)
+    {
+
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
+        $breadcrumbs->addItem("Films", $this->generateUrl('movies'));
+        $breadcrumbs->addItem("Film ".$id->getTitle(), $this->generateUrl('movies_show', array('id' => $id->getId())));
+        $breadcrumbs->addItem("Medias");
+
+
+        return $this->render('CinheticPublicBundle:Movies:medias.html.twig', array(
+            'entity'      => $id,
+            'medias'      => $id->getMedias(),
          ));
     }
 
@@ -410,44 +453,22 @@ class MoviesController extends AbstractController
         ;
     }
 
-    /**
-     * Process peristance & flush
-     * @param Movies $entity
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
-    protected function processPersist(Movies $entity, $message = "L'opération a bien été effectuée"){
-
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($entity);
-        $em->flush();
-
-        $this->get('session')->getFlashBag()->add(
-            'success',
-            $message
-        );
-
-        return $this->redirect($this->generateUrl('movies'));
-    }
 
     /**
-     * Process peristance & flush
-     * @param Movies $entity
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * Validate a movies
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
-    protected function processRemove(Movies $entity, $message = "L'opération a bien été effectuée"){
+    public function archivedAction(Movies $id)
+    {
 
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($entity);
-        $em->flush();
+        if($this->get('cinhetic_public.manager_movies')->delete($id) == true){
+            return new JsonResponse(true);
+        }
 
-        $this->get('session')->getFlashBag()->add(
-            'success',
-            $message
-        );
-
-        return $this->redirect($this->generateUrl('movies'));
+        return new JsonResponse(false);
     }
-
 
     /************************************************************************************************************
      ***************************************************************** API Override Call ********************************************

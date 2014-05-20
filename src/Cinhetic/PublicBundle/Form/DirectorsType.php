@@ -21,6 +21,8 @@ class DirectorsType extends AbstractType
         $builder
             ->add('firstname', null, array("label" => "Nom"))
             ->add('lastname', null, array("label" => "Prénom"))
+            ->add('file', null, array("label" => "Image de profil",'attr' => array('accept', "image/*", "capture" => "capture")))
+            ->add('files', "hidden", array( 'mapped' => false))
             ->add('biography', null, array("label" => "Biographie", 'attr' => array("cols" => 80, "rows" => 7,"class" => "ckeditor")))
             ->add('note','choice', array(
                 'choices'   => array(
@@ -49,6 +51,6 @@ class DirectorsType extends AbstractType
      */
     public function getName()
     {
-        return 'cinhetic_publicbundle_directors';
+        return '';
     }
 }

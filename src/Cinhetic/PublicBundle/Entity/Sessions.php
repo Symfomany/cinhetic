@@ -55,6 +55,16 @@ class Sessions
 
 
 
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->dateSession = new \Datetime('now');
+    }
+
+
     /**
      * Get id
      *

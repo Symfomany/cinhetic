@@ -105,7 +105,7 @@ class TagsManager
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning"), 'label' => 'Créer ce tag'));
+        $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning btn-labeled"), 'label' => 'Créer ce tag'));
 
         return $form->getForm();
     }
@@ -122,7 +122,7 @@ class TagsManager
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning"), 'label' => 'Modifier ce tag'));
+        $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning btn-labeled"), 'label' => 'Modifier ce tag'));
 
         return $form->getForm();
     }
@@ -138,7 +138,7 @@ class TagsManager
         return $this->formFactory->createBuilder()
             ->setAction($this->router->generate('tags_delete', array('id' => $id->getId())))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array('label' => 'Supprimer', 'attr' => array('class' => 'btn btn-danger')))
             ->getForm();
     }
 

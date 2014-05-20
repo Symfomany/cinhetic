@@ -5,6 +5,8 @@ namespace Cinhetic\PublicBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Cinhetic\PublicBundle\Entity\Actors;
 use FOS\RestBundle\Controller\Annotations as Rest;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Cinhetic\PublicBundle\Util\WikiCreole;
 
 
 
@@ -16,20 +18,26 @@ use FOS\RestBundle\Controller\Annotations as Rest;
 class ActorsController extends AbstractController
 {
 
+
     /**
      * Lists all Actors entities.
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        $entities = $this->getRepository('Actors')->findAll();
+        $em = $this->getDoctrine()->getManager();
+        $entities = $em->createQuery(
+            'SELECT a
+            FROM CinheticPublicBundle:Actors a
+            ORDER BY a.lastname ASC'
+        );
 
         $breadcrumbs = $this->get("white_october_breadcrumbs");
         $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
         $breadcrumbs->addItem("Acteurs", $this->generateUrl('actors'));
 
         return $this->render('CinheticPublicBundle:Actors:index.html.twig', array(
-            'entities' => $entities
+            'entities' => $this->paginate($entities, $request->query->get('display',5))
         ));
     }
 
@@ -116,14 +124,34 @@ class ActorsController extends AbstractController
         $breadcrumbs->addItem("Acteurs", $this->generateUrl('actors'));
         $breadcrumbs->addItem("Voir");
 
-        $deleteForm = $this->get('cinhetic_public.manager_actors')->deleteForm($id);
+        /*
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "http://en.wikipedia.org/w/api.php?action=query&titles=".$id->getFullname()."&prop=revisions&rvprop=content&rvsection=0");
+        curl_setopt($ch, CURLOPT_USERAGENT, 'MonBot/1.0 (http://symfony.3wa.fr/)');
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $result = curl_exec($ch);
+        curl_close($ch);
+        */
+        /*
+        $client = $this->get('guzzle.client');
+        $client->setUserAgent('MonBot/1.0 (http://symfony.3wa.fr/)');
+        $response = $client->get("http://fr.wikipedia.org/w/api.php?action=query&titles=".$id->getFullname()."&prop=revisions&rvprop=content&rvsection=0&format=json")->send();
+        $response =  $response->json();
 
+        $mark = new WikiCreole();
+        if(!empty($response) && isset($response['query']['pages'])){
+            $wiki = $mark->parse(array_shift($response['query']['pages'])['revisions'][0]['*']);
+        }else{
+            $wiki = "";
+        }
+        */
+    
         return $this->render('CinheticPublicBundle:Actors:show.html.twig', array(
             'entity'      => $id,
             'movies'      => $this->paginate($id->getMovies()),
-            'delete_form' => $deleteForm->createView(),
         ));
     }
+
 
 
     /**
@@ -166,6 +194,21 @@ class ActorsController extends AbstractController
     }
 
 
+    /**
+     * Validate a actors
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     */
+    public function archivedAction(Actors $id)
+    {
+
+        if($this->get('cinhetic_public.manager_actors')->delete($id) == true){
+            return new JsonResponse(true);
+        }
+
+        return new JsonResponse(false);
+    }
 
     /************************************************************************************************************
      ***************************************************************** API Override Call ********************************************

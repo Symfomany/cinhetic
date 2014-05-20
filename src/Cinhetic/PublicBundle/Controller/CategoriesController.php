@@ -2,6 +2,7 @@
 
 namespace Cinhetic\PublicBundle\Controller;
 
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Cinhetic\PublicBundle\Entity\Categories;
 use FOS\RestBundle\Controller\Annotations as Rest;
@@ -18,16 +19,20 @@ class CategoriesController extends AbstractController
      * Lists all Categories entities.
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $breadcrumbs = $this->get("white_october_breadcrumbs");
         $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
         $breadcrumbs->addItem("Catégories", $this->generateUrl('categories'));
 
-        $entities = $this->getRepository('Categories')->findAll();
-
+        $em = $this->getDoctrine()->getManager();
+        $entities = $em->createQuery(
+            'SELECT a
+            FROM CinheticPublicBundle:Categories a
+            ORDER BY a.position ASC'
+        );
         return $this->render('CinheticPublicBundle:Categories:index.html.twig', array(
-            'entities' => $this->paginate($entities,7),
+            'entities' =>  $this->paginate($entities, $request->query->get('display',5))
         ));
     }
 
@@ -145,6 +150,33 @@ class CategoriesController extends AbstractController
     }
 
 
+    /**
+     * Update position
+     */
+    public function positionAction(Request $request)
+    {
+        $datas = $request->request->get('datas');
+        $datas = explode('&', $datas);
+        $em = $this->getDoctrine()->getManager();
+
+        $i = 1;
+        // Datas
+        foreach($datas as $data){
+            $data = explode('=', $data);
+            if(isset($datas[1])){
+                $category = $em->getRepository('CinheticPublicBundle:Categories')->find($data[1]);
+                if($category){
+                    $category->setPosition($i);
+                    $em->persist($category);
+                    $em->flush();
+                    $i++;
+                }
+            }
+        }
+
+        return new JsonResponse(true);
+    }
+    
 
     /**
      * Deletes a Categories entity.

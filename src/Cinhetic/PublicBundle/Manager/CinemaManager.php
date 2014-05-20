@@ -104,7 +104,7 @@ class CinemaManager
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning"), 'label' => 'Créer ce cinéma'));
+        $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning btn-labeled"), 'label' => 'Créer ce cinéma'));
 
         return $form->getForm();
     }
@@ -121,7 +121,7 @@ class CinemaManager
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning"), 'label' => 'Modifier ce cinéma'));
+        $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning btn-labeled"), 'label' => 'Modifier ce cinéma'));
 
         return $form->getForm();
     }
@@ -137,7 +137,7 @@ class CinemaManager
         return $this->formFactory->createBuilder()
             ->setAction($this->router->generate('cinema_delete', array('id' => $id->getId())))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array('label' => 'Supprimer', 'attr' => array('class' => 'btn btn-danger')))
             ->getForm();
     }
 

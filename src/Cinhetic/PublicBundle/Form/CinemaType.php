@@ -40,6 +40,6 @@ class CinemaType extends AbstractType
      */
     public function getName()
     {
-        return 'Cinhetic_publicbundle_cinema';
+        return '';
     }
 }

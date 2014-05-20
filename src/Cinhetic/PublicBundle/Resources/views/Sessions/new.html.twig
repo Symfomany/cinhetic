@@ -1,8 +1,48 @@
 {% extends 'CinheticPublicBundle::layout.html.twig' %}
 
 
-{% block titlepage %}<i class="fa fa-add"></i>&nbsp;&nbsp;Ajouter une séance{% endblock %}
+{% block titlepage %}<i class="fa fa-plus"></i>&nbsp;&nbsp;Ajouter une séance{% endblock %}
 
 {% block content %}
+    <div class="row">
+        <div class="col-sm-6">
+            {{ form_row(form.dateSession) }}
+        </div>
+        <div class="col-sm-6">
+            {{ form_row(form.hourSession) }}
+        </div>
+    </div>
     {{ form(form) }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+   
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/hinclude/0.9.5/hinclude.min.js"></script>
+    <script src="http://modernizr.com/downloads/modernizr-latest.js"></script>
+
+    {% javascripts '@CinheticPublicBundle/Resources/public/js/bootstrap.min.js' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {% javascripts '@CinheticPublicBundle/Resources/public/js/pixel-admin.min.js' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+       <script type="text/javascript">
+	       var options = {
+				minuteStep: 5,
+				orientation: $('body').hasClass('right-to-left') ? { x: 'right', y: 'auto'} : { x: 'auto', y: 'auto'}
+			}
+            $("select").select2({
+                allowClear: true,
+                placeholder: "Selectionnez..."
+            });
+			$('.hour').timepicker(options);
+            $('.datepick').datepicker({
+                todayBtn: "linked",
+                format: 'yyyy-mm-dd'
+           });   
+    	</script>
+
 {% endblock %}

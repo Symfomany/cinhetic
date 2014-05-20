@@ -5,38 +5,220 @@
 
 {% block content %}
 
-<div class="panel widget-comments">
-                    <div class="panel-heading">
+    <div class="panel colourable widget-comments">
+        <div class="panel-heading">
+            <span class="panel-title">Les derniers commentaires</span>
+            <ul id="uidemo-tabs-default-demo" class="nav nav-tabs nav-tabs-simple">
+                <li class="active">
+                    <a href="#all" data-toggle="tab">Tous <span class="label label-info">{{ entities.getTotalItemCount }}</span></a>
+                </li>
+                <li>
+                    <a href="#inwaiting" data-toggle="tab">En cours <span class="badge badge-warning">{{ inwaiting|length }}</span></a>
+                </li>
+                <li>
+                    <a href="#actived" data-toggle="tab">Activés <span class="badge badge-success">{{ actived|length }}</span></a>
+                </li>
+                 <li>
+                    <a href="#removed" data-toggle="tab">Désactivés <span class="badge badge-danger">{{ removed|length }}</span></a>
+                </li>
+            </ul>
+        </div>
+        <div class="panel-body">
+            <div class="tab-content">
+
+
+                <div class="tab-pane fade active in" id="all">
+                    {% for entity in entities %}
+                        <div class="comment">
+                            <div class="pull-right">
+                                {% if entity.state == 2 %}
+                                    <a  class="label label-success">Approuvé</a>
+                                {% elseif entity.state == 1 %}
+                                    <a  class="label label-warning">En cours</a>
+                                {% else  %}
+                                    <a  class="label label-danger">Désapprouvé</a>
+                                {% endif %}
+                            </div>
+
+                            <div class="comment-body">
+                                <div class="comment-by">
+                                    <a href="#" title="">{% if  entity.user.username is defined %}{{ entity.user.username|truncate(25,"...",true) }}{% else %} Inconnu {%  endif  %}</a>
+                                    {% if  entity.movie.title is defined %} a commenté sur <a href="#" title="">{{ entity.movie.title }}</a>{%  endif  %}
+                                </div>
+                                <div class="comment-text">
+                                    {{ entity.content }}
+                                </div>
+                                <div class="comment-actions">
+                                    <a href="{{ path('comments_remove', {'id' : entity.id} ) }}"><i class="fa fa-times"></i>Supprimer</a>
+                                    <a href="{{ path('comments_validation', {'id' : entity.id, 'validate' : 2 }) }}"><i class="fa fa-check"></i>Approuver</a>
+                                    <a href="{{ path('comments_validation', {'id' : entity.id, 'validate' : 0 }) }}"><i class="fa fa-minus-circle"></i>Désapprouver</a>
+                                    <div class="row"><span class="pull-right">{{ entity.dateCreated|ago }}</span></div>
+                                        <div class="clearfix clear"></div>
+                                </div>
+                            </div>
+                        </div>
+                    {% else %}
+                    <div class="alert">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            Pas de commentaires ici.
+                    </div>
+                    {% endfor %}
+                    <div class="row">
                         <div class="pull-right">
                             {{ knp_pagination_render(entities) }}
                         </div>
-                        <span class="panel-title"><i class="panel-title-icon fa fa-comment-o"></i>Derniers comentaires</span>
-                        <div class="clearfix"></div>
-                    </div> <!-- / .panel-heading -->
-                    <div class="panel-body">
-
-                    {% for entity in entities %}
-                        <div class="comment">
-                            <img src="assets/demo/avatars/5.jpg" alt="" class="comment-avatar">
-                            <div class="comment-body">
-                                <div class="comment-by">
-                                    <a href="#" title="">{{ entity.user.username }}</a> a commenté sur <a href="#" title="">{{ entity.movie.title }}</a>
-                                </div>
-                                <div class="comment-text">
-                                   {{ entity.content }}
-                                </div>
-                                <div class="comment-actions">
-                                    <a href="#"><i class="fa fa-pencil"></i>Editer</a>
-                                    <a href="#"><i class="fa fa-times"></i>Supprimer</a>
-                                    <span class="pull-right">{{ entity.dateCreated|ago }}</span>
-                                </div>
-                            </div> <!-- / .comment-body -->
-                        </div> <!-- / .comment -->
-                         {% endfor %}
-
-                        
-
-                    </div> <!-- / .panel-body -->
+                    </div>
                 </div>
 
-    {% endblock %}
+                <div class="tab-pane fade in" id="inwaiting">
+                    {% for entity in inwaiting %}
+                        <div class="comment">
+                            <div class="pull-right">
+                                {% if entity.state == 2 %}
+                                    <a  class="label label-success">Approuvé</a>
+                                {% elseif entity.state == 1 %}
+                                    <a  class="label label-warning">En cours</a>
+                                {% else  %}
+                                    <a  class="label label-danger">Désapprouvé</a>
+                                {% endif %}
+                            </div>
+
+                            <div class="comment-body">
+                                <div class="comment-by">
+                                    <a href="#" title="">{% if  entity.user.username is defined %}{{ entity.user.username }}{% else %} Inconnu {%  endif  %}</a> a commenté sur <a href="#" title="">{{ entity.movie.title }}</a>
+                                </div>
+                                <div class="comment-text">
+                                    {{ entity.content }}
+                                </div>
+                                <div class="comment-actions">
+                                    <a href="{{ path('comments_remove', {'id' : entity.id} ) }}"><i class="fa fa-times"></i>Supprimer</a>
+                                    <a href="{{ path('comments_validation', {'id' : entity.id, 'validate' : 2 }) }}"><i class="fa fa-check"></i>Approuver</a>
+                                    <a href="{{ path('comments_validation', {'id' : entity.id, 'validate' : 0 }) }}"><i class="fa fa-minus-circle"></i>Désapprouver</a>
+                                    <div class="row"><span class="pull-right">{{ entity.dateCreated|ago }}</span></div>
+                                        <div class="clearfix clear"></div>
+                                </div>
+                            </div>
+                        </div>
+                        {% else %}
+                        <div class="alert">
+                                <button type="button" class="close" data-dismiss="alert">×</button>
+                                Pas de commentaires ici.
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <div class="tab-pane fade in" id="actived">
+                    {% for entity in actived %}
+                        <div class="comment">
+                            <div class="pull-right">
+                                {% if entity.state == 2 %}
+                                    <a  class="label label-success">Approuvé</a>
+                                {% elseif entity.state == 1 %}
+                                    <a  class="label label-warning">En cours</a>
+                                {% else  %}
+                                    <a  class="label label-danger">Désapprouvé</a>
+                                {% endif %}
+                            </div>
+
+                            <div class="comment-body">
+                                <div class="comment-by">
+                                    <a href="#" title="">{% if  entity.user.username is defined %}{{ entity.user.username }}{% else %} Inconnu {%  endif  %}</a> 
+                        {% if  entity.movie.title is defined %} a commenté sur <a href="#" title="">{{ entity.movie.title }}</a>{%  endif  %} </div>
+                                <div class="comment-text">
+                                    {{ entity.content }}
+                                </div>
+                                <div class="comment-actions">
+                                    <a href="{{ path('comments_remove', {'id' : entity.id} ) }}"><i class="fa fa-times"></i>Supprimer</a>
+                                    <a href="{{ path('comments_validation', {'id' : entity.id, 'validate' : 0 }) }}"><i class="fa fa-minus-circle"></i>Désapprouver</a>
+                                    <div class="row"><span class="pull-right">{{ entity.dateCreated|ago }}</span></div>
+                                        <div class="clearfix clear"></div>
+                                </div>
+                            </div>
+                        </div>
+                    {% else %}
+                    <div class="alert">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            Pas de commentaires ici.
+                    </div>
+                    {% endfor %}
+                </div>
+
+                    <div class="tab-pane fade in" id="removed">
+                        {% for entity in removed %}
+                            <div class="comment">
+                                <div class="pull-right">
+                                    {% if entity.state == 2 %}
+                                        <a  class="label label-success">Approuvé</a>
+                                    {% elseif entity.state == 1 %}
+                                        <a  class="label label-warning">En cours</a>
+                                    {% else  %}
+                                        <a  class="label label-danger">Désapprouvé</a>
+                                    {% endif %}
+                                </div>
+
+                                <div class="comment-body">
+                                    <div class="comment-by">
+                                        <a href="#" title="">{% if  entity.user.username is defined %}{{ entity.user.username }}{% else %} Inconnu {%  endif  %}</a>
+                                         {% if  entity.movie.title is defined %} a commenté sur <a href="#" title="">{{ entity.movie.title }}</a>{%  endif  %}
+                                    </div>
+                                    <div class="comment-text">
+                                        {{ entity.content }}
+                                    </div>
+                                    <div class="comment-actions">
+                                        <a href="{{ path('comments_validation', {'id' : entity.id,  'validate' : 1} ) }}"><i class="fa fa-refresh"></i>Restaurer</a>
+                                        <a href="{{ path('comments_validation', {'id' : entity.id, 'validate' : 2 }) }}"><i class="fa fa-check"></i>Approuver</a>
+                                        <a href="{{ path('comments_validation', {'id' : entity.id, 'validate' : 0 }) }}"><i class="fa fa-minus-circle"></i>Désapprouver</a>
+                                        <div class="row"><span class="pull-right">{{ entity.dateCreated|ago }}</span></div>
+                                        <div class="clearfix clear"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                        <div class="alert">
+                                <button type="button" class="close" data-dismiss="alert">×</button>
+                                Pas de commentaires ici.
+                        </div>                            
+                        {% endfor %}
+                    </div>
+
+
+                </div>
+            </div>
+
+
+        </div>
+        <div class="panel-footer">
+            <div class="row">
+                <div class="pull-right">
+                    {{ include('CinheticPublicBundle:Slots:display.html.twig') }}
+                </div>
+            </div>
+           <div class="clearfix"></div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <style type="text/css" media="screen">
+        
+         @media only screen and (max-width: 800px) {
+             .panel-title
+             {display: none;}
+             .panel-heading{
+                height: 45px;
+             }
+         }
+         
+        @media only screen and (max-width: 640px) {
+             .panel-title
+             {display: none;}
+             .panel-heading{
+                height: 45px;
+             }
+        } 
+
+    </style>
+{% endblock %} 

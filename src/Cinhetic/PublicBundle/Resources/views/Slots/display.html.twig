@@ -1,0 +1,69 @@
+{% block display %}
+
+        <div class="row">
+            <div class="col-md-2 pull-right">
+                    <div class="input-group input-group-sm">
+                        <input id="filter" type="text" class="form-control" placeholder="Filtrer..." name="s">
+                <span class="input-group-btn">
+                    <button class="btn" type="button">
+                        <span class="fa fa-search"></span>
+                    </button>
+                </span>
+                    </div>
+            </div>
+            <div class="col-md-1 pull-right">
+                <select id="display" name="display" class="form-control">
+                    <option value="5" {% if app.request.query.get('display') == 5 %}selected="selected"{% endif %}>5</option>
+                    <option value="10" {% if app.request.query.get('display') == 10 %}selected="selected"{% endif %}>10</option>
+                    <option value="30" {% if app.request.query.get('display') == 30 %}selected="selected"{% endif %}>30</option>
+                    <option value="50" {% if app.request.query.get('display') == 50 %}selected="selected"{% endif %}>50</option>
+                    <option value="100" {% if app.request.query.get('display') == 100 %}selected="selected"{% endif %}>100</option>
+                    <option value="500" {% if app.request.query.get('display') == 500 %}selected="selected"{% endif %}>500</option>
+                </select>
+            </div>
+        </div>
+    
+
+    <script type="text/javascript">
+        $( document ).ready(function() {
+            $.expr[':'].containsIgnoreCase = function (n, i, m) {
+                return jQuery(n).text().toUpperCase().indexOf(m[3].toUpperCase()) >= 0;
+            };
+
+            $('#display').change(function(){
+                window.location.replace("?display="+$(this).val());
+            });
+
+            $('#filter').mouseout(function(){
+                if($(this).val().length <= 2){
+                    $('#content-wrapper .table-light tr').has('td').fadeIn('medium');
+                    $('.widget-comments .comment').fadeIn('medium');
+
+                }
+            });
+
+            $('#filter').blur(function(){
+                if($(this).val().length <= 2){
+                    $('#content-wrapper .table-light tr').has('td').fadeIn('medium');
+                    $('.widget-comments .comment').fadeIn('medium').fadeIn('medium');
+                }
+            });
+
+            $('#filter').keyup(function(){
+                if($('#filter').val().length > 2){
+                    $('#content-wrapper .table-light tr').has('td').not(":containsIgnoreCase("+  $('#filter').val() +")").hide();
+                    $('#content-wrapper .table-light tr').has('td').filter(":containsIgnoreCase("+  $('#filter').val() +")").show();
+                    $('.widget-comments .comment').not(":containsIgnoreCase("+  $('#filter').val() +")").hide();
+                    $('.widget-comments .comment').filter(":containsIgnoreCase("+  $('#filter').val() +")").show();
+                }else{
+                    $('#content-wrapper .table-light tr').has('td').show();
+                    $('.widget-comments .comment').show();
+                }
+            });
+
+            $('#filter').parents('.col-md-2').find('.btn').click(function(){
+                $('#filter').trigger('keyup');
+            });
+        });
+    </script>
+{% endblock %}

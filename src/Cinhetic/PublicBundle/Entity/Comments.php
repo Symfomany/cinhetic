@@ -51,6 +51,12 @@ class Comments
     /**
      * @var \DateTime
      *
+     * @ORM\Column(name="state", type="integer", nullable=true)
+     */
+    private $state;
+    /**
+     * @var \DateTime
+     *
      * @ORM\Column(name="date_created", type="datetime", nullable=true)
      */
     private $dateCreated;
@@ -214,6 +220,30 @@ class Comments
     public function __construct()
     {
         $this->dateCreated = new \Datetime('now');
+        $this->state = 1;
 
+    }
+
+    /**
+     * Set state
+     *
+     * @param integer $state
+     * @return Comments
+     */
+    public function setState($state)
+    {
+        $this->state = $state;
+
+        return $this;
+    }
+
+    /**
+     * Get state
+     *
+     * @return integer 
+     */
+    public function getState()
+    {
+        return $this->state;
     }
 }

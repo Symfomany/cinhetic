@@ -4,40 +4,113 @@
 
 
 {% block content %}
+
+    <div class="row well">
+        <a href="{{ path('actors_new') }}" class="pull-right btn btn-primary btn-md btn-labeled">
+            <span class="btn-label icon fa fa-plus"></span>  Créer un acteur
+        </a>
+    </div>
 <div class="table-light">
 
     <table class="records_list  table table-striped">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Ville</th>
+                <th>Profil</th>
+                <th>{% if entities.isSorted('a.lastname') and app.request.query.get('direction') == "desc" %} <i class="fa fa-arrow-circle-up"></i>{% else %}<i class="fa fa-arrow-circle-down"></i>{% endif %} {{ knp_pagination_sortable(entities, 'Nom', 'a.lastname') }}</th>
+                <th>{% if entities.isSorted('a.city') and app.request.query.get('direction') == "desc" %} <i class="fa fa-arrow-circle-up"></i>{% else %}<i class="fa fa-arrow-circle-down"></i>{% endif %} {{ knp_pagination_sortable(entities, 'Ville', 'a.city') }}</th>
                 <th>Biographie</th>
                 <th>Films</th>
+                <th>Archivé</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('actors_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{% if entity.image is not empty %}
+                    <img class="img-thumbnail" src="{{ base_url ~ imgactors ~ entity.image }}" alt="...">
+
+                {% else %}
+                    <img class="img-thumbnail" src="http://placehold.it/150x150" alt="...">
+                {% endif %}
+                </td>
                 <td><a href="{{ path('actors_show', { 'id': entity.id }) }}">{{ entity.firstname }} {{ entity.lastname }}</a></td>
                 <td>{{ entity.city }}</td>
-                <td>{{ entity.biography|raw|truncate(200,true,'...') }}</td>
+                <td>{{ entity.biography|striptags|truncate(200,true,'...') }}</td>
                 <td class="text-primary"><p class="text-center">{{ entity.movies|length|default('0') }} <i class="glyphicon glyphicon-download-alt"></i></p></td>
+                <td>
+                    <input type="checkbox" data-id="{{ entity.id }}" data-url="{{ path('actors_archived', {'id' : entity.id }) }}" class="enabled" data-class="switcher-primary"
+                    {% if entity.dateDeleted is not empty %} checked="checked" {% endif %}>
+                </td>
                 <td>
                         <a  class="btn btn-primary btn-sm" href="{{ path('actors_show', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-search"></i> Voir</a>
                         <a  class="btn btn-warning btn-sm" href="{{ path('actors_edit', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-pencil"></i> Editer</a>
                 </td>
             </tr>
+            {% else %}
+                    <tr><td colspan="7">
+                        <div class="alert alert-danger">
+                            Pas d'acteurs pour le moment.
+                    </div>
+                    </td></tr>
         {% endfor %}
         </tbody>
     </table>
+     <div class="table-footer">
+            <div class="table-caption">
+                <div class="pull-right">
+                    {{ knp_pagination_render(entities) }}
+                </div>
+                <div class="pull-right">
+                  {{ include('CinheticPublicBundle:Slots:display.html.twig') }}
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
 </div>
-    <hr />
-
-    <a href="{{ path('actors_new') }}" class="btn btn-danger">
-        <i class="glyphicon glyphicon-plus"></i>  Créer un nouveau acteur
-    </a>
 
     {% endblock %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <style type="text/css" media="screen">
+        
+         @media only screen and (max-width: 800px) {
+           table.table td:nth-child(1), table.table td:nth-child(3),table.table td:nth-child(4),table.table td:nth-child(5),table.table td:nth-child(0),table td:nth-child(6),
+            table.table th:nth-child(6),table.table th:nth-child(1),table.table th:nth-child(3),table.table th:nth-child(4),table.table th:nth-child(5),table.table th:nth-child(0)
+             {display: none;}
+         }
+         
+        @media only screen and (max-width: 640px) {
+            table.table td:nth-child(3),table.table td:nth-child(5),table.table td:nth-child(6)
+            table.table th:nth-child(3),table.table th:nth-child(5),table.table th:nth-child(6)
+             {display: none;}
+        } 
+
+    </style>
+{% endblock %} 
+
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        init.push(function () {
+            $('.enabled').switcher();
+            $('.switcher-primary :checkbox').click(function () {
+                $obj = $(this);
+                    $.ajax({
+                        url: $(this).attr('data-url'),
+                        type: "get",
+                        dataType: "json",
+                        data: {'id' : $(this).attr('data-id')},
+                        success: function (data) {
+                           $obj.parents('tr').fadeOut('slow');
+                        }
+                    }); 
+
+            });
+        });
+    </script>
+{% endblock %}

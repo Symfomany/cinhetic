@@ -3,14 +3,18 @@
 {% block titlepage %}<i class="glyphicon glyphicon-calendar"></i>&nbsp;&nbsp;Séances{% endblock %}
 
 {% block content %}
-    
+    <div class="row well">
+        <a href="{{ path('sessions_new') }}" class="pull-right btn btn-primary btn-md btn-labeled">
+            <span class="btn-label icon fa fa-plus"></span>  Créer une séance
+        </a>
+    </div>
     <div class="table-light">
     <table class="records_list  table table-striped">
         <thead>
             <tr>
-                <th>Date de session</th>
-                <th>Film</th>
-                <th>Cinéma</th>
+                <th>{% if entities.isSorted('a.dateSession') and app.request.query.get('direction') == "desc" %} <i class="fa fa-arrow-circle-up"></i>{% else %}<i class="fa fa-arrow-circle-down"></i>{% endif %} {{ knp_pagination_sortable(entities, 'Date de session', 'a.dateSession') }}</th>
+                <th>{% if entities.isSorted('m.title') and app.request.query.get('direction') == "desc" %} <i class="fa fa-arrow-circle-up"></i>{% else %}<i class="fa fa-arrow-circle-down"></i>{% endif %} {{ knp_pagination_sortable(entities, 'Film', 'm.title') }}</th>
+                <th>{% if entities.isSorted('c.title') and app.request.query.get('direction') == "desc" %} <i class="fa fa-arrow-circle-up"></i>{% else %}<i class="fa fa-arrow-circle-down"></i>{% endif %} {{ knp_pagination_sortable(entities, 'Cinéma', 'c.title') }}</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -33,6 +37,12 @@
 
                 </td>
             </tr>
+        {% else %}
+            <tr><td colspan="4">
+                <div class="alert alert-danger">
+                    Pas de séances pour le moment.
+            </div>
+            </td></tr>
         {% endfor %}
         </tbody>
     </table>
@@ -41,14 +51,31 @@
                 <div class="pull-right">
                 {{ knp_pagination_render(entities) }}
                 </div>
+                <div class="pull-right">
+                  {{ include('CinheticPublicBundle:Slots:display.html.twig') }}
+                </div>
                 <div class="clearfix"></div>
             </div>
         </div>
 </div>
-    <hr />
+{% endblock %}
 
-    <a class="btn btn-danger" href="{{ path('sessions_new') }}">
-        <i class="glyphicon glyphicon-plus"></i> Créer une séance
-    </a>
 
-    {% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+
+    <style type="text/css" media="screen">
+        
+         @media only screen and (max-width: 800px) {
+             table.table td:nth-child(2),table.table td:nth-child(3),table.table td:nth-child(0),
+             table.table th:nth-child(2),table.table th:nth-child(3),table.table th:nth-child(0)
+             {display: none;}
+         }
+         
+        @media only screen and (max-width: 640px) {
+            table.table td:nth-child(2), table.table td:nth-child(3),
+            table.table th:nth-child(2),table.table th:nth-child(3){display: none;}
+        } 
+
+    </style>
+{% endblock %} 

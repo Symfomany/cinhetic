@@ -17,16 +17,22 @@ class SessionsController extends AbstractController
      * Lists all Sessions entities.
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $breadcrumbs = $this->get("white_october_breadcrumbs");
         $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
         $breadcrumbs->addItem("Séances", $this->generateUrl('sessions'));
 
-        $entities = $this->getRepository('Sessions')->findAll();
-
+        $em = $this->getDoctrine()->getManager();
+        $entities = $em->createQuery(
+            'SELECT a
+            FROM CinheticPublicBundle:Sessions a
+            JOIN a.movies m
+            JOIN a.cinema c
+            ORDER BY a.dateSession ASC'
+        );
         return $this->render('CinheticPublicBundle:Sessions:index.html.twig', array(
-            'entities' => $this->paginate($entities,7),
+            'entities' => $this->paginate($entities, $request->query->get('display',5))
         ));
     }
 

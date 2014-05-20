@@ -62,15 +62,39 @@ class ActorsManager
         $this->request = $request;
     }
 
+
     /**
-     * Update movie
+     * Validation
+     * @param Actors $entity
+     * @return bool
+     */
+    public function delete(Actors $entity){
+        $this->processDelete($entity);
+        return true;
+    }
+
+
+    /**
+     * Validation
+     * @param Comments $entity
+     * @return bool
+     */
+    public function validate(Actors $entity, $validate){
+        $entity->set($validate);
+        $this->em->persist($entity);
+        $this->em->flush();
+        return true;
+    }
+
+    
+    /**
+     * Create Actors
      * @param Actors $entity
      * @return bool
      */
     public function validation($form, Actors $entity){
 
         $form->handleRequest($this->request);
-
         if ($form->isValid()) {
             $this->processPersist($entity);
             return true;
@@ -107,7 +131,7 @@ class ActorsManager
             "attr" => array('id' => "form_actor", "novalidate" => "novalidate")
         ));
 
-        $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning"), 'label' => 'Créer cet acteur'));
+        $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning btn-labeled"), 'label' => 'Créer cet acteur'));
 
         return $form->getForm();
     }
@@ -125,7 +149,7 @@ class ActorsManager
             "attr" => array('id' => "form_actor", "novalidate" => "novalidate")
         ));
 
-        $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning"), 'label' => 'Modifier cet acteur'));
+        $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning btn-labeled"), 'label' => 'Modifier cet acteur'));
 
         return $form->getForm();
     }
@@ -141,7 +165,7 @@ class ActorsManager
         return $this->formFactory->createBuilder()
             ->setAction($this->router->generate('actors_delete', array('id' => $id->getId())))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array('label' => 'Supprimer', 'attr' => array('class' => 'btn btn-danger')))
             ->getForm();
     }
 

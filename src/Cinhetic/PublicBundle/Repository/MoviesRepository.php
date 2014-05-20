@@ -56,6 +56,58 @@ class MoviesRepository extends EntityRepository
      * Get Current movies by criteria
      * @return array
      */
+    public function getRandomMovie(){
+
+ $query = $this->getEntityManager()
+            ->createQueryBuilder()
+            ->select('m')
+            ->from('Cinhetic\PublicBundle\Entity\Movies', 'm')
+            ->where('m.visible = 1')
+            ->andWhere('m.dateRelease <= :current')
+            ->orderBy('RAND()', 'DESC')
+            ->setParameter('current' , new \Datetime('midnight'))
+            ->setMaxResults(1);
+
+            return $query;
+    }
+
+
+    /**
+     * Get Current movies by criteria
+     * @return array
+     */
+    public function getStatsMoviesCategories(){
+
+        $query = $this->getEntityManager()
+            ->createQuery(
+                "SELECT COUNT(m.id) as nbmovies, c.title
+                    FROM CinheticPublicBundle:Categories c
+                    JOIN c.movies m
+                    GROUP BY c.id
+                    ORDER BY nbmovies DESC"
+            );
+
+            return $query->setMaxResults(5)->getScalarResult();
+    }
+
+    /**
+     * Get Current movies by criteria
+     * @return array
+     */
+    public function getCount(){
+        $query = $this->getEntityManager()
+            ->createQuery(
+                'SELECT COUNT(p)
+                    FROM CinheticPublicBundle:Movies p'
+            );
+
+            return $query->getSingleScalarResult();
+    }
+
+    /**
+     * Get Current movies by criteria
+     * @return array
+     */
     public function getCurrentMovies(){
         $query = $this->getEntityManager()
             ->createQuery(
@@ -125,13 +177,11 @@ class MoviesRepository extends EntityRepository
     public function getActiveMoviesBuilder()
     {
         $queryBuilder = $this->getEntityManager()
-            ->createQueryBuilder()
+            ->createQueryBuilder('m')
             ->select('m')
             ->from('Cinhetic\PublicBundle\Entity\Movies', 'm')
-            ->where('m.visible = 1')
-            ->andWhere('m.dateRelease <= :current')
-            ->orderBy('m.id', 'DESC')
-            ->setParameter('current' , new \Datetime('midnight'));
+            ->orderBy('m.id', 'DESC');
+
 
         return $queryBuilder;
     }
@@ -154,9 +204,74 @@ class MoviesRepository extends EntityRepository
                 'current' => new \Datetime('midnight'),
             ));
 
+
             return $query;
     }
 
+    /**
+     * Get Number of Movies
+     */
+    public function getNbMovies(){
+        $query = $this->getEntityManager()
+            ->createQuery(
+                'SELECT COUNT(p.id)
+                    FROM CinheticPublicBundle:Movies p'
+            );
+
+        return $query->getSingleScalarResult();
+
+    }
+
+    /**
+     * Get Ratio of Active Movies
+     */
+    public function getRatioActiveMovies($visible = 1){
+
+        $nb = $this->getNbMovies();
+
+        $nb_criteria = $this->getEntityManager()
+            ->createQuery(
+                'SELECT COUNT(p.id)
+                    FROM CinheticPublicBundle:Movies p
+                    WHERE p.visible = :visible'
+            )->setParameter('visible', $visible)->getSingleScalarResult();
+
+        return floor(((float)$nb_criteria * 100) / (float)$nb);
+    }
+
+    /**
+     * Get Ratio of Active Movies
+     */
+    public function getRatioActusMovies(){
+
+        $nb = $this->getNbMovies();
+
+        $nb_criteria = $this->getEntityManager()
+            ->createQuery(
+                'SELECT COUNT(p.id)
+                    FROM CinheticPublicBundle:Movies p
+                    WHERE p.dateRelease >= :now'
+            )->setParameter('now', new \Datetime('now'))->getSingleScalarResult();
+
+        return floor(((float)$nb_criteria * 100) / (float)$nb);
+    }
+
+    /**
+     * Get Ratio of Active Movies
+     */
+    public function getRatioCoverMovies($cover = 1){
+
+        $nb = $this->getNbMovies();
+
+        $nb_criteria = $this->getEntityManager()
+            ->createQuery(
+                'SELECT COUNT(p.id)
+                    FROM CinheticPublicBundle:Movies p
+                    WHERE p.cover = :cover'
+            )->setParameter('cover', $cover)->getSingleScalarResult();
+
+        return floor(((float)$nb_criteria * 100) / (float)$nb);
+    }
 
     /**
      * Get all Movies order by date release

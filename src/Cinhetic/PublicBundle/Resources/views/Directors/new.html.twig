@@ -4,5 +4,30 @@
 
 
 {% block content %}
-    {{ form(form) }}
+	<div class="row">
+        <div class="col-sm-3">
+            {{ form_row(form.firstname)}}
+        </div>
+        <div class="col-sm-3">
+            {{ form_row(form.lastname)}}
+        </div>
+        <div class="col-sm-3">
+            {{ form_row(form.file)}}
+        </div>
+        <div class="col-sm-3">
+            {{ form_row(form.note)}}
+        </div>
+    </div>
+
+    {{ form_rest(form) }}
+{% endblock %}
+
+
+{% block javascripts %}
+{{ parent() }}
+
+    <script type="text/javascript">
+        $('#file').pixelFileInput({ placeholder: 'Aucun fichier selectionné...' });
+          
+    </script>
 {% endblock %}

@@ -4,12 +4,16 @@
 
 
 {% block content %}
-
+    <div class="row well">
+        <a href="{{ path('tags_new') }}" class="pull-right btn btn-primary btn-md btn-labeled">
+            <span class="btn-label icon fa fa-plus"></span>  Créer un tag
+        </a>
+    </div>
     <div class="table-light">
     <table class="records_list  table table-striped">
         <thead>
             <tr>
-                <th>Mot-clef</th>
+                <th>{% if entities.isSorted('a.word') and app.request.query.get('direction') == "desc" %} <i class="fa fa-arrow-circle-up"></i>{% else %}<i class="fa fa-arrow-circle-down"></i>{% endif %} {{ knp_pagination_sortable(entities, 'Mots-Clefs', 'a.word') }}</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -24,22 +28,26 @@
 
                 </td>
             </tr>
+            {% else %}
+                    <tr><td colspan="2">
+                        <div class="alert alert-danger">
+                            Pas de tags pour le moment.
+                    </div>
+                    </td></tr>
         {% endfor %}
         </tbody>
     </table>
     <div class="table-footer">
             <div class="table-caption">
                 <div class="pull-right">
-                {{ knp_pagination_render(entities) }}
+                    {{ knp_pagination_render(entities) }}
+                </div>
+                <div class="pull-right">
+                  {{ include('CinheticPublicBundle:Slots:display.html.twig') }}
                 </div>
                 <div class="clearfix"></div>
             </div>
         </div>
 </div>
-    <hr />
+{% endblock %}
 
-    <a class="btn btn-danger" href="{{ path('tags_new') }}">
-        <i class="glyphicon glyphicon-plus"></i>  Créer un tag
-    </a>
-
-    {% endblock %}

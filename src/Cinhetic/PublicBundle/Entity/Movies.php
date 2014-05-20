@@ -45,7 +45,7 @@ class Movies implements TimestampableInterface
      * @Expose
      * @Assert\NotBlank()
      * @Assert\Length(
-     *      min = "15",
+     *      min = "3",
      *      max = "500",
      *      minMessage = "Votre titre doit faire au moins {{ limit }} caractères",
      *      maxMessage = "Votre titre ne peut pas être plus long que {{ limit }} caractères"
@@ -151,12 +151,6 @@ class Movies implements TimestampableInterface
     /**
      * @var integer
      * @Expose
-     * @Assert\Range(
-     *      min = 0.5,
-     *      max = 5,
-     *      minMessage = "Le minimum d'heure est est de 30min.",
-     *      maxMessage = "Le maximum d'heure est de 5h"
-     * )
      * @ORM\Column(name="duree", type="integer", nullable=true)
      */
     private $duree;
@@ -245,7 +239,7 @@ class Movies implements TimestampableInterface
 
     /**
      * @var \Doctrine\Common\Collections\Collection
-     * @ORM\OneToMany(targetEntity="Comments", mappedBy="movie")
+     * @ORM\OneToMany(targetEntity="Comments", mappedBy="movie", orphanRemoval=true, cascade={"all"})
      */
     private $comments;
 

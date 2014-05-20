@@ -16,6 +16,16 @@ use Symfony\Component\Security\Core\SecurityContext;
 class LayoutController extends AbstractController
 {
 
+    /**
+     * Get alerting of emails
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function alertingAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $commentaires = $em->getRepository('CinheticPublicBundle:Comments')->getNbCommentInState(2);
 
+        return $this->render('CinheticPublicBundle:Slots:alerting.html.twig', array('commentaires' => $commentaires));
+    }
 
 }

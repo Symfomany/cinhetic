@@ -5,23 +5,36 @@
 
 {% block content %}
 
+     <div class="row">
+        <a href="{{ path('actors_edit', { 'id': entity.id }) }}" class="pull-right btn btn-primary btn-md btn-labeled">
+            <span class="btn-label icon fa fa-plus"></span>  Editer cet acteur
+        </a>
+    </div>
+
     <div class="row">
         <div class="col-md-12">
-            <h3 class="featurette-heading" style="margin-left: 0;">{{ entity.firstname|title}} {{ entity.lastname|title }}</h3>
+            <div class="note note-info">
+                <p lass="pull-left">{{ entity.firstname|title}} {{ entity.lastname|title }} - {{ entity.age }} ans</h4>
+                <p class="pull-right"><i>Né le {{ entity.dob|date('d/m/Y') }} à {{ entity.city }}</i></p>
+            </div>
             <hr />
-            <p class="">{{ entity.biography|striptags|raw }}</p>
-            <p class="">Il est à ce jour {{ entity.roles|striptags|raw }}. Il a été récompensé de  {{ entity.recompenses|striptags|raw }} et à tourné dans plus de {{ entity.movies|length|default('0') }} films.</p>
+            <p class="well"><strong>Biographie: </strong>{{ entity.biography|striptags|raw }}</p>
+            <p class="well"><strong>Professions: </strong> <i>{{ entity.roles|striptags|raw }}</i>. <br /><strong>Récompenses: </strong>  {{ entity.recompenses|striptags|raw }} et à tourné dans plus de {{ entity.movies|length|default('0') }} films.</p>
         </div>
     </div>
 
     <h3>Films joués</h3>
     <hr />
     {% include 'CinheticPublicBundle:Movies:_list.html.twig' %}
-    
-    <hr class="featurette-divider">
 
-    <a class="btn btn-primary" href="{{ path('actors_edit', { 'id': entity.id }) }}">
-        Editer
-    </a>
-    {{ form(delete_form, {'attr' : {'style' : 'display:inline-block'} } ) }}
+{% endblock %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
 {% endblock %}

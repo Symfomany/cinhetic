@@ -1,0 +1,8 @@
+{% block alerting %}
+    {% if commentaires != "0"  %}
+        <div class="alert alert-dismissable alert-warning">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <i class="glyphicon glyphicon-warning-sign"></i> <strong>Attention!</strong> <a href="{{ path('comments') }}">{{ commentaires }} commentaires</a> sont en attentes de modération
+        </div>
+    {% endif %}
+{% endblock %}

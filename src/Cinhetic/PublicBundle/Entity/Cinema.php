@@ -7,6 +7,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use JMS\Serializer\Annotation\ExclusionPolicy;
 use JMS\Serializer\Annotation\Expose;
+use Gedmo\Mapping\Annotation as Gedmo; // gedmo annotations
 
 
 /**
@@ -83,6 +84,11 @@ class Cinema
      */
     private $sessions;
 
+    /**
+     * @Gedmo\SortablePosition
+     * @ORM\Column(name="position", type="integer")
+     */
+    private $position;
 
     /**
      * Constructor
@@ -246,5 +252,30 @@ class Cinema
     public function getSessions()
     {
         return $this->sessions;
+    }
+
+
+
+    /**
+     * Set position
+     *
+     * @param integer $position
+     * @return Categories
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+
+        return $this;
+    }
+
+    /**
+     * Get position
+     *
+     * @return integer 
+     */
+    public function getPosition()
+    {
+        return $this->position;
     }
 }

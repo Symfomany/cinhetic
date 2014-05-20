@@ -3,13 +3,297 @@
 
 {% block javascripts %}
     {{ parent() }}
+
+    {% javascripts '@CinheticPublicBundle/Resources/public/js/index.js' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
     <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap-carousel.min.js"></script>
 {% endblock %}
 
 {% block content %}
 
-    {# {{ render(controller('CinheticPublicBundle:Movies:carousselMovies')) }} #}
-   
+    <div class="row">
+            <div class="col-md-4">
+
+                <div class="panel panel-success panel-dark widget-profile">
+                    <div class="panel-heading">
+                        <div class="widget-profile-bg-icon"><i class="fa fa-bar-chart-o"></i></div>
+                        <div class="widget-profile-header">
+                            <span>Statistiques</span><br>
+                            
+                        </div>
+                    </div> <!-- / .panel-heading -->
+                    <div class="list-group">
+                        <a href="{{ path('movies') }}" class="list-group-item"><i class="fa fa-chevron-right"></i> Films<span class="badge badge-info">{{ movies }}</span></a>
+                        <a href="{{ path('actors') }}" class="list-group-item"><i class="fa fa-chevron-right"></i> Acteurs<span class="badge badge-warning">{{ actors }}</span></a>
+                        <a href="{{ path('directors') }}" class="list-group-item"><i class="fa fa fa-chevron-right"></i> Réalisateurs<span class="badge badge-danger">{{ directors }}</span></a>
+                        <a href="{{ path('categories') }}" class="list-group-item"><i class="fa fa-chevron-right"></i> Catégories <span class="badge badge-success">{{ categories|length }}</span></a>
+                        <a href="{{ path('cinema') }}" class="list-group-item"><i class="fa fa-chevron-right"></i> Cinémas <span class="badge badge-inverse">{{ cinemas }}</span></a>
+                    </div>
+                </div> <!-- / .panel -->
+<!-- /5. $PROFILE_WIDGET_LINKS_EXAMPLE -->
+
+            </div>
+            <div class="col-md-4">
+
+                <div class="panel panel-info panel-dark widget-profile">
+                    <div class="panel-heading">
+                        <div class="widget-profile-bg-icon"><i class="fa fa-twitter"></i></div>
+                        <img src="https://pbs.twimg.com/profile_images/1908905076/AvatarFB2_bigger.JPG" alt="AlloCiné" class="widget-profile-avatar">
+                        <div class="widget-profile-header">
+                            <span>Allocine</span><br>
+                            <a href="https://twitter.com/allocine">https://twitter.com/allocine</a>
+                        </div>
+                    </div> <!-- / .panel-heading -->
+                    <div class="widget-profile-counters">
+                        <div class="col-xs-4"><span>{{ infos.statuses_count }}</span><br>TWEETS</div>
+                        <div class="col-xs-4"><span>{{ infos.friends_count }}</span><br>FOLLOWERS</div>
+                        <div class="col-xs-4"><span>{{ infos.followers_count }}</span><br>FOLLOWING</div>
+                    </div>
+                    <input type="text" placeholder="Write your tweet" class="form-control input-lg widget-profile-input">
+                    <div class="widget-profile-text">
+                     AlloCiné, le site de référence du cinéma et des séries TV ! Films au cinéma, horaires, news, festivals, communautés de fans...
+                    </div>
+                </div> <!-- / .panel -->
+            </div>
+            <div class="col-md-4">
+
+               {% if seance is not empty %}
+                    <div class="panel panel-danger panel-dark panel-body-colorful widget-profile">
+                        <div class="panel-heading">
+                            <div class="widget-profile-bg-icon"><i class="fa fa-film"></i></div>
+                            {% if seance.movies.image is defined %}
+                                <img class="widget-profile-avatar" src="{{ base_url ~ imgmovies ~ seance.movies.image }}" alt="...">
+                            {% endif %}
+                            <div class="widget-profile-header">
+                                <span>{% if seance.movies.id is defined %}{{ seance.movies.title }}{% endif %}</span><br>
+                                <h5>{{ seance.cinema.title }} - {{ seance.cinema.ville }}</h5>
+                                <h5 class="pull-right"><i class="fa fa-calendar"></i> Date de sortie: <i>{{ seance.movies.dateRelease|date('d/m/Y') }}</i></h5>
+                            </div>
+                        </div> <!-- / .panel-heading -->
+                        <div class="panel-body">
+                            <div class="widget-profile-text" style="padding: 0;">
+                                <i>{{ seance.movies.synopsis|striptags|truncate(230,true, "...") }}</i>
+                            </div>
+                        </div>
+                    </div> <!-- / .panel -->
+               {% endif %}
+
+
+            </div>
+        </div>
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <script>
+                init.push(function () {
+                    Morris.Bar({
+                        element: 'hero-bar',
+                        data: [
+                            {% for stat in vues %}
+                            {
+                                device: "{{ stat.title }}", nb: {{ stat.nbviews }}
+                            }
+                            {% if not loop.last %},{% endif %}
+                            {% endfor %}
+                        ],
+                        xkey: 'device',
+                        ykeys: ['nb'],
+                        labels: ['Nb'],
+                        barRatio: 0.4,
+                        xLabelAngle: 35,
+                        hideHover: 'auto',
+                        barColors: PixelAdmin.settings.consts.COLORS,
+                        gridLineColor: '#cfcfcf',
+                        resize: true
+                    });
+                });
+
+                init.push(function () {
+                    var doughnutChartData = [
+                    {% for stat in stats_movies_categories %}
+                        {
+                            label: "{{ stat.title }}", data: {{ stat.nbmovies }}
+                        } 
+                        {% if not loop.last %},{% endif %} 
+                    {% endfor %}
+                    ];
+
+                    // Init Chart
+                    $('#jq-flot-pie').pixelPlot(doughnutChartData, {
+                        series: {
+                            pie: {
+                                show: true,
+                                radius: 1,
+                                innerRadius: 0.5,
+                                label: {
+                                    show: true,
+                                    radius: 3 / 4,
+                                    formatter: function (label, series) {
+                                        return '<div style="font-size:14px;text-align:center;padding:2px;color:white;">' + Math.round(series.percent) + '%</div>';
+                                    },
+                                    background: { opacity: 0 }
+                                }
+                            }
+                        }
+                    }, {
+                        height: 205
+                    });
+                });
+            </script>
+            <div class="panel">
+                <div class="panel-heading">
+                    <span class="panel-title"><i class="panel-title-icon fa fa-tasks"></i> Répartition des films par catégories</span>
+                </div>
+                <div class="panel-body">
+                    <div class="graph-container">
+                        <div id="jq-flot-pie"></div>
+                        <div id="hero-bar" class="graph"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+           <!-- Javascript -->
+                <script>
+                    init.push(function () {
+                        // Easy Pie Charts
+                        var easyPieChartDefaults = {
+                            animate: 2000,
+                            scaleColor: false,
+                            lineWidth: 6,
+                            lineCap: 'square',
+                            size: 90,
+                            trackColor: '#e5e5e5'
+                        }
+                        $('#easy-pie-chart-1, #easy-pie-chart-2, #easy-pie-chart-3, #easy-pie-chart-4').easyPieChart($.extend({}, easyPieChartDefaults, {
+                            barColor: PixelAdmin.settings.consts.COLORS[1]
+                        }));
+                    });
+                </script>
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <span class="panel-title"><i class="panel-title-icon fa fa-bullhorn"></i> Quelques chiffres...</span>
+                        </div>
+                        <div class="panel-body">
+                            <div class="graph-container">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="stat-panel text-center">
+                                            <div class="stat-row">
+                                                <div class="stat-cell bg-dark-gray padding-sm text-xs text-semibold">
+                                                    <i class="fa fa-comments"></i>&nbsp;&nbsp;Commentaires Online
+                                                </div>
+                                            </div> 
+                                            <div class="stat-row">
+                                                <div class="stat-cell bordered no-border-t no-padding-hr">
+                                                    <div class="pie-chart" data-percent="{{ ratiocommentaire }}" id="easy-pie-chart-1">
+                                                        <div class="pie-chart-label">{{ ratiocommentaire }}%</div>
+                                                    </div>
+                                                </div>
+                                            </div> 
+                                        </div> 
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="stat-panel text-center">
+                                            <div class="stat-row">
+                                                <div class="stat-cell bg-dark-gray padding-sm text-xs text-semibold">
+                                                    <i class="fa fa-film"></i>&nbsp;&nbsp;Films en lignes
+                                                </div>
+                                            </div> <!-- /.stat-row -->
+                                            <div class="stat-row">
+                                                <div class="stat-cell bordered no-border-t no-padding-hr">
+                                                    <div class="pie-chart" data-percent="{{ ratioactivemovies }}" id="easy-pie-chart-2">
+                                                        <div class="pie-chart-label">{{ ratioactivemovies }}%</div>
+                                                    </div>
+                                                </div>
+                                            </div> 
+                                        </div> 
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="stat-panel text-center">
+                                                <div class="stat-row">
+                                                    <div class="stat-cell bg-dark-gray padding-sm text-xs text-semibold">
+                                                        <i class="fa fa-star"></i>&nbsp;&nbsp;Film en avant
+                                                    </div>
+                                                </div> 
+                                                <div class="stat-row">
+                                                    <div class="stat-cell bordered no-border-t no-padding-hr">
+                                                        <div class="pie-chart" data-percent="{{ ratiocovermovies }}" id="easy-pie-chart-3">
+                                                            <div class="pie-chart-label">{{ ratiocovermovies }}%</div>
+                                                        </div>
+                                                    </div>
+                                                </div> 
+                                            </div> 
+                                        </div>
+                                    <div class="col-lg-6">
+                                        <div class="stat-panel text-center">
+                                            <div class="stat-row">
+                                                <div class="stat-cell bg-dark-gray padding-sm text-xs text-semibold">
+                                                    <i class="fa fa-users"></i>&nbsp;&nbsp;Utilisateurs Online
+                                                </div>
+                                            </div> <!-- /.stat-row -->
+                                            <div class="stat-row">
+                                                <div class="stat-cell bordered no-border-t no-padding-hr">
+                                                    <div class="pie-chart" data-percent="{{ ratioenabledusers }}" id="easy-pie-chart-4">
+                                                        <div class="pie-chart-label">{{ ratioenabledusers }}%</div>
+                                                    </div>
+                                                </div>
+                                            </div> <!-- /.stat-row -->
+                                        </div> <!-- /.stat-panel -->
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="stat-panel text-center">
+                                            <div class="stat-row">
+                                                <div class="stat-cell bg-dark-gray padding-sm text-xs text-semibold">
+                                                    <i class="fa fa-calendar"></i>&nbsp;&nbsp;Films d'actualités
+                                                </div>
+                                            </div>
+                                            <div class="stat-row">
+                                                <div class="stat-cell bordered no-border-t no-padding-hr">
+                                                    <div class="pie-chart" data-percent="{{ ratiofilmsactus }}" id="easy-pie-chart-3">
+                                                        <div class="pie-chart-label">{{ ratiofilmsactus }}%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="stat-panel text-center">
+                                            <div class="stat-row">
+                                                <div class="stat-cell bg-dark-gray padding-sm text-xs text-semibold">
+                                                    <i class="fa fa-thumbs-o-up"></i>&nbsp;&nbsp;Cinéma actifs
+                                                </div>
+                                            </div> <!-- /.stat-row -->
+                                            <div class="stat-row">
+                                                <div class="stat-cell bordered no-border-t no-padding-hr">
+                                                    <div class="pie-chart" data-percent="{{ ratiocinemaseance }}" id="easy-pie-chart-4">
+                                                        <div class="pie-chart-label">{{ ratiocinemaseance }}%</div>
+                                                    </div>
+                                                </div>
+                                            </div> <!-- /.stat-row -->
+                                        </div> <!-- /.stat-panel -->
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+            </div>
+<!-- /6. $EASY_PIE_CHARTS -->
+        </div>
+    </div>
+
+
     <div class="row">
         <div class="col-lg-6">
             {{ render(controller('CinheticPublicBundle:Movies:currentMovies')) }}
@@ -38,7 +322,12 @@
                                             <div class="comment">
                                                 <div class="comment-body">
                                                     <div class="comment-by">
-                                                        <a href="#" title="">{{ comment.user.username }}</a> sur le film <a href="#" title="">{{ comment.movie.title }}</a>
+                                                       {% if comment.user.id is defined %} 
+                                                            <a href="#" title="">{{ comment.user.username|truncate(25,"...",true) }}</a> 
+                                                       {%  endif  %}
+                                                       {% if comment.movie.title is defined %} 
+                                                        sur le film <a href="#" title="">{{ comment.movie.title }}</a>
+                                                       {%  endif  %}
                                                     </div>
                                                     <div class="comment-text">
                                                         {{ comment.content }}
@@ -61,35 +350,35 @@
                 </div>
 
                 <div class="col-lg-6">
-                    <div class="panel colourable" >
+                    <div class="panel colourable" id="tweets_bloc" >
                             <div class="panel-heading">
                                 <span class="panel-title">
                                     <i class="panel-title-icon fa fa-twitter"></i>Allocine Tweets
                                 </span>
-                            </div> <!-- / .panel-heading -->
+                            </div>
                             <div class="panel-body">
-                           <table class="table table-striped">
-                                <tbody>
-                                    {% for tweet in tweets %}
+                               <table class="table table-striped">
+                                    <tbody>
+                                        {% for tweet in tweets %}
+                                            <tr>
+                                                <td>
+                                                    <i class="fa fa-twitter-square"></i>
+                                                </td>
+                                                <td>
+                                                    {{ tweet.text|raw }}</div>
+                                                </td>
+                                            </tr>
+                                        {% else %}
                                         <tr>
-                                            <td>
-                                                <i class="fa fa-twitter-square"></i>
-                                            </td> 
-                                            <td> 
-                                                {{ tweet.text|raw }}</div>
-                                            </td> <!-- / .thread -->
+                                            <td colspan="2">
+                                                <div class="alert">
+                                                    <strong>Attention</strong> Aucun tweets n'a été chargé
+                                                </div>
+                                            </td>
                                         </tr>
-                                    {% else %}
-                                    <tr>
-                                        <td colspan="2">
-                                            <div class="alert">
-                                                <strong>Attention</strong> Aucun tweets n'a été chargé
-                                            </div>
-                                        </td>
-                                    <tr>
-                                    {% endfor %}
-                                </tbody>
-                            </table>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
                             </div>
                     </div>
                 </div>
@@ -129,7 +418,24 @@
                 </div>
             </div>
         </div>
-        <p>© 2014 Company, Inc. · <a href="#">Privacy</a> · <a href="#">Terms</a></p>
-
     </div>
 {% endblock %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <style type="text/css" media="screen">
+        
+         @media only screen and (max-width: 800px) {
+            #tweets_bloc > div.panel-body > table > tbody > tr > td:nth-child(1)
+             {display: none;}
+         }
+         
+        @media only screen and (max-width: 640px) {
+             #tweets_bloc > div.panel-body > table > tbody > tr > td:nth-child(1)
+            {display: none;}
+        } 
+
+    </style>
+{% endblock %} 

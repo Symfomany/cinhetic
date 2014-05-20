@@ -19,18 +19,22 @@ class TagsController extends AbstractController
      * Lists all Tags entities.
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $breadcrumbs = $this->get("white_october_breadcrumbs");
         $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
         $breadcrumbs->addItem("Tags", $this->generateUrl('tags'));
 
 
-        $entities = $this->getRepository('Tags')->findAll();
-
+        $em = $this->getDoctrine()->getManager();
+        $entities = $em->createQuery(
+            'SELECT a
+            FROM CinheticPublicBundle:Tags a
+            ORDER BY a.word ASC'
+        );
         return $this->render('CinheticPublicBundle:Tags:index.html.twig', array(
-            'entities' => $this->paginate($entities,7),
-        ));
+            'entities' => $this->paginate($entities, $request->query->get('display',5))
+            ));
     }
 
 

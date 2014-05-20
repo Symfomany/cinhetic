@@ -26,5 +26,47 @@ class CommentsRepository extends EntityRepository
     }
 
 
+    /**
+     * Get Number of Comments
+     */
+    public function getNbComment(){
+        $query = $this->getEntityManager()
+            ->createQuery(
+                'SELECT COUNT(p.id)
+                    FROM CinheticPublicBundle:Comments p'
+            );
+
+        return $query->getSingleScalarResult();
+
+    }
+
+    /**
+     * Get Number of Comments From Criteria
+     */
+    public function getNbCommentInState($state = 2){
+        $query = $this->getEntityManager()
+            ->createQuery(
+                'SELECT COUNT(p.id)
+                    FROM CinheticPublicBundle:Comments p
+                    WHERE p.state = :state'
+            )->setParameter('state', $state);
+
+        return $query->getSingleScalarResult();
+
+    }
+
+    /**
+     * Get Ratio of Active Comments
+     */
+    public function getRatioActiveComment($state = 2){
+
+        $nb = $this->getNbComment();
+
+        $nb_criteria = $this->getNbCommentInState($state);
+
+            return floor((float)$nb_criteria * 100 / (float)$nb);
+    }
+
+
 
 }

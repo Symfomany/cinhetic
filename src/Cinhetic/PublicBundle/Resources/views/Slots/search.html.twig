@@ -1,9 +1,9 @@
 {% block search %}
-     <form action="{{ path('Cinhetic_public_search') }}" id="form_search" method="post"  role="search" class="pull-right col-xs-12 col-sm-6">
+     <form action="{{ path('Cinhetic_public_search') }}" id="form_search" method="post"  role="search" class="pull-right col-xs-12 col-sm-8">
             <div class="input-group no-margin">
                 <span class="input-group-addon" style="border:none;background: #fff;background: rgba(0,0,0,.05);"><i class="fa fa-search"></i></span>
                 {{ form_widget(form.search,{"id" : "search_input",'attr': {"class": "search_input form-control no-padding-hr" ,"id" : "search_input", "value" :  word, "data-url" : path('Cinhetic_public_search', {'ajax': "true"}) }}) }}
-                           {{ form_rest(form) }}
+               {{ form_rest(form) }}
             </div>
         </form>
 {% endblock %}

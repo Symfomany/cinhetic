@@ -21,12 +21,11 @@ class ActorsType extends AbstractType
         $builder
             ->add('firstname', null, array("label" => "Prénom",'attr' => array("class" => "form-control")))
             ->add('lastname', null, array("label" => "Nom",'attr' => array("class" => "form-control")))
-            ->add('dob', "date", array("label" => "Date de naissance",
-             'input' => 'string' ,
-             'widget' => 'single_text',
-              'format'=>'d/M/y',
-              "attr" => array("class" => "datepick form-control")
+            ->add('dob', "text", array("label" => "Date de naissance",
+                  "attr" => array("class" => "datepick form-control")
               ))
+            ->add('file', null, array("label" => "Image de profil",'attr' => array('accept', "image/*", "capture" => "capture")))
+            ->add('files', "hidden", array( 'mapped' => false))
             ->add('city', null, array("label" => "Ville d'origine"))
             ->add('nationality', "language", array("label" => "Nationalité"))
             ->add('biography', null, array("label" => "Biographie", 'attr' => array("cols" => 80, "rows" => 7,"class" => "ckeditor")))
@@ -51,6 +50,6 @@ class ActorsType extends AbstractType
      */
     public function getName()
     {
-        return 'Cinhetic_publicbundle_actors';
+        return '';
     }
 }

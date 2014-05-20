@@ -52,6 +52,6 @@ class SessionsType extends AbstractType
      */
     public function getName()
     {
-        return 'Cinhetic_publicbundle_sessions';
+        return '';
     }
 }

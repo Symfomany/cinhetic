@@ -4,10 +4,8 @@ namespace Cinhetic\PublicBundle\Controller;
 
 use Cinhetic\PublicBundle\Form\CommentsMovieType;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use Cinhetic\PublicBundle\Entity\Comments;
-use Cinhetic\PublicBundle\Form\CommentsType;
+
 
 /**
  * Class CommentsController
@@ -21,17 +19,22 @@ class CommentsController extends AbstractController
      * Lists all Comments entities.
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $breadcrumbs = $this->get("white_october_breadcrumbs");
         $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
         $breadcrumbs->addItem("Commentaires", $this->generateUrl('comments'));
 
-
-        $entities = $this->getRepository('Comments')->findAll();
+        $entities = $this->getRepository('Comments')->findBy(array(), array('dateCreated' => 'DESC'));
+        $inwaiting = $this->getRepository('Comments')->findBy(array('state' => 1), array('dateCreated' => 'DESC'));
+        $actived = $this->getRepository('Comments')->findBy(array('state' => 2), array('dateCreated' => 'DESC'));
+        $removed = $this->getRepository('Comments')->findBy(array('state' => 0), array('dateCreated' => 'DESC'));
 
         return $this->render('CinheticPublicBundle:Comments:index.html.twig', array(
-            'entities' => $this->paginate($entities,7),
+            'entities' => $this->paginate($entities,$request->query->get('display',5)),
+            'inwaiting' =>$inwaiting,
+            'actived' => $actived,
+            'removed' => $removed
         ));
     }
 
@@ -153,6 +156,22 @@ class CommentsController extends AbstractController
             'delete_form' => $deleteForm->createView(),        ));
     }
 
+    /**
+     * Validate a comment
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     */
+    public function validationAction(Comments $id, $validate)
+    {
+
+        if($this->get('cinhetic_public.manager_comments')->validation($id, $validate) == true){
+            $this->setMessage("Le commentaire a été modéré");
+        }
+
+        return $this->redirect($this->generateUrl('comments'));
+    }
+
 
     /**
      * Displays a form to edit an existing Comments entity.
@@ -201,6 +220,18 @@ class CommentsController extends AbstractController
     }
 
     /**
+     * Remove a Comments
+     */
+    public function removeAction(Comments $id)
+    {
+        if($this->get('cinhetic_public.manager_comments')->delete($id) == true){
+            $this->setMessage("Le commentaire a été supprimé");
+        }
+        return $this->redirect($this->generateUrl('comments'));
+    }
+
+
+    /**
      * Deletes a Comments entity.
      * @param Request $request
      * @param $id
@@ -213,5 +244,19 @@ class CommentsController extends AbstractController
 
         return $this->redirect($this->generateUrl('comments'));
     }
+
+    /**
+     * Lists all Comments entities.
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function commentsAction()
+    {
+        $entities = $this->getRepository('Comments')->findBy(array(), array('id' => 'DESC'), 7);
+
+        return $this->render('CinheticPublicBundle:Slots:notifications.html.twig', array(
+            'entities' => $entities
+        ));
+    }
+
 
 }

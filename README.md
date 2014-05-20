@@ -14,7 +14,7 @@ In some words: **Minimalist** features, **Collaborative** solution, **Pragmatic*
 
 Demo
 ------------------
-http://ns365800.ip-94-23-5.eu/demo/web/
+http://symfony.3wa.fr/app.php/
 
 ```
 Login: demo
@@ -253,6 +253,34 @@ Optional Requirements
 * Composer
 * Symfony 2
 
+OAuth Settings
+---------------
+``` yaml
+    
+    api_facebook_id:      552592408160039
+    api_facebook_secret:  befaf20ca0324ef67028b564463f4ccc
+
+    api_github_id:      d616a3183b8a888fc5b2
+    api_github_secret:  ba618f8086b8e9122447f7c7137c363eb0609d6c
+
+    api_twitter_id:      LWKDRPmFymEBsGnyolmA
+    api_twitter_secret:  dZfqT6cFM4kXun2KLMirwIvWmFSfQEhmdHkTlxqA0
+    api_twitter_access_token:  28117848-WewxolTGfO10lh66A7fnLmfwSgybPmJXpuqbprcWR
+    api_twitter_access_token_secret:  gxZ5lUkVlIljVwVJZXn0rnIDD1mGn8UZKQnpCVBRc
+
+    api_google_id:      592804639260-omp9kcr1gfs6k5o719146is2jknl1f2n.apps.googleusercontent.com
+    api_google_secret:  yx0iBnIfoYTDIq5eQJPvy7N8
+    scope:  "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
+
+    api_linkedin_id:      759ytfqzaixtxo
+    api_linkedin_secret:  mLsefActr5mB4wlK
+
+    api_flickr_id:      1011e1627b76b4d8e1e64686f1814aa3
+    api_flickr_secret:  064a7c31c78a75c2
+
+```
+
+
 Chapters covered in project
 ---------------
 
@@ -292,6 +320,7 @@ Chapters covered in project
 * Read Rss and populate the database
 * Webservices Factory to handle Youtube, Twitter, Flickr & Thumbr APIs
 * Custom 404 & 500 errors page
+* Youtube API in OAuth
 
 Features
 ----------------------------------
@@ -301,7 +330,7 @@ Features
 * Visibility on Movies and cover action in homepage
 * Pagination for results with "KNPPaginatorBundles"
 * Datas Fixtures with "Doctrine Fixtures"
-* Upload File Image in Movie with Imagine library for thumb
+* Upload File Image in Movies/Actors/Directors with Imagine library for thumb
 * Homepage with custom template by Bootsrapp Twitter
 * Form & Repositories in services
 * Add authentification & firewall administration for user connected with "FOSUserBundle"
@@ -333,6 +362,7 @@ Features
 * Webservices called in service Youtube, Thumbr, Flickr & Twitter
 * Custom execeptions &  errors page
 * Breadscrumb in controllers/views
+* Youtube API in OAuth
 
 Evolution
 ----------------------------------

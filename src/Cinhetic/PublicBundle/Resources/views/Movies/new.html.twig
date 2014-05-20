@@ -4,14 +4,23 @@
 {% block titlepage %}<i class="fa fa-plus"></i>&nbsp;&nbsp;Ajouter un film{% endblock %}
 
 {% block content %}
+    {{ form_errors(form) }}
+
 <form method="post" action="{{ path('movies_create') }}" id="handlemovie" novalidate="novalidate" enctype="multipart/form-data">
     <div class="panel form-horizontal">
         <div class="panel-heading">
-            <span class="panel-title">Présentation</span>
+            <span class="panel-title"><i class="fa fa-pencil"></i> Présentation</span>
         </div>
         <div class="panel-body">
-             {{ form_row(form.title) }}
-            {{ form_row(form.typeFilm) }}
+            <div class="row">
+                <div class="col-sm-6">
+                    {{ form_row(form.title) }}
+                </div>
+                <div class="col-sm-6">
+                    {{ form_row(form.typeFilm) }}
+                </div>
+            </div>
+
             {{ form_row(form.synopsis) }}
             {{ form_row(form.description) }}
         </div>
@@ -19,18 +28,40 @@
 
     <div class="panel form-horizontal">
         <div class="panel-heading">
-            <span class="panel-title">Description</span>
+            <span class="panel-title"><i class="fa fa-pencil"></i> Description</span>
         </div>
         <div class="panel-body">
-            {{ form_row(form.file) }}
-            {{ form_row(form.trailer) }}
-            {{ form_row(form.languages) }}
-            {{ form_row(form.distributeur) }}
-            {{ form_row(form.bo) }}
-            {{ form_row(form.annee) }}
-            {{ form_row(form.budget) }}
-            {{ form_row(form.duree) }}
-            {{ form_row(form.dateRelease) }}
+            <div class="row">
+                <div class="col-sm-6">
+                    {{ form_row(form.file) }}
+                </div>
+                <div class="col-sm-6">
+                    {{ form_row(form.trailer) }}
+                </div>
+            </div>
+             <div class="row">
+                <div class="col-sm-3">
+                    {{ form_row(form.languages) }}
+                </div>
+                <div class="col-sm-2">
+                    {{ form_row(form.distributeur) }}
+                </div>
+                <div class="col-sm-2">
+                    {{ form_row(form.bo) }}
+                </div>
+                <div class="col-sm-1">
+                    {{ form_row(form.annee) }}
+                </div>
+                <div class="col-sm-1">
+                    {{ form_row(form.budget) }}
+                </div>
+                <div class="col-sm-1">
+                    {{ form_row(form.duree) }}
+                </div>
+                <div class="col-sm-2">
+                    {{ form_row(form.dateRelease) }}
+                </div>
+            </div>
          </div>
     </div>
 
@@ -38,11 +69,11 @@
         <div class="col-sm-6">
             <div class="panel form-horizontal">
                 <div class="panel-heading">
-                    <span class="panel-title">Caractéristiques</span>
+                    <span class="panel-title"><i class="fa fa-pencil"></i> Caractéristiques</span>
                 </div>
                 <div class="panel-body">
+                    {{ form_row(form.category) }}
                     {{ form_row(form.notePresse) }}
-
                     <label class="checkbox-inline">
                         {{ form_widget(form.visible) }}
                         <span class="lbl">Visible ?</span>
@@ -58,10 +89,9 @@
         <div class="col-sm-6">
             <div class="panel form-horizontal">
                 <div class="panel-heading">
-                    <span class="panel-title">Relations</span>
+                    <span class="panel-title"><i class="fa fa-pencil"></i> Relations</span>
                 </div>
                 <div class="panel-body">
-                    {{ form_row(form.category) }}
                     {{ form_row(form.actors) }}
                     {{ form_row(form.cinemas) }}
                     {{ form_row(form.directors) }}
@@ -74,7 +104,7 @@
         <div class="col-sm-6">
             <div class="panel form-horizontal">
                 <div class="panel-heading">
-                    <span class="panel-title">Extras</span>
+                    <span class="panel-title"><i class="fa fa-pencil"></i> Extras</span>
                 </div>
                 <div class="panel-body">
                     {{ form_row(form.moviesRelated) }}
@@ -86,7 +116,7 @@
         <div class="col-sm-6">
             <div class="panel form-horizontal">
                 <div class="panel-heading">
-                    <span class="panel-title">Vidéos</span>
+                    <span class="panel-title"><i class="fa fa-pencil"></i> Vidéos</span>
                 </div>
                 <div class="panel-body">
                     <div class="row-fluid">
@@ -123,6 +153,9 @@
                             allowClear: true,
                             placeholder: "Selectionnez..."
         });
-        $('.datepick').datepicker();
+        $('.datepick').datepicker({
+            todayBtn: "linked",
+            format: 'yyyy-mm-dd'
+           });    
     </script>
 {% endblock %}

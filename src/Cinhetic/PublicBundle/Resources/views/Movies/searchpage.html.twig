@@ -52,10 +52,10 @@
 
 				<ul class="search-classic tab-pane fade in active" id="search-tabs-all">
 					{% for entity in movies %}
-						<li>
-							<span class="pull-right">
+					<span class="pull-right">
 								<span data-rating="{{ entity.notePresse }}" class="rating"></span>
 							</span>
+						<li>
 							<a class="search-title" href="{{ path('movies_show', {'id' : entity.id}) }}">
 	                            {{ entity.title|title }}
 	                        </a>

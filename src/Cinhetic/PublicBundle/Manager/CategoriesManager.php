@@ -105,7 +105,7 @@ class CategoriesManager
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning"), 'label' => 'Créer cette catégorie'));
+        $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning btn-labeled"), 'label' => 'Créer cette catégorie'));
 
         return $form->getForm();
     }
@@ -115,14 +115,14 @@ class CategoriesManager
      * @param categories $entity The entity
      * @return \Symfony\Component\Form\Form The form
      */
-    public function editForm(Categories $entity)
+    public function editForm(Categories $id)
     {
-        $form = $this->formFactory->createBuilder($this->form, $entity, array(
-            'action' => $this->router->generate('categories_update', array('id' => $entity->getId())),
+        $form = $this->formFactory->createBuilder($this->form, $id, array(
+            'action' => $this->router->generate('categories_update', array('id' => $id->getId())),
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning"), 'label' => 'Modifier cette catégorie'));
+        $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning btn-labeled"), 'label' => 'Modifier cette catégorie'));
 
         return $form->getForm();
     }
@@ -133,12 +133,12 @@ class CategoriesManager
      * @param mixed $id The entity id
      * @return \Symfony\Component\Form\Form The form
      */
-    public function deleteForm(categories $id)
+    public function deleteForm(Categories $id)
     {
         return $this->formFactory->createBuilder()
             ->setAction($this->router->generate('categories_delete', array('id' => $id->getId())))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array('label' => 'Supprimer', 'attr' => array('class' => 'btn btn-danger')))
             ->getForm();
     }
 

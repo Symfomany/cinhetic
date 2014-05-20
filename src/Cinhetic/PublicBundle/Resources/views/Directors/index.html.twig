@@ -4,22 +4,35 @@
 
 
 {% block content %}
+    <div class="row well">
+        <a href="{{ path('directors_new') }}" class="pull-right btn btn-primary btn-md btn-labeled">
+            <span class="btn-label icon fa fa-plus"></span>  Créer un réalisateur
+        </a>
+    </div>
 <div class="table-light">
 
     <table class="records_list  table table-striped">
         <thead>
             <tr>
-                <th>Nom</th>
+                <th>Profil</th>
+                <th>{% if entities.isSorted('a.lastname') and app.request.query.get('direction') == "desc" %} <i class="fa fa-arrow-circle-up"></i>{% else %}<i class="fa fa-arrow-circle-down"></i>{% endif %} {{ knp_pagination_sortable(entities, 'Nom', 'a.lastname') }}</th>
                 <th>Biographie</th>
-                <th>Note</th>
+                <th>{% if entities.isSorted('a.note') and app.request.query.get('direction') == "desc" %} <i class="fa fa-arrow-circle-up"></i>{% else %}<i class="fa fa-arrow-circle-down"></i>{% endif %} {{ knp_pagination_sortable(entities, 'Note', 'a.note') }}</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
+                <td>{% if entity.image is not empty %}
+                        <img class="img-thumbnail" src="{{ base_url ~ imgdirectors ~ entity.image }}" alt="...">
+
+                    {% else %}
+                        <img class="img-thumbnail" src="http://placehold.it/150x150" alt="...">
+                    {% endif %}
+                </td>
                 <td><a href="{{ path('directors_show', { 'id': entity.id }) }}">{{ entity.firstname }} {{ entity.lastname }}</a></td>
-                <td>{{ entity.biography }}</td>
+                <td>{{ entity.biography|striptags|truncate(200,true,'...') }}</td>
                 <td>
                     <span data-rating="{{ entity.note }}" class="rating"></span>
                 </td>
@@ -28,13 +41,46 @@
                     <a class="btn btn-warning btn-sm" href="{{ path('directors_edit', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-pencil"></i> Editer</a>
                 </td>
             </tr>
+            {% else %}
+                    <tr><td colspan="5">
+                        <div class="alert alert-danger">
+                            Pas de réalisateurs pour le moment.
+                    </div>
+                    </td></tr>
         {% endfor %}
         </tbody>
     </table>
+    <div class="table-footer">
+            <div class="table-caption">
+                <div class="pull-right">
+                {{ knp_pagination_render(entities) }}
+                </div>
+                <div class="pull-right">
+                  {{ include('CinheticPublicBundle:Slots:display.html.twig') }}
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
 </div>
-        <hr />
-            <a class="btn btn-danger" href="{{ path('directors_new') }}">
-                Créer un nouveau réalisateur
-            </a>
 
     {% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <style type="text/css" media="screen">
+        
+         @media only screen and (max-width: 800px) {
+           table.table td:nth-child(1), table.table td:nth-child(3),table.table td:nth-child(4),table.table td:nth-child(0),table td:nth-child(6),
+            table.table th:nth-child(6),table.table th:nth-child(1),table.table th:nth-child(3),table.table th:nth-child(4),table.table th:nth-child(0)
+             {display: none;}
+         }
+         
+        @media only screen and (max-width: 640px) {
+            table.table td:nth-child(3),table.table td:nth-child(6)
+            table.table th:nth-child(3),table.table th:nth-child(6)
+             {display: none;}
+        } 
+
+    </style>
+{% endblock %} 

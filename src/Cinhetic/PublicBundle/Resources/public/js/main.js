@@ -1,16 +1,5 @@
 $(function () {
     $('#flashdatas .alert').delay(5000).slideUp('fast');
-    $('#search_input').focus(function(){
-            $('#form_search').stop(true,true).animate({
-                'width': '600px'
-            });
-    });
- $('#search_input').blur(function(){
-            $('#form_search').stop(true,true).animate({
-                'width': '50%'
-            });
-    });
-
 
     if ($("#search_page_ajax").length > 0) {
         $("#search_page_ajax").autocomplete({
@@ -105,8 +94,11 @@ $(function () {
 */
 
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 7d4a28b807cc0cab7f3cc33fc2f4429ae3432ab8
     $(window).scroll(function () {
         if ($(document).scrollTop() >= 100) {
             return $('body .navbar-default').stop(true, true).animate({
@@ -146,7 +138,7 @@ $(function () {
     };
 
     var search = $('#search_input').val();
-    $("#listmovies *").highlight(search, "highlight");
+    $('#search_input').parents("#listmovies *").highlight(search, "highlight");
 
 
     $('.ishome').click(function (evt) {
@@ -202,6 +194,8 @@ $(function () {
         }, 600);
         return false;
     });
+    
 
     $('.alert-success').delay(5000).slideUp('fast');
+
 });

@@ -1,0 +1,66 @@
+{% extends 'CinheticPublicBundle::layout.html.twig' %}
+
+{% block titlepage %}<i class="fa fa-film"></i>&nbsp;&nbsp;Les médias de {{ entity.title }} {% endblock %}
+
+
+{% block content %}
+ <div id="medias">
+     <div class="row">
+        {% for media in medias %}
+            <div class="col-lg-4 col-sm-6 col-xs-12">
+               <a data-toggle="modal" data-target="#modal-blurred-img">
+                    {% if media.nature  == 1 %}
+                        <img src="{{ media.picture }}" class="thumbnail img-responsive">
+                     {% else %}
+                        {{ media.video|raw }}
+                     {% endif %}
+               </a>
+                    
+                <div id="modal-blurred-img" class="modal fade modal-blur" tabindex="-1" role="dialog" style="display: none;">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                      {% if media.nature  == 1 %}
+                        <img src="{{ media.picture }}" class="thumbnail img-responsive">
+                     {% else %}
+                        {{ media.video|raw }}
+                     {% endif %}                           
+                   </div>
+                        </div>
+                    </div> 
+                </div> 
+            </div>
+            {% else %}
+                <div class="alert">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        Pas encore de media.
+                </div>
+        {% endfor %}
+      </div>
+  </div>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <style type="text/css" media="screen">
+        
+         @media only screen and (max-width: 800px) {
+          
+         }
+         
+        @media only screen and (max-width: 640px) {
+            
+        } 
+
+    </style>
+{% endblock %} 
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        init.push(function () {
+           
+        });
+    </script>
+{% endblock %}

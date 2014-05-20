@@ -17,6 +17,17 @@ class MainController extends AbstractController
 {
 
 
+    /**
+     * @var \AlloHelper
+     */
+    protected $helper;
+
+    /**
+     * Constructor of APIController
+     */
+    public function __construct(){
+        $this->helper = new \AlloHelper;
+    }
 
     /**
      * Homepage Get Started
@@ -77,6 +88,44 @@ class MainController extends AbstractController
         $seances = $em->getRepository('CinheticPublicBundle:Sessions')->getNextSessions();
         $categories = $em->getRepository('CinheticPublicBundle:Categories')->findAll();
         $tags = $em->getRepository('CinheticPublicBundle:Tags')->findAll();
+              
+        $movies = $em->getRepository('CinheticPublicBundle:Movies')->getCount();
+        $actors = $em->getRepository('CinheticPublicBundle:Actors')->getCount();
+        $directors = $em->getRepository('CinheticPublicBundle:Directors')->getCount();
+        $cinemas = $em->getRepository('CinheticPublicBundle:Cinema')->getCount();
+
+        $ratiocommentaire = $em->getRepository('CinheticPublicBundle:Comments')->getRatioActiveComment();
+        $ratioactivemovies = $em->getRepository('CinheticPublicBundle:Movies')->getRatioActiveMovies();
+        $ratiocovermovies = $em->getRepository('CinheticPublicBundle:Movies')->getRatioCoverMovies();
+        $ratioenabledusers = $em->getRepository('CinheticPublicBundle:User')->getRatioActiveActors();
+        $ratiofilmsactus = $em->getRepository('CinheticPublicBundle:Movies')->getRatioActusMovies();
+        $ratiocinemaseance = $em->getRepository('CinheticPublicBundle:Cinema')->getRatioHasSeance(new \Datetime('now'));
+
+
+        $allocine_movies = $this->helper->movielist();
+
+        $vues = array();
+            if(isset($allocine_movies['movie']) && is_object($allocine_movies['movie'])){
+            foreach($allocine_movies['movie'] as $mov){
+                $vues[] = array(
+                    "title" => $mov['originalTitle'],
+                    "nbviews" => $mov['statistics']['userRatingCount'],
+                    "nbcomments" => $mov['statistics']['commentCount'],
+                );
+            }
+        }
+        
+        $stats_movies_categories = $em->getRepository('CinheticPublicBundle:Movies')->getStatsMoviesCategories();
+
+        $seance = null;
+        if(!empty($seances)){
+            shuffle($seances);
+            if(count($seances) > 1){
+                $seance = array_shift(array_values($seances));
+            }else{
+                $seance = $seances[0];
+            }
+        }
         
         // Twitter feeds
         $params['consumer_key'] = $this->container->getParameter('api_twitter_id');
@@ -84,8 +133,11 @@ class MainController extends AbstractController
         $params['oauth_access_token'] = $this->container->getParameter('api_twitter_access_token');
         $params['oauth_access_token_secret'] = $this->container->getParameter('api_twitter_access_token_secret');
         $params['callback_url'] = null;
+
         $webservice = $this->get('cinhetic_public.webservices')->build('Twitter', $params);
         $tweets = $webservice->getFeeds('allocine', 7);
+        $infos = $webservice->getInfos('allocine');
+
 
         return $this->display('index.html.twig',  array(
             'seances' => $seances,
@@ -94,7 +146,21 @@ class MainController extends AbstractController
             'comments' => $this->paginate($commentaires,5),
             'tags' => $tags,
             'url'  => null,
-            'form' => null
+            'form' => null,
+            'movies' => $movies,
+            'vues' => $vues,
+            'infos' => $infos,
+            'actors' => $actors,
+            'directors' => $directors,
+            'ratiocommentaire' => $ratiocommentaire,
+            'ratioactivemovies' => $ratioactivemovies,
+            'ratiocovermovies' => $ratiocovermovies,
+            'ratioenabledusers' => $ratioenabledusers,
+            'ratiofilmsactus' => $ratiofilmsactus,
+            'ratiocinemaseance' => $ratiocinemaseance,
+            'cinemas' => $cinemas,
+            'stats_movies_categories' => $stats_movies_categories,
+            'seance' => $seance
            // 'url'  => $paybox->getUrl(),
             //'form' => $paybox->getForm()->createView()
         ));

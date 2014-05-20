@@ -18,6 +18,18 @@ class TwitterClient extends Client implements WebServicesInterface {
      * @param int $limit
      * @return array|bool|float|int|mixed|string
      */
+    public function getInfos($username = "Symfomany"){
+        $response = $this->client->get('https://api.twitter.com/1.1/users/show.json?screen_name='.$username)->send();
+
+        return $response->json();
+    }
+
+    /**
+     * Returns the 20 most recent mentions (tweets containing a users's @screen_name) for the authenticating user
+     * @param string $username
+     * @param int $limit
+     * @return array|bool|float|int|mixed|string
+     */
     public function getFeeds($username = "Symfomany", $limit = 10){
         $response = $this->client->get('https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name='.$username.'&count='.$limit.'')->send();
 

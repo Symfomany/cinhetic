@@ -62,6 +62,28 @@ class CommentsManager
     }
 
     /**
+     * Validation
+     * @param Comments $entity
+     * @return bool
+     */
+    public function validation(Comments $entity, $validate){
+        $entity->setState($validate);
+        $this->em->persist($entity);
+        $this->em->flush();
+        return true;
+    }
+
+    /**
+     * Validation
+     * @param Comments $entity
+     * @return bool
+     */
+    public function delete(Comments $entity){
+        $this->processDelete($entity);
+        return true;
+    }
+
+    /**
      * Update movie
      * @param Comments $entity
      * @return bool
@@ -121,7 +143,7 @@ class CommentsManager
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning"), 'label' => 'Créer ce commentaire'));
+        $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning btn-labeled"), 'label' => 'Créer ce commentaire'));
 
         return $form->getForm();
     }
@@ -138,7 +160,7 @@ class CommentsManager
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning"), 'label' => 'Modifier ce commentaire'));
+        $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning btn-labeled"), 'label' => 'Modifier ce commentaire'));
 
         return $form->getForm();
     }
@@ -154,7 +176,7 @@ class CommentsManager
         return $this->formFactory->createBuilder()
             ->setAction($this->router->generate('comments_delete', array('id' => $id->getId())))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array('label' => 'Supprimer', 'attr' => array('class' => 'btn btn-danger')))
             ->getForm();
     }
 

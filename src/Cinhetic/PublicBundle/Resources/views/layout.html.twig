@@ -64,9 +64,9 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
     <script type="text/javascript">
         $(function() {
-            $('#content-wrapper').animate(
+            $('#content-wrapper').not('#main-menu').stop(true,true).animate(
                 {opacity:1,top:'30px'},'fast');
-        });
+         });
     </script>
 {% endblock %}
 
@@ -88,7 +88,7 @@
       
     <div id="main-navbar" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <!-- Main menu toggle -->
-        <button type="button" id="main-menu-toggle"><i class="navbar-icon fa fa-bars icon"></i><span class="hide-menu-text">HIDE MENU</span></button>
+        <button type="button" id="main-menu-toggle"><i class="navbar-icon fa fa-bars icon"></i><span class="hide-menu-text">CACHER MENU</span></button>
         
         <div class="navbar-inner">
             <!-- Main navbar header -->
@@ -106,7 +106,7 @@
 
             <div id="main-navbar-collapse" class="collapse navbar-collapse main-navbar-collapse">
                 <div>
-                          {{ include('CinheticPublicBundle:Slots:topmenu.html.twig') }}
+                      {{ include('CinheticPublicBundle:Slots:topmenu.html.twig') }}
                 </li>
                     </ul> <!-- / .navbar-nav -->
 
@@ -114,12 +114,11 @@
                         <ul class="nav navbar-nav pull-right right-navbar-nav">
 
                             <li class="nav-icon-btn nav-icon-btn-danger dropdown">
-                                  {{ include('CinheticPublicBundle:Slots:notifications.html.twig') }}
+                              {{ render(controller('CinheticPublicBundle:Comments:comments')) }}
                             </li>
                             <li class="nav-icon-btn nav-icon-btn-success dropdown">
                                {{ include('CinheticPublicBundle:Slots:messages.html.twig') }}
                             </li>
-<!-- /3. $END_NAVBAR_ICON_BUTTONS -->
 
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle user-menu" data-toggle="dropdown">
@@ -132,7 +131,21 @@
                                         <li class="divider"></li>
                                         <li><a href="{{ path('fos_user_security_logout') }}"><i class="dropdown-icon fa fa-power-off"></i>&nbsp;&nbsp;Log Out</a></li>
                                     {% else %}
-                                        <li><a href="{{ path('fos_user_security_login') }}"><i class="dropdown-icon fa fa-sign-in"></i>&nbsp;&nbsp;Login</a></li>
+                                        {#<li><a href="{{ path('fos_user_security_login') }}"><i class="dropdown-icon fa fa-sign-in"></i>&nbsp;&nbsp;Login</a></li>#}
+                                        <li><a data-toggle="modal" data-target="#modal-blurred-bg"><i class="dropdown-icon fa fa-sign-in"></i>&nbsp;&nbsp;Login</a></li>
+                                        <div id="modal-blurred-bg" class="modal fade modal-blur" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+                                            <div class="modal-dialog modal-sm">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal">×</button>
+                                                        <h4 class="modal-title"><i class="glyphicon glyphicon-off"></i>  Authentification</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        {{ include('CinheticPublicBundle:Slots:login.html.twig') }}
+                                                    </div>
+                                                </div> <!-- / .modal-content -->
+                                            </div> <!-- / .modal-dialog -->
+                                        </div>
                                     {% endif %}
                                 </ul>
                             </li>
@@ -153,12 +166,19 @@
         <div class="page-header">
             
             <div class="row">
+<<<<<<< HEAD
                 <!-- Page header, center on small screens -->
                 <h1 class="col-xs-12 col-sm-8 text-center text-left-sm">
                     {% block titlepage %}<i class="fa fa-Home page-header-icon"></i>&nbsp;&nbsp;Home{% endblock %}
+=======
+                {{ render(controller('CinheticPublicBundle:Layout:alerting')) }}
+
+                <h1 class="col-xs-12 col-sm-6 text-center text-left-sm">
+                    {% block titlepage %}<i class="fa fa-dashboard"></i>&nbsp;&nbsp;Dashboard{% endblock %}
+>>>>>>> 7d4a28b807cc0cab7f3cc33fc2f4429ae3432ab8
                 </h1>
 
-                <div class="col-xs-12 col-sm-8">
+                <div class="col-xs-12 col-sm-6">
                     <div class="row">
                         <hr class="visible-xs no-grid-gutter-h">
 
@@ -175,6 +195,8 @@
 
         <div class="row">
             <div class="col-md-12">
+
+
                 {% include 'CinheticPublicBundle:Slots:flashdatas.html.twig' %}
 
                 {% block content %}
@@ -214,6 +236,7 @@
     {% javascripts '@CinheticPublicBundle/Resources/public/js/bootstrap.min.js' %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
+
     {% javascripts '@CinheticPublicBundle/Resources/public/js/pixel-admin.min.js' %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}

@@ -34,7 +34,7 @@ class Categories implements TimestampableInterface
      * @var string
      * @Assert\NotBlank()
      * @Assert\Length(
-     *      min = "10",
+     *      min = "5",
      *      max = "200",
      *      minMessage = "Votre titre doit faire au moins {{ limit }} caractères",
      *      maxMessage = "Votre titre ne peut pas être plus long que {{ limit }} caractères"
@@ -56,7 +56,7 @@ class Categories implements TimestampableInterface
      * @Expose
      * @var string
      * @Assert\Length(
-     *      min = "50",
+     *      min = "7",
      *      max = "1500",
      *      minMessage = "Votre description doit faire au moins {{ limit }} caractères",
      *      maxMessage = "Votre description ne peut pas être plus long que {{ limit }} caractères"
