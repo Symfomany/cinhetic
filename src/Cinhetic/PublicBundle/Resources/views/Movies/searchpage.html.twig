@@ -52,26 +52,6 @@
 						    <span class="pull-right">
 								<span data-rating="{{ entity.notePresse }}" class="rating"></span>
 							</span>
-<<<<<<< HEAD
-						<li>
-							<a class="search-title" href="{{ path('movies_show', {'id' : entity.id}) }}">
-	                            {{ entity.title|title }}
-	                        </a>
-	                        {% if entity.category.id is defined %}
-	                            <a href="{{ path('categories_show', {'id' : entity.category.id}) }}">
-	                                - {{ entity.category.title|title }}
-	                            </a>
-	                        {% endif %}
-							<div class="search-content">
-								{{ entity.description|striptags|truncate(300,true,'...') }}	                              
-							</div> <!-- / .search-content -->
-							<div class="search-tags">
-								<span class="search-tags-text">Tags:</span>
-								{% for entity in entity.tags %}
-		                            <a class="label label-success">{{ entity.word }}</a>
-	                        {% endfor %}
-							</div> <!-- / .search-tags -->
-=======
 						     {% if entity.image is not empty %}
        								<div class="col-md-2">
 					                   <a href="{{ path('movies_show', {'id' : entity.id}) }}">
@@ -116,7 +96,6 @@
 
 							</div>
 						</div>
->>>>>>> 108c86d85b0ff529f7d4e079a219e49559edf2d8
 						</li>
 	 				{% else %}
 			            <div class="alert alert-warning">
