@@ -102,7 +102,7 @@ class Actors implements UploadableInterface
      * @var string
      * @Assert\Length(
      *      min = "15",
-     *      max = "15000",
+     *      max = "150000",
      *      minMessage = "Votre biographie doit faire au moins {{ limit }} caractères",
      *      maxMessage = "Votre biographie ne peut pas être plus long que {{ limit }} caractères"
      * )

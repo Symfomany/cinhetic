@@ -3,13 +3,21 @@
 {% block titlepage %}<i class="fa fa-plus"></i>&nbsp;&nbsp;Créer un cinéma{% endblock %}
 
 {% block content %}
-	<div class="row">
-        <div class="col-sm-6">
-            {{ form_row(form.title) }}
+		<div class="row">
+	    	{{ form_start(form)}}
+	        <div class="col-sm-6">
+	            {{ form_row(form.title) }}
+	        </div>
+	        <div class="col-sm-6">
+	            {{ form_row(form.ville) }}
+	        </div>
         </div>
-        <div class="col-sm-6">
-            {{ form_row(form.ville) }}
-        </div>
-	</div>
-    {{ form(form) }}
+        <div class="row">
+	        <div class="col-sm-12">
+            	{{ form_rest(form) }}
+        	</div>
+        </div>    
+    	<button type="submit" class="pull-right btn btn-labeled btn-lg btn-primary"><span class="btn-label icon fa fa-check"></span> Enregistrer</button>
+
+	    {{ form_end(form)}}
 {% endblock %}

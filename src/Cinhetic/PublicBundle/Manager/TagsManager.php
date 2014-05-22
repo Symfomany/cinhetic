@@ -105,8 +105,6 @@ class TagsManager
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning btn-labeled"), 'label' => 'Créer ce tag'));
-
         return $form->getForm();
     }
 
@@ -121,8 +119,6 @@ class TagsManager
             'action' => $this->router->generate('tags_update', array('id' => $entity->getId())),
             'method' => 'POST',
         ));
-
-        $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning btn-labeled"), 'label' => 'Modifier ce tag'));
 
         return $form->getForm();
     }

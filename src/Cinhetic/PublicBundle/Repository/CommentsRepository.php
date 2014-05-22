@@ -36,7 +36,8 @@ class CommentsRepository extends EntityRepository
                     FROM CinheticPublicBundle:Comments p'
             );
 
-        return $query->getSingleScalarResult();
+
+        return (int)array_shift($query->getOneOrNullResult());
 
     }
 
@@ -51,7 +52,7 @@ class CommentsRepository extends EntityRepository
                     WHERE p.state = :state'
             )->setParameter('state', $state);
 
-        return $query->getSingleScalarResult();
+        return (int)array_shift($query->getOneOrNullResult());
 
     }
 
@@ -64,7 +65,7 @@ class CommentsRepository extends EntityRepository
 
         $nb_criteria = $this->getNbCommentInState($state);
 
-            return floor((float)$nb_criteria * 100 / (float)$nb);
+        return ((int)$nb > 0) ? floor((float)$nb_criteria * 100 / (float)$nb) : 0;
     }
 
 

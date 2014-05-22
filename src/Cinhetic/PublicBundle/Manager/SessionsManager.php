@@ -111,8 +111,6 @@ class SessionsManager
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning btn-labeled"), 'label' => 'Créer cette séance'));
-
         return $form->getForm();
     }
 
@@ -127,8 +125,6 @@ class SessionsManager
             'action' => $this->router->generate('sessions_update', array('id' => $entity->getId())),
             'method' => 'POST',
         ));
-
-        $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning btn-labeled"), 'label' => 'Modifier cette séance'));
 
         return $form->getForm();
     }

@@ -12,6 +12,7 @@
     <table class="records_list  table table-striped">
         <thead>
             <tr>
+                <th>{% if entities.isSorted('a.id') and app.request.query.get('direction') == "desc" %} <i class="fa fa-arrow-circle-up"></i>{% else %}<i class="fa fa-arrow-circle-down"></i>{% endif %} {{ knp_pagination_sortable(entities, 'Id', 'a.id') }}</th>
                 <th>{% if entities.isSorted('a.dateSession') and app.request.query.get('direction') == "desc" %} <i class="fa fa-arrow-circle-up"></i>{% else %}<i class="fa fa-arrow-circle-down"></i>{% endif %} {{ knp_pagination_sortable(entities, 'Date de session', 'a.dateSession') }}</th>
                 <th>{% if entities.isSorted('m.title') and app.request.query.get('direction') == "desc" %} <i class="fa fa-arrow-circle-up"></i>{% else %}<i class="fa fa-arrow-circle-down"></i>{% endif %} {{ knp_pagination_sortable(entities, 'Film', 'm.title') }}</th>
                 <th>{% if entities.isSorted('c.title') and app.request.query.get('direction') == "desc" %} <i class="fa fa-arrow-circle-up"></i>{% else %}<i class="fa fa-arrow-circle-down"></i>{% endif %} {{ knp_pagination_sortable(entities, 'Cinéma', 'c.title') }}</th>
@@ -21,6 +22,7 @@
         <tbody>
         {% for entity in entities %}
             <tr>
+                 <td>{{ entity.id }}</td>
                 <td>
                     <i class="glyphicon glyphicon-time"></i> {% if entity.dateSession %}Le {{ entity.dateSession|date('Y-m-d') }} à {{ entity.dateSession|date('H:i') }}{% endif %}</td>
                 <td>
@@ -31,9 +33,9 @@
                 <td><a href="{{ path('cinema_show', {'id': entity.cinema.id }) }}"><span class="badge"><i class="glyphicon glyphicon-map-marker"></i> {{ entity.cinema.title|title }}</span></a></td>
                 <td>
 
-                        <a class="btn btn-primary btn-sm" href="{{ path('sessions_show', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-search"></i> Voir</a>
+                <a class="btn btn-primary btn-sm" href="{{ path('sessions_show', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-search"></i> Voir</a>
 
-                        <a class="btn btn-warning btn-sm" href="{{ path('sessions_edit', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-pencil"></i> Editer</a>
+                <a class="btn btn-warning btn-sm" href="{{ path('sessions_edit', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-pencil"></i> Editer</a>
 
                 </td>
             </tr>

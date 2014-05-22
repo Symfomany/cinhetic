@@ -246,8 +246,10 @@
     {% spaceless %}
         <div>
             {{ form_label(form) }}
-            {{ form_errors(form) }}
-            {{ form_widget(form) }}
+             <div class="form-group  {% if errors %}has-warning{% endif %}">
+                {{ form_widget(form) }}
+                {{ form_errors(form) }}
+            </div>
         </div>
     {% endspaceless %}
 {% endblock form_row %}
@@ -267,17 +269,13 @@
 {% block form_errors %}
     {% spaceless %}
         {% if errors|length > 0 %}
-            <div class="alert alert-dismissable alert-danger">
-                <button type="button" class="close" data-dismiss="alert">×</button>
-                <strong><i class="glyphicon glyphicon-warning-sign"></i> Attention! </strong>
-                {% for error in errors %}
-                    {{
-                    error.messagePluralization is null
-                    ? error.messageTemplate|trans(error.messageParameters, 'validators')
-                    : error.messageTemplate|transchoice(error.messagePluralization, error.messageParameters, 'validators')
-                    }}
-                {% endfor %}
-            </div>
+                <p class="help-block">
+                    {% for error in errors %}
+                        {{ error.messagePluralization is null
+                        ? error.messageTemplate|trans(error.messageParameters, 'validators')
+                        : error.messageTemplate|transchoice(error.messagePluralization, error.messageParameters, 'validators') }}
+                    {% endfor %}
+                </p>
         {% endif %}
     {% endspaceless %}
 {% endblock form_errors %}

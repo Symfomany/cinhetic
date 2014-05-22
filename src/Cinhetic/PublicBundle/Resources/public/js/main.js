@@ -1,4 +1,6 @@
 $(function () {
+    $(".help-block").effect( "pulsate",  {times:7}, 10000 );
+
     $('#flashdatas .alert').delay(5000).slideUp('fast');
 
     if ($("#search_page_ajax").length > 0) {
@@ -94,11 +96,6 @@ $(function () {
 */
 
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 7d4a28b807cc0cab7f3cc33fc2f4429ae3432ab8
     $(window).scroll(function () {
         if ($(document).scrollTop() >= 100) {
             return $('body .navbar-default').stop(true, true).animate({

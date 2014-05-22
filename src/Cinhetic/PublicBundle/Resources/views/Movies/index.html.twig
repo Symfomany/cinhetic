@@ -28,6 +28,7 @@
         <table class="records_list  table table-striped">
             <thead>
                 <tr>
+                    <th>{% if entities.isSorted('a.id') and app.request.query.get('direction') == "desc" %} <i class="fa fa-arrow-circle-up"></i>{% else %}<i class="fa fa-arrow-circle-down"></i>{% endif %} {{ knp_pagination_sortable(entities, 'Id', 'a.id') }}</th>
                     <th>{% if entities.isSorted('a.title') and app.request.query.get('direction') == "desc" %} <i class="fa fa-arrow-circle-up"></i>{% else %}<i class="fa fa-arrow-circle-down"></i>{% endif %} {{ knp_pagination_sortable(entities, 'Titre', 'a.title') }}</th>
                     <th>Synopsis</th>
                     <th>Réalisateurs</th>
@@ -41,8 +42,9 @@
 
                 {% for entity in entities %}
                     <tr>
+                        <td class="text-success"><a href="{{ path('movies_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                         <td class="text-success"><a href="{{ path('movies_show', { 'id': entity.id }) }}">{{ entity.title }}</a></td>
-                        <td>{{ entity.synopsis|convert_encoding( 'iso-8859-1', 'UTF-8') |striptags|truncate(350,true, "...") }}</td>
+                        <td>{{ entity.synopsis|striptags|truncate(350,true, "...") }}</td>
                         <td>
                             {% for entity in entity.directors %}
                                 <a href="{{ path('directors_show', { 'id': entity.id }) }}">{{ entity.firstname|title }}
@@ -130,7 +132,8 @@
                     <tr>
                         <td class="text-success"><a href="{{ path('movies_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                         <td class="text-success"><a href="{{ path('movies_show', { 'id': entity.id }) }}">{{ entity.title }}</a></td>
-                        <td>{{ entity.synopsis|convert_encoding( 'iso-8859-1', 'UTF-8') |striptags|truncate(350,true, "...") }}</td>
+                       <td>{{ entity.synopsis|striptags|truncate(350,true, "...") }}</td>
+
                         <td>
                             {% for entity in entity.directors %}
                                 <a href="{{ path('directors_show', { 'id': entity.id }) }}">{{ entity.firstname|title }}
@@ -213,7 +216,7 @@
                 {% for entity in entities_archived %}
                     <tr>
                         <td class="text-success"><a href="{{ path('movies_show', { 'id': entity.id }) }}">{{ entity.title }}</a></td>
-                        <td>{{ entity.synopsis|convert_encoding( 'iso-8859-1', 'UTF-8') |striptags|truncate(350,true, "...") }}</td>
+                        <td>{{ entity.synopsis|striptags|truncate(350,true, "...") }}</td>
                         <td>
                             {% for entity in entity.directors %}
                                 <a href="{{ path('directors_show', { 'id': entity.id }) }}">{{ entity.firstname|title }}

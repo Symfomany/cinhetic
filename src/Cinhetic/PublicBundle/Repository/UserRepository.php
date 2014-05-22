@@ -35,8 +35,7 @@ class UserRepository extends EntityRepository
                     FROM CinheticPublicBundle:User p'
             );
 
-        return $query->getSingleScalarResult();
-
+        return (int)array_shift($query->getOneOrNullResult());
     }
 
     /**
@@ -53,7 +52,7 @@ class UserRepository extends EntityRepository
                     WHERE p.enabled = :enabled'
             )->setParameter('enabled', $visible)->getSingleScalarResult();
 
-        return floor(((float)$nb_criteria * 100) / (float)$nb);
+        return ((int)$nb > 0) ? floor((float)$nb_criteria * 100 / (float)$nb) : 0;
     }
 
 

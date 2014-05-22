@@ -3,6 +3,11 @@
 {% block titlepage %}<i class="fa fa-pencil"></i>&nbsp;&nbsp;Editer le cinéma{% endblock %}
 
 {% block content %}
+    <div class="row">
+            {{ form(delete_form) }}
+    </div>
+    
+    {{ form_start(edit_form)}}
 	<div class="row">
         <div class="col-sm-6">
             {{ form_row(edit_form.title) }}
@@ -11,6 +16,9 @@
             {{ form_row(edit_form.ville) }}
         </div>
 	</div>
-    {{ form(edit_form) }}
-    {{ form(delete_form) }}
+    {{ form_rest(edit_form) }}
+    <button type="submit" class="btn btn-labeled btn-lg btn-primary"><span class="btn-label icon fa fa-check"></span> Enregistrer</button>
+
+    {{ form_end(edit_form)}}
+
 {% endblock %}

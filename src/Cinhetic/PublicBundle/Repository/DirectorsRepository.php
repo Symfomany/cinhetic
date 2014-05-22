@@ -23,7 +23,7 @@ class DirectorsRepository extends EntityRepository
                     FROM CinheticPublicBundle:Directors p' 
                );
 
-            return $query->getSingleScalarResult();
+        return (int)array_shift($query->getOneOrNullResult());
     }
 
 

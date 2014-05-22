@@ -65,7 +65,7 @@
 	                            </a>
 	                        {% endif %}
 							<div class="search-content">
-								{{ entity.description|truncate(600, true, '...') }}		                              
+								{{ entity.description|striptags|truncate(300,true,'...') }}	                              
 							</div> <!-- / .search-content -->
 							<div class="search-tags">
 								<span class="search-tags-text">Tags:</span>

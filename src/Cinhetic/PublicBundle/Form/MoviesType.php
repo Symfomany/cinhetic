@@ -60,9 +60,9 @@ class MoviesType extends AbstractType
             ->add('duree')
             ->add('dateRelease', 'datetime',
                 array(
-                    'attr' => array('class' => 'datepick form-control'),
+                    'attr' => array('class' => 'datepick form-control', "placeholder" => "Format: YYYY-mm-dd"),
                     'widget' => 'single_text',
-                    'format' => 'dd/MM/yyyy',
+                    'format' => 'yyyy-MM-dd',
                     'label' => "Date de sortie"
                 ))
             ->add('notePresse','choice', array(

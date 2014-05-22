@@ -4,47 +4,70 @@
 
 
 {% block content %}
-    {% if entity.image is not empty %}
-        <a class="btn btn-success btn-labeled pull-right" data-toggle="modal" data-target="#modal-blurred-img"><span class="btn-label icon fa fa-search"></span>
-            Voir l'image actuelle</a>
+    <div class="row">
+            {{ form(delete_form) }}
+    </div>
 
-        <div id="modal-blurred-img" class="modal fade modal-blur" tabindex="-1" role="dialog" style="display: none;">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <img src="{{ base_url ~ imgactors ~ entity.image }}" alt="...">
-                    </div>
+    {{ form_start(edit_form)}}
+
+    
+      <div class="row">
+        <div class="panel form-horizontal">
+            <div class="panel-heading">
+                <span class="panel-title"><i class="fa fa-pencil"></i> Présentation</span>
+            </div>
+            <div class="panel-body">
+                <div class="col-sm-3">
+                    {{ form_row(edit_form.firstname)}}
+                </div>
+                <div class="col-sm-3">
+                    {{ form_row(edit_form.lastname)}}
+                </div>
+                <div class="col-sm-3">
+                    {{ form_row(edit_form.dob)}}
+                </div>
+                <div class="col-sm-3">
+                    {{ form_row(edit_form.city)}}
                 </div>
             </div>
         </div>
-
-    {% endif %}
-
-      <div class="row">
-        <div class="col-sm-3">
-            {{ form_row(edit_form.firstname)}}
-        </div>
-        <div class="col-sm-3">
-            {{ form_row(edit_form.lastname)}}
-        </div>
-        <div class="col-sm-3">
-            {{ form_row(edit_form.dob)}}
-        </div>
-        <div class="col-sm-3">
-            {{ form_row(edit_form.city)}}
-        </div>
     </div>
      <div class="row">
+         <div class="panel form-horizontal">
+            <div class="panel-heading">
+                <span class="panel-title"><i class="fa fa-pencil"></i> Medias</span>
+            </div>
+            <div class="panel-body">
         <div class="col-sm-6">
             {{ form_row(edit_form.nationality)}}
         </div>
         <div class="col-sm-6">
             {{ form_row(edit_form.file)}}
+            <div class="row pull-right">
+                {% if entity.image is not empty %}
+                    <a class="btn btn-success btn-labeled pull-right" data-toggle="modal" data-target="#modal-blurred-img"><span class="btn-label icon fa fa-search"></span>
+                        Voir l'image actuelle</a>
+
+                    <div id="modal-blurred-img" class="modal fade modal-blur" tabindex="-1" role="dialog" style="display: none;">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <img src="{{ base_url ~ imgactors ~ entity.image }}" alt="...">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
         </div>
+    </div>
+    </div>
     </div>
 
     {{ form_rest(edit_form) }}
-    {{ form(delete_form) }}
+    <button type="submit" class="btn btn-labeled btn-lg btn-primary"><span class="btn-label icon fa fa-check"></span> Enregistrer</button>
+    {{ form_end(edit_form)}}
+
 {% endblock %}
 
 

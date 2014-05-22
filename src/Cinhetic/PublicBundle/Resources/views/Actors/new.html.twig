@@ -4,30 +4,46 @@
 {% block titlepage %}<i class="fa fa-plus"></i>&nbsp;&nbsp;Création d'acteur{% endblock %}
 
 {% block content %}
-     
+    {{ form_start(form)}}
     <div class="row">
-        <div class="col-sm-3">
-            {{ form_row(form.firstname)}}
-        </div>
-        <div class="col-sm-3">
-            {{ form_row(form.lastname)}}
-        </div>
-        <div class="col-sm-3">
-            {{ form_row(form.dob)}}
-        </div>
-        <div class="col-sm-3">
-            {{ form_row(form.city)}}
+        <div class="panel form-horizontal">
+            <div class="panel-heading">
+                <span class="panel-title"><i class="fa fa-pencil"></i> Présentation</span>
+            </div>
+            <div class="panel-body">
+                <div class="col-sm-3">
+                    {{ form_row(form.firstname)}}
+                </div>
+                <div class="col-sm-3">
+                    {{ form_row(form.lastname)}}
+                </div>
+                <div class="col-sm-3">
+                    {{ form_row(form.dob)}}
+                </div>
+                <div class="col-sm-3">
+                    {{ form_row(form.city)}}
+                </div>
+            </div>
         </div>
     </div>
      <div class="row">
+        <div class="panel form-horizontal">
+            <div class="panel-heading">
+                <span class="panel-title"><i class="fa fa-pencil"></i> Medias</span>
+            </div>
+            <div class="panel-body">
         <div class="col-sm-6">
             {{ form_row(form.nationality)}}
         </div>
         <div class="col-sm-6">
             {{ form_row(form.file)}}
         </div>
+         </div>
+          </div>
     </div>
     {{ form_rest(form) }} 
+    <button type="submit" class="btn btn-labeled btn-lg btn-primary"><span class="btn-label icon fa fa-check"></span> Enregistrer</button>
+    {{ form_end(form)}}
 {% endblock %}
 
 
