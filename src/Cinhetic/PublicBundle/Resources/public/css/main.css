@@ -24,7 +24,9 @@ h1{
 .page-header h1{
     font-size: 22px;
 }
-
+.smalltext{
+    font-size: 10px;
+}
 
 .theme-default #main-navbar .widget-messages-alt .message-subject:hover{
     color: #1a7ab9;

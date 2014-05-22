@@ -32,7 +32,7 @@
                     {% endif %}
                 </td>
                 <td><a href="{{ path('directors_show', { 'id': entity.id }) }}">{{ entity.firstname }} {{ entity.lastname }}</a></td>
-                <td>{{ entity.biography|striptags|truncate(200,true,'...') }}</td>
+                <td class="smalltext">{{ entity.biography|striptags|truncate(200,true,'...') }}</td>
                 <td>
                     <span data-rating="{{ entity.note }}" class="rating"></span>
                 </td>

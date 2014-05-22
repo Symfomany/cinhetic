@@ -76,6 +76,40 @@ class MoviesType extends AbstractType
             ))
             ->add('visible', null, array('attr' => array('class' => "px")))
             ->add('shop', null, array('attr' => array('class' => "px")))
+            ->add('shopMode','choice', array(
+                'label' => "Type de vente",
+                'choices'   => array(
+                    '1' => 'Disponible à la vente',
+                    '2' => 'Afficher le prix',
+                    "3" => "Bientôt en vente",
+                    "4" => "Disponible en point de vente",
+                    '5' => "Indisponible"),
+            ))
+            ->add('shopTypeDvd','choice', array(
+                'label' => "Type de format",
+                'choices'   => array(
+                    '1' => 'DVD',
+                    '2' => 'Blue-Ray',
+                    "3" => "Blue-Ray 3D",
+            )))
+            ->add('taxe','choice', array(
+                'label' => "Taxe",
+                'choices'   => array(
+                    '1' => '20%',
+                    '2' => '10%',
+                    '3' => '7%',
+                    "4" => "5%",
+            )))
+            ->add('shopDate', 'datetime',
+                array(
+                'attr' => array('class' => 'datepick form-control', "placeholder" => "Format: YYYY-mm-dd"),
+                'widget' => 'single_text',
+                'format' => 'yyyy-MM-dd',
+                'label' => "Date de sortie du DVD"
+            ))
+            ->add('quantity', null, array('label' => "Quantité", "attr" => array("placeholder" => "17")))
+            ->add('price', null, array('label' => "Prix", "attr" => array("placeholder" => "Format: 00.00")))
+            ->add('ref', null, array(  'label' => "Référence", "attr" => array("placeholder" => "AA-XXXX-BB")))
             ->add('cover', null, array('attr' => array('class' => "px")))
             ->add('category', null, array('required' => true, 'property' => 'optionLabel'))
             ->add('actors', null, array('label' => "Acteurs qui ont joué dans ce film"))

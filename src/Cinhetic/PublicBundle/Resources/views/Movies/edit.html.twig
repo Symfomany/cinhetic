@@ -28,7 +28,7 @@
 
     <div class="panel form-horizontal">
         <div class="panel-heading">
-            <span class="panel-title"><i class="fa fa-pencil"></i> Description</span>
+            <span class="panel-title"><i class="fa fa-pencil"></i> Internationalisation</span>
         </div>
         <div class="panel-body">
             <div class="row">
@@ -68,30 +68,49 @@
                 </div>
             </div>
             
-            
             <div class="row">
+                <div class="col-sm-2">
+                    <div class="form-group no-margin-hr">
+                        {{ form_row(form.languages) }}
+                    </div>
+                </div><!-- col-sm-6 -->
                 <div class="col-sm-3">
-                    {{ form_row(form.languages) }}
-                </div>
-                <div class="col-sm-2">
-                    {{ form_row(form.distributeur) }}
-                </div>
-                <div class="col-sm-2">
-                    {{ form_row(form.bo) }}
-                </div>
-                <div class="col-sm-1">
-                    {{ form_row(form.annee) }}
-                </div>
-                <div class="col-sm-1">
-                    {{ form_row(form.budget) }}
-                </div>
-                <div class="col-sm-1">
-                    {{ form_row(form.duree) }}
-                </div>
-                <div class="col-sm-2">
-                    {{ form_row(form.dateRelease) }}
-                </div>
+                    <div class="form-group no-margin-hr">
+                        {{ form_row(form.distributeur) }}
+                    </div>
+                </div><!-- col-sm-6 --> 
+                    <div class="col-sm-2">
+                        <div class="form-group no-margin-hr">
+                        {{ form_row(form.bo) }}
+                        </div>
+                    </div><!-- col-sm-6 -->
+                    <div class="col-sm-2">
+                        <div class="form-group no-margin-hr">
+                        {{ form_row(form.budget) }}
+                        </div>
+                    </div><!-- col-sm-6 -->
             </div>
+
+             <div class="row">
+                <div class="col-sm-2">
+                    <div class="form-group no-margin-hr">
+                        {{ form_row(form.annee) }}
+                    </div>
+                    </div><!-- col-sm-6 -->
+                     <div class="col-sm-2">
+                        <div class="form-group no-margin-hr">
+                        {{ form_row(form.duree) }}
+                        </div>
+                    </div><!-- col-sm-6 -->
+                    <div class="col-sm-3">
+                        <div class="form-group no-margin-hr">
+                        {{ form_row(form.dateRelease) }}
+                        </div>
+                    </div><!-- col-sm-6 -->
+            </div>
+
+
+
          </div>
     </div>
 
@@ -130,6 +149,59 @@
                     {{ form_row(form.actors) }}
                     {{ form_row(form.cinemas) }}
                     {{ form_row(form.directors) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <div class="row">
+        <div class="col-sm-12">
+           <div class="panel form-horizontal panel-info">
+            <div class="panel-heading">
+                <span class="panel-title"><i class="fa fa-shopping-cart"></i> E-Shop</span>
+            </div>
+            <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group no-margin-hr">
+                               {{ form_row(form.shopMode) }}
+                                </div>
+                            </div><!-- col-sm-6 -->
+                            <div class="col-sm-6">
+                                <div class="form-group no-margin-hr">
+                                   {{ form_row(form.shopTypeDvd) }}
+                                </div>
+                            </div><!-- col-sm-6 -->
+                    </div>
+                    <div class="row">
+                         <div class="col-sm-2">
+                                <div class="form-group no-margin-hr">
+                               {{ form_row(form.taxe) }}
+                                </div>
+                        </div><!-- col-sm-6 -->
+                        <div class="col-sm-3">
+                            <div class="form-group no-margin-hr">
+                               {{ form_row(form.shopDate) }}
+                            </div>
+                        </div>
+                       <div class="col-sm-3">
+                            <div class="form-group no-margin-hr">
+                               {{ form_row(form.ref) }}
+                                </div>
+                        </div><!-- col-sm-6 -->
+                        <div class="col-sm-2">
+                            <div class="form-group no-margin-hr">
+                               {{ form_row(form.price) }}
+                            </div>
+                        </div>
+                         <div class="col-sm-2">
+                                <div class="form-group no-margin-hr">
+                               {{ form_row(form.quantity) }}
+                                </div>
+                         </div>
+                    </div>
+                        
+                    </div>
                 </div>
             </div>
         </div>

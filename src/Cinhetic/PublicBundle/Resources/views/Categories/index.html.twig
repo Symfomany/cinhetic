@@ -26,7 +26,7 @@
             <tr id="category_{{ entity.id }}">
                 <td><a href="{{ path('categories_show', {'id' : entity.id}) }}">{{ entity.id }}</a></td>
                 <td><a href="{{ path('categories_show', {'id' : entity.id}) }}">{{ entity.title }}</a></td>
-                <td>{{ entity.description|raw }}</td>
+                <td class="smalltext">{{ entity.description|raw }}</td>
                 <td><i class="fa fa-arrows"></i></td>
                 <td class="text-success"><i class="fa fa-folder"></i> {{ entity.movies|length|default("0") }}</td>
                 <td>

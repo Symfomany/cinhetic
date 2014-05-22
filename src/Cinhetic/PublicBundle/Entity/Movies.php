@@ -189,6 +189,46 @@ class Movies implements TimestampableInterface
      */
     private $cover;
 
+    /**
+     * @var integer
+     * @ORM\Column(name="shop_mode", type="integer", nullable=true)
+     */
+    private $shopMode;
+
+    /**
+     * @var integer
+     * @ORM\Column(name="shop_type_dvd", type="integer", nullable=true)
+     */
+    private $shopTypeDvd;
+
+    /**
+     * @var integer
+     * @ORM\Column(name="taxe", type="integer", nullable=true)
+     */
+    private $taxe;
+
+    /**
+     * @var integer
+     * @ORM\Column(name="price", type="float", nullable=true)
+     */
+    private $price;
+
+    /**
+     * @var integer
+     * @ORM\Column(name="quantity", type="integer", nullable=true)
+     */
+    private $quantity;
+    /**
+     * @var integer
+     * @ORM\Column(name="ref", type="string", nullable=true)
+     */
+    private $ref;
+
+    /**
+     * @var integer
+     * @ORM\Column(name="shop_date", type="date", nullable=true)
+     */
+    private $shopDate;
 
     /**
      * @var boolean
@@ -196,6 +236,7 @@ class Movies implements TimestampableInterface
      * @ORM\Column(name="shop", type="boolean", nullable=true)
      */
     private $shop;
+
     /**
      * @var \DateTime
      * @Expose
@@ -334,8 +375,9 @@ class Movies implements TimestampableInterface
         $this->dateRelease = new \Datetime('now');
         $this->annee = new \Datetime('now');
         $this->annee = $this->annee->format('Y');
-        $this->visible = 1;
-        $this->shop = 1;
+        $this->visible = true;
+        $this->shop = true;
+        $this->quantity = 0;
 
     }
 
@@ -693,6 +735,171 @@ class Movies implements TimestampableInterface
     public function getShop()
     {
         return $this->shop;
+    }
+
+
+    /**
+     * Set shopDate
+     *
+     * @param integer $shopDate
+     * @return Movies
+     */
+    public function setShopDate($shopDate)
+    {
+        $this->shopDate = $shopDate;
+
+        return $this;
+    }
+
+    /**
+     * Get shopDate
+     *
+     * @return integer
+     */
+    public function getShopDate()
+    {
+        return $this->shopDate;
+    }
+
+
+    /**
+     * Set shopMode
+     *
+     * @param integer $shopMode
+     * @return Movies
+     */
+    public function setShopMode($shopMode)
+    {
+        $this->shopMode = $shopMode;
+
+        return $this;
+    }
+
+    /**
+     * Get shopMode
+     *
+     * @return integer
+     */
+    public function getShopMode()
+    {
+        return $this->shopMode;
+    }
+
+
+    /**
+     * Set ShopTypeDvd
+     *
+     * @param integer $ShopTypeDvd
+     * @return Movies
+     */
+    public function setShopTypeDvd($ShopTypeDvd)
+    {
+        $this->ShopTypeDvd = $ShopTypeDvd;
+
+        return $this;
+    }
+
+    /**
+     * Get ShopTypeDvd
+     *
+     * @return integer
+     */
+    public function getShopTypeDvd()
+    {
+        return $this->ShopTypeDvd;
+    }
+
+
+    /**
+     * Set taxe
+     *
+     * @param boolean $taxe
+     * @return Movies
+     */
+    public function setTaxe($taxe)
+    {
+        $this->taxe = $taxe;
+
+        return $this;
+    }
+
+    /**
+     * Get taxe
+     *
+     * @return integer
+     */
+    public function getTaxe()
+    {
+        return $this->taxe;
+    }
+
+
+    /**
+     * Set ref
+     *
+     * @param boolean $price
+     * @return Movies
+     */
+    public function setRef($price)
+    {
+        $this->ref = $ref;
+
+        return $this;
+    }
+
+    /**
+     * Get ref
+     *
+     * @return integer
+     */
+    public function getRef()
+    {
+        return $this->ref;
+    }
+    /**
+     * Set price
+     *
+     * @param boolean $price
+     * @return Movies
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * Get price
+     *
+     * @return integer
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+ /**
+     * Set quantity
+     *
+     * @param integer $quantity
+     * @return Movies
+     */
+    public function setQuantity($quantity)
+    {
+        $this->quantity = $quantity;
+
+        return $this;
+    }
+
+    /**
+     * Get quantity
+     *
+     * @return integer
+     */
+    public function getQuantity()
+    {
+        return $this->quantity;
     }
 
     /**
