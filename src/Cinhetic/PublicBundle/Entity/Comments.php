@@ -39,7 +39,7 @@ class Comments
     /**
      * @var string
      * @Assert\Length(
-     *      min = "15",
+     *      min = "7",
      *      max = "500",
      *      minMessage = "Votre contenu doit faire au moins {{ limit }} caractères",
      *      maxMessage = "Votre contenu ne peut pas être plus long que {{ limit }} caractères"

@@ -21,8 +21,8 @@ class ActorsType extends AbstractType
         $builder
             ->add('firstname', null, array("label" => "Prénom",'attr' => array("class" => "form-control")))
             ->add('lastname', null, array("label" => "Nom",'attr' => array("class" => "form-control")))
-            ->add('dob', "text", array("label" => "Date de naissance",
-                  "attr" => array("class" => "datepick form-control")
+            ->add('dob', "datetime", array("label" => "Date de naissance",
+                 'widget' => 'single_text','format' => 'yyyy-MM-dd', "attr" => array("class" => "datepick form-control", "placeholder" => "Format: YYYY-mm-dd")
               ))
             ->add('file', null, array("label" => "Image de profil",'attr' => array('accept', "image/*", "capture" => "capture")))
             ->add('files', "hidden", array( 'mapped' => false))

@@ -22,6 +22,9 @@ class DirectorsType extends AbstractType
             ->add('firstname', null, array("label" => "Nom"))
             ->add('lastname', null, array("label" => "Prénom"))
             ->add('file', null, array("label" => "Image de profil",'attr' => array('accept', "image/*", "capture" => "capture")))
+            ->add('dob', "datetime", array("label" => "Date de naissance",
+                 'widget' => 'single_text','format' => 'yyyy-MM-dd', "attr" => array("class" => "datepick form-control", "placeholder" => "Format: YYYY-mm-dd")
+              ))
             ->add('files', "hidden", array( 'mapped' => false))
             ->add('biography', null, array("label" => "Biographie", 'attr' => array("cols" => 80, "rows" => 7,"class" => "ckeditor")))
             ->add('note','choice', array(

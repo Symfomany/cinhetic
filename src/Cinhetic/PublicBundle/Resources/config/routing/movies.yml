@@ -35,6 +35,10 @@ movies_medias:
     pattern:  /{id}/medias
     defaults: { _controller: "CinheticPublicBundle:Movies:medias" }
 
+movies_favoris:
+    pattern:  /{id}/favoris
+    defaults: { _controller: "CinheticPublicBundle:Movies:favoris" }
+
 movies_update:
     pattern:  /{id}/update
     defaults: { _controller: "CinheticPublicBundle:Movies:update" }

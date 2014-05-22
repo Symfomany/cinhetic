@@ -64,8 +64,8 @@
         <div class="signin-header">
             <a href="{{ path('fos_user_security_login') }}" class="logo">
                 <strong>Symfo</strong>Academy
-            </a> <!-- / .logo -->
-        </div> <!-- / .header -->
+            </a> 
+        </div>
 
    
                 {% include 'CinheticPublicBundle:Slots:flashdatas.html.twig' %}
@@ -77,7 +77,6 @@
                         </div>
                     {% endfor %}
 
-                    {# On définit ce block, dans lequel vont venir s'insérer les autres vues du bundle #}
                     <div>
                         {% block fos_user_content %}
                         {% endblock fos_user_content %}

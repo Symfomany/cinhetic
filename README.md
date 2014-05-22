@@ -324,6 +324,7 @@ Chapters covered in project
 
 Features
 ----------------------------------
+
 * Search Engine Movies
 * Top Rated Movies
 * Page Movie with complete description

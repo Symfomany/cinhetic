@@ -131,8 +131,6 @@ class ActorsManager
             "attr" => array('id' => "form_actor", "novalidate" => "novalidate")
         ));
 
-        $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning btn-labeled"), 'label' => 'Créer cet acteur'));
-
         return $form->getForm();
     }
 
@@ -148,8 +146,6 @@ class ActorsManager
             'method' => 'POST',
             "attr" => array('id' => "form_actor", "novalidate" => "novalidate")
         ));
-
-        $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning btn-labeled"), 'label' => 'Modifier cet acteur'));
 
         return $form->getForm();
     }

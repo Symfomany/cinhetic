@@ -108,7 +108,7 @@ class MoviesRepository extends EntityRepository
      * Get Current movies by criteria
      * @return array
      */
-    public function getCurrentMovies(){
+    public function getCurrentMovies($limit = 3){
         $query = $this->getEntityManager()
             ->createQuery(
                 'SELECT p
@@ -122,7 +122,7 @@ class MoviesRepository extends EntityRepository
                 'current' => new \Datetime('midnight'),
             ));
 
-            return $query->getResult();
+            return $query->setMaxResults($limit)->getResult();
     }
 
 
@@ -218,7 +218,7 @@ class MoviesRepository extends EntityRepository
                     FROM CinheticPublicBundle:Movies p'
             );
 
-        return $query->getSingleScalarResult();
+        return (int)array_shift($query->getOneOrNullResult());
 
     }
 
@@ -236,7 +236,8 @@ class MoviesRepository extends EntityRepository
                     WHERE p.visible = :visible'
             )->setParameter('visible', $visible)->getSingleScalarResult();
 
-        return floor(((float)$nb_criteria * 100) / (float)$nb);
+        return ((int)$nb > 0) ? floor((float)$nb_criteria * 100 / (float)$nb) : 0;
+
     }
 
     /**
@@ -253,7 +254,8 @@ class MoviesRepository extends EntityRepository
                     WHERE p.dateRelease >= :now'
             )->setParameter('now', new \Datetime('now'))->getSingleScalarResult();
 
-        return floor(((float)$nb_criteria * 100) / (float)$nb);
+        return ((int)$nb > 0) ? floor((float)$nb_criteria * 100 / (float)$nb) : 0;
+
     }
 
     /**
@@ -270,7 +272,8 @@ class MoviesRepository extends EntityRepository
                     WHERE p.cover = :cover'
             )->setParameter('cover', $cover)->getSingleScalarResult();
 
-        return floor(((float)$nb_criteria * 100) / (float)$nb);
+        return ((int)$nb > 0) ? floor((float)$nb_criteria * 100 / (float)$nb) : 0;
+
     }
 
     /**

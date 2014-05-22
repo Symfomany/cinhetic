@@ -1,5 +1,4 @@
 {% extends 'CinheticPublicBundle::layout.html.twig' %}
-{% import 'LexikPayboxBundle:Macro:paybox.html.twig' as paybox %}
 
 {% block javascripts %}
     {{ parent() }}
@@ -69,7 +68,7 @@
                             <div class="widget-profile-header">
                                 <span>{% if seance.movies.id is defined %}{{ seance.movies.title }}{% endif %}</span><br>
                                 <h5>{{ seance.cinema.title }} - {{ seance.cinema.ville }}</h5>
-                                <h5 class="pull-right"><i class="fa fa-calendar"></i> Date de sortie: <i>{{ seance.movies.dateRelease|date('d/m/Y') }}</i></h5>
+                                <h5 class="pull-right btn btn-danger btn-xs"><i class="fa fa-calendar"></i> Date de sortie: <i>{{ seance.movies.dateRelease|date('d/m/Y') }}</i></h5>
                             </div>
                         </div> <!-- / .panel-heading -->
                         <div class="panel-body">
@@ -341,7 +340,7 @@
                                             </div> <!-- / .comment -->
                                         {% else %}
                                         <div class="alert">
-                                                <strong>Attention</strong> Aucun commentaire a été chargé
+                                                <strong>Attention</strong> Aucun commentaire pour le moment.
                                         </div>
                                         {% endfor %}
                                     </div><div class="slimScrollBar"></div></div>

@@ -17,7 +17,6 @@
                 <p lass="pull-left">{{ entity.firstname|title}} {{ entity.lastname|title }} - {{ entity.age }} ans</h4>
                 <p class="pull-right"><i>Né le {{ entity.dob|date('d/m/Y') }} à {{ entity.city }}</i></p>
             </div>
-            <hr />
             <p class="well"><strong>Biographie: </strong>{{ entity.biography|striptags|raw }}</p>
             <p class="well"><strong>Professions: </strong> <i>{{ entity.roles|striptags|raw }}</i>. <br /><strong>Récompenses: </strong>  {{ entity.recompenses|striptags|raw }} et à tourné dans plus de {{ entity.movies|length|default('0') }} films.</p>
         </div>

@@ -37,8 +37,7 @@ class CinemaRepository extends EntityRepository
                     FROM CinheticPublicBundle:Cinema p'
             );
 
-        return $query->getSingleScalarResult();
-
+        return (int)array_shift($query->getOneOrNullResult());
     }
 
     /**
@@ -59,7 +58,8 @@ class CinemaRepository extends EntityRepository
             )->setParameter('date', $date)->getResult();
 
 
-        return floor((count($nb_criteria) * 100) / (float)$nb);
+        return ((int)$nb > 0) ? floor((float)$nb_criteria * 100 / (float)$nb) : 0;
+
 
     }
 
@@ -76,7 +76,7 @@ class CinemaRepository extends EntityRepository
                     FROM CinheticPublicBundle:Cinema p' 
                );
 
-            return $query->getSingleScalarResult();
+        return (int)array_shift($query->getOneOrNullResult());
     }
 
 }

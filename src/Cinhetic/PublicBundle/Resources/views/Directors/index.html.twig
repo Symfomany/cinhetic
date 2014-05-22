@@ -1,6 +1,6 @@
 {% extends 'CinheticPublicBundle::layout.html.twig' %}
 
-{% block titlepage %}<i class="fa fa-video-camera"></i>&nbsp;&nbsp;Les réalisateurs{% endblock %}
+{% block titlepage %}<i class="fa fa-video-camera"></i>&nbsp;&nbsp;Les réalisateurs <span class="label label-danger">{{ entities.getTotalItemCount}}</span>{% endblock %}
 
 
 {% block content %}

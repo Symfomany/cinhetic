@@ -3,8 +3,27 @@
 
 {% block titlepage %}<i class="fa fa-pencil"></i>&nbsp;&nbsp;Editer le réalisateur  {{ entity.firstname }} {{ entity.lastname }}{% endblock %}
 
+
 {% block content %}
-    {% if entity.image is not empty %}
+    {{ form_start(edit_form)}}
+
+    <div class="row">
+             <div class="row">
+         <div class="panel form-horizontal">
+            <div class="panel-heading">
+                <span class="panel-title"><i class="fa fa-pencil"></i> Présentation</span>
+            </div>
+            <div class="panel-body">
+
+        <div class="col-sm-3">
+            {{ form_row(edit_form.firstname)}}
+        </div>
+        <div class="col-sm-3">
+            {{ form_row(edit_form.lastname)}}
+        </div>
+        <div class="col-sm-3">
+            {{ form_row(edit_form.file)}}
+             {% if entity.image is not empty %}
                 <a class="btn btn-success btn-labeled pull-right" data-toggle="modal" data-target="#modal-blurred-img"><span class="btn-label icon fa fa-search"></span>
                     Voir l'image actuelle</a>
                 
@@ -19,15 +38,35 @@
                 </div> <!-- / .modal -->
 
             {% endif %}
-    {{ form(edit_form) }}
-    {{ form(delete_form) }}
+        </div>
+
+        <div class="col-sm-1">
+            {{ form_row(edit_form.note)}}
+        </div>
+        <div class="col-sm-2">
+            {{ form_row(edit_form.dob)}}
+        </div>
+    </div>
+    </div>
+    </div>
+
+    {{ form_rest(edit_form) }}
+    <button type="submit" class="btn btn-labeled btn-lg btn-primary"><span class="btn-label icon fa fa-check"></span> Enregistrer</button>
+    {{ form_end(edit_form)}}
+
 {% endblock %}
+
 
 {% block javascripts %}
 {{ parent() }}
 
     <script type="text/javascript">
         $('#file').pixelFileInput({ placeholder: 'Aucun fichier selectionné...' });
-          
+
+          $('.datepick').datepicker({
+            todayBtn: "linked",
+            format: 'yyyy-mm-dd'
+           });
+           
     </script>
 {% endblock %}

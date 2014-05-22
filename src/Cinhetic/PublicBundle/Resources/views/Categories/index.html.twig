@@ -1,6 +1,6 @@
 {% extends 'CinheticPublicBundle::layout.html.twig' %}
 
-{% block titlepage %}<i class="fa fa-list"></i>&nbsp;&nbsp;Les categories{% endblock %}
+{% block titlepage %}<i class="fa fa-list"></i>&nbsp;&nbsp;Les categories <span class="label label-danger">{{ entities.getTotalItemCount}}</span>{% endblock %}
 
 {% block content %}
     <div class="row well">

@@ -103,9 +103,9 @@ class CategoriesManager
         $form = $this->formFactory->createBuilder($this->form, $entity, array(
             'action' => $this->router->generate('categories_create'),
             'method' => 'POST',
-        ));
+            "attr" => array('id' => "form_categories", "novalidate" => "novalidate")
 
-        $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning btn-labeled"), 'label' => 'Créer cette catégorie'));
+        ));
 
         return $form->getForm();
     }
@@ -120,9 +120,8 @@ class CategoriesManager
         $form = $this->formFactory->createBuilder($this->form, $id, array(
             'action' => $this->router->generate('categories_update', array('id' => $id->getId())),
             'method' => 'POST',
+            "attr" => array('id' => "form_categories", "novalidate" => "novalidate")
         ));
-
-        $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning btn-labeled"), 'label' => 'Modifier cette catégorie'));
 
         return $form->getForm();
     }

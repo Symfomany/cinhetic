@@ -38,41 +38,64 @@
 					<span class="input-group-addon no-background"><i class="fa fa-search"></i></span>
 					<input type="text" name="search" data-url="{{ path('Cinhetic_public_search', {'ajax': 'true'}) }}"  value="{{ app.request.get('search') }}" class="form-control" id="search_page_ajax" placeholder="Rechercher un film, une catégorie, un tag, un réalisateur, un acteur...">
 					<span class="input-group-btn">
-						<button class="btn" type="submit">Rechercher</button>
+						<button class="btn" type="submit"><i class="fa fa-search"></i></button>
 					</span>
-				</div> <!-- / .input-group -->
+				</div> 
 			</form>
-
-			<!-- / Search form -->
-
-			<!-- Search results -->
 			<div class="panel-body tab-content">
-
-				<!-- Classic search -->
 
 				<ul class="search-classic tab-pane fade in active" id="search-tabs-all">
 					{% for entity in movies %}
-					<span class="pull-right">
+							
+						<li>
+							<div class="row">
+						    <span class="pull-right">
 								<span data-rating="{{ entity.notePresse }}" class="rating"></span>
 							</span>
-						<li>
-							<a class="search-title" href="{{ path('movies_show', {'id' : entity.id}) }}">
-	                            {{ entity.title|title }}
-	                        </a>
-	                        {% if entity.category.id is defined %}
-	                            <a href="{{ path('categories_show', {'id' : entity.category.id}) }}">
-	                                - {{ entity.category.title|title }}
-	                            </a>
-	                        {% endif %}
-							<div class="search-content">
-								{{ entity.description|truncate(600, true, '...') }}		                              
-							</div> <!-- / .search-content -->
-							<div class="search-tags">
-								<span class="search-tags-text">Tags:</span>
-								{% for entity in entity.tags %}
-		                            <a class="label label-success">{{ entity.word }}</a>
-	                        {% endfor %}
-							</div> <!-- / .search-tags -->
+						     {% if entity.image is not empty %}
+       								<div class="col-md-2">
+					                   <a href="{{ path('movies_show', {'id' : entity.id}) }}">
+				                    	<img class="img-thumbnail" src="{{ base_url ~ imgmovies ~ entity.image }}">
+				                    	</a>
+			                		</div>
+			                {% else %}
+			                	<div class="col-md-2">
+					                   <a href="{{ path('movies_show', {'id' : entity.id}) }}">
+				                    	<img class="img-thumbnail" src="http://placehold.it/350x150">
+				                    	</a>
+			                		</div>
+			                {% endif %}
+			                <div class="{% if entity.image is empty %}col-md-12{% else %}col-md-10{% endif %}">
+								<a class="search-title" href="{{ path('movies_show', {'id' : entity.id}) }}">
+		                            {{ entity.title|title }} <sup>({{ entity.annee }})</sup>
+		                        </a>
+		                        <p class="pull-right"><i class="label label-success ticket-label">{{ entity.duree }}h.00</i></p>
+
+		                        {% if entity.category.id is defined %}
+		                            <a href="{{ path('categories_show', {'id' : entity.category.id}) }}">
+		                                {{ entity.category.title|title }}
+		                            </a>
+		                        {% endif %}
+								
+								<div class="search-content">
+									{{ entity.description|striptags|truncate(200,true,'...')  }}		                              
+								</div> 
+
+								<br />
+								<div class="search-tags">
+									{% for entity in entity.tags %}
+			                            <a class="label label-success">{{ entity.word }}</a>
+		                        	{% else %}
+		                        	<div class="alert alert-info">
+										Aucun tags pour le moment sur ce film.
+									</div>
+		                        	{% endfor %}
+								</div> 
+								<br />
+		                        <p class="pull-left"><i class="btn btn-danger"> <i class="fa fa-calendar"></i> Date de sortie {{ entity.dateRelease|date('d/m/Y') }}</i></p>
+
+							</div>
+						</div>
 						</li>
 	 				{% else %}
 			            <div class="alert alert-warning">

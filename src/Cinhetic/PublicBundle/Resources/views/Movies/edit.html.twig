@@ -113,6 +113,10 @@
                         {{ form_widget(form.cover) }}
                         <span class="lbl">En couverture ?</span>
                     </label>
+                    <label class="checkbox-inline">
+                        {{ form_widget(form.shop) }}
+                        <span class="lbl">Mis en vente ?</span>
+                    </label>
                 </div>
             </div>
         </div>
@@ -165,8 +169,8 @@
 
     {{ form_widget(form._token) }}
 
-    <button class="btn btn-lg btn-primary btn-labeled"><span class="btn-label icon fa fa-check"></span> Enregistrer</button>
-    </form>
+    <button type="submit" class="btn btn-labeled btn-lg btn-primary"><span class="btn-label icon fa fa-check"></span> Enregistrer</button>
+</form>
 {% endblock %}
 
 

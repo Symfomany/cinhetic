@@ -22,7 +22,7 @@ class ActorsRepository extends EntityRepository
                     FROM CinheticPublicBundle:Actors p'
                );
 
-            return $query->getSingleScalarResult();
+        return (int)array_shift($query->getOneOrNullResult());
     }
 
 

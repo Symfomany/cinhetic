@@ -108,8 +108,6 @@ class DirectorsManager
 
         ));
 
-        $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning btn-labeled"), 'label' => 'Créer ce réalisateur'));
-
         return $form->getForm();
     }
 
@@ -125,8 +123,6 @@ class DirectorsManager
             'method' => 'POST',
             "attr" => array('id' => "form_director", "novalidate" => "novalidate")
         ));
-
-        $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning btn-labeled"), 'label' => 'Modifier ce réalisateur'));
 
         return $form->getForm();
     }

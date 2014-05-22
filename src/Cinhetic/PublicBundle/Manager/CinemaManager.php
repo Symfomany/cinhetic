@@ -102,9 +102,9 @@ class CinemaManager
         $form = $this->formFactory->createBuilder($this->form, $entity, array(
             'action' => $this->router->generate('cinema_create'),
             'method' => 'POST',
+            "attr" => array('id' => "form_cinema", "novalidate" => "novalidate")
         ));
 
-        $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning btn-labeled"), 'label' => 'Créer ce cinéma'));
 
         return $form->getForm();
     }
@@ -119,9 +119,8 @@ class CinemaManager
         $form = $this->formFactory->createBuilder($this->form, $entity, array(
             'action' => $this->router->generate('cinema_update', array('id' => $entity->getId())),
             'method' => 'POST',
+            "attr" => array('id' => "form_cinema", "novalidate" => "novalidate")
         ));
-
-        $form->add('submit', 'submit', array("attr" => array('class' => "btn btn-warning btn-labeled"), 'label' => 'Modifier ce cinéma'));
 
         return $form->getForm();
     }

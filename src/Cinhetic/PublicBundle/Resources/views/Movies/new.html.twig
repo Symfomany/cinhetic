@@ -40,7 +40,7 @@
                 </div>
             </div>
              <div class="row">
-                <div class="col-sm-3">
+                <div class="col-sm-2">
                     {{ form_row(form.languages) }}
                 </div>
                 <div class="col-sm-2">
@@ -52,7 +52,7 @@
                 <div class="col-sm-1">
                     {{ form_row(form.annee) }}
                 </div>
-                <div class="col-sm-1">
+                <div class="col-sm-2">
                     {{ form_row(form.budget) }}
                 </div>
                 <div class="col-sm-1">
@@ -81,6 +81,10 @@
                     <label class="checkbox-inline">
                         {{ form_widget(form.cover) }}
                         <span class="lbl">En couverture ?</span>
+                    </label>
+                    <label class="checkbox-inline">
+                        {{ form_widget(form.shop) }}
+                        <span class="lbl">Mis en vente ?</span>
                     </label>
                 </div>
             </div>
@@ -134,7 +138,7 @@
 
     {{ form_widget(form._token) }}
 
-    <button class="btn btn-lg btn-primary btn-labeled"><span class="btn-label icon fa fa-check"></span> Enregistrer</button>
+     <button type="submit" class="btn btn-labeled btn-lg btn-primary"><span class="btn-label icon fa fa-check"></span> Enregistrer</button>
 </form>
 
 {% endblock %}
