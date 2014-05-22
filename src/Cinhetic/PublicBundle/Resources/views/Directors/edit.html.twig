@@ -23,8 +23,11 @@
         </div>
         <div class="col-sm-3">
             {{ form_row(edit_form.file)}}
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 108c86d85b0ff529f7d4e079a219e49559edf2d8
              {% if entity.image is not empty %}
                 <a class="btn btn-success btn-labeled pull-right" data-toggle="modal" data-target="#modal-blurred-img"><span class="btn-label icon fa fa-search"></span>
                     Voir l'image actuelle</a>
@@ -41,9 +44,19 @@
 
             {% endif %}
         </div>
+<<<<<<< HEAD
         <div class="col-sm-3">
             {{ form_row(edit_form.note)}}
         </div>
+=======
+
+        <div class="col-sm-1">
+            {{ form_row(edit_form.note)}}
+        </div>
+        <div class="col-sm-2">
+            {{ form_row(edit_form.dob)}}
+        </div>
+>>>>>>> 108c86d85b0ff529f7d4e079a219e49559edf2d8
     </div>
     </div>
     </div>
@@ -54,11 +67,17 @@
 
 {% endblock %}
 
+
 {% block javascripts %}
 {{ parent() }}
 
     <script type="text/javascript">
         $('#file').pixelFileInput({ placeholder: 'Aucun fichier selectionné...' });
-          
+
+          $('.datepick').datepicker({
+            todayBtn: "linked",
+            format: 'yyyy-mm-dd'
+           });
+           
     </script>
 {% endblock %}

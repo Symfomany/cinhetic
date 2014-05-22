@@ -106,6 +106,13 @@ class Directors implements UploadableInterface
     private $movies;
 
 
+    /**
+     * @var string
+     * @Expose
+     * @ORM\Column(name="dob", type="date", nullable=true)
+     */
+    private $dob;
+
 
     /**
      * @Expose
@@ -324,6 +331,29 @@ class Directors implements UploadableInterface
     {
         return $this->image;
     }
+     /**
+     * Set dob
+     *
+     * @param \DateTime $dob
+     * @return Actors
+     */
+    public function setDob($dob)
+    {
+        $this->dob = $dob;
+
+        return $this;
+    }
+
+    /**
+     * Get dob
+     *
+     * @return \DateTime 
+     */
+    public function getDob()
+    {
+        return $this->dob;
+    }
+
 
 
     /**

@@ -1,4 +1,5 @@
 {% extends 'CinheticPublicBundle::layout.html.twig' %}
+{% import 'LexikPayboxBundle:Macro:paybox.html.twig' as paybox %}
 
 {% block titlepage %}<i class="fa fa-search"></i>&nbsp;&nbsp;Fiche de film{% endblock %}
 
@@ -26,7 +27,16 @@
                 </div> <!-- / .modal -->
             </div>
             <div class="col-md-7">
-                <h1 class="featurette-heading">{{ entity.title|title }}<span class="text-muted"> ({{ entity.annee }})</span></h1>
+                {% if entity.shop == "true" %}
+                    <form action="{{ url }}" class="pull-right" method="post">
+                        {{ paybox.form(form) }}
+                        <button class="btn btn-danger btn-md btn-labeled" type="submit">
+                            <span class="btn-label icon fa fa-shopping-cart"></span> Commander
+                        </button>
+                    </form>
+                {% endif %}
+
+                <h1>{{ entity.title|title }}<span class="text-muted"> ({{ entity.annee }})</span></h1>
                 <span>Type de film : {{ entity.typeFilm }}</span>
                 <p class="">{{ entity.synopsis|raw }}</p>
             </div>

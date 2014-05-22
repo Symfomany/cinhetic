@@ -189,6 +189,13 @@ class Movies implements TimestampableInterface
      */
     private $cover;
 
+
+    /**
+     * @var boolean
+     * @Expose
+     * @ORM\Column(name="shop", type="boolean", nullable=true)
+     */
+    private $shop;
     /**
      * @var \DateTime
      * @Expose
@@ -327,6 +334,9 @@ class Movies implements TimestampableInterface
         $this->dateRelease = new \Datetime('now');
         $this->annee = new \Datetime('now');
         $this->annee = $this->annee->format('Y');
+        $this->visible = 1;
+        $this->shop = 1;
+
     }
 
 
@@ -660,6 +670,29 @@ class Movies implements TimestampableInterface
     public function getVisible()
     {
         return $this->visible;
+    }
+
+    /**
+     * Set shop
+     *
+     * @param boolean $shop
+     * @return Movies
+     */
+    public function setShop($shop)
+    {
+        $this->shop = $shop;
+
+        return $this;
+    }
+
+    /**
+     * Get shop
+     *
+     * @return boolean
+     */
+    public function getShop()
+    {
+        return $this->shop;
     }
 
     /**

@@ -1,6 +1,8 @@
 {% extends 'CinheticPublicBundle::layout.html.twig' %}
+{% import 'LexikPayboxBundle:Macro:paybox.html.twig' as paybox %}
 
-{% block titlepage %}<i class="fa fa-film"></i>&nbsp;&nbsp;Les films{% endblock %}
+
+{% block titlepage %}<i class="fa fa-film"></i>&nbsp;&nbsp;Les films <span class="label label-danger">{{ entities.getTotalItemCount}}</span>{% endblock %}
 
 
 {% block content %}
@@ -28,7 +30,11 @@
         <table class="records_list  table table-striped">
             <thead>
                 <tr>
+<<<<<<< HEAD
                     <th>{% if entities.isSorted('a.id') and app.request.query.get('direction') == "desc" %} <i class="fa fa-arrow-circle-up"></i>{% else %}<i class="fa fa-arrow-circle-down"></i>{% endif %} {{ knp_pagination_sortable(entities, 'Id', 'a.id') }}</th>
+=======
+                    <th>#</th>
+>>>>>>> 108c86d85b0ff529f7d4e079a219e49559edf2d8
                     <th>{% if entities.isSorted('a.title') and app.request.query.get('direction') == "desc" %} <i class="fa fa-arrow-circle-up"></i>{% else %}<i class="fa fa-arrow-circle-down"></i>{% endif %} {{ knp_pagination_sortable(entities, 'Titre', 'a.title') }}</th>
                     <th>Synopsis</th>
                     <th>Réalisateurs</th>
@@ -42,7 +48,12 @@
 
                 {% for entity in entities %}
                     <tr>
+<<<<<<< HEAD
                         <td class="text-success"><a href="{{ path('movies_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+=======
+                        <td>
+                            <a data-url="{{ path('movies_favoris', {'id' : entity.id }) }}" class="favoris_link"><i class="fa {% if entity.id in app.request.session.get('stars') %}fa-star{% else %} fa-star-o{% endif %}"></i></a></td>
+>>>>>>> 108c86d85b0ff529f7d4e079a219e49559edf2d8
                         <td class="text-success"><a href="{{ path('movies_show', { 'id': entity.id }) }}">{{ entity.title }}</a></td>
                         <td>{{ entity.synopsis|striptags|truncate(350,true, "...") }}</td>
                         <td>
@@ -78,6 +89,19 @@
                                     {% endif %}
 
                                     <li><a  href="{{ path('movies_medias', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-picture"></i> Medias</a></li>
+                                    {% if entity.shop == "true" %}
+                                    <li class="divider"></li>
+
+                                    <li>
+                                        <form action="{{ url }}" class="pull-left" method="post">
+                                            {{ paybox.form(form) }}
+                                            <button class="btn btn-success btn-md btn-labeled" type="submit">
+                                                <span class="btn-label icon fa fa-shopping-cart"></span> Commander
+                                            </button>
+                                        </form>
+                                    </li>
+                                    {% endif %}
+
                                 </ul>
                             </div>
                          
@@ -116,7 +140,6 @@
             <thead>
                 <tr>
                     <th>{% if entities.isSorted('a.id') and app.request.query.get('direction') == "desc" %} <i class="fa fa-arrow-circle-up"></i>{% else %}<i class="fa fa-arrow-circle-down"></i>{% endif %} {{ knp_pagination_sortable(entities, 'Id', 'a.id') }}</th>
-
                     <th>{% if entities.isSorted('a.title') and app.request.query.get('direction') == "desc" %} <i class="fa fa-arrow-circle-up"></i>{% else %}<i class="fa fa-arrow-circle-down"></i>{% endif %} {{ knp_pagination_sortable(entities, 'Titre', 'a.title') }}</th>
                     <th>Synopsis</th>
                     <th>Réalisateurs</th>

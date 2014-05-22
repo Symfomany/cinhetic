@@ -1,6 +1,6 @@
 {% extends 'CinheticPublicBundle::layout.html.twig' %}
 
-{% block titlepage %}<i class="glyphicon glyphicon-calendar"></i>&nbsp;&nbsp;Séances{% endblock %}
+{% block titlepage %}<i class="glyphicon glyphicon-calendar"></i>&nbsp;&nbsp;Séances <span class="label label-danger">{{ entities.getTotalItemCount}}</span>{% endblock %}
 
 {% block content %}
     <div class="row well">

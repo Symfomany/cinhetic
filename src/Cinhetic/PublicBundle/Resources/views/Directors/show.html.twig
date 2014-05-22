@@ -7,9 +7,10 @@
 
     <div class="row">
         <div class="col-md-12">
-            <h3 class="featurette-heading" style="margin-left: 0;">{{ entity.firstname }} {{ entity.lastname }}</h3>
-            <hr />
-            <p class="">{{ entity.biography|striptags|raw }}</p>
+            <div class="note note-info">
+                <p lass="pull-left">{{ entity.firstname|title}} {{ entity.lastname|title }} - {{ entity.age }} ans</h4>
+            </div>
+            <p class="well"><strong>Biographie: </strong>{{ entity.biography|striptags|raw }}</p>
         </div>
     </div>
 

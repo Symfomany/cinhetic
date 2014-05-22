@@ -138,6 +138,22 @@ $(function () {
     $('#search_input').parents("#listmovies *").highlight(search, "highlight");
 
 
+    $('.favoris_link').click(function (evt) {
+        $obj = $(this);
+        $.ajax({
+            url: $(this).attr('data-url'),
+            type: "get",
+            dataType: "json",
+            success: function (data) {
+                if($obj.find('i').hasClass('fa-star')){
+                    $obj.find('i').attr('class','fa fa-star-o');
+                }else{
+                    $obj.find('i').attr('class','fa fa-star');
+                }
+            }
+        });
+    });
+
     $('.ishome').click(function (evt) {
         $obj = $(this);
         $.ajax({

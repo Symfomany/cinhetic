@@ -113,6 +113,22 @@ class MoviesController extends AbstractController
         $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
         $breadcrumbs->addItem("Films", $this->generateUrl('movies'));
 
+        $paybox = $this->get('lexik_paybox.request_handler');
+        $paybox->setParameters(array(
+            'PBX_CMD'          => 'CMD'.time(),
+            'PBX_DEVISE'       => '978',
+            'PBX_PORTEUR'      => 'test@paybox.com',
+            'PBX_RETOUR'       => 'Mt:M;Ref:R;Auto:A;Erreur:E',
+            'PBX_TOTAL'        => '1000',
+            'PBX_TYPEPAIEMENT' => 'CARTE',
+            'PBX_TYPECARTE'    => 'CB',
+            'PBX_EFFECTUE'     => $this->generateUrl('lexik_paybox_return', array('status' => 'success'), true),
+            'PBX_REFUSE'       => $this->generateUrl('lexik_paybox_return', array('status' => 'denied'), true),
+            'PBX_ANNULE'       => $this->generateUrl('lexik_paybox_return', array('status' => 'canceled'), true),
+            'PBX_RUF1'         => 'POST',
+            'PBX_REPONDRE_A'   => $this->generateUrl('lexik_paybox_ipn', array('time' => time()), true),
+        ));
+
         $em = $this->getDoctrine()->getManager();
         $entities = $em->createQuery(
             'SELECT a
@@ -147,6 +163,8 @@ class MoviesController extends AbstractController
             'entities' => $this->paginate($entities, $request->query->get('display',5)),
             'entities_next' => $this->paginate($entities_next, $request->query->get('display',5)),
             'entities_archived' => $this->paginate($entities_archived, $request->query->get('display',5)),
+            'url'  => $paybox->getUrl(),
+            'form' => $paybox->getForm()->createView()
         ));
     }
 
@@ -298,11 +316,30 @@ class MoviesController extends AbstractController
         $breadcrumbs->addItem("Films", $this->generateUrl('movies'));
         $breadcrumbs->addItem("Voir");
 
+        $paybox = $this->get('lexik_paybox.request_handler');
+        $paybox->setParameters(array(
+            'PBX_CMD'          => 'CMD'.time(),
+            'PBX_DEVISE'       => '978',
+            'PBX_PORTEUR'      => 'test@paybox.com',
+            'PBX_RETOUR'       => 'Mt:M;Ref:R;Auto:A;Erreur:E',
+            'PBX_TOTAL'        => '1000',
+            'PBX_TYPEPAIEMENT' => 'CARTE',
+            'PBX_TYPECARTE'    => 'CB',
+            'PBX_EFFECTUE'     => $this->generateUrl('lexik_paybox_return', array('status' => 'success'), true),
+            'PBX_REFUSE'       => $this->generateUrl('lexik_paybox_return', array('status' => 'denied'), true),
+            'PBX_ANNULE'       => $this->generateUrl('lexik_paybox_return', array('status' => 'canceled'), true),
+            'PBX_RUF1'         => 'POST',
+            'PBX_REPONDRE_A'   => $this->generateUrl('lexik_paybox_ipn', array('time' => time()), true),
+        ));
+
+
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('CinheticPublicBundle:Movies:show.html.twig', array(
             'entity'      => $id,
-            'delete_form' => $deleteForm->createView()  
+            'delete_form' => $deleteForm->createView(),
+            'url'  => $paybox->getUrl(),
+            'form' => $paybox->getForm()->createView()
          ));
     }
 
@@ -371,7 +408,26 @@ class MoviesController extends AbstractController
     }
 
 
+    /**
+     * add Favoris Videos
+     * @param ArrayCollection $medias
+     */
+    public function favorisAction(Movies $id,Request $request){
+        $session = $request->getSession();
+        $stars = $session->get('stars', array());
+        $key = array_search($id->getId(), $stars);
+        if($key !== FALSE) {
+            $tab = $session->get('stars', array());
+            unset($tab[$key]);
+            $session->set('stars', $tab);
+        }else{
+            $tab[] = $id->getId();
+            $tab = array_merge($tab, $session->get('stars', array()));
+            $session->set('stars', $tab);
+        }
 
+        return new JsonResponse(true);
+    }
 
     /**
      * Get Movies entity in City.

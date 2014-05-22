@@ -1,6 +1,6 @@
 {% extends 'CinheticPublicBundle::layout.html.twig' %}
 
-{% block titlepage %}<i class="fa fa-group"></i>&nbsp;&nbsp;Les acteurs{% endblock %}
+{% block titlepage %}<i class="fa fa-group"></i>&nbsp;&nbsp;Les acteurs <span class="label label-danger">{{ entities.getTotalItemCount}}</span>{% endblock %}
 
 
 {% block content %}

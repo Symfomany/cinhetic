@@ -71,10 +71,11 @@ class MoviesType extends AbstractType
                     '2' => 'Moyen',
                     "3" => "Passable",
                     "4" => "Bon film",
-                    '5' => "Excellent réalisateur"),
+                    '5' => "Un chef-d'oeuvre!"),
                 'required'  => false,
             ))
             ->add('visible', null, array('attr' => array('class' => "px")))
+            ->add('shop', null, array('attr' => array('class' => "px")))
             ->add('cover', null, array('attr' => array('class' => "px")))
             ->add('category', null, array('required' => true, 'property' => 'optionLabel'))
             ->add('actors', null, array('label' => "Acteurs qui ont joué dans ce film"))

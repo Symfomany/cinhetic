@@ -142,7 +142,7 @@ ul.dropdown-menu{
     padding: 3px !important;
 }
 
-table.table img{
+table.table img, .search-classic img{
     width: 230px;
 }
 

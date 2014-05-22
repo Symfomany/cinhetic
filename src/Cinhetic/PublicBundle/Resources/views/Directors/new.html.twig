@@ -22,9 +22,14 @@
         <div class="col-sm-3">
             {{ form_row(form.file)}}
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-1">
             {{ form_row(form.note)}}
         </div>
+        <div class="col-sm-2">
+            {{ form_row(form.dob)}}
+        </div>
+    </div>
+    </div>
     </div>
     </div>
     </div>
@@ -36,11 +41,17 @@
 {% endblock %}
 
 
+
 {% block javascripts %}
 {{ parent() }}
 
     <script type="text/javascript">
         $('#file').pixelFileInput({ placeholder: 'Aucun fichier selectionné...' });
-          
+
+          $('.datepick').datepicker({
+            todayBtn: "linked",
+            format: 'yyyy-mm-dd'
+           });
+           
     </script>
 {% endblock %}

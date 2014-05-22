@@ -108,7 +108,7 @@ class MoviesRepository extends EntityRepository
      * Get Current movies by criteria
      * @return array
      */
-    public function getCurrentMovies(){
+    public function getCurrentMovies($limit = 3){
         $query = $this->getEntityManager()
             ->createQuery(
                 'SELECT p
@@ -122,7 +122,7 @@ class MoviesRepository extends EntityRepository
                 'current' => new \Datetime('midnight'),
             ));
 
-            return $query->getResult();
+            return $query->setMaxResults($limit)->getResult();
     }
 
 
