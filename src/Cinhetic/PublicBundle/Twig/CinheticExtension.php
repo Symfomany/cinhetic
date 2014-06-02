@@ -23,8 +23,15 @@ class CinheticExtension extends \Twig_Extension
             new \Twig_SimpleFilter('notecomment', array($this, 'noteComment')),
             new \Twig_SimpleFilter('date_period', array($this, 'datePeriod')),
             new \Twig_SimpleFilter('truncatemonth', array($this, 'truncateMonth')),
+            new \Twig_SimpleFilter('getQRCode', array($this, 'getQRCode')),
             new \Twig_SimpleFilter('jsondecode', array($this, 'jsonDecode'))
         );
+    }
+
+    public function getQRCode($id){
+
+        return "<iframe src='http://chart.apis.google.com/chart?cht=qr&chs=300x300&chl=http%3A//symfony.3wa.fr/movies/3/pdf&chld=H|0'
+'></iframe>";
     }
 
     /**

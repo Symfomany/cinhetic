@@ -42,7 +42,8 @@
         "fg/essence": "2.4.0",
         "hwi/oauth-bundle": "dev-master",
         "eko/feedbundle": "dev-master",
-        "whiteoctober/breadcrumbs-bundle": "dev-master"
+        "whiteoctober/breadcrumbs-bundle": "dev-master",
+        "whiteoctober/tcpdf-bundle": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [

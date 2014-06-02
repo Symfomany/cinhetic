@@ -113,22 +113,6 @@ class MoviesController extends AbstractController
         $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
         $breadcrumbs->addItem("Films", $this->generateUrl('movies'));
 
-        $paybox = $this->get('lexik_paybox.request_handler');
-        $paybox->setParameters(array(
-            'PBX_CMD'          => 'CMD'.time(),
-            'PBX_DEVISE'       => '978',
-            'PBX_PORTEUR'      => 'test@paybox.com',
-            'PBX_RETOUR'       => 'Mt:M;Ref:R;Auto:A;Erreur:E',
-            'PBX_TOTAL'        => '1000',
-            'PBX_TYPEPAIEMENT' => 'CARTE',
-            'PBX_TYPECARTE'    => 'CB',
-            'PBX_EFFECTUE'     => $this->generateUrl('lexik_paybox_return', array('status' => 'success'), true),
-            'PBX_REFUSE'       => $this->generateUrl('lexik_paybox_return', array('status' => 'denied'), true),
-            'PBX_ANNULE'       => $this->generateUrl('lexik_paybox_return', array('status' => 'canceled'), true),
-            'PBX_RUF1'         => 'POST',
-            'PBX_REPONDRE_A'   => $this->generateUrl('lexik_paybox_ipn', array('time' => time()), true),
-        ));
-
         $em = $this->getDoctrine()->getManager();
         $entities = $em->createQuery(
             'SELECT a
@@ -163,8 +147,6 @@ class MoviesController extends AbstractController
             'entities' => $this->paginate($entities, $request->query->get('display',5)),
             'entities_next' => $this->paginate($entities_next, $request->query->get('display',5)),
             'entities_archived' => $this->paginate($entities_archived, $request->query->get('display',5)),
-            'url'  => $paybox->getUrl(),
-            'form' => $paybox->getForm()->createView()
         ));
     }
 
@@ -239,6 +221,77 @@ class MoviesController extends AbstractController
     }
 
   
+
+    /**
+     * Edits an existing Movies entity.
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     */
+    public function pdfAction(Request $request, Movies $id)
+    {
+        $pdfObj = $this->get("white_october.tcpdf")->create();
+        $type = $this->getRequest()->query->get('type', 'I');
+        // set document information
+        $pdfObj->SetCreator(PDF_CREATOR);
+        $pdfObj->SetAuthor('SymfoAcademy');
+        $pdfObj->SetTitle('Profil de film');
+        $pdfObj->SetSubject('Profil de film');
+        $pdfObj->SetKeywords('Profil de film, SymfoAcademy Solution');
+
+// set default header data
+// remove default header/footer
+        $pdfObj->setPrintHeader(false);
+        $pdfObj->setPrintFooter(false);
+
+
+// set margins
+        $pdfObj->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+        $pdfObj->SetHeaderMargin(PDF_MARGIN_HEADER);
+        $pdfObj->SetFooterMargin(PDF_MARGIN_FOOTER);
+
+// set auto page breaks
+        $pdfObj->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+
+// set image scale factor
+        $pdfObj->setImageScale(PDF_IMAGE_SCALE_RATIO);
+
+        //$pdfObj->SetFont('/usr/share/fonts/helvetica.ttf', '', 14, '', true);
+        //$fontname = $pdfObj->addTTFfont('/path-to-font/DejaVuSans.ttf', 'TrueTypeUnicode', '', 32);
+        $pdfObj->AddPage();
+// ---------------------------------------------------------
+
+// set default font subsetting mode
+        $pdfObj->setFontSubsetting(true);
+
+// set text shadow effect
+        $pdfObj->setTextShadow(array('enabled' => true, 'depth_w' => 0.2, 'depth_h' => 0.2, 'color' => array(196, 196, 196), 'opacity' => 1, 'blend_mode' => 'Normal'));
+
+        $barcodeobj = new \TCPDF2DBarcode('http://www.tcpdf.org', 'QRCODE,H');
+
+        // Set some content to print
+        $html = $this->renderView('CinheticPublicBundle:Movies:export.html.twig',
+         array(
+            'entity' => $id,
+            "barcode" => $barcodeobj->getBarcodeHTML(6, 6, 'black')
+        ));
+
+
+// Print text using writeHTMLCell()
+        $pdfObj->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
+
+        // ---------------------------------------------------------
+
+// Close and output PDF document
+// This method has several options, check the source code documentation for more information.
+        $path = $this->get('kernel')->getRootDir() . '/../web';
+
+        $pdfObj->Output('movie_pdf.pdf', $type);
+    
+
+    }
+
 
     /**
      * Edits an existing Movies entity.
@@ -322,7 +375,7 @@ class MoviesController extends AbstractController
             'PBX_DEVISE'       => '978',
             'PBX_PORTEUR'      => 'test@paybox.com',
             'PBX_RETOUR'       => 'Mt:M;Ref:R;Auto:A;Erreur:E',
-            'PBX_TOTAL'        => '1000',
+            'PBX_TOTAL'        => $id->getPrice(),
             'PBX_TYPEPAIEMENT' => 'CARTE',
             'PBX_TYPECARTE'    => 'CB',
             'PBX_EFFECTUE'     => $this->generateUrl('lexik_paybox_return', array('status' => 'success'), true),

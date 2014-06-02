@@ -37,15 +37,22 @@
                 {% endif %}
 
                 <h1>{{ entity.title|title }}<span class="text-muted"> ({{ entity.annee }})</span></h1>
-                <span>Type de film : {{ entity.typeFilm }}</span>
-                <p class="">{{ entity.synopsis|raw }}</p>
+                <hr />
+                <span class="label label-warning">Type de film : {{ entity.typeFilm }}</span>
+                 <span class="label label-warning pull-right">Production : {{ entity.distributeur }}</span>
+                
+                <br /><br />
+
+                <div class="panel colourable">
+                    <p class=""><strong>Synopsis:</strong> {{ entity.synopsis|raw }}</p>
+                </div>
             </div>
         </div>
      </div>
      <div class="row">
         <div class="col-md-12">
             <div class="">
-                <p class="">{{ entity.description|raw }}</p>
+                <p class=""><strong>Description:</strong> {{ entity.description|raw }}</p>
             </div>
         </div>
     </div>

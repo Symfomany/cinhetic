@@ -10,6 +10,7 @@ categories_new:
     pattern:  /new
     defaults: { _controller: "CinheticPublicBundle:Categories:new" }
 
+    
 categories_create:
     pattern:  /create
     defaults: { _controller: "CinheticPublicBundle:Categories:create" }

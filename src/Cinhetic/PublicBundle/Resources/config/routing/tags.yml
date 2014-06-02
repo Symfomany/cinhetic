@@ -10,6 +10,7 @@ tags_new:
     pattern:  /new
     defaults: { _controller: "CinheticPublicBundle:Tags:new" }
 
+    
 tags_create:
     pattern:  /create
     defaults: { _controller: "CinheticPublicBundle:Tags:create" }

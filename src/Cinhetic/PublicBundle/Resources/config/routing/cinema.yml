@@ -10,6 +10,7 @@ cinema_new:
     pattern:  /new
     defaults: { _controller: "CinheticPublicBundle:Cinema:new" }
 
+    
 cinema_position:
     pattern:  /position
     defaults: { _controller: "CinheticPublicBundle:Cinema:position" }

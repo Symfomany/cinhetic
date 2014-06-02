@@ -1,0 +1,36 @@
+<h1>{{ entity.title }} <span class="text-muted"> ({{ entity.annee }})</span></h1>
+<br />
+<hr />
+
+{% if entity.image is not empty %}
+	<img class="img-responsive" src="{{ base_url ~ imgmovies ~ entity.image }}" alt="...">
+{% endif %}
+<p class=""><strong>Synopsis:</strong> {{ entity.synopsis|raw }}</p>
+
+<hr />
+<p class=""><strong>Description:</strong> {{ entity.description|raw }}</p>
+
+ <h2>Les acteurs</h2>
+{% for entity in entity.actors %}
+    <p>
+        {{ entity.firstname|title }}
+        {{ entity.lastname|title }}
+    </p>
+{% endfor %}
+
+<h2>Les réalisateurs</h2>
+{% for entity in entity.directors %}
+	<p>
+	    {{ entity.firstname|title }}
+	    {{ entity.lastname|title }}
+	</p>
+{% endfor %}
+
+<h2>Les cinémas</h2>
+{% for entity in entity.cinemas %}
+    <p>
+        {{ entity.title|title }} à {{ entity.ville|title }}
+    </p>
+{% endfor %}
+
+{{ barcode }}

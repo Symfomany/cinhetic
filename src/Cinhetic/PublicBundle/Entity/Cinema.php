@@ -85,7 +85,6 @@ class Cinema
     private $sessions;
 
     /**
-     * @Gedmo\SortablePosition
      * @ORM\Column(name="position", type="integer")
      */
     private $position;

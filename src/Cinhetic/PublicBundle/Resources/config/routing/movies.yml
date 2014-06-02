@@ -10,6 +10,7 @@ movies_new:
     pattern:  /new
     defaults: { _controller: "CinheticPublicBundle:Movies:new" }
 
+
 movies_cities:
     pattern:  /city/{ville}
     defaults: { _controller: "CinheticPublicBundle:Movies:city" }
@@ -35,6 +36,11 @@ movies_medias:
     pattern:  /{id}/medias
     defaults: { _controller: "CinheticPublicBundle:Movies:medias" }
 
+movies_pdf:
+    pattern:  /{id}/pdf
+    defaults: { _controller: "CinheticPublicBundle:Movies:pdf" }
+
+    
 movies_favoris:
     pattern:  /{id}/favoris
     defaults: { _controller: "CinheticPublicBundle:Movies:favoris" }

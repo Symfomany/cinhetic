@@ -86,7 +86,6 @@ class Categories implements TimestampableInterface
 
 
     /**
-     * @Gedmo\SortablePosition
      * @ORM\Column(name="position", type="integer")
      */
     private $position;

@@ -10,6 +10,7 @@ sessions_new:
     pattern:  /new
     defaults: { _controller: "CinheticPublicBundle:Sessions:new" }
 
+    
 sessions_create:
     pattern:  /create
     defaults: { _controller: "CinheticPublicBundle:Sessions:create" }

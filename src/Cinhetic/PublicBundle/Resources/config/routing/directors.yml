@@ -10,6 +10,7 @@ directors_new:
     pattern:  /new
     defaults: { _controller: "CinheticPublicBundle:Directors:new" }
 
+    
 directors_create:
     pattern:  /create
     defaults: { _controller: "CinheticPublicBundle:Directors:create" }

@@ -1,5 +1,4 @@
 {% extends 'CinheticPublicBundle::layout.html.twig' %}
-{% import 'LexikPayboxBundle:Macro:paybox.html.twig' as paybox %}
 
 
 {% block titlepage %}<i class="fa fa-film"></i>&nbsp;&nbsp;Les films <span class="label label-danger">{{ entities.getTotalItemCount}}</span>{% endblock %}
@@ -81,18 +80,9 @@
                                     {% endif %}
 
                                     <li><a  href="{{ path('movies_medias', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-picture"></i> Medias</a></li>
-                                    {% if entity.shop == "true" %}
-                                    <li class="divider"></li>
 
-                                    <li>
-                                        <form action="{{ url }}" class="pull-left" method="post">
-                                            {{ paybox.form(form) }}
-                                            <button class="btn btn-success btn-md btn-labeled" type="submit">
-                                                <span class="btn-label icon fa fa-shopping-cart"></span> Commander
-                                            </button>
-                                        </form>
-                                    </li>
-                                    {% endif %}
+                                    <li><a  href="{{ path('movies_pdf', { 'id': entity.id }) }}"><i class="fa fa-file"></i> PDF</a></li>
+
 
                                 </ul>
                             </div>
@@ -147,7 +137,7 @@
                     <tr>
                         <td><a data-url="{{ path('movies_favoris', {'id' : entity.id }) }}" class="favoris_link"><i class="fa {% if entity.id in app.request.session.get('stars') %}fa-star{% else %} fa-star-o{% endif %}"></i></a></td>
                         <td class="text-success"><a href="{{ path('movies_show', { 'id': entity.id }) }}">{{ entity.title }}</a></td>
-                       <td>{{ entity.synopsis|striptags|truncate(350,true, "...") }}</td>
+                       <td class="smalltext">{{ entity.synopsis|striptags|truncate(350,true, "...") }}</td>
 
                         <td>
                             {% for entity in entity.directors %}
@@ -233,7 +223,7 @@
                     <tr>
                          <td><a data-url="{{ path('movies_favoris', {'id' : entity.id }) }}" class="favoris_link"><i class="fa {% if entity.id in app.request.session.get('stars') %}fa-star{% else %} fa-star-o{% endif %}"></i></a></td>
                         <td class="text-success"><a href="{{ path('movies_show', { 'id': entity.id }) }}">{{ entity.title }}</a></td>
-                        <td>{{ entity.synopsis|striptags|truncate(350,true, "...") }}</td>
+                        <td class="smalltext">{{ entity.synopsis|striptags|truncate(350,true, "...") }}</td>
                         <td>
                             {% for entity in entity.directors %}
                                 <a href="{{ path('directors_show', { 'id': entity.id }) }}">{{ entity.firstname|title }}
