@@ -5,22 +5,25 @@
 
 {% block content %}
     {{ form_start(form)}}
-		<div class="row">
-			<div class="row">
 	    	     <div class="panel form-horizontal">
-        <div class="panel-heading">
-            <span class="panel-title"><i class="fa fa-pencil"></i> Présentation</span>
-        </div>
-        <div class="panel-body">
-	        <div class="col-sm-6">
-	            {{ form_row(form.title) }}
-	        </div>
-	        <div class="col-sm-6">
-	            {{ form_row(form.parent) }}
-	        </div>
-    	</div>
-    	</div>
-    	</div>
+                    <div class="panel-heading">
+                        <span class="panel-title"><i class="fa fa-pencil"></i> Présentation</span>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                	        <div class="col-sm-6">
+                	            {{ form_row(form.title) }}
+                	        </div>
+                	        <div class="col-sm-6">
+                	            {{ form_row(form.parent) }}
+                	        </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{ form_row(form.description) }}
+                            </div>
+                        </div>
+                	</div>
     {{ form_rest(form) }}
     <button type="submit" class="btn btn-labeled btn-lg btn-primary"><span class="btn-label icon fa fa-check"></span> Enregistrer</button>
 {{ form_end(form)}}

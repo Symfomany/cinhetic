@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Cinhetic\PublicBundle\Entity\Movies;
 use Cinhetic\PublicBundle\Form\MoviesType;
 use FOS\RestBundle\Controller\Annotations as Rest;
+use Symfony\Component\HttpFoundation\Response;
 
 
 /**
@@ -142,12 +143,29 @@ class MoviesController extends AbstractController
             ORDER BY a.title ASC'
         );
 
+        $response = new Response();
 
-        return $this->render('CinheticPublicBundle:Movies:index.html.twig', array(
+        $response = $this->render('CinheticPublicBundle:Movies:index.html.twig', array(
             'entities' => $this->paginate($entities, $request->query->get('display',5)),
             'entities_next' => $this->paginate($entities_next, $request->query->get('display',5)),
             'entities_archived' => $this->paginate($entities_archived, $request->query->get('display',5)),
         ));
+        $response->setPublic();
+        $response->setSharedMaxAge(600);
+        $response->headers->addCacheControlDirective('must-revalidate', true);
+        $date = new \DateTime();
+        $date->modify('+600 seconds');
+
+        $response->setExpires($date);
+        $response->setETag(md5($response->getContent()));
+        $response->setPublic(); // permet de s'assurer que la réponse est publique, et qu'elle peut donc être cachée
+
+        if ($response->isNotModified($request)) {
+            return $response;
+        }
+
+        return $response;
+
     }
 
 
@@ -155,14 +173,32 @@ class MoviesController extends AbstractController
      * Get Current Movies
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function currentMoviesAction()
+    public function currentMoviesAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $entities = $em->getRepository('CinheticPublicBundle:Movies')->getCurrentMovies();
 
-        return $this->render('CinheticPublicBundle:Movies:current.html.twig', array(
+
+        $response = new Response();
+
+        $response = $this->render('CinheticPublicBundle:Movies:current.html.twig', array(
             'entities' => $entities,
         ));
+        $response->setPublic();
+        $response->setSharedMaxAge(600);
+        $response->headers->addCacheControlDirective('must-revalidate', true);
+        $date = new \DateTime();
+        $date->modify('+600 seconds');
+
+        $response->setExpires($date);
+        $response->setETag(md5($response->getContent()));
+        $response->setPublic(); // permet de s'assurer que la réponse est publique, et qu'elle peut donc être cachée
+        if ($response->isNotModified($request)) {
+            return $response;
+        }
+
+        return $response;
+
     }
 
 
@@ -171,23 +207,57 @@ class MoviesController extends AbstractController
      * Get Star Movies entities.
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function starsMoviesAction()
+    public function starsMoviesAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $entities = $em->getRepository('CinheticPublicBundle:Movies')->getStarMovies();
 
-        return $this->render('CinheticPublicBundle:Movies:stars.html.twig', array(
+         $response = new Response();
+
+        $response = $this->render('CinheticPublicBundle:Movies:stars.html.twig', array(
             'entities' => $entities,
         ));
+        $response->setPublic();
+        $response->setSharedMaxAge(600);
+        $response->headers->addCacheControlDirective('must-revalidate', true);
+        $date = new \DateTime();
+        $date->modify('+600 seconds');
+
+        $response->setExpires($date);
+        $response->setETag(md5($response->getContent()));
+        $response->setPublic(); // permet de s'assurer que la réponse est publique, et qu'elle peut donc être cachée
+        if ($response->isNotModified($request)) {
+            return $response;
+        }
+
+        return $response;
+
+
     }
 
 
 
     /**
+     * Get Card Movies entities.
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function cardAction(Request $request)
+    {
+      $session = $request->getSession();
+      $stars = $session->get('stars', array());
+
+       return $this->render('CinheticPublicBundle:Movies:card.html.twig', array(
+            'stars' => $stars,
+       ));
+    }
+
+    
+
+    /**
      * Get Star Movies entities.
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function carousselMoviesAction()
+    public function carousselMoviesAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $imgs = $em->getRepository('CinheticPublicBundle:Movies')->getAllImagesOfMovies();
@@ -232,7 +302,7 @@ class MoviesController extends AbstractController
     public function pdfAction(Request $request, Movies $id)
     {
         $pdfObj = $this->get("white_october.tcpdf")->create();
-        $type = $this->getRequest()->query->get('type', 'I');
+        $type = $request->query->get('type', 'I');
         // set document information
         $pdfObj->SetCreator(PDF_CREATOR);
         $pdfObj->SetAuthor('SymfoAcademy');
@@ -274,7 +344,6 @@ class MoviesController extends AbstractController
         $html = $this->renderView('CinheticPublicBundle:Movies:export.html.twig',
          array(
             'entity' => $id,
-            "barcode" => $barcodeobj->getBarcodeHTML(6, 6, 'black')
         ));
 
 
@@ -338,7 +407,7 @@ class MoviesController extends AbstractController
      * Displays a form to create a new Movies entity.
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function newAction()
+    public function newAction(Request $request)
     {
         $breadcrumbs = $this->get("white_october_breadcrumbs");
         $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
@@ -348,10 +417,27 @@ class MoviesController extends AbstractController
         $entity = new Movies();
         $form = $this->get('cinhetic_public.manager_movies')->createForm($entity);
 
-        return $this->render('CinheticPublicBundle:Movies:new.html.twig', array(
+        $response = new Response();
+
+        $response = $this->render('CinheticPublicBundle:Movies:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
+        $response->setPublic();
+        $response->setSharedMaxAge(600);
+        $response->headers->addCacheControlDirective('must-revalidate', true);
+        $date = new \DateTime();
+        $date->modify('+600 seconds');
+
+        $response->setExpires($date);
+        $response->setETag(md5($response->getContent()));
+        $response->setPublic(); // permet de s'assurer que la réponse est publique, et qu'elle peut donc être cachée
+
+        if ($response->isNotModified($request)) {
+            return $response;
+        }
+
+        return $response;
     }
 
 
@@ -387,9 +473,11 @@ class MoviesController extends AbstractController
 
 
         $deleteForm = $this->createDeleteForm($id);
+        $embed = $this->embed->embed($id->getTrailer());
 
         return $this->render('CinheticPublicBundle:Movies:show.html.twig', array(
             'entity'      => $id,
+            'embed'      => $embed,
             'delete_form' => $deleteForm->createView(),
             'url'  => $paybox->getUrl(),
             'form' => $paybox->getForm()->createView()

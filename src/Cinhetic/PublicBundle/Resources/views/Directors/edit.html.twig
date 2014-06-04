@@ -7,13 +7,13 @@
 {% block content %}
     {{ form_start(edit_form)}}
 
-    <div class="row">
-             <div class="row">
          <div class="panel form-horizontal">
+
             <div class="panel-heading">
                 <span class="panel-title"><i class="fa fa-pencil"></i> Présentation</span>
             </div>
             <div class="panel-body">
+    <div class="row">
 
         <div class="col-sm-3">
             {{ form_row(edit_form.firstname)}}
@@ -47,7 +47,16 @@
             {{ form_row(edit_form.dob)}}
         </div>
     </div>
-    </div>
+        <div class="row">
+            <div class="col-sm-12">
+                {{ form_row(edit_form.biography)}}
+            </div>
+        </div>
+        <div class="row">
+                <div class="col-sm-12">
+                    {{ form_row(edit_form.movies)}}
+                </div>
+        </div>
     </div>
 
     {{ form_rest(edit_form) }}

@@ -1,0 +1,39 @@
+{% block messages %}
+ <a href="#messages" class="dropdown-toggle" data-toggle="dropdown">
+    <span class="label">{{ stars|length }} </span>
+    <i class="nav-icon fa fa-shopping-cart"></i>
+    <span class="small-screen-text">Panier</span>
+</a>
+
+<!-- MESSAGES -->
+
+<!-- Javascript -->
+<script>
+    init.push(function () {
+        $('#main-navbar-messages').slimScroll({ height: 250 });
+    });
+</script>
+<!-- / Javascript -->
+
+<div class="dropdown-menu widget-messages-alt no-padding" style="width: 300px;">
+    <div class="messages-list" id="main-navbar-messages">
+        {% for star in stars %}
+            <div class="message">
+                <a href="#" class="message-subject">{{ star.title }} - <i>{{ star.ref }}</i></a> <br />
+                {{ star.type|dvd }}
+                <div class="message-description">
+                    à <a href="#">{{ star.price }} €</a>
+                </div>
+            </div> <!-- / .message -->
+        {% else %}
+            <div class="alert alert-info">
+                <p>Vous avez rien dans le panier</p>
+            </div>
+        {% endfor %}
+
+
+    </div> <!-- / .messages-list -->
+    <a href="{{ path('movies_card') }}" class="messages-link">Régler la commande</a>
+</div> <!-- / .dropdown-menu -->
+
+{% endblock %}

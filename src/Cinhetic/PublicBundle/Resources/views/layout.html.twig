@@ -98,13 +98,16 @@
                     </ul> 
                     <div class="right clearfix">
                         <ul class="nav navbar-nav pull-right right-navbar-nav">
-
+                            <li class="nav-icon-btn nav-icon-btn-success dropdown">
+                               {{ render(controller('CinheticPublicBundle:Layout:card')) }}
+                            </li>
                             <li class="nav-icon-btn nav-icon-btn-danger dropdown">
                               {{ render(controller('CinheticPublicBundle:Comments:comments')) }}
                             </li>
                             <li class="nav-icon-btn nav-icon-btn-success dropdown">
                                {{ include('CinheticPublicBundle:Slots:messages.html.twig') }}
                             </li>
+                             
 
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle user-menu" data-toggle="dropdown">

@@ -202,6 +202,22 @@ border-bottom-color: #f9f2cc;
     border: none;
 }
 
+.note-editable p{
+    font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif !important;
+    font-size: 12px !important;
+}
+.note-editable a{
+    color: #1a7ab9 !important;
+}
+.note-editable h1{
+    font-size: 22px!important;
+}
+.note-editable h2{
+    font-size: 18px!important;
+}
+.note-editable h3{
+    font-size: 15px!important;
+}
 
 
  @media (min-width: 300px) and (max-width: 768px) {

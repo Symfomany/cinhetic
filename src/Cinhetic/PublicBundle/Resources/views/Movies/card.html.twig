@@ -1,0 +1,149 @@
+{% extends 'CinheticPublicBundle::layout.html.twig' %}
+
+
+{% block titlepage %}<i class="fa fa-film"></i>&nbsp;&nbsp;Les films <span class="label label-danger">{{ entities.getTotalItemCount}}</span>{% endblock %}
+
+
+{% block content %}
+    <div id="content-wrapper">
+        <div class="page-header">
+            <h1><i class="fa fa-file-text-o page-header-icon"></i>&nbsp;&nbsp;Invoice Page</h1>
+            <a href="pages-invoice-print.html" class="pull-right btn btn-primary" style="display: block;" target="_blank"><i class="fa fa-print"></i>&nbsp;&nbsp;Print version</a>
+        </div> <!-- / .page-header -->
+        
+    <!-- NOTE: Add .page-invoice class to the body element -->
+
+<!-- 5. $INVOICE_PAGE ==============================================================================
+
+        Invoice page
+-->
+        <div class="panel invoice">
+            <div class="invoice-header">
+                <h3>
+                    <div class="invoice-logo demo-logo"><img src="assets/demo/logo-big.png" alt="" style="width:100%;height:100%;"></div>
+                    <div>
+                        <small><strong>Pixel</strong>Admin</small><br>
+                        INVOICE #244
+                    </div>
+                </h3>
+                <address>
+                    PixelAdmin Ltd.<br>
+                    Los Angeles, Hoover Street, 32<br>
+                    90080 CA, USA
+                </address>
+                <div class="invoice-date">
+                    <small><strong>Date</strong></small><br>
+                    February 21, 2013
+                </div>
+            </div> <!-- / .invoice-header -->
+            <div class="invoice-info">
+                <div class="invoice-recipient">
+                    <strong>Mr. John Smith</strong><br>
+                    New York, Pass Avenue, 109<br>
+                    10012 NY, USA
+                </div> <!-- / .invoice-recipient -->
+                <div class="invoice-total">
+                    <span>$4,657.75</span>
+                    TOTAL:
+                </div> <!-- / .invoice-total -->
+            </div> <!-- / .invoice-info -->
+            <hr>
+            <div class="invoice-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>
+                                Task description
+                            </th>
+                            <th>
+                                Rate
+                            </th>
+                            <th>
+                                Hours
+                            </th>
+                            <th>
+                                Line total
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                Website design and development
+                                <div class="invoice-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</div>
+                            </td>
+                            <td>
+                                $50.00
+                            </td>
+                            <td>
+                                50
+                            </td>
+                            <td>
+                                $2,500.00
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Branding
+                                <div class="invoice-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</div>
+                            </td>
+                            <td>
+                                $47.95
+                            </td>
+                            <td>
+                                45
+                            </td>
+                            <td>
+                                $2,157.75
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div> <!-- / .invoice-table -->
+        </div> <!-- / .invoice -->
+<!-- /5. $INVOICE_PAGE -->
+
+    </div> <!-- / #content-wrapper -->
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <style type="text/css" media="screen">
+        
+         @media only screen and (max-width: 800px) {
+            table.table td:nth-child(1),table.table td:nth-child(3),table.table td:nth-child(5),table.table td:nth-child(7),table.table td:nth-child(4),table.table td:nth-child(0),table td:nth-child(6),
+            table.table th:nth-child(6),table.table th:nth-child(1),table.table th:nth-child(3),table.table th:nth-child(7),table.table th:nth-child(5),table.table th:nth-child(4),table.table th:nth-child(0)
+             {display: none;}
+         }
+         
+        @media only screen and (max-width: 640px) {
+            table.table td:nth-child(1),table.table td:nth-child(3),table.table td:nth-child(5),table.table td:nth-child(7),table.table td:nth-child(4),table.table td:nth-child(0),table td:nth-child(6),
+            table.table th:nth-child(6),table.table th:nth-child(1),table.table th:nth-child(3),table.table th:nth-child(7),table.table th:nth-child(5),table.table th:nth-child(4),table.table th:nth-child(0)
+             {display: none;}
+        } 
+
+    </style>
+{% endblock %} 
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        init.push(function () {
+            $('.enabled').switcher();
+            $('.switcher-primary :checkbox').click(function () {
+                $obj = $(this);
+                    $.ajax({
+                        url: $(this).attr('data-url'),
+                        type: "get",
+                        dataType: "json",
+                        data: {'id' : $(this).attr('data-id')},
+                        success: function (data) {
+                           $obj.parents('tr').fadeOut('slow');
+                        }
+                    }); 
+
+            });
+        });
+    </script>
+{% endblock %}

@@ -6,7 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Cinhetic\PublicBundle\Entity\Actors;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Cinhetic\PublicBundle\Util\WikiCreole;
+use Symfony\Component\HttpFoundation\Response;
 
 
 
@@ -36,9 +36,26 @@ class ActorsController extends AbstractController
         $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
         $breadcrumbs->addItem("Acteurs", $this->generateUrl('actors'));
 
-        return $this->render('CinheticPublicBundle:Actors:index.html.twig', array(
+        $response = new Response();
+        $response = $this->render('CinheticPublicBundle:Actors:index.html.twig', array(
             'entities' => $this->paginate($entities, $request->query->get('display',5))
         ));
+        $response->setPublic();
+        $response->setSharedMaxAge(600);
+        $response->headers->addCacheControlDirective('must-revalidate', true);
+        $date = new \DateTime();
+        $date->modify('+600 seconds');
+
+        $response->setExpires($date);
+        $response->setETag(md5($response->getContent()));
+        $response->setPublic(); // permet de s'assurer que la réponse est publique, et qu'elle peut donc être cachée
+
+        if ($response->isNotModified($request)) {
+            return $response;
+        }
+
+        return $response;
+
     }
 
     /**
@@ -94,7 +111,7 @@ class ActorsController extends AbstractController
      * Displays a form to create a new Actors entity.
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function newAction()
+    public function newAction(Request $request)
     {
         $breadcrumbs = $this->get("white_october_breadcrumbs");
         $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
@@ -104,10 +121,27 @@ class ActorsController extends AbstractController
         $entity = new Actors();
         $form = $this->get('cinhetic_public.manager_actors')->createForm($entity);
 
-        return $this->render('CinheticPublicBundle:Actors:new.html.twig', array(
+        $response = new Response();
+        $response = $this->render('CinheticPublicBundle:Actors:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
+        $response->setPublic();
+        $response->setSharedMaxAge(600);
+        $response->headers->addCacheControlDirective('must-revalidate', true);
+        $date = new \DateTime();
+        $date->modify('+600 seconds');
+
+        $response->setExpires($date);
+        $response->setETag(md5($response->getContent()));
+        $response->setPublic(); // permet de s'assurer que la réponse est publique, et qu'elle peut donc être cachée
+
+        if ($response->isNotModified($request)) {
+            return $response;
+        }
+
+        return $response;
+        
     }
 
 

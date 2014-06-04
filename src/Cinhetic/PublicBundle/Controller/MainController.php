@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContext;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class MainController
@@ -62,7 +63,7 @@ class MainController extends AbstractController
      * Main Dashboard Homepage
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
        /* $paybox = $this->get('lexik_paybox.request_handler');
         $paybox->setParameters(array(
@@ -90,6 +91,8 @@ class MainController extends AbstractController
         $tags = $em->getRepository('CinheticPublicBundle:Tags')->findAll();
               
         $movies = $em->getRepository('CinheticPublicBundle:Movies')->getCount();
+        $lastmovies = $em->getRepository('CinheticPublicBundle:Movies')->getAllImagesMovies();
+        
         $actors = $em->getRepository('CinheticPublicBundle:Actors')->getCount();
         $directors = $em->getRepository('CinheticPublicBundle:Directors')->getCount();
         $cinemas = $em->getRepository('CinheticPublicBundle:Cinema')->getCount();
@@ -100,7 +103,6 @@ class MainController extends AbstractController
         $ratioenabledusers = $em->getRepository('CinheticPublicBundle:User')->getRatioActiveActors();
         $ratiofilmsactus = $em->getRepository('CinheticPublicBundle:Movies')->getRatioActusMovies();
         $ratiocinemaseance = $em->getRepository('CinheticPublicBundle:Cinema')->getRatioHasSeance(new \Datetime('now'));
-
 
         $allocine_movies = $this->helper->movielist();
 
@@ -139,7 +141,10 @@ class MainController extends AbstractController
         $infos = $webservice->getInfos('allocine');
 
 
-        return $this->display('index.html.twig',  array(
+        $response = new Response();
+
+
+        $response = $this->render('CinheticPublicBundle:Main:index.html.twig', array(
             'seances' => $seances,
             'categories' => $categories,
             'tweets' => $tweets,
@@ -148,6 +153,7 @@ class MainController extends AbstractController
             'url'  => null,
             'form' => null,
             'movies' => $movies,
+            'lastmovies' => $lastmovies,
             'vues' => $vues,
             'infos' => $infos,
             'actors' => $actors,
@@ -164,7 +170,22 @@ class MainController extends AbstractController
            // 'url'  => $paybox->getUrl(),
             //'form' => $paybox->getForm()->createView()
         ));
-    }
+        $response->setPublic();
+        $response->setSharedMaxAge(600);
+        $response->headers->addCacheControlDirective('must-revalidate', true);
+        $date = new \DateTime();
+        $date->modify('+600 seconds');
+
+        $response->setExpires($date);
+        $response->setETag(md5($response->getContent()));
+        $response->setPublic(); // permet de s'assurer que la réponse est publique, et qu'elle peut donc être cachée
+        if ($response->isNotModified($request)) {
+            return $response;
+        }
+
+        return $response;
+
+        }
 
     /**
      * Sample action of a confirmation payment page on witch the user is sent
@@ -243,10 +264,27 @@ class MainController extends AbstractController
             $error = $session->get(SecurityContext::AUTHENTICATION_ERROR);
             $session->remove(SecurityContext::AUTHENTICATION_ERROR);
         }
-        return $this->render('CinheticPublicBundle:Main:login.html.twig', array(
+
+        $response = new Response();
+        $response = $this->render('CinheticPublicBundle:Main:login.html.twig', array(
             'last_username' => $session->get(SecurityContext::LAST_USERNAME),
             'error'         => $error,
         ));
+        $response->setPublic();
+        $response->setSharedMaxAge(600);
+        $response->headers->addCacheControlDirective('must-revalidate', true);
+        $date = new \DateTime();
+        $date->modify('+600 seconds');
+
+        $response->setExpires($date);
+        $response->setETag(md5($response->getContent()));
+        $response->setPublic(); // permet de s'assurer que la réponse est publique, et qu'elle peut donc être cachée
+        if ($response->isNotModified($request)) {
+            return $response;
+        }
+
+        return $response;
+
     }
 
     /**

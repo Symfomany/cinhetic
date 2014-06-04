@@ -24,6 +24,7 @@ class CinheticExtension extends \Twig_Extension
             new \Twig_SimpleFilter('date_period', array($this, 'datePeriod')),
             new \Twig_SimpleFilter('truncatemonth', array($this, 'truncateMonth')),
             new \Twig_SimpleFilter('getQRCode', array($this, 'getQRCode')),
+            new \Twig_SimpleFilter('dvd', array($this, 'dvd')),
             new \Twig_SimpleFilter('jsondecode', array($this, 'jsonDecode'))
         );
     }
@@ -145,6 +146,25 @@ class CinheticExtension extends \Twig_Extension
             return $arrayNot[$rate];
         } else {
             return $arrayNot[4];
+        }
+    }
+
+    /**
+     * Transforme note in string
+     * @param $rate
+     * @return mixed
+     */
+    public function dvd($type = 1)
+    {
+        $arrayNot = array(
+            '1' => 'DVD',
+                    '2' => 'Blue-Ray',
+                    "3" => "Blue-Ray 3D"
+            );
+        if ($type <= 3) {
+            return $arrayNot[$type];
+        } else {
+            return $arrayNot["1"];
         }
     }
 

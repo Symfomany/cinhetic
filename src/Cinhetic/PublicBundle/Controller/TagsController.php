@@ -5,6 +5,7 @@ namespace Cinhetic\PublicBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Cinhetic\PublicBundle\Entity\Tags;
 use FOS\RestBundle\Controller\Annotations as Rest;
+use Symfony\Component\HttpFoundation\Response;
 
 
 /**
@@ -25,16 +26,32 @@ class TagsController extends AbstractController
         $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
         $breadcrumbs->addItem("Tags", $this->generateUrl('tags'));
 
-
         $em = $this->getDoctrine()->getManager();
         $entities = $em->createQuery(
             'SELECT a
             FROM CinheticPublicBundle:Tags a
             ORDER BY a.word ASC'
         );
-        return $this->render('CinheticPublicBundle:Tags:index.html.twig', array(
+
+        $response = new Response();
+        $response = $this->render('CinheticPublicBundle:Tags:index.html.twig', array(
             'entities' => $this->paginate($entities, $request->query->get('display',5))
-            ));
+        ));
+        $response->setPublic();
+        $response->setSharedMaxAge(600);
+        $response->headers->addCacheControlDirective('must-revalidate', true);
+        $date = new \DateTime();
+        $date->modify('+600 seconds');
+
+        $response->setExpires($date);
+        $response->setETag(md5($response->getContent()));
+        $response->setPublic(); // permet de s'assurer que la réponse est publique, et qu'elle peut donc être cachée
+        if ($response->isNotModified($request)) {
+            return $response;
+        }
+
+        return $response;
+
     }
 
 

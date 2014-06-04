@@ -73,6 +73,22 @@ class MoviesRepository extends EntityRepository
 
 
     /**
+     * Get last images movies by criteria
+     * @return array
+     */
+    public function getAllImagesMovies(){
+
+        $query = $this->getEntityManager()
+            ->createQuery(
+                "SELECT c.image, c.id
+                    FROM CinheticPublicBundle:Movies c
+                    ORDER BY c.id DESC"
+            );
+
+            return $query->setMaxResults(50)->getScalarResult();
+    }
+
+    /**
      * Get Current movies by criteria
      * @return array
      */

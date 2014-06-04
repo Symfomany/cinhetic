@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Cinhetic\PublicBundle\Entity\Cinema;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 
 /**
@@ -32,9 +33,28 @@ class CinemaController extends AbstractController
             ORDER BY a.position ASC'
         );
 
-        return $this->render('CinheticPublicBundle:Cinema:index.html.twig', array(
+
+        $response = new Response();
+        $response = $this->render('CinheticPublicBundle:Cinema:index.html.twig', array(
             'entities' => $this->paginate($entities,$request->query->get('display',5))
         ));
+        $response->setPublic();
+        $response->setSharedMaxAge(600);
+        $response->headers->addCacheControlDirective('must-revalidate', true);
+        $date = new \DateTime();
+        $date->modify('+600 seconds');
+
+        $response->setExpires($date);
+        $response->setETag(md5($response->getContent()));
+        $response->setPublic(); // permet de s'assurer que la réponse est publique, et qu'elle peut donc être cachée
+        $response->isNotModified($this->getRequest());
+
+        if ($response->isNotModified($request)) {
+            return $response;
+        }
+
+        return $response;
+
     }
 
 
@@ -115,7 +135,7 @@ class CinemaController extends AbstractController
      * Displays a form to create a new Cinema entity.
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function newAction()
+    public function newAction(Request $request)
     {
 
         $breadcrumbs = $this->get("white_october_breadcrumbs");
@@ -126,10 +146,28 @@ class CinemaController extends AbstractController
         $entity = new Cinema();
         $form = $this->get('cinhetic_public.manager_cinema')->createForm($entity);
 
-        return $this->render('CinheticPublicBundle:Cinema:new.html.twig', array(
+
+        $response = new Response();
+        $response = $this->render('CinheticPublicBundle:Cinema:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
+        $response->setPublic();
+        $response->setSharedMaxAge(600);
+        $response->headers->addCacheControlDirective('must-revalidate', true);
+        $date = new \DateTime();
+        $date->modify('+600 seconds');
+
+        $response->setExpires($date);
+        $response->setETag(md5($response->getContent()));
+        $response->setPublic(); // permet de s'assurer que la réponse est publique, et qu'elle peut donc être cachée
+
+        if ($response->isNotModified($request)) {
+            return $response;
+        }
+
+        return $response;
+        
     }
 
 

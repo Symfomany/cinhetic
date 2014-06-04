@@ -21,7 +21,7 @@
             <div class="message">
                 <a href="#" class="message-subject">{{ entity.content }}</a>
                 <div class="message-description">
-                    from <a href="#">Robert Jang</a>
+                    de <a href="#">{{ entity.user.username|truncate(50,"...") }}</a>
                     &nbsp;&nbsp;·&nbsp;&nbsp;
                     {{ entity.dateCreated|ago }}
                 </div>

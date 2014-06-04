@@ -10,6 +10,9 @@ movies_new:
     pattern:  /new
     defaults: { _controller: "CinheticPublicBundle:Movies:new" }
 
+movies_card:
+    pattern:  /card
+    defaults: { _controller: "CinheticPublicBundle:Movies:card" }
 
 movies_cities:
     pattern:  /city/{ville}

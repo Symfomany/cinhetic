@@ -1,9 +1,14 @@
 {% extends 'CinheticPublicBundle::layout.html.twig' %}
 {% import 'LexikPayboxBundle:Macro:paybox.html.twig' as paybox %}
 
-{% block titlepage %}<i class="fa fa-search"></i>&nbsp;&nbsp;Fiche de film{% endblock %}
+{% block titlepage %}<i class="fa fa-search"></i>&nbsp;&nbsp;Fiche de film {{ entity.title|title }}
+  <a class="btn btn-primary btn-labeled" href="{{ path('movies_edit', { 'id': entity.id }) }}">
+   <span class="btn-label icon fa fa-pencil"></span> Editer ce film
+    </a>
+{% endblock %}
 
 {% block content %}
+<p class="pull-right label label-info">Modifiée il y a {{ entity.dateUpdated|ago }}</p>
     {% for entity in entity.tags %}
         <a class="label label-primary label-tag">{{ entity.word }}</a>
     {% endfor %}
@@ -57,74 +62,29 @@
         </div>
     </div>
 
+        <h3>Bande annonce</h3>
 
-        <ul class="nav nav-tabs" id="myTab">
-            <li class="active"><a href="#home" data-toggle="tab">Bande annonce</a></li>
-            <li><a href="#profile" data-toggle="tab" class="cercles">Informations</a></li>
-            <li><a href="#messages" data-toggle="tab">Messages</a></li>
-            <li><a href="#acteurs" data-toggle="tab">Autres</a></li>
-        </ul>
+        <div class="well">
+            {{ embed.html|raw }}
+        </div>
 
-        <div class="tab-content">
-            <div class="tab-pane active" id="home"><br>
-                <div class="row">
-                    <div class="col-md-5 col-md-offset-3">
-                            {{ entity.trailer|raw }}
-                    </div>
-                </div>
+        <h3>Informations</h3>
+       <div class="row">
+            <div class="col-lg-4">
+                <input type="text" attr-value="{{ entity.duree }}" data-step="0.1" data-max="10" readOnly="true" data-fgColor="#E74C3C" class="dial">
+                <p>Durée (heures)</p>
             </div>
-            <div class="tab-pane" id="profile"><br>
-                <div class="container marketing">
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <input type="text" attr-value="{{ entity.duree }}" data-step="0.1" data-max="10" readOnly="true" data-fgColor="#E74C3C" class="dial">
-                            <h2>Durée (heures)</h2>
-                        </div>
-                        <div class="col-lg-4">
-                            <input type="text" attr-value="{{ entity.budget }}" readOnly="true" data-max="3000000" data-fgColor="#3498DB" class="dial">
-                            <h2>Budget (€)</h2>
-                        </div>
-                        <div class="col-lg-4">
-                            <input type="text" attr-value="{{ entity.notePresse }}" data-step="0.1"  readOnly="true" data-max="5" data-fgColor="#9B59B6" class="dial">
-                            <h2>Note de presse</h2>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <h3>Histoire</h3>
-                        <p>{{ entity.description|raw }}</p>
-                    </div>
-                </div>
-
+            <div class="col-lg-4">
+                <input type="text" attr-value="{{ entity.budget }}" readOnly="true" data-max="3000000" data-fgColor="#3498DB" class="dial">
+                <p>Budget (€)</p>
             </div>
-            <div class="tab-pane" id="messages"><br>
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                            <ol class="carousel-indicators">
-                                {% for i in 0..(entity.medias|length - 1) %}
-                                    <li data-target="#myCarousel" data-slide-to="{{ i }}" {% if i == 0 %}class="active"{% endif %}></li>
-                                {% endfor %}
-                            </ol>
-                            <div class="carousel-inner">
-                                {% for entity in entity.medias %}
-                                    <div class="item{% if loop.index == 1%} active{% endif %}">
-                                        {% if entity.nature == "1" %}
-                                            <img src="{{ entity.picture|raw }}">
-                                        {% endif %}
-                                    </div>
-                                {% endfor %}
-                            </div>
-                            <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
-                            <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
-                        </div>
-                    </div>
-                </div>
-
+            <div class="col-lg-4">
+                <input type="text" attr-value="{{ entity.notePresse }}" data-step="0.1"  readOnly="true" data-max="5" data-fgColor="#9B59B6" class="dial">
+                <p>Note de presse</p>
             </div>
-
-            <div class="tab-pane" id="acteurs">
-
-                <div class="row">
+        </div>
+        <hr />
+         <div class="row">
                     <div class="col-6 col-sm-6 col-lg-4">
                         <h2>Les acteurs</h2>
                             {% for entity in entity.actors %}
@@ -152,42 +112,18 @@
                         {% endfor %}
                     </div>
                 </div>
-        </div>
     </div>
 </div>
 
-    <a class="btn btn-primary" href="{{ path('movies_edit', { 'id': entity.id }) }}">
-    Edit
-    </a>
-    {{ form(delete_form, {'attr' : {'style' : 'display:inline-block'} } ) }}
+  
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
-    {% javascripts '@CinheticPublicBundle/Resources/public/js/knob.js'  %}
-        <script type="text/javascript" src="{{ asset_url }}"></script>
-    {% endjavascripts %}
     <script type="text/javascript">
-        $(function () {
-            $('#myTab a:first').tab('show');
-            $(".dial").knob();
-            $('#myTab').on('click', "a.cercles", function(){
-                $('.dial').each(function()
-                {
-                    $(this).animate(
-                        {
-                            value : parseInt($(this).attr('attr-value')),
-                        },
-                        {
-                            duration: 1000,
-                            progress : function(){
-                                console.log(this.value)
-                                $(this).val(this.value).trigger('change')
-                            }
-                        }
-                    );
-                });
-            })
-        });
+  init.push(function () {
+        $(".dial").knob();
+    });
     </script>
+ 
 {% endblock %}

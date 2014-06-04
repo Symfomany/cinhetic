@@ -5,6 +5,7 @@ namespace Cinhetic\PublicBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Cinhetic\PublicBundle\Entity\Directors;
 use FOS\RestBundle\Controller\Annotations as Rest;
+use Symfony\Component\HttpFoundation\Response;
 
 
 /**
@@ -31,9 +32,27 @@ class DirectorsController extends AbstractController
             FROM CinheticPublicBundle:Directors a
             ORDER BY a.lastname ASC'
         );
-        return $this->render('CinheticPublicBundle:Directors:index.html.twig', array(
+
+        $response = new Response();
+        $response =  $this->render('CinheticPublicBundle:Directors:index.html.twig', array(
             'entities' => $this->paginate($entities, $request->query->get('display',5))
         ));
+        $response->setPublic();
+        $response->setSharedMaxAge(600);
+        $response->headers->addCacheControlDirective('must-revalidate', true);
+        $date = new \DateTime();
+        $date->modify('+600 seconds');
+
+        $response->setExpires($date);
+        $response->setETag(md5($response->getContent()));
+        $response->setPublic(); // permet de s'assurer que la réponse est publique, et qu'elle peut donc être cachée
+
+        if ($response->isNotModified($request)) {
+            return $response;
+        }
+
+        return $response;
+
     }
 
 
@@ -89,7 +108,7 @@ class DirectorsController extends AbstractController
      * Displays a form to create a new Directors entity.
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function newAction()
+    public function newAction(Request $request)
     {
         $breadcrumbs = $this->get("white_october_breadcrumbs");
         $breadcrumbs->addItem("Home", $this->get("router")->generate("Cinhetic_public_homepage"));
@@ -99,10 +118,28 @@ class DirectorsController extends AbstractController
         $entity = new Directors();
         $form = $this->get('cinhetic_public.manager_directors')->createForm($entity);
 
-        return $this->render('CinheticPublicBundle:Directors:new.html.twig', array(
+
+        $response = new Response();
+        $response =  $this->render('CinheticPublicBundle:Directors:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
+        $response->setPublic();
+        $response->setSharedMaxAge(600);
+        $response->headers->addCacheControlDirective('must-revalidate', true);
+        $date = new \DateTime();
+        $date->modify('+600 seconds');
+
+        $response->setExpires($date);
+        $response->setETag(md5($response->getContent()));
+        $response->setPublic(); // permet de s'assurer que la réponse est publique, et qu'elle peut donc être cachée
+
+        if ($response->isNotModified($request)) {
+            return $response;
+        }
+
+        return $response;
+
     }
 
     /**
