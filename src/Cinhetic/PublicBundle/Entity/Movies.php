@@ -9,7 +9,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Gedmo\Mapping\Annotation as Gedmo; // gedmo annotations
 use JMS\Serializer\Annotation\ExclusionPolicy;
 use JMS\Serializer\Annotation\Expose;
-
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * Movies
@@ -1347,6 +1347,7 @@ class Movies implements TimestampableInterface
         $extension = $this->file->guessExtension();
 
         $this->file->move($this->getUploadRootDir(), $this->file->getClientOriginalName());
+
         $path_parts = pathinfo($this->getAbsolutePath());
 
         $imagine = new \Imagine\Gd\Imagine();
@@ -1372,6 +1373,28 @@ class Movies implements TimestampableInterface
         }
     }
 
+    /**
+     * Set file
+     *
+     * @param string $file
+     * @return Movies
+     */
+    public function setFile(UploadedFile $file)
+    {
+        $this->file = $file;
+
+        return $this;
+    }
+
+    /**
+     * Get file
+     *
+     * @return string 
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
     /**
      * Set slug
      *

@@ -43,9 +43,12 @@
 
                 {% for entity in entities %}
                     <tr>
-                        <td>
-                            <a data-url="{{ path('movies_favoris', {'id' : entity.id }) }}" class="favoris_link"><i class="fa {% if entity.id in app.request.session.get('stars') %}fa-star{% else %} fa-star-o{% endif %}"></i></a></td>
-                        <td class="text-success"><a href="{{ path('movies_show', { 'id': entity.id }) }}">{{ entity.title }}</a></td>
+                        <td class="col-md-1">
+                            <a data-url="{{ path('movies_favoris', {'id' : entity.id }) }}" class="favoris_link btn btn-warning btn-xs btn-labeled">
+                                <span class="btn-label icon fa fa-star-o"></span>  Ajouter au panier
+                            </a>
+                            </td>
+                        <td class="text-success col-md-3"><a href="{{ path('movies_show', { 'id': entity.id }) }}">{{ entity.title }}</a></td>
                         <td  class="smalltext">{{ entity.synopsis|striptags|truncate(350,true, "...") }}</td>
                         <td>
                             {% for entity in entity.directors %}

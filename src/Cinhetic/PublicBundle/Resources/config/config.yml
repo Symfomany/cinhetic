@@ -93,8 +93,9 @@ parameters:
 twig:
     globals:
 #      base_url: 'http://94.23.5.209/demo/web/'
-      base_url: 'http://www.cinhetic.ju/'
+      base_url: 'http://symfony.3wa.fr/'
       imgsite: '/bundles/movies/images/'
       imgmovies: 'uploads/movies/'
       imgactors: 'uploads/actors/'
       imgdirectors: 'uploads/directors/'
+      imgmedia: '/uploads/medias/'

@@ -46,33 +46,23 @@ class LayoutController extends AbstractController
     }
 
 
-
     /**
-     * Get Card Movies entities.
-     * @return \Symfony\Component\HttpFoundation\Response
+     * Get card of user
      */
     public function cardAction(Request $request)
     {
-      $session = $request->getSession();
-      $stars = $session->get('stars', array());
-      $em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager();
+        $session = $request->getSession();
+        $stars = $session->get('stars', array());
 
-      $tabstars = array();
+         return $this->render('CinheticPublicBundle:Slots:card.html.twig', array(
+            'stars' => isset($stars['products'])? $stars['products'] : array(),
+            'total' => $stars['totalht']
+        ));
 
-      foreach($stars as $star){
-         $movie = $em->getRepository('CinheticPublicBundle:Movies')->find((int)$star);
-         $tabstars[] = array(
-            'id' => $movie->getId(),
-             'title' => $movie->getTitle(),
-             'ref' => $movie->getRef(),
-             'type' => $movie->getShopTypeDvd(),
-             'price' => $movie->getPrice()
-          );
-      }
 
-       return $this->render('CinheticPublicBundle:Slots:card.html.twig', array(
-            'stars' => $tabstars,
-       ));
     }
+
+
 
 }

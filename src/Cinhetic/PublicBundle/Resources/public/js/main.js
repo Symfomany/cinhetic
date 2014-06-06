@@ -147,15 +147,11 @@ $(function () {
             success: function (data) {
                 if($obj.find('i').hasClass('fa-star')){
                     $obj.find('i').attr('class','fa fa-star-o');
-                    nb = parseInt($('#main-navbar .right-navbar-nav li:eq(0) .label').text());
-                    $('#main-navbar .right-navbar-nav li:eq(0) .label').text(nb - 1 );
-                    $('#main-navbar .right-navbar-nav li:eq(0)').effect( "pulsate", {times:14}, 140 );
+                    $('#main-navbar-collapse .right-navbar-nav li:eq(0)').effect( "pulsate", {times:10}, 3000 );
 
                 }else{
                     $obj.find('i').attr('class','fa fa-star');
-                    nb = parseInt($('#main-navbar .right-navbar-nav li:eq(0) .label').text());
-                    $('#main-navbar .right-navbar-nav li:eq(0) .label').text(nb + 1 );
-                    $('#main-navbar .right-navbar-nav li:eq(0)').effect( "pulsate", {times:14}, 140 );
+                    $('#main-navbar-collapse .right-navbar-nav li:eq(0)').effect( "pulsate", {times:10}, 3000 );
                 }
             }
         });

@@ -103,7 +103,7 @@
         <div class="slidin autoplay lazy">
             {% for movie in lastmovies %}
                     {% if movie.image is not empty %}
-                        <div><div class="image"><a href="{{ path('movies_show', { 'id': movie.id }) }}"><img class="img-thumbnail" data-lazy="{{ base_url ~ imgmovies ~ movie.image }}"></a></div></div>
+                        <div><div class="image"><a href="{{ path('movies_show', { 'id': movie.id }) }}"><img class="img-thumbnail" data-lazy="{{ base_url ~ imgmovies ~ movie.image|thumb }}"></a></div></div>
                     {% endif %}
                 {% endfor %}  
         </div>
@@ -449,8 +449,8 @@
     {{ parent() }}
         <style type="text/css" media="screen">
             .slick-slider .slick-list, .slick-track, .slick-slide, .slick-slide img{
-                width: 1250px;
-                height: 130px;
+                width: 1450px;
+                height: 150px;
                    -webkit-transition: width 0.8s ease;
                 -moz-transition: width 0.8s ease;
                  -ms-transition: width 0.8s ease;

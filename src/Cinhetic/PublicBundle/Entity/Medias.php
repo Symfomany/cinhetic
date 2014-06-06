@@ -4,6 +4,7 @@ namespace Cinhetic\PublicBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 
 /**
@@ -56,12 +57,32 @@ class Medias
 
 
     /**
+     * @Assert\Image(
+     *     minWidth = 200,
+     *     minHeight  = 100,
+     *     maxWidth = 3000,
+     *     maxHeight = 3000,
+     *     maxSize = "6000k",
+     *     mimeTypes = {"image/jpg","image/jpeg", "image/png", "image/gif", "image/bmp"},
+     *     mimeTypesMessage = "Image au format non supporté",
+     *    maxWidthMessage = "Image trop grande en largeur {{ width }}px. Le maximum en largeur est de {{ max_width }}px" ,
+     *    minWidthMessage = "Image trop petite en largeur {{ width }}px. Le minimum en largeur est de {{ min_width }}px" ,
+     *    minHeightMessage = "Image trop petite en hauteur {{ height }}px. Le mimum en hauteur est de {{ min_height }}px" ,
+     *    maxHeightMessage = "Image trop grande en hauteur  {{ height }}px. Le maximum en hauteur est de {{ max_height }}px"
+     * )
+     */
+    public $file;
+
+
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->dateCreated = new \Datetime('now');
         $this->movies = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->nature="1";
     }
 
 
@@ -199,5 +220,120 @@ class Medias
     public function removeMovie(\Cinhetic\PublicBundle\Entity\Movies $movies)
     {
         $this->movies->removeElement($movies);
+    }
+
+
+
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preUpload()
+    {
+        if (null !== $this->file) {
+            $this->picture = $this->file->getClientOriginalName();
+        }
+    }
+
+
+    /**
+     * Upload action
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
+     */
+    public function upload()
+    {
+
+        if (null === $this->file){
+            return;
+        }
+        $this->picture = $this->file->getClientOriginalName();
+        $extension = $this->file->guessExtension();
+        $this->nature = 1;
+        $this->file->move($this->getUploadRootDir(), $this->file->getClientOriginalName());
+
+        $path_parts = pathinfo($this->getAbsolutePath());
+
+        $imagine = new \Imagine\Gd\Imagine();
+        $imagine
+            ->open($this->getAbsolutePath())
+            ->thumbnail(new \Imagine\Image\Box(350, 160))
+            ->save(
+                $this->getUploadRootDir().'/' . $path_parts['filename'] . '-thumb.' . $extension,
+                array(
+                    'quality' => 80
+                )
+            );
+
+    }
+
+    /**
+     * @ORM\PostRemove()
+     */
+    public function removeUpload()
+    {
+        if ($file = $this->getAbsolutePath()) {
+            @unlink($file);
+        }
+    }
+
+    /**
+     * Set file
+     *
+     * @param string $file
+     * @return Movies
+     */
+    public function setFile(UploadedFile $file)
+    {
+        $this->file = $file;
+
+        return $this;
+    }
+
+    /**
+     * Get file
+     *
+     * @return string 
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+
+    /**
+     * Absolute Path
+     * @return null|string
+     */
+    public function getAbsolutePath()
+    {
+        return null === $this->picture ? null : $this->getUploadRootDir().'/'.$this->picture;
+    }
+
+    /**
+     * Web path
+     * @return null|string
+     */
+    public function getWebPath()
+    {
+        return null === $this->picture ? null : $this->getUploadDir().'/'.$this->picture;
+    }
+
+    /**
+     * Upload Path
+     * @return string
+     */
+    protected function getUploadRootDir()
+    {
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+
+    /**
+     * Upload dir
+     * @return string
+     */
+    protected function getUploadDir()
+    {
+        return 'uploads/medias';
     }
 }

@@ -14,6 +14,10 @@ movies_card:
     pattern:  /card
     defaults: { _controller: "CinheticPublicBundle:Movies:card" }
 
+movies_upload:
+    pattern:  /upload/{id}
+    defaults: { _controller: "CinheticPublicBundle:Movies:upload" }
+
 movies_cities:
     pattern:  /city/{ville}
     defaults: { _controller: "CinheticPublicBundle:Movies:city" }

@@ -1,107 +1,67 @@
 {% extends 'CinheticPublicBundle::layout.html.twig' %}
 
 
-{% block titlepage %}<i class="fa fa-film"></i>&nbsp;&nbsp;Les films <span class="label label-danger">{{ entities.getTotalItemCount}}</span>{% endblock %}
+{% block titlepage %}&nbsp;&nbsp;  <i class="fa fa-shopping-cart"></i> Récapitulatif de votre commande{% endblock %}
 
 
 {% block content %}
-    <div id="content-wrapper">
-        <div class="page-header">
-            <h1><i class="fa fa-file-text-o page-header-icon"></i>&nbsp;&nbsp;Invoice Page</h1>
-            <a href="pages-invoice-print.html" class="pull-right btn btn-primary" style="display: block;" target="_blank"><i class="fa fa-print"></i>&nbsp;&nbsp;Print version</a>
-        </div> <!-- / .page-header -->
-        
-    <!-- NOTE: Add .page-invoice class to the body element -->
 
-<!-- 5. $INVOICE_PAGE ==============================================================================
-
-        Invoice page
--->
         <div class="panel invoice">
             <div class="invoice-header">
-                <h3>
-                    <div class="invoice-logo demo-logo"><img src="assets/demo/logo-big.png" alt="" style="width:100%;height:100%;"></div>
-                    <div>
-                        <small><strong>Pixel</strong>Admin</small><br>
-                        INVOICE #244
+                <div class="panel colourable">
+                    <div class="panel-heading">
+                        <span class="panel-title"><i class="panel-title-icon fa fa-shop"></i>Votre panier</span>
+                        <a href="" class="pull-right btn btn-primary btn-lg btn-labeled">
+                            <span class="btn-label icon fa fa-print"></span>  Imprimer ma commande
+                            </a>
+                            <div class="clear clearfix"></div>
                     </div>
-                </h3>
-                <address>
-                    PixelAdmin Ltd.<br>
-                    Los Angeles, Hoover Street, 32<br>
-                    90080 CA, USA
-                </address>
-                <div class="invoice-date">
-                    <small><strong>Date</strong></small><br>
-                    February 21, 2013
-                </div>
-            </div> <!-- / .invoice-header -->
-            <div class="invoice-info">
-                <div class="invoice-recipient">
-                    <strong>Mr. John Smith</strong><br>
-                    New York, Pass Avenue, 109<br>
-                    10012 NY, USA
-                </div> <!-- / .invoice-recipient -->
-                <div class="invoice-total">
-                    <span>$4,657.75</span>
-                    TOTAL:
-                </div> <!-- / .invoice-total -->
-            </div> <!-- / .invoice-info -->
-            <hr>
-            <div class="invoice-table">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>
-                                Task description
-                            </th>
-                            <th>
-                                Rate
-                            </th>
-                            <th>
-                                Hours
-                            </th>
-                            <th>
-                                Line total
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                Website design and development
-                                <div class="invoice-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</div>
-                            </td>
-                            <td>
-                                $50.00
-                            </td>
-                            <td>
-                                50
-                            </td>
-                            <td>
-                                $2,500.00
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Branding
-                                <div class="invoice-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</div>
-                            </td>
-                            <td>
-                                $47.95
-                            </td>
-                            <td>
-                                45
-                            </td>
-                            <td>
-                                $2,157.75
-                            </td>
-                        </tr>
-                    </tbody>
+                    <div class="panel-body">
+                        
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Titre</th>
+                      <th>Description</th>
+                      <th>Quantité</th>
+                      <th>Prix</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for i in 1..5 %}
+                      <tr>
+                        <td>{{ loop.index }}</td>
+                        <td><a>fghdfi dgfidf</a></td>
+                        <td><i>dfgdfgdfgdfg</i></td>
+                        <td>
+                          <a class="btn btn-xs btn-primary">
+                            <i class="fa fa-minus"></i>
+                          </a>
+                            2
+                            <a class="btn btn-xs btn-primary">
+                              <i class="fa fa-plus"></i>
+                            </a>
+                          </td>
+                        <td><span class="label label-primary">50 €</span></td>
+                        <td><a class="btn btn-default"><i class="fa  fa-trash-o"></i></a></td>
+                      </tr>
+                    {% endfor %}
+                    
+                  </tbody>
                 </table>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="row well">
+                            <a href="/app.php/movies/new" class="pull-right btn btn-danger btn-lg btn-labeled">
+                            <span class="btn-label icon fa fa-shopping-cart"></span>  Régler votre commande
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
             </div> <!-- / .invoice-table -->
-        </div> <!-- / .invoice -->
-<!-- /5. $INVOICE_PAGE -->
 
     </div> <!-- / #content-wrapper -->
 {% endblock %}

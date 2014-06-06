@@ -7,21 +7,21 @@
  <div id="medias">
      <div class="row">
         {% for media in medias %}
-            <div class="col-lg-4 col-sm-6 col-xs-12">
-               <a data-toggle="modal" data-target="#modal-blurred-img">
-                    {% if media.nature  == 1 %}
-                        <img src="{{ media.picture }}" class="thumbnail img-responsive">
+            <div class="col-lg-3 col-sm-6 col-xs-12">
+               <a data-toggle="modal" data-target="#modal-blurred-img{{media.id}}">
+                    {% if media.nature  == "1" %}
+                        <img src="{{ base_url ~ imgmedia ~ media.picture|thumb }}" class="thumbnail img-responsive">
                      {% else %}
                         {{ media.video|raw }}
                      {% endif %}
                </a>
                     
-                <div id="modal-blurred-img" class="modal fade modal-blur" tabindex="-1" role="dialog" style="display: none;">
+                <div id="modal-blurred-img{{media.id}}" class="modal fade modal-blur" tabindex="-1" role="dialog" style="display: none;">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                             <div class="modal-body">
-                      {% if media.nature  == 1 %}
-                        <img src="{{ media.picture }}" class="thumbnail img-responsive">
+                      {% if media.nature  == "1" %}
+                        <img src="{{ base_url ~ imgmedia ~ media.picture }}">
                      {% else %}
                         {{ media.video|raw }}
                      {% endif %}                           
@@ -36,6 +36,19 @@
                         Pas encore de media.
                 </div>
         {% endfor %}
+     </div>
+     <div class="row">
+        <div id="dropzonejs-example" class="dropzone-box">
+            <div class="dz-default dz-message">
+                <i class="fa fa-cloud-upload"></i>
+                Déposer les films ici<br><span class="dz-text-small">ou cliquez vos médias ici</span>
+            </div>
+            <form action="{{ path('movies_upload', {'id': entity.id }) }}" method="post"  enctype="multipart/form-data">
+                <div class="fallback">
+                    <input name="file" type="file" multiple="multiple" />
+                </div>
+            </form>
+        </div>
       </div>
   </div>
 {% endblock %}
@@ -44,6 +57,9 @@
     {{ parent() }}
 
     <style type="text/css" media="screen">
+    .thumbnail{
+       cursor: pointer;
+    }
         
          @media only screen and (max-width: 800px) {
           
@@ -58,9 +74,38 @@
 
 {% block javascripts %}
     {{ parent() }}
-    <script>
-        init.push(function () {
-           
-        });
-    </script>
+<!-- Javascript -->
+                <script>
+                    init.push(function () {
+                        $("#dropzonejs-example").dropzone({
+                            url:  "{{ path('movies_upload', {'id': entity.id }) }}",
+                            paramName: "file", // The name that will be used to transfer the file
+                            maxFilesize: 0.5, // MB
+                            addRemoveLinks : true,
+                            dictResponseError: "Can't upload file!",
+                            autoProcessQueue: true,
+                            thumbnailWidth: 138,
+                            thumbnailHeight: 120,
+
+                            previewTemplate: '<div class="dz-preview dz-file-preview"><div class="dz-details"><div class="dz-filename"><span data-dz-name></span></div><div class="dz-size">File size: <span data-dz-size></span></div><div class="dz-thumbnail-wrapper"><div class="dz-thumbnail"><img data-dz-thumbnail><span class="dz-nopreview">No preview</span><div class="dz-success-mark"><i class="fa fa-check-circle-o"></i></div><div class="dz-error-mark"><i class="fa fa-times-circle-o"></i></div><div class="dz-error-message"><span data-dz-errormessage></span></div></div></div></div><div class="progress progress-striped active"><div class="progress-bar progress-bar-success" data-dz-uploadprogress></div></div></div>',
+
+                            resize: function(file) {
+                                var info = { srcX: 0, srcY: 0, srcWidth: file.width, srcHeight: file.height },
+                                    srcRatio = file.width / file.height;
+                                if (file.height > this.options.thumbnailHeight || file.width > this.options.thumbnailWidth) {
+                                    info.trgHeight = this.options.thumbnailHeight;
+                                    info.trgWidth = info.trgHeight * srcRatio;
+                                    if (info.trgWidth > this.options.thumbnailWidth) {
+                                        info.trgWidth = this.options.thumbnailWidth;
+                                        info.trgHeight = info.trgWidth / srcRatio;
+                                    }
+                                } else {
+                                    info.trgHeight = file.height;
+                                    info.trgWidth = file.width;
+                                }
+                                return info;
+                            }
+                        });
+                    });
+                </script>
 {% endblock %}

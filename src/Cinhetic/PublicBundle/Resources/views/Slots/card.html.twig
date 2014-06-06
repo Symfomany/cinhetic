@@ -19,8 +19,8 @@
     <div class="messages-list" id="main-navbar-messages">
         {% for star in stars %}
             <div class="message">
-                <a href="#" class="message-subject">{{ star.title }} - <i>{{ star.ref }}</i></a> <br />
-                {{ star.type|dvd }}
+                <a href="#" class="message-subject">{{ star.title }} - {{ star.ref|default('Aucune référence') }}</a>
+                <span class="label">X {{ star.quantity }}</span>
                 <div class="message-description">
                     à <a href="#">{{ star.price }} €</a>
                 </div>

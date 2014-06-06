@@ -66,8 +66,6 @@ class RegistrationController extends BaseController
         return $this->container->get('templating')->renderResponse('CinheticPublicBundle:User:register.html.'.$this->getEngine(), array(
             'form' => $form->createView(),
         ));
-
-        
     }
 
 

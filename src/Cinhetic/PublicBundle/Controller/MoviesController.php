@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 use Cinhetic\PublicBundle\Entity\Movies;
+
 use Cinhetic\PublicBundle\Form\MoviesType;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use Symfony\Component\HttpFoundation\Response;
@@ -33,6 +34,23 @@ class MoviesController extends AbstractController
      */
     public function __construct(){
         $this->embed = Essence::instance();
+    }
+
+
+    /**
+     * Get card of user
+     */
+    public function cardAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $session = $request->getSession();
+        $stars = $session->get('stars', array());
+
+         return $this->render('CinheticPublicBundle:Movies:card.html.twig', array(
+            'stars' => isset($stars['products'])? $stars['products'] : array(),
+            'total' => $stars['totalht']
+        ));
+
     }
 
     /**
@@ -201,6 +219,27 @@ class MoviesController extends AbstractController
 
     }
 
+    /**
+     * Upload Media
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function uploadAction(Request $request, Movies $id)
+    {
+       $em = $this->getDoctrine()->getManager();
+
+       $file = $request->files->get('file');
+       
+       $media = new Medias();
+       $media->setFile($file);
+       $media->setNature('1');
+       $media->setMovies($id);
+       $media->upload();
+
+       $em->persist($media);
+       $em->flush();
+       return new JsonResponse(true);
+
+    }
 
 
     /**
@@ -236,22 +275,6 @@ class MoviesController extends AbstractController
     }
 
 
-
-    /**
-     * Get Card Movies entities.
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function cardAction(Request $request)
-    {
-      $session = $request->getSession();
-      $stars = $session->get('stars', array());
-
-       return $this->render('CinheticPublicBundle:Movies:card.html.twig', array(
-            'stars' => $stars,
-       ));
-    }
-
-    
 
     /**
      * Get Star Movies entities.
@@ -555,18 +578,42 @@ class MoviesController extends AbstractController
      */
     public function favorisAction(Movies $id,Request $request){
         $session = $request->getSession();
+
         $stars = $session->get('stars', array());
-        $key = array_search($id->getId(), $stars);
-        if($key !== FALSE) {
-            $tab = $session->get('stars', array());
-            unset($tab[$key]);
-            $session->set('stars', $tab);
+        $flag = false;
+
+        if(!empty($stars)){
+            foreach ($stars as $star => $item) { 
+                if ($id->getId() == $star) { 
+                    $stars['products'][$star]['id'] = $id->getId();
+                    $stars['products'][$star]['title'] = $id->getTitle();
+                    $stars['products'][$star]['ref'] = $id->getRef();
+                    $stars['products'][$star]['price'] = $id->getPrice();
+                    $stars['products'][$star]['quantity'] = $item['quantity'] + 1;
+                    $stars['products'][$star]['date_created'] = new \Datetime('now');
+                    $stars['totalht'] = $stars['totalht'] + $id->getPrice();
+
+                    $flag = true;
+                    break; 
+                } 
+            } 
         }else{
-            $tab[] = $id->getId();
-            $tab = array_merge($tab, $session->get('stars', array()));
-            $session->set('stars', $tab);
+            $stars['totalht'] = 0;
         }
 
+        if($flag != true) {
+            $stars['products'][$id->getId()]= array(
+                'id' => $id->getId(),
+                'title' => $id->getTitle(),
+                'ref' => $id->getRef(),
+                'price' => $id->getPrice(),
+                'quantity' => 1,
+                'date_created' => new \Datetime('now')
+            );
+        }
+
+
+        $session->set('stars', $stars);
         return new JsonResponse(true);
     }
 
